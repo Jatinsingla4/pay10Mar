@@ -31,6 +31,7 @@ const cspSources = {
     'https://pcms.pay10.in',
     'https://gww.grapesmobile.com',
     'https://pay10.grapesmobile.com',
+    'https://adminpayd.grapesmobile.com',
     ...parseEnvSources(process.env.CSP_IMG_SRC_EXTRA),
   ]),
   fontSrc: uniqueSources(["'self'", 'data:']),
@@ -45,6 +46,7 @@ const cspSources = {
     'https://api.simplesvg.com',
     'https://api.unisvg.com',
     'https://pcms.pay10.in',
+    'https://adminpayd.grapesmobile.com',
     ...parseEnvSources(process.env.CSP_CONNECT_SRC_EXTRA),
   ]),
   frameSrc: uniqueSources([
@@ -88,6 +90,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'pcms.pay10.in',
       },
+      {
+        protocol: 'https',
+        hostname: 'adminpayd.grapesmobile.com',
+      },
     ],
   },
   sassOptions: {
@@ -122,7 +128,7 @@ const nextConfig = {
       },
     ];
   },
-  
+
   async headers() {
     return [
       {

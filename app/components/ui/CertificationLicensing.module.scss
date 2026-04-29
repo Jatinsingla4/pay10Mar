@@ -1,0 +1,119 @@
+@import "../../../styles/globals/mixin";
+
+.banner {
+  position: relative;
+  padding: 80px 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f7f7f7;
+  color: var(--black);
+  @include tab {
+    padding: 56px 16px;
+  }
+}
+.content {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  gap: 24px;
+  align-items: center;
+
+  @include tab {
+    gap: 24px;
+  }
+}
+
+.mainText {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--gray);
+  @include tab {
+    font-size: 24px;
+  }
+}
+
+.centralBankSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+
+  @include mobile {
+    gap: 16px;
+  }
+}
+
+.centralBankLogo {
+  width: auto;
+  height: auto;
+  max-width: 300px;
+  max-height: 120px;
+  object-fit: contain;
+
+  @include tab {
+    max-width: 250px;
+    max-height: 100px;
+  }
+  @include mobile {
+    max-width: 200px;
+    max-height: 80px;
+  }
+}
+
+.licensedBy {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--gray);
+  @include tab {
+    font-size: 16px;
+  }
+}
+
+.badgesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 24px;
+  justify-content: center;
+  @include tab {
+    justify-content: flex-start;
+    overflow-x: scroll;
+    gap: 16px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  @include mobile {
+    justify-content: flex-start;
+  }
+}
+
+.badgeCard {
+  background-color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  @include tab {
+    width: 200px;
+    padding: 16px;
+  }
+}
+.badgeImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}

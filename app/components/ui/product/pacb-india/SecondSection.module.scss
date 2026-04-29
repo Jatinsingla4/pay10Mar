@@ -1,0 +1,189 @@
+@import '../../../../../styles/globals/mixin';
+
+.second_section {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-content: center;
+    align-items: center;
+    gap: 127px;
+    position: relative;
+    overflow: hidden;
+    padding: 50px 56px;
+
+    @include tab {
+        grid-template-columns: 1fr;
+        padding: 50px 25px;
+        padding-top: 130px;
+        gap: 80px;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    .second_section_left_content {
+        color: var(--black);
+        h3 {
+          font-size: 42px;
+          line-height: 1.1;
+          @include tab {
+              font-size: 32px;
+          }
+        }
+        p{
+            font-size: 20px;
+            font-family: 'light';
+            margin-top: 24px;
+            color: var(--gray);
+            line-height: 1.4;
+
+            @include tab {
+                font-size: 20px;
+            }
+        }
+
+        @include tab {
+            order: 2;
+        }
+    }
+
+    .second_section_right_img{
+        width: 100%;
+        position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        min-height: 400px;
+
+        @include tab {
+            order: 2;
+            min-height: auto;
+        }
+
+        img {
+            width: 100%;
+            position: relative;
+            z-index: 2;
+            max-width: 550px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+
+            @include tab {
+                max-width: 450px;
+            }
+
+            @include mobile {
+                max-width: 300px;
+            }
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            transform-origin: center center;
+            pointer-events: none;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            // Make circles scale with image size responsively
+            // Default "image" max-width is 550px, so base 100% around that
+            // The circle radii are based on these original px values as a ratio of 550px
+
+            // Primary sizes for larger screens
+            &:nth-child(1) {
+                width: calc(100% * 600 / 550);    // ~109%
+                height: calc(100% * 600 / 550);
+                min-width: 350px;
+                min-height: 350px;
+                max-width: 650px;
+                max-height: 650px;
+                border: 2px solid #fea37b;
+            }
+
+            &:nth-child(2) {
+                width: calc(100% * 850 / 550);    // ~154%
+                height: calc(100% * 850 / 550);
+                min-width: 470px;
+                min-height: 470px;
+                max-width: 900px;
+                max-height: 900px;
+                opacity: 0.7;
+                border: 2px solid #fbbc9f;
+            }
+
+            &:nth-child(3) {
+                width: calc(100% * 1100 / 550);   // ~200%
+                height: calc(100% * 1100 / 550);
+                min-width: 580px;
+                min-height: 580px;
+                max-width: 1150px;
+                max-height: 1150px;
+                opacity: 0.3;
+                border: 2px solid #f9ccb8;
+            }
+
+            // Keep circles in sync with image at responsive breakpoints
+            @include tab {
+                &:nth-child(1) {
+                    width: calc(100% * 450 / 300); // image max-width in tab: 450px
+                    height: calc(100% * 450 / 300);
+                    min-width: 220px;
+                    min-height: 220px;
+                    max-width: 500px;
+                    max-height: 500px;
+                }
+                &:nth-child(2) {
+                    width: calc(100% * 700 / 300);
+                    height: calc(100% * 700 / 300);
+                    min-width: 280px;
+                    min-height: 280px;
+                    max-width: 750px;
+                    max-height: 750px;
+                }
+                &:nth-child(3) {
+                    width: calc(100% * 900 / 300);
+                    height: calc(100% * 900 / 300);
+                    min-width: 320px;
+                    min-height: 320px;
+                    max-width: 950px;
+                    max-height: 950px;
+                }
+            }
+
+            @include mobile {
+                &:nth-child(1) {
+                    width: 120vw;
+                    height: 120vw;
+                    min-width: 150px;
+                    min-height: 150px;
+                    max-width: 340px;
+                    max-height: 340px;
+                }
+                &:nth-child(2) {
+                    width: 180vw;
+                    height: 180vw;
+                    min-width: 200px;
+                    min-height: 200px;
+                    max-width: 440px;
+                    max-height: 440px;
+                }
+                &:nth-child(3) {
+                    width: 240vw;
+                    height: 240vw;
+                    min-width: 240px;
+                    min-height: 240px;
+                    max-width: 600px;
+                    max-height: 600px;
+                }
+            }
+        }
+
+        @include tab {
+            order: 1;
+        }
+    }
+}

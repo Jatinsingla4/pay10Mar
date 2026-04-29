@@ -1,0 +1,36 @@
+@import "../../../styles/globals/mixin";
+
+.banner {
+  position: relative;
+  padding: 80px 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--black);
+  @include tab{
+    padding: 56px 16px;
+  }
+  .content {
+    max-width: 924px;
+    display: grid;
+    gap: 24px;
+    h3.kicker {
+      font-size: 48px;
+      line-height: 1.1;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0;
+      @include tab{
+        font-size: 32px;
+      }
+    }
+    .desc{
+      font-size: 32px;
+      @include tab{
+        font-size: 24px;
+      }
+    }
+  }
+}

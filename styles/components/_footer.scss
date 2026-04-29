@@ -1,0 +1,351 @@
+@import "../globals/_mixin";
+
+.footer {
+  position: relative;
+  width: 100%;
+  background: var(--primary-gradient);
+  color: var(--white);
+  padding: 48px 56px;
+  @include tab{
+    padding: 80px 16px;
+  }
+  &__container {
+    max-width: 1920px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 3rem;
+    align-items: start;
+    @include tab {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @include mobile {
+      gap: 1.5rem;
+    }
+  }
+  &__logo {
+    flex-shrink: 0;
+    &-img {
+      display: block;
+      height: auto;
+      max-width: 120px;
+    }
+  }
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    width: 90%;
+    margin: 0 auto;
+    &--desktop {
+      @include tab {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+
+      @include tab {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    &-heading {
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    &-link {
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'medium', sans-serif;
+      font-size: 1rem;
+      transition: opacity 0.2s var(--ease-out-cubic);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+
+      @media (min-width: 992px) {
+        padding: 0;
+        justify-content: flex-start;
+      }
+      @include tab{
+        border-bottom: 1px solid var(--white);
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+
+      &--accordion {
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        @include tab{
+          border-bottom: 1px solid var(--white);
+        }
+      }
+    }
+
+    // Home and Contact nav links - font-weight 600
+    &-item:first-child &-link,
+    &-item:last-child &-link {
+      font-weight: 600;
+    }
+
+    &-chevron {
+      font-size: 1rem;
+      color: var(--white);
+      transition: transform 0.2s var(--ease-out-cubic);
+      flex-shrink: 0;
+      margin-left: 0.5rem;
+
+      @media (min-width: 992px) {
+        display: none;
+      }
+    }
+
+    &-subitems {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-left: 0;
+      @media (min-width: 992px) {
+        gap: 0.75rem;
+      }
+      @include tab {
+        padding-left: 1.5em;
+      }
+    }
+
+    &-subitem {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    &-sublink {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-family: 'bold', sans-serif;
+      font-size: 0.9375rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      @media (min-width: 992px) {
+        padding: 0;
+      }
+      @include tab{
+        border-bottom: 1px solid var(--white);
+      }
+
+      &--accordion {
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-align: left;
+        @include tab{
+          border-bottom: 1px solid var(--white);
+        }
+      }
+    }
+
+    &-subsubitems {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      padding-left: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    &-subsublink {
+      color: rgba(255, 255, 255, 0.8);
+      text-decoration: none;
+      font-family: 'medium', sans-serif;
+      font-size: 0.875rem;
+      transition: opacity 0.2s var(--ease-out-cubic);
+      padding: 0.375rem 0;
+
+      @media (min-width: 992px) {
+        padding: 0;
+      }
+      @include tab{
+        border-bottom: 1px solid var(--white);
+      }
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  // Social Media & App Store
+  &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-end;
+
+    &--desktop {
+      @include tab {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+      padding: 24px 0 0 0;
+      align-items: flex-start;
+      @include tab {
+        display: flex;
+      }
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      color: var(--white);
+      text-decoration: none;
+      transition: opacity 0.2s var(--ease-out-cubic);
+      border-radius: 50%;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+
+    &-icon {
+      font-size: 1.25rem;
+    }
+  }
+
+  &__app-store {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-end;
+    @include tab {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+
+  &__app-store-btn {
+    display: flex;
+    text-decoration: none;
+    transition: opacity 0.2s var(--ease-out-cubic);
+    &:hover {
+      opacity: 0.95;
+    }
+    img{
+      width: 100%;
+    }
+  }
+
+  // Bottom Bar
+  &__bottom {
+    padding: 80px 0 0px 0;
+    @include tab{
+      padding: 24px 0 0px 0;
+    }
+    &-container {
+      max-width: 1920px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 2rem;
+      @include tab {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+    &-left {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+
+      @include tab {
+        order: 2;
+      }
+    }
+
+    &-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+
+      @include tab {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        order: 1;
+      }
+    }
+  }
+
+  &__copyright {
+    font-family: 'medium', sans-serif;
+    font-size: 0.9375rem;
+    color: var(--white);
+  }
+
+  &__address {
+    font-family: 'medium', sans-serif;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+  }
+
+  &__legal {
+    &-link {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      font-family: 'medium', sans-serif;
+      font-size: 0.875rem;
+      transition: opacity 0.2s var(--ease-out-cubic);
+      white-space: nowrap;
+
+      &:hover {
+        opacity: 0.8;
+      }
+
+      @include tab {
+        white-space: normal;
+      }
+    }
+
+    &-separator {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.875rem;
+
+      @include tab {
+        display: none;
+      }
+    }
+  }
+}

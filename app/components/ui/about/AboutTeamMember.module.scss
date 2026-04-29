@@ -1,0 +1,302 @@
+@import '../../../../styles/globals/mixin';
+
+.wrapper2 {
+    width: 100%;
+    // padding-left: 56px;
+    @include tab{
+      margin: 56px 0;
+      padding: 0px 16px;
+    }
+  }
+
+.second_bg_circle {
+  width: 100%;
+  background-image: url('/images/about_images/bg_circle2.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 65%;
+}
+
+.board_members_main {
+  width: 100%;
+  padding: 4rem 0 5rem;
+
+  .board_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-right: 1rem;
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.9rem;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
+    }
+
+    h2 {
+      font-size: 48px;
+      color: var(--black);
+      margin-left: 56px;
+      @include tab {
+        margin-left: 0;
+        font-size: 32px;
+      }
+    }
+
+    .nav_group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav_btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border-clr);
+      background: var(--white);
+      color: var(--black);
+      font-size: 1.4rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      transition: all 0.5s ease;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 250%;
+        height: 400%;
+        background-color: var(--red);
+        border-radius: 50%;
+        bottom: -400%;
+        left: -70%;
+        z-index: -1;
+        transition: all 0.5s ease;
+      }
+
+      &:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      &:hover::after {
+        bottom: -290%;
+      }
+    }
+  }
+
+  .team_swiper {
+    padding-bottom: 2.5rem;
+    padding-right: 3.8rem;
+  }
+
+  .team_slide {
+    height: 100%;
+  }
+
+  .team_slide:nth-child(1){
+    margin-left: 56px;
+    @include tab {
+      margin-left: 0;
+    }
+  }
+
+  .member_card {
+    background: var(--white);
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    aspect-ratio: 9 / 11;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s cubic-bezier(.39,.58,.57,1);
+    position: relative;
+    backface-visibility: hidden;
+
+    // MeetBoardMember hover style for image (stronger zoom, cubic)
+    &:hover .member_image img {
+      transform: scale(1.08);
+      transition: all 0.6s cubic-bezier(.4,0,.2,1);
+    }
+  }
+
+  .member_image {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: all 0.6s cubic-bezier(.4,0,.2,1);
+    }
+  }
+
+  .member_meta {
+    position: absolute;
+    inset: 0;
+    border-radius: 2rem;
+    color: var(--white);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--black-gradient);
+    pointer-events: none;
+    transition:
+      background 0.5s cubic-bezier(.39,.58,.57,1),
+      backdrop-filter 0.5s,
+      opacity 0.4s cubic-bezier(.39,.58,.57,1);
+    backface-visibility: hidden;
+    opacity: 1;
+
+    .member_identity {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      opacity: 1;
+      will-change: opacity, transform;
+      transition: opacity 0.45s cubic-bezier(.39,.58,.57,1), transform 0.45s cubic-bezier(.39,.58,.57,1);
+
+      h4 {
+        margin: 0;
+        font-size: 1.6rem;
+        color: var(--white);
+        text-align: left;
+        line-height: 1.1;
+        font-weight: 700;
+        letter-spacing: 0;
+        max-width: 100%;
+        white-space: normal;
+        word-break: break-word;
+        text-shadow: 0 2px 8px rgba(60,0,0,0.10);
+        transition: font-size 0.5s, margin 0.5s, color 0.45s;
+      }
+
+      .member_role {
+        margin: 0;
+        color: var(--white);
+        font-size: 1.07rem;
+        line-height: 1.4;
+        font-weight: 400;
+        font-family: "light";
+        text-align: left;
+        max-width: 95%;
+        opacity: 1;
+        white-space: normal;
+        word-break: break-word;
+        text-shadow: 0 1px 10px rgba(0,0,40,0.07);
+        letter-spacing: 0.0em;
+        transition: color 0.35s;
+      }
+    }
+
+    .member_description {
+      margin: 1.1rem 0 0;
+      color: var(--white);
+      font-size: 1.06rem;
+      line-height: 1.55;
+      max-height: 5.7em;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(18px);
+      text-align: left;
+      font-family: "light";
+      transition:
+        opacity 0.45s cubic-bezier(.39,.58,.57,1),
+        transform 0.45s cubic-bezier(.39,.58,.57,1),
+        max-height 0.45s cubic-bezier(.39,.58,.57,1);
+      will-change: opacity, transform, max-height;
+      scrollbar-width: thin;
+      scrollbar-color: var(--orange) transparent;
+    }
+  }
+
+  // --- Hover effect as like MeetBoardMember ---
+  .member_card:hover .member_meta {
+    background: var(--primary-gradient-light);
+    opacity: 1;
+    justify-content: center;
+    pointer-events: all;
+    backdrop-filter: blur(4px);
+
+    .member_identity {
+      transform: translateY(0);
+      opacity: 1;
+      h4 {
+        color: var(--white);
+        font-size: 1.65rem;
+        font-weight: 700;
+      }
+      .member_role {
+        color: var(--white);
+        font-size: 1.13rem;
+      }
+    }
+    .member_description {
+      opacity: 1;
+      max-height: 220px;
+      transform: translateY(0);
+      overflow-y: auto;
+      padding-right: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--orange) transparent;
+    }
+    // Custom scrollbar for description
+    .member_description::-webkit-scrollbar {
+      width: 8px;
+      background: transparent;
+    }
+    .member_description::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border-radius: 4px;
+    }
+    .member_description::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 4px;
+    }
+  }
+
+  .member_card .member_meta .member_identity,
+  .member_card .member_meta .member_description {
+    transition-timing-function: cubic-bezier(.39,.58,.57,1);
+  }
+}
+
+@media only screen and (max-width: 991px) {
+
+  .board_members_main {
+    padding: 1.2rem 0 0 0;
+
+    .board_header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+
+      h2 {
+        font-size: 2.2rem;
+      }
+    }
+    .team_swiper {
+        padding-right: 0;
+    }
+  }
+
+
+}

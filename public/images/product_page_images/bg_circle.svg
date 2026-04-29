@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1000" height="1000" viewBox="0 0 1000 1000" xml:space="preserve">
+<desc>Created with Fabric.js 3.5.0</desc>
+<defs>
+</defs>
+<rect x="0" y="0" width="100%" height="100%" fill="rgba(255,255,255,0)"/>
+<g transform="matrix(0.4812 0 0 0.4812 499.9668 499.9671)" id="301464">
+<radialGradient id="SVGID_8" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 1030 -1039.5 0 946.5 1030)" cx="0" cy="0" r="1" fx="0" fy="0">
+<stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity: 0"/>
+<stop offset="100%" style="stop-color:rgb(255,236,227);stop-opacity: 0.11"/>
+</radialGradient>
+<path style="stroke: rgb(254,163,123); stroke-width: 1; stroke-opacity: 0.5; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: url(#SVGID_8); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-946.5, -1030)" d="M 946.5 0.5 C 1520.33 0.5 1985.5 461.427 1985.5 1030 C 1985.5 1598.57 1520.33 2059.5 946.5 2059.5 C 372.672 2059.5 -92.5 1598.57 -92.5 1030 C -92.5 461.427 372.672 0.5 946.5 0.5 Z" stroke-linecap="round"/>
+</g>
+<g transform="matrix(0.5201 0 0 0.5201 499.9864 499.9865)" id="609398">
+<radialGradient id="SVGID_9" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 667.5 -674 0 674 667.5)" cx="0" cy="0" r="1" fx="0" fy="0">
+<stop offset="0%" style="stop-color:rgb(255,255,255);stop-opacity: 0"/>
+<stop offset="100%" style="stop-color:rgb(255,236,227);stop-opacity: 0.11"/>
+</radialGradient>
+<path style="stroke: rgb(254,163,123); stroke-width: 2.1551; stroke-opacity: 0.5;stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; is-custom-font: none; font-file-url: none; fill: url(#SVGID_9); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" transform=" translate(-673.9986, -667.4986)" d="M 674 1.07715 C 1045.65 1.07715 1346.92 299.455 1346.92 667.5 C 1346.92 1035.55 1045.65 1333.92 674 1333.92 C 302.345 1333.92 1.07715 1035.55 1.07715 667.5 C 1.07715 299.455 302.345 1.07715 674 1.07715 Z" stroke-linecap="round"/>
+</g>
+</svg>

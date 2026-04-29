@@ -1,0 +1,100 @@
+@import '../../../../../styles/globals/mixin';
+
+.wrapper {
+    width: 100%;
+    padding: 80px 56px;
+    margin: 0;
+    @include tab {
+      padding: 80px 16px;
+    }
+  }
+
+.section_third {
+    width: 100%;
+    background: var(--primary-gradient);
+    border-radius: 2rem;
+    text-align: center;
+    .section_third_heading {
+        margin-bottom: 32px;
+        h2 {
+            font-size: 48px;
+            line-height: 1.1;
+
+            @include tab {
+                font-size: 32px;
+                font-family: 'semibold';
+            }
+        }
+    }
+
+    .section_third_grid {
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        column-gap: 24px;
+        row-gap: 26px;
+
+        @include tab {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .section_third_box {
+        background: var(--white);
+        border-radius: 36px;
+        padding: 32px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        height: 100%;
+
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        &:nth-child(4) {
+            grid-column: 1 / span 3;
+        }
+
+        &:nth-child(5) {
+            grid-column: 4 / span 3;
+        }
+
+        @include tab {
+            grid-column: auto !important;
+        }
+
+        p {
+            font-size: 24px;
+            line-height: 1.4;
+            background: var(--primary-gradient-medium);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+
+            @include mobile{
+                font-size: 20px;
+                line-height: 1.25;
+            }
+        }
+    }
+
+    .section_third_icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+
+        img {
+            width: 80%;
+            height: 80%;
+            object-fit: contain;
+        }
+    }
+}

@@ -1,0 +1,487 @@
+@import "../../styles/globals/mixin";
+
+.wrapper {
+  width: 100%;
+  padding: 0px 56px;
+  margin: 80px 0;
+  margin-bottom: 0;
+  @include tab {
+    margin: 56px 0;
+    margin-bottom: 0;
+    padding: 0px 16px;
+  }
+  @include large {
+    padding: 0px 16px;
+    margin-bottom: 40px;
+  }
+}
+
+.contact_banner_headings {
+  width: 90%;
+  margin: 0 auto;
+  padding: 80px 0;
+  color: var(--black);
+  text-align: center;
+
+  h5 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 4rem;
+    font-family: "bold";
+    line-height: 1.1;
+
+    @include tab {
+      font-size: 40px;
+    }
+  }
+}
+
+.contact_tabs_container {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.contact_tabs {
+  display: none !important;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.1) transparent;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-track {
+    display: none;
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  @include tab {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+}
+
+.contact_tab {
+  padding: 12px 32px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--gray);
+  background: var(--white);
+  border: 1px solid var(--border-clr);
+  border-radius: 50px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  position: relative;
+
+  &:hover {
+    color: var(--orange);
+    border-color: var(--orange);
+  }
+
+  &.active {
+    background: var(--white);
+    border: 1px solid transparent;
+    position: relative;
+
+    // Gradient border using pseudo-element
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: 50px;
+      padding: 1px;
+      background: var(--primary-gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      //   -webkit-mask-composite: xor;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    // Gradient text
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  @include tab {
+    padding: 10px 24px;
+    font-size: 23px;
+    border-radius: 50px;
+  }
+
+  @include mobile {
+    padding: 8px 20px;
+    border-radius: 50px;
+  }
+}
+
+.contact_map_section {
+  position: relative;
+  width: 100%;
+  height: 655px;
+  border-radius: 0;
+  overflow: hidden;
+  margin-bottom: 80px;
+  //   background: #f5f5f5;
+
+  @include large {
+    height: auto;
+    min-height: 400px;
+    margin-bottom: 0;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.map_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  @include large {
+    flex-shrink: 0;
+    height: 400px;
+    min-height: 400px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+  }
+}
+
+.contact_info_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: 100%;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 50px 56px;
+  z-index: 10;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  @include large {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 24px 0;
+    gap: 24px;
+    pointer-events: auto;
+    margin-top: 0;
+  }
+}
+
+.contact_info_box {
+  width: 433px;
+  background: rgba(0, 0, 0, 0.64);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-start;
+  color: var(--white);
+  pointer-events: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  @include large {
+    width: 100%;
+    padding: 0 20px;
+    gap: 6px;
+    background: transparent;
+    box-shadow: none;
+    color: var(--black);
+  }
+}
+
+.contact_info_icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 28px;
+
+  @include large {
+    color: var(--black);
+  }
+}
+
+.contact_info_content {
+  flex: 1;
+  color: var(--white);
+
+  h4 {
+    font-size: 1.125rem;
+    font-family: "light";
+    margin-bottom: 12px;
+    color: var(--white);
+    line-height: 1.3;
+
+    @include large {
+      color: var(--black);
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--white);
+    margin: 0;
+    font-family: "light";
+
+    @include large {
+      font-size: 18.75px;
+      color: var(--black);
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 6px;
+
+      @include large {
+        margin-bottom: 4px;
+      }
+    }
+  }
+}
+
+.contact_form_section {
+  position: relative;
+  width: 100%;
+  padding: 80px 56px;
+  margin-bottom: 80px;
+  overflow: hidden;
+
+  @include tab {
+    padding: 60px 0;
+    margin-bottom: 60px;
+  }
+
+  @include large {
+    padding: 40px 0;
+    margin-bottom: 40px;
+  }
+}
+
+.contact_form_background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/contact_images/contact_form_bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  border-radius: 36px;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+}
+
+.contact_form_container {
+  position: relative;
+  margin: 0 auto;
+  z-index: 2;
+
+  @include tab {
+    padding: 40px 30px;
+    margin: 0 16px;
+  }
+
+  @include large {
+    padding: 30px 20px;
+    margin: 0 16px;
+  }
+}
+
+.contact_form_title {
+  font-size: 48px;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 48px;
+  font-family: "light";
+
+  @include tab {
+    font-size: 1.75rem;
+  }
+
+  @include large {
+    font-size: 1.5rem;
+  }
+}
+
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+}
+
+.form_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
+  @include large {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form_group {
+  width: 100%;
+
+  &:has(.form_textarea) {
+    grid-column: 1 / -1;
+  }
+}
+
+.form_input,
+.form_textarea {
+  width: 100%;
+  padding: 16px 24px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  color: var(--white);
+  font-size: 1rem;
+  font-family: "light";
+  transition: all 0.3s ease;
+  outline: none;
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+  }
+
+}
+
+.form_textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form_submit_btn {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 16px 32px;
+  background: var(--primary-gradient);
+  border: none;
+  border-radius: 50px;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 600;
+  font-family: "light";
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 24px;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  @include tab {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+
+  @include large {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}
+
+.form_message {
+  padding: 16px 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  font-family: "light";
+  text-align: center;
+
+  &.form_message_success {
+    background: rgba(76, 175, 80, 0.1);
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+  }
+
+  &.form_message_error {
+    background: rgba(244, 67, 54, 0.1);
+    color: #f44336;
+    border: 1px solid rgba(244, 67, 54, 0.3);
+  }
+}
+
+.form_error {
+  display: block;
+  color: #f44336;
+  font-size: 0.875rem;
+  margin-top: 8px;
+  font-family: "light";
+}
+
+.form_input_error,
+.form_textarea_error {
+  border-color: rgba(244, 67, 54, 0.5) !important;
+  background: rgba(244, 67, 54, 0.05) !important;
+
+  &:focus {
+    border-color: rgba(244, 67, 54, 0.8) !important;
+    box-shadow: 0 0 0 3px rgba(244, 67, 54, 0.1) !important;
+  }
+}

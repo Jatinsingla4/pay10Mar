@@ -1,0 +1,404 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import { useParams } from "next/navigation";
+import { Icon, InlineIcon } from "@iconify/react";
+import Link from "next/link";
+import Style from "./events-details.module.scss";
+import useApiAuth from "../../components/hooks/useApiAuth";
+import PageLoader from "../../components/ui/PageLoader";
+
+const paymentSolutions = [
+  {
+    title: "PAYMENT AGGREGATOR (PA)",
+    description: "Pay10 enables businesses to seamlessly accept cards, UPI, wallets, and more through a unified platform, ensuring faster turnaround time.",
+    icon: "/images/eve1.svg"
+  },
+  {
+    title: "PAYMENT AGGREGATOR CROSS BORDER",
+    description: "Enabling global commerce with seamless international payment support from export flows powered by multi-currency transactions to import flows backed by dynamic currency conversion. All with real-time processing, competitive rates, and secure integration.",
+    icon: "/images/eve2.svg"
+  },
+  {
+    title: "PREPAID PAYMENT INSTRUMENTS",
+    description: "Upcoming...",
+    icon: "/images/eve3.svg"
+  }
+];
+
+const EventDetailClient = () => {
+  const params = useParams();
+  const slug = params?.slug;
+  const [eventData, setEventData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [imagesToShow, setImagesToShow] = useState(12); // Show first 12 images initially
+  const { makeApiCall } = useApiAuth();
+  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
+
+  // Scroll to top when component mounts or slug changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchData = async () => {
+      if (!slug) return;
+
+      setLoading(true);
+      try {
+        const result = await makeApiCall(`/event_detail/${slug}`);
+
+        if (!isMounted) return;
+
+        if (result?.status) {
+          setEventData(result);
+        } else {
+          setEventData(null);
+        }
+      } catch (error) {
+        if (isMounted) {
+          console.error("Error fetching event data:", error);
+          setEventData(null);
+        }
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    fetchData();
+
+    return () => {
+      isMounted = false;
+    };
+  }, [slug, makeApiCall]);
+
+  // Helper function to format date range
+  const formatDateRange = (startDate, endDate) => {
+    if (!startDate || !endDate) return "";
+
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+
+    const startDay = start.getDate();
+    const endDay = end.getDate();
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const month = monthNames[start.getMonth()];
+    const year = start.getFullYear();
+
+    if (startDay === endDay) {
+      return `${startDay} ${month} ${year}`;
+    }
+    return `${startDay}-${endDay} ${month} ${year}`;
+  };
+
+  const handleLoadMoreImages = () => {
+    setImagesToShow(prev => prev + 12);
+  };
+
+  if (loading && !eventData) {
+    return <PageLoader />;
+  }
+
+  if (!eventData) {
+    return (
+      <main>
+        <div className={Style.wrapper} style={{ textAlign: "center", padding: "80px 56px" }}>
+          <p>Event not found</p>
+          <Link href="/events" className={Style.backto_events}>
+            <span>
+              <InlineIcon
+                icon="qlementine-icons:chevron-left-16"
+                width="20"
+                height="20"
+              />
+            </span>
+            <span>Back To Events</span>
+          </Link>
+        </div>
+      </main>
+    );
+  }
+
+  const pageData = eventData?.page_data || {};
+
+  // Parse gallery from API response (it comes as a JSON string)
+  let images = [];
+  if (pageData?.gallery) {
+    try {
+      const galleryArray = JSON.parse(pageData.gallery);
+      if (Array.isArray(galleryArray)) {
+        images = galleryArray;
+      }
+    } catch (error) {
+      console.error('Error parsing gallery:', error);
+    }
+  }
+
+  // Fallback to old images format if gallery is not available
+  if (images.length === 0 && Array.isArray(eventData?.images)) {
+    images = eventData.images;
+  }
+
+  // Event details
+  const eventName = pageData.name || "";
+  const eventDateRange = formatDateRange(pageData.event_start_date, pageData.event_end_date);
+  const eventBannerImage = pageData.image
+    ? `${imageBase}${pageData.image}`
+    : "/images/events_images/events_banner_img.png";
+  const eventThumbnail = pageData.thumbnail
+    ? `${imageBase}${pageData.thumbnail}`
+    : "/images/events_images/global_fintech.png";
+  const content = pageData.content || "";
+  const content2 = pageData.content2 || "";
+  const brochureUrl = pageData.brochure ? `${imageBase}${pageData.brochure}` : null;
+
+  // Extract first paragraph for the h3 heading from content
+  const extractFirstParagraph = (html) => {
+    if (!html) return "";
+    const text = html.replace(/<[^>]+>/g, "").trim();
+    return text.split(/\n/)[0] || text.substring(0, 150) || "";
+  };
+
+  // Remove first paragraph from HTML content to avoid duplication
+  const removeFirstParagraph = (html, firstParagraphText) => {
+    if (!html || !firstParagraphText) return html;
+
+    // Extract plain text from HTML for comparison
+    const htmlText = html.replace(/<[^>]+>/g, "").trim();
+    const firstParaText = firstParagraphText.trim();
+
+    // Check if the HTML text starts with the first paragraph text
+    if (htmlText.startsWith(firstParaText)) {
+      // Try to remove the first <p> tag that contains this text
+      const pTagRegex = /<p[^>]*>[\s\S]*?<\/p>/i;
+      const firstPMatch = html.match(pTagRegex);
+
+      if (firstPMatch) {
+        const pText = firstPMatch[0].replace(/<[^>]+>/g, "").trim();
+        // If this paragraph starts with or contains the first paragraph text, remove it
+        if (pText.startsWith(firstParaText) || firstParaText.startsWith(pText.substring(0, Math.min(firstParaText.length, pText.length)))) {
+          return html.replace(pTagRegex, "").trim();
+        }
+      }
+
+      // If no <p> tag or it doesn't match, try to remove text from the beginning
+      // Find the position where the first paragraph ends in the HTML
+      // Look for the end of the first sentence/paragraph (period, newline, or closing tag)
+      const firstParaEscaped = firstParaText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      // Match the first paragraph text and everything up to the next sentence end
+      const regex = new RegExp(`^([\\s\\S]*?)${firstParaEscaped}([\\s\\S]*?)(\\.|\\n|</p>|</div>|$)`, 'i');
+      const match = html.match(regex);
+
+      if (match && match[0]) {
+        // Remove the matched portion (first paragraph)
+        const result = html.replace(regex, '').trim();
+        // Only return if we actually removed something meaningful
+        if (result.length < html.length * 0.9) { // At least 10% was removed
+          return result;
+        }
+      }
+    }
+
+    return html;
+  };
+
+  const firstParagraphFromContent = extractFirstParagraph(content);
+  const firstParagraphFromContent2 = extractFirstParagraph(content2);
+  const firstParagraph = firstParagraphFromContent || firstParagraphFromContent2;
+
+  // Remove first paragraph from the content that contains it to avoid duplication
+  const contentWithoutFirstParagraph = firstParagraphFromContent && content
+    ? removeFirstParagraph(content, firstParagraphFromContent)
+    : content;
+  const content2WithoutFirstParagraph = firstParagraphFromContent2 && content2
+    ? removeFirstParagraph(content2, firstParagraphFromContent2)
+    : content2;
+
+  // Download brochure handler
+  const handleDownloadBrochure = () => {
+    if (brochureUrl) {
+      window.open(brochureUrl, '_blank');
+    }
+  };
+
+  // Gallery images
+  const displayedImages = images.slice(0, imagesToShow);
+  const hasMoreImages = images.length > imagesToShow;
+
+  return (
+    <main className={Style.mainEvnDe}>
+      <Link
+        href="/events"
+        className={Style.backto_events}
+      >
+        <span>
+          <InlineIcon
+            icon="qlementine-icons:chevron-left-16"
+            width="20"
+            height="20"
+          />
+        </span>
+        <span>Back To Events</span>
+      </Link>
+
+      <div className={Style.wrapper}>
+        <div className={Style.events_details_banner_headings}>
+          <h2 data-animation="opacity-up">
+            {eventName}
+          </h2>
+        </div>
+
+        <div
+          className={Style.events_details_banner_img}
+          data-animation="opacity-up"
+        >
+          <Image
+            src={eventBannerImage}
+            alt={eventName}
+            fill
+            priority
+            sizes="100vw"
+            className={Style.bannerImage}
+            style={{ objectFit: "cover" }}
+          />
+        </div>
+      </div>
+
+      <div className={Style.wrapper}>
+        <div className={Style.details_content_container} data-animation="opacity-up">
+          <Image
+            src={eventThumbnail}
+            alt={eventName}
+            width={160}
+            height={160}
+            sizes="160px"
+            className={Style.thumbnailImage}
+            style={{ gridTemplateAreas: "img_box", objectFit: "contain" }}
+          />
+          <div
+            className={Style.details_content_box}
+            style={{ gridTemplateAreas: "content_box" }}
+          >
+            {firstParagraph && (
+              <h3>
+                {firstParagraph}
+              </h3>
+            )}
+            {contentWithoutFirstParagraph && (
+              <div
+                dangerouslySetInnerHTML={{ __html: contentWithoutFirstParagraph }}
+                style={{ fontSize: "20px", color: "var(--gray)", fontFamily: "light" }}
+              />
+            )}
+            {content2WithoutFirstParagraph && (
+              <div
+                dangerouslySetInnerHTML={{ __html: content2WithoutFirstParagraph }}
+                style={{ fontSize: "20px", color: "var(--gray)", fontFamily: "light" }}
+              />
+            )}
+          </div>
+        </div>
+      </div>
+     {/*
+      <section className={Style.paymentSolutionsSection}>
+        <div className={Style.wrapper}>
+          <h2 className={Style.sectionTitle} data-animation="opacity-up">
+            Our Payments Solution Suite
+          </h2>
+          <p className={Style.sectionSubtitle} data-animation="opacity-up">
+            Pay10 offers an easy, hassle-free solution to every digital payment need in the world of finance.
+          </p>
+
+          <div className={Style.solutionsGrid}>
+            {paymentSolutions.map((solution, index) => (
+              <div
+                className={Style.solutionCard}
+                key={solution.title}
+                data-animation="opacity-up"
+              >
+                <div className={Style.cardIcon}>
+                  <Image
+                    width={36}
+                    height={36}
+                    src={solution.icon}
+                    alt="Facbook icon"
+                    className="footer__social-icon"
+                  />
+                </div>
+                <h3 className={Style.cardTitle}>{solution.title}</h3>
+                <p className={Style.cardDescription}>{solution.description}</p>
+              </div>
+            ))}
+          </div>
+
+          {brochureUrl && (
+            <div data-animation="scale-up">
+              <button
+                className={Style.downloadBtn}
+                onClick={handleDownloadBrochure}
+              >
+                <Icon icon="solar:download-linear" width="20" height="20" />
+                <span>Download Brochure</span>
+              </button>
+            </div>
+          )}
+        </div>
+      </section>
+      */}
+      {images.length > 0 && (
+        <section className={Style.wrapper}>
+          <div className={Style.pictures_container}>
+            <h2 data-animation="opacity-up">Pictures from the event</h2>
+            <div className={Style.pictures}>
+              {displayedImages.map((img, idx) => {
+                // Handle both string paths (from gallery) and object format (legacy)
+                const imagePath = typeof img === 'string' ? img : img?.image;
+                const imageAlt = typeof img === 'string' ? eventName : (img?.name || eventName);
+                return (
+                  <Image
+                    key={idx}
+                    src={`${imageBase}${imagePath}`}
+                    alt={imageAlt}
+                    data-animation="opacity-up"
+                    width={800}
+                    height={600}
+                    sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw"
+                    className={Style.picture}
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+          {hasMoreImages && (
+            <div
+              style={{ textAlign: "center", width: "100%" }}
+              data-animation="scale-up"
+            >
+              <button className={Style.load_more_btn} onClick={handleLoadMoreImages}>
+                Load More
+              </button>
+            </div>
+          )}
+        </section>
+      )}
+
+      <div className={Style.events_bg_circle} data-animation="opacity-up">
+        <Image
+          src="/images/events_images/events_bg_circle.png"
+          alt=""
+          width={1920}
+          height={900}
+          sizes="100vw"
+          className={Style.bgCircleImage}
+          style={{ width: "100%", height: "auto" }}
+        />
+      </div>
+    </main>
+  );
+};
+
+export default EventDetailClient;

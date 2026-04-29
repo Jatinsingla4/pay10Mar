@@ -1,0 +1,187 @@
+@import "../../../styles/globals/mixin";
+
+.certificationHero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  max-height: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #faf9f6;
+  padding: 80px 56px;
+  isolation: isolate;
+  @include tab {
+    padding: 0px 24px;
+    min-height: 80vh;
+  }
+}
+
+.circlesContainer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+
+  width: 1200px;
+  height: 1200px;
+  transform-origin: center center;
+
+  &:nth-child(1) {
+    width: 700px;
+    height: 700px;
+    border: 2px solid #fea37b;
+  }
+
+  &:nth-child(2) {
+    width: 950px;
+    height: 950px;
+    opacity: 0.7;
+      border: 2px solid #fbbc9f;
+  }
+
+  &:nth-child(3) {
+    width: 1200px;
+    height: 1200px;
+    opacity: 0.3;
+      border: 2px solid #f9ccb8;
+  }
+
+  @include tab {
+    &:nth-child(1) {
+      width: 500px;
+      height: 500px;
+    }
+
+    &:nth-child(2) {
+      width: 700px;
+      height: 700px;
+    }
+
+    &:nth-child(3) {
+      width: 900px;
+      height: 900px;
+    }
+  }
+  @include mobile {
+    &:nth-child(1) {
+      width: 320px;
+      height: 320px;
+    }
+
+    &:nth-child(2) {
+      width: 400px;
+      height: 400px;
+    }
+
+    &:nth-child(3) {
+      width: 480px;
+      height: 480px;
+    }
+  }
+}
+
+.imageContainer {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: center center;
+  will-change: transform;
+  transform: translateZ(0);
+
+  @include tab {
+    width: 400px;
+    height: 400px;
+  }
+
+  @include mobile {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cta {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 16px 48px;
+  border-radius: 999px;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'semibold', sans-serif;
+  white-space: nowrap;
+  will-change: transform, opacity;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+
+  &:hover {
+    transform: translate(-50%, -50%) translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+
+  @include tab {
+    top: 120%;
+  }
+}
+
+.textWrapper {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  overflow: visible;
+  z-index: 3;
+  pointer-events: none;
+  display: flex;
+  white-space: nowrap;
+  isolation: isolate;
+}
+
+.scrollingText {
+  display: inline-block;
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+  will-change: transform;
+  transform: translateZ(0);
+  flex-shrink: 0;
+  @include tab {
+    font-size: 20px;
+  }
+}
+
+.char {
+  display: inline-block;
+  color: var(--black);
+  transition: color 0.1s ease, text-shadow 0.1s ease;
+}

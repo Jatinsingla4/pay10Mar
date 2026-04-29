@@ -1,0 +1,266 @@
+@import '../../styles/globals/mixin';
+
+.vision_banner {
+  width: 100%;
+  height: 90vh;
+  background: var(--primary-gradient);
+  border-radius: 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .banner_svg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  h2 {
+    width: 100%;
+    text-align: center;
+    text-transform: capitalize;
+    color: var(--white);
+    font-family: "bold";
+    font-size: 4.5rem;
+    z-index: 3;
+    transition: all ease 0.5s;
+  }
+}
+
+/*---------VISION---SECOND---SECTION---START--------*/
+
+.wrapper {
+  width: 100%;
+  padding: 0px 56px;
+  margin: 80px 0;
+  @include tab{
+    margin: 56px 0;
+    padding: 0px 16px;
+  }
+}
+
+.bg_circle_wrapper {
+  width: 100%;
+  // height: 100%;
+  background-image: url("/images/body_bg_circle.png");
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+.vision_second_section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  margin: var(--tb-margin);
+
+  .left_img {
+    width: 100%;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .vision_content {
+    h5 {
+      color: var(--gray);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin-top: 0.5rem;
+      background: var(--primary-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      font-size: 2rem;
+    }
+  }
+}
+
+/*---------VISION---SECOND---SECTION---END--------*/
+
+/*---------VISION---DIVIDER---SECTION---START--------*/
+
+@mixin flex() {
+  display: flex;
+  justify-content: center;
+}
+
+.missionMain{
+  background-color: #f5f5f5;
+}
+
+.divider_img {
+  width: 100%;
+  height: 630px;
+  overflow: hidden;
+  background-image: url("/images/divider_img.png"); // Fallback if API image not available
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  border-radius: 3rem;
+  @include flex();
+  align-items: center;
+
+  .circle_with_icons {
+    width: fit-content;
+    margin-bottom: -0.5rem;
+
+    img {
+      width: 587px;
+      height: 587px;
+      // align-self: flex-end;
+      // margin-bottom: -10rem;
+      animation: imagerotate linear 10s infinite;
+
+      @keyframes imagerotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @include tab {
+        width: 352px;
+        height: 352px;
+        // margin-bottom: -8rem;
+      }
+    }
+  }
+
+  @include tab {
+    height: 328px;
+  }
+}
+
+/*---------VISION---DIVIDER---SECTION---END--------*/
+
+@media only screen and (max-width: 1450px) {
+  .vision_second_section {
+    gap: 1.5rem;
+    padding: 1rem 0;
+
+    .left_img {
+      margin-bottom: 1rem;
+    }
+
+    .vision_content {
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .bg_circle_wrapper {
+    background-size: 100% 60%;
+    background-position-x: 17rem;
+
+    .vision_second_section {
+      gap: 1.5rem;
+      padding: 1rem 0;
+
+      .left_img {
+        margin-bottom: 1rem;
+      }
+
+      .vision_content {
+        p {
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .vision_banner {
+    h2 {
+      font-size: 3.5rem;
+    }
+
+    img {
+      width: 90%;
+    }
+
+  }
+  .vision_content {
+    order: 2;
+  }
+
+  .bg_circle_wrapper {
+    background-size: 100% 50%;
+    background-position-x: 15rem;
+
+    .vision_second_section {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      padding: 1.5rem 0;
+    }
+  }
+}
+
+@media only screen and (max-width: 563px) {
+  .vision_banner {
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .bg_circle_wrapper {
+    background-size: 100% 50%;
+    background-position-x: 15rem;
+
+    .vision_second_section {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 2rem 0;
+
+      .left_img {
+        img {
+          max-width: 90%;
+          margin: 0 auto;
+        }
+      }
+
+      .vision_content {
+        p {
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .bottom_section {
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+    }
+  }
+}

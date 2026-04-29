@@ -1,0 +1,53 @@
+@import '../../../../styles/globals/mixin';
+
+.integration_second_section {
+    width: 100%;
+    padding: 80px 56px;
+    @include tab {
+        padding: 80px 16px;
+    }
+    .section_text {
+        max-width: 923px;
+        margin: 0 auto;
+        text-align: center;
+
+        // @include tab {
+        //     max-width: 375px;
+        // }
+
+        h2 {
+            font-size: 32px;
+            line-height: 1.1;
+            color: var(--black);
+            transition: all ease 0.5s;
+
+            @include tab {
+                font-size: 24px;
+            }
+        }
+        p{
+            font-size: 20px;
+            font-family: 'regular';
+            margin-top: 36px;
+            line-height: 1.4;
+            color: var(--gray);
+            transition: all ease 0.5s;
+
+            @include tab {
+                font-size: 14px;
+                margin-top: 24px;
+            }
+        }
+
+        .section_html {
+            margin-top: 28px;
+            color: var(--gray);
+            font-size: 16px;
+            line-height: 1.6;
+
+            b {
+                color: var(--black);
+            }
+        }
+    }
+}

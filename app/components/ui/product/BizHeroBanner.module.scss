@@ -1,0 +1,210 @@
+@import "../../../../styles/globals/mixin";
+
+.bizHeroBanner {
+  position: relative;
+  width: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  background: linear-gradient(to right, #FFBB07, #EF1A23);
+  color: #ffffff;
+  padding: 48px 56px 0 56px;
+  @include tab {
+    border-radius: 16px;
+    padding: 40px 16px 0px 16px;
+  }
+
+  .desktopLayout {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 32px;
+    @include tab {
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 20px;
+      padding: 0 4px;
+    }
+  }
+
+  .desktopInner {
+    max-width: 1400px;
+    display: grid;
+    gap: 20px;
+    @include tab {
+      gap: 15px;
+    }
+  }
+
+  .eyebrow {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+    font-weight: 500;
+    @include tab {
+      font-size: 20px;
+    }
+  }
+
+  .title {
+    margin: 0;
+    font-size: 64px;
+    font-family: 'bold';
+    line-height: 1.1;
+    @include tab {
+      font-size: 40px;
+    }
+  }
+
+  .body {
+    margin: 0;
+    font-size: 32px;
+    line-height: 1.1;
+    @include tab {
+      font-size: 24px;
+    }
+  }
+
+  .ctaDesktop {
+    margin: 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    will-change: transform, opacity;
+    cursor: pointer;
+    outline: none;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    @include tab {
+      transform: none;
+    }
+
+    &.ctaText {
+      padding: 14px 27px;
+      border-radius: 50px;
+      border: 2px solid #ffffff;
+      background: transparent;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.5;
+      background: rgba(255, 255, 255, 0.1);
+      margin-top: 30px;
+    }
+  }
+
+  .externalIcon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    stroke: currentColor;
+  }
+
+  .ctaImg {
+    width: clamp(180px, 18vw, 260px);
+    height: auto;
+    display: block;
+  }
+
+  .desktopPhoneWrap {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    @include tab {
+      margin-top: 8px;
+    }
+  }
+
+  .desktopPhone {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    @include tab {
+      max-width: 250px;
+    }
+  }
+
+  .decorations {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .iconDecoration, .circleDecoration {
+    position: absolute;
+    top: var(--top-desktop);
+    left: var(--left-desktop);
+    right: var(--right-desktop);
+    bottom: var(--bottom-desktop);
+    width: var(--width);
+    height: var(--height);
+    // Important: keep centering responsive even when GSAP writes inline `transform`
+    // (GSAP animates scale/translate via transform and would otherwise "freeze" the % translate on resize)
+    translate: -50% -50%;
+
+    @include tab {
+      top: var(--top-mobile, var(--top-desktop));
+      left: var(--left-mobile, var(--left-desktop));
+      right: var(--right-mobile, var(--right-desktop));
+      bottom: var(--bottom-mobile, var(--bottom-desktop));
+    }
+  }
+
+  .iconDecoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--width, 56px);
+    height: var(--height, 56px);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    @include tab {
+      width: 40px;
+      height: 40px;
+      padding: 6px;
+    }
+  }
+
+  .iconHighlighted {
+    background: #ffbb07;
+    box-shadow: 0 4px 16px rgba(255, 187, 7, 0.4);
+  }
+
+  .iconImage {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .circleDecoration {
+    border-radius: 999px;
+    border: var(--stroke, 2px) solid rgba(255, 255, 255, 0.35);
+    background: transparent;
+    opacity: var(--opacity, 0.22);
+    z-index: -1;
+  }
+}
+

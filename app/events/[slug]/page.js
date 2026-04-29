@@ -24,7 +24,7 @@ export default async function EventDetail({ params }) {
   const result = await fetchApiData(`/event_detail/${slug}`);
   const pageData = result?.page_data || {};
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pay10.in';
-  
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Event',
@@ -45,10 +45,12 @@ export default async function EventDetail({ params }) {
 
   return (
     <>
+      {/* Staging: JSON-LD off — uncomment for production
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      */}
       <EventDetailClient />
     </>
   );

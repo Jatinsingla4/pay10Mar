@@ -1,7 +1,15 @@
+/** Staging: discourage indexing on all pages using this metadata. */
+export const stagingRobots = {
+  index: false,
+  follow: false,
+  googleBot: { index: false, follow: false },
+};
+
 export const defaultMetadata = {
   title: "Pay10",
   description: 'description',
   keywords: 'Best payment gateway in India, Payment gateway company in india, Best payment gateway services provider in india, Payment gateway company, Payment gateways in India, Best Payment Gateway, Best Payment Gateway in India, Payment Gateways In India, Best Payment Gateways, Best Payment Gateways of 2023, BEST Payment Gateway Providers In 2023, Payment gateway provider, Payment gateway for your business',
+  robots: stagingRobots,
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -35,6 +43,7 @@ export const generateApiMetadata = (pageData, fallbackTitle = 'Pay10', fallbackD
     title: pageData?.meta_title || fallbackTitle,
     description: pageData?.meta_description || fallbackDescription,
     keywords: pageData?.meta_keywords || defaultMetadata.keywords,
+    robots: stagingRobots,
     openGraph: {
       type: 'website',
       locale: 'en_US',
@@ -70,6 +79,7 @@ export const generateBlogMetadata = (blog, fallbackTitle = 'Pay10', fallbackDesc
     title: `${blog?.name || fallbackTitle} | Blog | Pay10`,
     description: description,
     keywords: blog?.meta_keywords || defaultMetadata.keywords,
+    robots: stagingRobots,
     openGraph: {
       type: 'article',
       locale: 'en_US',

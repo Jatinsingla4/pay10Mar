@@ -1,3 +1,14 @@
+/** Staging: `disallow: '/'` is active. Below, the previous implementation is preserved in a block comment for production. */
+export default function robots() {
+  return {
+    rules: {
+      userAgent: '*',
+      disallow: '/',
+    },
+  };
+}
+
+/*
 export default function robots() {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pay10.in';
   const blockCrawlers =
@@ -22,3 +33,4 @@ export default function robots() {
     sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
+*/

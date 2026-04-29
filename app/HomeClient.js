@@ -13,6 +13,7 @@ import CertificationHero from './components/ui/CertificationHero';
 import CertificationLicensing from './components/ui/CertificationLicensing';
 import GetStarted from './components/ui/GetStarted';
 import PageLoader from './components/ui/PageLoader';
+import { cmsImageSrc } from './lib/cmsImageSrc';
 
 
 const walletFeatures = [
@@ -78,45 +79,45 @@ export default function HomeClient() {
   }, [makeApiCall]);
 
   const heroContent = homeData?.page_data || {};
+  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
   const heroEyebrow = heroContent.top_sub_heading || undefined;
   const heroTitle = heroContent.top_heading || undefined;
   const heroDescription = heroContent.top_description || undefined;
-  const heroImage = heroContent.image
+  const heroSrc = heroContent.image ? cmsImageSrc(heroContent.image, imageBase) : null;
+  const heroImage = heroSrc
     ? {
-        src: heroContent.image,
+        src: heroSrc,
         alt: heroContent.name || 'Pay10 hero',
         width: heroContent.image_width || 360,
         height: heroContent.image_height || 640,
       }
     : undefined;
-    // console.log(heroTitle);
 
   const section2 = homeData?.custom_data?.section2 || {};
   const section3 = homeData?.custom_data?.section3 || {};
   const section5 = homeData?.custom_data?.section5 || {};
   const section6 = homeData?.custom_data?.section6 || {};
   const section7 = homeData?.custom_data?.section7 || {};
-  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
-  const section3Image = section3.image ? `${imageBase}${section3.image}` : undefined;
+  const section3Image = section3.image ? cmsImageSrc(section3.image, imageBase) : undefined;
   const section5Parts = (section5.content || '')
     .split(/<br\s*\/?>/i)
     .map((part) => part.replace(/<[^>]+>/g, '').trim())
     .filter(Boolean);
   const section5PreHeading = section5Parts[0] || undefined;
   const section5Heading = section5Parts[1] || undefined;
-  const section6Background = section6.image ? `${imageBase}${section6.image}` : undefined;
+  const section6Background = section6.image ? cmsImageSrc(section6.image, imageBase) : undefined;
   const section6Description = (section6.content || '').replace(/<[^>]+>/g, '');
   const section6Features = Array.isArray(section6.list)
     ? section6.list.map((item, index) => ({
         id: item.Name || `feature-${index}`,
-        icon: item.Image ? `${imageBase}${item.Image}` : undefined,
+        icon: item.Image ? cmsImageSrc(item.Image, imageBase) : undefined,
         text: item.Name || '',
       }))
     : undefined;
-  const section7Image = section7.image ? `${imageBase}${section7.image}` : undefined;
+  const section7Image = section7.image ? cmsImageSrc(section7.image, imageBase) : undefined;
   const section8 = homeData?.custom_data?.section8 || {};
   const section9 = homeData?.custom_data?.section9 || {};
-  const section8Image = section8.image ? `${imageBase}${section8.image}` : undefined;
+  const section8Image = section8.image ? cmsImageSrc(section8.image, imageBase) : undefined;
   // Use som1, som2, som3 images instead of API data
   const section9Images = [
     { Image: '/images/som1.png' },

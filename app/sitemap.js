@@ -1,3 +1,9 @@
+/** Staging: returns no URLs. Full sitemap implementation preserved below in a block comment. */
+export default async function sitemap() {
+  return [];
+}
+
+/*
 import { fetchApiData } from './lib/api';
 
 export default async function sitemap() {
@@ -113,3 +119,4 @@ export default async function sitemap() {
 
   return [...routes, ...blogRoutes, ...eventRoutes];
 }
+*/

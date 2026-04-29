@@ -21,9 +21,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <meta name="google-site-verification" content="m239GpVidYc7ALtaO5uiw-xich8btnIfKmGh9m2Pync" />
+        {/* Staging: SEO / analytics disabled — uncomment for production */}
+        {/* <meta name="google-site-verification" content="m239GpVidYc7ALtaO5uiw-xich8btnIfKmGh9m2Pync" /> */}
         {/* Google tag (gtag.js) — GA4 G-RJ4PL9DES1 */}
-        <Script
+        {/* <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-RJ4PL9DES1"
           strategy="afterInteractive"
@@ -35,10 +36,10 @@ export default function RootLayout({ children }) {
             gtag('js', new Date());
             gtag('config', 'G-RJ4PL9DES1');
           `}
-        </Script>
+        </Script> */}
 
         {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        {/* <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -46,18 +47,18 @@ export default function RootLayout({ children }) {
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
             })(window,document,'script','dataLayer','GTM-TK6G3CFR');
           `}
-        </Script>
+        </Script> */}
       </head>
       <body className={`${outfit.variable}`} suppressHydrationWarning>
         {/* Google Tag Manager (noscript) */}
-        <noscript>
+        {/* <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-TK6G3CFR"
             height="0"
             width="0"
             style={{ display: "none", visibility: "hidden" }}
           />
-        </noscript>
+        </noscript> */}
         <ResponsiveProvider>
           <GlobalInViewInitializer />
           <Header />

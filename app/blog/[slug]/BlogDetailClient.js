@@ -8,6 +8,7 @@ import Link from "next/link";
 import { InlineIcon } from "@iconify/react";
 import useApiAuth from "../../components/hooks/useApiAuth";
 import PageLoader from "../../components/ui/PageLoader";
+import { cmsImageSrc } from "../../lib/cmsImageSrc";
 
 const BlogDetailClient = () => {
   const params = useParams();
@@ -113,12 +114,11 @@ const BlogDetailClient = () => {
   const pageData = blogDetailData?.page_data || {};
   const postDate = formatDate(pageData.post_date);
   const postTitle = pageData.name || "";
-  const postImage = pageData.image
-    ? `${imageBase}${pageData.image}`
-    : "/images/blog_page_images/blog_details_imgs/img2.png";
-  const postImageMobile = pageData.image
-    ? `${imageBase}${pageData.image}`
-    : "/images/blog_page_images/blog_details_imgs/mob_img2.png";
+  const postImageFromCms = pageData.image ? cmsImageSrc(pageData.image, imageBase) : null;
+  const postImage =
+    postImageFromCms || "/images/blog_page_images/blog_details_imgs/img2.png";
+  const postImageMobile =
+    postImageFromCms || "/images/blog_page_images/blog_details_imgs/mob_img2.png";
   const content = pageData.content || "";
   const content2 = pageData.content2 || "";
   const faqData = parseFAQ(pageData.faq_json);

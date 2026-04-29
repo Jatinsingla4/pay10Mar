@@ -8,6 +8,7 @@ import Link from "next/link";
 import Style from "./events-details.module.scss";
 import useApiAuth from "../../components/hooks/useApiAuth";
 import PageLoader from "../../components/ui/PageLoader";
+import { cmsImageSrc } from "../../lib/cmsImageSrc";
 
 const paymentSolutions = [
   {
@@ -145,12 +146,12 @@ const EventDetailClient = () => {
   // Event details
   const eventName = pageData.name || "";
   const eventDateRange = formatDateRange(pageData.event_start_date, pageData.event_end_date);
-  const eventBannerImage = pageData.image
-    ? `${imageBase}${pageData.image}`
-    : "/images/events_images/events_banner_img.png";
-  const eventThumbnail = pageData.thumbnail
-    ? `${imageBase}${pageData.thumbnail}`
-    : "/images/events_images/global_fintech.png";
+  const eventBannerImage =
+    (pageData.image && cmsImageSrc(pageData.image, imageBase)) ||
+    "/images/events_images/events_banner_img.png";
+  const eventThumbnail =
+    (pageData.thumbnail && cmsImageSrc(pageData.thumbnail, imageBase)) ||
+    "/images/events_images/global_fintech.png";
   const content = pageData.content || "";
   const content2 = pageData.content2 || "";
   const brochureUrl = pageData.brochure ? `${imageBase}${pageData.brochure}` : null;
@@ -356,11 +357,13 @@ const EventDetailClient = () => {
               {displayedImages.map((img, idx) => {
                 // Handle both string paths (from gallery) and object format (legacy)
                 const imagePath = typeof img === 'string' ? img : img?.image;
+                const imageSrc = imagePath ? cmsImageSrc(imagePath, imageBase) : null;
                 const imageAlt = typeof img === 'string' ? eventName : (img?.name || eventName);
+                if (!imageSrc) return null;
                 return (
                   <Image
                     key={idx}
-                    src={`${imageBase}${imagePath}`}
+                    src={imageSrc}
                     alt={imageAlt}
                     data-animation="opacity-up"
                     width={800}

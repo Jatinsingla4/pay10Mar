@@ -1,7 +1,6 @@
-import { generateBlogMetadata } from "../../lib/metadata";
+import { generateBlogMetadata, stagingRobots } from "../../lib/metadata";
 import { fetchApiData } from "../../lib/api";
 import BlogDetailClient from "./BlogDetailClient";
-import Script from "next/script";
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }) {
@@ -17,7 +16,7 @@ export async function generateMetadata({ params }) {
     console.error('Error generating metadata:', error);
   }
   // Return default metadata if API call fails
-  return { title: 'Blog | Pay10' };
+  return { title: 'Blog | Pay10', robots: stagingRobots };
 }
 
 export default async function BlogDetail({ params }) {
@@ -26,7 +25,7 @@ export default async function BlogDetail({ params }) {
   const pageData = result?.page_data || {};
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pay10.in';
   const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
-  
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -55,10 +54,12 @@ export default async function BlogDetail({ params }) {
 
   return (
     <>
+      {/* Staging: JSON-LD off — uncomment for production
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      */}
       <BlogDetailClient />
     </>
   );

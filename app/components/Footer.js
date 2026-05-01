@@ -59,6 +59,8 @@ const footerData = {
         { label: 'Blogs', href: '/blog' },
         // { label: 'News', href: '/news' },
         { label: 'Events', href: '/events' },
+      { label: 'FAQ', href: '/faq-customer-app' },
+        { label: 'KFS', href: '/kfs-biz-app' },
       ],
     },
     contact: {

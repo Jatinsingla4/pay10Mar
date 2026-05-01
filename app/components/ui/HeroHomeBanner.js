@@ -78,7 +78,7 @@ export default function HeroHomeBanner({
   ctaLabel = 'Get Started',
   ctaHref = '/contact-us',
   heroImage = {
-    src: '/images/herobanner_mobile_img.png',
+    src: '/images/home/herobanner_mobile_img.png',
     alt: 'Pay10 app screens',
     width: 360,
     height: 640,

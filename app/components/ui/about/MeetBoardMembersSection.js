@@ -5,6 +5,7 @@ import Style from './MeetBoardMember.module.scss';
 const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
 
 const MeetBoardMembersSection = ({ section4, section4Heading }) => {
+
   // Default fallback board members
   const defaultBoardMembersBox = [
     {

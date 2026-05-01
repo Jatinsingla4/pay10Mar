@@ -16,6 +16,7 @@ import AboutBanner from "../components/ui/about/AboutBanner";
 import AboutSecondSection from "../components/ui/about/AboutSecondSection";
 import WhereWeScoreSection from "../components/ui/about/WhereWeScoreSection";
 import MeetBoardMembersSection from "../components/ui/about/MeetBoardMembersSection";
+import UaeAdvisorSection from "../components/ui/about/UaeAdvisorSection";
 import AboutTeamMember from "../components/ui/about/AboutTeamMember";
 import PageLoader from "../components/ui/PageLoader";
 
@@ -65,6 +66,7 @@ const AboutClient = () => {
   const section4 = aboutData?.custom_data?.section4 || {};
   const section5 = aboutData?.custom_data?.section5 || {};
   const section6 = aboutData?.custom_data?.section6 || {};
+  const section7 = aboutData?.custom_data?.section7 || {};
   const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
   const section2Image = section2.image ? `${imageBase}${section2.image}` : undefined;
 
@@ -78,6 +80,7 @@ const AboutClient = () => {
   const section5Heading = section5.heading || undefined;
   const section4Heading = section4.heading || undefined;
   const section6Heading = section6.heading || undefined;
+  const section7Heading = section7.heading || undefined;
 
   // Default gridArea values for boxes (maintains layout structure)
   const defaultGridAreas = ["volume", "frictionless", "support", "risk", "secure", "updates"];
@@ -417,6 +420,12 @@ const AboutClient = () => {
             <MeetBoardMembersSection
               section4Heading={section4Heading}
               section4={section4}
+            />
+            </div>
+            <div className={Style.wrapper}>
+            <UaeAdvisorSection
+              section7Heading={section7Heading}
+              section7={section7}
             />
             </div>
             <div className={Style.wrapper2}>

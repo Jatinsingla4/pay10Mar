@@ -60,7 +60,7 @@ export default function BannerBreaker({
             </div>
           ) : null}
 
-          <h1 className={styles.heading} data-animation="opacity-up">{title}</h1>
+          <h2 className={styles.heading} data-animation="opacity-up">{title}</h2>
           <p className={styles.description} data-animation="opacity-up">{description}</p>
 
           <CtaComponent

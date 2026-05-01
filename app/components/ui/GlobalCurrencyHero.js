@@ -175,7 +175,7 @@ export default function GlobalCurrencyHero({
           {/* Central Text Content */}
           <div ref={textContainerRef} className={styles.textContainer}>
             <p className={styles.preHeading}>{preHeading}</p>
-            <h1 className={styles.heading}>{heading}</h1>
+            <h2 className={styles.heading}>{heading}</h2>
             <p className={styles.description}>{description}</p>
           </div>
 

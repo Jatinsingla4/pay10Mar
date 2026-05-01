@@ -194,7 +194,7 @@ export default function HeroHomeBanner({
       <div className={styles.desktopLayout}>
         <div className={styles.desktopInner}>
           <p className={styles.eyebrow} data-anim="eyebrow">{eyebrow}</p>
-          <h2 className={styles.title} data-anim="title">{title}</h2>
+          <h1 className={styles.title} data-anim="title">{title}</h1>
           {/* <p className={styles.body} data-anim="body">{description}</p> */}
           <p className={styles.body} data-anim="body">
             Authorised by the Reserve Bank of India.

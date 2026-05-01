@@ -154,7 +154,7 @@ export default function HomeClient() {
       <JourneySection
         mode="accordion"
         journeyData={walletFeatures}
-        rightImage="/images/home/fixed2_img.png"
+        rightImage="/images/fixed2_img.png"
       />
       <FeatureBlock
         heading={section6.heading || undefined}

@@ -25,7 +25,7 @@ const GetToKnow = () => {
       img: '/images/img6.png'
     },
     {
-      img: '/images/img71.webp'
+      img: '/images/img71.png'
     },
   ]
 

@@ -57,7 +57,8 @@
         font-family: 'light';
     }
 
-    h2 {
+    h2,
+    h1 {
         font-size: 3.5rem;
     }
 
@@ -81,7 +82,8 @@
     margin: 80px 0;
     color: var(--black);
 
-    h3 {
+    h3,
+    h2 {
         font-size: 2.5rem;
     }
 
@@ -103,7 +105,8 @@
     @media (max-width: 1024px) {
 
         margin: 3rem 0;
-        h3 {
+        h3,
+        h2 {
             font-size: 2rem;
         }
         p {
@@ -119,7 +122,8 @@
 
     @media (max-width: 600px) {
         margin: 2rem 0;
-        h3 {
+        h3,
+        h2 {
             font-size: 1.8rem;
         }
         p {
@@ -184,7 +188,8 @@
         margin-top: 3rem;
     }
 
-    h3 {
+    h3,
+    h2 {
         font-size: 2.5rem;
         color: transparent;
         background: var(--primary-gradient);
@@ -210,7 +215,8 @@
         gap: 1.5rem;
         // margin-top: 4rem;
 
-        h3 {
+        h3,
+        h2 {
             font-size: 2.2rem;
         }
         p {
@@ -225,7 +231,8 @@
     @media (max-width: 600px) {
         // margin-top: 2.5rem;
         gap: 0;
-        h3 {
+        h3,
+        h2 {
             font-size: 2.2rem;
         }
         p {
@@ -244,7 +251,8 @@
     border-radius: 2.5rem;
     color: var(--black);
 
-    h3 {
+    h3,
+    h2 {
         font-size: 2.5rem;
         color: transparent;
         background: var(--primary-gradient);
@@ -358,7 +366,8 @@
     .benefits_section {
         padding: 3rem 0 4rem;
 
-        h3 {
+        h3,
+        h2 {
             font-size: 2.1rem;
         }
     }
@@ -402,7 +411,8 @@
     width: 100%;
     margin-bottom: 2rem;
 
-    h3 {
+    h3,
+    h2 {
         font-size: 2.5rem;
         color: transparent;
         background: var(--primary-gradient);
@@ -442,7 +452,8 @@
     }
 
     // Headings
-    h2 {
+    h2,
+    h1 {
         font-size: 2.5rem;
         font-family: 'bold';
         color: var(--black);
@@ -454,7 +465,8 @@
         }
     }
 
-    h3 {
+    h3,
+    h2 {
         font-size: 2rem;
         font-family: 'semibold';
         color: var(--black);
@@ -501,12 +513,14 @@
             font-size: 1.1rem;
         }
 
-        h2 {
+        h2,
+        h1 {
             font-size: 2.2rem;
             margin: 2.5rem 0 1.2rem 0;
         }
 
-        h3 {
+        h3,
+        h2 {
             font-size: 1.8rem;
             margin: 2rem 0 0.8rem 0;
         }
@@ -519,12 +533,14 @@
             line-height: 1.5;
         }
 
-        h2 {
+        h2,
+        h1 {
             font-size: 1.9rem;
             margin: 2rem 0 1rem 0;
         }
 
-        h3 {
+        h3,
+        h2 {
             font-size: 1.6rem;
             margin: 1.8rem 0 0.8rem 0;
         }

@@ -147,15 +147,15 @@ const BlogDetailClient = () => {
       <div className={Style.blog_details_banner} data-animation="opacity-up">
         <div className={Style.wrapper}>
           <p>{postDate}</p>
-          <h2>{postTitle}</h2>
+          <h1>{postTitle}</h1>
         </div>
       </div>
 
       <div className={Style.wrapper}>
         <div className={Style.details}>
-          <h3 data-animation="opacity-up">
+          <h2 data-animation="opacity-up">
             {firstParagraph || "The convenience and efficiency of online transactions have revolutionized the way we conduct business in this digital era."}
-          </h3>
+          </h2>
           {content && (
             <div
               className={Style.blogContent}
@@ -201,7 +201,7 @@ const BlogDetailClient = () => {
       {faqData.length > 0 && (
         <section className={Style.benefits_section}>
           <div className={Style.wrapper}>
-            <h3 data-animation="opacity-up">Benefits to Yield from a Reliable Payment</h3>
+            <h2 data-animation="opacity-up">Benefits to Yield from a Reliable Payment</h2>
             <div className={Style.accordion} data-animation="opacity-up">
               {faqData.map((item, index) => {
                 const isActive = activeIndex === index;

@@ -10,22 +10,22 @@ const GetToKnow = () => {
       img: '/images/img1.png'
     },
     {
-      img: '/images/fg1.png'
+      img: '/images/img2.png'
     },
     {
       img: '/images/img3.png'
     },
     {
-      img: '/images/img4.png'
+      img: '/images/img4_new.png'
     },
     {
-      img: '/images/fg2.png'
+      img: '/images/img5.png'
     },
     {
       img: '/images/img6.png'
     },
     {
-      img: '/images/img71.png'
+      img: '/images/img71_new.png'
     },
   ]
 

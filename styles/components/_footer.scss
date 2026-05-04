@@ -6,9 +6,11 @@
   background: var(--primary-gradient);
   color: var(--white);
   padding: 48px 56px;
-  @include tab{
+
+  @include tab {
     padding: 80px 16px;
   }
+
   &__container {
     max-width: 1920px;
     margin: 0 auto;
@@ -16,28 +18,34 @@
     grid-template-columns: auto 1fr auto;
     gap: 3rem;
     align-items: start;
+
     @include tab {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
+
     @include mobile {
       gap: 1.5rem;
     }
   }
+
   &__logo {
     flex-shrink: 0;
+
     &-img {
       display: block;
       height: auto;
       max-width: 120px;
     }
   }
+
   &__nav {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
     width: 90%;
     margin: 0 auto;
+
     &--desktop {
       @include tab {
         display: none;
@@ -83,9 +91,11 @@
         padding: 0;
         justify-content: flex-start;
       }
-      @include tab{
+
+      @include tab {
         border-bottom: 1px solid var(--white);
       }
+
       &:hover {
         opacity: 0.8;
       }
@@ -95,7 +105,8 @@
         border: none;
         cursor: pointer;
         text-align: left;
-        @include tab{
+
+        @include tab {
           border-bottom: 1px solid var(--white);
         }
       }
@@ -124,9 +135,11 @@
       flex-direction: column;
       gap: 0.5rem;
       padding-left: 0;
+
       @media (min-width: 992px) {
         gap: 0.75rem;
       }
+
       @include tab {
         padding-left: 1.5em;
       }
@@ -147,10 +160,12 @@
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 0;
+
       @media (min-width: 992px) {
         padding: 0;
       }
-      @include tab{
+
+      @include tab {
         border-bottom: 1px solid var(--white);
       }
 
@@ -159,7 +174,8 @@
         border: none;
         cursor: pointer;
         text-align: left;
-        @include tab{
+
+        @include tab {
           border-bottom: 1px solid var(--white);
         }
       }
@@ -184,9 +200,11 @@
       @media (min-width: 992px) {
         padding: 0;
       }
-      @include tab{
+
+      @include tab {
         border-bottom: 1px solid var(--white);
       }
+
       &:hover {
         opacity: 0.8;
       }
@@ -210,6 +228,7 @@
       display: none;
       padding: 24px 0 0 0;
       align-items: flex-start;
+
       @include tab {
         display: flex;
       }
@@ -231,6 +250,7 @@
       text-decoration: none;
       transition: opacity 0.2s var(--ease-out-cubic);
       border-radius: 50%;
+
       &:hover {
         opacity: 0.8;
       }
@@ -246,6 +266,7 @@
     flex-direction: column;
     gap: 0.75rem;
     align-items: flex-end;
+
     @include tab {
       flex-direction: row;
       gap: 1rem;
@@ -256,10 +277,12 @@
     display: flex;
     text-decoration: none;
     transition: opacity 0.2s var(--ease-out-cubic);
+
     &:hover {
       opacity: 0.95;
     }
-    img{
+
+    img {
       width: 100%;
     }
   }
@@ -267,21 +290,27 @@
   // Bottom Bar
   &__bottom {
     padding: 80px 0 0px 0;
-    @include tab{
+
+    @include tab {
       padding: 24px 0 0px 0;
     }
+
     &-container {
       max-width: 1920px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
       gap: 2rem;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
       @include tab {
         flex-direction: column;
         gap: 1.5rem;
       }
     }
+
     &-left {
       display: flex;
       flex-direction: column;
@@ -319,6 +348,9 @@
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.9);
     line-height: 1.5;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
   }
 
   &__legal {

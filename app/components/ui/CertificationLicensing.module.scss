@@ -27,9 +27,10 @@
 
 .mainText {
   font-size: 32px;
-  font-weight: 600;
-  margin: 0;
+  font-weight: 300;
   color: var(--gray);
+  line-height: 1.5;
+  
   @include tab {
     font-size: 24px;
   }
@@ -43,6 +44,8 @@
 }
 
 .logoContainer {
+  max-width: 350px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -54,10 +57,7 @@
 }
 
 .centralBankLogo {
-  width: auto;
-  height: auto;
-  max-width: 300px;
-  max-height: 120px;
+  width: 100%;
   object-fit: contain;
 
   @include tab {
@@ -82,10 +82,11 @@
 
 .badgesGrid {
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(2, 200px);
   gap: 24px;
   justify-content: center;
   @include tab {
+    grid-template-columns: repeat(2, 1fr);
     justify-content: flex-start;
     overflow-x: scroll;
     gap: 16px;
@@ -101,15 +102,21 @@
 }
 
 .badgeCard {
-  background-color: #ffffff;
+  width: 100%;
+  background-color: var(--white);
   border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  text-align: center;
+  
   @include tab {
-    width: 200px;
+    width: 100%;
     padding: 16px;
+  }
+  @include mobile {
+    width: 100%;
   }
 }
 .badgeImage {

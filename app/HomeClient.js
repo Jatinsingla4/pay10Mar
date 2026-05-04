@@ -118,12 +118,15 @@ export default function HomeClient() {
   const section8 = homeData?.custom_data?.section8 || {};
   const section9 = homeData?.custom_data?.section9 || {};
   const section8Image = section8.image ? cmsImageSrc(section8.image, imageBase) : undefined;
-  // Use som1, som2, som3 images instead of API data
-  const section9Images = [
-    { Image: '/images/som1.png' },
-    { Image: '/images/som2.png' },
-    { Image: '/images/som3.png' },
-  ];
+  const section9Images = Array.isArray(section9.images)
+    ? section9.images
+        .map((item) => {
+          const raw = item?.Image ?? item?.image;
+          const src = raw ? cmsImageSrc(raw, imageBase) : null;
+          return src ? { Image: src } : null;
+        })
+        .filter(Boolean)
+    : [];
 
   if (loading && !homeData) {
     return <PageLoader />;
@@ -141,10 +144,10 @@ export default function HomeClient() {
         heading={homeData?.custom_data?.section2?.heading}
         description={homeData?.custom_data?.section2?.content}
       />
-      <GlobalCurrencyHero
+      {/* <GlobalCurrencyHero
         preHeading={section5PreHeading}
         heading={section5Heading}
-      />
+      /> */}
       <BannerBreaker
         title={section3.heading}
         description={section3.content}
@@ -154,7 +157,7 @@ export default function HomeClient() {
       <JourneySection
         mode="accordion"
         journeyData={walletFeatures}
-        rightImage="/images/fixed2_img.png"
+        rightImage="/images/new_fixed_img.png"
       />
       <FeatureBlock
         heading={section6.heading || undefined}

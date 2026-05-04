@@ -197,8 +197,8 @@ export default function HeroHomeBanner({
           <h1 className={styles.title} data-anim="title">{title}</h1>
           {/* <p className={styles.body} data-anim="body">{description}</p> */}
           <p className={styles.body} data-anim="body">
-            Authorised by the Reserve Bank of India.
-            <br/>Instant. Secure. Interoperable.
+          Licensed by Central Bank of the UAE
+          <br />Instant. Secure. Interoperable.
           </p>
           <Link href={ctaHref} className={styles.ctaDesktop} data-anim="cta">
             <span>{ctaLabel}</span>

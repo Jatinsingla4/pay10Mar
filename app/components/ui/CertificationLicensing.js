@@ -10,9 +10,9 @@ export default function CertificationLicensing({
   return (
     <section className={styles.banner}>
       <div className={styles.content}>
-        {/* <p className={styles.mainText} data-animation="opacity-up">
+        <p className={styles.mainText} data-animation="opacity-up">
           {heading}
-        </p> */}
+        </p>
 
         {centralBankImage && (
           <div className={styles.centralBankSection} data-animation="opacity-up">

@@ -10,7 +10,7 @@ import styles from './CertificationHero.module.scss';
 gsap.registerPlugin(ScrollTrigger);
 
 export default function CertificationHero({
-  text = 'Authorised by Reserve Bank of India as an Online Payment Aggregator, Payment Aggregator for Cross-Border Transactions and PPI Issuer ',
+  text = 'Certified with best-in-class industry Standards of Compliance ',
   imageSrc = '/images/home/circle-bg.jpg',
   imageAlt = 'Cityscape',
   ctaLabel = 'Get the App',
@@ -168,7 +168,7 @@ export default function CertificationHero({
           // Create tween first (paused), then add ScrollTrigger separately
           const textTween = gsap.to(allTexts, {
             x: `-=${viewportWidth + textWidth * 2}`,
-            duration: 60,
+            duration: 28,
             ease: 'none',
             repeat: -1,
             paused: true, // Start paused

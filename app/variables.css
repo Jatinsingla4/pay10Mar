@@ -41,6 +41,7 @@
   --border-clr: #d7d7d7;
   --primary-gradient: linear-gradient(to right, #FFBB07, #EF1A23);
   --primary-gradient2: linear-gradient(to bottom, #FFBB07, #EF1A23);
+  --primary-gradient3: linear-gradient(to right, #FFBB07, #F86C16);
   --reverse-primary-gradient: linear-gradient(to left, #FFBB07, #EF1A23);   
   --primary-gradient-light: linear-gradient(to right, #ffbd079c, #ef1a25a0);
   --gradient-light: linear-gradient( 135deg, rgba(255, 187, 7, 0.9) 0%, rgba(239, 26, 35, 0.9) 100%);

@@ -1,5 +1,19 @@
-import ContactCtaBtn from './ContactCtaBtn';
+import Image from 'next/image';
 import styles from './TextCenterBlock.module.scss';
+import Link from 'next/link';
+
+const gridBoxes = [
+  {
+    heading: 'Merchant App',
+    img1: '/images/foo-app1.svg',
+    img2: '/images/foo-app2.svg',
+  },
+  {
+    heading: 'Consumer App',
+    img1: '/images/foo-app1.svg',
+    img2: '/images/foo-app2.svg',
+  },
+];
 
 export default function TextCenterBlock({
   heading = 'The Possibilities are Endless',
@@ -12,6 +26,34 @@ export default function TextCenterBlock({
         <p className={styles.desc} data-animation="opacity-up">
           {description}
         </p>
+
+        <div className={styles.boxes_grid}>
+          {gridBoxes.map((box, idx) => (
+            <div key={idx} className={styles.box}>
+              <h3>{box.heading}</h3>
+              <div className={styles.btns}>
+                <Link href="#">
+                  <Image
+                    width={151}
+                    height={36}
+                    loading="eager"
+                    src={box.img1}
+                    alt="App Links"
+                  />
+                </Link>
+                <Link href="#">
+                  <Image
+                    width={129}
+                    height={36}
+                    loading="eager"
+                    src={box.img2}
+                    alt="App Links"
+                  />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
         {/* <ContactCtaBtn variant="orange" /> */}
       </div>
     </section>

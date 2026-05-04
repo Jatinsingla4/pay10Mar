@@ -59,8 +59,8 @@ const footerData = {
         { label: 'Blogs', href: '/blog' },
         // { label: 'News', href: '/news' },
         { label: 'Events', href: '/events' },
-      { label: 'FAQ', href: '/faq-customer-app' },
-        { label: 'KFS', href: '/kfs-biz-app' },
+        // { label: 'FAQ', href: '/faq-customer-app' },
+        // { label: 'KFS', href: '/kfs-biz-app' },
       ],
     },
     contact: {
@@ -78,11 +78,13 @@ const footerData = {
     appStore: '/coming-soon',
     googlePlay: '/coming-soon',
   },
-  address: 'Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates',
+  address: '© PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates',
   legal: {
     terms: '/terms-and-conditions',
     privacy: '/privacy-policy',
     grievances: '/customer-grievances-policy',
+    kfsBiz: '/kfs-biz-app',
+    faqCustomer: '/faq-customer-app',
   },
 }
 
@@ -406,7 +408,7 @@ const Footer = () => {
           className="footer__social-link"
           aria-label="Twitter"
         >
-         <Image
+          <Image
             width={24}
             height={24}
             src="/images/common/x.svg"
@@ -464,7 +466,7 @@ const Footer = () => {
         {/* Logo */}
         <div className="footer__logo">
           <Link href={footerData.logo.href}>
-             <Image className="footer__logo-img" width={98} height={61} src="/images/common/logo.svg" alt="" />
+            <Image className="footer__logo-img" width={98} height={61} src="/images/common/logo.svg" alt="" />
           </Link>
         </div>
 
@@ -491,12 +493,9 @@ const Footer = () => {
           {/* Copyright & Address */}
           <div className="footer__bottom-left">
             <div className="footer__address">
-              © PAY10 | Find us at: Corporate Address: 4 Ring Road, Lajpat Nagar 4, Delhi 110024
+              © PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates
             </div>
-          </div>
-
-          {/* Legal Links */}
-          <div className="footer__bottom-right">
+            <div className="footer__address">
             <Link href={footerData.legal.terms} className="footer__legal-link">
               Terms & Conditions
             </Link>
@@ -505,8 +504,37 @@ const Footer = () => {
               Privacy Policy
             </Link>
             <span className="footer__legal-separator">|</span>
-            <Link href={footerData.legal.grievances} className="footer__legal-link">
-              Customer Grievances Policy
+            <Link href={footerData.legal.kfsBiz} className="footer__legal-link">
+              KFS-Bizz-App
+            </Link>
+            <span className="footer__legal-separator">|</span>
+            <Link href={footerData.legal.faqCustomer} className="footer__legal-link">
+              FAQ-Customer-App
+            </Link>
+            </div>
+          </div>
+
+          {/* Legal Links */}
+          <div className="footer__bottom-right">
+          © PAY10
+              |
+              مكتب 1004، الدور 10 , برج أوبورا للأعمال، الخليج التجاري - دبي، الإمارات العربية المتحدة
+          </div>
+          <div className="footer__bottom-right">
+            <Link href={footerData.legal.terms} className="footer__legal-link">
+            شروط الخدمات
+            </Link>
+            <span className="footer__legal-separator">|</span>
+            <Link href={footerData.legal.privacy} className="footer__legal-link">
+            سياسة الخصوصية
+            </Link>
+            <span className="footer__legal-separator">|</span>
+            <Link href={footerData.legal.kfsBiz} className="footer__legal-link">
+            للشركات Pay10 BizzApp بيان الحقائق الرئيسية  تطبيق 
+            </Link>
+            <span className="footer__legal-separator">|</span>
+            <Link href={footerData.legal.faqCustomer} className="footer__legal-link">
+            للعملاء Pay10 الأسئلة الشائعة تطبيق  
             </Link>
           </div>
         </div>

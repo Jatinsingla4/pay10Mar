@@ -78,7 +78,7 @@ const footerData = {
     appStore: '/coming-soon',
     googlePlay: '/coming-soon',
   },
-  address: 'Corporate Address: 4 Ring Road, Lajpat Nagar 4, Delhi 110024',
+  address: 'Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates',
   legal: {
     terms: '/terms-and-conditions',
     privacy: '/privacy-policy',

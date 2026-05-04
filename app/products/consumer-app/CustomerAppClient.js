@@ -7,6 +7,7 @@ import GetStarted from "@/app/components/ui/GetStarted";
 import useApiAuth from "@/app/components/hooks/useApiAuth";
 import PageLoader from "@/app/components/ui/PageLoader";
 import Style from "./page.module.scss";
+import ReverseLayout from "@/app/components/ui/product/pacb-india/ReverseLayout";
 
 const CustomerAppClient = () => {
   const [pageData, setPageData] = useState(null);
@@ -53,7 +54,7 @@ const CustomerAppClient = () => {
   // Extract values from API
   const topHeading = pageDataObj.top_heading || "";
   const topDescription = pageDataObj.top_description || "";
-  const heroImageSrc = "/images/herobanner_mobile_img.png";
+  const heroImageSrc = "/images/banner_img1.png";
 
   // Section 2 - SimpleLayout (items)
   const simpleLayoutItems = Array.isArray(section2.list) ? section2.list : [];

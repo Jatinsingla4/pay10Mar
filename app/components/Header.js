@@ -56,11 +56,11 @@ const navigationData = {
         label: 'Pay10 World',
         icon: '/images/header/pay10-world.svg',
         items: [
-          {
-            label: 'Collect from India',
-            href: '/products/accept-international-payments-from-india',
-            icon: '/images/header/collect-india.svg',
-          },
+          // {
+          //   label: 'Collect from India',
+          //   href: '/products/accept-international-payments-from-india',
+          //   icon: '/images/header/collect-india.svg',
+          // },
           {
             label: 'Pay Globally',
             href: '/products/international-payments',
@@ -93,8 +93,9 @@ const navigationData = {
       hasDropdown: true,
       items: [
         // { label: 'News', href: '/news' },
-        { label: 'Blogs', href: '/blog' },
-        { label: 'Events', href: '/events' },
+        // { label: 'Blogs', href: '/blog' },
+        // { label: 'Events', href: '/events' },
+        { label: 'Careers', href: '/' },
       ],
     },
   ],

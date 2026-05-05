@@ -47,7 +47,7 @@ const footerData = {
         {
           label: 'Pay10 World',
           subItems: [
-            { label: 'Collect from India', href: '/products/accept-international-payments-from-india' },
+            // { label: 'Collect from India', href: '/products/accept-international-payments-from-india' },
             { label: 'Pay Globally', href: '/products/international-payments' },
           ],
         },
@@ -56,9 +56,10 @@ const footerData = {
     resources: {
       label: 'Resources',
       items: [
-        { label: 'Blogs', href: '/blog' },
+        // { label: 'Blogs', href: '/blog' },
         // { label: 'News', href: '/news' },
-        { label: 'Events', href: '/events' },
+        // { label: 'Events', href: '/events' },
+        { label: 'Careers', href: '/' },
         // { label: 'FAQ', href: '/faq-customer-app' },
         // { label: 'KFS', href: '/kfs-biz-app' },
       ],
@@ -84,6 +85,8 @@ const footerData = {
     privacy: '/privacy-policy',
     grievances: '/customer-grievances-policy',
     kfsBiz: '/kfs-biz-app',
+    kfsCustomer: '/kfs-customer-wallet',
+    faqMerchant: '/faq-merchant-bizz-app',
     faqCustomer: '/faq-customer-app',
   },
 }
@@ -496,45 +499,62 @@ const Footer = () => {
               © PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates
             </div>
             <div className="footer__address">
-            <Link href={footerData.legal.terms} className="footer__legal-link">
-              Terms & Conditions
-            </Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href={footerData.legal.privacy} className="footer__legal-link">
-              Privacy Policy
-            </Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href={footerData.legal.kfsBiz} className="footer__legal-link">
-              KFS-Bizz-App
-            </Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href={footerData.legal.faqCustomer} className="footer__legal-link">
-              FAQ-Customer-App
-            </Link>
+              <Link href={footerData.legal.terms} className="footer__legal-link">
+                Terms & Conditions
+              </Link>
+              <span className="footer__legal-separator">|</span>
+              <Link href={footerData.legal.privacy} className="footer__legal-link">
+                Privacy Policy
+              </Link>
+              <span className="footer__legal-separator">|</span>
+              <Link href={footerData.legal.kfsBiz} className="footer__legal-link">
+                KFS - Bizz App
+              </Link>
+              <span className="footer__legal-separator">|</span>
+              <Link href={footerData.legal.kfsCustomer} className="footer__legal-link">
+                KFS - Customer Wallet
+              </Link>
+              <span className="footer__legal-separator">|</span>
+              <Link href={footerData.legal.faqCustomer} className="footer__legal-link">
+
+                FAQ Pay10 Customer App
+              </Link>
+              <span className="footer__legal-separator">|</span>
+              <Link href={footerData.legal.faqMerchant} className="footer__legal-link">
+                FAQ Pay10 Merchant Biz App
+              </Link>
             </div>
           </div>
 
           {/* Legal Links */}
           <div className="footer__bottom-right">
-          © PAY10
-              |
-              مكتب 1004، الدور 10 , برج أوبورا للأعمال، الخليج التجاري - دبي، الإمارات العربية المتحدة
+            © PAY10
+            |
+            مكتب 1004، الدور 10 , برج أوبورا للأعمال، الخليج التجاري - دبي، الإمارات العربية المتحدة
           </div>
           <div className="footer__bottom-right">
             <Link href={footerData.legal.terms} className="footer__legal-link">
-            شروط الخدمات
+              شروط الخدمات
             </Link>
             <span className="footer__legal-separator">|</span>
             <Link href={footerData.legal.privacy} className="footer__legal-link">
-            سياسة الخصوصية
+              سياسة الخصوصية
             </Link>
             <span className="footer__legal-separator">|</span>
             <Link href={footerData.legal.kfsBiz} className="footer__legal-link">
-            للشركات Pay10 BizzApp بيان الحقائق الرئيسية  تطبيق 
+              للشركات Pay10 BizzApp بيان الحقائق الرئيسية  تطبيق
+            </Link>
+            <span className="footer__legal-separator">|</span>
+            <Link href={footerData.legal.kfsCustomer} className="footer__legal-link">
+              للعملاء Pay10 بيان الحقائق الرئيسية تطبيق
             </Link>
             <span className="footer__legal-separator">|</span>
             <Link href={footerData.legal.faqCustomer} className="footer__legal-link">
-            للعملاء Pay10 الأسئلة الشائعة تطبيق  
+              للعملاء Pay10 الأسئلة الشائعة تطبيق
+            </Link>
+            <span className="footer__legal-separator">|</span>
+            <Link href={footerData.legal.faqMerchant} className="footer__legal-link">
+              للشركات Pay10 BizzApp الأسئلة الشائعة تطبيق
             </Link>
           </div>
         </div>

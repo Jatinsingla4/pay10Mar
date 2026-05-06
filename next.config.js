@@ -33,6 +33,7 @@ const cspSources = {
     'https://gww.grapesmobile.com',
     'https://pay10.grapesmobile.com',
     'https://adminpayd.grapesmobile.com',
+    'https://pay10.webhr.co',
     ...parseEnvSources(process.env.CSP_IMG_SRC_EXTRA),
   ]),
   fontSrc: uniqueSources(["'self'", 'data:']),
@@ -48,12 +49,14 @@ const cspSources = {
     'https://api.unisvg.com',
     'https://pcms.pay10.in',
     'https://adminpayd.grapesmobile.com',
+    'https://pay10.webhr.co',
     ...parseEnvSources(process.env.CSP_CONNECT_SRC_EXTRA),
   ]),
   frameSrc: uniqueSources([
     "'self'",
     'https://www.google.com',
     'https://maps.google.com',
+    'https://pay10.webhr.co',
     ...parseEnvSources(process.env.CSP_FRAME_SRC_EXTRA),
   ]),
 };
@@ -94,6 +97,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'adminpayd.grapesmobile.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pay10.webhr.co',
       },
     ],
   },

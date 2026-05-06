@@ -49,13 +49,31 @@ export default function CareersPage() {
         ctaText=""
         ctaImgSrc=""
         heroImage={{
-          src: "/images/careers/careers-team-reference.png",
+          src: "/images/careers/careers_banner_img.png",
           alt: "Pay10 — join our team",
           width: 1024,
           height: 455,
         }}
         decorations={careersBannerDecorations}
       />
+
+      <section className="wrapper">
+        <div className={styles.content}>
+          <h2>Build Your Future With Pay10</h2>
+          <p>At Pay10, we’re building smart, secure, and fast payment solutions — and we’re looking for people who want to grow with us. If you love solving real-world problems, enjoy teamwork, and want to work in a place where your ideas actually matter, you’ll fit right in. Join us and help shape the future of digital payments.</p>
+        </div>
+
+        <div className={styles.jobs_box}>
+          <iframe
+            src="https://pay10.webhr.co/hr/careers/"
+            style={{ marginTop: 0, marginLeft: 0, width: "100%", height: "600px" }}
+            frameBorder="0"
+            marginHeight="0"
+            marginWidth="0"
+            scrolling="auto"
+          />
+        </div>
+      </section>
     </main>
   );
 }

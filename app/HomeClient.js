@@ -95,9 +95,18 @@ export default function HomeClient() {
 
   const section2 = homeData?.custom_data?.section2 || {};
   const section3 = homeData?.custom_data?.section3 || {};
+  const section4 = homeData?.custom_data?.section4 || {};
   const section5 = homeData?.custom_data?.section5 || {};
   const section6 = homeData?.custom_data?.section6 || {};
   const section7 = homeData?.custom_data?.section7 || {};
+
+  const section4JourneyData = Array.isArray(section4.features_list)
+    ? section4.features_list.map((item, index) => ({
+        title: item?.title ?? item?.Title ?? '',
+        description: item?.description ?? item?.Description ?? '',
+        id: item?.id ?? item?._id ?? `section4-feature-${index}`,
+      }))
+    : [];
   const section3Image = section3.image ? cmsImageSrc(section3.image, imageBase) : undefined;
   const section5Parts = (section5.content || '')
     .split(/<br\s*\/?>/i)
@@ -156,7 +165,7 @@ export default function HomeClient() {
       />
       <JourneySection
         mode="accordion"
-        journeyData={walletFeatures}
+        journeyData={section4JourneyData.length ? section4JourneyData : walletFeatures}
         rightImage="/images/new_fixed_img.png"
       />
       <FeatureBlock

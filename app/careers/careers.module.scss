@@ -1,0 +1,56 @@
+@import '../../styles/globals/mixin';
+
+.careers {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.careers_banner {
+  width: 100%;
+  min-height: clamp(520px, 65vh, 760px);
+  padding: 40px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  @include tab {
+    min-height: clamp(420px, 55vh, 620px);
+    padding-top: 24px;
+  }
+
+  :global(.desktopLayout) {
+    justify-content: flex-start;
+    gap: 18px;
+  }
+
+  :global(.desktopInner) {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  :global(.title) {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: clamp(26px, 3.2vw, 48px);
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  :global(.desktopPhoneWrap) {
+    margin-top: auto;
+    width: min(700px, 90vw);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  :global(.desktopPhone) {
+    width: 100%;
+    max-width: none;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: center 62%;
+    border-radius: 50%;
+    border: 4px solid rgba(255, 255, 255, 0.55);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.18);
+  }
+}

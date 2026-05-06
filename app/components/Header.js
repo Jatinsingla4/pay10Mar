@@ -95,7 +95,7 @@ const navigationData = {
         // { label: 'News', href: '/news' },
         // { label: 'Blogs', href: '/blog' },
         // { label: 'Events', href: '/events' },
-        { label: 'Careers', href: '/' },
+        { label: 'Careers', href: '/careers' },
       ],
     },
   ],

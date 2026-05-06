@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 const SpotlightProd = ({
   heading = "No Borders, Just Business",
-  description = "Accept International Payments Seamlessly from India",
+  description = "",
   bannerImage = "/images/product_page_images/pacb-world.png",
   bannerImageMob = "/images/product_page_images/pacb-world-mob.svg",
   logoImage = "/images/product_page_images/pacb_banner_logo.png",

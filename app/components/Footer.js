@@ -33,24 +33,25 @@ const footerData = {
         {
           label: 'Prepaid Payment Instruments',
           subItems: [
-            { label: 'Pay10 App', href: '/products/consumer-app' },
-            { label: 'Pay10 BIZ', href: '/products/bizapp' },
+            { label: 'Consumer App', href: '/products/consumer-app' },
+            { label: 'Open Finance Al Tareq', href: '/products/open-finance-altareq' },
+            { label: 'Merchant App', href: '/products/bizapp' },
           ],
         },
         {
           label: 'Payments',
           subItems: [
-            { label: 'Payment Gateway', href: '/products/payment-gateway' },
+            // { label: 'Payment Gateway', href: '/products/payment-gateway' },
             { label: 'Integration Methods', href: '/products/integration-methods' },
           ],
         },
-        {
-          label: 'Pay10 World',
-          subItems: [
-            // { label: 'Collect from India', href: '/products/accept-international-payments-from-india' },
-            { label: 'Pay Globally', href: '/products/international-payments' },
-          ],
-        },
+        // {
+        //   label: 'Pay10 World',
+        //   subItems: [
+        //     // { label: 'Collect from India', href: '/products/accept-international-payments-from-india' },
+        //     { label: 'Pay Globally', href: '/products/international-payments' },
+        //   ],
+        // },
       ],
     },
     resources: {

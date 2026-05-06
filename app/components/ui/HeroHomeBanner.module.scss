@@ -38,10 +38,11 @@
       gap: 15px;
     }
   }
-  .eyebrow {
+  .eyebrow,
+  .body {
     margin: 0;
     font-size: 24px;
-    text-transform: uppercase;
+    // text-transform: uppercase;
     font-weight: 500;
     @include tab{
       font-size: 20px;
@@ -59,9 +60,9 @@
 
   .body {
     margin: 0;
-    font-size: 32px;
+    font-size: 24px;
     @include tab{
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 

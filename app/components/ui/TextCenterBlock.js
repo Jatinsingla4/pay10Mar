@@ -7,11 +7,15 @@ const gridBoxes = [
     heading: 'Merchant App',
     img1: '/images/foo-app1.svg',
     img2: '/images/foo-app2.svg',
+    appleHref: 'https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134',
+    playHref: 'https://play.google.com/store/apps/details?id=ae.pay10.merchant.app',
   },
   {
     heading: 'Consumer App',
     img1: '/images/foo-app1.svg',
     img2: '/images/foo-app2.svg',
+    appleHref: 'https://apps.apple.com/ae/app/pay10-uae/id6739810874',
+    playHref: 'https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en',
   },
 ];
 
@@ -32,22 +36,30 @@ export default function TextCenterBlock({
             <div key={idx} className={styles.box}>
               <h3>{box.heading}</h3>
               <div className={styles.btns}>
-                <Link href="#">
+                <Link
+                  href={box.appleHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image
                     width={151}
                     height={36}
                     loading="eager"
                     src={box.img1}
-                    alt="App Links"
+                    alt="Download on the App Store"
                   />
                 </Link>
-                <Link href="#">
+                <Link
+                  href={box.playHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <Image
                     width={129}
                     height={36}
                     loading="eager"
                     src={box.img2}
-                    alt="App Links"
+                    alt="Get it on Google Play"
                   />
                 </Link>
               </div>
@@ -55,6 +67,43 @@ export default function TextCenterBlock({
           ))}
         </div>
         {/* <ContactCtaBtn variant="orange" /> */}
+      </div>
+    </section>
+  );
+}
+
+/** One gradient pill: title + App Store / Google Play (e.g. consumer app CTA). */
+export function TextCenterAppCard({
+  title = 'Consumer App',
+  appleHref = 'https://apps.apple.com/ae/app/pay10-uae/id6739810874',
+  playHref = 'https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en',
+  appStoreImgSrc = '/images/foo-app1.svg',
+  googlePlayImgSrc = '/images/foo-app2.svg',
+}) {
+  return (
+    <section className={styles.bannerSingle}>
+      <div className={styles.singleCard}>
+        <h3 className={styles.singleCardTitle}>{title}</h3>
+        <div className={styles.btns}>
+          <Link href={appleHref} target="_blank" rel="noopener noreferrer">
+            <Image
+              width={151}
+              height={36}
+              loading="eager"
+              src={appStoreImgSrc}
+              alt="Download on the App Store"
+            />
+          </Link>
+          <Link href={playHref} target="_blank" rel="noopener noreferrer">
+            <Image
+              width={129}
+              height={36}
+              loading="eager"
+              src={googlePlayImgSrc}
+              alt="Get it on Google Play"
+            />
+          </Link>
+        </div>
       </div>
     </section>
   );

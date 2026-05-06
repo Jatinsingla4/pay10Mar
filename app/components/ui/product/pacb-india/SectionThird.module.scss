@@ -25,6 +25,21 @@
                 font-family: 'semibold';
             }
         }
+
+        .section_third_lead {
+            margin: 20px auto 0;
+            // max-width: 760px;
+            padding: 0 10px;
+            font-size: 22px;
+            line-height: 1.45;
+            font-family: 'regular', sans-serif;
+            color: var(--white);
+
+            @include tab {
+                font-size: 18px;
+                margin-top: 16px;
+            }
+        }
     }
 
     .section_third_grid {

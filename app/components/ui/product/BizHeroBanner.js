@@ -234,12 +234,14 @@ export default function BizHeroBanner({
   eyebrow = "",
   title = "Pay10 BIZ",
   description = "Future-Ready Payment Infrastructure for Businesses of All Sizes",
-  ctaHref = "/coming-soon",
-  ctaImgSrc = "/images/common/cta-get-pay101.svg",
+  ctaHref = "",
+  ctaImgSrc = "",
   ctaImgAlt = "Download Now",
   ctaImgWidth = 223,
   ctaImgHeight = 66,
   ctaText = "",
+  /** `"home"` — same pill as HeroHomeBanner (Get In Touch), no external-link icon */
+  ctaStyle = "default",
   heroImage = {
     src: "/images/product_page_images/ppa1.png",
     alt: "Pay10 BIZ app interface",
@@ -253,6 +255,7 @@ export default function BizHeroBanner({
   const hasHeroImage = heroImage && heroImage.src;
   const rootRef = useRef(null);
   const isLink = ctaHref && !onCtaClick;
+  const isHomeCta = ctaStyle === "home" && Boolean(ctaText);
 
   const handleCta = (event) => {
     if (onCtaClick) {
@@ -409,30 +412,34 @@ export default function BizHeroBanner({
               onClick={handleCta}
               type={isLink ? undefined : "button"}
               className={`${styles.ctaDesktop} ${
-                ctaText ? styles.ctaText : ""
-              }`}
+                ctaText && !isHomeCta ? styles.ctaText : ""
+              } ${isHomeCta ? styles.ctaHome : ""}`.trim()}
               data-anim="cta"
             >
               {ctaText ? (
-                <>
+                isHomeCta ? (
                   <span>{ctaText}</span>
+                ) : (
+                  <>
+                    <span>{ctaText}</span>
 
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="30"
-                    height="30"
-                    fill="none"
-                    viewBox="0 0 30 30"
-                  >
-                    <path
-                      stroke="#fff"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2.25"
-                      d="M20.25 1.125h7.875V9m-1.687-6.187L18 11.25m-3.375-7.875H4.5A3.375 3.375 0 0 0 1.125 6.75v18A3.375 3.375 0 0 0 4.5 28.125h18a3.375 3.375 0 0 0 3.375-3.375V14.625"
-                    />
-                  </svg>
-                </>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="30"
+                      height="30"
+                      fill="none"
+                      viewBox="0 0 30 30"
+                    >
+                      <path
+                        stroke="#fff"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2.25"
+                        d="M20.25 1.125h7.875V9m-1.687-6.187L18 11.25m-3.375-7.875H4.5A3.375 3.375 0 0 0 1.125 6.75v18A3.375 3.375 0 0 0 4.5 28.125h18a3.375 3.375 0 0 0 3.375-3.375V14.625"
+                      />
+                    </svg>
+                  </>
+                )
               ) : ctaImgSrc ? (
                 <Image
                   src={ctaImgSrc}

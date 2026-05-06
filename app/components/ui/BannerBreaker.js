@@ -8,11 +8,14 @@ export default function BannerBreaker({
   title = 'Pay10 Wallet',
   description = "Pay family and friends. Send money home. Shop and pay bills. Even grow your business. There's no limit to what your money can do for you.",
   ctaHref = '/coming-soon',
+  ctaLabel,
   ctaIcon = '/images/common/cta-get-pay101.svg',
   ctaLink,
   ctaImg,
   logoSrc = '/images/common/logo-mini.png',
   logo = true,
+  /** When false, no CTA (image or text) is rendered. */
+  showCta = true,
   backgroundDesktop = '/images/home/bg-b-d.png',
   backgroundMobile = '/images/home/bg-b-m.png',
   classN,
@@ -23,6 +26,7 @@ export default function BannerBreaker({
   const finalHref = ctaLink || ctaHref;
   const finalIcon = ctaImg || ctaIcon;
   const isLink = finalHref && !onCtaClick;
+  const useTextCta = Boolean(ctaLabel);
 
   const handleCta = (event) => {
     if (onCtaClick) {
@@ -63,22 +67,28 @@ export default function BannerBreaker({
           <h2 className={styles.heading} data-animation="opacity-up">{title}</h2>
           <p className={styles.description} data-animation="opacity-up">{description}</p>
 
+          {showCta ? (
           <CtaComponent
-            className={styles.cta}
+            className={useTextCta ? styles.ctaPill : styles.cta}
             href={isLink ? finalHref : undefined}
             onClick={handleCta}
             type={isLink ? undefined : 'button'}
             data-animation="opacity-up"
           >
-            <Image
-              src={finalIcon}
-              alt=""
-              className={styles.ctaIcon}
-              width={223}
-              height={66}
-              priority
-            />
+            {useTextCta ? (
+              <span>{ctaLabel}</span>
+            ) : (
+              <Image
+                src={finalIcon}
+                alt=""
+                className={styles.ctaIcon}
+                width={223}
+                height={66}
+                priority
+              />
+            )}
           </CtaComponent>
+          ) : null}
         </div>
       </div>
     </section>

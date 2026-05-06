@@ -15,7 +15,9 @@ const SimpleLayout = ({ items = [], imageBase = "", startWithImageLeft = true, u
               if (!item) return null;
               // Alternate layout, with configurable starting side.
               // imageLeft is the "image on left" state for that row.
-              const imageLeft = startWithImageLeft ? index % 2 === 0 : index % 2 === 1;
+              const defaultImageLeft = startWithImageLeft ? index % 2 === 0 : index % 2 === 1;
+              const imageLeft =
+                typeof item.ImageOnLeft === "boolean" ? item.ImageOnLeft : defaultImageLeft;
 
               // Only the 2nd row (index 1) has the circles layout.
               // When using background circle, disable circles in second section

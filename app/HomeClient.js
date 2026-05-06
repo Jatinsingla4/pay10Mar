@@ -147,6 +147,7 @@ export default function HomeClient() {
         eyebrow={heroEyebrow}
         title={heroTitle}
         description={heroDescription}
+        ctaLabel="Get In Touch"
         heroImage={heroImage}
       />
       <TextCenterBlock
@@ -162,6 +163,8 @@ export default function HomeClient() {
         description={section3.content}
         backgroundDesktop={section3Image}
         backgroundMobile={section3Image}
+        ctaLabel="Get In Touch"
+        ctaHref="/contact-us"
       />
       <JourneySection
         mode="accordion"

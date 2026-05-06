@@ -33,24 +33,6 @@
 
 }
 
-/** Decorative circles behind IntegrationTwoLayout rows (merchant / biz app). */
-.merchant_feature_circles {
-  width: 100%;
-  background-image: url("/images/product_page_images/bg_circle.svg");
-  background-position: left;
-  background-position-x: -25rem;
-  background-position-y: 20rem;
-  background-size: 120% 100%;
-  background-repeat: no-repeat;
-
-  @include tab {
-    background-position: right;
-    background-position-x: 0rem;
-    background-position-y: 0rem;
-    background-size: 350% 120%;
-  }
-}
-
 .business_edge_section {
   width: 100%;
   display: grid;
@@ -175,5 +157,32 @@
         }
       }
     }
+  }
+}
+
+.heroShell {
+  width: 100%;
+  padding: 40px 56px 0;
+
+  @include tab {
+    padding: 24px 16px 0;
+  }
+}
+
+/** Second section: “future of finance” + Al Tareq logo (hardcoded until CMS). */
+.connected_finance_intro {
+  width: 100%;
+  background-color: #f5f5f5;
+  padding: 80px 56px 0;
+
+  @include tab {
+    padding: 56px 16px 0;
+  }
+
+  /* Logo asset: keep readable, not full-bleed in the column */
+  :global(img) {
+    max-width: min(100%, 440px);
+    height: auto;
+    margin-inline: auto;
   }
 }

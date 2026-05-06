@@ -18,54 +18,56 @@
     @include tab {
         grid-template-columns: 1fr;
     }
+}
 
-    .left_content {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
+.copyCol {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include tab {
+        order: 2;
+    }
+    
+    h3 {
+        background: var(--primary-gradient-medium);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 48px;
+        line-height: 1.1;
+        margin: 0;
 
         @include tab {
-            order: 2;
-        }
-        
-        h3 {
-            background: var(--primary-gradient-medium);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            font-size: 48px;
-            line-height: 1.1;
-
-            @include tab {
-                font-size: 32px;
-            }
-        }
-        p{
-            font-size: 20px;
-            color: var(--gray);
-            font-family: 'regular';
-            line-height: 1.4;
-
-            @include tab {
-                font-size: 14px;
-            }
+            font-size: 32px;
         }
     }
-
-    .right_img {
-        width: 100%;
+    p {
+        margin: 0;
+        font-size: 20px;
+        color: var(--gray);
+        font-family: 'regular';
+        line-height: 1.4;
 
         @include tab {
-            order: 1;
+            font-size: 14px;
         }
+    }
+}
 
-        img {
-            width: 100%;
-            object-fit: contain;
+.visualCol {
+    width: 100%;
 
-            @include tab {
-                height: auto;
-            }
+    @include tab {
+        order: 1;
+    }
+
+    img {
+        width: 100%;
+        object-fit: contain;
+
+        @include tab {
+            height: auto;
         }
     }
 }

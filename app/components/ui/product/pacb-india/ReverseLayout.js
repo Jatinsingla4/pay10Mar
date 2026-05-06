@@ -69,12 +69,14 @@ const ReverseLayout = ({ item = null, imageBase = "", imageLeft = false, withCir
 
   const contentEl = (
     <div className={Style.left_grid_box}>
-      <div data-animation="opacity-up">
-        <h3>{title}</h3>
-      </div>
+      {title ? (
+        <div data-animation="opacity-up">
+          <h3>{title}</h3>
+        </div>
+      ) : null}
       <div data-animation="opacity-up" data-animation-delay="100">
         {descriptionHtml ? (
-          <p dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+          <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
         ) : null}
       </div>
     </div>

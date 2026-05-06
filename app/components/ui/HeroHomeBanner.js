@@ -101,7 +101,7 @@ export default function HeroHomeBanner({
       const circles = gsap.utils.toArray('[data-anim="circle"]');
       const icons = gsap.utils.toArray('[data-anim="icon"]');
       const textChain = gsap.utils.toArray(
-        '[data-anim="eyebrow"], [data-anim="title"], [data-anim="body"], [data-anim="phone"]'
+        '[data-anim="eyebrow"], [data-anim="sub1"], [data-anim="sub2"], [data-anim="title"], [data-anim="phone"]'
       );
       const ctaEl = document.querySelector('[data-anim="cta"]');
 
@@ -194,12 +194,13 @@ export default function HeroHomeBanner({
       <div className={styles.desktopLayout}>
         <div className={styles.desktopInner}>
           <p className={styles.eyebrow} data-anim="eyebrow">{eyebrow}</p>
-          <h1 className={styles.title} data-anim="title">{title}</h1>
-          {/* <p className={styles.body} data-anim="body">{description}</p> */}
-          <p className={styles.body} data-anim="body">
-          Licensed by Central Bank of the UAE
-          <br />Instant. Secure. Interoperable.
+          <p className={styles.body} data-anim="sub1">
+            Licensed by Central Bank of the UAE
           </p>
+          <p className={styles.body} data-anim="sub2">
+            Instant. Secure. Interoperable.
+          </p>
+          <h1 className={styles.title} data-anim="title">{title}</h1>
           <Link href={ctaHref} className={styles.ctaDesktop} data-anim="cta">
             <span>{ctaLabel}</span>
           </Link>

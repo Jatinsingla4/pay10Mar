@@ -19,16 +19,21 @@ const navigationData = {
     groups: [
       {
         id: 'prepaid',
-        label: 'Prepaid Payment Instruments',
+        label: 'Digital Wallet',
         icon: '/images/header/prepaid.svg',
         items: [
           {
-            label: 'Pay10 App',
+            label: 'Consumer App',
             href: '/products/consumer-app',
             icon: '/images/header/pay-10-app.svg',
           },
           {
-            label: 'Pay10 Biz',
+            label: 'Open Finance Al Tareq',
+            href: '/products/open-finance-altareq',
+            icon: '/images/header/sf.svg',
+          },
+          {
+            label: 'Merchant App',
             href: '/products/bizapp',
             icon: '/images/header/pay-10-biz.svg',
           },
@@ -40,34 +45,29 @@ const navigationData = {
         icon: '/images/header/payments.svg',
         items: [
           {
-            label: 'Payment Gateway',
-            href: '/products/payment-gateway',
-            icon: '/images/header/payment-gateway.svg',
-          },
-          {
             label: 'Integration Methods',
             href: '/products/integration-methods',
             icon: '/images/header/integration-method.svg',
           },
         ],
       },
-      {
-        id: 'pay10-world',
-        label: 'Pay10 World',
-        icon: '/images/header/pay10-world.svg',
-        items: [
-          // {
-          //   label: 'Collect from India',
-          //   href: '/products/accept-international-payments-from-india',
-          //   icon: '/images/header/collect-india.svg',
-          // },
-          {
-            label: 'Pay Globally',
-            href: '/products/international-payments',
-            icon: '/images/header/collect-world.svg',
-          },
-        ],
-      },
+      // {
+      //   id: 'pay10-world',
+      //   label: 'Pay10 World',
+      //   icon: '/images/header/pay10-world.svg',
+      //   items: [
+      //     // {
+      //     //   label: 'Collect from India',
+      //     //   href: '/products/accept-international-payments-from-india',
+      //     //   icon: '/images/header/collect-india.svg',
+      //     // },
+      //     {
+      //       label: 'Pay Globally',
+      //       href: '/products/international-payments',
+      //       icon: '/images/header/collect-world.svg',
+      //     },
+      //   ],
+      // },
     ],
   },
   links: [
@@ -78,7 +78,7 @@ const navigationData = {
       items: [
         { label: 'About Us', href: '/about-us' },
         { label: 'Mission & Vision', href: '/vision-mission' },
-        { label: 'Corporate information', href: '/corporate-information' },
+        // { label: 'Corporate information', href: '/corporate-information' },
       ],
     },
     {

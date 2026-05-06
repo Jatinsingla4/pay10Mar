@@ -29,12 +29,14 @@ const TwoColLayout = ({ item = null, imageBase = "", reverse = false }) => {
 
   const contentEl = (
     <div className={Style.right_content_box}>
-      <div data-animation="opacity-up">
-        <h3>{title}</h3>
-      </div>
+      {title ? (
+        <div data-animation="opacity-up">
+          <h3>{title}</h3>
+        </div>
+      ) : null}
       <div data-animation="opacity-up" data-animation-delay="100">
         {descriptionHtml ? (
-          <p dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+          <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
         ) : null}
       </div>
     </div>

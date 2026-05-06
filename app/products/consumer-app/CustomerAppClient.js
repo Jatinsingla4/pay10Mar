@@ -1,13 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import BizHeroBanner, { customerAppDecorations } from "@/app/components/ui/product/BizHeroBanner";
+import MapHeroBanner from "@/app/components/ui/product/MapHeroBanner";
 import SimpleLayout from "@/app/components/ui/product/pacb-india/SimpleLayout";
 import GetStarted from "@/app/components/ui/GetStarted";
 import useApiAuth from "@/app/components/hooks/useApiAuth";
 import PageLoader from "@/app/components/ui/PageLoader";
-import Style from "./page.module.scss";
-import ReverseLayout from "@/app/components/ui/product/pacb-india/ReverseLayout";
+import { TextCenterAppCard } from "@/app/components/ui/TextCenterBlock";
+import { cmsImageSrc } from "@/app/lib/cmsImageSrc";
 
 const CustomerAppClient = () => {
   const [pageData, setPageData] = useState(null);
@@ -51,10 +51,13 @@ const CustomerAppClient = () => {
   const section2 = pageData?.custom_data?.section2 || {};
   const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
 
-  // Extract values from API
-  const topHeading = pageDataObj.top_heading || "";
-  const topDescription = pageDataObj.top_description || "";
-  const heroImageSrc = "/images/banner_img1.png";
+  const heroCmsSrc = pageDataObj.image ? cmsImageSrc(pageDataObj.image, imageBase) : null;
+  const heroImage = {
+    src: heroCmsSrc || "/images/af.png",
+    alt: pageDataObj.name ? `${pageDataObj.name} hero` : "Pay10 App interface",
+    width: pageDataObj.image_width || 360,
+    height: pageDataObj.image_height || 640,
+  };
 
   // Section 2 - SimpleLayout (items)
   const simpleLayoutItems = Array.isArray(section2.list) ? section2.list : [];
@@ -65,18 +68,13 @@ const CustomerAppClient = () => {
 
   return (
     <main>
-      <BizHeroBanner
+      <MapHeroBanner
         eyebrow={pageDataObj.top_sub_heading || ""}
-        title={topHeading}
-        description={topDescription}
-        ctaHref="/coming-soon"
-        heroImage={{
-          src: heroImageSrc,
-          alt: "Pay10 App interface",
-          width: 360,
-          height: 640,
-        }}
-        decorations={customerAppDecorations}
+        title={pageDataObj.top_heading || ""}
+        description={pageDataObj.top_description || ""}
+        heroImage={heroImage}
+        mapImageSrc="/images/temp/adf.png"
+        ctaText=""
       />
 
       <SimpleLayout
@@ -85,6 +83,8 @@ const CustomerAppClient = () => {
         startWithImageLeft={false}
         useBackgroundCircle={true}
       />
+
+      <TextCenterAppCard />
 
       <GetStarted />
     </main>

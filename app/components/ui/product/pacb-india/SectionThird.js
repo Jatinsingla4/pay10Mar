@@ -1,7 +1,14 @@
 import React from "react";
 import Style from './SectionThird.module.scss'
 
-const SectionThird = ({ heading = "", items = [], imageBase = "", gridBoxes, maxWd }) => {
+const SectionThird = ({
+  heading = "",
+  description = "",
+  items = [],
+  imageBase = "",
+  gridBoxes,
+  maxWd,
+}) => {
   // Backwards compatible: if a page still passes gridBoxes, render those as-is.
   const useGridBoxes = Array.isArray(gridBoxes) ? gridBoxes : null;
 
@@ -10,6 +17,11 @@ const SectionThird = ({ heading = "", items = [], imageBase = "", gridBoxes, max
       <div className={Style.wrapper}>
         <div className={Style.section_third_heading}>
           {heading ? <h2 className={maxWd} data-animation="opacity-up">{heading}</h2> : null}
+          {description ? (
+            <p className={Style.section_third_lead} data-animation="opacity-up">
+              {description}
+            </p>
+          ) : null}
         </div>
         <div className={Style.section_third_grid}>
           {useGridBoxes

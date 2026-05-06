@@ -7,7 +7,7 @@ import useApiAuth from "../components/hooks/useApiAuth";
 import PageLoader from "../components/ui/PageLoader";
 
 // Hardcoded Google Maps embed URL
-const MAP_EMBED_URL = "https://www.google.com/maps?q=Pay10+India+Pvt+Ltd&output=embed";
+const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.797084189831!2d55.270962999999995!3d25.1807808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6978338fd387%3A0xb7eeb833237a2ede!2sUbora%20Office%20Tower!5e1!3m2!1sen!2sin!4v1778067408734!5m2!1sen!2sin";
 
 const ContactClient = () => {
   const [activeTab, setActiveTab] = useState(null);
@@ -292,6 +292,35 @@ const ContactClient = () => {
       .replace(/^-+|-+$/g, "");
   };
 
+  const getOfficeEmails = (office) => {
+    const emailFields = [
+      { label: "Email Address", value: office.Email },
+      { label: "Merchant Support", value: office.Email1 || office.email1 },
+      { label: "Support Email", value: office.Email2 || office.email2 },
+    ];
+
+    return emailFields.filter((item) => item.value && String(item.value).trim());
+  };
+
+  const getOfficePhones = (office) => {
+    const directPhoneFields = [
+      { label: "For Pay10 Queries", value: office.Phone || office.phone },
+      { label: "For Pay10 Business Queries", value: office.Phone2 || office.phone2 },
+      { label: "Alternate Phone", value: office.Phone3 || office.phone3 },
+    ].filter((item) => item.value && String(item.value).trim());
+
+    if (directPhoneFields.length > 0) {
+      return directPhoneFields;
+    }
+
+    // Backward compatibility: support old single Phone field with multiline labels.
+    const parsedPhone = parsePhoneNumber(office.Phone || office.phone || "");
+    return [
+      { label: "For Pay10 Queries", value: parsedPhone.queries },
+      { label: "For Pay10 Business Queries", value: parsedPhone.business },
+    ].filter((item) => item.value && String(item.value).trim());
+  };
+
   // Process offices data from API
   const processOfficesData = () => {
     if (!contactData?.custom_data?.section2?.offices) return {};
@@ -307,8 +336,9 @@ const ContactClient = () => {
       processed[tabId] = {
         name: office.Name || "",
         address: office.Address || "",
-        email: office.Email?.trim() || "",
-        phone: phoneData,
+        emails: getOfficeEmails(office),
+        phones: getOfficePhones(office),
+        map: office.Map || office.map || "",
       };
     });
 
@@ -371,7 +401,7 @@ const ContactClient = () => {
           <div className={Style.contact_map_section}>
             <div className={Style.map_container} data-animation="opacity-up">
               <iframe
-                src={MAP_EMBED_URL}
+                src={currentData.map || MAP_EMBED_URL}
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -388,36 +418,39 @@ const ContactClient = () => {
                   <Icon icon="weui:location-outlined" />
                 </div>
                 <div className={Style.contact_info_content}>
-                  <h4>Corporate Address</h4>
+                  <h4>Address</h4>
                   <p style={{ whiteSpace: "pre-line" }}>{currentData.address}</p>
                 </div>
               </div>
 
-              {currentData.email && (
-                <div className={Style.contact_info_box} data-animation="opacity-up">
+              {currentData.emails?.map((item, index) => (
+                <div
+                  key={`${item.label}-${index}`}
+                  className={Style.contact_info_box}
+                  data-animation="opacity-up"
+                >
                   <div className={Style.contact_info_icon}>
                     <Icon icon="ic:outline-email" />
                   </div>
                   <div className={Style.contact_info_content}>
-                    <h4>Email Address</h4>
-                    <p>{currentData.email}</p>
+                    <h4>{item.label}</h4>
+                    <p>{item.value}</p>
                   </div>
                 </div>
-              )}
+              ))}
 
-              {(currentData.phone.queries || currentData.phone.business) && (
+              {currentData.phones?.length > 0 && (
                 <div className={Style.contact_info_box} data-animation="opacity-up">
                   <div className={Style.contact_info_icon}>
                     <Icon icon="prime:mobile" />
                   </div>
                   <div className={Style.contact_info_content}>
-                    <h4>Phone Number</h4>
-                    {currentData.phone.queries && (
-                      <p>For Pay10 Queries: {currentData.phone.queries}</p>
-                    )}
-                    {currentData.phone.business && (
-                      <p>For Pay10 Business Queries: {currentData.phone.business}</p>
-                    )}
+                    <h4>Phone</h4>
+                    {currentData.phones.map((item, index) => (
+                      <p key={`${item.label}-${index}`}>
+                        {item.label}: {item.value}
+                      </p>
+                    ))}
                   </div>
                 </div>
               )}

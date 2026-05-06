@@ -78,7 +78,7 @@ const navigationData = {
       items: [
         { label: 'About Us', href: '/about-us' },
         { label: 'Mission & Vision', href: '/vision-mission' },
-        { label: 'Corporate information', href: '/corporate-information' },
+        // { label: 'Corporate information', href: '/corporate-information' },
       ],
     },
     {
@@ -260,7 +260,7 @@ const Header = () => {
     return (
       <Link href={navigationData.logo.href} className="header__logo" onClick={handleNavClick}>
         <span className="header__logo-text">
-          <Image width={98} height={61} src="/images/common/logo.svg" alt="" />
+          <Image width={98} height={61} src="/images/common/logo.png" alt="" />
         </span>
       </Link>
     )

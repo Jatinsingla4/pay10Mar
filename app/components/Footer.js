@@ -24,7 +24,7 @@ const footerData = {
       items: [
         { label: 'About Us', href: '/about-us' },
         { label: 'Vision & Mission', href: '/vision-mission' },
-        { label: 'Corporate information', href: '/corporate-information' },
+        // { label: 'Corporate information', href: '/corporate-information' },
       ],
     },
     products: {

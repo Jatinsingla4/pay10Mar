@@ -10,7 +10,7 @@ import '@/styles/components/_footer.scss'
 // Footer data structure - can be easily replaced with API data
 const footerData = {
   logo: {
-    src: 'images/common/logo-bg.svg',
+    src: 'images/common/logo.png',
     alt: 'Pay10',
     href: '/',
   },

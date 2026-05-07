@@ -240,6 +240,7 @@ export default function BizHeroBanner({
   ctaImgWidth = 223,
   ctaImgHeight = 66,
   ctaText = "",
+  showCtaIcon = true,
   /** `"home"` — same pill as HeroHomeBanner (Get In Touch), no external-link icon */
   ctaStyle = "default",
   heroImage = {
@@ -422,22 +423,23 @@ export default function BizHeroBanner({
                 ) : (
                   <>
                     <span>{ctaText}</span>
-
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="30"
-                      height="30"
-                      fill="none"
-                      viewBox="0 0 30 30"
-                    >
-                      <path
-                        stroke="#fff"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2.25"
-                        d="M20.25 1.125h7.875V9m-1.687-6.187L18 11.25m-3.375-7.875H4.5A3.375 3.375 0 0 0 1.125 6.75v18A3.375 3.375 0 0 0 4.5 28.125h18a3.375 3.375 0 0 0 3.375-3.375V14.625"
-                      />
-                    </svg>
+                    {showCtaIcon ? (
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="30"
+                        height="30"
+                        fill="none"
+                        viewBox="0 0 30 30"
+                      >
+                        <path
+                          stroke="#fff"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2.25"
+                          d="M20.25 1.125h7.875V9m-1.687-6.187L18 11.25m-3.375-7.875H4.5A3.375 3.375 0 0 0 1.125 6.75v18A3.375 3.375 0 0 0 4.5 28.125h18a3.375 3.375 0 0 0 3.375-3.375V14.625"
+                        />
+                      </svg>
+                    ) : null}
                   </>
                 )
               ) : ctaImgSrc ? (

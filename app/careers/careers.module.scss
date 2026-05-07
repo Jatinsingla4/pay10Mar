@@ -49,7 +49,7 @@
 }
 
 .careers_banner_image {
-    width: 100%;
+    width: 60%;
     max-width: 60%;
     // aspect-ratio: 1 / 1;
     // object-fit: contain;
@@ -57,8 +57,8 @@
     height: auto;
 
     @include tab {
-        width: 70%;
-        max-width: 70%;
+        width: 60%;
+        max-width: 60%;
     }
 }
 

@@ -108,6 +108,7 @@ const MerchantAppClient = () => {
         description="Make your business more cost-efficient with a Pay10 Biz Wallet and watch those profit margins grow."
       />
 
+    <section className={Style.section_space}>
       <div className={Style.merchant_feature_circles}>
         <IntegrationTwoLayout
           heading="Take Control of Your Business"
@@ -121,6 +122,7 @@ const MerchantAppClient = () => {
           imageBase={imageBase}
         />
       </div>
+    </section>
 
       <ThreeStepProcess items={section6Items} imageBase={imageBase} />
 

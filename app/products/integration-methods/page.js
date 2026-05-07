@@ -208,12 +208,15 @@ const page = async () => {
                   eyebrow={topSubHeading}
                   title={topHeading}
                   description={topDescription}
-                  ctaHref="https://pay10global.atlassian.net/wiki/external/ZTYxOTg1YjhiNjIyNDYzYjg4ZTFiNmJiYzc5ZDU1OTA"
-                  ctaText="API Integration Docs"
+                  // ctaHref="https://pay10global.atlassian.net/wiki/external/ZTYxOTg1YjhiNjIyNDYzYjg4ZTFiNmJiYzc5ZDU1OTA"
+                  // ctaText="API Integration Docs"
+                  ctaHref="/contact-us"
+                  ctaText="Get In Touch"
+                  showCtaIcon={false}
                   heroImage={null}
                   decorations={integrationMethodsDecorations}
                   className={Style.integrationBannerCustom}
-                />
+                />  
             </section>
 
             <IntegrationSecondSection

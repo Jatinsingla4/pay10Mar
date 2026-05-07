@@ -150,7 +150,7 @@ const OpenFinanceAltareqClient = () => {
           }
           heroImage={heroImage}
           mapImageSrc="/images/temp/adf.png"
-          ctaText="Get the App"
+          ctaText=""
           ctaHref="/products/consumer-app"
         />
       {/* </div> */}

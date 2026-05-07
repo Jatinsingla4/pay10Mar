@@ -511,6 +511,35 @@
   }
 }
 
+// Page-specific opt-in: used by About page to enlarge HTML paragraph tags
+.journey_section.large_description_text {
+  .journey_timeline {
+    .timeline_item {
+      .timeline_content {
+        .timeline_description {
+          font-size: 1.05rem;
+          line-height: 1.65;
+
+          p {
+            font-size: inherit;
+            line-height: inherit;
+            margin: 0 0 0.75rem;
+          }
+
+          p:last-child {
+            margin-bottom: 0;
+          }
+
+          li {
+            font-size: inherit;
+            line-height: inherit;
+          }
+        }
+      }
+    }
+  }
+}
+
 /*---------RESPONSIVE---CODES---SECTION---START--------*/
 
 @media only screen and (max-width: 991px) {

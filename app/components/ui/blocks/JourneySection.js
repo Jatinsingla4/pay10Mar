@@ -13,6 +13,7 @@ const JourneySection = ({
   mode = "journey", // "journey" or "accordion"
   title,
   rightImage, // For accordion mode - fixed image path
+  largeDescriptionText = false,
 }) => {
   const [activeJourneyIndex, setActiveJourneyIndex] = useState(0);
   const [journeySwiper, setJourneySwiper] = useState(null);
@@ -177,7 +178,11 @@ const JourneySection = ({
       : title || (isAccordionMode ? "" : "Our Journey So Far");
 
   return (
-    <div className={`${Style.journey_section} ${isAccordionMode ? Style.accordion_mode : ""}`}>
+    <div
+      className={`${Style.journey_section} ${isAccordionMode ? Style.accordion_mode : ""} ${
+        largeDescriptionText ? Style.large_description_text : ""
+      }`}
+    >
       <div className={Style.wrapper}>
         <div className={Style.journey_container}>
           {/* Left Column - Timeline/Accordion */}

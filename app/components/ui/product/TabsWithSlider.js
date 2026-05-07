@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./TabsWithSlider.module.scss";
 import { Icon } from "@iconify/react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -89,10 +89,24 @@ const TabsWithSlider = ({
   const defaultActiveTab =
     tabData.find((tab) => tab.value === initialTab)?.value || tabData[0]?.value || "server";
   const [activeTab, setActiveTab] = useState(defaultActiveTab);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const handleTabClick = (value) => {
     setActiveTab(value);
   };
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1200px)");
+    const updateDesktopFlag = () => setIsDesktop(mediaQuery.matches);
+
+    updateDesktopFlag();
+    mediaQuery.addEventListener("change", updateDesktopFlag);
+    return () => mediaQuery.removeEventListener("change", updateDesktopFlag);
+  }, []);
+
+  const currentTab = tabData.find((tab) => tab.value === activeTab);
+  const pluginsCount = currentTab?.plugins?.length || 0;
+  const shouldShowArrows = isDesktop ? pluginsCount > 4 : pluginsCount > 1;
 
   const renderTabs = () => (
     <div className={Style.tabRow}>
@@ -116,20 +130,22 @@ const TabsWithSlider = ({
       )}
 
       {/* Navigation Arrows */}
-      <div className={Style.navigationButtons}>
-        <button
-          className={`${Style.navButton} swiper-prev-${activeTab}`}
-          type="button"
-        >
-          <Icon icon="mdi:chevron-left" width={24} height={24} />
-        </button>
-        <button
-          className={`${Style.navButton} swiper-next-${activeTab}`}
-          type="button"
-        >
-          <Icon icon="mdi:chevron-right" width={24} height={24} />
-        </button>
-      </div>
+      {shouldShowArrows ? (
+        <div className={Style.navigationButtons}>
+          <button
+            className={`${Style.navButton} swiper-prev-${activeTab}`}
+            type="button"
+          >
+            <Icon icon="mdi:chevron-left" width={24} height={24} />
+          </button>
+          <button
+            className={`${Style.navButton} swiper-next-${activeTab}`}
+            type="button"
+          >
+            <Icon icon="mdi:chevron-right" width={24} height={24} />
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 
@@ -146,8 +162,8 @@ const TabsWithSlider = ({
           <Swiper
             modules={[Navigation]}
             navigation={{
-              prevEl: `.${navPrev}`,
-              nextEl: `.${navNext}`,
+              prevEl: shouldShowArrows ? `.${navPrev}` : null,
+              nextEl: shouldShowArrows ? `.${navNext}` : null,
             }}
             loop={true}
             slidesPerView={4}
@@ -196,7 +212,6 @@ const TabsWithSlider = ({
     );
   };
 
-  const currentTab = tabData.find((tab) => tab.value === activeTab);
   const headingText = activeTabHeading ? currentTab?.label || heading : heading;
 
   return (
@@ -205,20 +220,22 @@ const TabsWithSlider = ({
         {hideTabs ? (
           <div className={Style.headingRow} data-animation="opacity-up">
             <h2>{headingText}</h2>
-            <div className={Style.navigationButtons}>
-              <button
-                className={`${Style.navButton} swiper-prev-${activeTab}`}
-                type="button"
-              >
-                <Icon icon="mdi:chevron-left" width={24} height={24} />
-              </button>
-              <button
-                className={`${Style.navButton} swiper-next-${activeTab}`}
-                type="button"
-              >
-                <Icon icon="mdi:chevron-right" width={24} height={24} />
-              </button>
-            </div>
+            {shouldShowArrows ? (
+              <div className={Style.navigationButtons}>
+                <button
+                  className={`${Style.navButton} swiper-prev-${activeTab}`}
+                  type="button"
+                >
+                  <Icon icon="mdi:chevron-left" width={24} height={24} />
+                </button>
+                <button
+                  className={`${Style.navButton} swiper-next-${activeTab}`}
+                  type="button"
+                >
+                  <Icon icon="mdi:chevron-right" width={24} height={24} />
+                </button>
+              </div>
+            ) : null}
           </div>
         ) : (
           <div data-animation="opacity-up">

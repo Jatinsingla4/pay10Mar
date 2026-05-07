@@ -58,6 +58,10 @@
     }
   }
 
+  .section_spacing {
+    padding-top: 0;
+  }
+
   .features_content {
     width: 100%;
     @include tab{
@@ -187,7 +191,14 @@
   }
 }
 
-/* Merchant section FAQ: Arabic two-tone line — gray label + coral link — used via class in CMS HTML blob */
+.section_spacing {
+  @include tab {
+    > section {
+      padding-top: 0;
+    }
+  }
+}
+
 .wrapper {
   :global(.altareqArabicFaqNote) {
     direction: rtl;

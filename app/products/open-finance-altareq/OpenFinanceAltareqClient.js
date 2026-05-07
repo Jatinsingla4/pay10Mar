@@ -159,12 +159,14 @@ const OpenFinanceAltareqClient = () => {
         <TwoColLayout item={ALTAREQ_CONNECTED_INTRO} imageBase={imageBase} reverse />
       </section>
 
-      <SimpleLayout
-        items={simpleLayoutItems}
-        imageBase={imageBase}
-        startWithImageLeft={true}
-        useBackgroundCircle={true}
-      />
+      <div className={Style.section_spacing}>
+        <SimpleLayout
+          items={simpleLayoutItems}
+          imageBase={imageBase}
+          startWithImageLeft={true}
+          useBackgroundCircle={true}
+        />
+      </div>
 
       <TextCenterAppCard />
 

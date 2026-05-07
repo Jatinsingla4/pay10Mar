@@ -7,7 +7,7 @@ import useApiAuth from "../components/hooks/useApiAuth";
 import PageLoader from "../components/ui/PageLoader";
 
 // Hardcoded Google Maps embed URL
-const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.797084189831!2d55.270962999999995!3d25.1807808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6978338fd387%3A0xb7eeb833237a2ede!2sUbora%20Office%20Tower!5e1!3m2!1sen!2sin!4v1778067408734!5m2!1sen!2sin";
+const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.6651841438556!2d55.270962999999995!3d25.1807808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6978338fd387%3A0xb7eeb833237a2ede!2sUbora%20Office%20Tower!5e0!3m2!1sen!2sin!4v1778165481176!5m2!1sen!2sin";
 
 const ContactClient = () => {
   const [activeTab, setActiveTab] = useState(null);

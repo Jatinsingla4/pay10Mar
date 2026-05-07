@@ -14,8 +14,8 @@ export default function CertificationHero({
   image,
   imageSrc = '/images/home/circle-bg.jpg',
   imageAlt = 'Cityscape',
-  ctaLabel = 'Get the App',
-  ctaHref = '/',
+  ctaLabel = 'Get in Touch',
+  ctaHref = '/contact-us',
   circleCount = 3,
 }) {
   const resolvedImageSrc = imageSrc || image || '/images/home/circle-bg.jpg';

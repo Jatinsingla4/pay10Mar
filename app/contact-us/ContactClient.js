@@ -133,15 +133,35 @@ const ContactClient = () => {
     if (!mobile || mobile.trim() === "") {
       return "Mobile number is required";
     }
-    // UAE mobile formats:
-    // - Local: 05XXXXXXXX
-    // - Without leading 0: 5XXXXXXXX
-    // - Country code: 9715XXXXXXXX
-    const mobileRegex = /^(?:05\d{8}|5\d{8}|9715\d{8})$/;
+    // Accept standard international digit lengths (E.164 without '+'):
+    // 8 to 15 digits. This keeps UAE numbers valid while allowing other regions.
+    const mobileRegex = /^\d{8,15}$/;
     if (!mobileRegex.test(mobile)) {
-      return "Enter a valid mobile number";
+      return "Enter a valid mobile/phone number";
     }
     return "";
+  };
+
+  const submitContactForm = async (mobileValue) => {
+    const formDataToSend = new FormData();
+    formDataToSend.append("name", formData.name.trim());
+    formDataToSend.append("email", formData.email.trim());
+    formDataToSend.append("mobile", mobileValue.trim());
+    formDataToSend.append("company_name", formData.company_name.trim());
+    formDataToSend.append("message", formData.message.trim());
+    formDataToSend.append("form_type", "Contact");
+
+    const response = await fetch("/api/proxy/form_post", {
+      method: "POST",
+      body: formDataToSend,
+    });
+
+    const contentType = response.headers.get("content-type") || "";
+    const result = contentType.includes("application/json")
+      ? await response.json()
+      : { status: false, message: await response.text() };
+
+    return { response, result };
   };
 
   const validateCompany = (company) => {
@@ -224,33 +244,18 @@ const ContactClient = () => {
     setFormSubmitMessage("");
 
     try {
-      // Create FormData for multipart/form-data
-      const formDataToSend = new FormData();
-      formDataToSend.append("name", formData.name.trim());
-      formDataToSend.append("email", formData.email.trim());
-      formDataToSend.append("mobile", formData.mobile.trim());
-      formDataToSend.append("company_name", formData.company_name.trim());
-      formDataToSend.append("message", formData.message.trim());
-      formDataToSend.append("form_type", "Contact");
+      let { response, result } = await submitContactForm(formData.mobile);
 
-      // Make API call - need to override headers for FormData
-      const apiBaseUrl = '/api/proxy';
-      const url = `${apiBaseUrl}/form_post`;
-
-      const response = await fetch(url, {
-        method: "POST",
-        body: formDataToSend,
-        // Don't set Content-Type, let browser set it with boundary for FormData
-        // X-API-Key removed for security. Added via proxy.
-      });
-
-      if (!response.ok) {
-        throw new Error(`API call failed: ${response.status} ${response.statusText}`);
+      // Fallback for UAE toll-free format if backend rejects 800XXXXX
+      if (
+        !result?.status &&
+        /^800\d{5}$/.test(formData.mobile.trim()) &&
+        (result?.errors?.mobile || "").toLowerCase().includes("invalid mobile")
+      ) {
+        ({ response, result } = await submitContactForm(`971${formData.mobile.trim()}`));
       }
 
-      const result = await response.json();
-
-      if (result?.status) {
+      if (response.ok && result?.status) {
         setFormSubmitStatus("success");
         setFormSubmitMessage(result.message || "Successfully sent");
         // Reset form
@@ -267,15 +272,17 @@ const ContactClient = () => {
         setFormSubmitMessage(
           result?.message || "Failed to submit form. Please try again."
         );
-        // Set field errors if provided
-        if (result?.errors && Array.isArray(result.errors)) {
-          const apiErrors = {};
-          result.errors.forEach((error) => {
-            if (error.field) {
-              apiErrors[error.field] = error.message;
-            }
-          });
-          setFormErrors((prev) => ({ ...prev, ...apiErrors }));
+        // Set field errors if provided (supports array and object formats)
+        if (result?.errors && typeof result.errors === "object") {
+          if (Array.isArray(result.errors)) {
+            const apiErrors = {};
+            result.errors.forEach((error) => {
+              if (error.field) apiErrors[error.field] = error.message;
+            });
+            setFormErrors((prev) => ({ ...prev, ...apiErrors }));
+          } else {
+            setFormErrors((prev) => ({ ...prev, ...result.errors }));
+          }
         }
       }
     } catch (error) {
@@ -525,7 +532,7 @@ const ContactClient = () => {
                       }`}
                       value={formData.mobile}
                       onChange={handleInputChange}
-                      maxLength={12}
+                      maxLength={15}
                       inputMode="numeric"
                     />
                     {formErrors.mobile && (

@@ -6,7 +6,7 @@
   border-radius: 24px;
   overflow: hidden;
   /* Solid fallback if map fails; map + overlay provide the final look */
-  background: #ef1a23;
+  background: var(--primary-gradient);
   color: #ffffff;
   /* Bottom padding so hero phone stays inside clipped radius (see BizHeroBanner pattern) */
   padding: 48px 56px 00px 56px;
@@ -26,30 +26,31 @@
   background-size: cover;
   background-position: center;
   opacity: 1;
-  filter: brightness(1.12) contrast(1.18) saturate(1.05);
+  z-index: 2;
+  // filter: brightness(1.12) contrast(1.18) saturate(1.05);
 }
 
 /** Brand gradient tint on top of the map so copy stays readable but map stays visible */
-.gradientOverlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  /* Lower alpha = stronger map read-through */
-  background: linear-gradient(
-    90deg,
-    rgba(255, 187, 7, 0.52),
-    rgba(239, 26, 35, 0.58)
-  );
+// .gradientOverlay {
+//   position: absolute;
+//   inset: 0;
+//   z-index: 1;
+//   pointer-events: none;
+ 
+//   background: linear-gradient(
+//     90deg,
+//     rgba(255, 187, 7, 0.52),
+//     rgba(239, 26, 35, 0.58)
+//   );
 
-  @include tab {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 187, 7, 0.5),
-      rgba(239, 26, 35, 0.6)
-    );
-  }
-}
+//   @include tab {
+//     background: linear-gradient(
+//       90deg,
+//       rgba(255, 187, 7, 0.5),
+//       rgba(239, 26, 35, 0.6)
+//     );
+//   }
+// }
 
 .layout {
   position: relative;

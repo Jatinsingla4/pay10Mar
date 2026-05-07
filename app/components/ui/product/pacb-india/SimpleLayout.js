@@ -3,7 +3,13 @@ import Style from './SimpleLayout.module.scss'
 import TwoColLayout from './TwoColLayout'
 import ReverseLayout from './ReverseLayout'
 
-const SimpleLayout = ({ items = [], imageBase = "", startWithImageLeft = true, useBackgroundCircle = false }) => {
+const SimpleLayout = ({
+  items = [],
+  imageBase = "",
+  startWithImageLeft = true,
+  useBackgroundCircle = false,
+  copyVariant,
+}) => {
   const wrapperClass = useBackgroundCircle 
     ? `${Style.wrapper} ${Style.wrapperWithBgCircle}`
     : Style.wrapper;
@@ -29,6 +35,7 @@ const SimpleLayout = ({ items = [], imageBase = "", startWithImageLeft = true, u
                     imageBase={imageBase}
                     imageLeft={imageLeft}
                     withCircles={!useBackgroundCircle}
+                    copyVariant={copyVariant}
                   />
                 );
               }
@@ -40,6 +47,7 @@ const SimpleLayout = ({ items = [], imageBase = "", startWithImageLeft = true, u
                   item={item}
                   imageBase={imageBase}
                   reverse={!imageLeft}
+                  copyVariant={copyVariant}
                 />
               );
             })}

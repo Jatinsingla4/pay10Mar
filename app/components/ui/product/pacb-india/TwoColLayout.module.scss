@@ -111,4 +111,89 @@
           }
         }
     }
+
+    /* Consumer app (Pay10 app): 48px / 500 black heading + regular gray body */
+    .right_content_box.right_content_box_consumer {
+        justify-self: start;
+        text-align: left;
+        max-width: 520px;
+
+        h3 {
+            font-family: 'medium';
+            font-size: 48px;
+            font-weight: 500;
+            font-style: normal;
+            color: #000000;
+            line-height: 1.15;
+            margin: 0 0 18px;
+            transition: none;
+
+            @include tab {
+                font-size: 32px;
+                margin-bottom: 14px;
+            }
+
+            @include mobile {
+                font-size: 28px;
+            }
+        }
+
+        p {
+            margin: 0;
+            margin-top: 0;
+            color: var(--gray);
+            font-family: 'regular';
+            font-size: 20px;
+            font-weight: 400;
+            font-style: normal;
+            line-height: 1.55;
+        }
+
+        p + p {
+            margin-top: 12px;
+        }
+
+        ul li,
+        ol li {
+            color: var(--gray);
+            font-family: 'regular';
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.55;
+        }
+
+        /* CMS wrapper: normalize any block inside description column */
+        > div:first-child:not(:only-child) ~ div,
+        > div:only-child {
+            color: var(--gray);
+            font-family: 'regular';
+            font-weight: 400;
+            font-size: 20px;
+            line-height: 1.55;
+
+            p {
+                margin: 0;
+                color: inherit;
+                font-family: inherit;
+                font-weight: 400;
+                font-size: inherit;
+                line-height: inherit;
+
+                strong,
+                b {
+                    font-weight: 600;
+                    color: var(--gray);
+                }
+            }
+
+            p + p {
+                margin-top: 12px;
+            }
+
+            div {
+                font-weight: 400;
+                color: inherit;
+            }
+        }
+    }
 }

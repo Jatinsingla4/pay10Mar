@@ -308,6 +308,8 @@
       @include tab {
         flex-direction: column;
         gap: 1.5rem;
+        align-items: stretch;
+        text-align: left;
       }
     }
 
@@ -318,7 +320,13 @@
       flex: 1;
 
       @include tab {
-        order: 2;
+        order: 1;
+        width: 100%;
+
+        .footer__address {
+          justify-content: flex-start;
+          text-align: left;
+        }
       }
     }
 
@@ -329,10 +337,23 @@
       flex-wrap: wrap;
       justify-content: center;
       @include tab {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.75rem;
-        order: 1;
+        width: 100%;
+        gap: 0.375rem;
+        justify-content: flex-start;
+      }
+
+      &--arabic-links {
+        order: 2;
+        justify-content: flex-end;
+        text-align: right;
+        direction: ltr;
+      }
+
+      &--arabic-address {
+        order: 3;
+        justify-content: flex-end;
+        text-align: right;
+        direction: ltr;
       }
     }
   }
@@ -351,6 +372,15 @@
     display: flex;
     gap: 10px;flex-wrap: wrap;
     justify-content: center;
+
+    &--en {
+      @include tab {
+        order: 4;
+        width: 100%;
+        justify-content: flex-start;
+        text-align: left;
+      }
+    }
   }
 
   &__legal {
@@ -374,10 +404,10 @@
     &-separator {
       color: rgba(255, 255, 255, 0.6);
       font-size: 0.875rem;
-
-      @include tab {
-        display: none;
-      }
     }
+  }
+
+  &__bottom-right--arabic-links &__legal-link {
+    text-align: right;
   }
 }

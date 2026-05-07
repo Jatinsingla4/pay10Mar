@@ -6,7 +6,7 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import styles from "./MapHeroBanner.module.scss";
 
-const DEFAULT_MAP = "/images/temp/adf.png";
+const DEFAULT_MAP = "/images/temp/map.png";
 
 /**
  * Hero banner: same typography / CTA pill language as BizHeroBanner, with a full-bleed
@@ -107,7 +107,7 @@ export default function MapHeroBanner({
           aria-hidden
         />
       ) : null}
-      <div className={styles.gradientOverlay} aria-hidden />
+      {/* <div className={styles.gradientOverlay} aria-hidden /> */}
 
       <div className={styles.layout}>
         <div className={styles.copy}>

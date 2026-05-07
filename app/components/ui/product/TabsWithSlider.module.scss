@@ -19,6 +19,20 @@
     }
 }
 
+.headingRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 32px;
+
+    h2 {
+        margin-bottom: 0;
+        text-align: center;
+        flex: 1;
+        margin-left: 104px;
+    }
+}
+
 .tabRow {
     display: flex;
     gap: 12px;
@@ -136,6 +150,27 @@
     }
 }
 
+.pluginCardCompact {
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    height: auto;
+    min-height: 140px;
+    padding: 12px 8px;
+    gap: 12px;
+
+    img {
+        width: 120px;
+        height: 100px;
+        object-fit: contain;
+    }
+
+    p {
+        font-size: 20px;
+        line-height: 1.15;
+    }
+}
+
 .pluginLink {
     display: flex;
     flex-direction: column;
@@ -202,5 +237,12 @@
 
     .navigationButtons {
         display: none;
+    }
+
+    .headingRow {
+        h2 {
+            margin-left: 0;
+            text-align: left;
+        }
     }
 }

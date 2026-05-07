@@ -376,7 +376,7 @@ const ContactClient = () => {
         <div className={Style.wrapper}>
           <div className={Style.contact_banner_headings}>
             <h5 data-animation="opacity-up">{topSubHeading}</h5>
-            <h2 data-animation="opacity-up">{topHeading}</h2>
+            <h1 data-animation="opacity-up">{topHeading}</h1>
           </div>
         </div>
         {tabs.length > 0 && (
@@ -462,7 +462,7 @@ const ContactClient = () => {
           <div className={Style.contact_form_section} data-animation="opacity-up">
             <div className={Style.contact_form_background}></div>
             <div className={Style.contact_form_container}>
-              <h2 className={Style.contact_form_title} data-animation="opacity-up">Send Us a Message</h2>
+              <h2 className={Style.contact_form_title} data-animation="opacity-up">Reach out to our sales team</h2>
               <form className={Style.contact_form} onSubmit={handleSubmit}>
                 {/* Success/Error Message */}
                 {formSubmitStatus && (

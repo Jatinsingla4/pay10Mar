@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./TwoColLayout.module.scss";
 import Image from "next/image";
 
-const TwoColLayout = ({ item = null, imageBase = "", reverse = false }) => {
+const TwoColLayout = ({ item = null, imageBase = "", reverse = false, copyVariant }) => {
   const title = item?.Title || "";
   const rawImage = item?.Image || "";
   const imageSrc =
@@ -27,8 +27,12 @@ const TwoColLayout = ({ item = null, imageBase = "", reverse = false }) => {
     </div>
   );
 
+  const consumerCopy = copyVariant === "consumer";
+
   const contentEl = (
-    <div className={Style.right_content_box}>
+    <div
+      className={`${Style.right_content_box} ${consumerCopy ? Style.right_content_box_consumer : ""}`}
+    >
       {title ? (
         <div data-animation="opacity-up">
           <h3>{title}</h3>

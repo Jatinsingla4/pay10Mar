@@ -177,7 +177,7 @@ export default function HomeClient() {
         backgroundImage={section6Background || undefined}
         features={section6Features}
       />
-      <CertificationHero image={section7Image} />
+      <CertificationHero imageSrc={section7Image} />
       <CertificationLicensing
         heading={section8.heading}
         centralBankImage={section8Image}

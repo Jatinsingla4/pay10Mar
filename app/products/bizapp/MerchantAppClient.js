@@ -130,14 +130,17 @@ const MerchantAppClient = () => {
         playHref="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
       />
 
-      <BannerBreaker
-        title={<>PAYMENTS MADE<br />EASY, FAST AND SECURE</>}
-        description={section5Description}
-        backgroundDesktop={section5Image}
-        backgroundMobile={section5Image}
-        logo={false}
-        showCta={false}
-      />
+      <div className={Style.section5BannerWrap}>
+        <BannerBreaker
+          title={section5.heading}
+          description={section5Description}
+          backgroundDesktop={section5Image}
+          backgroundMobile={section5Image}
+          classN={Style.section5BannerInner}
+          logo={false}
+          showCta={false}
+        />
+      </div>
 
     </main>
   );

@@ -19,6 +19,7 @@ import MeetBoardMembersSection from "../components/ui/about/MeetBoardMembersSect
 import UaeAdvisorSection from "../components/ui/about/UaeAdvisorSection";
 import AboutTeamMember from "../components/ui/about/AboutTeamMember";
 import PageLoader from "../components/ui/PageLoader";
+import { cmsImageSrc } from "../lib/cmsImageSrc";
 
 const AboutClient = () => {
   const [aboutData, setAboutData] = useState(null);
@@ -65,7 +66,10 @@ const AboutClient = () => {
   const section3 = aboutData?.custom_data?.section3 || {};
   const section4 = aboutData?.custom_data?.section4 || {};
   const section5 = aboutData?.custom_data?.section5 || {};
-  const section6 = aboutData?.custom_data?.section6 || {};
+  const section6 =
+    aboutData?.custom_data?.section6 ||
+    aboutData?.custom_data?.Section6 ||
+    {};
   const section7 = aboutData?.custom_data?.section7 || {};
   const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
   const section2Image = section2.image ? `${imageBase}${section2.image}` : undefined;
@@ -79,7 +83,6 @@ const AboutClient = () => {
   const section3Heading = section3.heading || undefined;
   const section5Heading = section5.heading || undefined;
   const section4Heading = section4.heading || undefined;
-  const section6Heading = section6.heading || undefined;
   const section7Heading = section7.heading || undefined;
 
   // Default gridArea values for boxes (maintains layout structure)
@@ -199,76 +202,84 @@ const AboutClient = () => {
   // Default fallback journey data
   const defaultJourneyData = [
     {
-      year: "2017",
-      title: "The Beginning",
-      description:
-        "Founded in India, Pay10 focused on delivering secure online payment solutions for businesses.",
-      image: "/images/about_images/board_members/board_member1.jpg",
-    },
-    {
-      year: "2018",
-      title: "Going Live",
-      description:
-        "Launched its initial suite of products, empowering businesses with integrated digital payment solutions.",
-      image: "/images/about_images/team/team_member1.png",
-    },
-    {
-      year: "2019",
-      title: "Enterprise Partnerships",
-      description:
-        "Collaborated with high-profile enterprise clients, including Indian Railways and ICICI Lombard, solidifying its industry reputation.",
-      image: "/images/about_images/board_members/board_member1.jpg",
-    },
-    {
-      year: "2020",
-      title: "100+ Payment Options",
-      description:
-        "Expanded to offer over 100 payment options, along with payouts and automated settlement features.",
-      image: "/images/about_images/team/team_member1.png",
-    },
-    {
-      year: "2021",
-      title: "Enhanced Solutions",
-      description:
-        "Enhanced its value proposition by introducing mPOS and multiple payment modes.",
-      image: "/images/about_images/board_members/board_member1.jpg",
-    },
-    {
       year: "2023",
-      title: "Global Expansion",
       description:
         "Opened a new headquarters in Dubai, UAE, marking the beginning of its global expansion.",
       image: "/images/about_images/team/team_member1.png",
     },
     {
       year: "2024",
-      title: "Regulatory Milestones",
       description:
         "Innovated with digital wallet solutions focusing on domestic payment schemes and local methods. Additionally, received full regulatory licenses from the Central Bank of the UAE and a Payment Aggregator Cross Border license from the Reserve Bank of India.",
       image: "/images/about_images/board_members/board_member1.jpg",
     },
     {
       year: "2025",
-      title: "Continuing Growth",
       description:
-        "Continued to expand its suite of digital payment products across key markets in the Middle East, Africa, Asia, and Europe.",
+        "<p>Pay10 UAE received approval as the country's first licensed Third-Party Provider (TPP) under the Central Bank of the UAE's (CBUAE) Open Finance framework.</p><br /><p>In August 2025, Pay10 successfully performed the first ever live transaction on CBUAE's Open Finance Platform.</p>",
       image: "/images/about_images/team/team_member1.png",
+    },
+    {
+      year: "2026",
+      description:
+        "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4) – Cross Border Remittances",
+      image: "/images/about_images/board_members/board_member1.jpg",
     },
   ];
 
-  // Transform API data into journeyData format
-  const journeyData = Array.isArray(section6.journey_list) && section6.journey_list.length > 0
-    ? section6.journey_list.map((item) => {
-        const imageUrl = item.Image ? `${imageBase}${item.Image}` : '/images/about_images/board_members/board_member1.jpg';
+  const pickCmsJourneyList = () => {
+    const fromKey = (...keys) => {
+      for (const k of keys) {
+        const arr = section6[k];
+        if (Array.isArray(arr) && arr.length > 0) return arr;
+      }
+      return null;
+    };
 
-        return {
-          year: item.Year || '',
-          title: item.Name || undefined,
-          description: item.Description || '',
-          image: imageUrl,
-        };
-      })
-    : [];
+    let list =
+      fromKey('journey_list', 'journey_List', 'Journey_List') ||
+      fromKey('journeys');
+
+    if (!list && Array.isArray(section6.list) && section6.list.length > 0) {
+      const sample = section6.list[0];
+      const looksLikeJourney =
+        sample &&
+        (sample.Image != null ||
+          sample.image != null ||
+          sample.Year != null ||
+          sample.Name != null);
+      if (looksLikeJourney) list = section6.list;
+    }
+
+    return list || [];
+  };
+
+  const cmsJourneyList = pickCmsJourneyList();
+
+  const pickCmsJourneyImage = (cmsItem) => {
+    if (!cmsItem) return null;
+    const raw =
+      cmsItem.Image ??
+      cmsItem.image ??
+      cmsItem.section?.Image ??
+      cmsItem.section?.image ??
+      cmsItem.section?.img ??
+      cmsItem.img;
+    return raw != null && String(raw).trim() !== '' ? raw : null;
+  };
+
+  // About page: default year + description copy; images from CMS when present (no milestone titles).
+  const journeyData = defaultJourneyData.map((def, index) => {
+    const cmsItem = cmsJourneyList[index];
+    const rawImage = pickCmsJourneyImage(cmsItem);
+    const imageUrl = rawImage ? cmsImageSrc(rawImage, imageBase) : null;
+
+    return {
+      year: def.year,
+      description: def.description,
+      image: imageUrl || def.image,
+    };
+  });
 
   // const boardMembers = [
   //   {
@@ -440,7 +451,7 @@ const AboutClient = () => {
           </div>
 
           {/* Our Journey So Far Section */}
-          <JourneySection journeyData={journeyData} title={section6Heading} />
+          <JourneySection journeyData={journeyData} title={false} />
         </section>
       </div>
     </main>

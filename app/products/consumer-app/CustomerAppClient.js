@@ -82,6 +82,7 @@ const CustomerAppClient = () => {
         imageBase={imageBase}
         startWithImageLeft={false}
         useBackgroundCircle={true}
+        copyVariant="consumer"
       />
 
       <TextCenterAppCard />

@@ -8,7 +8,13 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ReverseLayout = ({ item = null, imageBase = "", imageLeft = false, withCircles = true }) => {
+const ReverseLayout = ({
+  item = null,
+  imageBase = "",
+  imageLeft = false,
+  withCircles = true,
+  copyVariant,
+}) => {
   const rootRef = useRef(null);
   const circlesRef = useRef([]);
 
@@ -67,8 +73,12 @@ const ReverseLayout = ({ item = null, imageBase = "", imageLeft = false, withCir
         : "";
   const descriptionHtml = item?.Description || "";
 
+  const consumerCopy = copyVariant === "consumer";
+
   const contentEl = (
-    <div className={Style.left_grid_box}>
+    <div
+      className={`${Style.left_grid_box} ${consumerCopy ? Style.left_grid_box_consumer : ""}`}
+    >
       {title ? (
         <div data-animation="opacity-up">
           <h3>{title}</h3>

@@ -11,12 +11,14 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function CertificationHero({
   text = 'Certified with best-in-class industry Standards of Compliance ',
+  image,
   imageSrc = '/images/home/circle-bg.jpg',
   imageAlt = 'Cityscape',
   ctaLabel = 'Get the App',
   ctaHref = '/',
   circleCount = 3,
 }) {
+  const resolvedImageSrc = imageSrc || image || '/images/home/circle-bg.jpg';
   const rootRef = useRef(null);
   const circlesRef = useRef([]);
   const imageContainerRef = useRef(null);
@@ -282,7 +284,7 @@ export default function CertificationHero({
       {/* Central circular image */}
       <div ref={imageContainerRef} className={styles.imageContainer}>
         <Image
-          src={imageSrc}
+          src={resolvedImageSrc}
           alt={imageAlt}
           width={600}
           height={600}

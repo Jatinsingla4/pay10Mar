@@ -243,10 +243,19 @@ const page = async () => {
               img={thirdSection.img}
             />
 
-            <TabsWithSlider
+            {/* <TabsWithSlider
               heading={pluginsHeading}
               section4={section4}
               imageBase={imageBase}
+            /> */}
+
+            <TabsWithSlider
+              heading="Server Integrations"
+              section4={section4}
+              imageBase={imageBase}
+              initialTab="server"
+              hideTabs={true}
+              compactCards={true}
             />
           </div>
 

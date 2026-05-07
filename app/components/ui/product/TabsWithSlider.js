@@ -60,6 +60,10 @@ const TabsWithSlider = ({
   heading = "Pay10 Plugins",
   section4,
   imageBase = "",
+  initialTab = "server",
+  hideTabs = false,
+  activeTabHeading = false,
+  compactCards = false,
 }) => {
   const apiTabs = section4
     ? [
@@ -82,7 +86,9 @@ const TabsWithSlider = ({
     : [];
 
   const tabData = apiTabs.length ? apiTabs : defaultTabData;
-  const [activeTab, setActiveTab] = useState(tabData[0]?.value || "server");
+  const defaultActiveTab =
+    tabData.find((tab) => tab.value === initialTab)?.value || tabData[0]?.value || "server";
+  const [activeTab, setActiveTab] = useState(defaultActiveTab);
 
   const handleTabClick = (value) => {
     setActiveTab(value);
@@ -90,20 +96,24 @@ const TabsWithSlider = ({
 
   const renderTabs = () => (
     <div className={Style.tabRow}>
-      <div className={Style.tabButtons}>
-        {tabData.map((tab) => (
-          <button
-            key={tab.value}
-            className={`${Style.tabButton} ${
-              activeTab === tab.value ? Style.activeTabButton : ""
-            }`}
-            onClick={() => handleTabClick(tab.value)}
-            type="button"
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+      {!hideTabs ? (
+        <div className={Style.tabButtons}>
+          {tabData.map((tab) => (
+            <button
+              key={tab.value}
+              className={`${Style.tabButton} ${
+                activeTab === tab.value ? Style.activeTabButton : ""
+              }`}
+              onClick={() => handleTabClick(tab.value)}
+              type="button"
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+      ) : (
+        <div />
+      )}
 
       {/* Navigation Arrows */}
       <div className={Style.navigationButtons}>
@@ -139,6 +149,7 @@ const TabsWithSlider = ({
               prevEl: `.${navPrev}`,
               nextEl: `.${navNext}`,
             }}
+            loop={true}
             slidesPerView={4}
             spaceBetween={24}
             breakpoints={{
@@ -156,9 +167,10 @@ const TabsWithSlider = ({
               },
             }}
           >
+     
             {currentTab.plugins.map((plugin, i) => (
               <SwiperSlide key={i}>
-                <div className={Style.pluginCard}>
+                <div className={`${Style.pluginCard} ${compactCards ? Style.pluginCardCompact : ""}`}>
                   {plugin.href ? (
                     <a
                       href={plugin.href}
@@ -184,14 +196,37 @@ const TabsWithSlider = ({
     );
   };
 
+  const currentTab = tabData.find((tab) => tab.value === activeTab);
+  const headingText = activeTabHeading ? currentTab?.label || heading : heading;
+
   return (
     <div className={Style.plugins_main}>
       <div className={Style.plugins_container_box}>
+        {hideTabs ? (
+          <div className={Style.headingRow} data-animation="opacity-up">
+            <h2>{headingText}</h2>
+            <div className={Style.navigationButtons}>
+              <button
+                className={`${Style.navButton} swiper-prev-${activeTab}`}
+                type="button"
+              >
+                <Icon icon="mdi:chevron-left" width={24} height={24} />
+              </button>
+              <button
+                className={`${Style.navButton} swiper-next-${activeTab}`}
+                type="button"
+              >
+                <Icon icon="mdi:chevron-right" width={24} height={24} />
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div data-animation="opacity-up">
+            <h2>{headingText}</h2>
+          </div>
+        )}
         <div data-animation="opacity-up">
-            <h2>{heading}</h2>
-        </div>
-        <div data-animation="opacity-up">
-            {renderTabs()}
+            {hideTabs ? null : renderTabs()}
         </div>
         <div data-animation="opacity-up">
             {renderSwiper()}

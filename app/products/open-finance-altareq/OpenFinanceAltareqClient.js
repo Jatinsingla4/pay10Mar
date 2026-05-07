@@ -22,8 +22,9 @@ const ALTAREQ_CONNECTED_INTRO = {
 };
 
 /** Hardcoded until CMS `custom_data.section2.list` is wired (Title, Image, Description; optional ImageOnLeft overrides row alternation). */
-const ALTAREQ_FAQ_LINK = "#";
-const ALTAREQ_LINK_STYLE = "color:#d9586a;font-weight:600;text-decoration:none;";
+/** Matches design: English link + Arabic FAQ line accent (see .altareqArabicFaqLink). */
+const ALTAREQ_LINK_COLOR = "#b03050";
+const ALTAREQ_LINK_STYLE = `color:${ALTAREQ_LINK_COLOR};font-weight:600;text-decoration:none;`;
 
 const OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS = [
   {
@@ -58,7 +59,7 @@ const OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS = [
     Title: "You're in control, always",
     Image: "/images/temp/a4.png",
     Description: `
-<p>Set your payment limits, frequency, and the duration of your account permission with full transparency. Your account. Your control. Manage all your accounts in one app, download Pay10 now.</p>
+<p>Set your payment limits, frequency, and the duration of your account permission with full transparency.<br />Your account. Your control. Manage all your accounts in one app, download Pay10 now.</p>
 `.trim(),
   },
   {
@@ -74,8 +75,11 @@ const OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS = [
     Description: `
 <p>AlTareq and Pay10's Merchant Payment Acceptance Solution enables you to offer a new real-time payment method in the UAE.</p>
 <p>Your customers can pay instantly and securely using their bank accounts powered by AlTareq.</p>
-<p>For More Information: <a href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-English.pdf" style="${ALTAREQ_LINK_STYLE}">Nebras Open Finance FAQ</a></p>
-<p dir="rtl" style="text-align:right;margin-top:16px;"><a href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-Arabic.pdf" style="${ALTAREQ_LINK_STYLE}">للمزيد من المعلومات الأسئلة الشائعة حول التمويل المفتوح من نبراس</a></p>
+<p>For More Information: <a href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-English.pdf" target="_blank" style="${ALTAREQ_LINK_STYLE}">Nebras Open Finance FAQ</a></p>
+<p dir="rtl" lang="ar" class="altareqArabicFaqNote">
+  <span class="altareqArabicFaqGray">للمزيد من المعلومات</span><br />
+  <a class="altareqArabicFaqLink" href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-Arabic.pdf" target="_blank">الأسئلة الشائعة حول التمويل المفتوح من نبراس</a>
+</p>
 `.trim(),
   },
 ];

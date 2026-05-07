@@ -51,6 +51,19 @@
   }
 }
 
+.section5BannerWrap {
+  margin-bottom: 80px;
+}
+
+.section5BannerInner {
+  > h2 {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+}
+
 .business_edge_section {
   width: 100%;
   display: grid;

@@ -171,7 +171,10 @@ const JourneySection = ({
     }
   };
 
-  const displayTitle = title || (isAccordionMode ? "" : "Our Journey So Far");
+  const displayTitle =
+    title === false
+      ? ""
+      : title || (isAccordionMode ? "" : "Our Journey So Far");
 
   return (
     <div className={`${Style.journey_section} ${isAccordionMode ? Style.accordion_mode : ""}`}>
@@ -215,10 +218,16 @@ const JourneySection = ({
                           {item.title}
                         </div>
                       )}
-                      <div
-                        className={Style.timeline_description}
-                        dangerouslySetInnerHTML={{ __html: item.description }}
-                      />
+                      {typeof item.description === "string" ? (
+                        <div
+                          className={Style.timeline_description}
+                          dangerouslySetInnerHTML={{ __html: item.description }}
+                        />
+                      ) : (
+                        <div className={Style.timeline_description}>
+                          {item.description}
+                        </div>
+                      )}
                     </div>
                   </div>
                 ))}

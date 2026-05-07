@@ -10,7 +10,7 @@ import '@/styles/components/_footer.scss'
 // Footer data structure - can be easily replaced with API data
 const footerData = {
   logo: {
-    src: 'images/common/logo.png',
+    src: 'images/common/logo.svg',
     alt: 'Pay10',
     href: '/',
   },
@@ -31,7 +31,7 @@ const footerData = {
       label: 'Products',
       items: [
         {
-          label: 'Prepaid Payment Instruments',
+          label: 'Digital Wallet',
           subItems: [
             { label: 'Consumer App', href: '/products/consumer-app' },
             { label: 'Open Finance Al Tareq', href: '/products/open-finance-altareq' },
@@ -421,7 +421,7 @@ const Footer = () => {
         {/* Logo */}
         <div className="footer__logo">
           <Link href={footerData.logo.href}>
-            <Image className="footer__logo-img" width={98} height={61} src="/images/common/logo.svg" alt="" />
+            <Image className="footer__logo-img" width={98} height={61} src="/images/common/logo.png" alt="" />
           </Link>
         </div>
 
@@ -449,7 +449,7 @@ const Footer = () => {
           <div className="footer__bottom-left">
             <div className="footer__address">
               <Link href={footerData.legal.terms} className="footer__legal-link">
-                Terms & Conditions
+                Terms Of Service
               </Link>
               <span className="footer__legal-separator">|</span>
               <Link href={footerData.legal.privacy} className="footer__legal-link">
@@ -474,11 +474,8 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="footer__address">
-              © PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates
-            </div>
           {/* Legal Links */}
-          <div className="footer__bottom-right">
+          <div className="footer__bottom-right footer__bottom-right--arabic-links">
             <Link href={footerData.legal.terms} className="footer__legal-link">
               شروط الخدمات
             </Link>
@@ -503,10 +500,13 @@ const Footer = () => {
               للشركات Pay10 BizzApp الأسئلة الشائعة تطبيق
             </Link>
           </div>
-          <div className="footer__bottom-right">
-            © PAY10
-            |
-            مكتب 1004، الدور 10 , برج أوبورا للأعمال، الخليج التجاري - دبي، الإمارات العربية المتحدة
+          <div className="footer__bottom-right footer__bottom-right--arabic-address">
+            <span>© PAY10</span>
+            <span>|</span>
+            <span>مكتب 1004، الدور 10 , برج أوبورا للأعمال، الخليج التجاري - دبي، الإمارات العربية المتحدة</span>
+          </div>
+          <div className="footer__address footer__address--en">
+            © PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates
           </div>
         </div>
       </div>

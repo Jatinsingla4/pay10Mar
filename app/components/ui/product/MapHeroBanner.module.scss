@@ -30,6 +30,35 @@
   // filter: brightness(1.12) contrast(1.18) saturate(1.05);
 }
 
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.circleDecoration {
+  position: absolute;
+  top: var(--top-desktop);
+  left: var(--left-desktop);
+  right: var(--right-desktop);
+  bottom: var(--bottom-desktop);
+  width: var(--width);
+  height: var(--height);
+  translate: -50% -50%;
+  border-radius: 999px;
+  border: var(--stroke, 2px) solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  opacity: var(--opacity, 0.22);
+
+  @include tab {
+    top: var(--top-mobile, var(--top-desktop));
+    left: var(--left-mobile, var(--left-desktop));
+    right: var(--right-mobile, var(--right-desktop));
+    bottom: var(--bottom-mobile, var(--bottom-desktop));
+  }
+}
+
 /** Brand gradient tint on top of the map so copy stays readable but map stays visible */
 // .gradientOverlay {
 //   position: absolute;

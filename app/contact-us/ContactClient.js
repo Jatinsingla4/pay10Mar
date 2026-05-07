@@ -300,7 +300,7 @@ const ContactClient = () => {
     const emailFields = [
       { label: "Email Address", value: office.Email },
       { label: "Merchant Support", value: office.Email1 || office.email1 },
-      { label: "Support Email", value: office.Email2 || office.email2 },
+      { label: "Merchant Support", value: office.Email2 || office.email2 },
     ];
 
     return emailFields.filter((item) => item.value && String(item.value).trim());

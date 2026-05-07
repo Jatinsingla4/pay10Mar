@@ -273,6 +273,7 @@ const Header = () => {
         const isOpen = openDropdowns[link.label] || hoveredItem === link.label
         const isActive = isActivePath(link.href)
         const isProductsMega = link.type === 'productsMega'
+        const dropdownActiveClass = isActive && !isProductsMega ? 'is-active' : ''
         const productsGroups = navigationData.productsMega?.groups ?? []
         const activeGroup =
           productsGroups.find((g) => g.id === activeProductsGroupId) ?? productsGroups[0]
@@ -288,7 +289,7 @@ const Header = () => {
             {link.hasDropdown ? (
               <>
                 <button
-                  className={`header__nav-link header__nav-link--dropdown ${isOpen ? 'is-open' : ''}`}
+                  className={`header__nav-link header__nav-link--dropdown ${isOpen ? 'is-open' : ''} ${dropdownActiveClass}`}
                   onClick={() => (isMobile || isTablet ? toggleDropdown(link.label) : null)}
                   onFocus={() => handleMouseEnter(link.label)}
                   aria-expanded={isOpen}

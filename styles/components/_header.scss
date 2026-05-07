@@ -164,6 +164,15 @@
         }
 
         @include tab {
+          &.is-active {
+            background: var(--primary-gradient);
+            color: var(--white);
+
+            .header__nav-chevron {
+              color: var(--white);
+            }
+          }
+
           &.is-open {
             background: var(--primary-gradient);
             color: var(--white);
@@ -426,6 +435,17 @@
         color: var(--black);
         font-family: 'medium', sans-serif;
         font-size: 20px;
+      }
+
+      @include tab {
+        &.is-active {
+          background: var(--primary-gradient);
+          color: var(--white);
+
+          .header__products-mobile-item-icon img {
+            filter: brightness(0) invert(1);
+          }
+        }
       }
     }
 

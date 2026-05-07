@@ -188,30 +188,32 @@
 }
 
 /* Merchant section FAQ: Arabic two-tone line — gray label + coral link — used via class in CMS HTML blob */
-:global(.altareqArabicFaqNote) {
-  direction: rtl;
-  text-align: right;
-  margin-top: 16px;
-  margin-bottom: 0;
-  font-family: 'regular', sans-serif;
-  font-size: 20px;
-  line-height: 1.55;
-  font-weight: 400;
-}
+.wrapper {
+  :global(.altareqArabicFaqNote) {
+    direction: rtl;
+    text-align: right;
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-family: 'regular', sans-serif;
+    font-size: 20px;
+    line-height: 1.55;
+    font-weight: 400;
+  }
 
-:global(.altareqArabicFaqGray) {
-  display: inline-block;
-  color: var(--gray);
-}
+  :global(.altareqArabicFaqGray) {
+    display: inline-block;
+    color: var(--gray);
+  }
 
-:global(.altareqArabicFaqLink) {
-  display: inline-block;
-  margin-top: 4px;
-  color: #b03050;
-  font-weight: 600;
-  text-decoration: none;
+  :global(.altareqArabicFaqLink) {
+    display: inline-block;
+    margin-top: 4px;
+    color: #b03050;
+    font-weight: 600;
+    text-decoration: none;
 
-  &:hover {
-    text-decoration: underline;
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

@@ -78,7 +78,7 @@ const OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS = [
 <p>For More Information: <a href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-English.pdf" target="_blank" style="${ALTAREQ_LINK_STYLE}">Nebras Open Finance FAQ</a></p>
 <p dir="rtl" lang="ar" class="altareqArabicFaqNote">
   <span class="altareqArabicFaqGray">للمزيد من المعلومات</span><br />
-  <a class="altareqArabicFaqLink" href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-Arabic.pdf" target="_blank">الأسئلة الشائعة حول التمويل المفتوح من نبراس</a>
+  <a class="altareqArabicFaqLink" href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-Arabic.pdf" target="_blank" style="${ALTAREQ_LINK_STYLE}">الأسئلة الشائعة حول التمويل المفتوح من نبراس</a>
 </p>
 `.trim(),
   },

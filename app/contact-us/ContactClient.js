@@ -133,9 +133,13 @@ const ContactClient = () => {
     if (!mobile || mobile.trim() === "") {
       return "Mobile number is required";
     }
-    const mobileRegex = /^\d{10}$/;
+    // UAE mobile formats:
+    // - Local: 05XXXXXXXX
+    // - Without leading 0: 5XXXXXXXX
+    // - Country code: 9715XXXXXXXX
+    const mobileRegex = /^(?:05\d{8}|5\d{8}|9715\d{8})$/;
     if (!mobileRegex.test(mobile)) {
-      return "Mobile number must be exactly 10 digits";
+      return "Enter a valid mobile number";
     }
     return "";
   };
@@ -515,13 +519,14 @@ const ContactClient = () => {
                     <input
                       type="tel"
                       name="mobile"
-                      placeholder="Mobile Number (10 digits) *"
+                      placeholder="Mobile Number *"
                       className={`${Style.form_input} ${
                         formErrors.mobile ? Style.form_input_error : ""
                       }`}
                       value={formData.mobile}
                       onChange={handleInputChange}
-                      maxLength={10}
+                      maxLength={12}
+                      inputMode="numeric"
                     />
                     {formErrors.mobile && (
                       <span className={Style.form_error}>{formErrors.mobile}</span>

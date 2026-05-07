@@ -22,7 +22,7 @@ const scrollToBlock = (id) => {
 };
 
 /**
- * KFS Biz App — `/page/kfs-biz-app` only (no hardcoded copy).
+ * KFS Merchant App — `/page/kfs-biz-app` only (no hardcoded copy).
  */
 const KfsBizAppClient = () => {
   const { makeApiCall } = useApiAuth();

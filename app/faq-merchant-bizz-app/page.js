@@ -10,9 +10,9 @@ const site =
 
 /** @type {import("next").Metadata} */
 const staticMeta = {
-  title: "FAQ Merchant Bizz App | Pay10",
+  title: "FAQ Merchant App | Pay10",
   description:
-    "FAQ for Pay10 Biz App — merchant onboarding, UAEPASS, security, settlement, fees, support, and usage guidance.",
+    "FAQ for Pay10 Merchant App — merchant onboarding, UAEPASS, security, settlement, fees, support, and usage guidance.",
   robots: stagingRobots,
   ...(site ? { alternates: { canonical: `${site}/faq-merchant-bizz-app` } } : {}),
 };

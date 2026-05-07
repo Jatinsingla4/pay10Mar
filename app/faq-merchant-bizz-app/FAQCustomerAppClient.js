@@ -18,7 +18,7 @@ const scrollToSection = (sectionId) => {
 };
 
 /**
- * FAQ Merchant Bizz App — data only from `/page/faq-pay10-biz-app` (no local fallback).
+ * FAQ Merchant App — data only from `/page/faq-pay10-biz-app` (no local fallback).
  */
 const FAQCustomerAppClient = () => {
   const { makeApiCall } = useApiAuth();

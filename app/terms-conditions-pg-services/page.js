@@ -1,5 +1,5 @@
 import React from "react";
-import Style from "../terms-and-conditions/terms_and_conditions.module.scss";
+import Style from "../terms-of-services/terms_and_conditions.module.scss";
 
 const contentHtml = `
   <h3>TERMS AND CONDITIONS</h3>

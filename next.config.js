@@ -126,7 +126,7 @@ const nextConfig = {
       },
       {
         source: '/terms-and-conditions.php',
-        destination: '/terms-and-conditions',
+        destination: '/terms-of-services',
         permanent: true,
       },
       {

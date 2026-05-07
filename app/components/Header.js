@@ -34,7 +34,7 @@ const navigationData = {
           },
           {
             label: 'Merchant App',
-            href: '/products/bizapp',
+            href: '/products/merchant-app',
             icon: '/images/header/pay-10-biz.svg',
           },
         ],

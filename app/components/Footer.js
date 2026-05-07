@@ -35,7 +35,7 @@ const footerData = {
           subItems: [
             { label: 'Consumer App', href: '/products/consumer-app' },
             { label: 'Open Finance Al Tareq', href: '/products/open-finance-altareq' },
-            { label: 'Merchant App', href: '/products/bizapp' },
+            { label: 'Merchant App', href: '/products/merchant-app' },
           ],
         },
         {
@@ -79,7 +79,7 @@ const footerData = {
   // },
   address: '© PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates',
   legal: {
-    terms: '/terms-and-conditions',
+    terms: '/terms-of-services',
     privacy: '/privacy-policy',
     grievances: '/customer-grievances-policy',
     kfsBiz: '/kfs-biz-app',
@@ -448,12 +448,12 @@ const Footer = () => {
           {/* Copyright & Address */}
           <div className="footer__bottom-left">
             <div className="footer__address">
-              <Link href={footerData.legal.terms} className="footer__legal-link">
-                Terms Of Service
-              </Link>
-              <span className="footer__legal-separator">|</span>
               <Link href={footerData.legal.privacy} className="footer__legal-link">
                 Privacy Policy
+              </Link>
+              <span className="footer__legal-separator">|</span>
+              <Link href={footerData.legal.terms} className="footer__legal-link">
+                Terms Of Service
               </Link>
               <span className="footer__legal-separator">|</span>
               <Link href={footerData.legal.kfsBiz} className="footer__legal-link">
@@ -470,22 +470,22 @@ const Footer = () => {
               </Link>
               <span className="footer__legal-separator">|</span>
               <Link href={footerData.legal.faqMerchant} className="footer__legal-link">
-                FAQ Pay10 Merchant Biz App
+                FAQ Pay10 Merchant App
               </Link>
             </div>
           </div>
           {/* Legal Links */}
           <div className="footer__bottom-right footer__bottom-right--arabic-links">
-            <Link href={footerData.legal.terms} className="footer__legal-link">
-              شروط الخدمات
-            </Link>
-            <span className="footer__legal-separator">|</span>
             <Link href={footerData.legal.privacy} className="footer__legal-link">
               سياسة الخصوصية
             </Link>
             <span className="footer__legal-separator">|</span>
+            <Link href={footerData.legal.terms} className="footer__legal-link">
+              شروط الخدمات
+            </Link>
+            <span className="footer__legal-separator">|</span>
             <Link href={footerData.legal.kfsBiz} className="footer__legal-link">
-              للشركات Pay10 BizzApp بيان الحقائق الرئيسية  تطبيق
+              للشركات Pay10 Merchant App بيان الحقائق الرئيسية  تطبيق
             </Link>
             <span className="footer__legal-separator">|</span>
             <Link href={footerData.legal.kfsCustomer} className="footer__legal-link">
@@ -497,7 +497,7 @@ const Footer = () => {
             </Link>
             <span className="footer__legal-separator">|</span>
             <Link href={footerData.legal.faqMerchant} className="footer__legal-link">
-              للشركات Pay10 BizzApp الأسئلة الشائعة تطبيق
+              للشركات Pay10 Merchant App الأسئلة الشائعة تطبيق
             </Link>
           </div>
           <div className="footer__bottom-right footer__bottom-right--arabic-address">

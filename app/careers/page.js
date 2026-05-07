@@ -1,30 +1,10 @@
-import MapHeroBanner, {
-  mapHeroBreathingCircles,
-} from "@/app/components/ui/product/MapHeroBanner";
+import CareersHeroBanner from "@/app/components/ui/careers/CareersHeroBanner";
 import styles from "./careers.module.scss";
 
 export default function CareersPage() {
   return (
     <main className={styles.careers}>
-      <MapHeroBanner
-        className={styles.careers_banner}
-        eyebrow=""
-        title="Where Your Ambition Meets Our Innovation"
-        description=""
-        ctaText=""
-        mapImageSrc=""
-        decorations={mapHeroBreathingCircles}
-        layoutClassName={styles.careers_banner_layout}
-        titleClassName={styles.careers_banner_title}
-        imageWrapClassName={styles.careers_banner_image_wrap}
-        imageClassName={styles.careers_banner_image}
-        heroImage={{
-          src: "/images/careers/careers_banner_img.png",
-          alt: "Pay10 — join our team",
-          width: 1024,
-          height: 455,
-        }}
-      />
+      <CareersHeroBanner />
 
       <section className="wrapper">
         <div className={styles.content}>

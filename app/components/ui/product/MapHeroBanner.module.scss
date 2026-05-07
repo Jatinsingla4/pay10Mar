@@ -90,6 +90,8 @@
   text-align: center;
   gap: 32px;
   max-width: 1400px;
+  width: 100%;
+  min-width: 0;
   margin: 0 auto;
 
   @include tab {
@@ -104,9 +106,12 @@
   align-items: center;
   gap: 20px;
   width: 100%;
+  max-width: 100%;
+  min-width: 0;
 
   @include tab {
     gap: 15px;
+    align-items: stretch;
   }
 }
 
@@ -122,13 +127,23 @@
 }
 
 .title {
+  display: block;
+  align-self: stretch;
   margin: 0;
   font-size: 64px;
   font-family: "bold";
   line-height: 1.1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: center;
 
   @include tab {
-    font-size: 40px;
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1.15;
   }
 }
 

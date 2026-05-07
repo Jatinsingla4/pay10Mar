@@ -26,7 +26,7 @@ export async function generateMetadata() {
       );
     }
   } catch (error) {
-    console.error("KFS Biz App metadata:", error);
+    console.error("KFS Customer Wallet metadata:", error);
   }
   return staticMeta;
 }

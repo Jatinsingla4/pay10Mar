@@ -1,0 +1,146 @@
+@import "../../../../styles/globals/mixin";
+
+.careersHeroBanner {
+  position: relative;
+  width: 100%;
+  margin: 80px 0;
+  padding: 56px 56px 0 56px;
+  min-height: 560px;
+  border-radius: 24px;
+  overflow: visible;
+  background: var(--primary-gradient);
+  color: #ffffff;
+
+  @include tab {
+    border-radius: 16px;
+    min-height: 470px;
+    padding: 44px 20px 0 20px;
+    margin: 50px 0;
+  }
+}
+
+.decorations {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.circleDecoration {
+  position: absolute;
+  top: var(--top-desktop);
+  left: var(--left-desktop);
+  right: var(--right-desktop);
+  bottom: var(--bottom-desktop);
+  width: var(--width);
+  height: var(--height);
+  translate: -50% -50%;
+  border-radius: 999px;
+  border: var(--stroke, 2px) solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  opacity: var(--opacity, 0.22);
+
+  @include tab {
+    top: var(--top-mobile, var(--top-desktop));
+    left: var(--left-mobile, var(--left-desktop));
+    right: var(--right-mobile, var(--right-desktop));
+    bottom: var(--bottom-mobile, var(--bottom-desktop));
+  }
+}
+
+.layout {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  gap: 32px;
+  max-width: 1400px;
+  width: 100%;
+  min-width: 0;
+  margin: 0 auto;
+  min-height: 500px;
+  height: 100%;
+
+  @include tab {
+    gap: 20px;
+    padding: 0 4px;
+    min-height: 420px;
+    align-items: stretch;
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+
+  @include tab {
+    gap: 15px;
+    align-items: stretch;
+  }
+}
+
+.title {
+  display: block;
+  align-self: stretch;
+  margin: 0 auto;
+  font-size: 64px;
+  font-family: "bold";
+  line-height: 1.1;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  text-align: center;
+
+  @include tab {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    font-size: clamp(30px, 9vw, 44px);
+    line-height: 1.15;
+  }
+
+  @include lessTab {
+    font-size: clamp(28px, 8.5vw, 36px);
+  }
+
+  @include mobile {
+    font-size: clamp(26px, 8vw, 32px);
+  }
+}
+
+.imageWrap {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+
+  @include tab {
+    width: 100%;
+  }
+}
+
+.image {
+  width: 100% !important;
+  max-width: 50% !important;
+  border: none;
+  height: auto;
+
+  @include tab {
+    max-width: 100% !important;
+  }
+}

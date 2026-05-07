@@ -10,9 +10,9 @@ const site =
 
 /** @type {import("next").Metadata} */
 const staticMeta = {
-  title: "KFS Bizz App | Pay10",
+  title: "KFS Merchant App | Pay10",
   description:
-    "Key Facts Statement for Pay10 Biz App — UAE merchant payment acceptance, wallet limits, fees, security, support, and disclosures.",
+    "Key Facts Statement for Pay10 Merchant App — UAE merchant payment acceptance, wallet limits, fees, security, support, and disclosures.",
   robots: stagingRobots,
   ...(site ? { alternates: { canonical: `${site}/kfs-biz-app` } } : {}),
 };
@@ -26,7 +26,7 @@ export async function generateMetadata() {
       );
     }
   } catch (error) {
-    console.error("KFS Biz App metadata:", error);
+    console.error("KFS Merchant App metadata:", error);
   }
   return staticMeta;
 }

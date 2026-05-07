@@ -23,7 +23,7 @@ export default async function sitemap() {
     '/events',
     '/products',
     // '/privacy-policy',
-    '/terms-and-conditions',
+    '/terms-of-services',
     '/vision-mission',
     '/corporate-information',
     '/customer-grievances-policy',

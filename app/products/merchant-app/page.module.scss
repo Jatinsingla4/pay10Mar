@@ -5,6 +5,7 @@
   width: 100%;
   padding: 0px 56px;
   margin: 80px 0;
+  
   @include tab {
     margin: 56px 0;
     padding: 0px 16px;
@@ -33,7 +34,7 @@
 
 }
 
-/** Decorative circles behind IntegrationTwoLayout rows (merchant / biz app). */
+/** Decorative circles behind IntegrationTwoLayout rows (merchant app). */
 .merchant_feature_circles {
   width: 100%;
   background-image: url("/images/product_page_images/bg_circle.svg");
@@ -52,7 +53,8 @@
 }
 
 .section_space {
-  margin-top: 80px;
+  padding-top: 80px;
+  background-color: #f5f5f5;
 }
 
 .section5BannerWrap {

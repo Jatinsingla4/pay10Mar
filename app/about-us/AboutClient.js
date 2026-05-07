@@ -2,10 +2,7 @@
 
 
 
-import { useRef, useState, useEffect } from "react";
-import { Icon } from "@iconify/react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { useState, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -15,8 +12,6 @@ import useApiAuth from "../components/hooks/useApiAuth";
 import AboutBanner from "../components/ui/about/AboutBanner";
 import AboutSecondSection from "../components/ui/about/AboutSecondSection";
 import WhereWeScoreSection from "../components/ui/about/WhereWeScoreSection";
-import MeetBoardMembersSection from "../components/ui/about/MeetBoardMembersSection";
-import UaeAdvisorSection from "../components/ui/about/UaeAdvisorSection";
 import AboutTeamMember from "../components/ui/about/AboutTeamMember";
 import PageLoader from "../components/ui/PageLoader";
 import { cmsImageSrc } from "../lib/cmsImageSrc";
@@ -192,13 +187,6 @@ const AboutClient = () => {
       })
     : defaultBoxes;
 
-  const boardSwiperNavPrev = useRef(null);
-  const boardSwiperNavNext = useRef(null);
-  const boardSwiperPagination = useRef(null);
-  const teamSwiperNavPrev = useRef(null);
-  const teamSwiperNavNext = useRef(null);
-  const teamSwiperPagination = useRef(null);
-
   // Default fallback journey data
   const defaultJourneyData = [
     {
@@ -319,26 +307,33 @@ const AboutClient = () => {
   //   },
   // ];
 
-  // No text fallback board members
-  const defaultBoardMembersBox = [];
+  // Combine all member groups into one "Meet Our Board" style section.
+  const normalizeMembers = (list) => {
+    if (!Array.isArray(list)) return [];
+    return list.map((item) => {
+      const imagePath = item?.Image || item?.image || "";
+      const designation = item?.["Designation "] || item?.Designation || "";
+      return {
+        Name: item?.Name || "",
+        "Designation ": designation.trim(),
+        Description: item?.Description || "",
+        Image: imagePath,
+      };
+    });
+  };
 
-  // Transform API data into boardMembersBox format
-  // Always use default image regardless of API image field, because image from API is not visible
-  const boardMembersBox = Array.isArray(section4.board_team_list) && section4.board_team_list.length > 0
-    ? section4.board_team_list.map((item) => {
-        // Ignore item.Image on purpose
-        const imageUrl = '/images/about_images/board_members/board_member1.jpg';
-        // Handle "Designation " with trailing space
-        const designation = item['Designation '] || item.Designation || '';
+  const mergedMembers = [
+    ...normalizeMembers(section4?.board_team_list),
+    ...normalizeMembers(section7?.uae_advisor_list),
+    ...normalizeMembers(section5?.our_team_list),
+  ];
 
-        return {
-          nme: item.Name || '',
-          role: designation.trim(),
-          desc: item.Description || '',
-          img: imageUrl,
-        };
-      })
-    : [];
+  const mergedMembersSection = {
+    our_team_list: mergedMembers,
+  };
+
+  const mergedMembersHeading =
+    section4Heading || section7Heading || section5Heading || "Meet Our Board";
 
   // Default fallback team members
   // const defaultTeamMembers = [
@@ -427,24 +422,10 @@ const AboutClient = () => {
           </div>
 
           <div className={Style.second_bg_circle}>
-            <div className={Style.wrapper}>
-            <MeetBoardMembersSection
-              section4Heading={section4Heading}
-              section4={section4}
-            />
-            </div>
-            <div className={Style.wrapper}>
-            <UaeAdvisorSection
-              section7Heading={section7Heading}
-              section7={section7}
-            />
-            </div>
             <div className={Style.wrapper2}>
-
-              {/* Core Team */}
               <AboutTeamMember
-                section5Heading={section5Heading}
-                section5={section5}
+                section5Heading={mergedMembersHeading}
+                section5={mergedMembersSection}
                 imageBase={imageBase}
               />
             </div>

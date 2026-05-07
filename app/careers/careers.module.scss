@@ -8,24 +8,24 @@
 .careers_banner {
     width: 100%;
     margin: 80px 0;
-    padding: 80px 56px 0 56px;
-    min-height: 760px;
+    padding: 56px 56px 0 56px;
+    min-height: 560px;
     overflow: visible !important;
 
     @include tab {
-        min-height: 620px;
-        padding: 80px 20px 0 20px;
+        min-height: 470px;
+        padding: 44px 20px 0 20px;
         margin: 50px 0;
     }
 }
 
 .careers_banner_layout {
-    min-height: 680px;
+    min-height: 500px;
     height: 100%;
     justify-content: space-between;
 
     @include tab {
-        min-height: 520px;
+        min-height: 420px;
     }
 }
 

@@ -10,8 +10,8 @@
  * @param {Record<string, unknown> | undefined} pageData
  */
 export function normalizeKfsHero(pageData) {
-  const DEFAULT_KICKER = "Key Facts Statement | Biz App";
-  const DEFAULT_TITLE = "KFS Bizz App";
+  const DEFAULT_KICKER = "Key Facts Statement Consumer Wallet";
+  const DEFAULT_TITLE = "KFS Customer Wallet";
 
   if (!pageData || typeof pageData !== "object") {
     return { kicker: DEFAULT_KICKER, title: DEFAULT_TITLE };

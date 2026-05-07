@@ -36,11 +36,9 @@ $contentMax: 900px;
 
 .heroKicker {
   margin: 0 0 12px;
-  font-size: 13px;
+  font-size: 18px;
   font-family: "semibold", var(--font-outfit), sans-serif;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  opacity: 0.95;
 }
 
 .heroTitle {
@@ -48,7 +46,7 @@ $contentMax: 900px;
   font-size: clamp(1.85rem, 4.5vw, 3rem);
   font-family: "bold", var(--font-outfit), sans-serif;
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  // letter-spacing: -0.02em;
 }
 
 .contentShell {
@@ -236,7 +234,7 @@ $contentMax: 900px;
 .contentHtml {
   overflow-x: auto;
   color: var(--gray);
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.62;
   font-family: "regular", var(--font-outfit), sans-serif;
 
@@ -245,7 +243,16 @@ $contentMax: 900px;
   h3,
   h4 {
     color: var(--black);
+    transition: all ease 0.5s;
     font-family: "semibold", var(--font-outfit), sans-serif;
+  }
+
+  h3 {
+    font-size: 32px;
+
+    @include tab {
+      font-size: 24px;
+    }
   }
 
   p {
@@ -279,7 +286,7 @@ $contentMax: 900px;
       padding: 12px 14px;
       border: 1px solid var(--bottom-line-gray);
       text-align: left;
-      font-size: 14px;
+      font-size: 20px;
     }
 
     th {

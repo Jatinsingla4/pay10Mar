@@ -91,11 +91,16 @@ $contentMax: 900px;
   position: relative;
   margin: 0 0 20px;
   padding-top: 8px;
-  font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+  font-size: 32px;
   font-family: "bold", var(--font-outfit), sans-serif;
   color: var(--black);
   line-height: 1.35;
   text-align: left;
+  transition: all ease 0.5s;
+
+  @include tab {
+    font-size: 24px;
+  }
 }
 
 .sectionTitleAccent {
@@ -153,15 +158,25 @@ $contentMax: 900px;
   flex-shrink: 0;
   width: 22px;
   margin-top: 1px;
-  font-size: 18px;
+  font-size: 24px;
   line-height: 1;
   font-family: "medium", var(--font-outfit), sans-serif;
   color: var(--orange-icon);
+
+  @include tab {
+    font-size: 20px;
+  }
 }
 
 .faqQuestionText {
   flex: 1;
   min-width: 0;
+  font-size: 20px;
+  transition: all ease 0.5s;
+
+  @include tab {
+    font-size: 16px;
+  }
 }
 
 .faqPanel {
@@ -189,10 +204,15 @@ $contentMax: 900px;
 
 .faqParagraph {
   margin: 0 0 12px;
-  font-size: 15px;
+  font-size: 20px;
   line-height: 1.62;
   color: var(--gray);
   font-family: "regular", var(--font-outfit), sans-serif;
+  transition: all ease 0.5s;
+
+  @include tab {
+    font-size: 16px;
+  }
 
   &:last-child {
     margin-bottom: 0;

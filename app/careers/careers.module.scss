@@ -57,8 +57,7 @@
     height: auto;
 
     @include tab {
-        width: 60%;
-        max-width: 60%;
+        max-width: 100%!important;
     }
 }
 

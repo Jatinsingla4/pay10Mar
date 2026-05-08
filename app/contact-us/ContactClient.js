@@ -129,19 +129,6 @@ const ContactClient = () => {
     return "";
   };
 
-  const validateMobile = (mobile) => {
-    if (!mobile || mobile.trim() === "") {
-      return "Mobile number is required";
-    }
-    // Accept standard international digit lengths (E.164 without '+'):
-    // 8 to 15 digits. This keeps UAE numbers valid while allowing other regions.
-    const mobileRegex = /^\d{8,15}$/;
-    if (!mobileRegex.test(mobile)) {
-      return "Enter a valid mobile/phone number";
-    }
-    return "";
-  };
-
   const submitContactForm = async (mobileValue) => {
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name.trim());
@@ -187,9 +174,10 @@ const ContactClient = () => {
 
     const emailError = validateEmail(formData.email);
     if (emailError) errors.email = emailError;
-
-    const mobileError = validateMobile(formData.mobile);
-    if (mobileError) errors.mobile = mobileError;
+    
+    if (!formData.mobile || formData.mobile.trim() === "") {
+      errors.mobile = "Mobile number is required";
+    }
 
     const companyError = validateCompany(formData.company_name);
     if (companyError) errors.company_name = companyError;
@@ -205,20 +193,10 @@ const ContactClient = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
-    // For mobile, only allow digits
-    if (name === "mobile") {
-      const digitsOnly = value.replace(/\D/g, "");
-      setFormData((prev) => ({ ...prev, [name]: digitsOnly }));
-      // Clear error when user starts typing
-      if (formErrors.mobile) {
-        setFormErrors((prev) => ({ ...prev, mobile: "" }));
-      }
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-      // Clear error when user starts typing
-      if (formErrors[name]) {
-        setFormErrors((prev) => ({ ...prev, [name]: "" }));
-      }
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (formErrors[name]) {
+      setFormErrors((prev) => ({ ...prev, [name]: "" }));
     }
 
     // Clear submit status when user starts typing

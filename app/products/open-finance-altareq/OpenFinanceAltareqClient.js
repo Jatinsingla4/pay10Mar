@@ -11,7 +11,37 @@ import { TextCenterAppCard } from "@/app/components/ui/TextCenterBlock";
 import { cmsImageSrc } from "@/app/lib/cmsImageSrc";
 import Style from "./page.module.scss";
 
-/** Intro band below hero (hardcoded until CMS). */
+/** Plain-text CMS descriptions (e.g. with \\r\\n) vs HTML snippets for dangerouslySetInnerHTML. */
+function normalizeCmsDescriptionHtml(description) {
+  if (description == null) return "";
+  const s = String(description).trim();
+  if (!s) return "";
+  if (/<\s*[a-z]/i.test(s)) return s;
+  const blocks = s.split(/\r?\n\r?\n/).map((b) => b.trim()).filter(Boolean);
+  const esc = (t) =>
+    t
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  if (!blocks.length) return "";
+  return blocks
+    .map((block) => `<p>${esc(block).replace(/\r?\n/g, "<br />")}</p>`)
+    .join("");
+}
+
+function mapSection2Row(row) {
+  if (!row || typeof row !== "object") return null;
+  const out = {
+    Title: row.Title ?? "",
+    Description: normalizeCmsDescriptionHtml(row.Description ?? ""),
+    Image: row.Image || "",
+  };
+  if (typeof row.ImageOnLeft === "boolean") out.ImageOnLeft = row.ImageOnLeft;
+  return out;
+}
+
+/** Intro band below hero (fallback when CMS has no section2.list[0]). */
 const ALTAREQ_CONNECTED_INTRO = {
   Title: "The future of finance is connected",
   Image: "/images/temp/Al-Tareq-Logo.png",
@@ -21,7 +51,7 @@ const ALTAREQ_CONNECTED_INTRO = {
 `.trim(),
 };
 
-/** Hardcoded until CMS `custom_data.section2.list` is wired (Title, Image, Description; optional ImageOnLeft overrides row alternation). */
+/** Fallback rows when `custom_data.section2.list` is missing (Title, Image, Description; optional ImageOnLeft). */
 /** Matches design: English link + Arabic FAQ line accent (see .altareqArabicFaqLink). */
 const ALTAREQ_LINK_COLOR = "#b03050";
 const ALTAREQ_LINK_STYLE = `color:${ALTAREQ_LINK_COLOR};font-weight:600;text-decoration:none;`;
@@ -95,7 +125,7 @@ const OpenFinanceAltareqClient = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const result = await makeApiCall("/page/product-open-finance-altareq");
+        const result = await makeApiCall("/page/open-finance-altareq");
 
         if (!isMounted) return;
 
@@ -122,6 +152,10 @@ const OpenFinanceAltareqClient = () => {
   }, [makeApiCall]);
 
   const pageDataObj = pageData?.page_data || {};
+  const section2 = pageData?.custom_data?.section2 || {};
+  const section2ListRaw = Array.isArray(section2.list) ? section2.list : [];
+  const section2List = section2ListRaw.map(mapSection2Row).filter(Boolean);
+
   const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
 
   const heroCmsSrc = pageDataObj.image ? cmsImageSrc(pageDataObj.image, imageBase) : null;
@@ -132,7 +166,9 @@ const OpenFinanceAltareqClient = () => {
     height: pageDataObj.image_height || 640,
   };
 
-  const simpleLayoutItems = OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS;
+  const connectedIntroItem = section2List[0] || ALTAREQ_CONNECTED_INTRO;
+  const simpleLayoutItems =
+    section2List.length > 1 ? section2List.slice(1) : OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS;
 
   if (loading && !pageData) {
     return <PageLoader />;
@@ -156,7 +192,7 @@ const OpenFinanceAltareqClient = () => {
       {/* </div> */}
 
       <section className={Style.connected_finance_intro}>
-        <TwoColLayout item={ALTAREQ_CONNECTED_INTRO} imageBase={imageBase} reverse />
+        <TwoColLayout item={connectedIntroItem} imageBase={imageBase} reverse />
       </section>
 
       <div className={Style.section_spacing}>

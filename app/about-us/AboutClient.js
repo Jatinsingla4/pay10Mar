@@ -79,6 +79,8 @@ const AboutClient = () => {
   const section5Heading = section5.heading || undefined;
   const section4Heading = section4.heading || undefined;
   const section7Heading = section7.heading || undefined;
+  const journeySectionHeading =
+    section6.heading || section6.Heading || undefined;
 
   // Default gridArea values for boxes (maintains layout structure)
   const defaultGridAreas = ["volume", "frictionless", "support", "risk", "secure", "updates"];
@@ -429,12 +431,12 @@ const AboutClient = () => {
                 imageBase={imageBase}
               />
             </div>
-          </div>
+          </div> 
 
           {/* Our Journey So Far Section */}
           <JourneySection
             journeyData={journeyData}
-            title={false}
+            heading={journeySectionHeading}
             largeDescriptionText={true}
           />
         </section>

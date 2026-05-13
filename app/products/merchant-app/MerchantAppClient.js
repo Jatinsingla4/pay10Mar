@@ -53,31 +53,38 @@ const MerchantAppClient = () => {
 
   // Extract data from API response
   const pageDataObj = pageData?.page_data || {};
+  const section2 = pageData?.custom_data?.section2 || {};
   const section3 = pageData?.custom_data?.section3 || {};
   const section4 = pageData?.custom_data?.section4 || {};
   const section5 = pageData?.custom_data?.section5 || {};
   const section6 = pageData?.custom_data?.section6 || {};
-  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
+  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL ?? "";
 
   const heroCmsSrc = pageDataObj.image ? cmsImageSrc(pageDataObj.image, imageBase) : null;
   const heroImage = {
-    src: heroCmsSrc || "/images/product_page_images/ppa122.png",
-    alt: pageDataObj.name ? `${pageDataObj.name} hero` : "Pay10 BIZ app interface",
-    width: pageDataObj.image_width || 360,
-    height: pageDataObj.image_height || 640,
+    src: heroCmsSrc,
+    alt: pageDataObj.name ? `${pageDataObj.name} hero` : undefined,
+    width: pageDataObj.image_width,
+    height: pageDataObj.image_height,
   };
 
   // Section 3 - SectionThird (gridBoxes)
-  const section3Heading = section3.heading || '';
+  const section3Heading = section3.heading;
+  const section3SubHeading = section3.sub_heading;
 
   const section3Items = Array.isArray(section3.list) ? section3.list : [];
 
-  // Section 4 - SimpleLayout (items)
-  const simpleLayoutItems = Array.isArray(section4.list) ? section4.list : [];
+  // Section 2 - SimpleLayout (items); section4 is used for integration rows below.
+  const simpleLayoutItems = Array.isArray(section2.list) ? section2.list : [];
 
-  const section5Description = section5.description || '';
+  const section4IntegrationList = Array.isArray(section4.list) ? section4.list : [];
+  const integrationFirst = section4IntegrationList[0];
+  const integrationSecond = section4IntegrationList[1];
+  const integrationFirstImg = cmsImageSrc(integrationFirst?.Image, imageBase);
+
+  const section5Description = section5.description;
   const section5Image = section5.image
-    ? cmsImageSrc(section5.image, imageBase) || undefined
+    ? cmsImageSrc(section5.image, imageBase) ?? undefined
     : undefined;
 
   // Section 6 - ThreeStepProcess (steps)
@@ -90,35 +97,37 @@ const MerchantAppClient = () => {
   return (
     <main>
       <MapHeroBanner
-        eyebrow={pageDataObj.top_sub_heading || ""}
-        title={pageDataObj.top_heading || ""}
-        description={pageDataObj.top_description || ""}
+        eyebrow={pageDataObj.top_sub_heading}
+        title={pageDataObj.top_heading}
+        description={pageDataObj.top_description}
         ctaHref="/contact-us"
         ctaText="Get In Touch"
         heroImage={heroImage}
         mapImageSrc="/images/temp/adf.png"
       />
 
-      <SimpleLayout items={simpleLayoutItems} imageBase={imageBase} />
+      {simpleLayoutItems.length > 0 ? (
+        <SimpleLayout items={simpleLayoutItems} imageBase={imageBase} />
+      ) : null}
 
       <SectionThird
         items={section3Items}
         heading={section3Heading}
         imageBase={imageBase}
-        description="Make your business more cost-efficient with a Pay10 Biz Wallet and watch those profit margins grow."
+        description={section3SubHeading}
       />
 
     <section className={Style.section_space}>
       <div className={Style.merchant_feature_circles}>
         <IntegrationTwoLayout
-          heading="Take Control of Your Business"
-          desc="Manage your users, oversee your account, and track your funds on our user-friendly dashboard."
-          img="/images/af11.avif"
+          heading={integrationFirst?.Title}
+          desc={integrationFirst?.Description}
+          img={integrationFirstImg}
         />
         <IntegrationReverseLayout
-          heading="Get Up and Running in a Flash"
-          desc="Our onboarding couldn't be simpler and we're always here to help guide you along the way."
-          img="/images/img2-1777972464.avif"
+          heading={integrationSecond?.Title}
+          desc={integrationSecond?.Description}
+          img={integrationSecond?.Image}
           imageBase={imageBase}
         />
       </div>

@@ -12,6 +12,8 @@ const JourneySection = ({
   journeyData = [],
   mode = "journey", // "journey" or "accordion"
   title,
+  /** CMS-friendly alias for `title` (e.g. `section6.heading`) */
+  heading,
   rightImage, // For accordion mode - fixed image path
   largeDescriptionText = false,
 }) => {
@@ -175,7 +177,8 @@ const JourneySection = ({
   const displayTitle =
     title === false
       ? ""
-      : title || (isAccordionMode ? "" : "Our Journey So Far");
+      : (title != null && title !== "" ? title : heading) ||
+        (isAccordionMode ? "" : "Our Journey So Far");
 
   return (
     <div

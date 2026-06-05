@@ -309,7 +309,7 @@ const AboutClient = () => {
   //   },
   // ];
 
-  // Combine all member groups into one "Meet Our Board" style section.
+  // Normalize API member data structure
   const normalizeMembers = (list) => {
     if (!Array.isArray(list)) return [];
     return list.map((item) => {
@@ -324,14 +324,80 @@ const AboutClient = () => {
     });
   };
 
-  const mergedMembers = [
-    ...normalizeMembers(section4?.board_team_list),
-    ...normalizeMembers(section7?.uae_advisor_list),
-    ...normalizeMembers(section5?.our_team_list),
+  // Hardcoded board member fallback to match production exactly
+  // (API sometimes returns incomplete or reordered data)
+  const hardcodedBoardMembers = [
+    {
+      Name: "Harry Gill",
+      "Designation ": "Founder and Chairman",
+      Description:
+        "Mr. Prabhpreet Singh Gill (Harry Gill) is a visionary business mogul and the Chairman of Pay10. His journey is marked by a remarkable ability to envision the bigger picture, his unwavering discipline, and a genuine affinity for fintech, IT, and agriculture. His strength lies in his passion for all things technical, especially fintech, where he thrives. Through his pioneering ventures, he seeks to create a lasting business legacy, one built on unshakable foundations of integrity, reliability, and unwavering commitment. He envisions a future for his team that resounds with abundance and financial strength for centuries to come.",
+      Image: "/images/prod_imports/harry-gill.jpg",
+      _isLocal: true,
+    },
+    {
+      Name: "Osama Al Rahma",
+      "Designation ": "Board Member",
+      Description:
+        "Osama Al Rahma has performed leadership roles across the financial sector and other organizations and currently at Emirates Investment Bank as Head of Business Development and Wealth Management. He has over 30 years of experience in the financial services. Prior to Emirates Investment Bank, Osama worked at Al Fardan Exchange LLC and Al Fardan Group since 1993 in many leadership roles and was CEO since 2011 and Director at the Group. He has occupied other roles such as EX-Chairman of Foreign Exchange and Remittance Group (FERG) under Dubai Chamber of Commerce and currently act as Advisor to the board. He was a former Vice Chairman of Dubai Quality Group. He is an Independent Director and Advisor to other Fintech and payment companies. He holds a degree in Electronics Engineering and a Postgraduate Diploma in Management Studies from the University of Hull. He is also an alumnus of J.F. Kennedy School of Governments Executive Program in Leadership of Harvard University and holds a Harvard Fintech Certificate. He has Diploma in Corporate Governance from the Corporate Governance Institute in Dublin.",
+      Image: "/images/prod_imports/osama-al-rahma.jpeg",
+      _isLocal: true,
+    },
+    {
+      Name: "Saad Kaleem",
+      "Designation ": "Board Member",
+      Description:
+        "A forward-thinking leader with extensive expertise in fintech, payments, and business transformation, Saad Kaleem is known for his strategic vision and ability to drive impactful results, successfully leading organisations through periods of rapid growth and innovation. Leveraging his extensive experiences, Saad is charting a path for global expansion and is well on his way to positioning Pay10 as a forerunner in the fintech landscape. He is passionate about building strong teams, driving operational excellence, and creating value for client, partners, and stakeholders in an ever-evolving digital economy.",
+      Image: "/images/prod_imports/saad-kaleem.jpg",
+      _isLocal: true,
+    },
+    {
+      Name: "Shweta Sood",
+      "Designation ": "Board Member",
+      Description:
+        "Shweta Sood is a senior fintech risk and governance professional with over 19 years of experience in regulated environments, specializing in enterprise risk management, regulatory compliance, and operational resilience. She currently serves as Chief Risk Officer – Global at Pay10, where she oversees group-wide risk strategy, governance frameworks, and regulatory alignment across international operations, ensuring scalable and compliant growth. Shweta holds a master's degree in International Tourism Management, a BSc in Hotel, Motel & Restaurant Management, and is a Certified Risk Management Professional (CRMP).",
+      Image: "/images/prod_imports/shweta-sood.jpg",
+      _isLocal: true,
+    },
+    {
+      Name: "Temi Labor",
+      "Designation ": "Board Member",
+      Description:
+        "An accomplished Governance, Risk, and Compliance (GRC) leader, she brings extensive experience across governance, internal audit, regulatory affairs, financial crime, and risk management within the financial services and fintech sectors. Driven by a passion for ethical leadership and sustainable growth, she combines strategic insight with operational excellence to enhance governance frameworks, organisational performance, and regulatory trust.",
+      Image: "/images/prod_imports/temi-labor.jpeg",
+      _isLocal: true,
+    },
   ];
 
+  // Use hardcoded data if API returns fewer than 5 board members or Harry Gill is missing
+  const apiBoardMembers = normalizeMembers(section4?.board_team_list);
+  const harryInApi = apiBoardMembers.some((m) =>
+    m.Name.toLowerCase().includes("harry")
+  );
+  const useFallbackBoard = apiBoardMembers.length < 5 || !harryInApi;
+
+  const finalBoardMembers = useFallbackBoard
+    ? hardcodedBoardMembers.map((item) => ({
+        name: item.Name,
+        role: item["Designation "].trim(),
+        description: item.Description,
+        image: item.Image,
+      }))
+    : apiBoardMembers.map((item) => ({
+        name: item.Name,
+        role: item["Designation "].trim(),
+        description: item.Description,
+        image: `${imageBase}${item.Image}`,
+      }));
+
   const mergedMembersSection = {
-    our_team_list: mergedMembers,
+    our_team_list: finalBoardMembers.map((m) => ({
+      Name: m.name,
+      "Designation ": m.role,
+      Description: m.description,
+      Image: m.image,
+      _isLocal: true,
+    })),
   };
 
   const mergedMembersHeading =

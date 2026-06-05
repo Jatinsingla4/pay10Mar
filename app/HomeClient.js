@@ -7,11 +7,9 @@ import HeroHomeBanner from './components/ui/HeroHomeBanner';
 import TextCenterBlock from './components/ui/TextCenterBlock';
 import BannerBreaker from './components/ui/BannerBreaker';
 import JourneySection from './components/ui/blocks/JourneySection';
-import GlobalCurrencyHero from './components/ui/GlobalCurrencyHero';
 import FeatureBlock from './components/ui/FeatureBlock';
 import CertificationHero from './components/ui/CertificationHero';
 import CertificationLicensing from './components/ui/CertificationLicensing';
-import GetStarted from './components/ui/GetStarted';
 import PageLoader from './components/ui/PageLoader';
 import { cmsImageSrc } from './lib/cmsImageSrc';
 
@@ -96,7 +94,6 @@ export default function HomeClient() {
   const section2 = homeData?.custom_data?.section2 || {};
   const section3 = homeData?.custom_data?.section3 || {};
   const section4 = homeData?.custom_data?.section4 || {};
-  const section5 = homeData?.custom_data?.section5 || {};
   const section6 = homeData?.custom_data?.section6 || {};
   const section7 = homeData?.custom_data?.section7 || {};
 
@@ -108,12 +105,6 @@ export default function HomeClient() {
       }))
     : [];
   const section3Image = section3.image ? cmsImageSrc(section3.image, imageBase) : undefined;
-  const section5Parts = (section5.content || '')
-    .split(/<br\s*\/?>/i)
-    .map((part) => part.replace(/<[^>]+>/g, '').trim())
-    .filter(Boolean);
-  const section5PreHeading = section5Parts[0] || undefined;
-  const section5Heading = section5Parts[1] || undefined;
   const section6Background = section6.image ? cmsImageSrc(section6.image, imageBase) : undefined;
   const section6Description = (section6.content || '').replace(/<[^>]+>/g, '');
   const section6Features = Array.isArray(section6.list)
@@ -154,10 +145,6 @@ export default function HomeClient() {
         heading={homeData?.custom_data?.section2?.heading}
         description={homeData?.custom_data?.section2?.content}
       />
-      {/* <GlobalCurrencyHero
-        preHeading={section5PreHeading}
-        heading={section5Heading}
-      /> */}
       <BannerBreaker
         title={section3.heading}
         description={section3.content}
@@ -185,7 +172,6 @@ export default function HomeClient() {
         licenseImages={section9Images}
       />
 
-      <GetStarted />
     </main>
   );
 }

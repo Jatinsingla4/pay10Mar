@@ -3,13 +3,14 @@
 .mapHeroBanner {
   position: relative;
   width: 100%;
+  min-height: 785px;
   border-radius: 24px;
   overflow: hidden;
   /* Solid fallback if map fails; map + overlay provide the final look */
   background: var(--primary-gradient);
   color: #ffffff;
   /* Bottom padding so hero phone stays inside clipped radius (see BizHeroBanner pattern) */
-  padding: 48px 56px 00px 56px;
+  padding: 48px 56px 0px 56px;
 
   @include tab {
     border-radius: 16px;
@@ -23,7 +24,7 @@
   z-index: 0;
   pointer-events: none;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center;
   opacity: 1;
   z-index: 2;
@@ -93,6 +94,7 @@
   width: 100%;
   min-width: 0;
   margin: 0 auto;
+  min-height: calc(785px - 48px);
 
   @include tab {
     gap: 20px;
@@ -200,7 +202,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 4px;
+  margin-top: auto;
 
   @include tab {
     margin-top: 8px;
@@ -208,11 +210,12 @@
 }
 
 .phone {
-  max-width: 32%;
-  width: 100%;
+  width: 412px;
+  max-width: 412px;
   height: auto;
 
   @include tab {
-    max-width: 250px;
+    width: 100%;
+    max-width: 280px;
   }
 }

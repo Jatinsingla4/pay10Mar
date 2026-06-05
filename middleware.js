@@ -1,8 +1,9 @@
 import { NextResponse } from 'next/server';
 
 /** Apex hostname only — must match DNS for bare domain. */
-const APEX_HOST = 'pay10.in';
-const WWW_HOST = 'www.pay10.in';
+const APEX_HOST = 'pay10.ae';
+const WWW_HOST = 'www.pay10.ae';
+
 
 const SKIP_HOSTS = new Set(['localhost', '127.0.0.1']);
 

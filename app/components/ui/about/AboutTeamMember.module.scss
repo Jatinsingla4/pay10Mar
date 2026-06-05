@@ -116,11 +116,15 @@
 
   .member_card {
     background: var(--white);
-    border-radius: 2rem;
+    border-radius: 36px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    height: 100%;
-    aspect-ratio: 9 / 11;
+    height: 500px;
+    aspect-ratio: unset;
+    &:hover {
+      overflow: hidden;
+      height: 500px;
+    }
     display: flex;
     flex-direction: column;
     transition: all 0.5s cubic-bezier(.39,.58,.57,1);
@@ -255,7 +259,7 @@
     }
     .member_description {
       opacity: 1;
-      max-height: 220px;
+      max-height: 288px;
       transform: translateY(0);
       overflow-y: auto;
       padding-right: 6px;

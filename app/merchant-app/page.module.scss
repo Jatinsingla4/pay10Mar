@@ -1,0 +1,198 @@
+@import "../../styles/globals/mixin";
+
+
+.wrapper {
+  width: 100%;
+  padding: 0px 56px;
+  margin: 80px 0;
+  
+  @include tab {
+    margin: 56px 0;
+    padding: 0px 16px;
+  }
+}
+
+.bg_circle {
+  width: 100%;
+  // height: 100%;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/about_images/about_section_second_bg.png");
+    background-position: top left;
+    background-position-x: -20rem;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+}
+
+/** Decorative circles behind IntegrationTwoLayout rows (merchant app). */
+.merchant_feature_circles {
+  width: 100%;
+  background-image: url("/images/product_page_images/bg_circle.svg");
+  background-position: left;
+  background-position-x: -25rem;
+  background-position-y: 20rem;
+  background-size: 120% 100%;
+  background-repeat: no-repeat;
+
+  @include tab {
+    background-position: right;
+    background-position-x: 0rem;
+    background-position-y: 0rem;
+    background-size: 350% 120%;
+  }
+}
+
+.section_space {
+  padding-top: 80px;
+  background-color: #f5f5f5;
+}
+
+.section5BannerWrap {
+  margin-bottom: 80px;
+}
+
+.section5BannerInner {
+  > h2 {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+}
+
+.business_edge_section {
+  width: 100%;
+  display: grid;
+  grid-template-columns: .3fr .7fr;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  .left_image {
+    width: 100%;
+    height: 100%;
+    max-height: 614px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include tab{
+      order: 2;
+    }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .features_content {
+    width: 100%;
+    @include tab{
+      order: 1;
+    }
+    .features_title {
+      color: var(--black);
+      font-size: 48px;
+      font-weight: 500;
+      margin-bottom: 24px;
+      line-height: 1.1;
+      max-height: 775px;
+    }
+    .features_grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      .feature_card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 32px 32px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 25px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .feature_icon {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+          }
+        }
+        p {
+          color: var(--black);
+          font-size: 24px;
+          font-weight: 500;
+          text-align: left;
+          margin: 0;
+        }
+      }
+    }
+  }
+
+  @include tab {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    .features_content {
+      .features_title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .features_grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.25rem;
+        .feature_card {
+          padding: 1.5rem 1rem;
+
+          .feature_icon {
+            width: 56px;
+            height: 56px;
+          }
+
+          p {
+            font-size: 14px;
+            font-family: 'bold', sans-serif;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    gap: 1.5rem;
+
+    .features_content {
+      .features_title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .features_grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+
+        .feature_card {
+          padding: 1.25rem 1rem;
+        }
+      }
+    }
+  }
+}

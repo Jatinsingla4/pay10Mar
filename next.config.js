@@ -115,8 +115,18 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/kfs-biz-app',
+        destination: '/key-fact-statement',
+        permanent: true,
+      },
+      {
+        source: '/kfs-customer-wallet',
+        destination: '/key-fact-statement',
+        permanent: true,
+      },
+      {
         source: '/solution-payment-gateway.php',
-        destination: '/products/payment-gateway',
+        destination: '/payment-gateway',
         permanent: true,
       },
       {
@@ -126,7 +136,7 @@ const nextConfig = {
       },
       {
         source: '/terms-and-conditions.php',
-        destination: '/terms-of-services',
+        destination: '/terms-of-service',
         permanent: true,
       },
       {
@@ -165,10 +175,6 @@ const nextConfig = {
           {
             key: 'Strict-Transport-Security',
             value: 'max-age=31536000; includeSubDomains',
-          },
-          {
-            key: 'X-Robots-Tag',
-            value: 'noindex, nofollow, noarchive',
           },
           {
             key: 'Content-Security-Policy',

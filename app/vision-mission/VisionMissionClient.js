@@ -51,17 +51,35 @@ const VisionMissionClient = () => {
   const section4 = visionMissionData?.custom_data?.section4 || {};
   const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
 
-  // Image URLs
-  const section2Image = section2.image ? `${imageBase}${section2.image}` : '/images/about_section_img.png';
-  const section3Image = section3.image ? `${imageBase}${section3.image}` : '/images/divider_img.png';
-  const section4Image = section4.image ? `${imageBase}${section4.image}` : '/images/about_section_img2.png';
+  // Fallback data structure mirroring prod content
+  const fallback = {
+    topHeading: "VISION & MISSION",
+    section2: {
+      heading: "OUR VISION",
+      content: "To deliver regulated, interoperable payment infrastructure that enables secure, efficient, and trusted digital transactions across the UAE's financial ecosystem.",
+      image: "/images/prod_imports/2.png"
+    },
+    section3: {
+      image: "/images/prod_imports/circle-animation.png"
+    },
+    section4: {
+      heading: "OUR MISSION",
+      content: "To contribute to a connected and resilient payments landscape in the UAE by building compliance-first financial rails that support scale, transparency, and long-term economic growth.",
+      image: "/images/prod_imports/4.png"
+    }
+  };
 
-  // API-driven values only
-  const topHeading = pageData.top_heading || undefined;
-  const section2Heading = section2.heading || undefined;
-  const section2Content = section2.content || undefined;
-  const section4Heading = section4.heading || undefined;
-  const section4ContentRaw = section4.content || '';
+  // Image URLs with fallback
+  const section2Image = section2.image ? `${imageBase}${section2.image}` : fallback.section2.image;
+  const section3Image = section3.image ? `${imageBase}${section3.image}` : fallback.section3.image;
+  const section4Image = section4.image ? `${imageBase}${section4.image}` : fallback.section4.image;
+
+  // Heading & content values with fallback
+  const topHeading = pageData.top_heading || fallback.topHeading;
+  const section2Heading = section2.heading || fallback.section2.heading;
+  const section2Content = section2.content || fallback.section2.content;
+  const section4Heading = section4.heading || fallback.section4.heading;
+  const section4ContentRaw = section4.content || fallback.section4.content;
 
   // Convert line breaks (\r\n or \n) to <br> tags for HTML rendering
   const section4Content = section4ContentRaw

@@ -1,0 +1,92 @@
+"use client";
+
+import { useState } from 'react';
+import faqData from './faqData';
+import styles from './faqs.module.scss';
+
+export default function FaqsClient() {
+  const [activeTabName, setActiveTabName] = useState(faqData[0]?.tabName || '');
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const handleTabChange = (tabName) => {
+    setActiveTabName(tabName);
+    setOpenIndex(null); // Close any open accordion items when switching tabs
+  };
+
+  const toggleAccordion = (index) => {
+    if (openIndex === index) {
+      setOpenIndex(null); // Collapse if clicking the already open item
+    } else {
+      setOpenIndex(index); // Expand the clicked item and collapse others
+    }
+  };
+
+  const activeTab = faqData.find((tab) => tab.tabName === activeTabName) || faqData[0];
+
+  return (
+    <div className={styles.faqs_container}>
+      <h1 className={styles.title}>Frequently Asked Questions</h1>
+      
+      <div className={styles.layout}>
+        {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
+        <aside className={styles.sidebar}>
+          {faqData.map((tab) => {
+            const isActive = tab.tabName === activeTabName;
+            return (
+              <button
+                key={tab.tabName}
+                className={`${styles.tab_pill} ${isActive ? styles.active : styles.inactive}`}
+                onClick={() => handleTabChange(tab.tabName)}
+              >
+                {tab.tabName}
+              </button>
+            );
+          })}
+        </aside>
+
+        {/* Right Content Panel */}
+        <main className={styles.content_panel}>
+          <h2 className={styles.tab_heading}>{activeTab?.tabName}</h2>
+          
+          <div className={styles.accordion_list}>
+            {activeTab?.faqs.map((faq, index) => {
+              const isOpen = openIndex === index;
+              return (
+                <div key={index} className={styles.accordion_item}>
+                  <button
+                    className={`${styles.accordion_trigger} ${isOpen ? styles.active_trigger : ''}`}
+                    onClick={() => toggleAccordion(index)}
+                    aria-expanded={isOpen}
+                  >
+                    <h3>{faq.question}</h3>
+                    <div className={styles.icon_wrapper}>
+                      <svg
+                        xmlns="http://www.w3.org/2005/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </button>
+                  
+                  <div
+                    className={`${styles.accordion_content} ${isOpen ? styles.open_content : ''}`}
+                    style={isOpen ? { maxHeight: '1000px' } : { maxHeight: '0px' }}
+                  >
+                    <p className={styles.answer_text}>{faq.answer}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+}

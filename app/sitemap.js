@@ -1,33 +1,28 @@
-/** Staging: returns no URLs. Full sitemap implementation preserved below in a block comment. */
-export default async function sitemap() {
-  return [];
-}
-
-/*
 import { fetchApiData } from './lib/api';
 
 export default async function sitemap() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pay10.in';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pay10.ae';
   const sanitizeDate = (value) => {
     const parsed = new Date(value || Date.now());
     return Number.isNaN(parsed.getTime()) ? new Date() : parsed;
   };
 
-  // Static routes
+  // Static routes matching production
   const routes = [
     '',
     '/about-us',
     '/contact-us',
-    '/blog',
-    '/news',
-    '/events',
-    '/products',
-    // '/privacy-policy',
-    '/terms-of-services',
+    '/careers',
+    '/terms-of-service',
+    '/privacy-policy',
     '/vision-mission',
-    '/corporate-information',
-    '/customer-grievances-policy',
-    '/coming-soon',
+    '/consumer-app',
+    '/merchant-app',
+    '/open-finance-altareq',
+    '/integration-methods',
+    '/faqs',
+    '/key-fact-statement',
+    '/ecosystem-partners',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
@@ -119,4 +114,3 @@ export default async function sitemap() {
 
   return [...routes, ...blogRoutes, ...eventRoutes];
 }
-*/

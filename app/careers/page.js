@@ -1,6 +1,14 @@
 import CareersHeroBanner from "@/app/components/ui/careers/CareersHeroBanner";
 import styles from "./careers.module.scss";
 
+export const metadata = {
+  title: "Careers \u2013 Pay 10",
+  description: "Join the Pay10 team. Build your future with Pay10, building smart, secure, and fast payment solutions in the UAE.",
+  alternates: {
+    canonical: "https://pay10.ae/careers",
+  },
+};
+
 export default function CareersPage() {
   return (
     <main className={styles.careers}>

@@ -12,31 +12,31 @@ const defaultDecorations = [
     type: 'icon',
     src: '/images/home/ic1.svg',
     alt: '',
-    size: { width: 56, height: 56 },
+    size: { width: 77, height: 77 },
     position: {
-      desktop: { top: '34%', left: '10%' },
+      desktop: { top: '15%', left: '6%' },
       mobile: { top: '57%', left: '9%' },
     },
   },
   {
     id: 'ic2',
     type: 'icon',
-    src: '/images/home/ic2.svg',
+    src: '/images/prod_imports/pay10.svg',
     alt: '',
     size: { width: 56, height: 56 },
     position: {
-      desktop: { top: '58%', left: '74%' },
+      desktop: { top: '10%', left: '92%' },
       mobile: { top: '80%', left: '10%' },
     },
   },
   {
     id: 'ic3',
     type: 'icon',
-    src: '/images/home/ic3.svg',
+    src: '/images/home/ic4.svg',
     alt: '',
-    size: { width: 56, height: 56 },
+    size: { width: 40, height: 40 },
     position: {
-      desktop: { top: '70%', left: '30%' },
+      desktop: { top: '60%', left: '6%' },
       mobile: { top: '60%', left: '90%' },
     },
   },
@@ -45,10 +45,32 @@ const defaultDecorations = [
     type: 'icon',
     src: '/images/home/ic4.svg',
     alt: '',
-    size: { width: 56, height: 56 },
+    size: { width: 40, height: 40 },
     position: {
-      desktop: { top: '34%', left: '82%' },
+      desktop: { top: '36%', left: '83%' },
       mobile: { top: '85%', left: '88%' },
+    },
+  },
+  {
+    id: 'ic5',
+    type: 'icon',
+    src: '/images/prod_imports/shield-with-bg.svg',
+    alt: '',
+    size: { width: 78, height: 77 },
+    position: {
+      desktop: { top: '74%', left: '89%' },
+      mobile: { top: '88%', left: '82%' },
+    },
+  },
+  {
+    id: 'ic6',
+    type: 'icon',
+    src: '/images/prod_imports/barcode-with-bg.svg',
+    alt: '',
+    size: { width: 78, height: 78 },
+    position: {
+      desktop: { top: '60%', left: '21%' },
+      mobile: { top: '72%', left: '5%' },
     },
   },
   {
@@ -72,8 +94,8 @@ const defaultDecorations = [
 ];
 
 export default function HeroHomeBanner({
-  eyebrow = 'YOUR TRUSTED PAYMENT PARTNER',
-  title = 'It Pays to Go Digital',
+  eyebrow = 'YOUR ALTERNATIVE PAYMENT PARTNER',
+  title = 'Why Pay When You Can Pay10',
   description = 'Tap into a world of possibilities with Pay10 digital payments to boost your life or business.',
   ctaLabel = 'Get Started',
   ctaHref = '/contact-us',

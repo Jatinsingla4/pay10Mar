@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./TwoColLayout.module.scss";
 import Image from "next/image";
 
-const TwoColLayout = ({ item = null, imageBase = "", reverse = false, copyVariant }) => {
+const TwoColLayout = ({ item = null, imageBase = "", reverse = false, copyVariant, unoptimized = false }) => {
   const title = item?.Title || "";
   const rawImage = item?.Image || "";
   const imageSrc =
@@ -22,6 +22,7 @@ const TwoColLayout = ({ item = null, imageBase = "", reverse = false, copyVarian
           src={imageSrc}
           alt={title}
           data-animation="opacity-up"
+          unoptimized={unoptimized}
         />
       ) : null}
     </div>

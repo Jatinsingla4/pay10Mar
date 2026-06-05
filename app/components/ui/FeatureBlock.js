@@ -33,7 +33,7 @@ export default function FeatureBlock({
   heading = 'Discover New Business Frontiers',
   description = 'Built for companies of all sizes, Pay10 Biz expands your customer reach like never before, empowering you with a suite of payment options and transaction analytics to help you optimize your business.',
   ctaLabel = 'Learn More',
-  ctaHref = '/products/merchant-app',
+  ctaHref = '/merchant-app',
   features = defaultFeatures,
 }) {
   const { isDesktop } = useResponsive();

@@ -18,10 +18,11 @@ const AboutTeamMember = ({
     Array.isArray(section5.our_team_list) &&
     section5.our_team_list.length > 0
     ? section5.our_team_list.map((item) => {
-        const imageUrl = `${imageBase}${item.Image}`
+        // If _isLocal is set or path starts with '/', use as-is (local /public path)
+        const isLocal = item._isLocal || (item.Image && item.Image.startsWith('/'));
+        const imageUrl = isLocal ? item.Image : `${imageBase}${item.Image}`;
         // Handle "Designation " with trailing space
         const designation = item['Designation '] || item.Designation || '';
-        // console.log(imageUrl)
         return {
           name: item.Name || '',
           role: designation.trim(),

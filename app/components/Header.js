@@ -24,17 +24,17 @@ const navigationData = {
         items: [
           {
             label: 'Consumer App',
-            href: '/products/consumer-app',
+            href: '/consumer-app',
             icon: '/images/header/pay-10-app.svg',
           },
           {
             label: 'Open Finance Al Tareq',
-            href: '/products/open-finance-altareq',
+            href: '/open-finance-altareq',
             icon: '/images/header/sf.svg',
           },
           {
             label: 'Merchant App',
-            href: '/products/merchant-app',
+            href: '/merchant-app',
             icon: '/images/header/pay-10-biz.svg',
           },
         ],
@@ -46,7 +46,7 @@ const navigationData = {
         items: [
           {
             label: 'Integration Methods',
-            href: '/products/integration-methods',
+            href: '/integration-methods',
             icon: '/images/header/integration-method.svg',
           },
         ],
@@ -58,12 +58,12 @@ const navigationData = {
       //   items: [
       //     // {
       //     //   label: 'Collect from India',
-      //     //   href: '/products/accept-international-payments-from-india',
+      //     //   href: '/accept-international-payments-from-india',
       //     //   icon: '/images/header/collect-india.svg',
       //     // },
       //     {
       //       label: 'Pay Globally',
-      //       href: '/products/international-payments',
+      //       href: '/international-payments',
       //       icon: '/images/header/collect-world.svg',
       //     },
       //   ],
@@ -76,8 +76,16 @@ const navigationData = {
       href: '/company',
       hasDropdown: true,
       items: [
-        { label: 'About Us', href: '/about-us' },
-        { label: 'Vision & Mission', href: '/vision-mission' },
+        {
+          label: 'About Us',
+          href: '/about-us',
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M15 17.5C15 15.7319 14.2976 14.0362 13.0474 12.786C11.7971 11.5357 10.1014 10.8333 8.33332 10.8333M8.33332 10.8333C6.56521 10.8333 4.86952 11.5357 3.61928 12.786C2.36904 14.0362 1.66666 15.7319 1.66666 17.5M8.33332 10.8333C10.6345 10.8333 12.5 8.96785 12.5 6.66667C12.5 4.36548 10.6345 2.5 8.33332 2.5C6.03214 2.5 4.16666 4.36548 4.16666 6.66667C4.16666 8.96785 6.03214 10.8333 8.33332 10.8333ZM18.3333 16.6667C18.3333 13.8583 16.6667 11.25 15 10C15.5478 9.58897 15.9859 9.04924 16.2755 8.42856C16.565 7.80788 16.6971 7.12539 16.66 6.4415C16.6229 5.75761 16.4178 5.0934 16.0629 4.50767C15.7079 3.92193 15.2141 3.43272 14.625 3.08333" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+        },
+        {
+          label: 'Vision & Mission',
+          href: '/vision-mission',
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M9.16666 11.6667H10.8333C11.2754 11.6667 11.6993 11.4911 12.0118 11.1785C12.3244 10.866 12.5 10.442 12.5 10C12.5 9.55797 12.3244 9.13405 12.0118 8.82149C11.6993 8.50893 11.2754 8.33333 10.8333 8.33333H8.33332C7.83332 8.33333 7.41666 8.5 7.16666 8.83333L2.49999 13.3333M5.83332 16.6667L7.16666 15.5C7.41666 15.1667 7.83332 15 8.33332 15H11.6667C12.5833 15 13.4167 14.6667 14 14L17.8333 10.3333C18.1549 10.0294 18.3426 9.61025 18.3551 9.16798C18.3676 8.7257 18.2039 8.29658 17.9 7.975C17.5961 7.65343 17.1769 7.46574 16.7346 7.45324C16.2924 7.44074 15.8632 7.60444 15.5417 7.90833L12.0417 11.1583M1.66666 12.5L6.66666 17.5M16.25 7.08333C16.8333 6.5 17.5 5.75 17.5 4.83333C17.5582 4.32411 17.4428 3.81013 17.1724 3.3747C16.9021 2.93927 16.4926 2.6079 16.0103 2.43429C15.5281 2.26068 15.0013 2.255 14.5154 2.41818C14.0296 2.58136 13.613 2.90383 13.3333 3.33333C13.0358 2.93715 12.6192 2.64677 12.1445 2.50482C11.6699 2.36287 11.1622 2.37682 10.6961 2.54464C10.2299 2.71245 9.82984 3.02528 9.55458 3.4372C9.27931 3.84913 9.14335 4.33845 9.16666 4.83333C9.16666 5.83333 9.83332 6.5 10.4167 7.16667L13.3333 10L16.25 7.08333Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+        },
         // { label: 'Corporate information', href: '/corporate-information' },
       ],
     },
@@ -95,7 +103,11 @@ const navigationData = {
         // { label: 'News', href: '/news' },
         // { label: 'Blogs', href: '/blog' },
         // { label: 'Events', href: '/events' },
-        { label: 'Careers', href: '/careers' },
+        {
+          label: 'Careers',
+          href: '/careers',
+          icon: `<img src="/images/header/careers-icon.png" alt="" width="24" height="24" />`,
+        },
       ],
     },
   ],
@@ -109,9 +121,6 @@ const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [openDropdowns, setOpenDropdowns] = useState({})
   const [hoveredItem, setHoveredItem] = useState(null)
-  const [activeProductsGroupId, setActiveProductsGroupId] = useState(
-    navigationData.productsMega?.groups?.[0]?.id ?? null
-  )
   const [hasMounted, setHasMounted] = useState(false)
   const { isMobile, isTablet } = useResponsive()
   const pathname = usePathname()
@@ -235,15 +244,6 @@ const Header = () => {
     }
   }, [isMobile, isTablet])
 
-  // Keep Products mega-menu group selection stable while open; reset to first group when (re)opened
-  useEffect(() => {
-    const productsOpen = openDropdowns?.Products || hoveredItem === 'Products'
-    if (!productsOpen) return
-    if (!activeProductsGroupId) {
-      setActiveProductsGroupId(navigationData.productsMega?.groups?.[0]?.id ?? null)
-    }
-  }, [openDropdowns, hoveredItem, activeProductsGroupId])
-
   // Check if path is active
   const isActivePath = useCallback(
     (href) => {
@@ -275,8 +275,6 @@ const Header = () => {
         const isProductsMega = link.type === 'productsMega'
         const dropdownActiveClass = isActive && !isProductsMega ? 'is-active' : ''
         const productsGroups = navigationData.productsMega?.groups ?? []
-        const activeGroup =
-          productsGroups.find((g) => g.id === activeProductsGroupId) ?? productsGroups[0]
 
         return (
           <div
@@ -305,33 +303,13 @@ const Header = () => {
                   <>
                     {isProductsMega ? (
                       <div className={`header__dropdown header__dropdown--products-mega ${isMobile ? 'header__dropdown--mobile' : ''}`}>
-                        {/* Desktop mega menu */}
+                        {/* Desktop flat two-column layout */}
                         {!isMobile && !isTablet ? (
-                          <div className="header__products-mega" role="menu" aria-label="Products menu">
-                            <div className="header__products-mega-left" role="presentation">
-                              {productsGroups.map((group) => {
-                                const isGroupActive = group.id === (activeGroup?.id ?? productsGroups?.[0]?.id)
-                                return (
-                                  <button
-                                    key={group.id}
-                                    type="button"
-                                    className={`header__products-mega-group ${isGroupActive ? 'is-active' : ''}`}
-                                    onMouseEnter={() => setActiveProductsGroupId(group.id)}
-                                    onFocus={() => setActiveProductsGroupId(group.id)}
-                                  >
-                                    <span className="header__products-mega-group-icon" aria-hidden="true">
-                                      <Image src={group.icon} alt="" width={22} height={22} />
-                                    </span>
-                                    <span className="header__products-mega-group-label">{group.label}</span>
-                                    <Icon icon="mdi:chevron-right" className="header__products-mega-group-chevron" />
-                                  </button>
-                                )
-                              })}
-                            </div>
-                            <div className="header__products-mega-right" role="presentation">
-                              <div className="header__products-mega-title">{activeGroup?.label}</div>
-                              <div className="header__products-mega-items">
-                                {(activeGroup?.items ?? []).map((item) => {
+                          <div className="header__dropdown--products-flat" role="menu" aria-label="Products menu">
+                            {productsGroups.map((group) => (
+                              <div key={group.id} className="header__products-column">
+                                <div className="header__products-group-label">{group.label}</div>
+                                {(group.items ?? []).map((item) => {
                                   const itemIsActive = isActivePath(item.href)
                                   if (item.target === true) {
                                     return (
@@ -344,13 +322,12 @@ const Header = () => {
                                         onClick={handleNavClick}
                                       >
                                         <span className="header__products-mega-item-icon" aria-hidden="true">
-                                            <Image src={item.icon} alt="" width={22} height={22} />
+                                          <Image src={item.icon} alt="" width={22} height={22} />
                                         </span>
                                         <span className="header__products-mega-item-label">{item.label}</span>
                                       </a>
                                     )
                                   }
-
                                   return (
                                     <Link
                                       key={item.label}
@@ -359,14 +336,14 @@ const Header = () => {
                                       onClick={handleNavClick}
                                     >
                                       <span className="header__products-mega-item-icon" aria-hidden="true">
-                                          <Image src={item.icon} alt="" width={22} height={22} />
+                                        <Image src={item.icon} alt="" width={22} height={22} />
                                       </span>
                                       <span className="header__products-mega-item-label">{item.label}</span>
                                     </Link>
                                   )
                                 })}
                               </div>
-                            </div>
+                            ))}
                           </div>
                         ) : (
                           /* Mobile sectioned list */
@@ -432,6 +409,7 @@ const Header = () => {
                                   rel="noopener noreferrer"
                                   onClick={handleNavClick}
                                 >
+                                  {item.icon && <span className="header__dropdown-icon" dangerouslySetInnerHTML={{ __html: item.icon }} />}
                                   <span>{item.label}</span>
                                 </a>
                               </div>
@@ -509,6 +487,7 @@ const Header = () => {
                                   className={`header__dropdown-link ${itemIsActive ? 'is-active' : ''}`}
                                   onClick={handleNavClick}
                                 >
+                                  {item.icon && <span className="header__dropdown-icon" dangerouslySetInnerHTML={{ __html: item.icon }} />}
                                   <span>{item.label}</span>
                                 </Link>
                               )}
@@ -536,7 +515,6 @@ const Header = () => {
     [
       openDropdowns,
       hoveredItem,
-      activeProductsGroupId,
       isActivePath,
       isTablet,
       handleMouseEnter,

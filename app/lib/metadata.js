@@ -1,68 +1,111 @@
-/** Staging: discourage indexing on all pages using this metadata. */
+/** Staging: discourage indexing disabled — enable for production */
 export const stagingRobots = {
-  index: false,
-  follow: false,
-  googleBot: { index: false, follow: false },
+  index: true,
+  follow: true,
+  googleBot: { index: true, follow: true },
 };
 
 export const defaultMetadata = {
-  title: "Pay10",
-  description: 'description',
-  keywords: 'Best payment gateway in India, Payment gateway company in india, Best payment gateway services provider in india, Payment gateway company, Payment gateways in India, Best Payment Gateway, Best Payment Gateway in India, Payment Gateways In India, Best Payment Gateways, Best Payment Gateways of 2023, BEST Payment Gateway Providers In 2023, Payment gateway provider, Payment gateway for your business',
+  title: "Pay 10",
+  description: 'Pay 10 UAE is a regulated payments platform building secure, interoperable, and compliance-led payment infrastructure in the UAE.',
+  keywords: 'Best payment gateway in UAE, Payment gateway company in UAE, Best payment gateway services provider in UAE, Payment gateway company, Payment gateways in UAE, Best Payment Gateway, Best Payment Gateway in UAE, Payment Gateways In UAE, Best Payment Gateways',
   robots: stagingRobots,
+  alternates: {
+    canonical: 'https://pay10.ae',
+  },
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://pay10.in',
-    siteName: 'Pay10',
-    title: "Best payment gateway services provider in India | Pay10",
-    description: 'Pay10 provides a hassle-free payment gateway service provider in India and supports 100+ payment modes. Accepts all domestic card, UPI, netbanking and wallet payments',
+    url: 'https://pay10.ae',
+    siteName: 'Pay 10',
+    title: "Pay 10 - Trusted Payment Partner in UAE",
+    description: 'Pay 10 UAE is a regulated payments platform building secure, interoperable, and compliance-led payment infrastructure in the UAE.',
     images: [
       {
         url: '',
         width: 1200,
         height: 630,
-        alt: 'pay10',
+        alt: 'Pay 10',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Best payment gateway services provider in India | Pay10",
-    description: 'Pay10 provides a hassle-free payment gateway service provider in India and supports 100+ payment modes. Accepts all domestic card, UPI, netbanking and wallet payments',
+    title: "Pay 10 - Trusted Payment Partner in UAE",
+    description: 'Pay 10 UAE is a regulated payments platform building secure, interoperable, and compliance-led payment infrastructure in the UAE.',
     images: [''],
   },
 }
 
 // Helper function to generate metadata from API pageData
-export const generateApiMetadata = (pageData, fallbackTitle = 'Pay10', fallbackDescription = defaultMetadata.description) => {
+export const generateApiMetadata = (pageData, fallbackTitle = 'Pay 10', fallbackDescription = defaultMetadata.description) => {
   const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pay10.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pay10.ae';
+
+  let rawTitle = pageData?.meta_title || fallbackTitle;
+  
+  const currentSlug = (pageData?.slug || '').toLowerCase();
+  const titleLower = rawTitle.toLowerCase();
+
+  // Normalize titles to match production exactly
+  if (currentSlug === 'home' || titleLower === 'home' || titleLower === 'pay 10') {
+    rawTitle = 'Pay 10';
+  } else if (currentSlug === 'about-us' || titleLower === 'about-us' || titleLower.includes('about us')) {
+    rawTitle = 'About Us \u2013 Pay 10';
+  } else if (currentSlug === 'vision-mission' || currentSlug === 'vision-and-mission' || titleLower.includes('vision & mission') || titleLower.includes('vision and mission')) {
+    rawTitle = 'Vision & Mission \u2013 Pay 10';
+  } else if (currentSlug === 'consumer-app' || titleLower.includes('consumer app')) {
+    rawTitle = 'Consumer App \u2013 Pay 10';
+  } else if (currentSlug === 'merchant-app' || titleLower.includes('merchant-app') || titleLower.includes('merchant app')) {
+    rawTitle = 'Merchant App \u2013 Pay 10';
+  } else if (currentSlug === 'open-finance-altareq' || currentSlug === 'open-finance-altareeq' || titleLower.includes('open finance') || titleLower.includes('altareq') || titleLower.includes('altareeq')) {
+    rawTitle = 'Open Finance Al Tareeq \u2013 Pay 10';
+  } else if (currentSlug === 'integration-methods' || titleLower.includes('integration methods') || titleLower.includes('integration-methods')) {
+    rawTitle = 'Integration Methods \u2013 Pay 10';
+  } else if (currentSlug === 'careers' || titleLower.includes('careers')) {
+    rawTitle = 'Careers \u2013 Pay 10';
+  } else if (currentSlug === 'faqs' || currentSlug === 'faq' || titleLower.includes('faq')) {
+    rawTitle = 'Faqs \u2013 Pay 10';
+  } else if (currentSlug === 'terms-of-service' || titleLower.includes('terms of service') || titleLower.includes('terms-of-service')) {
+    rawTitle = 'Terms of Service \u2013 Pay 10';
+  } else if (currentSlug === 'key-fact-statement' || titleLower.includes('key fact statement') || titleLower.includes('key-fact-statement')) {
+    rawTitle = 'Key Fact Statement \u2013 Pay 10';
+  } else if (currentSlug === 'privacy-policy' || titleLower.includes('privacy policy') || titleLower.includes('privacy-policy')) {
+    rawTitle = 'Privacy Policy \u2013 Pay 10';
+  } else if (currentSlug === 'ecosystem-partners' || titleLower.includes('ecosystem partners') || titleLower.includes('ecosystem-partners')) {
+    rawTitle = 'Ecosystem Partners \u2013 Pay 10';
+  }
+
+  const slug = pageData?.slug === 'home' || !pageData?.slug ? '' : pageData.slug;
+  const canonicalUrl = `${siteUrl}/${slug}`;
 
   return {
-    title: pageData?.meta_title || fallbackTitle,
+    title: rawTitle,
     description: pageData?.meta_description || fallbackDescription,
     keywords: pageData?.meta_keywords || defaultMetadata.keywords,
     robots: stagingRobots,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       type: 'website',
       locale: 'en_US',
-      url: siteUrl,
-      siteName: 'Pay10',
-      title: pageData?.meta_title || fallbackTitle,
+      url: canonicalUrl,
+      siteName: 'Pay 10',
+      title: rawTitle,
       description: pageData?.meta_description || fallbackDescription,
       images: pageData?.image && baseUrl ? [
         {
           url: `${baseUrl}${pageData.image}`,
           width: 1200,
           height: 630,
-          alt: pageData?.meta_title || fallbackTitle,
+          alt: rawTitle,
         }
       ] : defaultMetadata.openGraph.images,
     },
     twitter: {
       card: 'summary_large_image',
-      title: pageData?.meta_title || fallbackTitle,
+      title: rawTitle,
       description: pageData?.meta_description || fallbackDescription,
       images: pageData?.image && baseUrl ? [`${baseUrl}${pageData.image}`] : defaultMetadata.twitter.images,
     },
@@ -70,21 +113,25 @@ export const generateApiMetadata = (pageData, fallbackTitle = 'Pay10', fallbackD
 };
 
 // Helper function to generate blog post metadata
-export const generateBlogMetadata = (blog, fallbackTitle = 'Pay10', fallbackDescription = defaultMetadata.description) => {
+export const generateBlogMetadata = (blog, fallbackTitle = 'Pay 10', fallbackDescription = defaultMetadata.description) => {
   const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.pay10.in';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://pay10.ae';
   const description = blog?.short_description || blog?.description?.replace(/<[^>]*>/g, '').substring(0, 160) || fallbackDescription;
+  const canonicalUrl = `${siteUrl}/blog/${blog?.slug || ''}`;
 
   return {
-    title: `${blog?.name || fallbackTitle} | Blog | Pay10`,
+    title: `${blog?.name || fallbackTitle} | Blog | Pay 10`,
     description: description,
     keywords: blog?.meta_keywords || defaultMetadata.keywords,
     robots: stagingRobots,
+    alternates: {
+      canonical: canonicalUrl,
+    },
     openGraph: {
       type: 'article',
       locale: 'en_US',
-      url: `${siteUrl}/blog/${blog?.slug}`,
-      siteName: 'Pay10',
+      url: canonicalUrl,
+      siteName: 'Pay 10',
       title: blog?.name || fallbackTitle,
       description: description,
       images: blog?.image && baseUrl ? [

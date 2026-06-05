@@ -95,7 +95,7 @@ const defaultDecorations = [
 
 export default function HeroHomeBanner({
   eyebrow = 'YOUR ALTERNATIVE PAYMENT PARTNER',
-  title = 'Why Pay When You Can Pay10',
+  title = 'Why Pay, When You Can Pay10',
   description = 'Tap into a world of possibilities with Pay10 digital payments to boost your life or business.',
   ctaLabel = 'Get Started',
   ctaHref = '/contact-us',

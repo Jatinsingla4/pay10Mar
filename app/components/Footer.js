@@ -62,6 +62,11 @@ const footerData = {
         },
       ],
     },
+    contact: {
+      label: 'Contact',
+      href: '/contact-us',
+      items: [],
+    },
   },
   socialMedia: {
     linkedin: 'https://www.linkedin.com/company/pay10-uae',
@@ -269,6 +274,19 @@ const Footer = () => {
                 ))}
               </div>
             </>
+          )}
+        </div>
+
+        {/* Contact Column */}
+        <div className="footer__nav-item">
+          {isMobile || isTablet ? (
+            <Link href={navigation.contact.href} className="footer__nav-link footer__nav-link--accordion">
+              <span>{navigation.contact.label}</span>
+            </Link>
+          ) : (
+            <Link href={navigation.contact.href} className="footer__nav-heading">
+              {navigation.contact.label}
+            </Link>
           )}
         </div>
 

@@ -24,6 +24,15 @@ export default function KfsClient() {
     <div className={styles.kfs_container}>
       <h1 className={styles.title}>Key Fact Statement</h1>
 
+      <div className={styles.arabic_btn_row}>
+        <a
+          href="https://pay10.ae/key-fact-statement/#"
+          className={styles.arabic_btn}
+        >
+          عربي
+        </a>
+      </div>
+
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
         <aside className={styles.sidebar}>

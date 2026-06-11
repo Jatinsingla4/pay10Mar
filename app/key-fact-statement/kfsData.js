@@ -146,7 +146,7 @@ Please note that this KFS will be updated from time to time as per mandate from 
 				`
   },
   {
-    tabName: "KFS Bizz App",
+    tabName: "KFS Biz UAE App",
     content: `
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-5782ea8 elementor-widget elementor-widget-text-editor" data-id="5782ea8" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">

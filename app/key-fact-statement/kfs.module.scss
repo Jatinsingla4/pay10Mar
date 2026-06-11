@@ -100,6 +100,34 @@
   }
 }
 
+.arabic_btn_row {
+  display: flex;
+  justify-content: flex-end;
+  max-width: 1200px;
+  margin: 0 auto 16px;
+  padding: 0 20px;
+}
+
+.arabic_btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #e63946;
+  color: var(--white);
+  text-decoration: none;
+  font-family: 'bold', sans-serif;
+  font-size: 15px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+  align-self: flex-start;
+
+  &:hover {
+    opacity: 0.88;
+  }
+}
+
 .content_panel {
   flex: 1;
   background-color: var(--white);

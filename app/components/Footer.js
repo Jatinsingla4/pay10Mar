@@ -13,18 +13,13 @@ const footerData = {
     alt: 'Pay10',
     href: '/',
   },
-  logoAr: {
-    src: '/images/common/logo.png',
-    alt: 'Pay10',
-    href: '/ar/home-ar/',
-  },
   navigation: {
     company: {
       label: 'Company',
       items: [
-        { label: 'About Us', href: '/about-us', hrefAr: '/ar/about-us-2/' },
-        { label: 'Vision & Mission', href: '/vision-mission', hrefAr: '/ar/vision-mission-2/' },
-        { label: 'Career', href: '/careers', hrefAr: '/ar/careers/' }, // careers Slug
+        { label: 'About Us', href: '/about-us' },
+        { label: 'Vision & Mission', href: '/vision-mission' },
+        { label: 'Career', href: '/careers' },
       ],
     },
     products: {
@@ -33,14 +28,14 @@ const footerData = {
         {
           label: 'Digital Wallet',
           subItems: [
-            { label: 'Consumer App', href: '/consumer-app', hrefAr: '/ar/consumer-app-2/' },
-            { label: 'Merchant App', href: '/merchant-app', hrefAr: '/ar/merchant-app-2/' },
+            { label: 'Consumer App', href: '/consumer-app' },
+            { label: 'Merchant App', href: '/merchant-app' },
           ],
         },
         {
           label: 'Payments',
           subItems: [
-            { label: 'Integration Methods', href: '/integration-methods', hrefAr: '/ar/integration-methods/' },
+            { label: 'Integration Methods', href: '/integration-methods' },
           ],
         },
       ],
@@ -48,10 +43,10 @@ const footerData = {
     legal: {
       label: 'Legal',
       items: [
-        { label: 'Terms of Services', href: '/terms-of-service', hrefAr: '/ar/terms-of-service-ar/' },
-        { label: 'Privacy Policy', href: '/privacy-policy', hrefAr: '/ar/privacy-policy-ar/' },
-        { label: 'Key Facts Statement', href: '/key-fact-statement', hrefAr: '/ar/kfs-bizz-app-ar/', hrefArAlt: '/ar/kfs-customer-wallet-ar/' },
-        { label: 'FAQ', href: '/faqs', hrefAr: '/ar/faq-customer-app-ar/', hrefArAlt: '/ar/faq-pay10-biz-app-ar/' },
+        { label: 'Terms of Services', href: '/terms-of-service' },
+        { label: 'Privacy Policy', href: '/privacy-policy' },
+        { label: 'Key Facts Statement', href: '/key-fact-statement' },
+        { label: 'FAQ', href: '/faqs' },
       ],
     },
     resources: {
@@ -63,10 +58,6 @@ const footerData = {
   },
   socialMedia: {
     linkedin: 'https://www.linkedin.com/company/pay10-uae',
-  },
-  appStoreLinks: {
-    appStore: '/coming-soon',
-    googlePlay: '/coming-soon',
   },
 }
 
@@ -274,71 +265,7 @@ const Footer = () => {
           )}
         </div>
 
-        {/* Contact Us */}
-        <div className="footer__nav-item">
-          {isMobile || isTablet ? (
-            <Link href="/contact-us" className="footer__nav-link">
-              Contact Us
-            </Link>
-          ) : (
-            <Link href="/contact-us" className="footer__contact-btn" style={{
-              background: 'transparent',
-              border: '2px solid var(--white)',
-              borderRadius: '24px',
-              padding: '8px 24px',
-              color: 'var(--white)',
-              textDecoration: 'none',
-              fontFamily: 'medium, sans-serif',
-              textAlign: 'center',
-              display: 'inline-block',
-              transition: 'all 0.3s ease',
-              marginTop: '1rem',
-              alignSelf: 'flex-start'
-            }}>
-              Contact Us
-            </Link>
-          )}
-        </div>
       </>
-    )
-  }
-
-  const renderAppStoreButtons = () => {
-    const { appStoreLinks } = footerData
-
-    return (
-      <div className="footer__app-store" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1rem' }}>
-        <a
-          href={appStoreLinks.appStore}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer__app-store-btn footer__app-store-btn--apple"
-          aria-label="Download on the App Store"
-        >
-          <Image
-            width={128}
-            height={36}
-            src="/images/common/foo-app1.svg"
-            alt="App Store"
-            className="footer__app-store-icon"
-          />
-        </a>
-        <a
-          href={appStoreLinks.googlePlay}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer__app-store-btn footer__app-store-btn--google"
-          aria-label="Get it on Google Play"
-        >
-          <Image
-            width={128}
-            height={36}
-            src="/images/common/foo-app2.svg"
-            alt="Google Play"
-            className="footer__app-store-icon"
-          />
-        </a>
-      </div>
     )
   }
 
@@ -369,49 +296,20 @@ const Footer = () => {
               <Image width={24} height={24} src="/images/common/linkedin.svg" alt="LinkedIn" className="footer__social-icon" />
             </a>
           </div>
-          {renderAppStoreButtons()}
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="footer__bottom">
         <div className="footer__bottom-container">
-          {/* Legal Links (English) */}
-          <div className="footer__bottom-left">
-            <div className="footer__address" style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-              <Link href="/terms-of-service" className="footer__legal-link">Term of Services</Link>
-              <span className="footer__legal-separator">|</span>
-              <Link href="/privacy-policy" className="footer__legal-link">Privacy Policy</Link>
-              <span className="footer__legal-separator">|</span>
-              <Link href="/key-fact-statement" className="footer__legal-link">Key Facts Statement</Link>
-              <span className="footer__legal-separator">|</span>
-              <Link href="/faqs" className="footer__legal-link">FAQ</Link>
-            </div>
-          </div>
-
-          {/* Legal Links (Arabic) */}
-          <div className="footer__bottom-right footer__bottom-right--arabic-links" style={{ direction: 'rtl', display: 'flex', gap: '10px', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <Link href="/ar/privacy-policy-ar/" className="footer__legal-link">سياسة الخصوصية</Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href="/ar/terms-of-service-ar/" className="footer__legal-link">شروط الخدمات</Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href="/ar/kfs-bizz-app-ar/" className="footer__legal-link">بيان الحقائق الرئيسية تطبيق Pay10 Merchant App للشركات</Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href="/ar/kfs-customer-wallet-ar/" className="footer__legal-link">بيان الحقائق الرئيسية تطبيق Pay10 للعملاء</Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href="/ar/faq-customer-app-ar/" className="footer__legal-link">الأسئلة الشائعة تطبيق Pay10 للعملاء</Link>
-            <span className="footer__legal-separator">|</span>
-            <Link href="/ar/faq-pay10-biz-app-ar/" className="footer__legal-link">الأسئلة الشائعة تطبيق Pay10 Merchant App للشركات</Link>
+          {/* English Address */}
+          <div className="footer__address footer__address--en">
+            © PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates
           </div>
 
           {/* Arabic Address */}
           <div className="footer__bottom-right footer__bottom-right--arabic-address" style={{ direction: 'rtl' }}>
-            <span>© PAY10 | مكتب 1004، الدور 10 , برج أوبورا للأعمال، الخليج التجاري - دبي، الإمارات العربية المتحدة</span>
-          </div>
-
-          {/* English Address */}
-          <div className="footer__address footer__address--en">
-            © PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates
+            <span>مكتب 1004، الدور 10 , برج أوبورا التجاري - دبي، الإمارات العربية المتحدة | © PAY10</span>
           </div>
         </div>
       </div>
@@ -423,7 +321,6 @@ const Footer = () => {
             <Image width={24} height={24} src="/images/common/linkedin.svg" alt="LinkedIn" className="footer__social-icon" />
           </a>
         </div>
-        {renderAppStoreButtons()}
       </div>
     </footer>
   )

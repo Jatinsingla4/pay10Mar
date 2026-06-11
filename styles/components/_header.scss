@@ -218,6 +218,11 @@
     animation: dropdownFadeIn 0.2s var(--ease-out-cubic);
     overflow: visible;
 
+    &--align-right {
+      left: auto;
+      right: 0;
+    }
+
     &--mobile {
       position: static;
       border: none;

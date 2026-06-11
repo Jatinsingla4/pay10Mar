@@ -232,18 +232,12 @@ const Header = () => {
 
   // Handle desktop dropdown hover
   const handleMouseEnter = useCallback((linkLabel) => {
-    if (!isMobile && !isTablet) {
-      setHoveredItem(linkLabel)
-      setOpenDropdowns((prev) => ({ ...prev, [linkLabel]: true }))
-    }
-  }, [isMobile, isTablet])
+    // no-op on desktop — dropdowns open via click only
+  }, [])
 
   const handleMouseLeave = useCallback(() => {
-    if (!isMobile && !isTablet) {
-      setHoveredItem(null)
-      setOpenDropdowns({})
-    }
-  }, [isMobile, isTablet])
+    // no-op on desktop — dropdowns close via click-outside only
+  }, [])
 
   // Handle navigation click (close mobile menu)
   const handleNavClick = useCallback(() => {
@@ -280,7 +274,7 @@ const Header = () => {
   const renderNavLinks = useCallback(
     (isMobile = false) => {
       return navigationData.links.map((link) => {
-        const isOpen = openDropdowns[link.label] || hoveredItem === link.label
+        const isOpen = openDropdowns[link.label]
         const isActive = isActivePath(link.href)
         const isProductsMega = link.type === 'productsMega'
         const dropdownActiveClass = isActive && !isProductsMega ? 'is-active' : ''
@@ -298,7 +292,7 @@ const Header = () => {
               <>
                 <button
                   className={`header__nav-link header__nav-link--dropdown ${isOpen ? 'is-open' : ''} ${dropdownActiveClass}`}
-                  onClick={() => (isMobile || isTablet ? toggleDropdown(link.label) : null)}
+                  onClick={() => toggleDropdown(link.label)}
                   onFocus={() => handleMouseEnter(link.label)}
                   aria-expanded={isOpen}
                   aria-haspopup="true"

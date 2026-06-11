@@ -115,15 +115,15 @@
         }
       }
 
-      // Desktop open state (match figma: orange label + chevron up)
+      // Desktop open state (match prod: #CC3366)
       @media (min-width: 992px) {
         &.is-open {
           .header__nav-link--dropdown {
-            color: var(--orange-icon);
+            color: #CC3366;
 
             .header__nav-chevron {
               transform: rotate(180deg);
-              color: var(--orange-icon);
+              color: #CC3366;
             }
           }
         }

@@ -538,40 +538,12 @@ const Header = () => {
   const renderAppStoreButtons = useMemo(() => {
     return (
       <div className="header__app-store">
-        {/* <a
-          href={navigationData.appStoreLinks.appStore}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="header__app-store-btn header__app-store-btn--apple"
-          aria-label="Download on the App Store"
-        >
-          <Image
-            width={158}
-            height={58}
-            src="/images/common/app-store.svg"
-            alt="App Store"
-            className="footer__app-store-icon"
-          />
-        </a>
-        <a
-          href={navigationData.appStoreLinks.googlePlay}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="header__app-store-btn header__app-store-btn--google"
-          aria-label="Get it on Google Play"
-        >
-           <Image
-           width={158}
-           height={58}
-            src="/images/common/google-play.svg"
-            alt="Google Play"
-            className="footer__app-store-icon"
-          />
-        </a> */}
-        {/* <ContactCtaBtn /> */}
+        <Link href="/contact-us" className="header__contact-cta" onClick={handleNavClick}>
+          Contact Us
+        </Link>
       </div>
     )
-  }, [])
+  }, [handleNavClick])
 
   return (
     <header

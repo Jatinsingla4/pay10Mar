@@ -513,6 +513,27 @@
     }
   }
 
+  // Contact Us CTA
+  &__contact-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #353333;
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 115px;
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+
   // App Store Buttons
   &__app-store {
     display: flex;

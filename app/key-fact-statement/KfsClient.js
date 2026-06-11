@@ -26,7 +26,7 @@ export default function KfsClient() {
 
       <div className={styles.arabic_btn_row}>
         <a
-          href="https://pay10.ae/key-fact-statement/#"
+          href="/key-fact-statement/#"
           className={styles.arabic_btn}
         >
           عربي

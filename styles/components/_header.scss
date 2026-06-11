@@ -115,15 +115,15 @@
         }
       }
 
-      // Desktop open state (match prod: #CC3366)
+      // Desktop open state — no color change, match prod (#1F2124)
       @media (min-width: 992px) {
         &.is-open {
           .header__nav-link--dropdown {
-            color: #CC3366;
+            color: #1F2124;
 
             .header__nav-chevron {
               transform: rotate(180deg);
-              color: #CC3366;
+              color: #1F2124;
             }
           }
         }

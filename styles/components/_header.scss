@@ -205,23 +205,22 @@
 
   // Dropdown
   &__dropdown {
-    position: absolute;
-    top: 80%;
+    position: fixed;
+    top: 72px;
     left: 0;
-    background: var(--white);
-    border: 1px solid var(--border-clr);
-    border-radius: 4px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    min-width: 320px;
+    width: 100vw;
+    min-width: unset;
     padding: 8px 0;
-    margin-top: 0.5rem;
+    border-radius: 0;
+    border-top: 1px solid var(--border-clr);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     z-index: 1002;
     animation: dropdownFadeIn 0.2s var(--ease-out-cubic);
-    overflow: visible;
+    background-color: var(--white);
 
     &--align-right {
-      left: auto;
-      right: 0;
+      left: 0;
+      right: unset;
     }
 
     &--mobile {
@@ -260,8 +259,9 @@
         gap: 8px;
         background: #F7F7F7;
         border-radius: 12px;
-        padding: 8px;
-        width: fit-content;
+        padding: 8px 56px;
+        max-width: 1200px;
+        margin: 0 auto;
         box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
       }
     }
@@ -516,6 +516,14 @@
         transform: rotate(90deg);
         color: var(--white);
       }
+    }
+  }
+
+  // Dropdown inner centering wrapper (Company / Resources)
+  &__dropdown-inner {
+    @media (min-width: 992px) {
+      max-width: 400px;
+      padding: 8px 56px;
     }
   }
 

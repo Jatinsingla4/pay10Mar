@@ -306,7 +306,7 @@ const Header = () => {
                 {isOpen && (
                   <>
                     {isProductsMega ? (
-                      <div className={`header__dropdown header__dropdown--products-mega ${link.label === 'Products' ? 'header__dropdown--align-right' : ''} ${isMobile ? 'header__dropdown--mobile' : ''}`}>
+                      <div className={`header__dropdown header__dropdown--products-mega ${isMobile ? 'header__dropdown--mobile' : ''}`}>
                         {/* Desktop flat two-column layout */}
                         {!isMobile && !isTablet ? (
                           <div className="header__dropdown--products-flat" role="menu" aria-label="Products menu">
@@ -397,7 +397,8 @@ const Header = () => {
                         )}
                       </div>
                     ) : (
-                      <div className={`header__dropdown ${link.label === 'Resources' ? 'header__dropdown--align-right' : ''} ${isMobile ? 'header__dropdown--mobile' : ''}`}>
+                      <div className={`header__dropdown ${isMobile ? 'header__dropdown--mobile' : ''}`}>
+                        <div className="header__dropdown-inner">
                         {link.items?.map((item) => {
                           const hasNestedItems = item.items && item.items.length > 0
                           const itemIsActive = isActivePath(item.href)
@@ -498,6 +499,7 @@ const Header = () => {
                             </div>
                           )
                         })}
+                        </div>
                       </div>
                     )}
                   </>

@@ -53,31 +53,28 @@ const PrivacyClient = () => {
   }
 
   return (
-    <>
-      <main className={Style.mainPriv}>
-        <section className={Style.privacy_policy_banner}>
-          <div className={Style.wrapper} style={{ margin: 0 }}>
-            <div data-animation="opacity-up">
-              {topSubHeading && (
-                <p className={Style.topSubHeading}>{topSubHeading}</p>
-              )}
-              <h2>{topHeading}</h2>
-            </div>
-          </div>
-        </section>
+    <main className={Style.mainPriv}>
+      <section className={Style.privacy_policy_banner}>
+        <p className={Style.topSubHeading}>{topSubHeading}</p>
+        <h2>{topHeading}</h2>
+      </section>
 
-        <section className={Style.wrapper} style={{ marginTop: "30px" }}>
-          <div className={Style.privacy_policy_content}>
-            {content && (
-              <div
-                className={Style.contentHtml}
-                dangerouslySetInnerHTML={{ __html: content }}
-              />
-            )}
+      <section className={Style.content_section}>
+        <div className={Style.arabic_btn_row}>
+          <a href="/privacy-policy/#" className={Style.arabic_btn}>يبرع</a>
+        </div>
+
+        <div className={Style.layout}>
+          <aside className={Style.sidebar}>
+            <button className={Style.tab_pill}>Privacy Policy</button>
+          </aside>
+          <div className={Style.content_panel}>
+            <div className={Style.contentHtml}
+              dangerouslySetInnerHTML={{ __html: content }} />
           </div>
-        </section>
-      </main>
-    </>
+        </div>
+      </section>
+    </main>
   );
 };
 

@@ -254,7 +254,7 @@
         background: transparent;
         border-radius: 0;
         padding: 8px 0;
-        width: 630px;
+        width: auto;
         border: none;
         box-shadow: none;
         margin: 0;
@@ -267,7 +267,9 @@
         border-radius: 8px;
         display: flex;
         flex-direction: column;
-        min-width: 220px;
+        min-width: 200px;
+        width: fit-content;
+        flex-shrink: 0;
       }
     }
 
@@ -296,10 +298,21 @@
         transition: background 0.2s var(--ease-out-cubic);
         border-radius: 6px;
 
-        &:hover,
         &.is-active {
           background: var(--primary-gradient);
           color: var(--white);
+        }
+
+        &:hover {
+          background: linear-gradient(to right, #FFBB07, #EF1A23);
+          border-radius: 8px;
+
+          .header__products-mega-item-label {
+            color: var(--white);
+          }
+          .header__products-mega-item-icon {
+            filter: brightness(0) invert(1);
+          }
         }
       }
     }

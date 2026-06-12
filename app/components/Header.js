@@ -224,10 +224,10 @@ const Header = () => {
 
   // Toggle dropdown (mobile)
   const toggleDropdown = useCallback((linkLabel) => {
-    setOpenDropdowns((prev) => ({
-      ...prev,
-      [linkLabel]: !prev[linkLabel],
-    }))
+    setOpenDropdowns((prev) => {
+      const isCurrentlyOpen = prev[linkLabel]
+      return isCurrentlyOpen ? {} : { [linkLabel]: true }
+    })
   }, [])
 
   // Handle desktop dropdown hover

@@ -217,6 +217,9 @@
     z-index: 1002;
     animation: dropdownFadeIn 0.2s var(--ease-out-cubic);
     background-color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 
     &--align-right {
       left: 0;
@@ -260,8 +263,7 @@
         background: var(--white);
         border-radius: 12px;
         padding: 8px 56px;
-        max-width: 1200px;
-        margin: 0 auto;
+        max-width: 600px;
         border: 1px solid #eeeeee;
       }
     }
@@ -522,9 +524,10 @@
   // Dropdown inner centering wrapper (Company / Resources)
   &__dropdown-inner {
     @media (min-width: 992px) {
-      max-width: 400px;
-      padding: 8px 56px;
-      margin: 0 auto;
+      max-width: 320px;
+      width: 320px;
+      padding: 8px 0;
+      margin: 0;
     }
   }
 

@@ -136,5 +136,36 @@
     color: #F37810;
     text-decoration: underline;
   }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 15px;
+  }
+
+  td, th {
+    border: 1px solid #e0e0e0;
+    padding: 14px 18px;
+    color: #444444;
+    line-height: 1.6;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  th {
+    background-color: #fff5e6;
+    color: #1a1a1a;
+    font-weight: 700;
+    border-bottom: 2px solid #F37810;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
 }
 

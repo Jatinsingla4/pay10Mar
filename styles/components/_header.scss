@@ -206,7 +206,7 @@
   // Dropdown
   &__dropdown {
     position: absolute;
-    top: 109px;
+    top: 100px;
     left: 50%;
     transform: translateX(-50%);
     width: auto;
@@ -268,7 +268,7 @@
 
     .header__products-column {
       @media (min-width: 992px) {
-        background: transparent;
+        background: var(--white);
         border-radius: 8px;
         display: flex;
         flex-direction: column;

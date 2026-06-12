@@ -206,7 +206,7 @@
   // Dropdown
   &__dropdown {
     position: fixed;
-    top: 99px;
+    top: 93px;
     left: 50%;
     transform: translateX(-50%);
     width: auto;
@@ -700,11 +700,11 @@
 @keyframes dropdownFadeIn {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateX(-50%) translateY(-8px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(-50%) translateY(0);
   }
 }
 

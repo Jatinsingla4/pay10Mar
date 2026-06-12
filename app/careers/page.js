@@ -23,7 +23,7 @@ export default function CareersPage() {
         <div className={styles.jobs_box}>
           <iframe
             src="https://pay10.webhr.co/hr/careers/"
-            style={{ marginTop: 0, marginLeft: 0, width: "100%", height: "600px" }}
+            style={{ marginTop: "0px", marginLeft: "0px", width: "800px", height: "600px" }}
             frameBorder="0"
             marginHeight="0"
             marginWidth="0"

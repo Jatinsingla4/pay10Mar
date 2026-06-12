@@ -268,7 +268,7 @@
 
     .header__products-column {
       @media (min-width: 992px) {
-        background: var(--white);
+        background: transparent;
         border-radius: 8px;
         display: flex;
         flex-direction: column;

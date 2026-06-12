@@ -70,6 +70,9 @@ const footerData = {
   },
   socialMedia: {
     linkedin: 'https://www.linkedin.com/company/pay10-uae',
+    x: '#',
+    instagram: '#',
+    facebook: '#',
   },
 }
 
@@ -320,6 +323,15 @@ const Footer = () => {
             <a href={footerData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn">
               <Image width={24} height={24} src="/images/common/linkedin.svg" alt="LinkedIn" className="footer__social-icon" />
             </a>
+            <a href={footerData.socialMedia.x} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="X">
+              <Image width={24} height={24} src="/images/common/x.svg" alt="X" className="footer__social-icon" />
+            </a>
+            <a href={footerData.socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
+              <Image width={24} height={24} src="/images/common/instagram.svg" alt="Instagram" className="footer__social-icon" />
+            </a>
+            <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
+              <Image width={24} height={24} src="/images/common/facebook.svg" alt="Facebook" className="footer__social-icon" />
+            </a>
           </div>
         </div>
       </div>
@@ -344,6 +356,15 @@ const Footer = () => {
         <div className="footer__social">
           <a href={footerData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn">
             <Image width={24} height={24} src="/images/common/linkedin.svg" alt="LinkedIn" className="footer__social-icon" />
+          </a>
+          <a href={footerData.socialMedia.x} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="X">
+            <Image width={24} height={24} src="/images/common/x.svg" alt="X" className="footer__social-icon" />
+          </a>
+          <a href={footerData.socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
+            <Image width={24} height={24} src="/images/common/instagram.svg" alt="Instagram" className="footer__social-icon" />
+          </a>
+          <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
+            <Image width={24} height={24} src="/images/common/facebook.svg" alt="Facebook" className="footer__social-icon" />
           </a>
         </div>
       </div>

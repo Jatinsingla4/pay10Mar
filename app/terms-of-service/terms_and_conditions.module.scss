@@ -1,7 +1,9 @@
 @import '../../styles/globals/mixin';
 
 .terms_container {
-  padding: 100px 0 80px;
+  padding: 100px 56px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
   background-color: #ffffff;
   min-height: 100vh;
   font-family: 'regular', sans-serif;
@@ -27,7 +29,7 @@
   gap: 50px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0;
 
   @media (max-width: 991px) {
     flex-direction: column;
@@ -45,25 +47,29 @@
   align-self: flex-start;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   @media (max-width: 991px) {
     flex: none;
     flex-direction: row;
     overflow-x: auto;
+    overflow-y: visible;
     padding-bottom: 15px;
     gap: 12px;
     width: 100%;
-    scrollbar-width: none;
-    
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    position: static;
+    max-height: none;
   }
 }
 
 .tab_pill {
-  width: 240px;
-  padding: 15px 35px;
+  width: 220px;
+  padding: 14px 28px;
   border-radius: 45px;
   border: none;
   font-family: 'bold', sans-serif;
@@ -108,7 +114,7 @@
 
 .content_panel {
   flex: 1;
-  padding: 40px;
+  padding: 24px 40px;
   border-left: 1px solid #eeeeee;
   min-height: 500px;
   color: #7A7A7A;
@@ -120,17 +126,7 @@
 }
 
 .tab_heading {
-  font-family: 'bold', sans-serif;
-  font-size: 2rem;
-  color: #1a1a1a;
-  margin-bottom: 24px;
-  border-bottom: 2px solid var(--border-clr);
-  padding-bottom: 15px;
-
-  @media (max-width: 768px) {
-    font-size: 1.6rem;
-    margin-bottom: 20px;
-  }
+  display: none;
 }
 
 .legal_content {

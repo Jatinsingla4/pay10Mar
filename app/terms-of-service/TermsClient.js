@@ -38,9 +38,7 @@ export default function TermsClient() {
 
         {/* Right Content Panel */}
         <main className={styles.content_panel}>
-          <h2 className={styles.tab_heading}>{activeTab?.tabName}</h2>
-          
-          <div 
+          <div
             className={styles.legal_content}
             dangerouslySetInnerHTML={{ __html: activeTab?.content || '' }}
           />

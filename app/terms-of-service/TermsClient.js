@@ -9,6 +9,8 @@ export default function TermsClient() {
 
   const handleTabChange = (tabName) => {
     setActiveTabName(tabName);
+    const panel = document.querySelector('.' + styles.content_panel);
+    if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const activeTab = tosData.find((tab) => tab.tabName === activeTabName) || tosData[0];

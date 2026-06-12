@@ -211,7 +211,7 @@
     transform: translateX(-50%);
     width: auto;
     min-width: unset;
-    padding: 4px 8px;
+    padding: 0 8px;
     border-radius: 12px;
     border: none;
     box-shadow: none;
@@ -270,6 +270,7 @@
       @media (min-width: 992px) {
         background: var(--white);
         border-radius: 8px;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
         min-width: 200px;

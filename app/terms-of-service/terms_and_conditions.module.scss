@@ -45,10 +45,10 @@
 }
 
 .sidebar {
-  flex: 0 0 260px;
+  flex: 0 0 240px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   position: sticky;
   top: 100px;
   align-self: flex-start;
@@ -75,23 +75,24 @@
 }
 
 .tab_pill {
-  width: 100%;
-  padding: 14px 28px;
+  width: 240px;
+  padding: 15px 35px;
   border-radius: 45px;
   border: none;
   font-family: 'bold', sans-serif;
   font-size: 16px;
+  font-weight: 700;
   color: var(--white);
   text-align: center;
   cursor: pointer;
   outline: none;
   background: var(--primary-gradient);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: none;
   white-space: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s var(--ease-out-cubic);
+  transition: opacity 0.15s ease;
   flex-shrink: 0;
 
   @media (max-width: 991px) {
@@ -101,22 +102,23 @@
     font-size: 0.9rem;
   }
 
-  &.inactive {
-    opacity: 0.5;
+  &.active {
+    background: linear-gradient(90deg, #FFBB07 17%, #EF1A23 72%);
+    opacity: 1;
     box-shadow: none;
-    transform: scale(1);
-    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-
-    &:hover {
-      opacity: 0.75;
-      transform: scale(1.01);
-    }
+    transform: none;
   }
 
-  &.active {
+  &.inactive {
+    background: linear-gradient(90deg, #FFBB07 0%, #F2295B 100%);
     opacity: 1;
-    box-shadow: 0 6px 20px rgba(243, 120, 16, 0.35);
-    transform: scale(1.02);
+    box-shadow: none;
+    transform: none;
+    transition: opacity 0.15s ease;
+
+    &:hover {
+      opacity: 0.85;
+    }
   }
 }
 

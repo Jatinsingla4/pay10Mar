@@ -18,6 +18,7 @@ export default function TermsClient() {
   return (
     <div className={styles.terms_container}>
       <h1 className={styles.title}>TERMS OF SERVICE</h1>
+      <p className={styles.last_updated}>Last updated: May 14, 2026</p>
 
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}

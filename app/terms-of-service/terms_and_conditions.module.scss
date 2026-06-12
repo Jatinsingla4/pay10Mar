@@ -1,10 +1,10 @@
 @import '../../styles/globals/mixin';
 
 .terms_container {
-  padding: 100px 56px 80px;
-  max-width: 1400px;
+  padding: 80px 56px 80px;
+  max-width: 1300px;
   margin: 0 auto;
-  background-color: #ffffff;
+  background: #ffffff;
   min-height: 100vh;
   font-family: 'regular', sans-serif;
 }
@@ -14,22 +14,29 @@
   font-family: 'bold', sans-serif;
   font-size: 3.5rem;
   color: var(--black);
-  margin-bottom: 50px;
+  margin-bottom: 8px;
   line-height: 1.2;
 
   @media (max-width: 768px) {
     font-size: 2.2rem;
-    margin-bottom: 30px;
+    margin-bottom: 6px;
     padding: 0 15px;
   }
 }
 
+.last_updated {
+  text-align: center;
+  font-size: 13px;
+  color: #999999;
+  margin-bottom: 40px;
+  font-family: 'regular', sans-serif;
+}
+
 .layout {
   display: flex;
-  gap: 50px;
+  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0;
 
   @media (max-width: 991px) {
     flex-direction: column;
@@ -38,7 +45,7 @@
 }
 
 .sidebar {
-  flex: 0 0 320px;
+  flex: 0 0 260px;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -68,7 +75,7 @@
 }
 
 .tab_pill {
-  width: 220px;
+  width: 100%;
   padding: 14px 28px;
   border-radius: 45px;
   border: none;
@@ -95,27 +102,29 @@
   }
 
   &.inactive {
-    opacity: 0.65;
+    opacity: 0.5;
+    box-shadow: none;
     transform: scale(1);
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
 
     &:hover {
-      opacity: 0.85;
+      opacity: 0.75;
       transform: scale(1.01);
     }
   }
 
   &.active {
     opacity: 1;
-    transform: scale(1.03);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 6px 20px rgba(243, 120, 16, 0.35);
+    transform: scale(1.02);
   }
 }
 
 .content_panel {
   flex: 1;
-  padding: 24px 40px;
-  border-left: 1px solid #eeeeee;
+  padding-top: 4px;
+  padding-left: 44px;
+  border-left: 3px solid #F37810;
   min-height: 500px;
   color: #7A7A7A;
 
@@ -130,6 +139,8 @@
 }
 
 .legal_content {
+  max-width: 720px;
+
   h1, h2, h3, h4, h5, h6 {
     font-family: 'medium', sans-serif;
     font-weight: 500;
@@ -143,14 +154,26 @@
   h2 { font-size: 2rem; }
   h3 { font-size: 1.75rem; }
   h4 { font-size: 1.5rem; }
-  h5, h6 { color: #1a1a1a; }
+  h5, h6 {
+    color: #1a1a1a;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 28px;
+    margin-bottom: 8px;
+  }
+
+  h6 strong {
+    color: #1a1a1a;
+  }
 
   p {
     margin-top: 1rem;
-    margin-bottom: 1rem;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #3d3d3d;
+    margin-bottom: 12px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #444444;
     font-family: 'regular', sans-serif;
   }
 
@@ -165,8 +188,8 @@
   }
 
   strong, b {
+    color: #1a1a1a;
     font-family: 'bold', sans-serif;
-    color: #2d2d2d;
   }
 
   ul, ol {
@@ -185,10 +208,10 @@
   }
 
   li {
-    font-size: 16px;
-    line-height: 24px;
-    margin-bottom: 10px;
-    color: #7A7A7A;
+    font-size: 15px;
+    line-height: 1.75;
+    margin-bottom: 12px;
+    color: #444444;
     font-family: 'regular', sans-serif;
   }
 

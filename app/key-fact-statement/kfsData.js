@@ -171,7 +171,6 @@ With Pay10 Biz App, you can easily accept and track payments from Pay10 Customer
 <td>Key Features</td>
 <td>
 <ul>
- 	<li>Free account opening</li>
  	<li>Digital onboarding</li>
  	<li>Digital wallet to accept secure online payment.</li>
  	<li>QR code-based payment acceptance (Scan &amp; Pay)</li>
@@ -187,6 +186,7 @@ With Pay10 Biz App, you can easily accept and track payments from Pay10 Customer
 <td>Required Documents for Account Opening</td>
 <td>
 <ul>
+ 	<li>Free account opening</li>
  	<li>KYC and KYB verification are required.</li>
  	<li>Trade License verification, and Emirates ID verification of Business owner / POA and Shareholders and MOA/AOA to support the company structure.</li>
  	<li>Additional documents may be required as per regulatory guidelines and business type such as:</li>
@@ -231,7 +231,7 @@ With Pay10 Biz App, you can easily accept and track payments from Pay10 Customer
 </td>
 </tr>
 <tr>
-<td>Merchant Support</td>
+<td>Customer Support</td>
 <td>
 <ul>
  	<li>24/7 support center: 800-72910</li>

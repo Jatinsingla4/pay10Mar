@@ -46,6 +46,7 @@ const footerData = {
         { label: 'Terms of Services', href: '/terms-of-service' },
         { label: 'Privacy Policy', href: '/privacy-policy' },
         { label: 'Key Facts Statement', href: '/key-fact-statement' },
+        { label: 'Schedule of Charges', href: '#' },
         { label: 'FAQ', href: '/faqs' },
       ],
     },

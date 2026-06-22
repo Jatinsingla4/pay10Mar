@@ -10,6 +10,45 @@ import PageLoader from "../components/ui/PageLoader";
 
 const FILTERS = ["All", "Upcoming", "Past"];
 
+const FALLBACK_EVENTS = [
+  {
+    key: "gitex-global-2024",
+    img: "/images/events_images/events_details_imgs/1.png",
+    smalltxt: "14-18 October 2024",
+    heading: "GITEX Global 2024",
+    link: "#",
+    desc: "Pay10 showcased its digital payment platform at GITEX Global — the world's leading tech show in Dubai, connecting with 6,000+ exhibitors and 180,000+ visitors.",
+    status: "past",
+  },
+  {
+    key: "seamless-middle-east-2025",
+    img: "/images/events_images/events_details_imgs/2.png",
+    smalltxt: "11-12 June 2025",
+    heading: "Seamless Middle East 2025",
+    link: "#",
+    desc: "Pay10 joined regional fintech leaders at Seamless Middle East, the premier event for payments and digital commerce in the UAE and MENA region.",
+    status: "past",
+  },
+  {
+    key: "fintech-abu-dhabi-2025",
+    img: "/images/events_images/events_details_imgs/3.png",
+    smalltxt: "4-6 November 2025",
+    heading: "FinTech Abu Dhabi 2025",
+    link: "#",
+    desc: "Join Pay10 at FinTech Abu Dhabi 2025 — bringing together the brightest minds in financial technology across the MENA region to shape the future of payments.",
+    status: "upcoming",
+  },
+  {
+    key: "global-fintech-fest-2025",
+    img: "/images/events_images/events_details_imgs/4.png",
+    smalltxt: "27-29 August 2025",
+    heading: "Global Fintech Fest 2025",
+    link: "#",
+    desc: "Pay10 returns to the world's largest fintech festival in Mumbai, showcasing its next-generation digital wallet and merchant payment solutions.",
+    status: "upcoming",
+  },
+];
+
 const page = () => {
   const [pageData, setPageData] = useState(null);
   const [eventLatest, setEventLatest] = useState(null);
@@ -98,25 +137,30 @@ const page = () => {
   const topSubHeading = pageData?.top_sub_heading || "EVENTS & CONFERENCES";
   const topHeading = pageData?.top_heading || "Our Events";
 
-  const heroTitle = eventLatest?.name || "";
-  const heroDescription = eventLatest?.short_description || "";
+  const heroTitle = eventLatest?.name || "Global Fintech Fest 2024";
+  const heroDescription = eventLatest?.short_description || "Pay10 at the world's largest fintech festival — showcasing our vision for the future of digital payments in the MENA region.";
   const heroImage = eventLatest?.thumbnail
     ? `${imageBase}${eventLatest.thumbnail}`
     : eventLatest?.image
       ? `${imageBase}${eventLatest.image}`
       : "/images/events_images/global_fintech.png";
 
-  const heroDates = formatDateRange(eventLatest?.event_start_date, eventLatest?.event_end_date);
+  const heroDates = formatDateRange(
+    eventLatest?.event_start_date || "2024-08-28",
+    eventLatest?.event_end_date || "2024-08-30"
+  );
 
-  const eventsBoxes = allEvents.map((item, index) => ({
-    key: item.slug || `event-${index}`,
-    img: item.thumbnail ? `${imageBase}${item.thumbnail}` : "/images/events_images/global_fintech.png",
-    smalltxt: formatEventDate(item.event_start_date, item.event_end_date),
-    heading: item.name || "",
-    link: item.slug ? `/events/${item.slug}` : "#",
-    desc: item.short_description || "",
-    status: getEventStatus(item.event_start_date),
-  }));
+  const eventsBoxes = allEvents.length > 0
+    ? allEvents.map((item, index) => ({
+        key: item.slug || `event-${index}`,
+        img: item.thumbnail ? `${imageBase}${item.thumbnail}` : "/images/events_images/global_fintech.png",
+        smalltxt: formatEventDate(item.event_start_date, item.event_end_date),
+        heading: item.name || "",
+        link: item.slug ? `/events/${item.slug}` : "#",
+        desc: item.short_description || "",
+        status: getEventStatus(item.event_start_date),
+      }))
+    : FALLBACK_EVENTS;
 
   const filteredEvents = useMemo(() => {
     if (activeFilter === "All") return eventsBoxes;
@@ -171,7 +215,7 @@ const page = () => {
         </Link>
       </div>
 
-      <div className={Style.events_bg_circle} data-animation="opacity-up">
+      <div className={Style.events_bg_circle}>
         <Image
           src="/images/events_images/events_bg_circle.png"
           alt=""

@@ -108,7 +108,7 @@ const kfsData = [
 </tr>
 </tbody>
 </table>
-<strong>Important Notes</strong>
+<h6><strong>Important Notes</strong></h6>
 <ul>
  	<li>Funds in Pay10 Wallet are not interest-bearing</li>
  	<li>Pay10 is licensed and regulated by the Central Bank of the UAE.</li>
@@ -120,9 +120,8 @@ const kfsData = [
  	<li>You can pause, cancel or update the Payment Initiation Permissions granted through Altareq (Open Banking) at any time.</li>
  	<li>Pay10 disclaims liability for losses arising from unauthorized transactions caused by your failure to safeguard your credentials.</li>
 </ul>
-<strong>Warning</strong>
-
-By using the Pay10 Digital Wallet, you acknowledge that:
+<h6><strong>Warning</strong></h6>
+<p>By using the Pay10 Digital Wallet, you acknowledge that:</p>
 <ol>
  	<li>Your account may be suspended if you fail to provide the required documentation or if the information provided is inaccurate or incomplete.</li>
  	<li>Pay10 may share your information with regulatory authorities in compliance with applicable laws and regulations.</li>
@@ -130,9 +129,8 @@ By using the Pay10 Digital Wallet, you acknowledge that:
  	<li>If you see a transaction on your account that you do not recognize, or you think may be incorrect, you must contact us immediately via the call center or our website.</li>
  	<li>You acknowledge that Pay10 will not be liable for any losses due to unauthorized use of your wallet if such unauthorized use results from your failure to keep credentials confidential</li>
 </ol>
-For full details, please refer to our Terms and Conditions available at <a href="http://www.pay10.ae/terms">http://www.pay10.ae/terms</a>
-
-Please note that this KFS will be updated from time to time as per mandate from Central Bank.							</div>
+<p>For full details, please refer to our Terms and Conditions available at <a href="http://www.pay10.ae/terms">http://www.pay10.ae/terms</a></p>
+<p>Please note that this KFS will be updated from time to time as per mandate from Central Bank.</p>							</div>
 				</div>
 				`
   },
@@ -250,7 +248,7 @@ With Pay10 Biz App, you can easily accept and track payments from Pay10 Customer
 </tr>
 </tbody>
 </table>
-<strong>Important Notes</strong>
+<h6><strong>Important Notes</strong></h6>
 <ul>
  	<li>Funds in Pay10 Wallet are not interest-bearing</li>
  	<li>Pay10 is regulated by the Central Bank of UAE</li>
@@ -260,9 +258,8 @@ With Pay10 Biz App, you can easily accept and track payments from Pay10 Customer
  	<li>This Key Facts Statement provides only indicative fees and charges. For the full and latest fees and charges, please refer to the website for the updated schedule of charges.</li>
  	<li>All fees are exclusive of VAT. Wherever applicable; VAT will be charged at the prevailing rates in addition to the fee.</li>
 </ul>
-<strong>Warning</strong>
-
-By using the Pay10 BIZ App, you acknowledge that:
+<h6><strong>Warning</strong></h6>
+<p>By using the Pay10 BIZ App, you acknowledge that:</p>
 <ol>
  	<li>Your account may be suspended if you fail to provide the required documentation or if the information provided is inaccurate or incomplete.</li>
  	<li>Pay10 may share your information with regulatory authorities in compliance with applicable laws and regulations.</li>
@@ -270,9 +267,8 @@ By using the Pay10 BIZ App, you acknowledge that:
  	<li>If you see a transaction/withdrawal or Refund on your account that you do not recognize, or you think may be incorrect, you must contact us immediately via the call center or our website.</li>
  	<li>Refunds for the full transaction value are available through the Pay10 Biz App to assist merchants in processing returns or addressing customer claims. Pay10 bears no liability for any misuse of this feature by business employees or authorized users of the Pay10 Biz App.</li>
 </ol>
-For full details, please refer to our Terms and Conditions available at <a href="http://www.pay10.ae/terms">http://www.pay10.ae/terms</a>
-
-Please note that this KFS will be updated from time to time as per mandate from Central Bank.
+<p>For full details, please refer to our Terms and Conditions available at <a href="http://www.pay10.ae/terms">http://www.pay10.ae/terms</a></p>
+<p>Please note that this KFS will be updated from time to time as per mandate from Central Bank.</p>
 
 &nbsp;							</div>
 				</div>

@@ -169,13 +169,44 @@
 
 .table_content {
   width: 100%;
-  
+
   p {
     font-family: 'regular', sans-serif;
     font-size: 16px;
     line-height: 1.75;
     color: #444444;
     margin-bottom: 16px;
+  }
+
+  h6 {
+    font-family: 'bold', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 24px 0 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  ul, ol {
+    padding-left: 24px;
+    margin: 8px 0 16px;
+
+    li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #444444;
+      margin-bottom: 6px;
+      font-family: 'regular', sans-serif;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
   }
 
   // Wrapper to enable horizontal scrolling on mobile

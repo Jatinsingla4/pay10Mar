@@ -52,35 +52,28 @@ If You have any questions about these Terms of Service, Pay10 App, Your Pay10 Ac
 <strong>7.2</strong> To open and maintain Pay10 Account, you must be at least 18 years old, a resident of the UAE, and possess a valid UAE mobile number. You must complete Pay10's Know Your Customer (KYC) and Customer Due Diligence (CDD) process. We may restrict Your Pay10 Account functionality until verification is complete.
 
 <strong>7.3</strong> You may fund Your Pay10 Account from Your Linked UAE bank account, or any other methods we make available. Funding limits may be imposed. You agree that the currency applied to Your Pay10 Account will be United Arab Emirates Dirhams ("AED"). You acknowledge that Pay10 Account balances do not earn interest.
-
-You may redeem (withdraw) Your Pay10 Account balance to a linked bank account in Your name or send to any other beneficiaries' bank accounts, subject to verification and the limits/fees set by Pay10. Redemption requests may take up to 5 Business Days to process.
-
-Pay10 Account is for personal, non-business use only. This includes, but not limited to paying merchants for their goods &amp; services, sending/receiving money to/from other Pay10 consumers, using Send Abroad Services, using Bill Payment Services, Pay10 WPS Services, Pay10 Card and any other activity as enabled by Pay10 in the Pay10 App from time to time. You may not use it for illegal activities, gambling, or the sale of prohibited goods/services.
-
-We impose daily and monthly transaction limits for security purposes.
-
-A Pay10 Account will be considered dormant if there has been no customer-initiated activity for twelve (12) consecutive months. Upon an account becoming dormant, Pay10 may restrict, suspend or freeze the Account and notify You using Your registered contact details. A monthly administrative fee may be charged on dormant Pay10 Accounts, as specified in the Fees Schedule. The handling of funds in dormant accounts shall be governed by Clause 14.4 of these Terms of Service and Applicable Law.
-
-You are responsible for maintaining a positive balance. If Your Pay10 Account balance becomes negative due to a reversed transaction or charged fee, You must immediately repay the amount owed. We may suspend Your Pay10 Account until the balance is positive.
-
-You are solely responsible for maintaining the security of Your device and Your Pay10 Account login credentials. You must immediately enable the "Freeze Pay10 Account" feature via the Pay10 App if You suspect unauthorized access and notify us immediately.
-
-Electronic statements of Your Pay10 Account transactions will be made available monthly within Pay10 App. It is Your responsibility to review these statements and report any discrepancies within 30 days.
-
-We may terminate Your Pay10 Account services in accordance with these Terms of Service. Upon termination, You may redeem Your remaining balance, net of any applicable fees.
+<ul>
+  <li>You may redeem (withdraw) Your Pay10 Account balance to a linked bank account in Your name or send to any other beneficiaries' bank accounts, subject to verification and the limits/fees set by Pay10. Redemption requests may take up to 5 Business Days to process.</li>
+  <li>Pay10 Account is for personal, non-business use only. This includes, but not limited to paying merchants for their goods &amp; services, sending/receiving money to/from other Pay10 consumers, using Send Abroad Services, using Bill Payment Services, Pay10 WPS Services, Pay10 Card and any other activity as enabled by Pay10 in the Pay10 App from time to time. You may not use it for illegal activities, gambling, or the sale of prohibited goods/services.</li>
+  <li>We impose daily and monthly transaction limits for security purposes.</li>
+  <li>A Pay10 Account will be considered dormant if there has been no customer-initiated activity for twelve (12) consecutive months. Upon an account becoming dormant, Pay10 may restrict, suspend or freeze the Account and notify You using Your registered contact details. A monthly administrative fee may be charged on dormant Pay10 Accounts, as specified in the Fees Schedule. The handling of funds in dormant accounts shall be governed by Clause 14.4 of these Terms of Service and Applicable Law.</li>
+  <li>You are responsible for maintaining a positive balance. If Your Pay10 Account balance becomes negative due to a reversed transaction or charged fee, You must immediately repay the amount owed. We may suspend Your Pay10 Account until the balance is positive.</li>
+  <li>You are solely responsible for maintaining the security of Your device and Your Pay10 Account login credentials. You must immediately enable the "Freeze Pay10 Account" feature via the Pay10 App if You suspect unauthorized access and notify us immediately.</li>
+  <li>Electronic statements of Your Pay10 Account transactions will be made available monthly within Pay10 App. It is Your responsibility to review these statements and report any discrepancies within 30 days.</li>
+  <li>We may terminate Your Pay10 Account services in accordance with these Terms of Service. Upon termination, You may redeem Your remaining balance, net of any applicable fees.</li>
+</ul>
 <h6><strong>8. Support of Pay10 Services</strong></h6>
 <strong>8.1</strong> Regardless of whether Pay10 Services are provided by Pay10 directly or through a Third-Party Service Provider, You and Pay10 agree that Pay10 (and not the Third-Party Service Provider) will provide first line support to You on issues relating to Your use of the Pay10 Services.
-
-You acknowledge and agree that You will look to Pay10 for all support, including for any Pay10 Services provided by a Third-Party Service Provider, or any additional supplier, agent, vendor, contractor or Third-Party providing any part of the Pay10 Service; provided that Pay10 makes no guarantee of resolution times and shall not be liable for any delay, interruption, or failure caused by such third parties.
-
+<ul>
+  <li>You acknowledge and agree that You will look to Pay10 for all support, including for any Pay10 Services provided by a Third-Party Service Provider, or any additional supplier, agent, vendor, contractor or Third-Party providing any part of the Pay10 Service; provided that Pay10 makes no guarantee of resolution times and shall not be liable for any delay, interruption, or failure caused by such third parties.</li>
+  <li>Pay10 is committed to providing timely and accessible support in accordance with applicable UAE regulations. You acknowledge that support responses may be recorded and monitored for quality assurance and compliance purposes.</li>
+</ul>
 For all inquiries, complaints, or support needs, You may contact Pay Ten Payment Services Provider LLC at:
 <ul>
- 	<li><strong>Communication Channels:</strong></li>
- 	<li><strong>Registered Address:</strong> 1004 Ubora Office Tower, Business Bay, Dubai, UAE</li>
- 	<li><strong>24/7 Support Center:</strong> 800-72910</li>
- 	<li><strong>Email:</strong> support@pay10.ae</li>
+  <li><strong>Registered Address:</strong> 1004 Ubora Office Tower, Business Bay, Dubai, UAE</li>
+  <li><strong>24/7 Support Center:</strong> 800-72910</li>
+  <li><strong>Email:</strong> support@pay10.ae</li>
 </ul>
-Pay10 is committed to providing timely and accessible support in accordance with applicable UAE regulations. Consumers should use the above channels for all support-related communications, including issues related to transaction initiation, unauthorized access, or service disruptions. You acknowledge that support responses may be recorded and monitored for quality assurance and compliance purposes.
 <h6><strong>9. Use and Sharing of Your Personal Information</strong></h6>
 <strong>9.1</strong> Pay10 may collect, use, share, and hold personal or non-public information about You, including but not limited to: Your name, address, telephone number, email address, social security number and/or tax identification number and payment data, Transaction data, including account numbers and purchase history ("Data") for the purpose of considering eligibility for, providing, administering, and maintaining the Pay10 Services, as well as for ongoing account management, customer support, fraud prevention, and compliance with applicable legal and regulatory requirements.
 

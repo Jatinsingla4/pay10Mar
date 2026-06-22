@@ -71,9 +71,9 @@ const footerData = {
   },
   socialMedia: {
     linkedin: 'https://www.linkedin.com/company/pay10-uae',
-    x: '#',
-    instagram: '#',
-    facebook: '#',
+    x: 'https://x.com/Pay10_Global',
+    instagram: 'https://www.instagram.com/pay10global/',
+    facebook: 'https://www.facebook.com/61570783563019/',
   },
 }
 

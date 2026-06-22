@@ -107,12 +107,12 @@ const navigationData = {
       items: [
         {
           label: 'Blogs',
-          href: '#',
+          href: '/blog',
           icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
         },
         {
           label: 'News',
-          href: '#',
+          href: '/news-room',
           icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v8a2 2 0 01-2 2z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 20v-8h-6M7 8h1M7 12h6M7 16h6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
         },
         {
@@ -157,6 +157,12 @@ const Header = () => {
       if (!headerEl) {
         lastScrollY.current = currentY
         return
+      }
+
+      // Close any open desktop dropdown once the user starts scrolling
+      if (Math.abs(delta) > 4) {
+        setOpenDropdowns({})
+        setHoveredItem(null)
       }
 
       if (currentY > 100 && delta > 0) {

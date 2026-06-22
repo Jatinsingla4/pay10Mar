@@ -303,15 +303,25 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    padding: 10px 24px;
+    border-radius: 50px;
+    background: var(--primary-gradient);
+    color: var(--white);
     font-family: "semibold", sans-serif;
     font-size: 0.9rem;
-    color: var(--orange);
-    margin-top: 4px;
+    margin-top: 8px;
+    width: fit-content;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
     svg {
       font-size: 0.75rem;
       transition: transform 0.2s ease;
     }
+  }
+
+  .events_box:hover .events_box_cta {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(243, 120, 16, 0.35);
   }
 
   .events_box:hover .events_box_cta svg {

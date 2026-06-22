@@ -10,6 +10,72 @@ import useApiAuth from "../../components/hooks/useApiAuth";
 import PageLoader from "../../components/ui/PageLoader";
 import { cmsImageSrc } from "../../lib/cmsImageSrc";
 
+const FALLBACK_EVENT_DETAILS = {
+  "gitex-global-2024": {
+    page_data: {
+      name: "GITEX Global 2024",
+      event_start_date: "2024-10-14",
+      event_end_date: "2024-10-18",
+      image: "/images/events_images/events_banner_img.png",
+      thumbnail: "/images/events_images/events_details_imgs/1.png",
+      content: "<p>Pay10 made a significant mark at GITEX Global 2024, the world's most influential technology exhibition held at the Dubai World Trade Centre. Our team showcased our cutting-edge digital payment platform, demonstrating how Pay10 is revolutionizing the payments landscape across the UAE and the broader MENA region.</p><p>We engaged with thousands of industry leaders, potential partners, and innovators from over 180 countries, presenting our consumer and merchant app ecosystem and reinforcing our commitment to building a seamless, secure, and accessible digital payment infrastructure.</p>",
+      content2: "",
+      gallery: JSON.stringify([
+        "/images/events_images/events_details_imgs/1.png",
+        "/images/events_images/events_details_imgs/2.png",
+        "/images/events_images/events_details_imgs/3.png",
+      ]),
+    },
+  },
+  "seamless-middle-east-2025": {
+    page_data: {
+      name: "Seamless Middle East 2025",
+      event_start_date: "2025-06-11",
+      event_end_date: "2025-06-12",
+      image: "/images/events_images/events_banner_img.png",
+      thumbnail: "/images/events_images/events_details_imgs/2.png",
+      content: "<p>Pay10 participated in Seamless Middle East 2025, the premier annual event connecting the fintech, payments, and digital commerce ecosystem across the UAE and MENA region. Held at the Dubai World Trade Centre, Seamless brought together thousands of decision-makers, innovators, and investors driving the future of digital finance.</p><p>Our team engaged with regional industry leaders, presenting our full suite of digital payment solutions and exploring strategic partnerships to expand Pay10's footprint across the Gulf.</p>",
+      content2: "",
+      gallery: JSON.stringify([
+        "/images/events_images/events_details_imgs/4.png",
+        "/images/events_images/events_details_imgs/5.png",
+        "/images/events_images/events_details_imgs/6.png",
+      ]),
+    },
+  },
+  "fintech-abu-dhabi-2025": {
+    page_data: {
+      name: "FinTech Abu Dhabi 2025",
+      event_start_date: "2025-11-04",
+      event_end_date: "2025-11-06",
+      image: "/images/events_images/events_banner_img.png",
+      thumbnail: "/images/events_images/events_details_imgs/3.png",
+      content: "<p>Pay10 is set to participate in FinTech Abu Dhabi 2025, one of the most prestigious fintech events in the MENA region, hosted by the Abu Dhabi Global Market (ADGM). This event brings together global fintech leaders, regulators, investors, and innovators to collaborate on shaping the future of financial services.</p><p>Pay10 will be showcasing its next-generation digital wallet, cross-border payment capabilities, and merchant solutions — highlighting our role in driving financial inclusion and digital transformation across the UAE and beyond.</p>",
+      content2: "",
+      gallery: JSON.stringify([
+        "/images/events_images/events_details_imgs/7.png",
+        "/images/events_images/events_details_imgs/8.png",
+      ]),
+    },
+  },
+  "global-fintech-fest-2025": {
+    page_data: {
+      name: "Global Fintech Fest 2025",
+      event_start_date: "2025-08-27",
+      event_end_date: "2025-08-29",
+      image: "/images/events_images/events_banner_img.png",
+      thumbnail: "/images/events_images/events_details_imgs/4.png",
+      content: "<p>Pay10 returns to the Global Fintech Fest 2025, the world's largest fintech festival, held in Mumbai, India. GFF is the definitive platform for the global fintech ecosystem, attracting over 800 speakers, 300 exhibitors, and 50,000+ attendees from across the world.</p><p>Building on our successful presence at previous editions, Pay10 will present its next-generation digital wallet and merchant payment solutions, demonstrating how we are bridging the gap between traditional banking and the digital economy — not just in the UAE, but globally.</p>",
+      content2: "",
+      gallery: JSON.stringify([
+        "/images/events_images/events_details_imgs/9.png",
+        "/images/events_images/events_details_imgs/10.png",
+        "/images/events_images/events_details_imgs/1.png",
+      ]),
+    },
+  },
+};
+
 const paymentSolutions = [
   {
     title: "PAYMENT AGGREGATOR (PA)",
@@ -27,6 +93,14 @@ const paymentSolutions = [
     icon: "/images/eve3.svg"
   }
 ];
+
+// Local Next.js public paths (starting with /) bypass cmsImageSrc to avoid CDN URL prepending
+const resolveImageSrc = (path, base) => {
+  if (!path) return null;
+  const p = String(path).trim();
+  if (p.startsWith('/')) return p;
+  return cmsImageSrc(p, base);
+};
 
 const EventDetailClient = () => {
   const params = useParams();
@@ -103,7 +177,9 @@ const EventDetailClient = () => {
     return <PageLoader />;
   }
 
-  if (!eventData) {
+  const resolvedData = eventData || (slug && FALLBACK_EVENT_DETAILS[slug]) || null;
+
+  if (!resolvedData) {
     return (
       <main>
         <div className={Style.wrapper} style={{ textAlign: "center", padding: "80px 56px" }}>
@@ -123,7 +199,7 @@ const EventDetailClient = () => {
     );
   }
 
-  const pageData = eventData?.page_data || {};
+  const pageData = resolvedData?.page_data || {};
 
   // Parse gallery from API response (it comes as a JSON string)
   let images = [];
@@ -139,18 +215,18 @@ const EventDetailClient = () => {
   }
 
   // Fallback to old images format if gallery is not available
-  if (images.length === 0 && Array.isArray(eventData?.images)) {
-    images = eventData.images;
+  if (images.length === 0 && Array.isArray(resolvedData?.images)) {
+    images = resolvedData.images;
   }
 
   // Event details
   const eventName = pageData.name || "";
   const eventDateRange = formatDateRange(pageData.event_start_date, pageData.event_end_date);
   const eventBannerImage =
-    (pageData.image && cmsImageSrc(pageData.image, imageBase)) ||
+    (pageData.image && resolveImageSrc(pageData.image, imageBase)) ||
     "/images/events_images/events_banner_img.png";
   const eventThumbnail =
-    (pageData.thumbnail && cmsImageSrc(pageData.thumbnail, imageBase)) ||
+    (pageData.thumbnail && resolveImageSrc(pageData.thumbnail, imageBase)) ||
     "/images/events_images/global_fintech.png";
   const content = pageData.content || "";
   const content2 = pageData.content2 || "";
@@ -357,7 +433,7 @@ const EventDetailClient = () => {
               {displayedImages.map((img, idx) => {
                 // Handle both string paths (from gallery) and object format (legacy)
                 const imagePath = typeof img === 'string' ? img : img?.image;
-                const imageSrc = imagePath ? cmsImageSrc(imagePath, imageBase) : null;
+                const imageSrc = imagePath ? resolveImageSrc(imagePath, imageBase) : null;
                 const imageAlt = typeof img === 'string' ? eventName : (img?.name || eventName);
                 if (!imageSrc) return null;
                 return (

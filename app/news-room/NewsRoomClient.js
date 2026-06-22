@@ -6,8 +6,43 @@ import { Icon } from "@iconify/react";
 import styles from "./news-room.module.scss";
 import PageLoader from "../components/ui/PageLoader";
 
-const FALLBACK_IMAGE = "/images/news-banner1.jpg";
+const FALLBACK_IMAGE = "/images/news_images/news_banner_img.png";
 const SEARCH_DEBOUNCE_MS = 350;
+
+const FALLBACK_PRESS_RELEASES = [
+  {
+    id: "pay10-cbuae-license",
+    title: "Pay10 Receives Central Bank of UAE Licence for Payment Services",
+    description: "Pay10 has been officially licensed by the Central Bank of the UAE to operate as a payment service provider, marking a major milestone in the company's growth across the MENA region.",
+    publishedAt: "2024-10-15",
+    image: "/images/events_images/events_details_imgs/1.png",
+    downloadUrl: "",
+  },
+  {
+    id: "pay10-cross-border-launch",
+    title: "Pay10 Launches Cross-Border Payment Solution for UAE Merchants",
+    description: "Pay10 has introduced its cross-border payment product, enabling UAE-based merchants to accept international payments in multiple currencies with real-time conversion and competitive exchange rates.",
+    publishedAt: "2025-02-20",
+    image: "/images/events_images/events_details_imgs/3.png",
+    downloadUrl: "",
+  },
+  {
+    id: "pay10-bank-partnership",
+    title: "Pay10 Partners with Leading UAE Banks to Expand Digital Wallet Network",
+    description: "Pay10 has signed strategic partnership agreements with two of the UAE's largest commercial banks to integrate its digital wallet infrastructure, expanding financial access for consumers and SMEs.",
+    publishedAt: "2025-04-08",
+    image: "/images/events_images/events_details_imgs/5.png",
+    downloadUrl: "",
+  },
+  {
+    id: "pay10-growth-2024",
+    title: "Pay10 Reports 200% Growth in Transaction Volume for 2024",
+    description: "Pay10 announced record-breaking growth in 2024, processing over $500 million in total transaction volume — a 200% year-on-year increase — driven by strong adoption of its merchant and consumer payment platforms.",
+    publishedAt: "2025-01-30",
+    image: "/images/events_images/events_details_imgs/7.png",
+    downloadUrl: "",
+  },
+];
 
 function sanitizeText(value, fallback = "") {
   return typeof value === "string" ? value.trim() : fallback;
@@ -242,14 +277,18 @@ export default function NewsRoomClient() {
         </div>
 
         <div className={styles.cardsGrid}>
-          {errorMessage ? (
-            <div className={styles.emptyState}>{errorMessage}</div>
-          ) : pressReleases.length === 0 ? (
-            <div className={styles.emptyState}>
-              No press releases found for this search.
-            </div>
-          ) : (
-            pressReleases.map((item) => (
+          {(() => {
+            const items = pressReleases.length > 0
+              ? pressReleases
+              : (errorMessage && !debouncedSearch ? FALLBACK_PRESS_RELEASES : []);
+
+            if (items.length === 0) return (
+              <div className={styles.emptyState}>
+                {debouncedSearch ? "No press releases found for this search." : errorMessage}
+              </div>
+            );
+
+            return items.map((item) => (
               <article key={item.id} className={styles.newsCard} data-animation="opacity-up">
                 <div className={styles.cardMedia}>
                   <Image
@@ -266,20 +305,22 @@ export default function NewsRoomClient() {
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
 
-                  <a
-                    href={item.downloadUrl || "#"}
-                    className={styles.downloadButton}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Download press release: ${item.title}`}
-                  >
-                    <Icon icon="hugeicons:download-04" />
-                    Download
-                  </a>
+                  {item.downloadUrl && (
+                    <a
+                      href={item.downloadUrl}
+                      className={styles.downloadButton}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Download press release: ${item.title}`}
+                    >
+                      <Icon icon="hugeicons:download-04" />
+                      Download
+                    </a>
+                  )}
                 </div>
               </article>
-            ))
-          )}
+            ));
+          })()}
         </div>
 
         {canLoadMore && (

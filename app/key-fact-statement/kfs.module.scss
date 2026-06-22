@@ -42,8 +42,13 @@
   flex-direction: column;
   gap: 10px;
   padding-top: 97px;
+  align-self: flex-start;
+  position: sticky;
+  top: 100px;
 
   @media (max-width: 991px) {
+    position: static;
+    align-self: auto;
     flex: none;
     flex-direction: row;
     overflow-x: auto;

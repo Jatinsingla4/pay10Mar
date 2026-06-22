@@ -45,7 +45,7 @@ export default function FaqsClient() {
         </aside>
 
         {/* Right Content Panel */}
-        <main className={styles.content_panel}>
+        <div className={styles.content_panel}>
           <h2 className={styles.tab_heading}>{activeTab?.tabName}</h2>
           
           <div className={styles.accordion_list}>
@@ -85,7 +85,7 @@ export default function FaqsClient() {
               );
             })}
           </div>
-        </main>
+        </div>
       </div>
     </div>
   );

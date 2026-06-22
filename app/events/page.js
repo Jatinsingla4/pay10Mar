@@ -129,14 +129,13 @@ const page = () => {
     <main className={Style.eventMain}>
       <div className={Style.wrapper}>
         <div className={Style.events_banner_headings}>
-          <h5 data-animation="opacity-up">{topSubHeading}</h5>
-          <h2 data-animation="opacity-up">{topHeading}</h2>
+          <h5>{topSubHeading}</h5>
+          <h2>{topHeading}</h2>
         </div>
 
         <Link
           href={eventLatest?.slug ? `/events/${eventLatest.slug}` : "#"}
           className={Style.events_banner_img}
-          data-animation="opacity-up"
         >
           <div className={Style.hero_img_logo}>
             <Image

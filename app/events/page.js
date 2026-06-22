@@ -299,10 +299,12 @@ const page = () => {
                       <h3>{event.heading}</h3>
                     </div>
                     {event.desc && <p>{event.desc}</p>}
-                    <div className={Style.events_box_cta}>
-                      <span>Learn More</span>
-                      <Icon icon="fa6-solid:angle-right" />
-                    </div>
+                    {event.link && (
+                      <div className={Style.events_box_cta}>
+                        <span>Learn More</span>
+                        <Icon icon="fa6-solid:angle-right" />
+                      </div>
+                    )}
                   </div>
                 </>
               );

@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@iconify/react";
 import styles from "./news-room.module.scss";
 import PageLoader from "../components/ui/PageLoader";
@@ -289,7 +290,7 @@ export default function NewsRoomClient() {
             );
 
             return items.map((item) => (
-              <article key={item.id} className={styles.newsCard} data-animation="opacity-up">
+              <Link key={item.id} href={`/news-room/${item.id}`} className={styles.newsCard} data-animation="opacity-up">
                 <div className={styles.cardMedia}>
                   <Image
                     src={item.image}
@@ -304,21 +305,12 @@ export default function NewsRoomClient() {
                   <p className={styles.cardDate}>{formatDisplayDate(item.publishedAt)}</p>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-
-                  {item.downloadUrl && (
-                    <a
-                      href={item.downloadUrl}
-                      className={styles.downloadButton}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Download press release: ${item.title}`}
-                    >
-                      <Icon icon="hugeicons:download-04" />
-                      Download
-                    </a>
-                  )}
+                  <div className={styles.readMoreBtn}>
+                    <span>Read More</span>
+                    <Icon icon="fa6-solid:angle-right" />
+                  </div>
                 </div>
-              </article>
+              </Link>
             ));
           })()}
         </div>

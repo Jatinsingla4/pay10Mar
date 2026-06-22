@@ -1,0 +1,135 @@
+@import "../../../styles/globals/mixin";
+
+.main {
+  background: #f3f3f5;
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+.backLink {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 20px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--gray);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--orange);
+  }
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 56px;
+
+  @include tab {
+    padding: 0 24px;
+  }
+
+  @include mobile {
+    padding: 0 16px;
+  }
+}
+
+.heading {
+  padding: 32px 0 24px;
+  text-align: center;
+
+  h1 {
+    font-size: 2.8rem;
+    font-family: "bold";
+    line-height: 1.15;
+    color: var(--black);
+
+    @include tab {
+      font-size: 2rem;
+    }
+  }
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 32px;
+
+  .date {
+    font-size: 0.9rem;
+    letter-spacing: 0.07em;
+    color: #8b8b92;
+  }
+}
+
+.bannerImage {
+  width: 100%;
+  height: 420px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 48px;
+
+  img {
+    object-fit: cover;
+  }
+
+  @include tab {
+    height: 280px;
+    border-radius: 14px;
+  }
+}
+
+.content {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: #444;
+    font-family: "light";
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @include tab {
+    padding: 32px 24px;
+  }
+}
+
+.downloadWrap {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border: 1.5px solid var(--orange);
+  color: var(--orange);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: var(--orange);
+    color: var(--white);
+  }
+}

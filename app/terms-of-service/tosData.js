@@ -1,7 +1,7 @@
 // Direct Terms of Service static payload extracted from pay10.ae/terms-of-service-2
 const tosData = [
   {
-    tabName: "Consumer General Terms of Service",
+    tabName: "Consumer General",
     content: `
 				<div class="elementor-element elementor-element-04ae101 elementor-widget elementor-widget-text-editor animated fadeIn" data-id="04ae101" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
@@ -157,7 +157,7 @@ You shall defend, indemnify, and hold harmless Pay10 from and against any and al
 				`
   },
   {
-    tabName: "Pay10 Bill Payment Terms of Service",
+    tabName: "Bill Payment",
     content: `
 				<div class="elementor-element elementor-element-02eadb2 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="02eadb2" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
@@ -166,7 +166,7 @@ You shall defend, indemnify, and hold harmless Pay10 from and against any and al
 				`
   },
   {
-    tabName: "Pay10 Card Special Terms of Service",
+    tabName: "Card Special",
     content: `
 				<div class="elementor-element elementor-element-c890a07 elementor-invisible elementor-widget elementor-widget-text-editor" data-id="c890a07" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
@@ -175,7 +175,7 @@ You shall defend, indemnify, and hold harmless Pay10 from and against any and al
 				`
   },
   {
-    tabName: "Pay10 Send Abroad Terms of Service",
+    tabName: "Send Abroad",
     content: `
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-ff966e5 elementor-widget elementor-widget-text-editor" data-id="ff966e5" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
@@ -258,7 +258,7 @@ Unless otherwise defined in these Terms and Conditions, capitalized terms shall 
 				`
   },
   {
-    tabName: "Pay10 WPS Service Special Terms of Service",
+    tabName: "WPS Service",
     content: `
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-96714cd elementor-widget elementor-widget-text-editor" data-id="96714cd" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">

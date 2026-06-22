@@ -72,11 +72,6 @@ const HeroBannerContent = ({ heroImage, heroTitle, heroDescription, heroDates, S
             {heroTitle && <h3>{heroTitle}</h3>}
             {heroDescription && <p>{heroDescription}</p>}
           </div>
-          <div className={Style.events_content_icon}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <Icon icon="fa6-solid:angle-right" />
-            </div>
-          </div>
         </div>
       </div>
     </div>

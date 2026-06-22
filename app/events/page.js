@@ -1,14 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState } from "react";
 import Style from "./events.module.scss";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
 import useApiAuth from "../components/hooks/useApiAuth";
 import PageLoader from "../components/ui/PageLoader";
-
-const FILTERS = ["All", "Upcoming", "Past"];
 
 const FALLBACK_EVENTS = [
   {
@@ -93,7 +91,7 @@ const page = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [initialLoading, setInitialLoading] = useState(true);
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [fallbackCount, setFallbackCount] = useState(2);
   const { makeApiCall } = useApiAuth();
 
   useEffect(() => {
@@ -149,7 +147,12 @@ const page = () => {
   };
 
   const handleLoadMore = async () => {
-    if (currentPage >= totalPages || loading) return;
+    if (loading) return;
+    if (allEvents.length === 0) {
+      setFallbackCount(prev => Math.min(prev + 2, FALLBACK_EVENTS.length));
+      return;
+    }
+    if (currentPage >= totalPages) return;
     setLoading(true);
     try {
       const nextPage = currentPage + 1;
@@ -168,7 +171,9 @@ const page = () => {
   };
 
   const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
-  const hasNext = currentPage < totalPages;
+  const hasNext = allEvents.length === 0
+    ? fallbackCount < FALLBACK_EVENTS.length
+    : currentPage < totalPages;
 
   const topSubHeading = pageData?.top_sub_heading || "EVENTS & CONFERENCES";
   const topHeading = pageData?.top_heading || "Our Events";
@@ -198,10 +203,9 @@ const page = () => {
       }))
     : FALLBACK_EVENTS;
 
-  const filteredEvents = useMemo(() => {
-    if (activeFilter === "All") return eventsBoxes;
-    return eventsBoxes.filter(e => e.status === activeFilter.toLowerCase());
-  }, [eventsBoxes, activeFilter]);
+  const displayedEvents = allEvents.length === 0
+    ? eventsBoxes.slice(0, fallbackCount)
+    : eventsBoxes;
 
   if (initialLoading) return <PageLoader />;
 
@@ -235,47 +239,17 @@ const page = () => {
       </div>
 
       <section className={Style.wrapper}>
-        {eventsBoxes.length > 0 && (
-          <div className={Style.filter_tabs} data-animation="opacity-up">
-            {FILTERS.map((filter) => (
-              <button
-                key={filter}
-                className={`${Style.filter_tab} ${activeFilter === filter ? Style.filter_tab_active : ""}`}
-                onClick={() => setActiveFilter(filter)}
-              >
-                {filter}
-              </button>
-            ))}
-          </div>
-        )}
-
         <div className={Style.all_events_container}>
-          {filteredEvents.length === 0 ? (
+          {displayedEvents.length === 0 ? (
             <div className={Style.emptyState}>
               <div className={Style.emptyIcon}>
                 <Icon icon="solar:calendar-bold-duotone" />
               </div>
-              <h3>
-                {activeFilter !== "All"
-                  ? `No ${activeFilter} Events`
-                  : "No Events Yet"}
-              </h3>
-              <p>
-                {activeFilter !== "All"
-                  ? `No ${activeFilter.toLowerCase()} events at the moment.`
-                  : "Stay tuned — exciting events and conferences are coming soon!"}
-              </p>
-              {activeFilter !== "All" && (
-                <button
-                  className={Style.emptyStateBtn}
-                  onClick={() => setActiveFilter("All")}
-                >
-                  View All Events
-                </button>
-              )}
+              <h3>No Events Yet</h3>
+              <p>Stay tuned — exciting events and conferences are coming soon!</p>
             </div>
           ) : (
-            filteredEvents.map((event) => {
+            displayedEvents.map((event) => {
               const cardInner = (
                 <>
                   <div className={Style.events_box_img}>
@@ -321,7 +295,7 @@ const page = () => {
           )}
         </div>
 
-        {hasNext && filteredEvents.length > 0 && (
+        {hasNext && displayedEvents.length > 0 && (
           <div style={{ textAlign: "center", width: "100%" }} data-animation="scale-up">
             <button
               className={Style.load_more_btn}

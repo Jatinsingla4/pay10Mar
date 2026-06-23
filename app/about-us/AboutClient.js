@@ -125,8 +125,8 @@ const AboutClient = () => {
             />
 
             <PowerToDreamSection
-              imgPrimary="/images/about_images/about-woman.png"
-              imgSecondary="/images/about_images/about-phone.png"
+              imgPrimary="/images/about_images/about-phone.png"
+              imgSecondary="/images/about_images/about-woman.png"
               heading="Giving You the Power to Dream Big"
               description="As an alternative payment services provider, we aim to make your life easier and richer by empowering you with quick, secure, and accessible digital payment solutions – whether you are an individual looking to make the most of your hard-earned money or a business looking to scale up like never before."
             />

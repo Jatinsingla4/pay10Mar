@@ -40,7 +40,12 @@ export default function HomeClient() {
         title={undefined}
         description={undefined}
         ctaLabel="Get In Touch"
-        heroImage={undefined}
+        heroImage={{
+          src: '/images/home/hero-mobile-2.png',
+          alt: 'Pay10 App',
+          width: 360,
+          height: 640,
+        }}
       />
       <TextCenterBlock
         heading={undefined}

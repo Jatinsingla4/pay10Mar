@@ -123,9 +123,7 @@
   }
 }
 .badgeImage {
-  width: auto;
-  max-width: 70%;
-  height: auto;
-  max-height: 100px;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }

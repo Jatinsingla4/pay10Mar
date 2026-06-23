@@ -56,10 +56,12 @@ const footerData = {
         {
           label: 'Brand Guidelines',
           href: 'https://pay10.ae/wp-content/uploads/2026/05/Pay10-Ext-Brandguidelines-21-May-2026.pdf',
+          external: true,
         },
         {
           label: 'App & Web Button Guidelines',
           href: 'https://pay10.ae/wp-content/uploads/2026/06/Product-Approved_2June2026_Pay10-UAE_Button-Designs-April-20-RGB_Including-QR_07.pdf',
+          external: true,
         },
       ],
     },

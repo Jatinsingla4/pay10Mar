@@ -80,29 +80,20 @@
   }
 }
 
-.badgesGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.badgesMarquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.badgesTrack {
+  display: flex;
   gap: 24px;
-  justify-content: center;
-  @include tab {
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: flex-start;
-    overflow-x: scroll;
-    gap: 16px;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  @include mobile {
-    justify-content: flex-start;
-  }
+  will-change: transform;
 }
 
 .badgeCard {
-  width: 100%;
+  width: calc(50% - 12px);
+  flex-shrink: 0;
   height: 140px;
   background-color: var(--white);
   border-radius: 12px;
@@ -110,18 +101,18 @@
   align-items: center;
   justify-content: center;
   padding: 20px;
-  text-align: center;
 
   @include tab {
-    width: 100%;
-    padding: 16px;
+    width: calc(50% - 8px);
     height: 120px;
+    padding: 16px;
   }
   @include mobile {
-    width: 100%;
+    width: calc(80% - 8px);
     height: 100px;
   }
 }
+
 .badgeImage {
   width: 100%;
   height: 100%;

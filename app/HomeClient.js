@@ -76,8 +76,8 @@ export default function HomeClient() {
         centralBankImage="/images/home/cbuae-logo.png"
         licensedByHeading="Certified by:"
         licenseImages={[
-          '/images/home/pci.png',
           '/images/home/soc2.png',
+          '/images/home/pci.png',
         ]}
       />
 

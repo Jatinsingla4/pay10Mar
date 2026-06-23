@@ -17,7 +17,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 has been officially licensed by the Central Bank of the UAE to operate as a payment service provider, marking a major milestone in the company's growth across the MENA region.",
     publishedAt: "2024-10-15",
     image: "/images/events_images/events_details_imgs/1.png",
-    url: "",
+    url: "https://pay10.ae",
   },
   {
     id: "pay10-cross-border-launch",
@@ -25,7 +25,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 has introduced its cross-border payment product, enabling UAE-based merchants to accept international payments in multiple currencies with real-time conversion and competitive exchange rates.",
     publishedAt: "2025-02-20",
     image: "/images/events_images/events_details_imgs/3.png",
-    url: "",
+    url: "https://pay10.ae",
   },
   {
     id: "pay10-bank-partnership",
@@ -33,7 +33,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 has signed strategic partnership agreements with two of the UAE's largest commercial banks to integrate its digital wallet infrastructure, expanding financial access for consumers and SMEs.",
     publishedAt: "2025-04-08",
     image: "/images/events_images/events_details_imgs/5.png",
-    url: "",
+    url: "https://pay10.ae",
   },
   {
     id: "pay10-growth-2024",
@@ -41,7 +41,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 announced record-breaking growth in 2024, processing over $500 million in total transaction volume — a 200% year-on-year increase — driven by strong adoption of its merchant and consumer payment platforms.",
     publishedAt: "2025-01-30",
     image: "/images/events_images/events_details_imgs/7.png",
-    url: "",
+    url: "https://pay10.ae",
   },
 ];
 

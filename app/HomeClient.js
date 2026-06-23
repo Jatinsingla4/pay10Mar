@@ -73,9 +73,12 @@ export default function HomeClient() {
       <CertificationHero imageSrc="/images/home/feature-circle.png" />
       <CertificationLicensing
         heading={undefined}
-        centralBankImage={undefined}
-        licensedByHeading={undefined}
-        licenseImages={[]}
+        centralBankImage="/images/home/cbuae-logo.png"
+        licensedByHeading="Certified by:"
+        licenseImages={[
+          '/images/home/pci.png',
+          '/images/home/soc2.png',
+        ]}
       />
 
     </main>

@@ -5,6 +5,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Style from "./about.module.scss";
 import JourneySection from "../components/ui/blocks/JourneySection";
+import PowerToDreamSection from "../components/ui/about/PowerToDreamSection";
 import AboutBanner from "../components/ui/about/AboutBanner";
 import AboutSecondSection from "../components/ui/about/AboutSecondSection";
 import WhereWeScoreSection from "../components/ui/about/WhereWeScoreSection";
@@ -121,6 +122,13 @@ const AboutClient = () => {
               section2Image={undefined}
               section2Heading={undefined}
               section2Content={undefined}
+            />
+
+            <PowerToDreamSection
+              imgPrimary="/images/about_images/about-woman.png"
+              imgSecondary="/images/about_images/about-phone.png"
+              heading="Giving You the Power to Dream Big"
+              description="As an alternative payment services provider, we aim to make your life easier and richer by empowering you with quick, secure, and accessible digital payment solutions – whether you are an individual looking to make the most of your hard-earned money or a business looking to scale up like never before."
             />
 
             <WhereWeScoreSection

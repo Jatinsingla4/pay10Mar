@@ -10,17 +10,11 @@ import { defaultMetadata } from "./lib/metadata";
 
 export const metadata = defaultMetadata;
 
-import { Outfit, Rubik } from "next/font/google";
+import { Geist, Geist_Mono, Outfit } from "next/font/google";
 
 const outfit = Outfit({
   variable: "--font-outfit",
   subsets: ["latin"],
-});
-
-const rubik = Rubik({
-  variable: "--font-rubik",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export default function RootLayout({ children }) {
@@ -55,7 +49,7 @@ export default function RootLayout({ children }) {
           `}
         </Script> */}
       </head>
-      <body className={`${outfit.variable} ${rubik.variable}`} suppressHydrationWarning>
+      <body className={`${outfit.variable}`} suppressHydrationWarning>
         {/* Google Tag Manager (noscript) */}
         {/* <noscript>
           <iframe

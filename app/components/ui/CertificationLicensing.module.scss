@@ -82,7 +82,7 @@
 
 .badgesGrid {
   display: grid;
-  grid-template-columns: repeat(2, 200px);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   justify-content: center;
   @include tab {

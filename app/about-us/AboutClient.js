@@ -34,7 +34,7 @@ const journeyData = [
     year: "2026",
     description:
       "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4) – Cross Border Remittances",
-    image: "/images/about_images/board_members/board_member1.jpg",
+    image: "/images/about_images/journey-2023.png",
   },
 ];
 

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+
 import { Icon } from "@iconify/react";
 import styles from "./news-room.module.scss";
 import PageLoader from "../components/ui/PageLoader";
@@ -17,7 +17,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 has been officially licensed by the Central Bank of the UAE to operate as a payment service provider, marking a major milestone in the company's growth across the MENA region.",
     publishedAt: "2024-10-15",
     image: "/images/events_images/events_details_imgs/1.png",
-    downloadUrl: "",
+    url: "",
   },
   {
     id: "pay10-cross-border-launch",
@@ -25,7 +25,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 has introduced its cross-border payment product, enabling UAE-based merchants to accept international payments in multiple currencies with real-time conversion and competitive exchange rates.",
     publishedAt: "2025-02-20",
     image: "/images/events_images/events_details_imgs/3.png",
-    downloadUrl: "",
+    url: "",
   },
   {
     id: "pay10-bank-partnership",
@@ -33,7 +33,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 has signed strategic partnership agreements with two of the UAE's largest commercial banks to integrate its digital wallet infrastructure, expanding financial access for consumers and SMEs.",
     publishedAt: "2025-04-08",
     image: "/images/events_images/events_details_imgs/5.png",
-    downloadUrl: "",
+    url: "",
   },
   {
     id: "pay10-growth-2024",
@@ -41,7 +41,7 @@ const FALLBACK_PRESS_RELEASES = [
     description: "Pay10 announced record-breaking growth in 2024, processing over $500 million in total transaction volume — a 200% year-on-year increase — driven by strong adoption of its merchant and consumer payment platforms.",
     publishedAt: "2025-01-30",
     image: "/images/events_images/events_details_imgs/7.png",
-    downloadUrl: "",
+    url: "",
   },
 ];
 
@@ -99,7 +99,7 @@ function mapPostListing(items, imageBaseUrl) {
       ),
       publishedAt: item?.post_date || "",
       image: buildAbsoluteUrl(imageBaseUrl, item?.image) || FALLBACK_IMAGE,
-      downloadUrl: buildAbsoluteUrl(imageBaseUrl, item?.download),
+      url: item?.link || item?.url || item?.source_url || "",
     };
   });
 }
@@ -290,7 +290,15 @@ export default function NewsRoomClient() {
             );
 
             return items.map((item) => (
-              <Link key={item.id} href={`/news-room/${item.id}`} className={styles.newsCard} data-animation="opacity-up">
+              <a
+                key={item.id}
+                href={item.url || undefined}
+                target={item.url ? "_blank" : undefined}
+                rel={item.url ? "noopener noreferrer" : undefined}
+                className={styles.newsCard}
+                data-animation="opacity-up"
+                style={!item.url ? { cursor: "default" } : undefined}
+              >
                 <div className={styles.cardMedia}>
                   <Image
                     src={item.image}
@@ -305,12 +313,14 @@ export default function NewsRoomClient() {
                   <p className={styles.cardDate}>{formatDisplayDate(item.publishedAt)}</p>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-                  <div className={styles.readMoreBtn}>
-                    <span>Read More</span>
-                    <Icon icon="fa6-solid:angle-right" />
-                  </div>
+                  {item.url && (
+                    <div className={styles.readMoreBtn}>
+                      <span>Read More</span>
+                      <Icon icon="fa6-solid:angle-right" />
+                    </div>
+                  )}
                 </div>
-              </Link>
+              </a>
             ));
           })()}
         </div>

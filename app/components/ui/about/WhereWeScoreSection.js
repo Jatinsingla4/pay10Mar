@@ -51,11 +51,11 @@ const WhereWeScoreSection = ({
       gridArea: "support",
     },
     {
-      icon: <img src="/images/icons/report_box.png" alt="In-house risk management to monitor transactions" />,
+      icon: <img src="/images/icons/report_box.png" alt="Intelligent risk management to monitor transactions" />,
       text: (
         <>
           <h5>
-            In-house risk management to <br /> monitor transactions
+            Intelligent risk management to <br /> monitor transactions
           </h5>
         </>
       ),

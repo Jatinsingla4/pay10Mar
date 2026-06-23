@@ -4,19 +4,21 @@ import React from "react";
 import Style from "./vision_mission.module.scss";
 
 const fallback = {
-  topHeading: "VISION & MISSION",
+  topHeading: "Vision & Mission",
   section2: {
-    heading: "OUR VISION",
+    heading: "Our Vision",
     content: "To deliver regulated, interoperable payment infrastructure that enables secure, efficient, and trusted digital transactions across the UAE's financial ecosystem.",
-    image: "/images/prod_imports/2.png"
+    image1: "/images/prod_imports/1.jpg",
+    image2: "/images/prod_imports/2.png"
   },
   section3: {
-    image: "/images/prod_imports/circle-animation.png"
+    image: "/images/prod_imports/divider-banner.png"
   },
   section4: {
-    heading: "OUR MISSION",
+    heading: "Our Mission",
     content: "To contribute to a connected and resilient payments landscape in the UAE by building compliance-first financial rails that support scale, transparency, and long-term economic growth.",
-    image: "/images/prod_imports/4.png"
+    image1: "/images/prod_imports/4.png",
+    image2: "/images/prod_imports/5.png"
   }
 };
 
@@ -40,8 +42,9 @@ const VisionMissionClient = () => {
       <div className={Style.bg_circle_wrapper}>
         <section className={Style.wrapper}>
           <div className={Style.vision_second_section}>
-            <div className={Style.left_img}>
-              <img src={fallback.section2.image} data-animation="opacity-up" alt="" />
+            <div className={Style.left_img} data-animation="opacity-up">
+              <img src={fallback.section2.image1} className={Style.img_primary} alt="" />
+              <img src={fallback.section2.image2} className={Style.img_secondary} alt="" />
             </div>
             <div className={Style.vision_content}>
               <h5 data-animation="opacity-up">{fallback.section2.heading}</h5>
@@ -64,7 +67,7 @@ const VisionMissionClient = () => {
           </div>
         </section>
 
-        <section className={Style.wrapper}>
+        <section className={`${Style.wrapper} ${Style.last_wrapper}`}>
           <div className={`${Style.vision_second_section} ${Style.bottom_section}`}>
             <div className={Style.vision_content}>
               <h5 data-animation="opacity-up">{fallback.section4.heading}</h5>
@@ -74,8 +77,9 @@ const VisionMissionClient = () => {
                 dangerouslySetInnerHTML={{ __html: section4Content }}
               />
             </div>
-            <div className={Style.left_img} data-animation="opacity-up">
-              <img src={fallback.section4.image} alt="" />
+            <div className={Style.right_img} data-animation="opacity-up">
+              <img src={fallback.section4.image1} className={Style.img_primary} alt="" />
+              <img src={fallback.section4.image2} className={Style.img_secondary} alt="" />
             </div>
           </div>
         </section>

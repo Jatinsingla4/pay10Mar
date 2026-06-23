@@ -46,7 +46,7 @@ const DEFAULT_BREATHING_CIRCLES = [
 export default function CareersHeroBanner({
   title = "Where Your Ambition Meets Our Innovation",
   heroImage = {
-    src: "/images/careers/careers_banner_img.png",
+    src: "/images/careers/careers_banner_img.jpg",
     alt: "Pay10 — join our team",
     width: 1024,
     height: 455,
@@ -149,78 +149,7 @@ export default function CareersHeroBanner({
       ref={rootRef}
       className={`${styles.careersHeroBanner} ${className}`.trim()}
     >
-      {Array.isArray(decorations) && decorations.length > 0 ? (
-        <div className={styles.decorations}>
-          {decorations.map((item) => {
-            const widthVal = item.size?.width;
-            const heightVal = item.size?.height;
-            const styleVars = {
-              "--top-desktop": item.position?.desktop?.top,
-              "--left-desktop": item.position?.desktop?.left,
-              "--right-desktop": item.position?.desktop?.right,
-              "--bottom-desktop": item.position?.desktop?.bottom,
-              "--top-mobile": item.position?.mobile?.top,
-              "--left-mobile": item.position?.mobile?.left,
-              "--right-mobile": item.position?.mobile?.right,
-              "--bottom-mobile": item.position?.mobile?.bottom,
-              "--width":
-                typeof widthVal === "number"
-                  ? `${widthVal}px`
-                  : typeof widthVal === "string"
-                  ? widthVal
-                  : undefined,
-              "--height":
-                typeof heightVal === "number"
-                  ? `${heightVal}px`
-                  : typeof heightVal === "string"
-                  ? heightVal
-                  : undefined,
-              "--stroke":
-                typeof item.strokeWidth === "number"
-                  ? `${item.strokeWidth}px`
-                  : undefined,
-              "--opacity":
-                typeof item.opacity === "number"
-                  ? String(item.opacity)
-                  : undefined,
-            };
-
-            return (
-              <span
-                key={item.id}
-                className={styles.circleDecoration}
-                style={styleVars}
-                data-anim="circle"
-                aria-hidden="true"
-              />
-            );
-          })}
-        </div>
-      ) : null}
-
-      <div className={styles.layout}>
-        <div className={styles.copy}>
-          {title ? (
-            <h2 className={styles.title} data-anim="title">
-              {title}
-            </h2>
-          ) : null}
-        </div>
-
-        {hasHeroImage ? (
-          <div className={styles.imageWrap} data-anim="phone">
-            <Image
-              src={heroImage.src}
-              alt={heroImage.alt || ""}
-              width={w}
-              height={h}
-              className={styles.image}
-              priority
-              sizes="(max-width: 768px) 100vw, 1024px"
-            />
-          </div>
-        ) : null}
-      </div>
+      <div className={styles.layout} />
     </section>
   );
 }

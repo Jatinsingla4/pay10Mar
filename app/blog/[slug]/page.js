@@ -7,10 +7,11 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function BlogDetail({ params }) {
+  const { slug } = await params;
   return (
     <>
       {/* Staging: JSON-LD off — uncomment for production */}
-      <BlogDetailClient />
+      <BlogDetailClient slug={slug} />
     </>
   );
 }

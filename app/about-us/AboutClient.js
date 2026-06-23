@@ -16,19 +16,19 @@ const journeyData = [
     year: "2023",
     description:
       "Pay10 opened its new headquarter in Dubai, UAE to expand globally.",
-    image: "/images/about_images/team/team_member1.png",
+    image: "/images/about_images/journey-2023.png",
   },
   {
     year: "2024",
     description:
       "<p>Pay10 UAE received licenses from The Central Bank of the UAE (CBUAE) under Payment Services & Card Schemes (RPSCS Category II) and Stored Value Facilities (SVF) frameworks.</p><p>Together, these licenses authorize Pay10 to offer Merchant Acquiring Services, Account Issuing, Payment Aggregation Services, Domestic Fund Transfer Services, Cross Border Remittances and Opening & Maintaining Digital Wallets—further reinforcing its position as a leader in digital-first financial services across the region.</p>",
-    image: "/images/about_images/team/team_member1.png",
+    image: "/images/about_images/journey-2024.png",
   },
   {
     year: "2025",
     description:
       "<p>Pay10 UAE received approval as the country's first licensed Third-Party Provider (TPP) under the Central Bank of the UAE's (CBUAE) Open Finance framework.</p><p>In August 2025, Pay10 successfully performed the first ever live transaction on CBUAE's Open Finance Platform.</p>",
-    image: "/images/about_images/team/team_member1.png",
+    image: "/images/about_images/journey-2025.png",
   },
   {
     year: "2026",

@@ -1,21 +1,9 @@
 import React from "react";
 import Style from "./MeetBoardMember.module.scss";
 
-const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
-
 const UaeAdvisorSection = ({ section7, section7Heading }) => {
-  const advisors = Array.isArray(section7?.uae_advisor_list) && section7.uae_advisor_list.length > 0
-    ? section7.uae_advisor_list.map((item) => {
-        const designation = item["Designation "] || item.Designation || "";
-
-        return {
-          name: item.Name || "",
-          role: designation.trim(),
-          description: item.Description || "",
-          image: item.Image ? `${imageBase}${item.Image}` : "/images/about_images/board_members/board_member1.jpg",
-        };
-      })
-    : [];
+  // No API data — always empty (no static advisors defined)
+  const advisors = [];
 
   return (
     <>

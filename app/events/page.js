@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Style from "./events.module.scss";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
 import Image from "next/image";
-import useApiAuth from "../components/hooks/useApiAuth";
-import PageLoader from "../components/ui/PageLoader";
 
 const FALLBACK_EVENTS = [
   {
@@ -47,6 +45,8 @@ const FALLBACK_EVENTS = [
   },
 ];
 
+const HERO_EVENT = FALLBACK_EVENTS[0];
+
 const HeroBannerContent = ({ heroImage, heroTitle, heroDescription, heroDates, Style }) => (
   <>
     <div className={Style.hero_img_logo}>
@@ -79,130 +79,13 @@ const HeroBannerContent = ({ heroImage, heroTitle, heroDescription, heroDates, S
 );
 
 const page = () => {
-  const [pageData, setPageData] = useState(null);
-  const [eventLatest, setEventLatest] = useState(null);
-  const [allEvents, setAllEvents] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [initialLoading, setInitialLoading] = useState(true);
-  const [fallbackCount, setFallbackCount] = useState(2);
-  const { makeApiCall } = useApiAuth();
+  const topSubHeading = "EVENTS & CONFERENCES";
+  const topHeading = "Our Events";
 
-  useEffect(() => {
-    let isMounted = true;
-    const fetchInitialData = async () => {
-      setInitialLoading(true);
-      try {
-        const result = await makeApiCall("/event?page=1");
-        if (!isMounted) return;
-        if (result?.status) {
-          setPageData(result.page_data || {});
-          setEventLatest(result.event_latest || {});
-          setAllEvents(Array.isArray(result.event_listing) ? result.event_listing : []);
-          setCurrentPage(1);
-          setTotalPages(Number(result?.pagination?.total_pages) || 1);
-        }
-      } catch (error) {
-        if (isMounted) console.error("Error fetching initial data:", error);
-      } finally {
-        if (isMounted) setInitialLoading(false);
-      }
-    };
-    fetchInitialData();
-    return () => { isMounted = false; };
-  }, [makeApiCall]);
-
-  const formatDateRange = (startDate, endDate) => {
-    if (!startDate || !endDate) return { primary: "", secondary: "" };
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-    return {
-      primary: `${start.getDate()}-${end.getDate()}`,
-      secondary: `${monthNames[start.getMonth()]} ${start.getFullYear()}`,
-    };
-  };
-
-  const formatEventDate = (startDate, endDate) => {
-    if (!startDate || !endDate) return "";
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const monthNames = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-    const startDay = start.getDate();
-    const endDay = end.getDate();
-    return startDay === endDay
-      ? `${startDay} ${monthNames[start.getMonth()]} ${start.getFullYear()}`
-      : `${startDay}-${endDay} ${monthNames[start.getMonth()]} ${start.getFullYear()}`;
-  };
-
-  const getEventStatus = (startDate) => {
-    if (!startDate) return "upcoming";
-    return new Date(startDate) >= new Date() ? "upcoming" : "past";
-  };
-
-  const handleLoadMore = async () => {
-    if (loading) return;
-    if (allEvents.length === 0) {
-      setFallbackCount(prev => Math.min(prev + 2, FALLBACK_EVENTS.length));
-      return;
-    }
-    if (currentPage >= totalPages) return;
-    setLoading(true);
-    try {
-      const nextPage = currentPage + 1;
-      const result = await makeApiCall(`/event?page=${nextPage}`);
-      if (result?.status) {
-        const newEvents = Array.isArray(result.event_listing) ? result.event_listing : [];
-        setAllEvents(prev => [...prev, ...newEvents]);
-        setCurrentPage(nextPage);
-        setTotalPages(Number(result?.pagination?.total_pages) || totalPages);
-      }
-    } catch (error) {
-      console.error("Error loading more events:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
-  const hasNext = allEvents.length === 0
-    ? fallbackCount < FALLBACK_EVENTS.length
-    : currentPage < totalPages;
-
-  const topSubHeading = pageData?.top_sub_heading || "EVENTS & CONFERENCES";
-  const topHeading = pageData?.top_heading || "Our Events";
-
-  const heroTitle = eventLatest?.name || "Global Fintech Fest 2024";
-  const heroDescription = eventLatest?.short_description || "Pay10 at the world's largest fintech festival — showcasing our vision for the future of digital payments in the MENA region.";
-  const heroImage = eventLatest?.thumbnail
-    ? `${imageBase}${eventLatest.thumbnail}`
-    : eventLatest?.image
-      ? `${imageBase}${eventLatest.image}`
-      : "/images/events_images/global_fintech.png";
-
-  const heroDates = formatDateRange(
-    eventLatest?.event_start_date || "2024-08-28",
-    eventLatest?.event_end_date || "2024-08-30"
-  );
-
-  const eventsBoxes = allEvents.length > 0
-    ? allEvents.map((item, index) => ({
-        key: item.slug || `event-${index}`,
-        img: item.thumbnail ? `${imageBase}${item.thumbnail}` : "/images/events_images/global_fintech.png",
-        smalltxt: formatEventDate(item.event_start_date, item.event_end_date),
-        heading: item.name || "",
-        link: item.slug ? `/events/${item.slug}` : null,
-        desc: item.short_description || "",
-        status: getEventStatus(item.event_start_date),
-      }))
-    : FALLBACK_EVENTS;
-
-  const displayedEvents = allEvents.length === 0
-    ? eventsBoxes.slice(0, fallbackCount)
-    : eventsBoxes;
-
-  if (initialLoading) return <PageLoader />;
+  const heroTitle = HERO_EVENT.heading;
+  const heroDescription = HERO_EVENT.desc;
+  const heroImage = HERO_EVENT.img;
+  const heroDates = { primary: "14-18", secondary: "Oct 2024" };
 
   return (
     <main className={Style.eventMain}>
@@ -212,15 +95,9 @@ const page = () => {
           <h2>{topHeading}</h2>
         </div>
 
-        {eventLatest?.slug ? (
-          <Link href={`/events/${eventLatest.slug}`} className={Style.events_banner_img}>
-            <HeroBannerContent heroImage={heroImage} heroTitle={heroTitle} heroDescription={heroDescription} heroDates={heroDates} Style={Style} />
-          </Link>
-        ) : (
-          <div className={Style.events_banner_img}>
-            <HeroBannerContent heroImage={heroImage} heroTitle={heroTitle} heroDescription={heroDescription} heroDates={heroDates} Style={Style} />
-          </div>
-        )}
+        <Link href={HERO_EVENT.link} className={Style.events_banner_img}>
+          <HeroBannerContent heroImage={heroImage} heroTitle={heroTitle} heroDescription={heroDescription} heroDates={heroDates} Style={Style} />
+        </Link>
       </div>
 
       <div className={Style.events_bg_circle}>
@@ -235,72 +112,50 @@ const page = () => {
 
       <section className={Style.wrapper}>
         <div className={Style.all_events_container}>
-          {displayedEvents.length === 0 ? (
-            <div className={Style.emptyState}>
-              <div className={Style.emptyIcon}>
-                <Icon icon="solar:calendar-bold-duotone" />
-              </div>
-              <h3>No Events Yet</h3>
-              <p>Stay tuned — exciting events and conferences are coming soon!</p>
-            </div>
-          ) : (
-            displayedEvents.map((event) => {
-              const cardInner = (
-                <>
-                  <div className={Style.events_box_img}>
-                    <Image
-                      src={event.img}
-                      alt={event.heading || "Event"}
-                      width={160}
-                      height={160}
-                      style={{ width: "100%", height: "auto" }}
-                      unoptimized={event.img.startsWith("http")}
-                    />
-                  </div>
-                  <div className={Style.events_box_content}>
-                    <div className={Style.events_box_headings}>
-                      <div className={Style.events_box_meta}>
-                        {event.smalltxt && <h6>{event.smalltxt}</h6>}
-                        <span className={`${Style.event_tag} ${Style[`event_tag_${event.status}`]}`}>
-                          {event.status === "upcoming" ? "Upcoming" : "Past"}
-                        </span>
-                      </div>
-                      <h3>{event.heading}</h3>
-                    </div>
-                    {event.desc && <p>{event.desc}</p>}
-                    {event.link && (
-                      <div className={Style.events_box_cta}>
-                        <span>Learn More</span>
-                        <Icon icon="fa6-solid:angle-right" />
-                      </div>
-                    )}
-                  </div>
-                </>
-              );
-              return event.link ? (
-                <Link key={event.key} href={event.link} className={Style.events_box} data-animation="opacity-up">
-                  {cardInner}
-                </Link>
-              ) : (
-                <div key={event.key} className={Style.events_box} data-animation="opacity-up">
-                  {cardInner}
+          {FALLBACK_EVENTS.map((event) => {
+            const cardInner = (
+              <>
+                <div className={Style.events_box_img}>
+                  <Image
+                    src={event.img}
+                    alt={event.heading || "Event"}
+                    width={160}
+                    height={160}
+                    style={{ width: "100%", height: "auto" }}
+                    unoptimized={event.img.startsWith("http")}
+                  />
                 </div>
-              );
-            })
-          )}
+                <div className={Style.events_box_content}>
+                  <div className={Style.events_box_headings}>
+                    <div className={Style.events_box_meta}>
+                      {event.smalltxt && <h6>{event.smalltxt}</h6>}
+                      <span className={`${Style.event_tag} ${Style[`event_tag_${event.status}`]}`}>
+                        {event.status === "upcoming" ? "Upcoming" : "Past"}
+                      </span>
+                    </div>
+                    <h3>{event.heading}</h3>
+                  </div>
+                  {event.desc && <p>{event.desc}</p>}
+                  {event.link && (
+                    <div className={Style.events_box_cta}>
+                      <span>Learn More</span>
+                      <Icon icon="fa6-solid:angle-right" />
+                    </div>
+                  )}
+                </div>
+              </>
+            );
+            return event.link ? (
+              <Link key={event.key} href={event.link} className={Style.events_box} data-animation="opacity-up">
+                {cardInner}
+              </Link>
+            ) : (
+              <div key={event.key} className={Style.events_box} data-animation="opacity-up">
+                {cardInner}
+              </div>
+            );
+          })}
         </div>
-
-        {hasNext && displayedEvents.length > 0 && (
-          <div style={{ textAlign: "center", width: "100%" }} data-animation="scale-up">
-            <button
-              className={Style.load_more_btn}
-              onClick={handleLoadMore}
-              disabled={loading || initialLoading}
-            >
-              {loading ? "Loading..." : "Load More"}
-            </button>
-          </div>
-        )}
       </section>
     </main>
   );

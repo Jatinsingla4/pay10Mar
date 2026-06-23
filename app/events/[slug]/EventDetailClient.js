@@ -6,9 +6,6 @@ import { useParams } from "next/navigation";
 import { Icon, InlineIcon } from "@iconify/react";
 import Link from "next/link";
 import Style from "./events-details.module.scss";
-import useApiAuth from "../../components/hooks/useApiAuth";
-import PageLoader from "../../components/ui/PageLoader";
-import { cmsImageSrc } from "../../lib/cmsImageSrc";
 
 const FALLBACK_EVENT_DETAILS = {
   "gitex-global-2024": {
@@ -76,79 +73,24 @@ const FALLBACK_EVENT_DETAILS = {
   },
 };
 
-const paymentSolutions = [
-  {
-    title: "PAYMENT AGGREGATOR (PA)",
-    description: "Pay10 enables businesses to seamlessly accept cards, UPI, wallets, and more through a unified platform, ensuring faster turnaround time.",
-    icon: "/images/eve1.svg"
-  },
-  {
-    title: "PAYMENT AGGREGATOR CROSS BORDER",
-    description: "Enabling global commerce with seamless international payment support from export flows powered by multi-currency transactions to import flows backed by dynamic currency conversion. All with real-time processing, competitive rates, and secure integration.",
-    icon: "/images/eve2.svg"
-  },
-  {
-    title: "PREPAID PAYMENT INSTRUMENTS",
-    description: "Upcoming...",
-    icon: "/images/eve3.svg"
-  }
-];
-
 // Local Next.js public paths (starting with /) bypass cmsImageSrc to avoid CDN URL prepending
-const resolveImageSrc = (path, base) => {
+const resolveImageSrc = (path) => {
   if (!path) return null;
   const p = String(path).trim();
   if (p.startsWith('/')) return p;
-  return cmsImageSrc(p, base);
+  if (/^https?:\/\//i.test(p)) return p;
+  return `/${p}`;
 };
 
 const EventDetailClient = () => {
   const params = useParams();
   const slug = params?.slug;
-  const [eventData, setEventData] = useState(null);
-  const [loading, setLoading] = useState(false);
   const [imagesToShow, setImagesToShow] = useState(12); // Show first 12 images initially
-  const { makeApiCall } = useApiAuth();
-  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
 
   // Scroll to top when component mounts or slug changes
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [slug]);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
-      if (!slug) return;
-
-      setLoading(true);
-      try {
-        const result = await makeApiCall(`/event_detail/${slug}`);
-
-        if (!isMounted) return;
-
-        if (result?.status) {
-          setEventData(result);
-        } else {
-          setEventData(null);
-        }
-      } catch (error) {
-        if (isMounted) {
-          console.error("Error fetching event data:", error);
-          setEventData(null);
-        }
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [slug, makeApiCall]);
 
   // Helper function to format date range
   const formatDateRange = (startDate, endDate) => {
@@ -173,11 +115,7 @@ const EventDetailClient = () => {
     setImagesToShow(prev => prev + 12);
   };
 
-  if (loading && !eventData) {
-    return <PageLoader />;
-  }
-
-  const resolvedData = eventData || (slug && FALLBACK_EVENT_DETAILS[slug]) || null;
+  const resolvedData = (slug && FALLBACK_EVENT_DETAILS[slug]) || null;
 
   if (!resolvedData) {
     return (
@@ -201,7 +139,7 @@ const EventDetailClient = () => {
 
   const pageData = resolvedData?.page_data || {};
 
-  // Parse gallery from API response (it comes as a JSON string)
+  // Parse gallery from response (it comes as a JSON string)
   let images = [];
   if (pageData?.gallery) {
     try {
@@ -223,14 +161,13 @@ const EventDetailClient = () => {
   const eventName = pageData.name || "";
   const eventDateRange = formatDateRange(pageData.event_start_date, pageData.event_end_date);
   const eventBannerImage =
-    (pageData.image && resolveImageSrc(pageData.image, imageBase)) ||
+    (pageData.image && resolveImageSrc(pageData.image)) ||
     "/images/events_images/events_banner_img.png";
   const eventThumbnail =
-    (pageData.thumbnail && resolveImageSrc(pageData.thumbnail, imageBase)) ||
+    (pageData.thumbnail && resolveImageSrc(pageData.thumbnail)) ||
     "/images/events_images/global_fintech.png";
   const content = pageData.content || "";
   const content2 = pageData.content2 || "";
-  const brochureUrl = pageData.brochure ? `${imageBase}${pageData.brochure}` : null;
 
   // Extract first paragraph for the h3 heading from content
   const extractFirstParagraph = (html) => {
@@ -243,37 +180,27 @@ const EventDetailClient = () => {
   const removeFirstParagraph = (html, firstParagraphText) => {
     if (!html || !firstParagraphText) return html;
 
-    // Extract plain text from HTML for comparison
     const htmlText = html.replace(/<[^>]+>/g, "").trim();
     const firstParaText = firstParagraphText.trim();
 
-    // Check if the HTML text starts with the first paragraph text
     if (htmlText.startsWith(firstParaText)) {
-      // Try to remove the first <p> tag that contains this text
       const pTagRegex = /<p[^>]*>[\s\S]*?<\/p>/i;
       const firstPMatch = html.match(pTagRegex);
 
       if (firstPMatch) {
         const pText = firstPMatch[0].replace(/<[^>]+>/g, "").trim();
-        // If this paragraph starts with or contains the first paragraph text, remove it
         if (pText.startsWith(firstParaText) || firstParaText.startsWith(pText.substring(0, Math.min(firstParaText.length, pText.length)))) {
           return html.replace(pTagRegex, "").trim();
         }
       }
 
-      // If no <p> tag or it doesn't match, try to remove text from the beginning
-      // Find the position where the first paragraph ends in the HTML
-      // Look for the end of the first sentence/paragraph (period, newline, or closing tag)
       const firstParaEscaped = firstParaText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-      // Match the first paragraph text and everything up to the next sentence end
       const regex = new RegExp(`^([\\s\\S]*?)${firstParaEscaped}([\\s\\S]*?)(\\.|\\n|</p>|</div>|$)`, 'i');
       const match = html.match(regex);
 
       if (match && match[0]) {
-        // Remove the matched portion (first paragraph)
         const result = html.replace(regex, '').trim();
-        // Only return if we actually removed something meaningful
-        if (result.length < html.length * 0.9) { // At least 10% was removed
+        if (result.length < html.length * 0.9) {
           return result;
         }
       }
@@ -286,20 +213,12 @@ const EventDetailClient = () => {
   const firstParagraphFromContent2 = extractFirstParagraph(content2);
   const firstParagraph = firstParagraphFromContent || firstParagraphFromContent2;
 
-  // Remove first paragraph from the content that contains it to avoid duplication
   const contentWithoutFirstParagraph = firstParagraphFromContent && content
     ? removeFirstParagraph(content, firstParagraphFromContent)
     : content;
   const content2WithoutFirstParagraph = firstParagraphFromContent2 && content2
     ? removeFirstParagraph(content2, firstParagraphFromContent2)
     : content2;
-
-  // Download brochure handler
-  const handleDownloadBrochure = () => {
-    if (brochureUrl) {
-      window.open(brochureUrl, '_blank');
-    }
-  };
 
   // Gallery images
   const displayedImages = images.slice(0, imagesToShow);
@@ -379,52 +298,7 @@ const EventDetailClient = () => {
           </div>
         </div>
       </div>
-     {/*
-      <section className={Style.paymentSolutionsSection}>
-        <div className={Style.wrapper}>
-          <h2 className={Style.sectionTitle} data-animation="opacity-up">
-            Our Payments Solution Suite
-          </h2>
-          <p className={Style.sectionSubtitle} data-animation="opacity-up">
-            Pay10 offers an easy, hassle-free solution to every digital payment need in the world of finance.
-          </p>
 
-          <div className={Style.solutionsGrid}>
-            {paymentSolutions.map((solution, index) => (
-              <div
-                className={Style.solutionCard}
-                key={solution.title}
-                data-animation="opacity-up"
-              >
-                <div className={Style.cardIcon}>
-                  <Image
-                    width={36}
-                    height={36}
-                    src={solution.icon}
-                    alt="Facbook icon"
-                    className="footer__social-icon"
-                  />
-                </div>
-                <h3 className={Style.cardTitle}>{solution.title}</h3>
-                <p className={Style.cardDescription}>{solution.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {brochureUrl && (
-            <div data-animation="scale-up">
-              <button
-                className={Style.downloadBtn}
-                onClick={handleDownloadBrochure}
-              >
-                <Icon icon="solar:download-linear" width="20" height="20" />
-                <span>Download Brochure</span>
-              </button>
-            </div>
-          )}
-        </div>
-      </section>
-      */}
       {images.length > 0 && (
         <section className={Style.wrapper}>
           <div className={Style.pictures_container}>
@@ -433,7 +307,7 @@ const EventDetailClient = () => {
               {displayedImages.map((img, idx) => {
                 // Handle both string paths (from gallery) and object format (legacy)
                 const imagePath = typeof img === 'string' ? img : img?.image;
-                const imageSrc = imagePath ? resolveImageSrc(imagePath, imageBase) : null;
+                const imageSrc = imagePath ? resolveImageSrc(imagePath) : null;
                 const imageAlt = typeof img === 'string' ? eventName : (img?.name || eventName);
                 if (!imageSrc) return null;
                 return (

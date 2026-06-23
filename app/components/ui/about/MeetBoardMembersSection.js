@@ -1,9 +1,6 @@
 import React from "react";
 import Style from './MeetBoardMember.module.scss';
 
-// Give imageBase a default in case it's not set in global scope
-const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
-
 const MeetBoardMembersSection = ({ section4, section4Heading }) => {
 
   // Default fallback board members
@@ -28,21 +25,8 @@ const MeetBoardMembersSection = ({ section4, section4Heading }) => {
     },
   ];
 
-  // Handle section4 being possibly undefined
-  // Transform API data into boardMembersBox format
-  const boardMembersBox = Array.isArray(section4?.board_team_list) && section4.board_team_list.length > 0
-    ? section4.board_team_list.map((item) => {
-        const imageUrl = item.Image ? `${imageBase}${item.Image}` : '/images/about_images/board_members/board_member1.jpg';
-        // Handle "Designation " with trailing space
-        const designation = item['Designation '] || item.Designation || '';
-        return {
-          nme: item.Name || '',
-          role: designation.trim(),
-          desc: item.Description || '',
-          img: imageUrl,
-        };
-      })
-    : defaultBoardMembersBox;
+  // Always use fallback board members (no API)
+  const boardMembersBox = defaultBoardMembersBox;
 
   return (
     <>

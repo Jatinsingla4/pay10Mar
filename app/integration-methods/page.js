@@ -5,8 +5,7 @@ import IntegrationSecondSection from '@/app/components/ui/product/IntegrationSec
 import IntegrationTwoLayout from '@/app/components/ui/product/IntegrationTwoLayout';
 import IntegrationReverseLayout from '@/app/components/ui/product/IntegrationReverseLayout';
 import TabsWithSlider from '@/app/components/ui/product/TabsWithSlider';
-import { fetchApiData } from "@/app/lib/api";
-import { defaultMetadata, generateApiMetadata } from "@/app/lib/metadata";
+import { defaultMetadata } from "@/app/lib/metadata";
 
 const integrationMethodsDecorations = [
   {
@@ -110,119 +109,51 @@ const integrationMethodsDecorations = [
   },
 ];
 
-const resolveImageSrc = (raw, imageBase = "") => {
-  if (!raw) return "";
-  const src = String(raw);
-  if (/^https?:\/\//i.test(src) || src.startsWith("/")) return src;
-  return `${imageBase}${src}`;
-};
-
-const normalizeText = (raw) =>
-  String(raw || "")
-    .replace(/\r\n/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-
-const pickBoldAndParagraph = (html) => {
-  const src = String(html || "");
-  if (!src) return { heading: "", description: "" };
-  const heading = src.match(/<b[^>]*>(.*?)<\/b>/i)?.[1] || "";
-  const description = src.match(/<p[^>]*>(.*?)<\/p>/i)?.[1] || "";
-  return { heading, description };
-};
-
 export async function generateMetadata() {
-  const apiRes = await fetchApiData("/page/integration-methods");
-  if (!apiRes?.status) {
-    return {
-      ...defaultMetadata,
-      title: "Integration Methods | Pay10",
-    };
-  }
-  return generateApiMetadata(
-    apiRes?.page_data,
-    "Integration Methods | Pay10",
-    defaultMetadata.description
-  );
+  return {
+    ...defaultMetadata,
+    title: "Integration Methods | Pay10",
+  };
 }
 
 const page = async () => {
-  const apiRes = await fetchApiData("/page/integration-methods");
-  const pageDataObj = apiRes?.page_data || {};
-  const section3List = Array.isArray(apiRes?.custom_data?.section3?.list)
-    ? apiRes.custom_data.section3.list
-    : [];
-  const section4 = apiRes?.custom_data?.section4 || {};
-  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
-
-  const topSubHeading = pageDataObj.top_sub_heading || undefined;
-  const topHeading = pageDataObj.top_heading || undefined;
-  const topDescription = pageDataObj.top_description || "";
-
-  // Section 2: derived from `page_data.content`
-  const contentHtml = pageDataObj.content || "";
-  const section2Extract = pickBoldAndParagraph(contentHtml);
-
-  // Section 3: list[0..2] = Hosted Payment Page, Mobile SDK, Direct API
-  const s3a = section3List[0] || {};
-  const s3b = section3List[1] || {};
-  const s3c = section3List[2] || {};
-
-  const hostedHeading = s3a.Title || undefined;
-  const hostedDesc = normalizeText(s3a["Designation "] || s3a.Designation || s3a.Description);
-  const hostedImg =
-    resolveImageSrc(s3a.Image, imageBase) ||
-    "/images/product_page_images/integration_methods_images/section_second_img.png";
-
-  const mobileHeading = s3b.Title || undefined;
-  const mobileDesc = normalizeText(s3b["Designation "] || s3b.Designation || s3b.Description);
-  const mobileImg =
-    resolveImageSrc(s3b.Image, imageBase) ||
-    "/images/product_page_images/integration_methods_images/reverse_grid_img.png";
-
-  const directHeading = s3c.Title || undefined;
-  const directDesc = normalizeText(s3c["Designation "] || s3c.Designation || s3c.Description);
-  const directImg =
-    resolveImageSrc(s3c.Image, imageBase) ||
-    "/images/product_page_images/integration_methods_images/third_section_img.png";
-
-  const pluginsHeading = section4.heading || undefined;
+  const hostedImg = "/images/product_page_images/integration_methods_images/section_second_img.png";
+  const mobileImg = "/images/product_page_images/integration_methods_images/reverse_grid_img.png";
+  const directImg = "/images/product_page_images/integration_methods_images/third_section_img.png";
 
   const secondSection = {
-    heading: hostedHeading,
-    desc: hostedDesc,
+    heading: undefined,
+    desc: "",
     img: hostedImg,
-  }
+  };
 
   const thirdSection = {
-    heading: directHeading,
-    desc: directDesc,
+    heading: undefined,
+    desc: "",
     img: directImg,
-  }
+  };
 
   return (
     <>
         <main>
             <section className={Style.integration_banner}>
                 <BizHeroBanner
-                  eyebrow={topSubHeading}
-                  title={topHeading}
-                  description={topDescription}
-                  // ctaHref="https://pay10global.atlassian.net/wiki/external/ZTYxOTg1YjhiNjIyNDYzYjg4ZTFiNmJiYzc5ZDU1OTA"
-                  // ctaText="API Integration Docs"
+                  eyebrow={undefined}
+                  title={undefined}
+                  description=""
                   ctaHref="/contact-us"
                   ctaText="Get In Touch"
                   showCtaIcon={false}
                   heroImage={null}
                   decorations={integrationMethodsDecorations}
                   className={Style.integrationBannerCustom}
-                />  
+                />
             </section>
 
             <IntegrationSecondSection
-              heading={section2Extract.heading}
-              description={section2Extract.description}
-              htmlContent={contentHtml}
+              heading=""
+              description=""
+              htmlContent=""
               renderHtml={false}
             />
 
@@ -234,10 +165,10 @@ const page = async () => {
             />
 
             <IntegrationReverseLayout
-              heading={mobileHeading}
-              desc={mobileDesc}
+              heading={undefined}
+              desc=""
               img={mobileImg}
-              imageBase={imageBase}
+              imageBase=""
             />
 
             <IntegrationTwoLayout
@@ -246,16 +177,10 @@ const page = async () => {
               img={thirdSection.img}
             />
 
-            {/* <TabsWithSlider
-              heading={pluginsHeading}
-              section4={section4}
-              imageBase={imageBase}
-            /> */}
-
             <TabsWithSlider
               heading="Server Integrations"
-              section4={section4}
-              imageBase={imageBase}
+              section4={{}}
+              imageBase=""
               initialTab="server"
               hideTabs={true}
               compactCards={true}

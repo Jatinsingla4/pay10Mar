@@ -1,12 +1,6 @@
 import React from "react";
 import Style from './WhereWeScore.module.scss'
 
-// Get process.env in client
-const imageBase =
-  typeof window !== "undefined" && process.env.NEXT_PUBLIC_IMAGE_URL
-    ? process.env.NEXT_PUBLIC_IMAGE_URL
-    : "";
-
 const WhereWeScoreSection = ({
   section3,
   section3Heading
@@ -91,47 +85,8 @@ const WhereWeScoreSection = ({
     },
   ];
 
-  // Compose the boxes from API or fallback
-  let boxes = defaultBoxes;
-  if (
-    typeof section3 === "object" &&
-    Array.isArray(section3.list) &&
-    section3.list.length > 0
-  ) {
-    boxes = section3.list.map((item, index) => {
-      const gridArea = defaultGridAreas[index] || `item-${index}`;
-      const fallbackBox = defaultBoxes[index] || defaultBoxes[0];
-      const imageUrl =
-        item.Image
-          ? `${imageBase}${item.Image}`
-          : fallbackBox?.icon?.props?.src || "/images/icons/payment.png";
-      const title = item.Title || "Feature";
-
-      // Add line break in the middle for long titles (similar to original design)
-      const words = title.split(" ");
-      const midPoint = Math.ceil(words.length / 2);
-      const firstPart = words.slice(0, midPoint).join(" ");
-      const secondPart = words.slice(midPoint).join(" ");
-
-      return {
-        icon: <img src={imageUrl} alt={item.Title || ""} />,
-        text: (
-          <>
-            <h5>
-              {words.length > 3 ? (
-                <>
-                  {firstPart} <br /> {secondPart}
-                </>
-              ) : (
-                title
-              )}
-            </h5>
-          </>
-        ),
-        gridArea: gridArea,
-      };
-    });
-  }
+  // Always use static fallback boxes
+  const boxes = defaultBoxes;
 
   return (
     <div className={Style.where_we_score}>
@@ -143,7 +98,6 @@ const WhereWeScoreSection = ({
             className={Style.box}
             style={{ gridArea: box.gridArea }}
             data-grid-area={box.gridArea}
-            // data-animation="opacity"
           >
             <span className={Style.box_icon}>{box.icon}</span>
             {box.text}

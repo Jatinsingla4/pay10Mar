@@ -1,20 +1,34 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Style from "./contact.module.scss";
 import { Icon } from "@iconify/react";
-import useApiAuth from "../components/hooks/useApiAuth";
-import PageLoader from "../components/ui/PageLoader";
 
 // Hardcoded Google Maps embed URL
 const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.6651841438556!2d55.270962999999995!3d25.1807808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6978338fd387%3A0xb7eeb833237a2ede!2sUbora%20Office%20Tower!5e0!3m2!1sen!2sin!4v1778165481176!5m2!1sen!2sin";
 
+// Static office data
+const STATIC_OFFICES = {
+  "dubai-uae": {
+    name: "Dubai, UAE",
+    address: "Ubora Office Tower, Business Bay, Dubai, UAE",
+    emails: [
+      { label: "Email Address", value: "info@pay10.ae" },
+    ],
+    phones: [
+      { label: "For Pay10 Queries", value: "+971 4 123 4567" },
+    ],
+    map: MAP_EMBED_URL,
+  },
+};
+
+const STATIC_TABS = [
+  { id: "dubai-uae", label: "Dubai, UAE" },
+];
+
 const ContactClient = () => {
-  const [activeTab, setActiveTab] = useState(null);
-  const [contactData, setContactData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState("dubai-uae");
   const [formSubmitting, setFormSubmitting] = useState(false);
-  const { makeApiCall } = useApiAuth();
 
   // Form state
   const [formData, setFormData] = useState({
@@ -27,85 +41,6 @@ const ContactClient = () => {
   const [formErrors, setFormErrors] = useState({});
   const [formSubmitStatus, setFormSubmitStatus] = useState(null); // 'success' | 'error' | null
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const result = await makeApiCall("/page/contact-us");
-
-        if (!isMounted) return;
-
-        // console.log(result);
-
-        if (result?.status) {
-          setContactData(result);
-          // Set first office as active tab
-          const offices = result?.custom_data?.section2?.offices || [];
-          if (offices.length > 0) {
-            const firstOffice = offices[0];
-            // Create unique slug for first office
-            const firstTabId = firstOffice.Name
-              ? firstOffice.Name
-                  .toLowerCase()
-                  .replace(/[^a-z0-9]+/g, "-")
-                  .replace(/^-+|-+$/g, "")
-              : "office-0";
-            setActiveTab(firstTabId);
-          }
-        } else {
-          setContactData(null);
-        }
-      } catch (error) {
-        if (isMounted) {
-          console.error("Error fetching data:", error);
-          setContactData(null);
-        }
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [makeApiCall]);
-
-  // Helper function to parse phone number
-  const parsePhoneNumber = (phone) => {
-    if (!phone) return { queries: "", business: "" };
-
-    const phoneStr = phone.trim();
-    const lines = phoneStr.split(/\r?\n/).filter(line => line.trim());
-
-    if (lines.length === 0) return { queries: "", business: "" };
-
-    // Check if it contains "For Pay10 Queries" and "For Pay10 Business Queries"
-    const queriesMatch = phoneStr.match(/For Pay10 Queries[:\s]*([^\r\n]+)/i);
-    const businessMatch = phoneStr.match(/For Pay10 Business Queries[:\s]*([^\r\n]+)/i);
-
-    if (queriesMatch && businessMatch) {
-      return {
-        queries: queriesMatch[1].trim(),
-        business: businessMatch[1].trim(),
-      };
-    }
-
-    // If only one line, use it as queries
-    if (lines.length === 1) {
-      return { queries: lines[0], business: "" };
-    }
-
-    // If multiple lines, use first as queries, second as business
-    return {
-      queries: lines[0] || "",
-      business: lines[1] || "",
-    };
-  };
 
   // Form validation functions
   const validateName = (name) => {
@@ -174,7 +109,7 @@ const ContactClient = () => {
 
     const emailError = validateEmail(formData.email);
     if (emailError) errors.email = emailError;
-    
+
     if (!formData.mobile || formData.mobile.trim() === "") {
       errors.mobile = "Mobile number is required";
     }
@@ -272,119 +207,32 @@ const ContactClient = () => {
     }
   };
 
-  // Helper to create a unique slug from office name
-  const createOfficeSlug = (name) => {
-    if (!name) return "office-0";
-    return name
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-+|-+$/g, "");
-  };
-
-  const getOfficeEmails = (office) => {
-    const emailFields = [
-      { label: "Email Address", value: office.Email },
-      { label: "Merchant Support", value: office.Email1 || office.email1 },
-      { label: "Merchant Support", value: office.Email2 || office.email2 },
-    ];
-
-    return emailFields.filter((item) => item.value && String(item.value).trim());
-  };
-
-  const getOfficePhones = (office) => {
-    const directPhoneFields = [
-      { label: "For Pay10 Queries", value: office.Phone || office.phone },
-      { label: "For Pay10 Business Queries", value: office.Phone2 || office.phone2 },
-      { label: "Alternate Phone", value: office.Phone3 || office.phone3 },
-    ].filter((item) => item.value && String(item.value).trim());
-
-    if (directPhoneFields.length > 0) {
-      return directPhoneFields;
-    }
-
-    // Backward compatibility: support old single Phone field with multiline labels.
-    const parsedPhone = parsePhoneNumber(office.Phone || office.phone || "");
-    return [
-      { label: "For Pay10 Queries", value: parsedPhone.queries },
-      { label: "For Pay10 Business Queries", value: parsedPhone.business },
-    ].filter((item) => item.value && String(item.value).trim());
-  };
-
-  // Process offices data from API
-  const processOfficesData = () => {
-    if (!contactData?.custom_data?.section2?.offices) return {};
-
-    const offices = contactData.custom_data.section2.offices;
-    const processed = {};
-
-    offices.forEach((office, index) => {
-      // Use a unique slug based on office name, fallback to index
-      const tabId = createOfficeSlug(office.Name) || `office-${index}`;
-      const phoneData = parsePhoneNumber(office.Phone);
-
-      processed[tabId] = {
-        name: office.Name || "",
-        address: office.Address || "",
-        emails: getOfficeEmails(office),
-        phones: getOfficePhones(office),
-        map: office.Map || office.map || "",
-      };
-    });
-
-    return processed;
-  };
-
-  // Get tabs from API data
-  const getTabs = () => {
-    if (!contactData?.custom_data?.section2?.offices) return [];
-
-    return contactData.custom_data.section2.offices.map((office, index) => {
-      const tabId = createOfficeSlug(office.Name) || `office-${index}`;
-      return {
-        id: tabId,
-        label: office.Name || "",
-      };
-    });
-  };
-
-  const officesData = processOfficesData();
-  const tabs = getTabs();
-  const currentData = activeTab ? officesData[activeTab] : null;
-
-  const pageData = contactData?.page_data || {};
-  const topSubHeading = pageData.top_sub_heading || undefined;
-  const topHeading = pageData.top_heading || undefined;
-
-  if (loading && !contactData) {
-    return <PageLoader />;
-  }
+  const currentData = activeTab ? STATIC_OFFICES[activeTab] : null;
 
   return (
     <>
       <main>
         <div className={Style.wrapper}>
           <div className={Style.contact_banner_headings}>
-            <h5 data-animation="opacity-up">{topSubHeading}</h5>
-            <h1 data-animation="opacity-up">{topHeading}</h1>
+            <h5 data-animation="opacity-up"></h5>
+            <h1 data-animation="opacity-up"></h1>
           </div>
         </div>
-        {tabs.length > 0 && (
-          <div className={Style.contact_tabs_container} data-animation="opacity-up">
-            <div className={Style.contact_tabs}>
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  className={`${Style.contact_tab} ${
-                    activeTab === tab.id ? Style.active : ""
-                  }`}
-                  onClick={() => setActiveTab(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+        <div className={Style.contact_tabs_container} data-animation="opacity-up">
+          <div className={Style.contact_tabs}>
+            {STATIC_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                className={`${Style.contact_tab} ${
+                  activeTab === tab.id ? Style.active : ""
+                }`}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
-        )}
+        </div>
 
         {currentData && (
           <div className={Style.contact_map_section}>

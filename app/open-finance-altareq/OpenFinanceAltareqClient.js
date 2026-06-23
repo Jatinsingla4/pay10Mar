@@ -1,11 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import SimpleLayout from "@/app/components/ui/product/pacb-india/SimpleLayout";
 import TwoColLayout from "@/app/components/ui/product/pacb-india/TwoColLayout";
 import GetStarted from "@/app/components/ui/GetStarted";
-import useApiAuth from "@/app/components/hooks/useApiAuth";
-import PageLoader from "@/app/components/ui/PageLoader";
 import { TextCenterAppCard } from "@/app/components/ui/TextCenterBlock";
 import Style from "./page.module.scss";
 
@@ -28,17 +25,6 @@ function normalizeCmsDescriptionHtml(description) {
     .join("");
 }
 
-function mapSection2Row(row) {
-  if (!row || typeof row !== "object") return null;
-  const out = {
-    Title: row.Title ?? "",
-    Description: normalizeCmsDescriptionHtml(row.Description ?? ""),
-    Image: row.Image || "",
-  };
-  if (typeof row.ImageOnLeft === "boolean") out.ImageOnLeft = row.ImageOnLeft;
-  return out;
-}
-
 /** Intro band below hero (fallback when CMS has no section2.list[0]). */
 const ALTAREQ_CONNECTED_INTRO = {
   Title: "The future of finance is connected",
@@ -49,7 +35,6 @@ const ALTAREQ_CONNECTED_INTRO = {
 `.trim(),
 };
 
-/** Fallback rows when `custom_data.section2.list` is missing (Title, Image, Description; optional ImageOnLeft). */
 /** Matches design: English link + Arabic FAQ line accent (see .altareqArabicFaqLink). */
 const ALTAREQ_LINK_COLOR = "#b03050";
 const ALTAREQ_LINK_STYLE = `color:${ALTAREQ_LINK_COLOR};font-weight:600;text-decoration:none;`;
@@ -112,84 +97,34 @@ const OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS = [
   },
 ];
 
+// Always use the local transparent AlTareq logo
+const connectedIntroItem = {
+  ...ALTAREQ_CONNECTED_INTRO,
+  Image: "/images/prod_imports/altareq-logo.png",
+};
+
 const OpenFinanceAltareqClient = () => {
-  const [pageData, setPageData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const { makeApiCall } = useApiAuth();
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const result = await makeApiCall("/page/open-finance-altareq");
-
-        if (!isMounted) return;
-
-        if (result?.status) {
-          setPageData(result);
-        } else {
-          setPageData(null);
-        }
-      } catch (error) {
-        if (isMounted) {
-          console.error("Error fetching data:", error);
-          setPageData(null);
-        }
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [makeApiCall]);
-
-  const pageDataObj = pageData?.page_data || {};
-  const section2 = pageData?.custom_data?.section2 || {};
-  const section2ListRaw = Array.isArray(section2.list) ? section2.list : [];
-  const section2List = section2ListRaw.map(mapSection2Row).filter(Boolean);
-
-  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || "";
-
-  // Always use the local transparent AlTareq logo — CMS image lacks alpha transparency
-  const connectedIntroItem = {
-    ...( section2List[0] || ALTAREQ_CONNECTED_INTRO ),
-    Image: "/images/prod_imports/altareq-logo.png",
-  };
-  const simpleLayoutItems =
-    section2List.length > 1 ? section2List.slice(1) : OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS;
-
-  if (loading && !pageData) {
-    return <PageLoader />;
-  }
-
   return (
     <main>
       <section className={Style.altareq_hero}>
         <div className={Style.altareq_hero_text}>
           <h2>
-            {pageDataObj.top_heading || "Real-time Payments via AlTareq"}
+            Real-time Payments via AlTareq
           </h2>
           <p>
-            {pageDataObj.top_description ||
-              "Discover new ways to access financial services in your Pay10 App with AlTareq, the UAE’s open finance initiative."}
+            Discover new ways to access financial services in your Pay10 App with AlTareq, the UAE's open finance initiative.
           </p>
         </div>
       </section>
 
       <section className={Style.connected_finance_intro}>
-        <TwoColLayout item={connectedIntroItem} imageBase={imageBase} reverse unoptimized />
+        <TwoColLayout item={connectedIntroItem} imageBase="" reverse unoptimized />
       </section>
 
       <div className={Style.section_spacing}>
         <SimpleLayout
-          items={simpleLayoutItems}
-          imageBase={imageBase}
+          items={OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS}
+          imageBase=""
           startWithImageLeft={true}
           useBackgroundCircle={true}
         />

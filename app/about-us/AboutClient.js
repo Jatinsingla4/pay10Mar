@@ -1,475 +1,115 @@
 "use client";
 
-
-
-import { useState, useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Style from "./about.module.scss";
 import JourneySection from "../components/ui/blocks/JourneySection";
-import useApiAuth from "../components/hooks/useApiAuth";
 import AboutBanner from "../components/ui/about/AboutBanner";
 import AboutSecondSection from "../components/ui/about/AboutSecondSection";
 import WhereWeScoreSection from "../components/ui/about/WhereWeScoreSection";
 import AboutTeamMember from "../components/ui/about/AboutTeamMember";
-import PageLoader from "../components/ui/PageLoader";
-import { cmsImageSrc } from "../lib/cmsImageSrc";
+
+// Default fallback journey data
+const journeyData = [
+  {
+    year: "2023",
+    description:
+      "Pay10 opened its new headquarter in Dubai, UAE to expand globally.",
+    image: "/images/about_images/team/team_member1.png",
+  },
+  {
+    year: "2024",
+    description:
+      "<p>Pay10 UAE received licenses from The Central Bank of the UAE (CBUAE) under Payment Services & Card Schemes (RPSCS Category II) and Stored Value Facilities (SVF) frameworks.</p><p>Together, these licenses authorize Pay10 to offer Merchant Acquiring Services, Account Issuing, Payment Aggregation Services, Domestic Fund Transfer Services, Cross Border Remittances and Opening & Maintaining Digital Wallets—further reinforcing its position as a leader in digital-first financial services across the region.</p>",
+    image: "/images/about_images/team/team_member1.png",
+  },
+  {
+    year: "2025",
+    description:
+      "<p>Pay10 UAE received approval as the country's first licensed Third-Party Provider (TPP) under the Central Bank of the UAE's (CBUAE) Open Finance framework.</p><p>In August 2025, Pay10 successfully performed the first ever live transaction on CBUAE's Open Finance Platform.</p>",
+    image: "/images/about_images/team/team_member1.png",
+  },
+  {
+    year: "2026",
+    description:
+      "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4) – Cross Border Remittances",
+    image: "/images/about_images/board_members/board_member1.jpg",
+  },
+];
+
+// Hardcoded board members
+const hardcodedBoardMembers = [
+  {
+    Name: "Harry Gill",
+    "Designation ": "Founder and Chairman",
+    Description:
+      "Mr. Prabhpreet Singh Gill (Harry Gill) is a visionary business mogul and the Chairman of Pay10. His journey is marked by a remarkable ability to envision the bigger picture, his unwavering discipline, and a genuine affinity for fintech, IT, and agriculture. His strength lies in his passion for all things technical, especially fintech, where he thrives. Through his pioneering ventures, he seeks to create a lasting business legacy, one built on unshakable foundations of integrity, reliability, and unwavering commitment. He envisions a future for his team that resounds with abundance and financial strength for centuries to come.",
+    Image: "/images/prod_imports/harry-gill.jpg",
+    _isLocal: true,
+  },
+  {
+    Name: "Osama Al Rahma",
+    "Designation ": "Board Member",
+    Description:
+      "Osama Al Rahma has performed leadership roles across the financial sector and other organizations and currently at Emirates Investment Bank as Head of Business Development and Wealth Management. He has over 30 years of experience in the financial services. Prior to Emirates Investment Bank, Osama worked at Al Fardan Exchange LLC and Al Fardan Group since 1993 in many leadership roles and was CEO since 2011 and Director at the Group. He has occupied other roles such as EX-Chairman of Foreign Exchange and Remittance Group (FERG) under Dubai Chamber of Commerce and currently act as Advisor to the board. He was a former Vice Chairman of Dubai Quality Group. He is an Independent Director and Advisor to other Fintech and payment companies. He holds a degree in Electronics Engineering and a Postgraduate Diploma in Management Studies from the University of Hull. He is also an alumnus of J.F. Kennedy School of Governments Executive Program in Leadership of Harvard University and holds a Harvard Fintech Certificate. He has Diploma in Corporate Governance from the Corporate Governance Institute in Dublin.",
+    Image: "/images/prod_imports/osama-al-rahma.jpeg",
+    _isLocal: true,
+  },
+  {
+    Name: "Saad Kaleem",
+    "Designation ": "Board Member",
+    Description:
+      "A forward-thinking leader with extensive expertise in fintech, payments, and business transformation, Saad Kaleem is known for his strategic vision and ability to drive impactful results, successfully leading organisations through periods of rapid growth and innovation. Leveraging his extensive experiences, Saad is charting a path for global expansion and is well on his way to positioning Pay10 as a forerunner in the fintech landscape. He is passionate about building strong teams, driving operational excellence, and creating value for client, partners, and stakeholders in an ever-evolving digital economy.",
+    Image: "/images/prod_imports/saad-kaleem.jpg",
+    _isLocal: true,
+  },
+  {
+    Name: "Shweta Sood",
+    "Designation ": "Board Member",
+    Description:
+      "Shweta Sood is a senior fintech risk and governance professional with over 19 years of experience in regulated environments, specializing in enterprise risk management, regulatory compliance, and operational resilience. She currently serves as Chief Risk Officer – Global at Pay10, where she oversees group-wide risk strategy, governance frameworks, and regulatory alignment across international operations, ensuring scalable and compliant growth. Shweta holds a master's degree in International Tourism Management, a BSc in Hotel, Motel & Restaurant Management, and is a Certified Risk Management Professional (CRMP).",
+    Image: "/images/prod_imports/shweta-sood.jpg",
+    _isLocal: true,
+  },
+  {
+    Name: "Temi Labor",
+    "Designation ": "Board Member",
+    Description:
+      "An accomplished Governance, Risk, and Compliance (GRC) leader, she brings extensive experience across governance, internal audit, regulatory affairs, financial crime, and risk management within the financial services and fintech sectors. Driven by a passion for ethical leadership and sustainable growth, she combines strategic insight with operational excellence to enhance governance frameworks, organisational performance, and regulatory trust.",
+    Image: "/images/prod_imports/temi-labor.jpeg",
+    _isLocal: true,
+  },
+];
+
+const finalBoardMembers = hardcodedBoardMembers.map((item) => ({
+  name: item.Name,
+  role: item["Designation "].trim(),
+  description: item.Description,
+  image: item.Image,
+}));
+
+const mergedMembersSection = {
+  our_team_list: finalBoardMembers.map((m) => ({
+    Name: m.name,
+    "Designation ": m.role,
+    Description: m.description,
+    Image: m.image,
+    _isLocal: true,
+  })),
+};
+
+const mergedMembersHeading = "Meet Our Board";
 
 const AboutClient = () => {
-  const [aboutData, setAboutData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const { makeApiCall } = useApiAuth();
-
-  useEffect(() => {
-    let isMounted = true;
-
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const result = await makeApiCall('/page/about-us');
-
-        // console.log(result)
-        if (!isMounted) return;
-
-
-        if (result?.status) {
-          setAboutData(result);
-        } else {
-          setAboutData(null);
-        }
-      } catch (error) {
-        if (isMounted) {
-          console.error('Error fetching data:', error);
-          setAboutData(null);
-        }
-      } finally {
-        if (isMounted) setLoading(false);
-      }
-    };
-
-    fetchData();
-
-    return () => {
-      isMounted = false;
-    };
-  }, [makeApiCall]);
-
-  // Extract data from API response
-  const pageData = aboutData?.page_data || {};
-  const section2 = aboutData?.custom_data?.section2 || {};
-  const section3 = aboutData?.custom_data?.section3 || {};
-  const section4 = aboutData?.custom_data?.section4 || {};
-  const section5 = aboutData?.custom_data?.section5 || {};
-  const section6 =
-    aboutData?.custom_data?.section6 ||
-    aboutData?.custom_data?.Section6 ||
-    {};
-  const section7 = aboutData?.custom_data?.section7 || {};
-  const imageBase = process.env.NEXT_PUBLIC_IMAGE_URL || '';
-  const section2Image = section2.image ? `${imageBase}${section2.image}` : undefined;
-
-  // API-driven values only
-  const topSubHeading = pageData.top_sub_heading || undefined;
-  const topHeading = pageData.top_heading || undefined;
-  const topDescription = pageData.top_description || undefined;
-  const section2Heading = section2.heading || undefined;
-  const section2Content = section2.content || undefined;
-  const section3Heading = section3.heading || undefined;
-  const section5Heading = section5.heading || undefined;
-  const section4Heading = section4.heading || undefined;
-  const section7Heading = section7.heading || undefined;
-  const journeySectionHeading =
-    section6.heading || section6.Heading || undefined;
-
-  // Default gridArea values for boxes (maintains layout structure)
-  const defaultGridAreas = ["volume", "frictionless", "support", "risk", "secure", "updates"];
-
-  // Default fallback boxes
-  const defaultBoxes = [
-    {
-      icon: <img src="/images/icons/payment.png" alt="" />,
-      text: (
-        <>
-          <h5>
-            Large payment volume <br /> capacity
-          </h5>
-        </>
-      ),
-      gridArea: "volume",
-    },
-    {
-      icon: <img src="/images/icons/frictionless.png" alt="" />,
-      text: (
-        <>
-          <h5>
-            Frictionless Payment <br /> Experience
-          </h5>
-        </>
-      ),
-      gridArea: "frictionless",
-    },
-    {
-      icon: <img src="/images/icons/service.png" alt="" />,
-      text: (
-        <>
-          <h5>
-            Far-reaching Customer <br /> Support
-          </h5>
-        </>
-      ),
-      gridArea: "support",
-    },
-    {
-      icon: <img src="/images/icons/report_box.png" alt="" />,
-      text: (
-        <>
-          <h5>
-            In-house risk management to <br /> monitor transactions
-          </h5>
-        </>
-      ),
-      gridArea: "risk",
-    },
-    {
-      icon: <img src="/images/icons/lock.png" alt="" />,
-      text: (
-        <>
-          <h5>
-            Simple, Secure, and <br /> reliable payment process
-          </h5>
-        </>
-      ),
-      gridArea: "secure",
-    },
-    {
-      icon: <img src="/images/icons/frame.png" alt="" />,
-      text: (
-        <>
-          <h5>
-            Frequent merchant <br /> updates
-          </h5>
-        </>
-      ),
-      gridArea: "updates",
-    },
-  ];
-
-  // Transform API data into boxes format
-  const boxes = Array.isArray(section3.list) && section3.list.length > 0
-    ? section3.list.map((item, index) => {
-        const gridArea = defaultGridAreas[index] || `item-${index}`;
-        const fallbackBox = defaultBoxes[index] || defaultBoxes[0];
-        const imageUrl = item.Image ? `${imageBase}${item.Image}` : (fallbackBox?.icon?.props?.src || '/images/icons/payment.png');
-        const title = item.Title || '';
-
-        // Add line break in the middle for long titles (similar to original design)
-        const words = title.split(' ');
-        const midPoint = Math.ceil(words.length / 2);
-        const firstPart = words.slice(0, midPoint).join(' ');
-        const secondPart = words.slice(midPoint).join(' ');
-
-        return {
-          icon: <img src={imageUrl} alt={item.Title || ''} />,
-          text: (
-            <>
-              <h5>
-                {words.length > 3 ? (
-                  <>
-                    {firstPart} <br /> {secondPart}
-                  </>
-                ) : (
-                  title
-                )}
-              </h5>
-            </>
-          ),
-          gridArea: gridArea,
-        };
-      })
-    : defaultBoxes;
-
-  // Default fallback journey data
-  const defaultJourneyData = [
-    {
-      year: "2023",
-      description:
-        "Pay10 opened its new headquarter in Dubai, UAE to expand globally.",
-      image: "/images/about_images/team/team_member1.png",
-    },
-    {
-      year: "2024",
-      description:
-        "<p>Pay10 UAE received licenses from The Central Bank of the UAE (CBUAE) under Payment Services & Card Schemes (RPSCS Category II) and Stored Value Facilities (SVF) frameworks.</p><p>Together, these licenses authorize Pay10 to offer Merchant Acquiring Services, Account Issuing, Payment Aggregation Services, Domestic Fund Transfer Services, Cross Border Remittances and Opening & Maintaining Digital Wallets—further reinforcing its position as a leader in digital-first financial services across the region.</p>",
-      image: "/images/about_images/team/team_member1.png",
-    },
-    {
-      year: "2025",
-      description:
-        "<p>Pay10 UAE received approval as the country's first licensed Third-Party Provider (TPP) under the Central Bank of the UAE's (CBUAE) Open Finance framework.</p><p>In August 2025, Pay10 successfully performed the first ever live transaction on CBUAE's Open Finance Platform.</p>",
-      image: "/images/about_images/team/team_member1.png",
-    },
-    {
-      year: "2026",
-      description:
-        "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4) – Cross Border Remittances",
-      image: "/images/about_images/board_members/board_member1.jpg",
-    },
-  ];
-
-  const pickCmsJourneyList = () => {
-    const fromKey = (...keys) => {
-      for (const k of keys) {
-        const arr = section6[k];
-        if (Array.isArray(arr) && arr.length > 0) return arr;
-      }
-      return null;
-    };
-
-    let list =
-      fromKey('journey_list', 'journey_List', 'Journey_List') ||
-      fromKey('journeys');
-
-    if (!list && Array.isArray(section6.list) && section6.list.length > 0) {
-      const sample = section6.list[0];
-      const looksLikeJourney =
-        sample &&
-        (sample.Image != null ||
-          sample.image != null ||
-          sample.Year != null ||
-          sample.Name != null);
-      if (looksLikeJourney) list = section6.list;
-    }
-
-    return list || [];
-  };
-
-  const cmsJourneyList = pickCmsJourneyList();
-
-  const pickCmsJourneyImage = (cmsItem) => {
-    if (!cmsItem) return null;
-    const raw =
-      cmsItem.Image ??
-      cmsItem.image ??
-      cmsItem.section?.Image ??
-      cmsItem.section?.image ??
-      cmsItem.section?.img ??
-      cmsItem.img;
-    return raw != null && String(raw).trim() !== '' ? raw : null;
-  };
-
-  // About page: default year + description copy; images from CMS when present (no milestone titles).
-  const journeyData = defaultJourneyData.map((def, index) => {
-    const cmsItem = cmsJourneyList[index];
-    const rawImage = pickCmsJourneyImage(cmsItem);
-    const imageUrl = rawImage ? cmsImageSrc(rawImage, imageBase) : null;
-
-    return {
-      year: def.year,
-      description: def.description,
-      image: imageUrl || def.image,
-    };
-  });
-
-  // const boardMembers = [
-  //   {
-  //     name: "Shradha Nawani",
-  //     role: "Chief Business Officer",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/board_members/board_member1.jpg",
-  //   },
-  //   {
-  //     name: "Sara Ali",
-  //     role: "Head of Partnerships",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/board_members/board_member1.jpg",
-  //   },
-  //   {
-  //     name: "Amitabh Saxena",
-  //     role: "Chief Executive Officer",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/board_members/board_member1.jpg",
-  //   },
-  //   {
-  //     name: "Elena Fischer",
-  //     role: "Chief Operations Officer",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/board_members/board_member1.jpg",
-  //   },
-  //   {
-  //     name: "Marina Petrov",
-  //     role: "Chief Product Officer",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/board_members/board_member1.jpg",
-  //   },
-  // ];
-
-  // Normalize API member data structure
-  const normalizeMembers = (list) => {
-    if (!Array.isArray(list)) return [];
-    return list.map((item) => {
-      const imagePath = item?.Image || item?.image || "";
-      const designation = item?.["Designation "] || item?.Designation || "";
-      return {
-        Name: item?.Name || "",
-        "Designation ": designation.trim(),
-        Description: item?.Description || "",
-        Image: imagePath,
-      };
-    });
-  };
-
-  // Hardcoded board member fallback to match production exactly
-  // (API sometimes returns incomplete or reordered data)
-  const hardcodedBoardMembers = [
-    {
-      Name: "Harry Gill",
-      "Designation ": "Founder and Chairman",
-      Description:
-        "Mr. Prabhpreet Singh Gill (Harry Gill) is a visionary business mogul and the Chairman of Pay10. His journey is marked by a remarkable ability to envision the bigger picture, his unwavering discipline, and a genuine affinity for fintech, IT, and agriculture. His strength lies in his passion for all things technical, especially fintech, where he thrives. Through his pioneering ventures, he seeks to create a lasting business legacy, one built on unshakable foundations of integrity, reliability, and unwavering commitment. He envisions a future for his team that resounds with abundance and financial strength for centuries to come.",
-      Image: "/images/prod_imports/harry-gill.jpg",
-      _isLocal: true,
-    },
-    {
-      Name: "Osama Al Rahma",
-      "Designation ": "Board Member",
-      Description:
-        "Osama Al Rahma has performed leadership roles across the financial sector and other organizations and currently at Emirates Investment Bank as Head of Business Development and Wealth Management. He has over 30 years of experience in the financial services. Prior to Emirates Investment Bank, Osama worked at Al Fardan Exchange LLC and Al Fardan Group since 1993 in many leadership roles and was CEO since 2011 and Director at the Group. He has occupied other roles such as EX-Chairman of Foreign Exchange and Remittance Group (FERG) under Dubai Chamber of Commerce and currently act as Advisor to the board. He was a former Vice Chairman of Dubai Quality Group. He is an Independent Director and Advisor to other Fintech and payment companies. He holds a degree in Electronics Engineering and a Postgraduate Diploma in Management Studies from the University of Hull. He is also an alumnus of J.F. Kennedy School of Governments Executive Program in Leadership of Harvard University and holds a Harvard Fintech Certificate. He has Diploma in Corporate Governance from the Corporate Governance Institute in Dublin.",
-      Image: "/images/prod_imports/osama-al-rahma.jpeg",
-      _isLocal: true,
-    },
-    {
-      Name: "Saad Kaleem",
-      "Designation ": "Board Member",
-      Description:
-        "A forward-thinking leader with extensive expertise in fintech, payments, and business transformation, Saad Kaleem is known for his strategic vision and ability to drive impactful results, successfully leading organisations through periods of rapid growth and innovation. Leveraging his extensive experiences, Saad is charting a path for global expansion and is well on his way to positioning Pay10 as a forerunner in the fintech landscape. He is passionate about building strong teams, driving operational excellence, and creating value for client, partners, and stakeholders in an ever-evolving digital economy.",
-      Image: "/images/prod_imports/saad-kaleem.jpg",
-      _isLocal: true,
-    },
-    {
-      Name: "Shweta Sood",
-      "Designation ": "Board Member",
-      Description:
-        "Shweta Sood is a senior fintech risk and governance professional with over 19 years of experience in regulated environments, specializing in enterprise risk management, regulatory compliance, and operational resilience. She currently serves as Chief Risk Officer – Global at Pay10, where she oversees group-wide risk strategy, governance frameworks, and regulatory alignment across international operations, ensuring scalable and compliant growth. Shweta holds a master's degree in International Tourism Management, a BSc in Hotel, Motel & Restaurant Management, and is a Certified Risk Management Professional (CRMP).",
-      Image: "/images/prod_imports/shweta-sood.jpg",
-      _isLocal: true,
-    },
-    {
-      Name: "Temi Labor",
-      "Designation ": "Board Member",
-      Description:
-        "An accomplished Governance, Risk, and Compliance (GRC) leader, she brings extensive experience across governance, internal audit, regulatory affairs, financial crime, and risk management within the financial services and fintech sectors. Driven by a passion for ethical leadership and sustainable growth, she combines strategic insight with operational excellence to enhance governance frameworks, organisational performance, and regulatory trust.",
-      Image: "/images/prod_imports/temi-labor.jpeg",
-      _isLocal: true,
-    },
-  ];
-
-  // Use hardcoded data if API returns fewer than 5 board members or Harry Gill is missing
-  const apiBoardMembers = normalizeMembers(section4?.board_team_list);
-  const harryInApi = apiBoardMembers.some((m) =>
-    m.Name.toLowerCase().includes("harry")
-  );
-  const useFallbackBoard = apiBoardMembers.length < 5 || !harryInApi;
-
-  const finalBoardMembers = useFallbackBoard
-    ? hardcodedBoardMembers.map((item) => ({
-        name: item.Name,
-        role: item["Designation "].trim(),
-        description: item.Description,
-        image: item.Image,
-      }))
-    : apiBoardMembers.map((item) => ({
-        name: item.Name,
-        role: item["Designation "].trim(),
-        description: item.Description,
-        image: `${imageBase}${item.Image}`,
-      }));
-
-  const mergedMembersSection = {
-    our_team_list: finalBoardMembers.map((m) => ({
-      Name: m.name,
-      "Designation ": m.role,
-      Description: m.description,
-      Image: m.image,
-      _isLocal: true,
-    })),
-  };
-
-  const mergedMembersHeading =
-    section4Heading || section7Heading || section5Heading || "Meet Our Board";
-
-  // Default fallback team members
-  // const defaultTeamMembers = [
-  //   {
-  //     name: "Rahul Mehta",
-  //     role: "Head of Engineering",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/team/team_member1.png",
-  //   },
-  //   {
-  //     name: "Priya Kapoor",
-  //     role: "Lead Product Manager",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/team/team_member2.png",
-  //   },
-  //   {
-  //     name: "Ananya Singh",
-  //     role: "Head of Marketing",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/team/team_member3.png",
-  //   },
-  //   {
-  //     name: "Vikram Rao",
-  //     role: "Head of Customer Success",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/team/team_member4.jpg",
-  //   },
-  //   {
-  //     name: "Neha Sharma",
-  //     role: "Head of Design",
-  //     description:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse scelerisque varius.",
-  //     image: "/images/about_images/team/team_member1.png",
-  //   },
-  // ];
-
-  // Transform API data into teamMembers format
-  // const teamMembers = Array.isArray(section5.our_team_list) && section5.our_team_list.length > 0
-  //   ? section5.our_team_list.map((item) => {
-  //       const imageUrl = item.Image ? `${imageBase}${item.Image}` : '/images/about_images/team/team_member1.png';
-  //       // Handle "Designation " with trailing space
-  //       const designation = item['Designation '] || item.Designation || '';
-
-  //       return {
-  //         name: item.Name || '',
-  //         role: designation.trim(),
-  //         description: item.Description || '',
-  //         image: imageUrl,
-  //       };
-  //     })
-  //   : defaultTeamMembers;
-
-  if (loading && !aboutData) {
-    return <PageLoader />;
-  }
-
   return (
     <main>
       <div className={Style.about_page_bg}>
         <section>
             <AboutBanner
-              topSubHeading={topSubHeading}
-              topHeading={topHeading}
-              topDescription={topDescription}
+              topSubHeading={undefined}
+              topHeading={undefined}
+              topDescription={undefined}
             />
         </section>
 
@@ -478,14 +118,14 @@ const AboutClient = () => {
         <section className={Style.about_bg_circle}>
           <div className={Style.wrapper}>
             <AboutSecondSection
-              section2Image={section2Image}
-              section2Heading={section2Heading}
-              section2Content={section2Content}
+              section2Image={undefined}
+              section2Heading={undefined}
+              section2Content={undefined}
             />
 
             <WhereWeScoreSection
-              section3Heading={section3Heading}
-              section3={section3}
+              section3Heading={undefined}
+              section3={{}}
             />
           </div>
 
@@ -494,15 +134,15 @@ const AboutClient = () => {
               <AboutTeamMember
                 section5Heading={mergedMembersHeading}
                 section5={mergedMembersSection}
-                imageBase={imageBase}
+                imageBase=""
               />
             </div>
-          </div> 
+          </div>
 
           {/* Our Journey So Far Section */}
           <JourneySection
             journeyData={journeyData}
-            heading={journeySectionHeading}
+            heading={undefined}
             largeDescriptionText={true}
           />
         </section>

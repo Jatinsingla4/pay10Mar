@@ -3,7 +3,16 @@
 import React from "react";
 import Link from "next/link";
 import Style from "./ThreeStepProcess.module.scss";
-import { cmsImageSrc } from "@/app/lib/cmsImageSrc";
+/** Build a valid image src from CMS paths (inline replacement for deleted cmsImageSrc). */
+function cmsImageSrc(path, base = '') {
+  if (path == null || String(path).trim() === '') return null;
+  const p = String(path).trim();
+  if (/^https?:\/\//i.test(p)) return p;
+  const b = String(base || '').replace(/\/$/, '');
+  const rel = p.replace(/^\//, '');
+  if (!b) return `/${rel}`;
+  return `${b}/${rel}`;
+}
 
 /** Both cards link to the live contact page (hardcoded). */
 const CONTACT_PAGE_URL = "https://pay10.ae/contact-us/";

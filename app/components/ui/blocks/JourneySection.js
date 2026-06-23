@@ -289,9 +289,6 @@ const JourneySection = ({
                         index === activeJourneyIndex ? Style.active : ""
                       }`}
                     >
-                      <div className={Style.journey_card_year}>
-                        {item.year}
-                      </div>
                       <div className={Style.journey_card_image}>
                         <img src={item.image} alt={item.title || item.year} />
                       </div>

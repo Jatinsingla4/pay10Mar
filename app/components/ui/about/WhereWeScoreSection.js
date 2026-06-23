@@ -3,7 +3,7 @@ import Style from './WhereWeScore.module.scss'
 
 const WhereWeScoreSection = ({
   section3,
-  section3Heading
+  section3Heading = "Where We Score High"
 }) => {
   // Default gridArea values for boxes (maintains layout structure)
   const defaultGridAreas = [

@@ -7,62 +7,74 @@
   overflow: hidden;
   background: linear-gradient(90deg, #ffbb07 0%, #ef1a23 100%);
   color: #ffffff;
-  padding: 48px 56px 0 56px;
+  padding: 80px 56px 0 56px;
+  min-height: calc(100vh - 93px);
+  display: flex;
+  flex-direction: column;
   @include tab {
     border-radius: 16px;
-    padding: 40px 16px 0px 16px;
+    padding: 48px 16px 0px 16px;
+    min-height: auto;
   }
   .desktopLayout {
     position: relative;
     z-index: 2;
-    height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 32px;
+    gap: 28px;
     @include tab {
       display: flex;
       align-items: stretch;
       justify-content: flex-start;
-      gap: 20px;
+      gap: 18px;
       padding: 0 4px;
     }
   }
   .desktopInner {
-    max-width: 1400px;
+    max-width: 900px;
+    width: 100%;
     display: grid;
-    gap: 20px;
+    gap: 16px;
     @include tab {
-      gap: 15px;
+      gap: 14px;
     }
   }
   .eyebrow,
   .body {
     margin: 0;
-    font-size: 24px;
-    // text-transform: uppercase;
-    font-weight: 500;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.4;
     @include tab{
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 
   .title {
     margin: 0;
-    font-size: 64px;
-    font-weight: 600;
+    font-size: 88px;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    @include large {
+      font-size: 72px;
+    }
     @include tab{
-      font-size: 32px;
+      font-size: 38px;
+      letter-spacing: 0;
     }
   }
 
   .body {
     margin: 0;
-    font-size: 24px;
+    font-size: 22px;
+    font-weight: 400;
     @include tab{
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 
@@ -71,7 +83,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 60px;
+    padding: 20px 64px;
     border-radius: 999px;
     border: 2px solid rgba(255, 255, 255, 0.9);
     color: #ffffff;
@@ -82,6 +94,10 @@
     background: rgba(255, 255, 255, 0.08);
     transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
     will-change: transform, opacity;
+    @include tab {
+      padding: 16px 48px;
+      font-size: 16px;
+    }
     &:hover {
       background: rgba(255, 255, 255, 0.14);
       transform: translateY(-2px);
@@ -98,17 +114,21 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    margin-top: 16px;
     @include tab {
-      margin-top: 8px;
+      margin-top: 24px;
     }
   }
 
   .desktopPhone {
-    max-width: 280px;
+    max-width: 380px;
     width: 100%;
     height: auto;
+    @include large {
+      max-width: 320px;
+    }
     @include tab {
-      max-width: 250px;
+      max-width: 260px;
     }
   }
 

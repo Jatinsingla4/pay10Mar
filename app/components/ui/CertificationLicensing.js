@@ -35,7 +35,7 @@ export default function CertificationLicensing({
         )}
 
         {licenseImages && licenseImages.length > 0 && (
-          <div className={styles.badgesGrid} data-animation="opacity-up">
+          <div className={styles.badgesGrid}>
             {licenseImages.map((item, index) => (
               <div key={index} className={styles.badgeCard}>
                 <Image

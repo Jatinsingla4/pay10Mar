@@ -11,24 +11,24 @@ import CertificationLicensing from './components/ui/CertificationLicensing';
 
 const walletFeatures = [
   {
-    title: "Send Love, Not just Money",
-    description: "Add your frequent recipients for quicker, seamless UPI payments - whether sending or requesting money from your loved ones.",
+    title: "Send Money to Family and Friends",
+    description: "Supporting your family or sharing expenses with friends? Add them to your list of regulars for speedy transfers.",
   },
   {
-    title: "Pay with UPI in seconds.",
-    description: "Simply scan a QR and complete your payment - no manual entry, no errors, just frictionless and convenient transfers.",
+    title: "Shop",
+    description: "Scan a QR code and tap to pay. It doesn't get simpler than that. No manual data entry. No errors. No fuss.",
   },
   {
-    title: "Tap Away the due dates",
-    description: "Select the bill category, tap to pay, and your UPI transaction is done in moments.",
+    title: "Pay Bills",
+    description: "Settle your bills in minutes. Just select the relevant icon and tap to pay.",
   },
   {
-    title: "Move funds instantly through Pay10 UPI",
-    description: "Instantly transfer funds from your bank account to your wallet, reduce fees, and track your expenses with ease.",
+    title: "Link Your Bank Account",
+    description: "Transfer funds instantly from your bank into your wallet, save on fees, and track your spending.",
   },
   {
     title: "Schedule Payments",
-    description: "Schedule upcoming payments in advance and let UPI take care of the rest - no missed dates, no follow-ups.",
+    description: "Never miss a payment again. Simply add your regular payments into the calendar and leave the rest to us.",
   },
 ];
 
@@ -70,7 +70,7 @@ export default function HomeClient() {
         backgroundImage={undefined}
         features={undefined}
       />
-      <CertificationHero imageSrc={undefined} />
+      <CertificationHero imageSrc="/images/home/feature-circle.png" />
       <CertificationLicensing
         heading={undefined}
         centralBankImage={undefined}

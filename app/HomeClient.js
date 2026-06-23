@@ -48,8 +48,8 @@ export default function HomeClient() {
         }}
       />
       <TextCenterBlock
-        heading={undefined}
-        description={undefined}
+        heading="We enable businesses and people to send and receive money instantly and securely."
+        description=""
       />
       <BannerBreaker
         title={undefined}

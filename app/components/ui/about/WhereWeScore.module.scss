@@ -2,7 +2,7 @@
 
 .where_we_score_new {
   width: 100%;
-  margin: 120px 0 0 0;
+  margin: 160px 0 0 0;
   padding: 4rem 2rem;
   background: linear-gradient(90deg, #f79d00 0%, #eb1e23 100%);
   border-radius: 1.5rem;
@@ -82,8 +82,9 @@
 // Media queries for responsiveness
 @media only screen and (max-width: 991px) {
   .where_we_score_new {
+    margin: 112px 0 0 0;
     .score_container {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
     }
   }
@@ -91,6 +92,7 @@
 
 @media only screen and (max-width: 767px) {
   .where_we_score_new {
+    margin: 80px 0 0 0;
     padding: 3rem 1.5rem;
     
     .header_content h2 {
@@ -98,6 +100,7 @@
     }
     
     .score_container {
+      grid-template-columns: 1fr;
       .box {
         padding: 2rem 1rem;
         min-height: 180px;

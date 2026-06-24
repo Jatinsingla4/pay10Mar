@@ -203,7 +203,8 @@
         letter-spacing: 0;
         max-width: 100%;
         white-space: normal;
-        word-break: break-word;
+        word-break: normal;
+        overflow-wrap: break-word;
         text-shadow: 0 2px 8px rgba(60,0,0,0.10);
         transition: font-size 0.5s, margin 0.5s, color 0.45s;
       }
@@ -219,7 +220,8 @@
         max-width: 95%;
         opacity: 1;
         white-space: normal;
-        word-break: break-word;
+        word-break: normal;
+        overflow-wrap: break-word;
         text-shadow: 0 1px 10px rgba(0,0,40,0.07);
         letter-spacing: 0.0em;
         transition: color 0.35s;
@@ -227,11 +229,11 @@
     }
 
     .member_description {
-      margin: 1.1rem 0 0;
+      margin: 0;
       color: var(--white);
       font-size: 1.06rem;
       line-height: 1.55;
-      max-height: 5.7em;
+      max-height: 0;
       overflow: hidden;
       opacity: 0;
       transform: translateY(18px);
@@ -240,8 +242,9 @@
       transition:
         opacity 0.45s cubic-bezier(.39,.58,.57,1),
         transform 0.45s cubic-bezier(.39,.58,.57,1),
-        max-height 0.45s cubic-bezier(.39,.58,.57,1);
-      will-change: opacity, transform, max-height;
+        max-height 0.45s cubic-bezier(.39,.58,.57,1),
+        margin 0.45s cubic-bezier(.39,.58,.57,1);
+      will-change: opacity, transform, max-height, margin;
       scrollbar-width: thin;
       scrollbar-color: var(--orange) transparent;
     }
@@ -271,6 +274,7 @@
     .member_description {
       opacity: 1;
       max-height: 288px;
+      margin-top: 1.1rem;
       transform: translateY(0);
       overflow-y: auto;
       padding-right: 6px;
@@ -309,6 +313,38 @@
 
       h2 {
         font-size: 2.2rem;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .board_members_main {
+    .member_meta {
+      padding: 0.8rem;
+      
+      .member_identity {
+        h4 {
+          font-size: 1.1rem;
+        }
+        .member_role {
+          font-size: 0.85rem;
+        }
+      }
+    }
+    
+    .member_card:hover .member_meta {
+      .member_identity {
+        h4 {
+          font-size: 1.15rem;
+        }
+        .member_role {
+          font-size: 0.9rem;
+        }
+      }
+      .member_description {
+        font-size: 0.85rem;
+        padding-right: 2px;
       }
     }
   }

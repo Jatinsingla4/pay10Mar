@@ -34,7 +34,7 @@
 
 .journey_section {
   width: 100%;
-  padding: 3rem 0;
+  padding: 0;
   background: var(--white);
   position: relative;
   min-height: auto;
@@ -43,7 +43,7 @@
 
   &.accordion_mode {
     min-height: auto;
-    padding: 4rem 0;
+    padding: 0;
 
     // Remove top/bottom padding on desktop (above tablet width)
     @media only screen and (min-width: 992px) {
@@ -545,11 +545,11 @@
 
 @media only screen and (max-width: 991px) {
   .journey_section {
-    padding: 2.5rem 0;
+    padding: 0;
     min-height: calc(100vh - 150px);
 
     &.accordion_mode {
-      padding: 3rem 0;
+      padding: 0;
       min-height: auto;
     }
 
@@ -594,11 +594,11 @@
 
 @media only screen and (max-width: 767px) {
   .journey_section {
-    padding: 2rem 0;
+    padding: 0;
     min-height: calc(100vh - 100px);
 
     &.accordion_mode {
-      padding: 2.5rem 0;
+      padding: 0;
       min-height: auto;
     }
 
@@ -671,11 +671,11 @@
 
 @media only screen and (max-width: 563px) {
   .journey_section {
-    padding: 1.5rem 0;
+    padding: 0;
     min-height: calc(100vh - 80px);
 
     &.accordion_mode {
-      padding: 2rem 0;
+      padding: 0;
       min-height: auto;
 
       .fixed_image_container {

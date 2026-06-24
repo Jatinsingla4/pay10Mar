@@ -3,6 +3,10 @@
   background-color: var(--body-bg);
   min-height: 100vh;
   font-family: 'regular', sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 48px 0;
+  }
 }
 
 .title {
@@ -115,6 +119,7 @@
   @media (max-width: 768px) {
     padding: 24px 16px;
     border-radius: 12px;
+    min-height: unset;
   }
 }
 

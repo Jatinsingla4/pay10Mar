@@ -25,11 +25,11 @@ export default function FaqsClient() {
 
   return (
     <div className={styles.faqs_container}>
-      <h1 className={styles.title}>Frequently Asked Questions</h1>
-      
+      <h1 className={styles.title} data-animation="opacity-up">Frequently Asked Questions</h1>
+
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
-        <aside className={styles.sidebar}>
+        <aside className={styles.sidebar} data-animation="opacity-up" data-anim-delay="100">
           {faqData.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (
@@ -45,7 +45,7 @@ export default function FaqsClient() {
         </aside>
 
         {/* Right Content Panel */}
-        <div className={styles.content_panel}>
+        <div className={styles.content_panel} data-animation="opacity-up" data-anim-delay="200">
           <h2 className={styles.tab_heading}>{activeTab?.tabName}</h2>
           
           <div className={styles.accordion_list}>

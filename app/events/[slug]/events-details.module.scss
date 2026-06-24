@@ -46,9 +46,8 @@
     font-family: "bold";
     line-height: 1.1;
 
-    @include tab {
-      font-size: 40px;
-    }
+    @include tab { font-size: 40px; }
+    @include mobile { font-size: 2rem; }
   }
 
   img {
@@ -83,6 +82,7 @@
     @include tab {
         align-items: flex-start;
         flex-direction: column;
+        gap: 24px;
     }
 
     .thumbnailImage {
@@ -99,6 +99,9 @@
 
         h3 {
             font-size: 32px;
+
+            @include tab { font-size: 24px; }
+            @include mobile { font-size: 20px; }
         }
 
         p {
@@ -283,6 +286,17 @@
   }
 }
 
+.contentBody {
+  font-size: 20px;
+  color: var(--gray);
+  font-family: "light";
+
+  @include tab { font-size: 17px; }
+  @include mobile { font-size: 15px; }
+
+  p { margin: 0 0 16px; }
+}
+
 .pictures_container {
   width: 100%;
   color: var(--black);
@@ -290,6 +304,9 @@
 
   h2 {
     font-size: 32px;
+
+    @include tab { font-size: 24px; }
+    @include mobile { font-size: 20px; }
   }
 
   .pictures {

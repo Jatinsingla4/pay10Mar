@@ -229,6 +229,7 @@ const EventDetailClient = () => {
       <Link
         href="/events"
         className={Style.backto_events}
+        data-animation="opacity-up"
       >
         <span>
           <InlineIcon
@@ -286,13 +287,13 @@ const EventDetailClient = () => {
             {contentWithoutFirstParagraph && (
               <div
                 dangerouslySetInnerHTML={{ __html: contentWithoutFirstParagraph }}
-                style={{ fontSize: "20px", color: "var(--gray)", fontFamily: "light" }}
+                className={Style.contentBody}
               />
             )}
             {content2WithoutFirstParagraph && (
               <div
                 dangerouslySetInnerHTML={{ __html: content2WithoutFirstParagraph }}
-                style={{ fontSize: "20px", color: "var(--gray)", fontFamily: "light" }}
+                className={Style.contentBody}
               />
             )}
           </div>

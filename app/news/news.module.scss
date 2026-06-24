@@ -363,12 +363,17 @@
   grid-template-columns: 1fr 1fr;
   gap: 48px;
 
-  @include mobile {
-    grid-template-columns: 1fr;
+  @include tab {
+    gap: 32px;
   }
 
   @include lessTab {
     grid-template-columns: 1fr;
+  }
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .news_box {
@@ -378,22 +383,24 @@
     color: var(--black);
 
     @include tab {
-        display: initial;
+      display: block;
     }
 
     .news_box_img {
       width: 300px;
 
+      @include tab {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
       .newsCardImage {
         width: 100%;
-
-        @include tab {
-            margin-bottom: 24px;
-        }
+        border-radius: 12px;
       }
     }
     a {
-        text-decoration: none;
+      text-decoration: none;
     }
   }
 
@@ -414,6 +421,9 @@
         -webkit-background-clip: text;
         color: transparent;
         font-size: 28px;
+
+        @include tab { font-size: 22px; }
+        @include mobile { font-size: 20px; }
       }
     }
     p {

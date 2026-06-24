@@ -96,7 +96,7 @@ const page = () => {
         <section className={Style.wrapper}>
           <div className={Style.all_news_container}>
             {newsBoxes.map((news, idx) => (
-              <div key={idx} className={Style.news_box}>
+              <div key={idx} className={Style.news_box} data-animation="opacity-up" data-anim-delay={idx * 150}>
                 <div className={Style.news_box_img}>
                   <Link href={news.link}>
                         <Image

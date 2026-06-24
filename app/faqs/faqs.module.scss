@@ -87,12 +87,10 @@
 
   &.inactive {
     background: var(--primary-gradient);
-    opacity: 0.72;
   }
 
   &.active {
     background: var(--primary-gradient);
-    opacity: 1;
     box-shadow: 0 6px 20px rgba(239, 26, 35, 0.28);
   }
 

@@ -303,7 +303,7 @@ const ContactClient = () => {
               <ul className={Style.formLeftInfo}>
                 <li>
                   <Icon icon="weui:location-outlined" className={Style.formLeftInfoIcon} />
-                  <span>Business Bay, Dubai, UAE</span>
+                  <span>1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates</span>
                 </li>
                 <li>
                   <Icon icon="ic:outline-email" className={Style.formLeftInfoIcon} />
@@ -311,7 +311,7 @@ const ContactClient = () => {
                 </li>
                 <li>
                   <Icon icon="prime:mobile" className={Style.formLeftInfoIcon} />
-                  <span>800-PAY10</span>
+                  <span>80072910</span>
                 </li>
               </ul>
             </div>

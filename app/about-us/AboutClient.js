@@ -122,14 +122,7 @@ const AboutClient = () => {
               section2Html={`
                 <strong>About Pay10 UAE</strong>
                 <div style="width:56px;height:4px;background:var(--primary-gradient);border-radius:2px;margin:18px auto 28px;"></div>
-                <p>Pay10 UAE is a CBUAE-regulated Alternative Payments Platform delivering secure, interoperable, and compliant digital payment solutions to Consumers and Merchants in the UAE. Aligned with the Central Bank and schemes such as Aani, Al Tareq, and Jaywan, Pay10 UAE operates under key CBUAE licenses including Open Finance, Stored Value Facility (SVF), Retail Payment Services and Card Schemes (RPSCS) Category II, as well as the Category 4 Exchange business license.</p>
-                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;justify-content:center;">
-                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">CBUAE Regulated</span>
-                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">Open Finance</span>
-                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">SVF Licensed</span>
-                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">RPSCS Category II</span>
-                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">Exchange Business</span>
-                </div>
+                <p>Pay10 UAE is a CBUAE-regulated Alternative Payments Platform delivering secure, interoperable, and compliant digital payment solutions to Consumer and Merchants in the UAE. Aligned with the Central Bank and schemes such as Aani, Al Tareq, and Jaywan, Pay10 UAE operates under key CBUAE licenses including Open Finance, Stored Value Facility (SVF), Retail Payment Services and Card Schemes (RPSCS) Category II, as well as the Category 4 Exchange business license.</p>
               `}
             />
           </div>

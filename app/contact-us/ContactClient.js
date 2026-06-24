@@ -212,102 +212,104 @@ const ContactClient = () => {
   return (
     <>
       <main>
-        <div className={Style.wrapper}>
-          <div className={Style.contact_banner_headings}>
-            <h5 data-animation="opacity-up"></h5>
-            <h1 data-animation="opacity-up"></h1>
+        {/* Hero Banner */}
+        <section className={Style.heroBanner}>
+          <div className={Style.heroOverlay}></div>
+          <div className={Style.heroContent}>
+            <h5 data-animation="opacity-up">GET IN TOUCH</h5>
+            <h1 data-animation="opacity-up">Contact Us</h1>
+            <p data-animation="opacity-up">
+              Have questions about Pay10 services? Our team in Dubai is ready to assist you.
+            </p>
           </div>
-        </div>
-        <div className={Style.contact_tabs_container} data-animation="opacity-up">
-          <div className={Style.contact_tabs}>
-            {STATIC_TABS.map((tab) => (
-              <button
-                key={tab.id}
-                className={`${Style.contact_tab} ${
-                  activeTab === tab.id ? Style.active : ""
-                }`}
-                onClick={() => setActiveTab(tab.id)}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-        </div>
+        </section>
 
-        {currentData && (
-          <div className={Style.contact_map_section}>
-            <div className={Style.map_container} data-animation="opacity-up">
-              <iframe
-                src={currentData.map || MAP_EMBED_URL}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`${currentData.name || "Pay10"} Location Map`}
-              ></iframe>
-            </div>
-
-            <div className={Style.contact_info_overlay}>
-              <div className={Style.contact_info_box} data-animation="opacity-up">
-                <div className={Style.contact_info_icon}>
-                  <Icon icon="weui:location-outlined" />
-                </div>
-                <div className={Style.contact_info_content}>
-                  <h4>Address</h4>
-                  <p style={{ whiteSpace: "pre-line" }}>{currentData.address}</p>
-                </div>
+        {/* Contact Info Cards */}
+        <section className={Style.infoCardsSection}>
+          <div className={Style.infoCardsGrid}>
+            {/* Visit Us */}
+            <div className={Style.infoCard} data-animation="opacity-up">
+              <div className={Style.infoCardIcon}>
+                <Icon icon="weui:location-outlined" />
               </div>
+              <h3>Our Office</h3>
+              <p>1004, U-bora Office Tower, Business Bay, Dubai, UAE</p>
+            </div>
 
-              {currentData.emails?.map((item, index) => (
-                <div
-                  key={`${item.label}-${index}`}
-                  className={Style.contact_info_box}
-                  data-animation="opacity-up"
-                >
-                  <div className={Style.contact_info_icon}>
-                    <Icon icon="ic:outline-email" />
-                  </div>
-                  <div className={Style.contact_info_content}>
-                    <h4>{item.label}</h4>
-                    <p>{item.value}</p>
-                  </div>
-                </div>
-              ))}
+            {/* Email Us */}
+            <div className={Style.infoCard} data-animation="opacity-up">
+              <div className={Style.infoCardIcon}>
+                <Icon icon="ic:outline-email" />
+              </div>
+              <h3>Email Address</h3>
+              <p>
+                <a href="mailto:info@pay10.ae" className={Style.emailLink}>info@pay10.ae</a>
+                <br />
+                <a href="mailto:support@pay10.ae" className={Style.emailLink}>support@pay10.ae</a>
+              </p>
+            </div>
 
-              {currentData.phones?.length > 0 && (
-                <div className={Style.contact_info_box} data-animation="opacity-up">
-                  <div className={Style.contact_info_icon}>
-                    <Icon icon="prime:mobile" />
-                  </div>
-                  <div className={Style.contact_info_content}>
-                    <h4>Phone</h4>
-                    {currentData.phones.map((item, index) => (
-                      <p key={`${item.label}-${index}`}>
-                        {item.label}: {item.value}
-                      </p>
-                    ))}
-                  </div>
-                </div>
-              )}
+            {/* Call Us */}
+            <div className={Style.infoCard} data-animation="opacity-up">
+              <div className={Style.infoCardIcon}>
+                <Icon icon="prime:mobile" />
+              </div>
+              <h3>Helpline</h3>
+              <p>800-PAY10 (800-72910)</p>
             </div>
           </div>
-        )}
+        </section>
 
-        <div className={Style.wrapper}>
-          <div className={Style.contact_form_section} data-animation="opacity-up">
-            <div className={Style.contact_form_background}></div>
-            <div className={Style.contact_form_container}>
-              <h2 className={Style.contact_form_title} data-animation="opacity-up">Reach out to our sales team</h2>
-              <form className={Style.contact_form} onSubmit={handleSubmit}>
+        {/* Map Section */}
+        <section className={Style.mapSection}>
+          <iframe
+            src={currentData?.map || MAP_EMBED_URL}
+            width="100%"
+            height="100%"
+            style={{ border: 0, display: "block" }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Pay10 Location Map"
+          ></iframe>
+        </section>
+
+        {/* Contact Form Section */}
+        <section className={Style.formSection}>
+          <div className={Style.formInner}>
+            {/* Left: Info */}
+            <div className={Style.formLeft}>
+              <span className={Style.formLeftLabel}>SEND A MESSAGE</span>
+              <h2 className={Style.formLeftHeading}>Reach Out to Our Sales Team</h2>
+              <p className={Style.formLeftDesc}>
+                Whether you&apos;re a business looking to integrate payments or a customer needing support, we&apos;d love to hear from you.
+              </p>
+              <ul className={Style.formLeftInfo}>
+                <li>
+                  <Icon icon="weui:location-outlined" className={Style.formLeftInfoIcon} />
+                  <span>Business Bay, Dubai, UAE</span>
+                </li>
+                <li>
+                  <Icon icon="ic:outline-email" className={Style.formLeftInfoIcon} />
+                  <span>info@pay10.ae</span>
+                </li>
+                <li>
+                  <Icon icon="prime:mobile" className={Style.formLeftInfoIcon} />
+                  <span>800-PAY10</span>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right: Form */}
+            <div className={Style.formRight}>
+              <form className={Style.contactForm} onSubmit={handleSubmit}>
                 {/* Success/Error Message */}
                 {formSubmitStatus && (
                   <div
-                    className={`${Style.form_message} ${
+                    className={`${Style.formMessage} ${
                       formSubmitStatus === "success"
-                        ? Style.form_message_success
-                        : Style.form_message_error
+                        ? Style.formMessageSuccess
+                        : Style.formMessageError
                     }`}
                     data-animation="opacity-up"
                   >
@@ -315,46 +317,47 @@ const ContactClient = () => {
                   </div>
                 )}
 
-                <div className={Style.form_row}>
-                  <div className={Style.form_group} data-animation="opacity-up">
+                <div className={Style.formRow}>
+                  <div className={Style.formGroup} data-animation="opacity-up">
                     <input
                       type="text"
                       name="name"
                       placeholder="Full Name *"
-                      className={`${Style.form_input} ${
-                        formErrors.name ? Style.form_input_error : ""
+                      className={`${Style.formInput} ${
+                        formErrors.name ? Style.formInputError : ""
                       }`}
                       value={formData.name}
                       onChange={handleInputChange}
                     />
                     {formErrors.name && (
-                      <span className={Style.form_error}>{formErrors.name}</span>
+                      <span className={Style.formError}>{formErrors.name}</span>
                     )}
                   </div>
-                  <div className={Style.form_group} data-animation="opacity-up">
+                  <div className={Style.formGroup} data-animation="opacity-up">
                     <input
                       type="email"
                       name="email"
                       placeholder="Email *"
-                      className={`${Style.form_input} ${
-                        formErrors.email ? Style.form_input_error : ""
+                      className={`${Style.formInput} ${
+                        formErrors.email ? Style.formInputError : ""
                       }`}
                       value={formData.email}
                       onChange={handleInputChange}
                     />
                     {formErrors.email && (
-                      <span className={Style.form_error}>{formErrors.email}</span>
+                      <span className={Style.formError}>{formErrors.email}</span>
                     )}
                   </div>
                 </div>
-                <div className={Style.form_row}>
-                  <div className={Style.form_group} data-animation="opacity-up">
+
+                <div className={Style.formRow}>
+                  <div className={Style.formGroup} data-animation="opacity-up">
                     <input
                       type="tel"
                       name="mobile"
                       placeholder="Mobile Number *"
-                      className={`${Style.form_input} ${
-                        formErrors.mobile ? Style.form_input_error : ""
+                      className={`${Style.formInput} ${
+                        formErrors.mobile ? Style.formInputError : ""
                       }`}
                       value={formData.mobile}
                       onChange={handleInputChange}
@@ -362,48 +365,50 @@ const ContactClient = () => {
                       inputMode="numeric"
                     />
                     {formErrors.mobile && (
-                      <span className={Style.form_error}>{formErrors.mobile}</span>
+                      <span className={Style.formError}>{formErrors.mobile}</span>
                     )}
                   </div>
-                  <div className={Style.form_group} data-animation="opacity-up">
+                  <div className={Style.formGroup} data-animation="opacity-up">
                     <input
                       type="text"
                       name="company_name"
                       placeholder="Company *"
-                      className={`${Style.form_input} ${
-                        formErrors.company_name ? Style.form_input_error : ""
+                      className={`${Style.formInput} ${
+                        formErrors.company_name ? Style.formInputError : ""
                       }`}
                       value={formData.company_name}
                       onChange={handleInputChange}
                     />
                     {formErrors.company_name && (
-                      <span className={Style.form_error}>
+                      <span className={Style.formError}>
                         {formErrors.company_name}
                       </span>
                     )}
                   </div>
                 </div>
-                <div className={Style.form_row} data-animation="opacity-up">
-                  <div className={Style.form_group}>
+
+                <div className={Style.formRow} data-animation="opacity-up">
+                  <div className={`${Style.formGroup} ${Style.formGroupFull}`}>
                     <textarea
                       name="message"
                       placeholder="Message *"
                       rows="6"
-                      className={`${Style.form_textarea} ${
-                        formErrors.message ? Style.form_textarea_error : ""
+                      className={`${Style.formTextarea} ${
+                        formErrors.message ? Style.formTextareaError : ""
                       }`}
                       value={formData.message}
                       onChange={handleInputChange}
                     ></textarea>
                     {formErrors.message && (
-                      <span className={Style.form_error}>{formErrors.message}</span>
+                      <span className={Style.formError}>{formErrors.message}</span>
                     )}
                   </div>
                 </div>
+
                 <div data-animation="scale-up" style={{ textAlign: "center" }}>
                   <button
                     type="submit"
-                    className={Style.form_submit_btn}
+                    className={Style.formSubmitBtn}
                     disabled={formSubmitting}
                   >
                     {formSubmitting ? "Sending..." : "Send Message"}
@@ -412,7 +417,7 @@ const ContactClient = () => {
               </form>
             </div>
           </div>
-        </div>
+        </section>
       </main>
     </>
   );

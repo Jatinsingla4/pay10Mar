@@ -41,7 +41,7 @@ const VisionMissionClient = () => {
       </div>
 
       <div className={Style.bg_circle_wrapper}>
-        <section className={Style.wrapper}>
+        <section className={`${Style.wrapper} ${Style.first_wrapper}`}>
           <div className={Style.vision_second_section}>
             <div className={Style.left_img} data-animation="opacity-up">
               <img src={fallback.section2.image1} className={Style.img_primary} alt="" />

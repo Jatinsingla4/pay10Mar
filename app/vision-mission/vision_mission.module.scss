@@ -48,12 +48,25 @@
   padding: 0px 56px;
   margin: 80px 0;
 
+  &.first_wrapper {
+    margin-bottom: 120px;
+  }
   &.last_wrapper {
+    margin-top: 0;
     margin-bottom: 0;
   }
   @include tab{
     margin: 56px 0;
     padding: 0px 16px;
+    &.first_wrapper {
+      margin-bottom: 80px;
+    }
+  }
+  @include mobile {
+    margin: 40px 0;
+    &.first_wrapper {
+      margin-bottom: 56px;
+    }
   }
 }
 
@@ -236,8 +249,9 @@
       gap: 1.5rem;
       padding: 1rem 0;
 
-      .left_img {
+      .left_img, .right_img {
         margin-bottom: 1rem;
+        height: 380px;
       }
 
       .vision_content {
@@ -272,6 +286,10 @@
       grid-template-columns: 1fr;
       gap: 1.25rem;
       padding: 1.5rem 0;
+
+      .left_img, .right_img {
+        height: 320px;
+      }
     }
   }
 }
@@ -296,7 +314,8 @@
       gap: 1rem;
       padding: 2rem 0;
 
-      .left_img {
+      .left_img, .right_img {
+        height: 260px;
         img {
           max-width: 90%;
           margin: 0 auto;
@@ -324,7 +343,8 @@
   padding: 80px 56px;
 
   @include tab { padding: 56px 24px; }
-  @include lessTab { padding: 40px 16px; }
+  @include lessTab { padding: 48px 16px; }
+  @include mobile { padding: 40px 16px; }
 }
 
 .cta_heading {

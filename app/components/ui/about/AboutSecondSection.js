@@ -30,6 +30,10 @@ const AboutSecondSection = ({ section2Heading, section2Content, section2Html, se
     </div>
   );
 
+  if (!section2Image) {
+    return <div className={Style.about_second_section_full}>{contentComponent}</div>;
+  }
+
   return (
     <div className={Style.about_second_section}>
       {colReverse ? (

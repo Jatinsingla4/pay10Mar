@@ -98,32 +98,43 @@
     }
   }
 
-  .team_swiper {
-    padding-bottom: 2.5rem;
-    padding-right: 3.8rem;
-  }
+  .team_grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 0 56px;
 
-  .team_slide {
-    height: 100%;
-  }
+    @include large {
+      grid-template-columns: repeat(3, 1fr);
+    }
 
-  .team_slide:nth-child(1){
-    margin-left: 56px;
     @include tab {
-      margin-left: 0;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0 16px;
+      gap: 14px;
+    }
+
+    @include lessTab {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
     }
   }
 
   .member_card {
     background: var(--white);
-    border-radius: 36px;
+    border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    height: 500px;
+    height: auto;
     aspect-ratio: unset;
     &:hover {
       overflow: hidden;
-      height: 500px;
+      height: auto;
     }
     display: flex;
     flex-direction: column;
@@ -140,7 +151,7 @@
 
   .member_image {
     width: 100%;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 7;
     overflow: hidden;
 
     img {
@@ -288,7 +299,6 @@
 }
 
 @media only screen and (max-width: 991px) {
-
   .board_members_main {
     padding: 1.2rem 0 0 0;
 
@@ -301,10 +311,5 @@
         font-size: 2.2rem;
       }
     }
-    .team_swiper {
-        padding-right: 0;
-    }
   }
-
-
 }

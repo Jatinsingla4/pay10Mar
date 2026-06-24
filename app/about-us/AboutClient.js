@@ -29,13 +29,13 @@ const journeyData = [
     year: "2025",
     description:
       "<p>Pay10 UAE received approval as the country's first licensed Third-Party Provider (TPP) under the Central Bank of the UAE's (CBUAE) Open Finance framework.</p><p>In August 2025, Pay10 successfully performed the first ever live transaction on CBUAE's Open Finance Platform.</p>",
-    image: "/images/about_images/journey-2025.png",
+    image: "/images/about_images/journey-2025.jpg",
   },
   {
     year: "2026",
     description:
       "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4) – Cross Border Remittances",
-    image: "/images/about_images/journey-2023.png",
+    image: "/images/about_images/journey-2026.jpg",
   },
 ];
 
@@ -119,13 +119,11 @@ const AboutClient = () => {
         <section className={Style.about_bg_circle}>
           <div className={Style.wrapper}>
             <AboutSecondSection
-              section2Image="/images/about_images/about_img_3.png"
               section2Html={`
-                <strong>Empowering Your Financial Journey</strong>
-                <div style="width:56px;height:4px;background:var(--primary-gradient);border-radius:2px;margin:18px 0 24px;"></div>
-                <p>At Pay10 UAE, we believe in creating seamless financial connectivity. As a CBUAE-regulated Alternative Payments Platform, we deliver secure, interoperable, and compliance-first digital payment solutions that bridge the gap between innovation and everyday reliability.</p>
-                <p style="margin-top:16px;">Proudly aligned with the Central Bank and transformative schemes like Aani, Al Tareq, and Jaywan, our robust infrastructure is designed to fuel growth — making payments more accessible, transparent, and scalable for consumers and merchants alike.</p>
-                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;">
+                <strong>About Pay10 UAE</strong>
+                <div style="width:56px;height:4px;background:var(--primary-gradient);border-radius:2px;margin:18px auto 28px;"></div>
+                <p>Pay10 UAE is a CBUAE-regulated Alternative Payments Platform delivering secure, interoperable, and compliant digital payment solutions to Consumers and Merchants in the UAE. Aligned with the Central Bank and schemes such as Aani, Al Tareq, and Jaywan, Pay10 UAE operates under key CBUAE licenses including Open Finance, Stored Value Facility (SVF), Retail Payment Services and Card Schemes (RPSCS) Category II, as well as the Category 4 Exchange business license.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;justify-content:center;">
                   <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">CBUAE Regulated</span>
                   <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">Open Finance</span>
                   <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">SVF Licensed</span>
@@ -153,8 +151,8 @@ const AboutClient = () => {
 
           <div className={Style.wrapper}>
             <PowerToDreamSection
-              imgPrimary="/images/about_images/about-phone.png"
-              imgSecondary="/images/about_images/about-woman.png"
+              imgPrimary="/images/about_images/dream_big_large.jpg"
+              imgSecondary="/images/about_images/dream_big_small.png"
               heading="Giving You the Power to Dream Big"
               description="As an alternative payment services provider, we aim to make your life easier and richer by empowering you with quick, secure, and accessible digital payment solutions – whether you are an individual looking to make the most of your hard-earned money or a business looking to scale up like never before."
             />

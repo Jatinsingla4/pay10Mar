@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Style from "./vision_mission.module.scss";
 
 const fallback = {
@@ -17,7 +18,7 @@ const fallback = {
   section4: {
     heading: "Our Mission",
     content: "To contribute to a connected and resilient payments landscape in the UAE by building compliance-first financial rails that support scale, transparency, and long-term economic growth.",
-    image1: "/images/prod_imports/4.png",
+    image1: "/images/prod_imports/vm-mission.jpg",
     image2: "/images/prod_imports/5.png"
   }
 };
@@ -72,40 +73,10 @@ const VisionMissionClient = () => {
           </div>
         </section>
 
-        <section className={Style.enquiry_section} data-animation="opacity-up">
-          <div className={Style.enquiry_card}>
-            <div className={Style.enquiry_header}>
-              <p className={Style.enquiry_label}>Get In Touch</p>
-              <h3 className={Style.enquiry_heading}>Have a Query? We&apos;d Love to Hear From You</h3>
-              <p className={Style.enquiry_sub}>Fill in the form below and our team will get back to you shortly.</p>
-            </div>
-            <form
-              className={Style.enquiry_form}
-              action="mailto:info@pay10.ae"
-              method="post"
-              encType="text/plain"
-            >
-              <div className={Style.form_row}>
-                <div className={Style.form_group}>
-                  <label htmlFor="vm-name">Full Name</label>
-                  <input id="vm-name" name="Name" type="text" placeholder="Your full name" required />
-                </div>
-                <div className={Style.form_group}>
-                  <label htmlFor="vm-email">Email Address</label>
-                  <input id="vm-email" name="Email" type="email" placeholder="you@example.com" required />
-                </div>
-              </div>
-              <div className={Style.form_group}>
-                <label htmlFor="vm-subject">Subject</label>
-                <input id="vm-subject" name="Subject" type="text" placeholder="How can we help you?" required />
-              </div>
-              <div className={Style.form_group}>
-                <label htmlFor="vm-message">Message</label>
-                <textarea id="vm-message" name="Message" rows={5} placeholder="Write your message here…" required />
-              </div>
-              <button type="submit" className={Style.enquiry_btn}>Send Message</button>
-            </form>
-          </div>
+        <section className={Style.cta_section} data-animation="opacity-up">
+          <h3 className={Style.cta_heading}>For any queries</h3>
+          <p className={Style.cta_sub}>Please feel free to get in touch with us.</p>
+          <Link href="/contact-us" className={Style.cta_btn}>Get in Touch</Link>
         </section>
       </div>
     </main>

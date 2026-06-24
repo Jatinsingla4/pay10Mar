@@ -2,7 +2,7 @@
 
 .section {
   width: 100%;
-  padding: 80px 56px;
+  padding: 0 56px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
@@ -10,7 +10,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 56px 16px;
+    padding: 0 16px;
     gap: 2rem;
   }
 }

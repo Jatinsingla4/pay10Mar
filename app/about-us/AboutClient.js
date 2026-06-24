@@ -142,7 +142,7 @@ const AboutClient = () => {
             largeDescriptionText={true}
           />
 
-          <div className={Style.wrapper}>
+          <div className={`${Style.wrapper} ${Style.wrapper_last}`}>
             <PowerToDreamSection
               imgPrimary="/images/about_images/dream_big_large.jpg"
               imgSecondary="/images/about_images/dream_big_small.png"

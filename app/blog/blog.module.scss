@@ -27,13 +27,14 @@
     color: var(--black);
 
     h5 {
-      font-size: 1.5rem;
-    }
-
-    h2 {
       font-size: 4rem;
       font-family: "bold";
       line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      line-height: 1.4;
     }
   }
 
@@ -95,7 +96,7 @@
         color: var(--gray);
         border: 2px solid var(--gray);
         border-radius: 50%;
-        padding: 0.7rem 1rem;
+        padding: 0.75rem;
         font-size: 20px;
         position: relative;
         z-index: 2;
@@ -149,17 +150,17 @@
         margin: 0 0 2.2rem 0;
         padding: 2.2rem 1.1rem 5rem 1.1rem;
 
-        h2 {
+        h5 {
           font-size: 2.7rem;
           margin: 0;
           font-family: "bold";
           line-height: 1.15;
           letter-spacing: -0.015em;
         }
-        h5 {
+        h2 {
           font-size: 1.04rem;
           margin-bottom: 1.25rem;
-          font-weight: 600;
+          line-height: 1.4;
           letter-spacing: 0.01em;
           color: var(--black);
         }
@@ -194,17 +195,17 @@
       border-radius: 0 2.2rem 2.2rem;
       box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.10);
 
-      h2 {
+      h5 {
         font-size: 2.7rem;
         margin: 0;
         font-family: "bold";
         line-height: 1.15;
         letter-spacing: -0.015em;
       }
-      h5 {
+      h2 {
         font-size: 1.04rem;
         margin-bottom: 1.25rem;
-        font-weight: 600;
+        line-height: 1.4;
         letter-spacing: 0.01em;
         color: var(--black);
       }
@@ -299,16 +300,17 @@
       border-radius: 0 2.2rem 2.2rem;
       box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.10);
 
-      h2 {
+      h5 {
         font-size: 2.3rem;
         margin: 0;
         font-family: "bold";
         line-height: 1.18;
         letter-spacing: -0.02em;
       }
-      h5 {
+      h2 {
         font-size: 1.3rem;
         margin-bottom: 1.15rem;
+        line-height: 1.4;
         letter-spacing: 0.01em;
         color: var(--black);
       }

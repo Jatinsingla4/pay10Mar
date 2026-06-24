@@ -1,13 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Style from "./blog-details.module.scss";
 
 const BLOG_DATA = {
   "how-to-manage-payment-failures-effectively": {
-    heroImage: "/images/blog_page_images/blog_banner_img.png",
+    heroImage: "/images/blog_page_images/blog_hero_banner.jpeg",
     toc: [
       { id: "introduction", label: "Introduction" },
       { id: "what-is-failed-payment", label: "What is a Failed Payment?" },
@@ -114,9 +114,69 @@ const BLOG_DATA = {
       },
     ],
     alsoRead: [
+      { title: "Common Challenges of Online Payment Processing", href: "/blog/common-challenges-of-online-payment-processing" },
+      { title: "Card Authorisation Rate Explained", href: "/blog/card-authorisation-rate-explained" },
+      { title: "Pay10: Best Digital Payment Solutions for Growth", href: "/blog/pay10-best-digital-payment-solutions-for-growth" },
+    ],
+    faq: {
+      heading: "Benefits to Yield from a Reliable Payment",
+      items: [
+        {
+          question: "Q1. What is a payment failure?",
+          answer:
+            "A payment failure occurs when a transaction cannot be completed. This can happen due to technical errors, insufficient funds, incorrect payment details, or security blocks by the issuing bank. Payment failures result in lost revenue and a poor customer experience.",
+        },
+        {
+          question: "Q2. How does smart routing help reduce payment failures?",
+          answer:
+            "Smart routing automatically directs a transaction to the best available payment processor at the time of checkout. If one processor is down or experiencing issues, the system instantly reroutes to a backup — increasing transaction success rates without any manual intervention.",
+        },
+        {
+          question: "Q3. What should I do if my customers are facing repeated payment failures?",
+          answer:
+            "First, identify whether the failures are gateway-side (technical issues) or customer-side (insufficient funds, wrong details). Then consider enabling retry logic, offering alternate payment methods, and using a gateway with real-time monitoring. Pay10's merchant dashboard gives you full visibility into failure reasons.",
+        },
+        {
+          question: "Q4. Does offering more payment methods reduce failure rates?",
+          answer:
+            "Yes. When customers have multiple payment options — cards, wallets, bank transfers — they can switch methods if one fails. This reduces checkout abandonment and improves overall conversion rates significantly.",
+        },
+        {
+          question: "Q5. How does Pay10 help businesses manage payment failures?",
+          answer:
+            "Pay10 is a CBUAE-licensed payment platform with built-in smart routing, real-time failure monitoring, multiple payment method support, and enterprise-grade security. Our advanced infrastructure ensures the highest possible transaction success rates for businesses operating in the UAE.",
+        },
+      ],
+    },
+    seoKeywords:
+      "Why Businesses Trust Pay10 | CBUAE Licensed Payment Provider | PCI-DSS Compliant | ISO 27001 Certified | 100+ Payment Options | Advanced Fraud Prevention & Risk Monitoring | Trusted by Enterprises & Growing Businesses | Scalable Infrastructure for UAE & Cross-border | Enterprise-grade Payment Technology | Secure Digital Payment Solutions",
+    relatedPosts: [
       {
+        slug: "pay10-best-digital-payment-solutions-for-growth",
+        image: "/images/blog_page_images/blog_img1.png",
+        author: "Abha Pal, Content Team",
+        date: "June 15, 2026",
+        title: "Pay10: Best Digital Payment Solutions for Growth",
+        excerpt:
+          "The digital revolution in finance and technology has been about the transformation of the financial services industry. Financial Technology better known as Fintech...",
+      },
+      {
+        slug: "common-challenges-of-online-payment-processing",
+        image: "/images/blog_page_images/blog_img2.png",
+        author: "Abha Pal, Content Team",
+        date: "June 3, 2026",
         title: "Common Challenges of Online Payment Processing",
-        href: "/blog/common-challenges-of-online-payment-processing",
+        excerpt:
+          "Modern Commerce Backbone: Digital payments have revolutionized business models like e-commerce and subscriptions, shifting from a customer convenience to a survival necessity.",
+      },
+      {
+        slug: "hosted-vs-self-hosted-payment-gateway",
+        image: "/images/blog_page_images/blog_img3.png",
+        author: "Abha Pal, Content Team",
+        date: "June 3, 2026",
+        title: "Hosted vs Self-Hosted Payment Gateway",
+        excerpt:
+          "Security has always been at the forefront of consumers when they make any purchase online. With the increase in data breaches...",
       },
     ],
   },
@@ -126,24 +186,21 @@ const DEFAULT_POST = BLOG_DATA["how-to-manage-payment-failures-effectively"];
 
 const BlogDetailClient = ({ slug }) => {
   const post = BLOG_DATA[slug] || DEFAULT_POST;
+  const [activeFaq, setActiveFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setActiveFaq((prev) => (prev === index ? null : index));
+  };
 
   return (
     <main>
       {/* Hero Banner */}
       <div className={Style.blog_hero}>
-        <div className={Style.hero_text}>
-          <h2>
-            How to avoid <span>payment</span>
-            <br />
-            <span>failure?</span>
-          </h2>
-          <div className={Style.hero_line} />
-        </div>
-        <div className={Style.hero_image}>
+        <div className={Style.hero_image_full}>
           <Image
             src={post.heroImage}
             alt={post.title}
-            width={680}
+            width={1400}
             height={460}
             priority
           />
@@ -252,8 +309,77 @@ const BlogDetailClient = ({ slug }) => {
               </ul>
             </div>
           )}
+
+          {/* SEO Keywords Block */}
+          {post.seoKeywords && (
+            <p className={Style.seo_keywords}>{post.seoKeywords}</p>
+          )}
+
+          {/* FAQ Accordion */}
+          {post.faq && (
+            <div className={Style.faq_section}>
+              <h2 className={Style.faq_heading}>{post.faq.heading}</h2>
+              <div className={Style.faq_list}>
+                {post.faq.items.map((item, i) => (
+                  <div
+                    key={i}
+                    className={`${Style.faq_item} ${activeFaq === i ? Style.faq_active : ""}`}
+                  >
+                    <button
+                      className={Style.faq_trigger}
+                      onClick={() => toggleFaq(i)}
+                    >
+                      <span className={Style.faq_icon}>
+                        {activeFaq === i ? "−" : "+"}
+                      </span>
+                      {item.question}
+                    </button>
+                    <div className={`${Style.faq_body} ${activeFaq === i ? Style.faq_body_open : ""}`}>
+                      <p>{item.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </article>
       </div>
+
+      {/* Related Blogs — full width below two-column layout */}
+      {post.relatedPosts && post.relatedPosts.length > 0 && (
+        <div className={Style.related_section}>
+          <div className={Style.related_inner}>
+            <h2 className={Style.related_heading}>Related blogs</h2>
+            <div className={Style.related_grid}>
+              {post.relatedPosts.map((related) => (
+                <Link
+                  key={related.slug}
+                  href={`/blog/${related.slug}`}
+                  className={Style.related_card}
+                >
+                  <div className={Style.related_img}>
+                    <Image
+                      src={related.image}
+                      alt={related.title}
+                      width={480}
+                      height={260}
+                    />
+                  </div>
+                  <div className={Style.related_meta}>
+                    <div className={Style.related_avatar} />
+                    <div>
+                      <span className={Style.related_author}>{related.author}</span>
+                      <span className={Style.related_date}>{related.date}</span>
+                    </div>
+                  </div>
+                  <h3 className={Style.related_title}>{related.title}</h3>
+                  <p className={Style.related_excerpt}>{related.excerpt}</p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

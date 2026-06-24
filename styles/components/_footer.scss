@@ -15,7 +15,7 @@
     max-width: 1920px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 200px 1fr 200px;
     gap: 3rem;
     align-items: start;
 
@@ -43,8 +43,6 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
-    width: 90%;
-    margin: 0 auto;
 
     &--desktop {
       @include tab {
@@ -220,6 +218,8 @@
     align-items: flex-end;
 
     &--desktop {
+      justify-self: end;
+
       @include tab {
         display: none;
       }

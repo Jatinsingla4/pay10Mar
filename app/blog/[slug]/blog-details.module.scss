@@ -215,6 +215,8 @@
   padding: 28px 32px;
   margin-bottom: 32px;
 
+  @include mobile { padding: 20px 16px; }
+
   h3 {
     font-size: 1.3rem;
     font-family: 'bold';
@@ -484,6 +486,8 @@
   padding: 0 0 0 40px;
   transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
 
+  @include mobile { padding: 0 0 0 20px; }
+
   p {
     color: #555;
     font-size: 1rem;
@@ -496,6 +500,8 @@
   max-height: 400px;
   opacity: 1;
   padding: 0 0 20px 40px;
+
+  @include mobile { padding: 0 0 16px 20px; }
 }
 
 // ── Related Blogs ─────────────────────────────────────────────────────────────
@@ -524,8 +530,8 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 
-  @media (max-width: 900px) { grid-template-columns: repeat(2, 1fr); }
-  @include tab { grid-template-columns: 1fr; }
+  @include tab { grid-template-columns: repeat(2, 1fr); }
+  @include mobile { grid-template-columns: 1fr; }
 }
 
 .related_card {

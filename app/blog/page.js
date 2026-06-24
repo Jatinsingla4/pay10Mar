@@ -122,11 +122,13 @@ const Blog = () => {
 
       <section className={Style.wrapper}>
         <div className={Style.blog_boxes_main}>
-          {BLOG_POSTS.map((post) => (
+          {BLOG_POSTS.map((post, idx) => (
             <Link
               key={post.slug}
               href={`/blog/${post.slug}`}
               className={Style.blog_box_content}
+              data-animation="opacity-up"
+              data-anim-delay={idx * 100}
             >
               <div className={Style.blog_img}>
                 <Image

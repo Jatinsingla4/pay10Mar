@@ -195,7 +195,7 @@ const BlogDetailClient = ({ slug }) => {
   return (
     <main>
       {/* Hero Banner */}
-      <div className={Style.blog_hero}>
+      <div className={Style.blog_hero} data-animation="opacity-up">
         <div className={Style.hero_image_full}>
           <Image
             src={post.heroImage}
@@ -210,7 +210,7 @@ const BlogDetailClient = ({ slug }) => {
       {/* Two-column layout */}
       <div className={Style.blog_layout}>
         {/* Sticky Sidebar */}
-        <aside className={Style.sidebar}>
+        <aside className={Style.sidebar} data-animation="opacity-up" data-anim-delay="200">
           <p className={Style.toc_heading}>Table of contents</p>
           <ul className={Style.toc_list}>
             {post.toc.map((item) => (
@@ -227,9 +227,9 @@ const BlogDetailClient = ({ slug }) => {
 
         {/* Main Article */}
         <article className={Style.article}>
-          <h1 className={Style.article_title}>{post.title}</h1>
+          <h1 className={Style.article_title} data-animation="opacity-up">{post.title}</h1>
 
-          <div className={Style.article_meta}>
+          <div className={Style.article_meta} data-animation="opacity-up" data-anim-delay="100">
             <div className={Style.author_avatar} />
             <div className={Style.author_info}>
               <strong>{post.author}</strong>
@@ -238,7 +238,7 @@ const BlogDetailClient = ({ slug }) => {
           </div>
 
           {/* Summary Box */}
-          <div className={Style.summary_box}>
+          <div className={Style.summary_box} data-animation="opacity-up" data-anim-delay="150">
             <h3>Summary</h3>
             <ul>
               {post.summary.points.map((point, i) => (
@@ -349,13 +349,15 @@ const BlogDetailClient = ({ slug }) => {
       {post.relatedPosts && post.relatedPosts.length > 0 && (
         <div className={Style.related_section}>
           <div className={Style.related_inner}>
-            <h2 className={Style.related_heading}>Related blogs</h2>
+            <h2 className={Style.related_heading} data-animation="opacity-up">Related blogs</h2>
             <div className={Style.related_grid}>
-              {post.relatedPosts.map((related) => (
+              {post.relatedPosts.map((related, idx) => (
                 <Link
                   key={related.slug}
                   href={`/blog/${related.slug}`}
                   className={Style.related_card}
+                  data-animation="opacity-up"
+                  data-anim-delay={idx * 150}
                 >
                   <div className={Style.related_img}>
                     <Image

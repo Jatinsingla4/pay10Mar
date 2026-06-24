@@ -5,7 +5,7 @@
   width: 100%;
   border-radius: 24px;
   overflow: hidden;
-  background: linear-gradient(to right, #FFBB07, #EF1A23);
+  background: var(--primary-gradient);
   color: #ffffff;
   padding: 48px 56px 0 56px;
   @include tab {

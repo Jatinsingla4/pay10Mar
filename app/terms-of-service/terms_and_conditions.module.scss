@@ -105,14 +105,14 @@
   }
 
   &.active {
-    background: linear-gradient(90deg, #FFBB07 17%, #EF1A23 72%);
+    background: var(--primary-gradient);
     opacity: 1;
     box-shadow: none;
     transform: none;
   }
 
   &.inactive {
-    background: linear-gradient(90deg, #FFBB07 0%, #F2295B 100%);
+    background: var(--primary-gradient);
     opacity: 1;
     box-shadow: none;
     transform: none;

@@ -554,7 +554,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background-color: #353333;
+    background: var(--primary-gradient);
     color: #ffffff;
     text-decoration: none;
     font-family: 'Outfit', sans-serif;
@@ -563,10 +563,12 @@
     padding: 12px 24px;
     border-radius: 115px;
     white-space: nowrap;
-    transition: opacity 0.2s ease;
+    transition: all 0.2s ease;
 
     &:hover {
-      opacity: 0.85;
+      opacity: 0.9;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(239, 26, 35, 0.3);
     }
   }
 

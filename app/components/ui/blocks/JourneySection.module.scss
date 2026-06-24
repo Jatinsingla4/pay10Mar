@@ -235,7 +235,7 @@
           margin-bottom: 0.3rem;
           line-height: 1.3;
           display: inline-block;
-          background: linear-gradient(to right, #FFBB07, #EF1A23) !important;
+          background: var(--primary-gradient) !important;
           -webkit-background-clip: text !important;
           background-clip: text !important;
           -webkit-text-fill-color: transparent !important;
@@ -289,7 +289,7 @@
       &.active {
         .timeline_year {
           display: inline-block;
-          background: linear-gradient(to right, #FFBB07, #EF1A23);
+          background: var(--primary-gradient);
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -326,7 +326,7 @@
       &:not(.active) {
         .timeline_year {
           display: inline-block;
-          background: linear-gradient(to right, #FFBB07, #EF1A23);
+          background: var(--primary-gradient);
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -568,7 +568,7 @@
           .timeline_year {
             font-size: 1.4rem;
             display: inline-block;
-            background: linear-gradient(to right, #FFBB07, #EF1A23);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -629,7 +629,7 @@
           .timeline_year {
             font-size: 1.3rem;
             display: inline-block;
-            background: linear-gradient(to right, #FFBB07, #EF1A23);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -715,7 +715,7 @@
             font-size: 1.2rem;
             margin-bottom: 0.3rem;
             display: inline-block;
-            background: linear-gradient(to right, #FFBB07, #EF1A23);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;

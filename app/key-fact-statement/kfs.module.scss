@@ -7,6 +7,10 @@
   background-color: #ffffff;
   min-height: 100vh;
   font-family: 'regular', sans-serif;
+
+  @media (max-width: 768px) {
+    padding: 48px 16px;
+  }
 }
 
 .title {
@@ -52,11 +56,12 @@
     flex: none;
     flex-direction: row;
     overflow-x: auto;
+    padding-top: 0;
     padding-bottom: 15px;
     gap: 12px;
     width: 100%;
     scrollbar-width: none;
-    
+
     &::-webkit-scrollbar {
       display: none;
     }
@@ -150,6 +155,7 @@
   @media (max-width: 768px) {
     padding: 24px 16px;
     border-left: none;
+    min-height: unset;
   }
 }
 

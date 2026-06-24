@@ -22,9 +22,9 @@ export default function KfsClient() {
 
   return (
     <div className={styles.kfs_container}>
-      <h1 className={styles.title}>Key Fact Statement</h1>
+      <h1 className={styles.title} data-animation="opacity-up">Key Fact Statement</h1>
 
-      <div className={styles.arabic_btn_row}>
+      <div className={styles.arabic_btn_row} data-animation="opacity-up" data-anim-delay="100">
         <a
           href="/key-fact-statement/#"
           className={styles.arabic_btn}
@@ -35,7 +35,7 @@ export default function KfsClient() {
 
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
-        <aside className={styles.sidebar}>
+        <aside className={styles.sidebar} data-animation="opacity-up" data-anim-delay="150">
           {kfsData.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (
@@ -51,7 +51,7 @@ export default function KfsClient() {
         </aside>
 
         {/* Right Content Panel */}
-        <main className={styles.content_panel}>
+        <main className={styles.content_panel} data-animation="opacity-up" data-anim-delay="250">
           <h2 className={styles.tab_heading}>{activeTab?.tabName}</h2>
           
           <div 

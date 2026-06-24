@@ -26,11 +26,11 @@ const KfsBizAppClient = () => {
     <main className={Style.main}>
       <header className={Style.heroBanner}>
         <div className={Style.heroInner}>
-          <p className={Style.heroKicker}>{STATIC_HERO.kicker}</p>
-          <h1 className={Style.heroTitle}>{STATIC_HERO.title}</h1>
+          <p className={Style.heroKicker} data-animation="opacity-up">{STATIC_HERO.kicker}</p>
+          <h1 className={Style.heroTitle} data-animation="opacity-up" data-anim-delay="100">{STATIC_HERO.title}</h1>
         </div>
       </header>
-      <div className={Style.contentShell}>
+      <div className={Style.contentShell} data-animation="opacity-up" data-anim-delay="200">
         <p className={Style.emptyState} role="status">
           No Key Facts content is available.
         </p>

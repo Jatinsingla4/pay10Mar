@@ -228,7 +228,7 @@ const ContactClient = () => {
         <section className={Style.infoCardsSection}>
           <div className={Style.infoCardsGrid}>
             {/* Address */}
-            <div className={Style.infoCard} data-animation="opacity-up">
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="0">
               <div className={Style.infoCardIcon}>
                 <Icon icon="weui:location-outlined" />
               </div>
@@ -237,7 +237,7 @@ const ContactClient = () => {
             </div>
 
             {/* Email */}
-            <div className={Style.infoCard} data-animation="opacity-up">
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="150">
               <div className={Style.infoCardIcon}>
                 <Icon icon="ic:outline-email" />
               </div>
@@ -248,7 +248,7 @@ const ContactClient = () => {
             </div>
 
             {/* Merchant Support */}
-            <div className={Style.infoCard} data-animation="opacity-up">
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="300">
               <div className={Style.infoCardIcon}>
                 <Icon icon="ic:outline-support-agent" />
               </div>
@@ -259,7 +259,7 @@ const ContactClient = () => {
             </div>
 
             {/* Phone */}
-            <div className={Style.infoCard} data-animation="opacity-up">
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="450">
               <div className={Style.infoCardIcon}>
                 <Icon icon="prime:mobile" />
               </div>
@@ -277,7 +277,7 @@ const ContactClient = () => {
         </section>
 
         {/* Map Section */}
-        <section className={Style.mapSection}>
+        <section className={Style.mapSection} data-animation="opacity">
           <iframe
             src={currentData?.map || MAP_EMBED_URL}
             width="100%"
@@ -295,12 +295,12 @@ const ContactClient = () => {
           <div className={Style.formInner}>
             {/* Left: Info */}
             <div className={Style.formLeft}>
-              <span className={Style.formLeftLabel}>SEND A MESSAGE</span>
-              <h2 className={Style.formLeftHeading}>Reach Out to Our Sales Team</h2>
-              <p className={Style.formLeftDesc}>
+              <span className={Style.formLeftLabel} data-animation="opacity-up">SEND A MESSAGE</span>
+              <h2 className={Style.formLeftHeading} data-animation="opacity-up" data-anim-delay="100">Reach Out to Our Sales Team</h2>
+              <p className={Style.formLeftDesc} data-animation="opacity-up" data-anim-delay="200">
                 Whether you&apos;re a business looking to integrate payments or a customer needing support, we&apos;d love to hear from you.
               </p>
-              <ul className={Style.formLeftInfo}>
+              <ul className={Style.formLeftInfo} data-animation="opacity-up" data-anim-delay="300">
                 <li>
                   <Icon icon="weui:location-outlined" className={Style.formLeftInfoIcon} />
                   <span>1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates</span>
@@ -317,7 +317,7 @@ const ContactClient = () => {
             </div>
 
             {/* Right: Form */}
-            <div className={Style.formRight}>
+            <div className={Style.formRight} data-animation="opacity-up" data-anim-delay="150">
               <form className={Style.contactForm} onSubmit={handleSubmit}>
                 {/* Success/Error Message */}
                 {formSubmitStatus && (

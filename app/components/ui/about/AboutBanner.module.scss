@@ -3,7 +3,9 @@
 .about_banner {
     width: 100%;
     height: 90vh;
-    background: var(--primary-gradient);
+    background-image: url("/images/about_images/about-us-banner.jpg");
+    background-size: cover;
+    background-position: center;
     border-radius: 2rem;
     position: relative;
     display: flex;
@@ -34,7 +36,7 @@
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, calc(-50% - 220px));
       transition: all ease 0.5s;
 
       h5 {
@@ -43,11 +45,11 @@
       }
 
       h2 {
-        text-transform: uppercase;
+        text-transform: capitalize;
         font-family: "bold";
-        font-size: 3rem;
+        font-size: 4.5rem;
         @include tab{
-          font-size: 2.5rem;
+          font-size: 3.5rem;
         }
       }
 
@@ -55,6 +57,14 @@
           font-size: 2.2rem;
           line-height: 1.5;
           margin-top: 1rem;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    .about_banner {
+      .banner_content {
+        transform: translate(-50%, calc(-50% - 160px));
       }
     }
   }
@@ -69,7 +79,7 @@
         }
 
         h2 {
-          font-size: 3rem;
+          font-size: 3.5rem;
         }
 
         p {
@@ -84,13 +94,14 @@
   .about_banner {
     .banner_content {
       width: 90%;
+      transform: translate(-50%, calc(-50% - 100px));
 
       h5 {
         font-size: 1rem;
       }
 
       h2 {
-        font-size: 2.6rem;
+        font-size: 3rem;
       }
 
       p {
@@ -104,13 +115,14 @@
     .about_banner {
       .banner_content {
         width: 95%;
+        transform: translate(-50%, calc(-50% - 60px));
 
         h5 {
           font-size: 0.95rem;
         }
 
         h2 {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
         }
 
         p {

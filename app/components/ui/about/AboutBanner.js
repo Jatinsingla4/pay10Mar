@@ -4,7 +4,7 @@ import Style from './AboutBanner.module.scss';
 const AboutBanner = ({ topSubHeading, topHeading, topDescription }) => {
   // Provide fallbacks if the props are not passed in
   const fallbackSubHeading = '';
-  const fallbackHeading = '';
+  const fallbackHeading = 'About Us';
   const fallbackDescription = '';
 
   // Format description text: convert \r\n to <br /> and handle HTML tags
@@ -27,16 +27,13 @@ const AboutBanner = ({ topSubHeading, topHeading, topDescription }) => {
     <section>
       <div className={Style.about_banner}>
         <div className={Style.banner_svg}>
-          <img
-            src="/images/about_images/banner_circle.png"
-            alt=""
-            data-animation="opacity"
-            data-anim-delay="50"
-          />
           <div className={Style.banner_content}>
             <h5 data-animation="opacity-up">
               {topSubHeading || fallbackSubHeading}
             </h5>
+            <h2 data-animation="opacity-up" data-anim-delay="100">
+              {topHeading || fallbackHeading}
+            </h2>
             <p
               data-animation="opacity-up"
               data-anim-delay="200"

@@ -23,7 +23,7 @@ const journeyData = [
     year: "2024",
     description:
       "<p>Pay10 UAE received licenses from The Central Bank of the UAE (CBUAE) under Payment Services & Card Schemes (RPSCS Category II) and Stored Value Facilities (SVF) frameworks.</p><p>Together, these licenses authorize Pay10 to offer Merchant Acquiring Services, Account Issuing, Payment Aggregation Services, Domestic Fund Transfer Services, Cross Border Remittances and Opening & Maintaining Digital Wallets—further reinforcing its position as a leader in digital-first financial services across the region.</p>",
-    image: "/images/about_images/journey-2024.png",
+    image: "/images/about_images/journey-2024-v2.png",
   },
   {
     year: "2025",
@@ -35,7 +35,7 @@ const journeyData = [
     year: "2026",
     description:
       "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4) – Cross Border Remittances",
-    image: "/images/about_images/journey-2026.jpg",
+    image: "/images/about_images/journey-2026-v2.png",
   },
 ];
 

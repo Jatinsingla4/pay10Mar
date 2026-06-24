@@ -9,8 +9,7 @@ const fallback = {
   section2: {
     heading: "Our Vision",
     content: "To deliver regulated, interoperable payment infrastructure that enables secure, efficient, and trusted digital transactions across the UAE's financial ecosystem.",
-    image1: "/images/prod_imports/1.jpg",
-    image2: "/images/prod_imports/2.png"
+    image: "/images/about_images/vision-bubble.png"
   },
   section3: {
     image: "/images/prod_imports/divider-banner.png"
@@ -18,8 +17,7 @@ const fallback = {
   section4: {
     heading: "Our Mission",
     content: "To contribute to a connected and resilient payments landscape in the UAE by building compliance-first financial rails that support scale, transparency, and long-term economic growth.",
-    image1: "/images/prod_imports/vm-mission.jpg",
-    image2: "/images/prod_imports/5.png"
+    image: "/images/about_images/mission-bubble.png"
   }
 };
 
@@ -33,7 +31,6 @@ const VisionMissionClient = () => {
     <main className={Style.missionMain}>
       <div className={Style.vision_banner}>
         <div className={Style.banner_svg}>
-          <img src="/images/about_banner_globe.png" data-animation="opacity-up" alt="" />
           <div data-animation="opacity-up">
             <h2>{fallback.topHeading}</h2>
           </div>
@@ -44,8 +41,7 @@ const VisionMissionClient = () => {
         <section className={`${Style.wrapper} ${Style.first_wrapper}`}>
           <div className={Style.vision_second_section}>
             <div className={Style.left_img} data-animation="opacity-up">
-              <img src={fallback.section2.image1} className={Style.img_primary} alt="" />
-              <img src={fallback.section2.image2} className={Style.img_secondary} alt="" />
+              <img src={fallback.section2.image} className={Style.bubble_img} alt="Our Vision" />
             </div>
             <div className={Style.vision_content}>
               <h5 data-animation="opacity-up">{fallback.section2.heading}</h5>
@@ -67,8 +63,7 @@ const VisionMissionClient = () => {
               />
             </div>
             <div className={Style.right_img} data-animation="opacity-up">
-              <img src={fallback.section4.image1} className={Style.img_primary} alt="" />
-              <img src={fallback.section4.image2} className={Style.img_secondary} alt="" />
+              <img src={fallback.section4.image} className={Style.bubble_img} alt="Our Mission" />
             </div>
           </div>
         </section>

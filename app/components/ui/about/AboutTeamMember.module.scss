@@ -24,10 +24,9 @@
   .board_header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
-    padding-right: 1rem;
 
     .eyebrow {
       text-transform: uppercase;
@@ -40,7 +39,8 @@
     h2 {
       font-size: 48px;
       color: var(--black);
-      margin-left: 56px;
+      margin-left: 0;
+      text-align: center;
       @include tab {
         margin-left: 0;
         font-size: 32px;

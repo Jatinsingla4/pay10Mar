@@ -45,12 +45,7 @@ const DEFAULT_BREATHING_CIRCLES = [
  */
 export default function CareersHeroBanner({
   title = "Where Your Ambition Meets Our Innovation",
-  heroImage = {
-    src: "/images/careers/careers_banner_img.jpg",
-    alt: "Pay10 — join our team",
-    width: 1024,
-    height: 455,
-  },
+  heroImage = null,
   decorations = DEFAULT_BREATHING_CIRCLES,
   className = "",
 }) {
@@ -147,9 +142,11 @@ export default function CareersHeroBanner({
   return (
     <section
       ref={rootRef}
+      aria-label={title}
       className={`${styles.careersHeroBanner} ${className}`.trim()}
     >
-      <div className={styles.layout} />
+      <div className={styles.layout}>
+      </div>
     </section>
   );
 }

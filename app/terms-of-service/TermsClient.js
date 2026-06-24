@@ -17,12 +17,12 @@ export default function TermsClient() {
 
   return (
     <div className={styles.terms_container}>
-      <h1 className={styles.title}>TERMS OF SERVICE</h1>
-      <p className={styles.last_updated}>Last updated: May 14, 2026</p>
+      <h1 className={styles.title} data-animation="fade-up">TERMS OF SERVICE</h1>
+      <p className={styles.last_updated} data-animation="fade-up">Last updated: May 14, 2026</p>
 
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
-        <aside className={styles.sidebar}>
+        <aside className={styles.sidebar} data-animation="fade-up">
           {tosData.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (
@@ -40,6 +40,7 @@ export default function TermsClient() {
         {/* Right Content Panel */}
         <main className={styles.content_panel}>
           <div
+            key={activeTabName}
             className={styles.legal_content}
             dangerouslySetInnerHTML={{ __html: activeTab?.content || '' }}
           />

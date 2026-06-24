@@ -1,7 +1,7 @@
 // Direct Key Fact Statement static payload extracted from pay10.ae/key-fact-statement/
 const kfsData = [
   {
-    tabName: "KFS Customer Wallet",
+    tabName: "Customer Wallet",
     content: `
 				<div class="elementor-element elementor-element-04ae101 elementor-widget elementor-widget-text-editor animated fadeIn" data-id="04ae101" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
@@ -135,7 +135,7 @@ const kfsData = [
 				`
   },
   {
-    tabName: "KFS Biz UAE App",
+    tabName: "Biz UAE App",
     content: `
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-5782ea8 elementor-widget elementor-widget-text-editor" data-id="5782ea8" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">

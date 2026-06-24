@@ -7,65 +7,65 @@ const PrivacyClient = () => {
   return (
     <main className={Style.mainPriv}>
       <section className={Style.privacy_policy_banner}>
-        <p className={Style.topSubHeading}>VERSION 1</p>
-        <h2>Privacy Policy</h2>
+        <h2 data-animation="fade-up">Privacy Policy</h2>
       </section>
 
       <section className={Style.content_section}>
-        <div className={Style.arabic_btn_row}>
+        <div className={Style.arabic_btn_row} data-animation="fade-up">
           <a href="/privacy-policy/#" className={Style.arabic_btn}>يبرع</a>
         </div>
 
         <div className={Style.layout}>
-          <aside className={Style.sidebar}>
+          <aside className={Style.sidebar} data-animation="fade-up">
             <button className={Style.tab_pill}>Privacy Policy</button>
           </aside>
 
           <div className={Style.content_panel}>
             <div className={Style.contentHtml}>
 
-              {/* About this Policy */}
-              <h2>About this Policy</h2>
-              <p>
-                We, Pay Ten Payment Services Provider LLC (&ldquo;Pay10&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo;, &ldquo;Our&rdquo; or the &ldquo;Company&rdquo;), take
-                Your privacy very seriously. Please read this privacy policy (&ldquo;Privacy Policy&rdquo;) carefully as it
-                contains important information on who We are and how and why We collect, store, use and share
-                Your personal data when You engage with Us through Your use of the Pay10 App, Our Website,
-                or Our products and services, including Your Pay10 account, Send Abroad, Bill Payment, Pay10
-                Card, Pay10 WPS Service and any other Pay10 services made available from time to time. This
-                Privacy Policy also explains Your rights in relation to Your personal data and how to contact Us or
-                any regulatory authority if You have any concerns.
-              </p>
-              <p>
-                We collect, use and are responsible for certain personal data about You. When We do so We are
-                subject to the laws and regulations applicable in the United Arab Emirates (&ldquo;UAE&rdquo;).
-              </p>
-              <p>
-                PAY10 is the &lsquo;data controller&rsquo; of Your personal data as defined by applicable laws. Our full
-                details are set out at the end of this Privacy Policy.
-              </p>
+            {/* About this Policy */}
+            <h2 data-animation="fade-up">About this Policy</h2>
+            <p data-animation="fade-up">
+              We, Pay Ten Payment Services Provider LLC (&ldquo;Pay10&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo;, &ldquo;Our&rdquo; or the &ldquo;Company&rdquo;), take
+              Your privacy very seriously. Please read this privacy policy (&ldquo;Privacy Policy&rdquo;) carefully as it
+              contains important information on who We are and how and why We collect, store, use and share
+              Your personal data when You engage with Us through Your use of the Pay10 App, Our Website,
+              or Our products and services, including Your Pay10 account, Send Abroad, Bill Payment, Pay10
+              Card, Pay10 WPS Service and any other Pay10 services made available from time to time. This
+              Privacy Policy also explains Your rights in relation to Your personal data and how to contact Us or
+              any regulatory authority if You have any concerns.
+            </p>
+            <p data-animation="fade-up">
+              We collect, use and are responsible for certain personal data about You. When We do so We are
+              subject to the laws and regulations applicable in the United Arab Emirates (&ldquo;UAE&rdquo;).
+            </p>
+            <p data-animation="fade-up">
+              PAY10 is the &lsquo;data controller&rsquo; of Your personal data as defined by applicable laws. Our full
+              details are set out at the end of this Privacy Policy.
+            </p>
 
-              {/* Your Obligations */}
-              <h2>Your Obligations</h2>
-              <p>
-                It is important that the personal data We hold about You is accurate and current. Please keep Us
-                informed if Your personal data changes during Your relationship with Us.
-              </p>
-              <p>
-                If You provide Us with information about any other person, for example Your customer, then You
-                must ensure that You have their consent to share their personal details with Us and their
-                permission for Us to use those details in accordance with this Privacy Policy. You should also
-                make sure that You make such third parties fully aware of the provisions of this Privacy Policy.
-              </p>
-              <p>
-                Our services are not intended for persons under the age of 18. We do not knowingly collect or
-                process personal data from persons under 18. If We become aware that We have collected
-                personal data from a person under 18, We will take reasonable steps to delete such data, unless
-                retention is required by Applicable Law.
-              </p>
+            {/* Your Obligations */}
+            <h2 data-animation="fade-up">Your Obligations</h2>
+            <p data-animation="fade-up">
+              It is important that the personal data We hold about You is accurate and current. Please keep Us
+              informed if Your personal data changes during Your relationship with Us.
+            </p>
+            <p data-animation="fade-up">
+              If You provide Us with information about any other person, for example Your customer, then You
+              must ensure that You have their consent to share their personal details with Us and their
+              permission for Us to use those details in accordance with this Privacy Policy. You should also
+              make sure that You make such third parties fully aware of the provisions of this Privacy Policy.
+            </p>
+            <p data-animation="fade-up">
+              Our services are not intended for persons under the age of 18. We do not knowingly collect or
+              process personal data from persons under 18. If We become aware that We have collected
+              personal data from a person under 18, We will take reasonable steps to delete such data, unless
+              retention is required by Applicable Law.
+            </p>
 
-              {/* Key Terms */}
-              <h2>Key Terms</h2>
+            {/* Key Terms */}
+            <h2 data-animation="fade-up">Key Terms</h2>
+            <div className={Style.tableWrapper} data-animation="fade-up">
               <table>
                 <thead>
                   <tr>
@@ -136,65 +136,67 @@ const PrivacyClient = () => {
                   </tr>
                 </tbody>
               </table>
+            </div>
 
-              {/* Personal data We collect */}
-              <h2>Personal data We collect about You</h2>
-              <p>We may collect, use and transfer the personal data about You that includes but is not limited to:</p>
-              <ul>
-                <li><strong>Identity and Contact Data</strong> such as Your name and contact information, including email address (if applicable), date of birth, telephone number, company details (if applicable) and Your gender.</li>
-                <li><strong>Financial Data</strong> such as Your billing information, information about Your transactions (such as direct debits and standing orders), Your bank account details (or any other bank account connected via Our services), IBAN details and Your payment card information.</li>
-                <li><strong>Special Categories of Data</strong>, where applicable, such as biometric authentication data or facial recognition data processed for identity verification, security, fraud prevention or authentication purposes, where such processing is required or permitted under Applicable Law. If You do not provide information or permissions required for a mandatory security, verification or authentication feature, You may not be able to access or continue using the relevant service.</li>
-                <li><strong>Technical Data</strong> including information about how You use Our Website or Our application, IT, communication and other systems, internet protocol (IP) address, Your location data, login data, browser type and version, browser plug-in types and versions, operating system and platform and other technology on the devices You use to access Our Website and Our application.</li>
-                <li><strong>Marketing and Communications Data</strong> which includes Your preferences in receiving marketing communication/notifications from Us and Your communication preferences, and Your responses to surveys, competitions and promotions.</li>
-                <li><strong>Profile Data</strong> including but not limited to username, password, or credential and profile photograph.</li>
-              </ul>
-              <p>
-                We collect and use this personal data to provide products and/or services to You. If You do not
-                provide personal data We ask for, it may delay or prevent Us from providing products and/or
-                services to You, and We will inform You of the consequences of not providing mandatory data.
-              </p>
-              <p>
-                For services involving Send Abroad, Bill Payment, Pay10 Card, Pay10 WPS, Open Finance
-                connections and/or other Pay10 services, We may also collect and process additional personal
-                data relevant to those services, including beneficiary and payout details, sender and recipient
-                identifiers, payment purpose information, card profile and card status data, card issuance and
-                activation data, payroll and salary-credit data, employer- or originator-related payment references,
-                transaction and merchant data, fraud monitoring data, sanctions KYC/CDD screening results,
-                customer support and complaint records, notification preferences, authentication data, and any
-                other data reasonably required to provide the relevant service and comply with Applicable Law.
-              </p>
+            {/* Personal data We collect */}
+            <h2 data-animation="fade-up">Personal data We collect about You</h2>
+            <p data-animation="fade-up">We may collect, use and transfer the personal data about You that includes but is not limited to:</p>
+            <ul data-animation="fade-up">
+              <li><strong>Identity and Contact Data</strong> such as Your name and contact information, including email address (if applicable), date of birth, telephone number, company details (if applicable) and Your gender.</li>
+              <li><strong>Financial Data</strong> such as Your billing information, information about Your transactions (such as direct debits and standing orders), Your bank account details (or any other bank account connected via Our services), IBAN details and Your payment card information.</li>
+              <li><strong>Special Categories of Data</strong>, where applicable, such as biometric authentication data or facial recognition data processed for identity verification, security, fraud prevention or authentication purposes, where such processing is required or permitted under Applicable Law. If You do not provide information or permissions required for a mandatory security, verification or authentication feature, You may not be able to access or continue using the relevant service.</li>
+              <li><strong>Technical Data</strong> including information about how You use Our Website or Our application, IT, communication and other systems, internet protocol (IP) address, Your location data, login data, browser type and version, browser plug-in types and versions, operating system and platform and other technology on the devices You use to access Our Website and Our application.</li>
+              <li><strong>Marketing and Communications Data</strong> which includes Your preferences in receiving marketing communication/notifications from Us and Your communication preferences, and Your responses to surveys, competitions and promotions.</li>
+              <li><strong>Profile Data</strong> including but not limited to username, password, or credential and profile photograph.</li>
+            </ul>
+            <p data-animation="fade-up">
+              We collect and use this personal data to provide products and/or services to You. If You do not
+              provide personal data We ask for, it may delay or prevent Us from providing products and/or
+              services to You, and We will inform You of the consequences of not providing mandatory data.
+            </p>
+            <p data-animation="fade-up">
+              For services involving Send Abroad, Bill Payment, Pay10 Card, Pay10 WPS, Open Finance
+              connections and/or other Pay10 services, We may also collect and process additional personal
+              data relevant to those services, including beneficiary and payout details, sender and recipient
+              identifiers, payment purpose information, card profile and card status data, card issuance and
+              activation data, payroll and salary-credit data, employer- or originator-related payment references,
+              transaction and merchant data, fraud monitoring data, sanctions KYC/CDD screening results,
+              customer support and complaint records, notification preferences, authentication data, and any
+              other data reasonably required to provide the relevant service and comply with Applicable Law.
+            </p>
 
-              {/* How personal data is collected */}
-              <h2>How Your personal data is collected</h2>
-              <p>
-                We collect most of Your personal data directly from You when You register for and use the Pay10
-                App, complete onboarding and KYC/CDD checks, use Pay10 services, submit transaction
-                instructions, contact customer support, respond to Pay10 requests, or provide additional
-                information requested by Pay10 for compliance, regulatory, security or customer-support
-                purposes. Pay10 will never ask You to disclose Your PIN, OTP, password or other confidential
-                security credentials over the phone, by SMS, by email or through social media. However, We may
-                also collect personal data from and/or via:
-              </p>
-              <ul>
-                <li>Sanctions screening providers;</li>
-                <li>Customer due diligence providers;</li>
-                <li>Third parties with Your consent, including Your bank;</li>
-                <li>Cookies on Our Website;</li>
-                <li>Our IT systems, including automated monitoring of Our Website, Pay10 App and other technical systems;</li>
-                <li>Publicly accessible sources, where relevant; and</li>
-                <li>Credit reference agencies, where relevant.</li>
-              </ul>
+            {/* How personal data is collected */}
+            <h2 data-animation="fade-up">How Your personal data is collected</h2>
+            <p data-animation="fade-up">
+              We collect most of Your personal data directly from You when You register for and use the Pay10
+              App, complete onboarding and KYC/CDD checks, use Pay10 services, submit transaction
+              instructions, contact customer support, respond to Pay10 requests, or provide additional
+              information requested by Pay10 for compliance, regulatory, security or customer-support
+              purposes. Pay10 will never ask You to disclose Your PIN, OTP, password or other confidential
+              security credentials over the phone, by SMS, by email or through social media. However, We may
+              also collect personal data from and/or via:
+            </p>
+            <ul data-animation="fade-up">
+              <li>Sanctions screening providers;</li>
+              <li>Customer due diligence providers;</li>
+              <li>Third parties with Your consent, including Your bank;</li>
+              <li>Cookies on Our Website;</li>
+              <li>Our IT systems, including automated monitoring of Our Website, Pay10 App and other technical systems;</li>
+              <li>Publicly accessible sources, where relevant; and</li>
+              <li>Credit reference agencies, where relevant.</li>
+            </ul>
 
-              {/* How and why We use */}
-              <h2>How and why We use Your personal data</h2>
-              <p>Under data protection laws, We can only use Your personal data if We have a proper reason which includes without limitation:</p>
-              <ul>
-                <li>To comply with Our applicable legal and regulatory obligations.</li>
-                <li>For the performance of Our contract with You or to take steps at Your request before entering into a contract.</li>
-                <li>For Our legitimate interests or those of a third party.</li>
-                <li>Where You have given consent.</li>
-              </ul>
-              <p>The table below explains what We use Your personal data for and why:</p>
+            {/* How and why We use */}
+            <h2 data-animation="fade-up">How and why We use Your personal data</h2>
+            <p data-animation="fade-up">Under data protection laws, We can only use Your personal data if We have a proper reason which includes without limitation:</p>
+            <ul data-animation="fade-up">
+              <li>To comply with Our applicable legal and regulatory obligations.</li>
+              <li>For the performance of Our contract with You or to take steps at Your request before entering into a contract.</li>
+              <li>For Our legitimate interests or those of a third party.</li>
+              <li>Where You have given consent.</li>
+            </ul>
+            <p data-animation="fade-up">The table below explains what We use Your personal data for and why:</p>
+            <div className={Style.tableWrapper} data-animation="fade-up">
               <table>
                 <thead>
                   <tr>
@@ -296,187 +298,189 @@ const PrivacyClient = () => {
                   </tr>
                 </tbody>
               </table>
+            </div>
 
-              <p>
-                Where We process special category personal data, We will also ensure We are permitted to do so
-                under data protection laws ie:
-              </p>
-              <ul>
-                <li>We have a lawful basis under Applicable Law to process such data, including where processing is necessary for identity verification, authentication, fraud prevention, security, compliance with legal or regulatory obligations, or where We have obtained Your explicit consent where required.</li>
-                <li>The processing is necessary to protect Your or another person&rsquo;s vital interests where You are physically or legally incapable of giving consent.</li>
-                <li>The processing is necessary to establish, exercise or defend legal claims.</li>
-              </ul>
-              <p>
-                In addition, We may disclose information about You to the extent that We are required to do so by
-                law, regarding any legal proceedings or prospective legal proceedings, in order to establish,
-                exercise or defend Our legal rights (including providing information to others for the purposes of
-                fraud prevention and reducing credit risk) and/or where We may otherwise do so in accordance
-                with applicable data protection legislation.
-              </p>
+            <p data-animation="fade-up">
+              Where We process special category personal data, We will also ensure We are permitted to do so
+              under data protection laws ie:
+            </p>
+            <ul data-animation="fade-up">
+              <li>We have a lawful basis under Applicable Law to process such data, including where processing is necessary for identity verification, authentication, fraud prevention, security, compliance with legal or regulatory obligations, or where We have obtained Your explicit consent where required.</li>
+              <li>The processing is necessary to protect Your or another person&rsquo;s vital interests where You are physically or legally incapable of giving consent.</li>
+              <li>The processing is necessary to establish, exercise or defend legal claims.</li>
+            </ul>
+            <p data-animation="fade-up">
+              In addition, We may disclose information about You to the extent that We are required to do so by
+              law, regarding any legal proceedings or prospective legal proceedings, in order to establish,
+              exercise or defend Our legal rights (including providing information to others for the purposes of
+              fraud prevention and reducing credit risk) and/or where We may otherwise do so in accordance
+              with applicable data protection legislation.
+            </p>
 
-              {/* Marketing */}
-              <h2>Marketing</h2>
-              <p>
-                We may use Your personal data to send You updates (by email, text message, telephone or post)
-                about Our products and/or services, including exclusive offers, promotions or new products and/or
-                services.
-              </p>
-              <p>
-                We have a legitimate interest in using Your personal data for marketing purposes. This means We
-                do not usually need Your consent to send You marketing information. However, where consent is
-                needed, We will expressly ask for such consent separately.
-              </p>
-              <p>
-                We will always treat Your personal data with the utmost respect and never sell it to other
-                organizations for marketing purposes.
-              </p>
-              <p>
-                Email, text message and any other marketing messages We send may contain tracking beacons /
-                tracked clickable links or similar server technologies in order to track subscriber activity within
-                email marketing messages. You have the right to opt out of receiving marketing communications
-                at any time by:
-              </p>
-              <ul>
-                <li>Contacting Us at <a href="mailto:support@pay10.ae">support@pay10.ae</a></li>
-                <li>Using the &lsquo;unsubscribe&rsquo; link in emails or &lsquo;STOP&rsquo; number in texts.</li>
-                <li>Disabling marketing notifications from Your Pay10 app.</li>
-              </ul>
-              <p>
-                We may ask You to confirm or update Your marketing preferences if You instruct Us to provide
-                further products and/or services in the future, or if there are changes in the law, regulation, or
-                the structure of Our business.
-              </p>
+            {/* Marketing */}
+            <h2 data-animation="fade-up">Marketing</h2>
+            <p data-animation="fade-up">
+              We may use Your personal data to send You updates (by email, text message, telephone or post)
+              about Our products and/or services, including exclusive offers, promotions or new products and/or
+              services.
+            </p>
+            <p data-animation="fade-up">
+              We have a legitimate interest in using Your personal data for marketing purposes. This means We
+              do not usually need Your consent to send You marketing information. However, where consent is
+              needed, We will expressly ask for such consent separately.
+            </p>
+            <p data-animation="fade-up">
+              We will always treat Your personal data with the utmost respect and never sell it to other
+              organizations for marketing purposes.
+            </p>
+            <p data-animation="fade-up">
+              Email, text message and any other marketing messages We send may contain tracking beacons /
+              tracked clickable links or similar server technologies in order to track subscriber activity within
+              email marketing messages. You have the right to opt out of receiving marketing communications
+              at any time by:
+            </p>
+            <ul data-animation="fade-up">
+              <li>Contacting Us at <a href="mailto:support@pay10.ae">support@pay10.ae</a></li>
+              <li>Using the &lsquo;unsubscribe&rsquo; link in emails or &lsquo;STOP&rsquo; number in texts.</li>
+              <li>Disabling marketing notifications from Your Pay10 app.</li>
+            </ul>
+            <p data-animation="fade-up">
+              We may ask You to confirm or update Your marketing preferences if You instruct Us to provide
+              further products and/or services in the future, or if there are changes in the law, regulation, or
+              the structure of Our business.
+            </p>
 
-              {/* Who We share with */}
-              <h2>Who We share Your personal data with</h2>
-              <p>We routinely share personal data with:</p>
-              <ul>
-                <li>Companies within the Pay10 group.</li>
-                <li>Third parties We use to help deliver Our products and/or services to You ie payment service providers, and providers of identity and screening checks. Our identity and screening checks (known as KYC and AML checks) are outsourced to Our KYC partner, who is contractually bound to comply with all applicable data protection and regulatory requirements.</li>
-                <li>Third parties approved by You ie social media sites You choose to link Your account to or third party payment providers.</li>
-                <li>Credit reference agencies.</li>
-                <li>Our bank.</li>
-                <li>Money exchange companies.</li>
-              </ul>
-              <p>
-                We only allow Our service providers to handle Your personal data pursuant to such third party
-                providing Us with confidentiality undertakings and the implementation of appropriate measures
-                to protect Your personal data. We also impose contractual obligations on service providers to
-                ensure they can only use Your personal data to provide services to Us and to You.
-              </p>
-              <p>We may also need to:</p>
-              <ul>
-                <li>Share personal data with external auditors ie in relation to ISO or Investors in People accreditation and the audit of Our accounts.</li>
-                <li>Disclose and exchange information with law enforcement agencies and regulatory bodies to comply with Our applicable legal and regulatory obligations.</li>
-                <li>Share some personal data with other parties, such as potential buyers of some or all of Our business or during a re-structuring.</li>
-              </ul>
-              <p>
-                Usually, in the event that personal data is shared, the data will be anonymized, but this may not
-                always be possible. However, in every instance, the recipient of the information will be bound by
-                confidentiality obligations and appropriate contractual undertakings.
-              </p>
+            {/* Who We share with */}
+            <h2 data-animation="fade-up">Who We share Your personal data with</h2>
+            <p data-animation="fade-up">We routinely share personal data with:</p>
+            <ul data-animation="fade-up">
+              <li>Companies within the Pay10 group.</li>
+              <li>Third parties We use to help deliver Our products and/or services to You ie payment service providers, and providers of identity and screening checks. Our identity and screening checks (known as KYC and AML checks) are outsourced to Our KYC partner, who is contractually bound to comply with all applicable data protection and regulatory requirements.</li>
+              <li>Third parties approved by You ie social media sites You choose to link Your account to or third party payment providers.</li>
+              <li>Credit reference agencies.</li>
+              <li>Our bank.</li>
+              <li>Money exchange companies.</li>
+            </ul>
+            <p data-animation="fade-up">
+              We only allow Our service providers to handle Your personal data pursuant to such third party
+              providing Us with confidentiality undertakings and the implementation of appropriate measures
+              to protect Your personal data. We also impose contractual obligations on service providers to
+              ensure they can only use Your personal data to provide services to Us and to You.
+            </p>
+            <p data-animation="fade-up">We may also need to:</p>
+            <ul data-animation="fade-up">
+              <li>Share personal data with external auditors ie in relation to ISO or Investors in People accreditation and the audit of Our accounts.</li>
+              <li>Disclose and exchange information with law enforcement agencies and regulatory bodies to comply with Our applicable legal and regulatory obligations.</li>
+              <li>Share some personal data with other parties, such as potential buyers of some or all of Our business or during a re-structuring.</li>
+            </ul>
+            <p data-animation="fade-up">
+              Usually, in the event that personal data is shared, the data will be anonymized, but this may not
+              always be possible. However, in every instance, the recipient of the information will be bound by
+              confidentiality obligations and appropriate contractual undertakings.
+            </p>
 
-              {/* Third-party links */}
-              <h2>Third-party links</h2>
-              <p>
-                Links to third-party Websites are solely for Your convenience. Clicking on those links may allow
-                third parties to collect or share data about You. We do not control these third-party Websites and
-                are not responsible for their privacy policies. You should read any policies and other statements
-                on such Websites carefully.
-              </p>
+            {/* Third-party links */}
+            <h2 data-animation="fade-up">Third-party links</h2>
+            <p data-animation="fade-up">
+              Links to third-party Websites are solely for Your convenience. Clicking on those links may allow
+              third parties to collect or share data about You. We do not control these third-party Websites and
+              are not responsible for their privacy policies. You should read any policies and other statements
+              on such Websites carefully.
+            </p>
 
-              {/* Where data is held */}
-              <h2>Where Your personal data is held</h2>
-              <p>
-                Personal data may be held at Our offices (cloud servers through an aggregated provider) ensuring
-                compliance with their structure on the global data privacy certification, third party agencies,
-                service providers, representatives and agents as described above (see above: &lsquo;Who We share
-                Your personal data with&rsquo;).
-              </p>
-              <p>
-                Some of these third parties may be based outside the UAE. For more information, including on how
-                We safeguard Your personal data when this happens, see below: &lsquo;Transferring Your personal
-                data out of the UAE&rsquo;.
-              </p>
-              <p>
-                We have put in place appropriate security measures to prevent Your personal data from being
-                accidentally lost, used or accessed in an unauthorized way, altered or disclosed, including
-                encryption, two-factor authentication, and regular security audits. In addition, We limit access to
-                Your personal data to those employees, agents, contractors and other third parties who have a
-                business need to know it.
-              </p>
-              <p>
-                In the event of a personal data breach, We will notify You and/or the relevant regulator where
-                required under Applicable Law, including the Central Bank of the UAE (&ldquo;CBUAE&rdquo;) and/or the UAE
-                Data Office, in accordance with applicable legal and regulatory requirements.
-              </p>
+            {/* Where data is held */}
+            <h2 data-animation="fade-up">Where Your personal data is held</h2>
+            <p data-animation="fade-up">
+              Personal data may be held at Our offices (cloud servers through an aggregated provider) ensuring
+              compliance with their structure on the global data privacy certification, third party agencies,
+              service providers, representatives and agents as described above (see above: &lsquo;Who We share
+              Your personal data with&rsquo;).
+            </p>
+            <p data-animation="fade-up">
+              Some of these third parties may be based outside the UAE. For more information, including on how
+              We safeguard Your personal data when this happens, see below: &lsquo;Transferring Your personal
+              data out of the UAE&rsquo;.
+            </p>
+            <p data-animation="fade-up">
+              We have put in place appropriate security measures to prevent Your personal data from being
+              accidentally lost, used or accessed in an unauthorized way, altered or disclosed, including
+              encryption, two-factor authentication, and regular security audits. In addition, We limit access to
+              Your personal data to those employees, agents, contractors and other third parties who have a
+              business need to know it.
+            </p>
+            <p data-animation="fade-up">
+              In the event of a personal data breach, We will notify You and/or the relevant regulator where
+              required under Applicable Law, including the Central Bank of the UAE (&ldquo;CBUAE&rdquo;) and/or the UAE
+              Data Office, in accordance with applicable legal and regulatory requirements.
+            </p>
 
-              {/* How long data is kept */}
-              <h2>How long Your personal data will be kept</h2>
-              <p>
-                We will keep Your personal data while You have an account with Us or We are providing products
-                and/or services to You. Thereafter, We will keep Your personal data for as long as is necessary:
-              </p>
-              <ul>
-                <li>To respond to any questions, complaints or claims made by You or on Your behalf.</li>
-                <li>To show that We treated You fairly.</li>
-                <li>To keep records as mandated by applicable laws and regulations.</li>
-              </ul>
-              <p>
-                We retain KYC/CDD, AML/CFT, transaction, payment and other relevant records for at least five
-                (5) years from the end of the customer relationship, the date of the relevant transaction, or such
-                other date required under Applicable Law, unless a longer retention period is required by
-                Applicable Law, a competent authority, Pay10&rsquo;s internal policies or for the establishment,
-                exercise or defense of legal claims. After the applicable retention period, personal data will be
-                securely deleted, anonymized or retained only to the extent permitted or required by Applicable
-                Law.
-              </p>
-              <p>
-                In some circumstances, We may anonymize personal data (so that it can no longer be associated
-                with You) for research or statistical purposes in which case We may use this information
-                indefinitely without further notice to You.
-              </p>
+            {/* How long data is kept */}
+            <h2 data-animation="fade-up">How long Your personal data will be kept</h2>
+            <p data-animation="fade-up">
+              We will keep Your personal data while You have an account with Us or We are providing products
+              and/or services to You. Thereafter, We will keep Your personal data for as long as is necessary:
+            </p>
+            <ul data-animation="fade-up">
+              <li>To respond to any questions, complaints or claims made by You or on Your behalf.</li>
+              <li>To show that We treated You fairly.</li>
+              <li>To keep records as mandated by applicable laws and regulations.</li>
+            </ul>
+            <p data-animation="fade-up">
+              We retain KYC/CDD, AML/CFT, transaction, payment and other relevant records for at least five
+              (5) years from the end of the customer relationship, the date of the relevant transaction, or such
+              other date required under Applicable Law, unless a longer retention period is required by
+              Applicable Law, a competent authority, Pay10&rsquo;s internal policies or for the establishment,
+              exercise or defense of legal claims. After the applicable retention period, personal data will be
+              securely deleted, anonymized or retained only to the extent permitted or required by Applicable
+              Law.
+            </p>
+            <p data-animation="fade-up">
+              In some circumstances, We may anonymize personal data (so that it can no longer be associated
+              with You) for research or statistical purposes in which case We may use this information
+              indefinitely without further notice to You.
+            </p>
 
-              {/* Transferring data out of UAE */}
-              <h2>Transferring Your personal data out of the UAE</h2>
-              <p>
-                Pay10 may transfer, share or make available Your personal data outside the UAE where necessary
-                to provide Pay10 services, including Send Abroad transactions, cross-border payments, payout
-                processing, beneficiary verification, compliance screening, fraud monitoring, dispute handling,
-                customer support, or where any Third-Party Service Provider, bank, payout partner, payment
-                channel, card scheme, open finance provider or other service provider involved in providing
-                Pay10 services is located outside the UAE. Any such transfer will be carried out in accordance
-                with Applicable Law and subject to appropriate safeguards or other lawful transfer mechanisms,
-                where required.
-              </p>
-              <h3>Transfers with appropriate safeguards</h3>
-              <p>
-                We may transfer Your personal data outside the UAE where permitted under Applicable Law,
-                including where the destination country provides an adequate level of protection, where
-                appropriate contractual or other safeguards are in place, where the transfer is necessary for the
-                performance of a contract with You or in Your interests, where You have given explicit consent
-                after being informed of the relevant risks, or where another lawful exception applies.
-              </p>
-              <p>
-                For cross-border transfers, We obtain prior approval from the CBUAE where required for payment
-                services data, and use standard contractual clauses or other mechanisms approved under the
-                applicable laws.
-              </p>
-              <h3>Transfers under an exception</h3>
-              <p>
-                We may transfer personal data to a third country or international organization located outside UAE
-                where an exception applies under relevant data protection law including:
-              </p>
-              <ul>
-                <li>You have explicitly consented to the proposed transfer after having been informed of the possible risks.</li>
-                <li>The transfer is necessary for the performance of a contract between Us or to take pre-contract measures at Your request.</li>
-                <li>The transfer is necessary for a contract in Your interests, between Us and another person.</li>
-                <li>The transfer is necessary to establish, exercise or defend legal claims.</li>
-              </ul>
+            {/* Transferring data out of UAE */}
+            <h2 data-animation="fade-up">Transferring Your personal data out of the UAE</h2>
+            <p data-animation="fade-up">
+              Pay10 may transfer, share or make available Your personal data outside the UAE where necessary
+              to provide Pay10 services, including Send Abroad transactions, cross-border payments, payout
+              processing, beneficiary verification, compliance screening, fraud monitoring, dispute handling,
+              customer support, or where any Third-Party Service Provider, bank, payout partner, payment
+              channel, card scheme, open finance provider or other service provider involved in providing
+              Pay10 services is located outside the UAE. Any such transfer will be carried out in accordance
+              with Applicable Law and subject to appropriate safeguards or other lawful transfer mechanisms,
+              where required.
+            </p>
+            <h3 data-animation="fade-up">Transfers with appropriate safeguards</h3>
+            <p data-animation="fade-up">
+              We may transfer Your personal data outside the UAE where permitted under Applicable Law,
+              including where the destination country provides an adequate level of protection, where
+              appropriate contractual or other safeguards are in place, where the transfer is necessary for the
+              performance of a contract with You or in Your interests, where You have given explicit consent
+              after being informed of the relevant risks, or where another lawful exception applies.
+            </p>
+            <p data-animation="fade-up">
+              For cross-border transfers, We obtain prior approval from the CBUAE where required for payment
+              services data, and use standard contractual clauses or other mechanisms approved under the
+              applicable laws.
+            </p>
+            <h3 data-animation="fade-up">Transfers under an exception</h3>
+            <p data-animation="fade-up">
+              We may transfer personal data to a third country or international organization located outside UAE
+              where an exception applies under relevant data protection law including:
+            </p>
+            <ul data-animation="fade-up">
+              <li>You have explicitly consented to the proposed transfer after having been informed of the possible risks.</li>
+              <li>The transfer is necessary for the performance of a contract between Us or to take pre-contract measures at Your request.</li>
+              <li>The transfer is necessary for a contract in Your interests, between Us and another person.</li>
+              <li>The transfer is necessary to establish, exercise or defend legal claims.</li>
+            </ul>
 
-              {/* Your rights */}
-              <h2>Your rights</h2>
-              <p>You have the following rights, which You can exercise free of charge:</p>
+            {/* Your rights */}
+            <h2 data-animation="fade-up">Your rights</h2>
+            <p data-animation="fade-up">You have the following rights, which You can exercise free of charge:</p>
+            <div className={Style.tableWrapper} data-animation="fade-up">
               <table>
                 <thead>
                   <tr>
@@ -519,70 +523,71 @@ const PrivacyClient = () => {
                   </tr>
                 </tbody>
               </table>
-              <p>
-                You will not have to pay a fee to access Your personal data (or to exercise any other rights).
-                However, We may charge a reasonable fee if Your request is clearly unfounded, repetitive or
-                excessive. Alternatively, We may refuse to comply with Your request in these circumstances.
-              </p>
-              <p>
-                We may need to request specific information from You to help Us confirm Your identity and ensure
-                Your right to access Your personal data (or to exercise any of Your other rights). We try to
-                respond to all legitimate requests within one month.
-              </p>
-              <p>If You would like to exercise any of Your rights, please:</p>
-              <ul>
-                <li>Email, call or write to Us — see below: &lsquo;How to contact Us&rsquo;.</li>
-                <li>Let Us have enough information to identify You (ie Your full name, address and customer or matter reference number).</li>
-                <li>Let Us have proof of Your identity and address (a copy of Your driving license or passport and a recent utility or credit card bill).</li>
-                <li>Let Us know what right You want to exercise and the information to which Your request relates.</li>
-              </ul>
+            </div>
+            <p data-animation="fade-up">
+              You will not have to pay a fee to access Your personal data (or to exercise any other rights).
+              However, We may charge a reasonable fee if Your request is clearly unfounded, repetitive or
+              excessive. Alternatively, We may refuse to comply with Your request in these circumstances.
+            </p>
+            <p data-animation="fade-up">
+              We may need to request specific information from You to help Us confirm Your identity and ensure
+              Your right to access Your personal data (or to exercise any of Your other rights). We try to
+              respond to all legitimate requests within one month.
+            </p>
+            <p data-animation="fade-up">If You would like to exercise any of Your rights, please:</p>
+            <ul data-animation="fade-up">
+              <li>Email, call or write to Us — see below: &lsquo;How to contact Us&rsquo;.</li>
+              <li>Let Us have enough information to identify You (ie Your full name, address and customer or matter reference number).</li>
+              <li>Let Us have proof of Your identity and address (a copy of Your driving license or passport and a recent utility or credit card bill).</li>
+              <li>Let Us know what right You want to exercise and the information to which Your request relates.</li>
+            </ul>
 
-              {/* Keeping data secure */}
-              <h2>Keeping Your personal data secure</h2>
-              <p>
-                We have appropriate security measures to prevent personal data from being accidentally lost or
-                used or accessed unlawfully. We limit access to Your personal data to those who have a genuine
-                business need to access it. Those processing Your information will do so only in an authorized
-                manner and are subject to a duty of confidentiality.
-              </p>
-              <p>
-                We also have procedures in place to deal with any suspected data security breach. We will notify
-                You and any applicable regulator of a suspected data security breach where We are legally
-                required to do so.
-              </p>
+            {/* Keeping data secure */}
+            <h2 data-animation="fade-up">Keeping Your personal data secure</h2>
+            <p data-animation="fade-up">
+              We have appropriate security measures to prevent personal data from being accidentally lost or
+              used or accessed unlawfully. We limit access to Your personal data to those who have a genuine
+              business need to access it. Those processing Your information will do so only in an authorized
+              manner and are subject to a duty of confidentiality.
+            </p>
+            <p data-animation="fade-up">
+              We also have procedures in place to deal with any suspected data security breach. We will notify
+              You and any applicable regulator of a suspected data security breach where We are legally
+              required to do so.
+            </p>
 
-              {/* How to complain */}
-              <h2>How to complain</h2>
-              <p>
-                Please contact Us if You have any query or concern about Our use of Your information (see below
-                &lsquo;How to contact Us&rsquo;). We hope We will be able to resolve any issues You may have.
-              </p>
-              <p>
-                You also have the right to lodge a complaint with PAY10 at{" "}
-                <a href="mailto:support@pay10.ae">support@pay10.ae</a> or telephone: 800-PAY10. If unresolved,
-                escalate to the CBUAE via the Sanadak platform (<a href="https://sanadak.gov.ae" target="_blank" rel="noopener noreferrer">sanadak.gov.ae</a>), which provides an
-                independent resolution mechanism. Our complaint escalation matrix is: (1) Internal resolution
-                within 15 days; (2) If unsatisfied, escalate to CBUAE within 30 days of Our final response,
-                providing details of the issue, Our reference number, and supporting documents.
-              </p>
+            {/* How to complain */}
+            <h2 data-animation="fade-up">How to complain</h2>
+            <p data-animation="fade-up">
+              Please contact Us if You have any query or concern about Our use of Your information (see below
+              &lsquo;How to contact Us&rsquo;). We hope We will be able to resolve any issues You may have.
+            </p>
+            <p data-animation="fade-up">
+              You also have the right to lodge a complaint with PAY10 at{" "}
+              <a href="mailto:support@pay10.ae">support@pay10.ae</a> or telephone: 800-PAY10. If unresolved,
+              escalate to the CBUAE via the Sanadak platform (<a href="https://sanadak.gov.ae" target="_blank" rel="noopener noreferrer">sanadak.gov.ae</a>), which provides an
+              independent resolution mechanism. Our complaint escalation matrix is: (1) Internal resolution
+              within 15 days; (2) If unsatisfied, escalate to CBUAE within 30 days of Our final response,
+              providing details of the issue, Our reference number, and supporting documents.
+            </p>
 
-              {/* Changes */}
-              <h2>Changes to this privacy policy</h2>
-              <p>
-                We may change this privacy notice from time to time — when We do We will inform You via Our
-                Website or other means of contact such as email.
-              </p>
+            {/* Changes */}
+            <h2 data-animation="fade-up">Changes to this privacy policy</h2>
+            <p data-animation="fade-up">
+              We may change this privacy notice from time to time — when We do We will inform You via Our
+              Website or other means of contact such as email.
+            </p>
 
-              {/* How to contact Us */}
-              <h2>How to contact Us</h2>
-              <p>
-                If You have any questions about this privacy policy including any requests to exercise Your data
-                privacy rights, please contact:
-              </p>
-              <ul>
-                <li>Email: <a href="mailto:support@pay10.ae">support@pay10.ae</a></li>
-                <li>Address: 1004, U-bora Office Tower, Business Bay – Dubai, UAE</li>
-              </ul>
+            {/* How to contact Us */}
+            <h2 data-animation="fade-up">How to contact Us</h2>
+            <p data-animation="fade-up">
+              If You have any questions about this privacy policy including any requests to exercise Your data
+              privacy rights, please contact:
+            </p>
+            <ul data-animation="fade-up">
+              <li>Email: <a href="mailto:support@pay10.ae">support@pay10.ae</a></li>
+              <li>Address: 1004, U-bora Office Tower, Business Bay – Dubai, UAE</li>
+            </ul>
 
             </div>
           </div>

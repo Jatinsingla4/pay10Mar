@@ -1,5 +1,16 @@
 @import '../../styles/globals/mixin';
 
+@keyframes fadeUpIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .terms_container {
   padding: 80px 56px 80px;
   max-width: 1300px;
@@ -7,6 +18,14 @@
   background: #ffffff;
   min-height: 100vh;
   font-family: 'regular', sans-serif;
+
+  @include tab {
+    padding: 56px 24px 60px;
+  }
+
+  @include lessTab {
+    padding: 40px 16px 48px;
+  }
 }
 
 .title {
@@ -17,10 +36,17 @@
   margin-bottom: 8px;
   line-height: 1.2;
 
-  @media (max-width: 768px) {
-    font-size: 2.2rem;
-    margin-bottom: 6px;
-    padding: 0 15px;
+  @include tab {
+    font-size: 2.8rem;
+  }
+
+  @include lessTab {
+    font-size: 2rem;
+    padding: 0;
+  }
+
+  @include mobile {
+    font-size: 1.6rem;
   }
 }
 
@@ -39,9 +65,9 @@
   margin: 0 auto;
   align-items: flex-start;
 
-  @media (max-width: 991px) {
+  @include tab {
     flex-direction: column;
-    gap: 30px;
+    gap: 0;
   }
 }
 
@@ -63,11 +89,12 @@
     display: none;
   }
 
-  @media (max-width: 991px) {
+  @include tab {
     flex: none;
     flex-direction: row;
     overflow-x: auto;
     overflow-y: visible;
+    padding-top: 0;
     padding-bottom: 15px;
     gap: 12px;
     width: 100%;
@@ -97,7 +124,7 @@
   transition: opacity 0.15s ease;
   flex-shrink: 0;
 
-  @media (max-width: 991px) {
+  @include tab {
     width: auto;
     white-space: nowrap;
     padding: 12px 24px;
@@ -126,15 +153,23 @@
 
 .content_panel {
   flex: 1;
+  min-width: 0;
   padding-top: 0;
   padding-left: 44px;
   border-left: 3px solid #F37810;
   min-height: 500px;
   color: #7A7A7A;
 
-  @media (max-width: 768px) {
-    padding: 24px 16px;
+  @include tab {
+    padding-left: 0;
+    padding-top: 32px;
     border-left: none;
+    border-top: 3px solid #F37810;
+    min-height: unset;
+  }
+
+  @include lessTab {
+    padding-top: 24px;
   }
 }
 
@@ -144,6 +179,11 @@
 
 .legal_content {
   max-width: 720px;
+  animation: fadeUpIn 0.7s var(--ease-out-expo) both;
+
+  @include tab {
+    max-width: 100%;
+  }
 
   & > div:first-child {
     margin-top: 0 !important;
@@ -191,6 +231,14 @@
     margin-bottom: 8px;
   }
 
+  @include lessTab {
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.15rem; }
+    h4 { font-size: 1rem; }
+    h5, h6 { font-size: 13px; }
+  }
+
   h6 strong {
     color: #1a1a1a;
   }
@@ -202,13 +250,17 @@
     line-height: 1.75;
     color: #444444;
     font-family: 'regular', sans-serif;
+
+    @include lessTab {
+      font-size: 14px;
+    }
   }
 
   a {
     text-decoration: underline;
     color: var(--red);
     font-family: 'bold', sans-serif;
-    
+
     &:hover {
       color: var(--orange);
     }
@@ -240,6 +292,10 @@
     margin-bottom: 12px;
     color: #444444;
     font-family: 'regular', sans-serif;
+
+    @include lessTab {
+      font-size: 14px;
+    }
   }
 
   table {
@@ -247,6 +303,13 @@
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 1rem;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @include lessTab {
+      font-size: 0.875rem;
+    }
   }
 
   th, td {
@@ -254,6 +317,11 @@
     padding: 12px 15px;
     text-align: left;
     color: #7A7A7A;
+    min-width: 120px;
+
+    @include lessTab {
+      padding: 8px 10px;
+    }
   }
 
   th {

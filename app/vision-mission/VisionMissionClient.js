@@ -55,18 +55,6 @@ const VisionMissionClient = () => {
           </div>
         </section>
 
-        <section
-          className={Style.divider_img}
-          data-animation="opacity-up"
-          style={{
-            backgroundImage: `url(${fallback.section3.image})`
-          }}
-        >
-          <div className={Style.circle_with_icons}>
-            <img src="/images/circle_with_icons.png" alt="" />
-          </div>
-        </section>
-
         <section className={`${Style.wrapper} ${Style.last_wrapper}`}>
           <div className={`${Style.vision_second_section} ${Style.bottom_section}`}>
             <div className={Style.vision_content}>
@@ -81,6 +69,42 @@ const VisionMissionClient = () => {
               <img src={fallback.section4.image1} className={Style.img_primary} alt="" />
               <img src={fallback.section4.image2} className={Style.img_secondary} alt="" />
             </div>
+          </div>
+        </section>
+
+        <section className={Style.enquiry_section} data-animation="opacity-up">
+          <div className={Style.enquiry_card}>
+            <div className={Style.enquiry_header}>
+              <p className={Style.enquiry_label}>Get In Touch</p>
+              <h3 className={Style.enquiry_heading}>Have a Query? We&apos;d Love to Hear From You</h3>
+              <p className={Style.enquiry_sub}>Fill in the form below and our team will get back to you shortly.</p>
+            </div>
+            <form
+              className={Style.enquiry_form}
+              action="mailto:info@pay10.ae"
+              method="post"
+              encType="text/plain"
+            >
+              <div className={Style.form_row}>
+                <div className={Style.form_group}>
+                  <label htmlFor="vm-name">Full Name</label>
+                  <input id="vm-name" name="Name" type="text" placeholder="Your full name" required />
+                </div>
+                <div className={Style.form_group}>
+                  <label htmlFor="vm-email">Email Address</label>
+                  <input id="vm-email" name="Email" type="email" placeholder="you@example.com" required />
+                </div>
+              </div>
+              <div className={Style.form_group}>
+                <label htmlFor="vm-subject">Subject</label>
+                <input id="vm-subject" name="Subject" type="text" placeholder="How can we help you?" required />
+              </div>
+              <div className={Style.form_group}>
+                <label htmlFor="vm-message">Message</label>
+                <textarea id="vm-message" name="Message" rows={5} placeholder="Write your message here…" required />
+              </div>
+              <button type="submit" className={Style.enquiry_btn}>Send Message</button>
+            </form>
           </div>
         </section>
       </div>

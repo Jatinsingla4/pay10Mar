@@ -119,11 +119,39 @@ const AboutClient = () => {
         <section className={Style.about_bg_circle}>
           <div className={Style.wrapper}>
             <AboutSecondSection
-              section2Image={undefined}
-              section2Heading={undefined}
-              section2Content={undefined}
+              section2Image="/images/about_images/about_img_3.png"
+              section2Html={`
+                <strong>Empowering Your Financial Journey</strong>
+                <div style="width:56px;height:4px;background:var(--primary-gradient);border-radius:2px;margin:18px 0 24px;"></div>
+                <p>At Pay10 UAE, we believe in creating seamless financial connectivity. As a CBUAE-regulated Alternative Payments Platform, we deliver secure, interoperable, and compliance-first digital payment solutions that bridge the gap between innovation and everyday reliability.</p>
+                <p style="margin-top:16px;">Proudly aligned with the Central Bank and transformative schemes like Aani, Al Tareq, and Jaywan, our robust infrastructure is designed to fuel growth — making payments more accessible, transparent, and scalable for consumers and merchants alike.</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;">
+                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">CBUAE Regulated</span>
+                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">Open Finance</span>
+                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">SVF Licensed</span>
+                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">RPSCS Category II</span>
+                  <span style="padding:8px 18px;border-radius:100px;background:var(--primary-gradient);color:#fff;font-size:13px;font-family:'bold';white-space:nowrap;">Exchange Business</span>
+                </div>
+              `}
             />
+          </div>
 
+          <div className={Style.wrapper2}>
+            <AboutTeamMember
+              section5Heading={mergedMembersHeading}
+              section5={mergedMembersSection}
+              imageBase=""
+            />
+          </div>
+
+          {/* Our Journey So Far Section */}
+          <JourneySection
+            journeyData={journeyData}
+            heading={undefined}
+            largeDescriptionText={true}
+          />
+
+          <div className={Style.wrapper}>
             <PowerToDreamSection
               imgPrimary="/images/about_images/about-phone.png"
               imgSecondary="/images/about_images/about-woman.png"
@@ -136,23 +164,6 @@ const AboutClient = () => {
               section3={{}}
             />
           </div>
-
-          <div className={Style.second_bg_circle}>
-            <div className={Style.wrapper2}>
-              <AboutTeamMember
-                section5Heading={mergedMembersHeading}
-                section5={mergedMembersSection}
-                imageBase=""
-              />
-            </div>
-          </div>
-
-          {/* Our Journey So Far Section */}
-          <JourneySection
-            journeyData={journeyData}
-            heading={undefined}
-            largeDescriptionText={true}
-          />
         </section>
       </div>
     </main>

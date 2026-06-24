@@ -3,10 +3,9 @@ import Style from './AboutBanner.module.scss';
 
 const AboutBanner = ({ topSubHeading, topHeading, topDescription }) => {
   // Provide fallbacks if the props are not passed in
-  const fallbackSubHeading = 'ABOUT US';
-  const fallbackHeading = 'ABOUT US';
-  const fallbackDescription =
-    'Pay10 UAE is a regulated payments platform building secure, interoperable, and compliance-led payment infrastructure. Aligned with the Central Bank and schemes such as Aani, Al Tareq, and Jaywan, we operate under key licenses including the Stored Value Facility license, Retail Payment Services and Card Schemes Category II, and Open Finance, with cross-border capability.';
+  const fallbackSubHeading = '';
+  const fallbackHeading = '';
+  const fallbackDescription = '';
 
   // Format description text: convert \r\n to <br /> and handle HTML tags
   const formatDescription = (text) => {

@@ -74,8 +74,12 @@
 
 .infoCardsGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr 1fr;
+  }
 
   @include tab {
     grid-template-columns: 1fr;
@@ -126,6 +130,18 @@
 .emailLink {
   color: var(--orange-icon);
   text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+  }
+}
+
+.phoneLink {
+  color: var(--orange-icon);
+  text-decoration: none;
+  font-family: "bold", sans-serif;
   transition: opacity 0.2s ease;
 
   &:hover {

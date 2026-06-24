@@ -227,35 +227,51 @@ const ContactClient = () => {
         {/* Contact Info Cards */}
         <section className={Style.infoCardsSection}>
           <div className={Style.infoCardsGrid}>
-            {/* Visit Us */}
+            {/* Address */}
             <div className={Style.infoCard} data-animation="opacity-up">
               <div className={Style.infoCardIcon}>
                 <Icon icon="weui:location-outlined" />
               </div>
-              <h3>Our Office</h3>
-              <p>1004, U-bora Office Tower, Business Bay, Dubai, UAE</p>
+              <h3>Address</h3>
+              <p>1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates</p>
             </div>
 
-            {/* Email Us */}
+            {/* Email */}
             <div className={Style.infoCard} data-animation="opacity-up">
               <div className={Style.infoCardIcon}>
                 <Icon icon="ic:outline-email" />
               </div>
-              <h3>Email Address</h3>
+              <h3>Email</h3>
               <p>
                 <a href="mailto:info@pay10.ae" className={Style.emailLink}>info@pay10.ae</a>
-                <br />
-                <a href="mailto:support@pay10.ae" className={Style.emailLink}>support@pay10.ae</a>
               </p>
             </div>
 
-            {/* Call Us */}
+            {/* Merchant Support */}
+            <div className={Style.infoCard} data-animation="opacity-up">
+              <div className={Style.infoCardIcon}>
+                <Icon icon="ic:outline-support-agent" />
+              </div>
+              <h3>Merchant Support</h3>
+              <p>
+                <a href="mailto:merchant.support@pay10.ae" className={Style.emailLink}>merchant.support@pay10.ae</a>
+              </p>
+            </div>
+
+            {/* Phone */}
             <div className={Style.infoCard} data-animation="opacity-up">
               <div className={Style.infoCardIcon}>
                 <Icon icon="prime:mobile" />
               </div>
-              <h3>Helpline</h3>
-              <p>800-PAY10 (800-72910)</p>
+              <h3>Phone</h3>
+              <p>
+                For Pay10 Queries:<br />
+                <a href="tel:80072910" className={Style.phoneLink}>80072910</a>
+              </p>
+              <p>
+                For Pay10 Business Queries:<br />
+                <a href="tel:800729110" className={Style.phoneLink}>800729110</a>
+              </p>
             </div>
           </div>
         </section>

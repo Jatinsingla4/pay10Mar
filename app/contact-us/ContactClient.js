@@ -219,7 +219,7 @@ const ContactClient = () => {
             <h5 data-animation="opacity-up">GET IN TOUCH</h5>
             <h1 data-animation="opacity-up">Contact Us</h1>
             <p data-animation="opacity-up">
-              Have questions about Pay10 services? Our team in Dubai is ready to assist you.
+              Need assistance or have questions? Reach out to us anytime. Our team are always happy to help.
             </p>
           </div>
         </section>

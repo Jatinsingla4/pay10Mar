@@ -37,13 +37,14 @@
       }
 
       p {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
         line-height: 1.85;
         color: var(--gray);
         font-family: 'regular', sans-serif;
         margin-bottom: 28px;
 
-        @include tab { font-size: 1rem; }
+        @include tab { font-size: 1.1rem; }
+        @include mobile { font-size: 1rem; }
       }
 
       div[style] {

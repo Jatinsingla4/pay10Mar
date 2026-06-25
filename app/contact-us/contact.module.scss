@@ -300,7 +300,7 @@
 
 .formCategoryTabs {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 12px;
   margin-bottom: 32px;
 }

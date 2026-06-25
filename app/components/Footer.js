@@ -81,10 +81,11 @@ const footerData = {
     },
   },
   socialMedia: {
-    linkedin: 'https://www.linkedin.com/company/pay10-uae',
-    x: 'https://x.com/Pay10_Global',
-    instagram: 'https://www.instagram.com/pay10global/',
-    facebook: 'https://www.facebook.com/61570783563019/',
+    linkedin: 'https://ae.linkedin.com/company/pay10-uae',
+    x: 'https://x.com/pay10UAE',
+    instagram: 'https://www.instagram.com/pay10.uae/',
+    facebook: 'https://www.facebook.com/people/Pay10-UAE/61570783563019/#',
+    youtube: 'https://www.youtube.com/@Pay10UAE',
   },
 }
 
@@ -344,6 +345,9 @@ const Footer = () => {
             <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
               <Image width={24} height={24} src="/images/common/facebook.svg" alt="Facebook" className="footer__social-icon" />
             </a>
+            <a href={footerData.socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="YouTube">
+              <Image width={24} height={24} src="/images/common/youtube.svg" alt="YouTube" className="footer__social-icon" />
+            </a>
           </div>
         </div>
       </div>
@@ -373,6 +377,9 @@ const Footer = () => {
           </a>
           <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
             <Image width={24} height={24} src="/images/common/facebook.svg" alt="Facebook" className="footer__social-icon" />
+          </a>
+          <a href={footerData.socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="YouTube">
+            <Image width={24} height={24} src="/images/common/youtube.svg" alt="YouTube" className="footer__social-icon" />
           </a>
         </div>
       </div>

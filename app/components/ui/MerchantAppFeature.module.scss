@@ -1,0 +1,155 @@
+.merchantFeatureSection {
+  padding: 80px 20px;
+  background-color: var(--white);
+  
+  @media (max-width: 991px) {
+    padding: 60px 15px;
+  }
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+
+  @media (max-width: 991px) {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.rightContent {
+  display: flex;
+  flex-direction: column;
+  
+  @media (max-width: 991px) {
+    order: 1; /* On mobile, put text first usually, or match image first. We will put text first like the consumer app. */
+  }
+}
+
+.heading {
+  font-family: 'bold', sans-serif;
+  font-size: 3rem;
+  color: var(--black);
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+  
+  @media (max-width: 1200px) {
+    font-size: 2.5rem;
+  }
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+}
+
+.subheading {
+  font-family: 'medium', sans-serif;
+  font-size: 1.8rem;
+  color: var(--primary-color, #f35b04);
+  margin: 0 0 30px 0;
+
+  @media (max-width: 768px) {
+    font-size: 1.4rem;
+    margin: 0 0 20px 0;
+  }
+}
+
+.storeBadges {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+
+  .badge {
+    background-color: var(--black);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    gap: 12px;
+    min-width: 160px;
+
+    .iconWrapper {
+      font-size: 28px;
+      display: flex;
+    }
+
+    .badgeText {
+      display: flex;
+      flex-direction: column;
+      
+      .smallText {
+        font-family: 'regular', sans-serif;
+        font-size: 0.6rem;
+        line-height: 1;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+      }
+      
+      .largeText {
+        font-family: 'bold', sans-serif;
+        font-size: 1.1rem;
+        line-height: 1;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 30px;
+  }
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-family: 'regular', sans-serif;
+    font-size: 1.1rem;
+    color: var(--gray);
+    line-height: 1.5;
+
+    .checkIcon {
+      color: var(--primary-color, #f35b04);
+      flex-shrink: 0;
+      font-size: 1.2rem;
+      margin-top: 2px;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.leftImage {
+  border-radius: 32px;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 4.5;
+  background-color: #f7f9fc;
+
+  @media (max-width: 991px) {
+    order: 2; /* On mobile, image goes below text */
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}

@@ -14,30 +14,17 @@
   }
 
 .wrapperWithBgCircle {
-    background-image: 
-        url('/images/product_page_images/bg_circle2.svg'),
-        url('/images/product_page_images/bg_circle.svg');
-    background-repeat: no-repeat, no-repeat;
-    background-position: 
-        0% 125%,
-        5rem center;
-    background-size: auto, 150% 100%;  // Set bg_circle.svg to full screen
+    background-image: url('/images/product_page_images/bg_circle.svg');
+    background-repeat: no-repeat;
+    background-position: 5rem center;
+    background-size: 150% 100%;
 
-    // Mobile adjustments
     @include tab {
-        background-image:
-            none,
-            url('/images/product_page_images/bg_circle.svg');
-        background-position: 
-            -5rem bottom,
-            0 center;
-        background-size: auto, 250% 100%;
+        background-position: 0 center;
+        background-size: 250% 100%;
     }
 
     @include mobile {
-        background-image:
-            none,
-            url('/images/product_page_images/bg_circle.svg');
         background-position: 0 center;
         background-size: 380% 150%;
     }

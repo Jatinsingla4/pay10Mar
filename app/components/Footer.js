@@ -51,6 +51,7 @@ const footerData = {
         { label: 'Key Facts Statement', href: '/key-fact-statement' },
         { label: 'Schedule of Charges', href: '/coming-soon' },
         { label: 'FAQ', href: '/faqs' },
+        { label: 'Al Tareq FAQ', href: '/faq-altareq' },
       ],
     },
     resources: {
@@ -350,14 +351,10 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="footer__bottom">
         <div className="footer__bottom-container">
-          {/* English Address */}
-          <div className="footer__address footer__address--en">
-            © PAY10 | Find us at: 1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates
-          </div>
-
-          {/* Arabic Address */}
-          <div className="footer__bottom-right footer__bottom-right--arabic-address" style={{ direction: 'rtl' }}>
-            <span>مكتب 1004، الدور 10 , برج أوبورا التجاري - دبي، الإمارات العربية المتحدة | © PAY10</span>
+          <div className="footer__address footer__address--en" style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'left', color: '#ffffff', fontSize: '0.85rem' }}>
+            <span>Copyright © 2026</span>
+            <span>Pay Ten Payment Services Provider LLC is licensed by the Central Bank of the UAE, U-Bora Office Tower, Office 1004,</span>
+            <span>Business Bay, Dubai, United Arab Emirates</span>
           </div>
         </div>
       </div>

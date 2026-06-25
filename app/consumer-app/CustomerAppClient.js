@@ -2,7 +2,7 @@
 
 import ConsumerHero from "@/app/components/ui/product/ConsumerHero";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import ConsumerSecuritySection from "@/app/components/ui/product/ConsumerSecuritySection";
+import ConsumerSecuritySection from "./ConsumerSecuritySection";
 import Style from "./page.module.scss";
 
 const CustomerAppClient = () => {

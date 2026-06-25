@@ -39,16 +39,7 @@
     max-width: 650px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
     text-align: left;
-
-    .eyebrow {
-      font-size: 1.2rem;
-      color: #ffffff;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin: 0;
-    }
 
     .headline {
       margin: 0;
@@ -59,22 +50,56 @@
       text-transform: uppercase;
     }
 
-    .description {
-      margin: 0;
-      font-size: 18px;
-      font-weight: 500;
-      color: #ffffff;
-      line-height: 1.5;
-    }
-
     @include tab {
       max-width: 100%;
       
       .headline {
         font-size: clamp(24px, 6vw, 32px);
       }
-      .description {
-        font-size: 15px;
+    }
+  }
+
+  .intro_text_section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto 60px;
+    text-align: center;
+    padding: 0 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .intro_label {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--black, #111111);
+      font-family: 'medium', sans-serif;
+    }
+
+    .intro_heading {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--black, #111111);
+      font-family: 'bold', sans-serif;
+      margin: 0;
+
+      @include mobile {
+        font-size: 32px;
+      }
+    }
+
+    .intro_para {
+      font-size: 20px;
+      line-height: 1.6;
+      color: var(--black, #111111);
+      font-family: 'medium', sans-serif;
+      margin: 0;
+      max-width: 900px;
+
+      @include mobile {
+        font-size: 16px;
       }
     }
   }

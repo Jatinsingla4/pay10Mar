@@ -9,5 +9,9 @@ export const metadata = {
 };
 
 export default function KeyFactStatementPage() {
-  return <KfsClient />;
+  return (
+    <main style={{ backgroundColor: '#ffffff', paddingTop: '80px', paddingBottom: '80px' }}>
+      <KfsClient />
+    </main>
+  );
 }

@@ -1,5 +1,4 @@
 import NewsRoomClient from "./NewsRoomClient";
-import GetStarted from '../../app/components/ui/GetStarted';
 
 export const metadata = {
   title: "News Room | Pay10",
@@ -10,8 +9,7 @@ export const metadata = {
 export default function page() {
   return (
     <>
-    <NewsRoomClient />
-    <GetStarted/>
+      <NewsRoomClient />
     </>
   )
 }

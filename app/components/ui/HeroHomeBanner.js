@@ -223,9 +223,11 @@ export default function HeroHomeBanner({
             Instant. Secure. Interoperable.
           </p>
           <h1 className={styles.title} data-anim="title">{title}</h1>
-          <Link href={ctaHref} className={styles.ctaDesktop} data-anim="cta">
-            <span>{ctaLabel}</span>
-          </Link>
+          {ctaLabel && (
+            <Link href={ctaHref} className={styles.ctaDesktop} data-anim="cta">
+              <span>{ctaLabel}</span>
+            </Link>
+          )}
         </div>
 
         {hasHeroImage && (

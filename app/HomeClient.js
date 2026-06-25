@@ -7,6 +7,7 @@ import JourneySection from './components/ui/blocks/JourneySection';
 import FeatureBlock from './components/ui/FeatureBlock';
 import CertificationHero from './components/ui/CertificationHero';
 import CertificationLicensing from './components/ui/CertificationLicensing';
+import CBUAELicenseFeatures from './components/ui/CBUAELicenseFeatures';
 
 
 const walletFeatures = [
@@ -39,14 +40,11 @@ export default function HomeClient() {
         eyebrow={undefined}
         title={undefined}
         description={undefined}
-        ctaLabel="Get In Touch"
-        heroImage={{
-          src: '/images/home/hero-mobile-2.png',
-          alt: 'Pay10 App',
-          width: 360,
-          height: 640,
-        }}
+        ctaLabel={null}
+        heroImage={null}
+        decorations={[]}
       />
+      <CBUAELicenseFeatures />
       <TextCenterBlock
         heading="We enable businesses and people to send and receive money instantly and securely."
         description=""

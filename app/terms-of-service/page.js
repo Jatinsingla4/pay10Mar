@@ -9,5 +9,9 @@ export const metadata = {
 };
 
 export default function TermsOfServicePage() {
-  return <TermsClient />;
+  return (
+    <main style={{ backgroundColor: '#ffffff', paddingTop: '80px', paddingBottom: '80px' }}>
+      <TermsClient />
+    </main>
+  );
 }

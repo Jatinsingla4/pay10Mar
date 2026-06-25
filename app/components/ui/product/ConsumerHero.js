@@ -48,17 +48,21 @@ const ConsumerHero = () => {
       <div className={Style.hero_banner_wrapper}>
         <div className={Style.hero_banner}>
           <div className={Style.hero_banner_text}>
-            <h5 className={Style.eyebrow} data-animation="opacity-up">
-              Pay10 UAE App · Consumer super app
-            </h5>
-            <h1 className={Style.headline} data-animation="opacity-up" data-anim-delay="100">
+            <h1 className={Style.headline} data-animation="opacity-up">
               EVERY PAYMENT. EVERY TRANSFER. <br /> EVERY BILL. ONE UAE APP.
             </h1>
-            <p className={Style.description} data-animation="opacity-up" data-anim-delay="200">
-              One app for every payment moment in the UAE. scan and pay, transfer money, send to mobile, pay bills, send abroad and track it all - all from Pay10.
-            </p>
           </div>
         </div>
+      </div>
+
+      <div className={Style.intro_text_section} data-animation="opacity-up">
+        <span className={Style.intro_label}>Pay10 UAE App &middot; Consumer super app</span>
+        <h2 className={Style.intro_heading}>
+          PAY SMARTER, SEND FASTER,<br />LIVE EASIER — ALL IN ONE APP.
+        </h2>
+        <p className={Style.intro_para}>
+          One app for every payment moment in the UAE. scan and pay, transfer money, send to mobile, pay bills, send abroad and track it all — all from Pay10.
+        </p>
       </div>
 
       <svg width="0" height="0">

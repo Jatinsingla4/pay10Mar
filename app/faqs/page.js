@@ -9,5 +9,9 @@ export const metadata = {
 };
 
 export default function FaqsPage() {
-  return <FaqsClient />;
+  return (
+    <main style={{ backgroundColor: 'var(--body-bg)', paddingTop: '80px', paddingBottom: '80px' }}>
+      <FaqsClient />
+    </main>
+  );
 }

@@ -52,7 +52,7 @@ const ConsumerHero = () => {
               Pay10 UAE App · Consumer super app
             </h5>
             <h1 className={Style.headline} data-animation="opacity-up" data-anim-delay="100">
-              PAY SMARTER, SEND FASTER, <br /> LIVE EASIER - ALL IN ONE APP.
+              EVERY PAYMENT. EVERY TRANSFER. <br /> EVERY BILL. ONE UAE APP.
             </h1>
             <p className={Style.description} data-animation="opacity-up" data-anim-delay="200">
               One app for every payment moment in the UAE. scan and pay, transfer money, send to mobile, pay bills, send abroad and track it all - all from Pay10.

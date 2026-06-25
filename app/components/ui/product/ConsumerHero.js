@@ -45,16 +45,20 @@ const features = [
 const ConsumerHero = () => {
   return (
     <section className={Style.consumer_hero}>
-      <div className={Style.hero_content}>
-        <h5 className={Style.eyebrow} data-animation="opacity-up">
-          Pay10 UAE App · Consumer super app
-        </h5>
-        <h1 className={Style.headline} data-animation="opacity-up" data-anim-delay="100">
-          PAY SMARTER, SEND FASTER, <br /> LIVE EASIER - ALL IN ONE APP.
-        </h1>
-        <p className={Style.description} data-animation="opacity-up" data-anim-delay="200">
-          One app for every payment moment in the UAE. scan and pay, transfer money, send to mobile, pay bills, send abroad and track it all - all from Pay10.
-        </p>
+      <div className={Style.hero_banner_wrapper}>
+        <div className={Style.hero_banner}>
+          <div className={Style.hero_banner_text}>
+            <h5 className={Style.eyebrow} data-animation="opacity-up">
+              Pay10 UAE App · Consumer super app
+            </h5>
+            <h1 className={Style.headline} data-animation="opacity-up" data-anim-delay="100">
+              PAY SMARTER, SEND FASTER, <br /> LIVE EASIER - ALL IN ONE APP.
+            </h1>
+            <p className={Style.description} data-animation="opacity-up" data-anim-delay="200">
+              One app for every payment moment in the UAE. scan and pay, transfer money, send to mobile, pay bills, send abroad and track it all - all from Pay10.
+            </p>
+          </div>
+        </div>
       </div>
 
       <svg width="0" height="0">

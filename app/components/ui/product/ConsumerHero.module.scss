@@ -2,63 +2,100 @@
 
 .consumer_hero {
   width: 100%;
-  padding: 120px 0 0 0;
+  padding: 0;
   background: var(--white);
   color: var(--black);
   overflow: hidden;
 
-  .hero_content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px 60px;
-    text-align: center;
+  .hero_banner_wrapper {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+
+  .hero_banner {
+    width: 100%;
+    height: 785px; // Matches Al Tareq banner exactly
+    display: flex;
+    align-items: center;
+    background-image: url('/images/prod_imports/Nebras-Page-Mockup-Approved-09.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    padding: 60px 56px;
+    position: relative;
+    overflow: hidden;
+
+    @include tab {
+      height: auto;
+      min-height: 400px;
+      border-radius: 16px;
+      padding: 60px 24px;
+    }
+  }
+
+  .hero_banner_text {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
 
     .eyebrow {
       font-size: 1.2rem;
-      color: var(--primary);
+      color: #ffffff;
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 24px;
+      margin: 0;
     }
 
     .headline {
+      margin: 0;
       font-family: "bold";
-      font-size: 4rem;
-      line-height: 1.1;
-      margin-bottom: 24px;
+      font-size: clamp(28px, 4vw, 48px);
+      line-height: 1.2;
+      color: #ffffff;
       text-transform: uppercase;
-
-      @include tab {
-        font-size: 3rem;
-      }
-      
-      @include mobile {
-        font-size: 2.2rem;
-      }
     }
 
     .description {
-      font-size: 1.5rem;
-      color: #666;
-      max-width: 800px;
-      margin: 0 auto;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 500;
+      color: #ffffff;
       line-height: 1.5;
+    }
 
-      @include tab {
-        font-size: 1.2rem;
+    @include tab {
+      max-width: 100%;
+      
+      .headline {
+        font-size: clamp(24px, 6vw, 32px);
+      }
+      .description {
+        font-size: 15px;
       }
     }
   }
 
   .features_wrapper {
     width: 100%;
-    border-top: 1px solid #eaeaea;
-    border-bottom: 1px solid #eaeaea;
+    padding: 0 40px;
+    margin-bottom: 60px; // Add some space below
 
     .features_scroll {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      
+      // Borders applied to the centered container instead of full width
+      border-top: 1px solid #eaeaea;
+      border-left: 1px solid #eaeaea;
+      border-radius: 12px; // Optional: soft corners for the grid
+      overflow: hidden; // Keeps borders clean
 
       @include large {
         grid-template-columns: repeat(4, 1fr);
@@ -66,6 +103,7 @@
 
       @include tab {
         grid-template-columns: repeat(3, 1fr);
+        padding: 0; // Padding handled by wrapper
       }
 
       @include mobile {
@@ -73,7 +111,7 @@
       }
 
       .feature_card {
-        padding: 40px 20px;
+        padding: 40px 16px;
         border-right: 1px solid #eaeaea;
         border-bottom: 1px solid #eaeaea;
         display: flex;
@@ -101,14 +139,15 @@
 
         .feature_title {
           font-family: "bold";
-          font-size: 1.2rem;
+          font-size: 1.05rem;
           margin-bottom: 12px;
+          line-height: 1.3;
         }
 
         .feature_desc {
-          font-size: 1rem;
+          font-size: 0.9rem;
           color: #666;
-          line-height: 1.5;
+          line-height: 1.45;
         }
       }
     }

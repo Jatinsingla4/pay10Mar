@@ -85,7 +85,7 @@
     grid-template-columns: 1fr 1fr;
   }
 
-  @include tab {
+  @include mobile {
     grid-template-columns: 1fr;
   }
 }
@@ -209,6 +209,7 @@
   @include tab {
     flex-direction: column;
     gap: 40px;
+    align-items: stretch;
   }
 }
 
@@ -345,7 +346,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
 
-  @include mobile {
+  @include lessTab {
     grid-template-columns: 1fr;
   }
 }

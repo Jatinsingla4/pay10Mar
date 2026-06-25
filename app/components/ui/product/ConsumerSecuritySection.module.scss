@@ -1,12 +1,37 @@
 @import "../../../../styles/globals/mixin";
 
-  .security_section {
+.security_section {
   width: 100%;
   padding: 120px 0;
-  background: #fafafa;
+  background-color: #fafafa;
   text-align: center;
   position: relative;
   overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background-image: url("/images/body_bg_circle.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  &::before {
+    top: -250px;
+    left: -250px;
+  }
+
+  &::after {
+    bottom: -250px;
+    right: -250px;
+  }
 
   @include mobile {
     padding: 60px 0;
@@ -19,6 +44,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 2;
   }
 
   .icon_wrapper {
@@ -129,6 +156,7 @@
         height: 120px;
         padding: 16px;
       }
+
       @include mobile {
         width: calc(100% - 8px);
         max-width: 300px;

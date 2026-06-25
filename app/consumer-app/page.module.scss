@@ -5,6 +5,7 @@
   width: 100%;
   padding: 0px 56px;
   margin: 80px 0;
+
   @include tab {
     margin: 56px 0;
     padding: 0px 16px;
@@ -41,6 +42,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+
   .left_image {
     width: 100%;
     height: 100%;
@@ -48,9 +50,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include tab{
+
+    @include tab {
       order: 2;
     }
+
     img {
       width: 100%;
       height: 100%;
@@ -60,9 +64,11 @@
 
   .features_content {
     width: 100%;
-    @include tab{
+
+    @include tab {
       order: 1;
     }
+
     .features_title {
       color: var(--black);
       font-size: 48px;
@@ -71,10 +77,12 @@
       line-height: 1.1;
       max-height: 775px;
     }
+
     .features_grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
+
       .feature_card {
         background: #fff;
         border-radius: 16px;
@@ -86,18 +94,21 @@
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(0, 0, 0, 0.05);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+
         .feature_icon {
           width: 36px;
           height: 36px;
           display: flex;
           align-items: center;
           justify-content: center;
+
           img {
             width: 100%;
             height: 100%;
             object-fit: contain;
           }
         }
+
         p {
           color: var(--black);
           font-size: 24px;
@@ -122,6 +133,7 @@
       .features_grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1.25rem;
+
         .feature_card {
           padding: 1.5rem 1rem;
 

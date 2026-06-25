@@ -120,7 +120,7 @@ const CustomerAppClient = () => {
   return (
     <main>
       <ConsumerHero />
-      
+
       {featureSectionsData.map((section, index) => (
         <ConsumerFeatureSection
           key={index}

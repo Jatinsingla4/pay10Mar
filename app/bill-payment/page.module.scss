@@ -1,0 +1,66 @@
+@import "../../styles/globals/mixin";
+
+.bill_hero {
+  width: 100%;
+  height: 785px; // Restored original fixed height for desktop
+  display: flex;
+  align-items: center; // Vertically center the text safely
+  background-image: url('/images/prod_imports/Nebras-Page-Mockup-Approved-09.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 56px; // Safe padding instead of absolute positioning
+  
+  @include tab {
+    height: auto;
+    min-height: 400px;
+    border-radius: 16px;
+    padding: 60px 24px;
+  }
+}
+
+.bill_hero_text {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  h2 {
+    margin: 0;
+    font-size: clamp(28px, 4vw, 42px); // Fluid typography for root responsiveness
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    font-family: 'bold', sans-serif;
+    word-break: break-word; // Prevents overflow on tiny screens
+  }
+
+  p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.5;
+  }
+  
+  .slogan {
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 10px;
+    font-family: 'bold', sans-serif;
+    line-height: 1.2;
+  }
+
+  @include tab {
+    max-width: 100%;
+
+    p {
+      font-size: 15px;
+    }
+  }
+}

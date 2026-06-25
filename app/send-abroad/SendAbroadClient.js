@@ -6,6 +6,32 @@ import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureS
 import InteractiveGlobe from "@/app/components/ui/3d/InteractiveGlobe";
 
 const SendAbroadClient = () => {
+  const countriesContent = (
+    <div className={Style.countries_box}>
+      <h4 className={Style.countries_heading}>7 countries Live</h4>
+      <div className={Style.flag_row}>
+        <div className={Style.flag_box}>🇮🇳</div>
+        <div className={Style.flag_box}>🇵🇭</div>
+        <div className={Style.flag_box}>🇵🇰</div>
+        <div className={Style.flag_box}>🇧🇩</div>
+        <div className={Style.flag_box}>🇳🇵</div>
+      </div>
+
+      <h4 className={Style.countries_heading} style={{ marginTop: '24px' }}>Coming soon — 8 more</h4>
+      <div className={Style.flag_row}>
+        <div className={Style.flag_box}>🇯🇴</div>
+        <div className={Style.flag_box}>🇲🇦</div>
+        <div className={Style.flag_box}>🇰🇪</div>
+        <div className={Style.flag_box}>🇹🇿</div>
+        <div className={Style.flag_box}>🇬🇭</div>
+      </div>
+
+      <p className={Style.countries_para}>
+        140+ countries are expanding. Pay10 Send Abroad is built to reach every corner of the world — because the UAE's 9M+ expatriates come from everywhere. If your country isn't live yet, it's on its way. Download Pay10 and be the first to send when your corridor opens.
+      </p>
+    </div>
+  );
+
   return (
     <main>
       <section className={Style.send_hero}>
@@ -69,6 +95,10 @@ const SendAbroadClient = () => {
       />
 
       <section className={Style.steps_section}>
+        <div className={Style.steps_header} data-animation="opacity-up">
+          <h2>Four steps. One tap. Money sent.</h2>
+          <p>Send Abroad is built for the pace of UAE life — fast, secure, and done before you finish your coffee</p>
+        </div>
         <div className={Style.steps_container}>
           <div className={Style.steps_left} data-animation="opacity-up">
             <InteractiveGlobe />
@@ -98,6 +128,16 @@ const SendAbroadClient = () => {
           </div>
         </div>
       </section>
+
+      <ConsumerFeatureSection
+        heading="Where can you Send Abroad today?"
+        subheading="Pay10 UAE App Send Abroad is live, growing fast, and on its way to 140+ countries. Check where you can send right now — and where we're headed next."
+        extraContent={countriesContent}
+        imageSrc="/images/prod_imports/consumer-app-phone.png"
+        imageAlt="Countries"
+        isReversed={true}
+        isGreyBg={true}
+      />
 
     </main>
   );

@@ -171,3 +171,31 @@
     }
   }
 }
+
+.bg_circle_wrapper {
+  width: 100%;
+  background-image: url("/images/body_bg_circle.png"), url("/images/body_bg_circle.png"), url("/images/body_bg_circle.png");
+  background-position: left 5%, right 50%, left 95%;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
+@media only screen and (max-width: 991px) {
+  .bg_circle_wrapper {
+    background-size: 80% auto, 80% auto, 80% auto;
+    background-position: left 5%, right 50%, left 95%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .bg_circle_wrapper {
+    background-size: 90% auto, 90% auto, 90% auto;
+    background-position: left 2%, right 50%, left 98%;
+  }
+}
+
+@media only screen and (max-width: 563px) {
+  .bg_circle_wrapper {
+    background-size: 120% auto, 120% auto, 120% auto;
+    background-position: left 2%, right 50%, left 98%;
+  }
+}

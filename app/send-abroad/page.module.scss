@@ -12,7 +12,7 @@
   position: relative;
   overflow: hidden;
   padding: 60px 56px; // Safe padding instead of absolute positioning
-  
+
   @include tab {
     height: auto;
     min-height: 400px;
@@ -46,7 +46,7 @@
     color: #ffffff;
     line-height: 1.5;
   }
-  
+
   .slogan {
     font-size: clamp(22px, 3vw, 28px);
     font-weight: 700;
@@ -93,7 +93,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
   }
-  
+
   @media (max-width: 500px) {
     grid-template-columns: 1fr;
   }
@@ -148,6 +148,36 @@
   }
 }
 
+.steps_header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px;
+
+  h2 {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--black, #111111);
+    margin-bottom: 16px;
+    font-family: 'bold', sans-serif;
+
+    @include mobile {
+      font-size: 28px;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    font-family: 'medium', sans-serif;
+    margin: 0;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+}
+
 .steps_container {
   max-width: 1400px;
   margin: 0 auto;
@@ -161,17 +191,15 @@
 }
 
 .steps_left {
-  background: var(--primary-gradient, linear-gradient(135deg, #ffb100 0%, #ff0000 100%));
-  border-radius: 32px;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 500px;
-  overflow: hidden;
   position: relative;
 
   .video_placeholder {
-    color: white;
+    color: var(--black, #111111);
     font-size: 24px;
     font-weight: 600;
     text-align: center;
@@ -252,13 +280,13 @@
     a {
       transition: transform 0.3s ease, opacity 0.3s ease;
       display: inline-block;
-      
+
       img {
         width: auto;
         height: 48px;
         object-fit: contain;
       }
-      
+
       &:hover {
         transform: translateY(-4px);
         opacity: 0.9;
@@ -269,13 +297,14 @@
   @include tab {
     padding: 60px 24px;
     gap: 24px;
-    
+
     h3 {
       font-size: 28px;
     }
-    
+
     .store_buttons {
       gap: 16px;
+
       a img {
         height: 42px;
       }

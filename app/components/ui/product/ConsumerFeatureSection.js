@@ -10,9 +10,10 @@ const ConsumerFeatureSection = ({
   isReversed = false,
   isGreyBg = false,
   extraContent,
+  isTransparent = false,
 }) => {
   return (
-    <section className={`${Style.feature_section} ${isGreyBg ? Style.bg_grey : Style.bg_white}`}>
+    <section className={`${Style.feature_section} ${isTransparent ? Style.bg_transparent : (isGreyBg ? Style.bg_grey : Style.bg_white)}`}>
       <div className={Style.container}>
         <div className={`${Style.text_col} ${isReversed ? Style.order_2 : Style.order_1}`}>
           <h2 data-animation="opacity-up">{heading}</h2>

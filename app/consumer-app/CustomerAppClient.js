@@ -3,6 +3,7 @@
 import ConsumerHero from "@/app/components/ui/product/ConsumerHero";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import ConsumerSecuritySection from "@/app/components/ui/product/ConsumerSecuritySection";
+import Style from "./page.module.scss";
 
 const CustomerAppClient = () => {
   const featureSectionsData = [
@@ -121,18 +122,21 @@ const CustomerAppClient = () => {
     <main>
       <ConsumerHero />
 
-      {featureSectionsData.map((section, index) => (
-        <ConsumerFeatureSection
-          key={index}
-          heading={section.heading}
-          subheading={section.subheading}
-          points={section.points}
-          imageSrc={section.imageSrc}
-          imageAlt={section.imageAlt}
-          isReversed={section.isReversed}
-          isGreyBg={section.isGreyBg}
-        />
-      ))}
+      <div className={Style.bg_circle_wrapper}>
+        {featureSectionsData.map((section, index) => (
+          <ConsumerFeatureSection
+            key={index}
+            heading={section.heading}
+            subheading={section.subheading}
+            points={section.points}
+            imageSrc={section.imageSrc}
+            imageAlt={section.imageAlt}
+            isReversed={section.isReversed}
+            isGreyBg={section.isGreyBg}
+            isTransparent={true}
+          />
+        ))}
+      </div>
 
       <ConsumerSecuritySection />
     </main>

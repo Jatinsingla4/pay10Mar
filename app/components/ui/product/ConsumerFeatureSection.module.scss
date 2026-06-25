@@ -18,6 +18,10 @@
     background: #fafafa;
   }
 
+  &.bg_transparent {
+    background: transparent;
+  }
+
   .container {
     max-width: 1200px;
     margin: 0 auto;

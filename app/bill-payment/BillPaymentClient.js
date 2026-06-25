@@ -120,48 +120,54 @@ const BillPaymentClient = () => {
         </div>
       </section>
 
-      <ConsumerFeatureSection
-        heading={utilitySection.heading}
-        subheading={utilitySection.subheading}
-        points={utilitySection.points}
-        extraContent={utilitySection.extraContent}
-        imageSrc={utilitySection.imageSrc}
-        imageAlt={utilitySection.imageAlt}
-        isReversed={utilitySection.isReversed}
-        isGreyBg={utilitySection.isGreyBg}
-      />
+      <div className={Style.bg_circle_wrapper}>
+        <ConsumerFeatureSection
+          heading={utilitySection.heading}
+          subheading={utilitySection.subheading}
+          points={utilitySection.points}
+          extraContent={utilitySection.extraContent}
+          imageSrc={utilitySection.imageSrc}
+          imageAlt={utilitySection.imageAlt}
+          isReversed={utilitySection.isReversed}
+          isGreyBg={utilitySection.isGreyBg}
+          isTransparent={true}
+        />
 
-      <ConsumerFeatureSection
-        heading={telecomSection.heading}
-        subheading={telecomSection.subheading}
-        points={telecomSection.points}
-        extraContent={telecomSection.extraContent}
-        imageSrc={telecomSection.imageSrc}
-        imageAlt={telecomSection.imageAlt}
-        isReversed={telecomSection.isReversed}
-        isGreyBg={telecomSection.isGreyBg}
-      />
+        <ConsumerFeatureSection
+          heading={telecomSection.heading}
+          subheading={telecomSection.subheading}
+          points={telecomSection.points}
+          extraContent={telecomSection.extraContent}
+          imageSrc={telecomSection.imageSrc}
+          imageAlt={telecomSection.imageAlt}
+          isReversed={telecomSection.isReversed}
+          isGreyBg={telecomSection.isGreyBg}
+          isTransparent={true}
+        />
 
-      <ConsumerFeatureSection
-        heading={transportSection.heading}
-        subheading={transportSection.subheading}
-        points={transportSection.points}
-        extraContent={transportSection.extraContent}
-        imageSrc={transportSection.imageSrc}
-        imageAlt={transportSection.imageAlt}
-        isReversed={transportSection.isReversed}
-        isGreyBg={transportSection.isGreyBg}
-      />
+        <ConsumerFeatureSection
+          heading={transportSection.heading}
+          subheading={transportSection.subheading}
+          points={transportSection.points}
+          extraContent={transportSection.extraContent}
+          imageSrc={transportSection.imageSrc}
+          imageAlt={transportSection.imageAlt}
+          isReversed={transportSection.isReversed}
+          isGreyBg={transportSection.isGreyBg}
+          isTransparent={true}
+        />
 
-      <ConsumerFeatureSection
-        heading={giftCardSection.heading}
-        subheading={giftCardSection.subheading}
-        points={giftCardSection.points}
-        imageSrc={giftCardSection.imageSrc}
-        imageAlt={giftCardSection.imageAlt}
-        isReversed={giftCardSection.isReversed}
-        isGreyBg={giftCardSection.isGreyBg}
-      />
+        <ConsumerFeatureSection
+          heading={giftCardSection.heading}
+          subheading={giftCardSection.subheading}
+          points={giftCardSection.points}
+          imageSrc={giftCardSection.imageSrc}
+          imageAlt={giftCardSection.imageAlt}
+          isReversed={giftCardSection.isReversed}
+          isGreyBg={giftCardSection.isGreyBg}
+          isTransparent={true}
+        />
+      </div>
     </main>
   );
 };

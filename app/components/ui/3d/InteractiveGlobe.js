@@ -67,7 +67,7 @@ const GlobeMesh = () => {
 export default function InteractiveGlobe() {
   return (
     <div style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0, zIndex: 1, pointerEvents: 'auto', cursor: 'grab' }}>
-      <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
+      <Canvas camera={{ position: [0, 0, 7.5], fov: 45 }}>
         <ambientLight intensity={1.5} />
         <directionalLight position={[10, 10, 5]} intensity={2} />
         <Suspense fallback={null}>

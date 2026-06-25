@@ -220,8 +220,8 @@
 
 @media only screen and (max-width: 991px) {
   .bg_circle_wrapper {
-    background-size: 100% 60%;
-    background-position-x: 17rem;
+    background-size: 80% auto;
+    background-position: right center;
 
     .vision_second_section {
       gap: 1.5rem;
@@ -258,8 +258,8 @@
   }
 
   .bg_circle_wrapper {
-    background-size: 100% 50%;
-    background-position-x: 15rem;
+    background-size: 90% auto;
+    background-position: right center;
 
     .vision_second_section {
       grid-template-columns: 1fr;
@@ -287,8 +287,8 @@
   }
 
   .bg_circle_wrapper {
-    background-size: 100% 50%;
-    background-position-x: 15rem;
+    background-size: 120% auto;
+    background-position: right center;
 
     .vision_second_section {
       grid-template-columns: 1fr;

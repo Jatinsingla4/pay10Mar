@@ -212,8 +212,10 @@ const ContactClient = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!validateForm()) {
-      setFormSubmitStatus("error");
-      setFormSubmitMessage("Please fix the errors in the form");
+      // Just return, validateForm() already sets individual field errors.
+      // We clear any existing global submit messages so they don't linger.
+      setFormSubmitStatus(null);
+      setFormSubmitMessage("");
       return;
     }
 

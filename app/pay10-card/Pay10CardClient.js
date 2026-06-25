@@ -4,6 +4,8 @@ import React from "react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import Pay10CardFeatures from "./components/Pay10CardFeatures";
+import Pay10AppFeature from "./components/Pay10AppFeature";
+import Pay10WPSFeature from "./components/Pay10WPSFeature";
 
 const Pay10CardClient = () => {
   const cardFeature = {
@@ -46,6 +48,10 @@ const Pay10CardClient = () => {
       />
 
       <Pay10CardFeatures />
+
+      <Pay10AppFeature />
+
+      <Pay10WPSFeature />
     </main>
   );
 };

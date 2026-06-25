@@ -1,0 +1,73 @@
+"use client";
+
+import React from "react";
+import Image from "next/image";
+import { Icon } from "@iconify/react";
+import styles from "./Pay10AppFeature.module.scss";
+
+export default function Pay10AppFeature() {
+  const features = [
+    "Designed for Everyday Convenience",
+    "Simple to use for everyday transactions",
+    "Ease of card management through Pay10 App",
+    "Manage your card limits",
+    "Withdraw cash from ATM’s across the UAE",
+    "Make payments at 100,000+ merchant POS terminals in the UAE"
+  ];
+
+  return (
+    <section className={styles.merchantFeatureSection}>
+      <div className={styles.container}>
+        
+        {/* Left Image (Desktop) - Placeholder */}
+        <div className={styles.leftImage} data-animation="fade-up">
+           <div style={{ width: '100%', height: '100%', backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#888', fontSize: '1.2rem', fontFamily: 'medium', border: '2px dashed #ccc', borderRadius: '32px' }}>
+             [Card Image Placeholder]
+           </div>
+        </div>
+
+        {/* Right Content (Desktop) */}
+        <div className={styles.rightContent} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
+          <h2 className={styles.heading}>Welcome to Pay10, your Pay10 Jaywan Prepaid Card is here.</h2>
+          <h3 className={styles.subheading}>Let us unlock a world of possibilities.</h3>
+          
+          <p className={styles.description}>
+            <strong>How to Request your card:</strong> You request your card digitally thru the Pay10 UAE App, and the physical card upon approval is delivered to you.
+          </p>
+
+          <div className={styles.storeBadges}>
+            <a href="#" className={styles.badge} aria-label="Download on the App Store">
+              <span className={styles.iconWrapper}>
+                <Icon icon="ic:baseline-apple" />
+              </span>
+              <div className={styles.badgeText}>
+                <span className={styles.smallText}>Download on the</span>
+                <span className={styles.largeText}>App Store</span>
+              </div>
+            </a>
+            
+            <a href="#" className={styles.badge} aria-label="Get it on Google Play">
+              <span className={styles.iconWrapper}>
+                <Icon icon="logos:google-play-icon" />
+              </span>
+              <div className={styles.badgeText}>
+                <span className={styles.smallText}>GET IT ON</span>
+                <span className={styles.largeText}>Google Play</span>
+              </div>
+            </a>
+          </div>
+
+          <ul className={styles.featuresList}>
+            {features.map((feature, index) => (
+              <li key={index} data-animation="fade-up" style={{ transitionDelay: `${0.1 + (index * 0.1)}s` }}>
+                <Icon icon="mdi:check" className={styles.checkIcon} />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+    </section>
+  );
+}

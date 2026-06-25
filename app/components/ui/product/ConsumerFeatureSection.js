@@ -9,6 +9,7 @@ const ConsumerFeatureSection = ({
   imageAlt,
   isReversed = false,
   isGreyBg = false,
+  extraContent,
 }) => {
   return (
     <section className={`${Style.feature_section} ${isGreyBg ? Style.bg_grey : Style.bg_white}`}>
@@ -29,6 +30,11 @@ const ConsumerFeatureSection = ({
                 </li>
               ))}
             </ul>
+          )}
+          {extraContent && (
+            <div className={Style.extra_content} data-animation="opacity-up" data-anim-delay="250">
+              {extraContent}
+            </div>
           )}
         </div>
 

@@ -14,6 +14,21 @@ const BillPaymentClient = () => {
       "No more logging into separate utility portals",
       "Payment confirmed instantly — no processing delays"
     ],
+    extraContent: (
+      <div className={Style.provider_badges_box}>
+        <p className={Style.provider_heading}>PROVIDERS — 3 launching first, 11 at full rollout:</p>
+        <div className={Style.badges_container}>
+          <span className={`${Style.badge} ${Style.badge_green}`}>DEWA</span>
+          <span className={`${Style.badge} ${Style.badge_green}`}>SEWA</span>
+          <span className={`${Style.badge} ${Style.badge_green}`}>LOOTAH</span>
+          <span className={`${Style.badge} ${Style.badge_orange}`}>ADDC</span>
+          <span className={`${Style.badge} ${Style.badge_orange}`}>AADC</span>
+          <span className={`${Style.badge} ${Style.badge_orange}`}>FEWA</span>
+          <span className={`${Style.badge} ${Style.badge_orange}`}>RAKIA</span>
+          <span className={`${Style.badge} ${Style.badge_orange}`}>+ more</span>
+        </div>
+      </div>
+    ),
     imageSrc: "/images/prod_imports/link_acc.png",
     imageAlt: "Utility Bill Payments",
     isReversed: false,
@@ -29,6 +44,16 @@ const BillPaymentClient = () => {
       "Never get cut off because you forgot to recharge",
       "Both UAE network operators — covered"
     ],
+    extraContent: (
+      <div className={Style.provider_badges_box}>
+        <p className={Style.provider_heading}>PROVIDERS AT LAUNCH:</p>
+        <div className={Style.badges_container}>
+          <span className={Style.badge}>e&</span>
+          <span className={Style.badge}>du</span>
+          <span className={Style.badge}>Virgin Mobile</span>
+        </div>
+      </div>
+    ),
     imageSrc: "/images/prod_imports/consumer-app-phone.png",
     imageAlt: "Telecom Bill Payments",
     isReversed: true, // left side photo, right side text
@@ -43,6 +68,21 @@ const BillPaymentClient = () => {
       "All public transport providers across all 7 Emirates",
       "12 transport authorities enabled from day one"
     ],
+    extraContent: (
+      <div className={Style.provider_badges_box}>
+        <p className={Style.provider_heading}>PROVIDERS — ALL 12 ENABLED AT LAUNCH:</p>
+        <div className={Style.badges_container}>
+          <span className={Style.badge}>NOL · RTA</span>
+          <span className={Style.badge}>Abu Dhabi</span>
+          <span className={Style.badge}>Sharjah</span>
+          <span className={Style.badge}>Ajman</span>
+          <span className={Style.badge}>RAK</span>
+          <span className={Style.badge}>Fujairah</span>
+          <span className={Style.badge}>UAQ</span>
+          <span className={Style.badge}>+ all 12</span>
+        </div>
+      </div>
+    ),
     imageSrc: "/images/prod_imports/link_acc.png",
     imageAlt: "Transport Bill Payments",
     isReversed: false, // text left, image right
@@ -84,6 +124,7 @@ const BillPaymentClient = () => {
         heading={utilitySection.heading}
         subheading={utilitySection.subheading}
         points={utilitySection.points}
+        extraContent={utilitySection.extraContent}
         imageSrc={utilitySection.imageSrc}
         imageAlt={utilitySection.imageAlt}
         isReversed={utilitySection.isReversed}
@@ -94,6 +135,7 @@ const BillPaymentClient = () => {
         heading={telecomSection.heading}
         subheading={telecomSection.subheading}
         points={telecomSection.points}
+        extraContent={telecomSection.extraContent}
         imageSrc={telecomSection.imageSrc}
         imageAlt={telecomSection.imageAlt}
         isReversed={telecomSection.isReversed}
@@ -104,6 +146,7 @@ const BillPaymentClient = () => {
         heading={transportSection.heading}
         subheading={transportSection.subheading}
         points={transportSection.points}
+        extraContent={transportSection.extraContent}
         imageSrc={transportSection.imageSrc}
         imageAlt={transportSection.imageAlt}
         isReversed={transportSection.isReversed}

@@ -3,7 +3,11 @@ import React, { useEffect, useRef } from 'react';
 import Style from './ConsumerSecuritySection.module.scss';
 import Image from 'next/image';
 
-const licenseImages = ['/images/prod_imports/soc2.png', '/images/prod_imports/pci.png'];
+const licenseImages = [
+  '/images/home/cbuae-logo.png',
+  '/images/prod_imports/soc2.png', 
+  '/images/prod_imports/pci.png'
+];
 
 const ConsumerSecuritySection = () => {
   const trackRef = useRef(null);
@@ -17,9 +21,9 @@ const ConsumerSecuritySection = () => {
     const slide = () => {
       const track = trackRef.current;
       const container = marqueeRef.current;
-      if (!track || !container) return;
+      if (!track || !container || !track.children[0]) return;
 
-      const cardW = container.offsetWidth / 2;
+      const cardW = track.children[0].offsetWidth;
       const gap = 24;
       const stepPx = cardW + gap;
 
@@ -41,6 +45,7 @@ const ConsumerSecuritySection = () => {
     const id = setInterval(slide, 3500);
     return () => clearInterval(id);
   }, []);
+
   return (
     <section className={Style.security_section}>
       <div className={Style.container}>
@@ -77,7 +82,7 @@ const ConsumerSecuritySection = () => {
           
           <div className={Style.badgesMarquee} ref={marqueeRef}>
             <div className={Style.badgesTrack} ref={trackRef}>
-              {[...licenseImages, ...licenseImages].map((item, index) => (
+              {[...licenseImages, ...licenseImages, ...licenseImages].map((item, index) => (
                 <div key={index} className={Style.badgeCard}>
                   <img
                     src={item}

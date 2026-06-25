@@ -99,29 +99,42 @@
   }
 
   .team_grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
     padding: 0 56px;
 
+    .member_card {
+      width: calc((100% - 40px) / 3);
+    }
+
     @include large {
-      grid-template-columns: repeat(3, 1fr);
+      .member_card {
+        width: calc((100% - 40px) / 3);
+      }
     }
 
     @include tab {
-      grid-template-columns: repeat(3, 1fr);
       padding: 0 16px;
       gap: 14px;
+      .member_card {
+        width: calc((100% - 28px) / 3);
+      }
     }
 
     @include lessTab {
-      grid-template-columns: repeat(2, 1fr);
       gap: 12px;
+      .member_card {
+        width: calc((100% - 12px) / 2);
+      }
     }
 
     @include mobile {
-      grid-template-columns: repeat(2, 1fr);
       gap: 10px;
+      .member_card {
+        width: calc((100% - 10px) / 2);
+      }
     }
   }
 
@@ -151,7 +164,7 @@
 
   .member_image {
     width: 100%;
-    aspect-ratio: 3 / 7;
+    aspect-ratio: 4 / 5;
     overflow: hidden;
 
     img {

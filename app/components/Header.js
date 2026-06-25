@@ -18,24 +18,34 @@ const navigationData = {
   productsMega: {
     groups: [
       {
-        id: 'prepaid',
-        label: 'Digital Wallet',
+        id: 'consumer',
+        label: 'Consumer Section',
         icon: '/images/header/prepaid.svg',
         items: [
           {
-            label: 'Consumer App',
+            label: 'Pay10 UAE App',
             href: '/consumer-app',
             icon: '/images/header/pay-10-app.svg',
+          },
+          {
+            label: 'Bill Payment',
+            href: '/bill-payment',
+            icon: '/images/header/payments.svg',
+          },
+          {
+            label: 'Send Abroad',
+            href: '/send-abroad',
+            icon: '/images/header/collect-world.svg',
+          },
+          {
+            label: 'Pay10 Card',
+            href: '/pay10-card',
+            icon: '/images/header/prepaid.svg',
           },
           {
             label: 'Open Finance Al Tareq',
             href: '/open-finance-altareq',
             icon: '/images/header/sf.svg',
-          },
-          {
-            label: 'Merchant App',
-            href: '/merchant-app',
-            icon: '/images/header/pay-10-biz.svg',
           },
         ],
       },

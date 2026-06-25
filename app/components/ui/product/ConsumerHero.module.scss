@@ -1,0 +1,116 @@
+@import "../../../../styles/globals/mixin";
+
+.consumer_hero {
+  width: 100%;
+  padding: 120px 0 0 0;
+  background: var(--white);
+  color: var(--black);
+  overflow: hidden;
+
+  .hero_content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+    text-align: center;
+
+    .eyebrow {
+      font-size: 1.2rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 24px;
+    }
+
+    .headline {
+      font-family: "bold";
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      text-transform: uppercase;
+
+      @include tab {
+        font-size: 3rem;
+      }
+      
+      @include mobile {
+        font-size: 2.2rem;
+      }
+    }
+
+    .description {
+      font-size: 1.5rem;
+      color: #666;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.5;
+
+      @include tab {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .features_wrapper {
+    width: 100%;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+
+    .features_scroll {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      width: 100%;
+
+      @include large {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      @include tab {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @include mobile {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .feature_card {
+        padding: 40px 20px;
+        border-right: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+        display: flex;
+        flex-direction: column;
+
+        @include mobile {
+          padding: 30px 15px;
+        }
+
+          .feature_icon {
+          width: 56px;
+          height: 56px;
+          border-radius: 12px;
+          background: rgba(0, 0, 0, 0.04);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 24px;
+
+          svg * {
+            fill: url(#heroIconGradient);
+            stroke: url(#heroIconGradient);
+          }
+        }
+
+        .feature_title {
+          font-family: "bold";
+          font-size: 1.2rem;
+          margin-bottom: 12px;
+        }
+
+        .feature_desc {
+          font-size: 1rem;
+          color: #666;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+}

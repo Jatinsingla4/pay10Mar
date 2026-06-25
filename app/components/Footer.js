@@ -26,10 +26,13 @@ const footerData = {
       label: 'Products',
       items: [
         {
-          label: 'Digital Wallet',
+          label: 'Consumer Section',
           subItems: [
-            { label: 'Consumer App', href: '/consumer-app' },
-            { label: 'Merchant App', href: '/merchant-app' },
+            { label: 'Pay10 UAE App', href: '/consumer-app' },
+            { label: 'Bill Payment', href: '/bill-payment' },
+            { label: 'Send Abroad', href: '/send-abroad' },
+            { label: 'Pay10 Card', href: '/pay10-card' },
+            { label: 'Open Finance Al Tareq', href: '/open-finance-altareq' },
           ],
         },
         {

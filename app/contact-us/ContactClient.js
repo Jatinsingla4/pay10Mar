@@ -288,7 +288,6 @@ const ContactClient = () => {
         <section className={Style.heroBanner}>
           <div className={Style.heroOverlay}></div>
           <div className={Style.heroContent}>
-            <h5 data-animation="opacity-up">GET IN TOUCH</h5>
             <h1 data-animation="opacity-up">Contact Us</h1>
             <p data-animation="opacity-up">
               Need assistance or have questions? Reach out to us anytime. Our team is always happy to help.

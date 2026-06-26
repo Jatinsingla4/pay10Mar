@@ -3,31 +3,47 @@
 // ─── Hero Banner ────────────────────────────────────────────────────────────
 
 .heroBanner {
-  min-height: 430px;
-  background-image: url("/images/news-banner1.jpg");
+  min-height: 620px;
+  background-image: url("/images/contact_images/contact-banner.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center top;
   background-size: cover;
   position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   overflow: hidden;
+
+  @include tab {
+    min-height: 500px;
+    background-position: center center;
+  }
+
+  @include mobile {
+    min-height: 420px;
+  }
 }
 
 .heroOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.22) 100%);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.05) 55%);
 }
 
 .heroContent {
-  position: relative;
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
-  width: min(100%, 880px);
-  padding: 80px 20px;
+  width: 90%;
+  max-width: 860px;
+  padding: 0 24px;
   color: var(--white);
+  text-align: center;
+
+  @include mobile {
+    top: 32px;
+    width: 94%;
+    padding: 0 16px;
+  }
 
   h5 {
     font-size: 1rem;

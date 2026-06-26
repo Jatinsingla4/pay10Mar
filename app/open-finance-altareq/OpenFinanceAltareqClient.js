@@ -30,7 +30,7 @@ const ALTAREQ_CONNECTED_INTRO = {
   Title: "The future of finance is connected",
   Image: "/images/prod_imports/altareq-logo.png",
   Description: `
-<p>AlTareq is now live in your Pay10 App, giving you seamless, secure access to your bank account, add money, and pay directly from your bank account.</p>
+<p>AlTareq is now live in your Pay10 UAE App, giving you seamless, secure access to your bank account, add money, and pay directly from your bank account.</p>
 <p>AlTareq is the UAE's national Open Finance gateway launched by the Central Bank of the UAE to securely connect licensed financial institutions, and third-party providers.</p>
 `.trim(),
 };
@@ -112,7 +112,7 @@ const OpenFinanceAltareqClient = () => {
             Real-time Payments via AlTareq
           </h2>
           <p>
-            Discover new ways to access financial services in your Pay10 App with AlTareq, the UAE's open finance initiative.
+            Discover new ways to access financial services in your Pay10 UAE App with AlTareq, the UAE's open finance initiative.
           </p>
         </div>
       </section>

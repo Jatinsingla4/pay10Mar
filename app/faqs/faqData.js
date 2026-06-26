@@ -131,111 +131,111 @@ const faqData = [
     tabName: "FAQ WPS Employee",
     faqs: [
       {
-        question: "1. About Pay10 WPS - What is Pay10 WPS?",
+        question: "1. What is Pay10 WPS?",
         answer: "Pay10 WPS is a service made available by Pay10 to support salary or wage credits under the UAE Wage Protection System (WPS). Your employer has selected Pay10 to pay your salary safely and on time into your Pay10 UAE App universal account."
       },
       {
-        question: "1. About Pay10 WPS - Why am I receiving my salary through Pay10?",
+        question: "2. Why am I receiving my salary through Pay10?",
         answer: "Your employer has selected Pay10 as their WPS partner to: Pay salaries securely, Comply with UAE labor rules and give employees access to their salary through the Pay10 UAE App, and where issued, through a Pay10 Card linked to their Pay10 account."
       },
       {
-        question: "2. Pay10 Account & App - What is the Pay10 UAE App?",
+        question: "3. What is the Pay10 UAE App?",
         answer: "The Pay10 UAE App is a mobile app where you can: Receive your salary, Pay at local merchants (shops), Send money locally or internationally, Pay bills, and Manage your Pay10 issued card."
       },
       {
-        question: "2. Pay10 Account & App - Do I need a bank account to use Pay10?",
+        question: "4. Do I need a bank account to use Pay10?",
         answer: "No, you do not need a bank account to receive your salary through the Pay10 UAE App. However, if you have a bank account, you can connect it to add money to your Pay10 UAE App."
       },
       {
-        question: "2. Pay10 Account & App - Is the Pay10 UAE App safe?",
+        question: "5. Is the Pay10 UAE App safe?",
         answer: "Yes, Pay10 follows UAE Central Bank regulations and uses secure systems to protect your money and transaction data."
       },
       {
-        question: "3. Salary & WPS - When will I receive my salary?",
+        question: "6. When will I receive my salary?",
         answer: "Your salary is credited based on your employer’s payroll cycle. Once your employer submits salary through WPS, it will be credited to your Pay10 account."
       },
       {
-        question: "3. Salary & WPS - Will I get a notification when my salary is credited?",
+        question: "7. Will I get a notification when my salary is credited?",
         answer: "Yes, you will receive in-app, SMS, and email notifications when your salary is credited."
       },
       {
-        question: "3. Salary & WPS - Can I see my salary history?",
+        question: "8. Can I see my salary history?",
         answer: "Yes, you can view salary credits and past transactions directly in the Pay10 UAE App transaction history."
       },
       {
-        question: "4. Pay10 Jaywan Card - What is the Pay10 Jaywan Card?",
+        question: "9. What is the Pay10 Jaywan Card?",
         answer: "The Pay10 Jaywan Card is a prepaid card issued by Pay10 and linked to your Pay10 UAE App account."
       },
       {
-        question: "4. Pay10 Jaywan Card - Where can I use my Jaywan card?",
+        question: "10. Where can I use my Jaywan card?",
         answer: "You can use the card: At POS machines that accept Jaywan in the UAE, For ATM withdrawals (where enabled), For online purchases on e-commerce websites (coming soon)."
       },
       {
-        question: "4. Pay10 Jaywan Card - Is the card free?",
+        question: "11. Is the card free?",
         answer: "Your employer or Pay10 may issue the first card free of charge. However, replacement cards may be subject to fees depending on your employer’s terms and conditions."
       },
       {
-        question: "4. Pay10 Jaywan Card - What if my card is lost or damaged?",
+        question: "12. What if my card is lost or damaged?",
         answer: "You can block the card instantly from the Pay10 UAE App through the card management section or by contacting Pay10 consumer support team on 800-72910. Request a replacement card (charges may apply) through your employer."
       },
       {
-        question: "5. Paying & Spending Money - How can I pay at shops using Pay10?",
+        question: "13. How can I pay at shops using Pay10?",
         answer: "You can scan Pay10 DQR (QR Code) using the Pay10 UAE App, or subject to merchant acceptance, pay using your Pay10 Jaywan card like any other card."
       },
       {
-        question: "5. Paying & Spending Money - What is DQR?",
+        question: "14. What is DQR?",
         answer: "DQR is a Dynamic QR code generated to securely process a payment transaction by the Pay10 merchant. It allows you to make payments by scanning the DQR using the Pay10 UAE App on your phone."
       },
       {
-        question: "6. Sending & Receiving Money - Can I send money to family or friends in the UAE?",
+        question: "15. Can I send money to family or friends in the UAE?",
         answer: "Yes, you can send money from your Pay10 UAE App to your family or friends who are either using the Pay10 UAE App or to a bank account issued in the UAE."
       },
       {
-        question: "6. Sending & Receiving Money - Can I use Send Abroad?",
+        question: "16. Can I use Send Abroad?",
         answer: "Yes, where available to you, Pay10 may allow you to send money to supported countries through the Send Abroad service. Please refer to the Send Abroad terms and the Pay10 UAE App for availability, limits, fees, and processing timelines."
       },
       {
-        question: "6. Sending & Receiving Money - How long does an international transfer take?",
-        answer: "Transfer time depends on destination country and payment method. You will see expected timelines in the app."
+        question: "17. How long does an international transfer take?",
+        answer: "Transfer time depends on destination country and payment method. You will see expected timelines in the Pay10 UAE App."
       },
       {
-        question: "7. Adding Money to Pay10 UAE App - Can I add extra money to my Pay10 UAE App?",
+        question: "18. Can I add extra money to my Pay10 UAE App?",
         answer: "Yes, you can add money by connecting your own bank account and using any other supported top-up methods available in the Pay10 UAE App."
       },
       {
-        question: "8. Bill Payments - What bills can I pay using Pay10?",
+        question: "19. What bills can I pay using Pay10?",
         answer: "Bill payment options are updated from time to time. You can pay bills available in the Pay10 UAE App, such as Utilities, Telecom services, Transportation, and other listed services in the Bill Payment section."
       },
       {
-        question: "9. Card & App Controls - Can I control my card from the app?",
+        question: "20. Can I control my card from the Pay10 UAE App?",
         answer: "Yes, you can enable or disable card usage, block or unblock your card, and manage card settings."
       },
       {
-        question: "9. Card & App Controls - Can I change my PIN?",
+        question: "21. Can I change my PIN?",
         answer: "Yes, you can change or reset your card PIN through the Pay10 UAE App."
       },
       {
-        question: "10. Charges & Fees - Are there any fees?",
-        answer: "ATM usage may have fees, such as withdrawal, balance check, declined transaction, or statement generation. Other usage-based charges may apply for requesting a new card, sending money abroad, or bill payments. Please refer to the Key Fact Statement (KFS)."
+        question: "22. Are there any fees?",
+        answer: "ATM usage may have fees, such as withdrawal, balance check, declined transaction, or statement generation. Other usage-based charges may apply for requesting a new card, sending money abroad, or bill payments. Please refer to the <a href='/key-fact-statement'>Key Fact Statement (KFS)</a>."
       },
       {
-        question: "11. Support & Help - What if I have a problem or question?",
-        answer: "You can Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>."
+        question: "23. What if I have a problem or question?",
+        answer: "You can contact the Pay10 customer support team on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>."
       },
       {
-        question: "11. Support & Help - What if my salary is delayed?",
+        question: "24. What if my salary is delayed?",
         answer: "Salary payments depend on employer submission under WPS. If your salary is delayed, check the Pay10 UAE App notifications, SMS, or email before contacting your employer, HR, or Pay10 support (if advised by your HR)."
       },
       {
-        question: "12. Important Information - Is Pay10 UAE Approved in the UAE?",
+        question: "25. Is Pay10 UAE Approved in the UAE?",
         answer: "Yes, Pay10 operates under UAE regulations and supports WPS salary payments."
       },
       {
-        question: "12. Important Information - Can my employer see how I spend my money?",
+        question: "26. Can my employer see how I spend my money?",
         answer: "No, your spending details are private and are not shared with your employer."
       },
       {
-        question: "12. Important Information - Final note for employees",
+        question: "27. Final note for employees",
         answer: "Pay10 helps you receive, manage, and use your salary easily — all from one app."
       }
     ]

@@ -29,7 +29,7 @@ const PrivacyClient = () => {
               We, Pay Ten Payment Services Provider LLC (&ldquo;Pay10&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo;, &ldquo;Our&rdquo; or the &ldquo;Company&rdquo;), take
               Your privacy very seriously. Please read this privacy policy (&ldquo;Privacy Policy&rdquo;) carefully as it
               contains important information on who We are and how and why We collect, store, use and share
-              Your personal data when You engage with Us through Your use of the Pay10 App, Our Website,
+              Your personal data when You engage with Us through Your use of the Pay10 UAE App, Our Website,
               or Our products and services, including Your Pay10 account, Send Abroad, Bill Payment, Pay10
               Card, Pay10 WPS Service and any other Pay10 services made available from time to time. This
               Privacy Policy also explains Your rights in relation to Your personal data and how to contact Us or
@@ -111,20 +111,20 @@ const PrivacyClient = () => {
                     <td>Means know-Your-customer check required by Pay10 under Applicable Law and its internal compliance requirements.</td>
                   </tr>
                   <tr>
-                    <td><strong>Pay10 App</strong></td>
+                    <td><strong>Pay10 UAE App</strong></td>
                     <td>Means the Pay10 UAE consumer application through which eligible users may access Pay10 products and services.</td>
                   </tr>
                   <tr>
                     <td><strong>Pay10 account</strong></td>
-                    <td>Means the account created for You when You complete registration, onboarding and applicable KYC/CDD checks through the Pay10 App, through which You may access and use Pay10 services made available to You from time to time.</td>
+                    <td>Means the account created for You when You complete registration, onboarding and applicable KYC/CDD checks through the Pay10 UAE App, through which You may access and use Pay10 services made available to You from time to time.</td>
                   </tr>
                   <tr>
                     <td><strong>Send Abroad Services</strong></td>
-                    <td>Means the service made available by or through Pay10 that enables eligible users to send funds internationally to permitted beneficiaries in supported countries through the Pay10 App, subject to Applicable Law, supported-country availability and Pay10&rsquo;s applicable terms.</td>
+                    <td>Means the service made available by or through Pay10 that enables eligible users to send funds internationally to permitted beneficiaries in supported countries through the Pay10 UAE App, subject to Applicable Law, supported-country availability and Pay10&rsquo;s applicable terms.</td>
                   </tr>
                   <tr>
                     <td><strong>Bill Payment Services</strong></td>
-                    <td>Means the service made available by or through Pay10 that enables eligible users to pay participating billers, merchants, utility providers, telecom operators, transport operators, government-linked providers or other enabled service providers through the Pay10 App.</td>
+                    <td>Means the service made available by or through Pay10 that enables eligible users to pay participating billers, merchants, utility providers, telecom operators, transport operators, government-linked providers or other enabled service providers through the Pay10 UAE App.</td>
                   </tr>
                   <tr>
                     <td><strong>Pay10 Card</strong></td>
@@ -181,7 +181,7 @@ const PrivacyClient = () => {
               <li>Customer due diligence providers;</li>
               <li>Third parties with Your consent, including Your bank;</li>
               <li>Cookies on Our Website;</li>
-              <li>Our IT systems, including automated monitoring of Our Website, Pay10 App and other technical systems;</li>
+              <li>Our IT systems, including automated monitoring of Our Website, Pay10 UAE App and other technical systems;</li>
               <li>Publicly accessible sources, where relevant; and</li>
               <li>Credit reference agencies, where relevant.</li>
             </ul>

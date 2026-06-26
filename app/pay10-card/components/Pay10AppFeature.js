@@ -9,7 +9,7 @@ export default function Pay10AppFeature() {
   const features = [
     "Designed for Everyday Convenience",
     "Simple to use for everyday transactions",
-    "Ease of card management through Pay10 App",
+    "Ease of card management through Pay10 UAE App",
     "Manage your card limits",
     "Withdraw cash from ATM’s across the UAE",
     "Make payments at 100,000+ merchant POS terminals in the UAE"

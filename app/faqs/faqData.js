@@ -442,7 +442,7 @@ const faqData = [
       },
       {
         question: "31. How do I make a payment?",
-        answer: "To make a payment using the Pay10 UAE App, you have several convenient options. You can scan and pay via QR code at your favorite stores, allowing you to make secure payments directly from your wallet. Alternatively, you can transfer funds from your Pay10 UAE App to a bank account by adding the IBAN details of your own or a loved one’s account—just link your bank account for seamless transfers. You can also send money to friends and family using their Pay10-linked mobile number, making peer-to-peer payments quick and easy."
+        answer: "To make a payment using the Pay10 UAE App, you have several convenient options. You can scan and pay via QR code at your favorite stores, allowing you to make secure payments directly from your Pay10 UAE App. Alternatively, you can transfer funds from your Pay10 UAE App to a bank account by adding the IBAN details of your own or a loved one’s account—just link your bank account for seamless transfers. You can also send money to friends and family using their Pay10-linked mobile number, making peer-to-peer payments quick and easy."
       },
       {
         question: "32. What should I do if a transaction fails?",

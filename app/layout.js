@@ -10,7 +10,7 @@ import { defaultMetadata } from "./lib/metadata";
 
 export const metadata = defaultMetadata;
 
-import { Geist, Geist_Mono, Outfit } from "next/font/google";
+import { Outfit } from "next/font/google";
 
 const outfit = Outfit({
   variable: "--font-outfit",

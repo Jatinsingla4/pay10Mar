@@ -50,6 +50,7 @@ const SendAbroadClient = () => {
         </div>
       </section>
 
+      <div className={Style.bg_circle_wrapper}>
       <section className={Style.stats_strip}>
         <div className={Style.stats_grid}>
           <div className={Style.stat_card}>
@@ -114,7 +115,8 @@ const SendAbroadClient = () => {
         imageSrc="/images/prod_imports/consumer-app-phone.png"
         imageAlt="Instant Money Transfer"
         isReversed={false}
-        isGreyBg={true}
+        isGreyBg={false}
+        isTransparent={true}
       />
 
       <section className={Style.steps_section}>
@@ -159,8 +161,10 @@ const SendAbroadClient = () => {
         imageSrc="/images/prod_imports/consumer-app-phone.png"
         imageAlt="Countries"
         isReversed={true}
-        isGreyBg={true}
+        isGreyBg={false}
+        isTransparent={true}
       />
+      </div>
 
     </main>
   );

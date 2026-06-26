@@ -61,11 +61,15 @@
   }
 
   @include tab {
-    max-width: 100%;
+    max-width: 55%;
 
     p {
       font-size: 15px;
     }
+  }
+
+  @include mobile {
+    max-width: 100%;
   }
 }
 
@@ -100,7 +104,6 @@
 
       &.badge_orange {
         color: var(--white);
-        opacity: 0.75;
       }
 
       &:hover {
@@ -128,19 +131,6 @@
     pointer-events: none;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: url("/images/body_bg_circle.png");
-    background-position: right 80%;
-    background-repeat: no-repeat;
-    background-size: 90% auto;
-    opacity: 0.25;
-    pointer-events: none;
-    transform: scaleX(-1);
-  }
 }
 
 @media only screen and (max-width: 991px) {

@@ -70,7 +70,7 @@
 
     .subtitle {
       font-size: 1.15rem;
-      font-weight: 500;
+      font-family: 'medium', sans-serif;
       line-height: 1.6;
       margin-bottom: 28px;
       color: var(--charcoal);
@@ -85,6 +85,7 @@
         display: flex;
         align-items: flex-start;
         font-size: 1.05rem;
+        font-family: 'regular', sans-serif;
         color: var(--gray);
         margin-bottom: 16px;
         line-height: 1.6;

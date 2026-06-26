@@ -3,8 +3,10 @@
 .feature_grid_section {
   width: 100%;
   padding: 80px 56px;
-  background-color: var(--white);
-  
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+
   @include tab {
     padding: 60px 24px;
   }
@@ -30,34 +32,44 @@
   align-items: flex-start;
   max-width: 500px;
 
+  @include tab {
+    max-width: 100%;
+  }
+
   .eyebrow {
     font-size: 14px;
-    font-weight: 700;
-    color: #ffb100;
+    font-family: 'bold', sans-serif;
+    color: var(--orange);
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 16px;
-    font-family: 'bold', sans-serif;
   }
 
   h2 {
     font-size: 42px;
     line-height: 1.1;
-    font-weight: 700;
-    color: var(--black, #111);
-    margin-bottom: 24px;
     font-family: 'bold', sans-serif;
+    color: var(--black);
+    margin-bottom: 24px;
+
+    @include tab {
+      font-size: 34px;
+    }
 
     @include mobile {
-      font-size: 32px;
+      font-size: 28px;
     }
   }
 
   p {
     font-size: 16px;
     line-height: 1.6;
-    color: #555;
     font-family: 'medium', sans-serif;
+    color: var(--gray);
+
+    @include mobile {
+      font-size: 15px;
+    }
   }
 }
 
@@ -72,7 +84,7 @@
 }
 
 .feature_card {
-  background: #ffffff;
+  background: var(--white);
   border: 1px solid #eaeaea;
   border-radius: 20px;
   padding: 32px 24px;
@@ -104,25 +116,23 @@
 
     .number {
       font-size: 18px;
-      font-weight: 700;
-      color: #f79d00; // orange number
       font-family: 'bold', sans-serif;
+      color: var(--orange);
     }
   }
 
   .card_title {
     font-size: 18px;
-    font-weight: 700;
-    color: var(--black, #111);
-    margin-bottom: 12px;
     font-family: 'bold', sans-serif;
+    color: var(--black);
+    margin-bottom: 12px;
   }
 
   .card_desc {
     font-size: 14px;
     line-height: 1.6;
-    color: #666;
     font-family: 'medium', sans-serif;
+    color: var(--gray);
     flex-grow: 1;
   }
 
@@ -132,7 +142,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #fafafa;
+    background: #f5f5f5;
     border: 1px solid #eaeaea;
     position: relative;
 
@@ -141,9 +151,8 @@
       top: 32px;
       right: 24px;
       font-size: 18px;
-      font-weight: 700;
-      color: #f79d00;
       font-family: 'bold', sans-serif;
+      color: var(--orange);
       z-index: 2;
     }
 

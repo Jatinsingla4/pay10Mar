@@ -1,9 +1,17 @@
+@import "../../../styles/globals/mixin";
+
 .merchantFeatureSection {
-  padding: 80px 20px;
-  background-color: var(--white);
-  
-  @media (max-width: 991px) {
-    padding: 60px 15px;
+  padding: 80px 56px;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+
+  @include tab {
+    padding: 60px 24px;
+  }
+
+  @include mobile {
+    padding: 60px 20px;
   }
 }
 
@@ -13,9 +21,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: flex-start;
 
-  @media (max-width: 991px) {
+  @include tab {
     grid-template-columns: 1fr;
     gap: 40px;
   }
@@ -24,9 +32,9 @@
 .rightContent {
   display: flex;
   flex-direction: column;
-  
-  @media (max-width: 991px) {
-    order: 1; /* On mobile, put text first usually */
+
+  @include tab {
+    order: 1;
   }
 }
 
@@ -36,23 +44,32 @@
   color: var(--black);
   line-height: 1.2;
   margin: 0 0 20px 0;
-  
-  @media (max-width: 1200px) {
+
+  @include large {
     font-size: 2.5rem;
   }
-  @media (max-width: 768px) {
+
+  @include lessTab {
     font-size: 2rem;
+  }
+
+  @include mobile {
+    font-size: 1.7rem;
   }
 }
 
 .subheading {
-  font-family: 'medium', sans-serif;
+  font-family: 'semibold', sans-serif;
   font-size: 1.8rem;
-  color: var(--primary-color, #f35b04);
+  color: var(--red);
   margin: 0 0 20px 0;
 
-  @media (max-width: 768px) {
+  @include lessTab {
     font-size: 1.4rem;
+  }
+
+  @include mobile {
+    font-size: 1.2rem;
   }
 }
 
@@ -68,7 +85,7 @@
     color: var(--black);
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     font-size: 1rem;
     margin: 0 0 20px 0;
   }
@@ -77,6 +94,7 @@
 .storeBadges {
   display: flex;
   gap: 16px;
+  margin-top: 36px;
   margin-bottom: 40px;
   flex-wrap: wrap;
 
@@ -99,7 +117,7 @@
     .badgeText {
       display: flex;
       flex-direction: column;
-      
+
       .smallText {
         font-family: 'regular', sans-serif;
         font-size: 0.6rem;
@@ -107,7 +125,7 @@
         margin-bottom: 2px;
         text-transform: uppercase;
       }
-      
+
       .largeText {
         font-family: 'bold', sans-serif;
         font-size: 1.1rem;
@@ -116,7 +134,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     margin-bottom: 30px;
   }
 }
@@ -139,13 +157,13 @@
     line-height: 1.5;
 
     .checkIcon {
-      color: var(--primary-color, #f35b04);
+      color: var(--red);
       flex-shrink: 0;
       font-size: 1.2rem;
       margin-top: 2px;
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
       font-size: 1rem;
     }
   }
@@ -159,8 +177,8 @@
   aspect-ratio: 4 / 4.5;
   background-color: #f7f9fc;
 
-  @media (max-width: 991px) {
-    order: 2; /* On mobile, image goes below text */
+  @include tab {
+    order: 2;
   }
 
   img {

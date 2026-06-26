@@ -10,7 +10,7 @@ export default async function sitemap() {
     '/terms-of-service',
     '/privacy-policy',
     '/vision-mission',
-    '/consumer-app',
+    '/pay10-uae-app',
     '/merchant-app',
     '/open-finance-altareq',
     '/integration-methods',

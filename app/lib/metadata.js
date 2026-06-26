@@ -54,8 +54,8 @@ export const generateApiMetadata = (pageData, fallbackTitle = 'Pay 10', fallback
     rawTitle = 'About Us \u2013 Pay 10';
   } else if (currentSlug === 'vision-mission' || currentSlug === 'vision-and-mission' || titleLower.includes('vision & mission') || titleLower.includes('vision and mission')) {
     rawTitle = 'Vision & Mission \u2013 Pay 10';
-  } else if (currentSlug === 'consumer-app' || titleLower.includes('consumer app')) {
-    rawTitle = 'Consumer App \u2013 Pay 10';
+  } else if (currentSlug === 'pay10-uae-app' || titleLower.includes('pay10 uae app')) {
+    rawTitle = 'Pay10 UAE App \u2013 Pay 10';
   } else if (currentSlug === 'merchant-app' || titleLower.includes('merchant-app') || titleLower.includes('merchant app')) {
     rawTitle = 'Merchant App \u2013 Pay 10';
   } else if (currentSlug === 'open-finance-altareq' || currentSlug === 'open-finance-altareeq' || titleLower.includes('open finance') || titleLower.includes('altareq') || titleLower.includes('altareeq')) {

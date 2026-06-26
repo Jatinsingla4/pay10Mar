@@ -24,7 +24,7 @@ const navigationData = {
         items: [
           {
             label: 'Pay10 UAE App',
-            href: '/consumer-app',
+            href: '/pay10-uae-app',
             icon: '/images/header/pay-10-app.svg',
           },
           {

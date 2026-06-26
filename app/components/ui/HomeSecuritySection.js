@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from 'react';
-import Style from '../../consumer-app/ConsumerSecuritySection.module.scss';
+import Style from '../../pay10-uae-app/ConsumerSecuritySection.module.scss';
 import Image from 'next/image';
 
 const licenseImages = [

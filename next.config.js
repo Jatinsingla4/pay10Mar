@@ -115,6 +115,11 @@ const nextConfig = {
   async redirects() {
     return [
       {
+        source: '/consumer-app',
+        destination: '/pay10-uae-app',
+        permanent: true,
+      },
+      {
         source: '/kfs-biz-app',
         destination: '/key-fact-statement',
         permanent: true,

@@ -15,19 +15,24 @@ const SendAbroadClient = () => {
         <div className={Style.flag_box}>🇵🇰</div>
         <div className={Style.flag_box}>🇧🇩</div>
         <div className={Style.flag_box}>🇳🇵</div>
+        <div className={Style.flag_box}>🇱🇰</div>
+        <div className={Style.flag_box}>🇪🇬</div>
       </div>
 
-      <h4 className={Style.countries_heading} style={{ marginTop: '24px' }}>Coming soon — 8 more</h4>
+      <h4 className={Style.countries_heading} style={{ marginTop: '24px' }}>Coming soon - 8 more</h4>
       <div className={Style.flag_row}>
         <div className={Style.flag_box}>🇯🇴</div>
         <div className={Style.flag_box}>🇲🇦</div>
         <div className={Style.flag_box}>🇰🇪</div>
         <div className={Style.flag_box}>🇹🇿</div>
         <div className={Style.flag_box}>🇬🇭</div>
+        <div className={Style.flag_box}>🇸🇾</div>
+        <div className={Style.flag_box}>🇪🇹</div>
+        <div className={Style.flag_box}>🇮🇩</div>
       </div>
 
       <p className={Style.countries_para}>
-        140+ countries are expanding. Pay10 Send Abroad is built to reach every corner of the world — because the UAE's 9M+ expatriates come from everywhere. If your country isn't live yet, it's on its way. Download Pay10 and be the first to send when your corridor opens.
+        140+ countries are expanding. Pay10 Send Abroad is built to reach every corner of the world - because the UAE's 9M+ expatriates come from everywhere. If your country isn't live yet, it's on its way. Download Pay10 and be the first to send when your corridor opens.
       </p>
     </div>
   );
@@ -40,7 +45,7 @@ const SendAbroadClient = () => {
             Your family <br /> shouldn't wait <br /> for their money.
           </h2>
           <p>
-            With Pay10 UAE App Send Abroad, your transfer reaches your loved ones the same day — instantly. No days of waiting. No beneficiary delays. Just send, and it's there.
+            With Pay10 UAE App Send Abroad, your transfer reaches your loved ones the same day - instantly. No days of waiting. No beneficiary delays. Just send, and it's there.
           </p>
         </div>
       </section>
@@ -105,7 +110,7 @@ const SendAbroadClient = () => {
             No waiting. No excuses.
           </>
         }
-        subheading="Every other way to send money abroad asks you to wait — to add a beneficiary, wait for approval, then wait again for the money to arrive. Pay10 UAE App Send Abroad doesn't. When you Send Abroad with Pay10, your transfer moves the moment you confirm it."
+        subheading="Every other way to send money abroad asks you to wait - to add a beneficiary, wait for approval, then wait again for the money to arrive. Pay10 UAE App Send Abroad doesn't. When you Send Abroad with Pay10, your transfer moves the moment you confirm it."
         imageSrc="/images/prod_imports/consumer-app-phone.png"
         imageAlt="Instant Money Transfer"
         isReversed={false}
@@ -115,7 +120,7 @@ const SendAbroadClient = () => {
       <section className={Style.steps_section}>
         <div className={Style.steps_header} data-animation="opacity-up">
           <h2>Four steps. One tap. Money sent.</h2>
-          <p>Send Abroad is built for the pace of UAE life — fast, secure, and done before you finish your coffee</p>
+          <p>Send Abroad is built for the pace of UAE life - fast, secure, and done before you finish your coffee</p>
         </div>
         <div className={Style.steps_container}>
           <div className={Style.steps_left} data-animation="opacity-up">
@@ -131,7 +136,7 @@ const SendAbroadClient = () => {
             <div className={Style.step_card} data-animation="opacity-up" data-anim-delay="200">
               <span className={Style.step_number}>Step 2</span>
               <h3>Select country</h3>
-              <p>Choose from your available Send Abroad destinations — based on your home country.</p>
+              <p>Choose from your available Send Abroad destinations - based on your home country.</p>
             </div>
             <div className={Style.step_card} data-animation="opacity-up" data-anim-delay="300">
               <span className={Style.step_number}>Step 3</span>
@@ -149,7 +154,7 @@ const SendAbroadClient = () => {
 
       <ConsumerFeatureSection
         heading="Where can you Send Abroad today?"
-        subheading="Pay10 UAE App Send Abroad is live, growing fast, and on its way to 140+ countries. Check where you can send right now — and where we're headed next."
+        subheading="Pay10 UAE App Send Abroad is live, growing fast, and on its way to 140+ countries. Check where you can send right now - and where we're headed next."
         extraContent={countriesContent}
         imageSrc="/images/prod_imports/consumer-app-phone.png"
         imageAlt="Countries"

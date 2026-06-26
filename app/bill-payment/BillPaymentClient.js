@@ -7,16 +7,16 @@ import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureS
 const BillPaymentClient = () => {
   const utilitySection = {
     heading: "Utility Bill Payments (Coming Soon)",
-    subheading: "Your home runs on it. Pay10 makes it easy. Electricity, water, gas, chiller — wherever you live in the UAE, Pay10 UAE App connects you to your authority's billing system directly.",
+    subheading: "Your home runs on it. Pay10 makes it easy. Electricity, water, gas, chiller - wherever you live in the UAE, Pay10 UAE App connects you to your authority's billing system directly.",
     points: [
       "Pay electricity, water, gas, and chiller bills in one place",
-      "Covers all 7 Emirates — your provider is here",
+      "Covers all 7 Emirates - your provider is here",
       "No more logging into separate utility portals",
-      "Payment confirmed instantly — no processing delays"
+      "Payment confirmed instantly - no processing delays"
     ],
     extraContent: (
       <div className={Style.provider_badges_box}>
-        <p className={Style.provider_heading}>PROVIDERS — 3 launching first, 11 at full rollout:</p>
+        <p className={Style.provider_heading}>PROVIDERS - 3 launching first, 11 at full rollout:</p>
         <div className={Style.badges_container}>
           <span className={`${Style.badge} ${Style.badge_green}`}>DEWA</span>
           <span className={`${Style.badge} ${Style.badge_green}`}>SEWA</span>
@@ -37,12 +37,12 @@ const BillPaymentClient = () => {
 
   const telecomSection = {
     heading: "Telecom",
-    subheading: "Stay connected. Never run out. Pay your phone bill or top up your credit — for both e& and du, prepaid and postpaid — without leaving the app.",
+    subheading: "Stay connected. Never run out. Pay your phone bill or top up your credit - for both e& and du, prepaid and postpaid - without leaving the app.",
     points: [
       "Pay postpaid bills for e& and du instantly",
-      "Top up prepaid credit — for yourself or someone else",
+      "Top up prepaid credit - for yourself or someone else",
       "Never get cut off because you forgot to recharge",
-      "Both UAE network operators — covered"
+      "Both UAE network operators - covered"
     ],
     extraContent: (
       <div className={Style.provider_badges_box}>
@@ -61,16 +61,16 @@ const BillPaymentClient = () => {
   };
 
   const transportSection = {
-    heading: "Top up your commute — all 7 Emirates.",
-    subheading: "From your NOL card in Dubai to transport cards across every Emirate — Pay10 has every mode of public transport covered at launch.",
+    heading: "Top up your commute - all 7 Emirates.",
+    subheading: "From your NOL card in Dubai to transport cards across every Emirate - Pay10 has every mode of public transport covered at launch.",
     points: [
-      "Top up NOL — metro, bus, tram, ferry, and more",
+      "Top up NOL - metro, bus, tram, ferry, and more",
       "All public transport providers across all 7 Emirates",
       "12 transport authorities enabled from day one"
     ],
     extraContent: (
       <div className={Style.provider_badges_box}>
-        <p className={Style.provider_heading}>PROVIDERS — ALL 12 ENABLED AT LAUNCH:</p>
+        <p className={Style.provider_heading}>PROVIDERS - ALL 12 ENABLED AT LAUNCH:</p>
         <div className={Style.badges_container}>
           <span className={Style.badge}>NOL · RTA</span>
           <span className={Style.badge}>Abu Dhabi</span>
@@ -91,10 +91,10 @@ const BillPaymentClient = () => {
 
   const giftCardSection = {
     heading: "Gift Cards",
-    subheading: "When a bill feels like a gift. Buy a prepaid gift card for someone you love — from Pay10, in seconds. No wrapping. No guessing. Just pick, pay, and send.",
+    subheading: "When a bill feels like a gift. Buy a prepaid gift card for someone you love - from Pay10, in seconds. No wrapping. No guessing. Just pick, pay, and send.",
     points: [
       "Buy prepaid gift cards directly from Pay10",
-      "Send to anyone — digitally, instantly",
+      "Send to anyone - digitally, instantly",
       "Perfect for birthdays, celebrations, or just because",
       "Choose the amount. They choose what to spend it on."
     ],
@@ -112,7 +112,7 @@ const BillPaymentClient = () => {
             Never miss a bill. <br /> Never switch apps again.
           </h2>
           <p>
-            All your UAE bills — utilities, telecom, transport, and gift cards — paid from one place. No more juggling apps, portals, or queues.
+            All your UAE bills - utilities, telecom, transport, and gift cards - paid from one place. No more juggling apps, portals, or queues.
           </p>
           <p className={Style.slogan}>
             Why Pay when you can Pay10!

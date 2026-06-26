@@ -30,7 +30,7 @@ const GlobeMesh = () => {
   });
 
   return (
-    <group ref={meshRef}>
+    <group ref={meshRef} rotation={[0, 3.75, 0]}>
       {/* Inner Sphere: Solid Orange Land */}
       <Sphere args={[2.38, 64, 64]}>
         <meshStandardMaterial color="#ff7a33" roughness={0.8} />

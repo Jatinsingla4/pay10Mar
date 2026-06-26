@@ -78,7 +78,7 @@ const ConsumerSecuritySection = () => {
         </p>
 
         <div className={Style.certifications} data-animation="opacity-up" data-anim-delay="250">
-          <h4>Certified by:</h4>
+          <h4>Certified by</h4>
           
           <div className={Style.badgesMarquee} ref={marqueeRef}>
             <div className={Style.badgesTrack} ref={trackRef}>

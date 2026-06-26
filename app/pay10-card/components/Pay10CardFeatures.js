@@ -51,19 +51,19 @@ const Pay10CardFeatures = () => {
       id: "01",
       icon: <UaeCardIcon />,
       title: "Made in the UAE",
-      description: "Jaywan is the UAE's national card scheme — owned, operated, and governed locally by the Central Bank of the UAE."
+      description: "Jaywan is the UAE's national card scheme - owned, operated, and governed locally by the Central Bank of the UAE."
     },
     {
       id: "02",
       icon: <TerminalIcon />,
       title: "Accepted nationwide",
-      description: "Over 90% of UAE POS terminals and all major ATMs accept Jaywan — covering retail, hospitality, electronics, and more."
+      description: "Over 90% of UAE POS terminals and all major ATMs accept Jaywan - covering retail, hospitality, electronics, and more."
     },
     {
       id: "03",
       icon: <SecurityIcon />,
       title: "Built-in security",
-      description: "Payment data is stored within the UAE — local security, local governance, global standards."
+      description: "Payment data is stored within the UAE - local security, local governance, global standards."
     }
   ];
 
@@ -76,7 +76,7 @@ const Pay10CardFeatures = () => {
           <span className={Style.eyebrow} data-animation="opacity-up">Built by the UAE. For the UAE.</span>
           <h2 data-animation="opacity-up" data-anim-delay="100">Accepted everywhere that matters.</h2>
           <p data-animation="opacity-up" data-anim-delay="200">
-            Pay10 Card runs on Jaywan — the UAE's first domestic card payment scheme, launched by Al Etihad Payments, a subsidiary of the Central Bank of the UAE. Jaywan means "precious pearl" in Arabic — a nod to the UAE's heritage and its vision for a sovereign, future-ready financial system.
+            Pay10 Card runs on Jaywan - the UAE's first domestic card payment scheme, launched by Al Etihad Payments, a subsidiary of the Central Bank of the UAE. Jaywan means "precious pearl" in Arabic - a nod to the UAE's heritage and its vision for a sovereign, future-ready financial system.
           </p>
         </div>
 

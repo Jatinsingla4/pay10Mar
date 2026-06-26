@@ -69,7 +69,7 @@ const CBUAELicenseFeatures = () => {
       id: "01",
       icon: <WalletIcon />,
       title: "Stored Value Facility",
-      description: "The license that lets us hold and manage your money — legally, safely, under CBUAE supervision.",
+      description: "The license that lets us hold and manage your money - legally, safely, under CBUAE supervision.",
       hoverData: {
         title: "Your money, secured and accessible anytime.",
         subtitle: "WHAT THIS LICENSE ENABLES",
@@ -85,8 +85,8 @@ const CBUAELicenseFeatures = () => {
     {
       id: "02",
       icon: <POSIcon />,
-      title: "Retail Payment Services — RPS-II",
-      description: "The license that puts us directly inside the UAE payment ecosystem — for merchants, QR, gateways, and more.",
+      title: "Retail Payment Services - RPS-II",
+      description: "The license that puts us directly inside the UAE payment ecosystem - for merchants, QR, gateways, and more.",
       hoverData: {
         title: "We don't rely on another bank to process your payments. We do it directly.",
         subtitle: "WHAT THIS LICENSE ENABLES",
@@ -103,7 +103,7 @@ const CBUAELicenseFeatures = () => {
       id: "03",
       icon: <BankIcon />,
       title: "Open Finance",
-      description: "One of the UAE's newest regulatory frameworks — enabling us to connect your finances across banks and institutions.",
+      description: "One of the UAE's newest regulatory frameworks - enabling us to connect your finances across banks and institutions.",
       hoverData: {
         title: "The future of finance is connected. Pay10 is already licensed for it.",
         subtitle: "WHAT THIS LICENSE ENABLES",
@@ -120,7 +120,7 @@ const CBUAELicenseFeatures = () => {
       id: "04",
       icon: <GlobeIcon />,
       title: "Cross-Border Remittance",
-      description: "The license that lets you send money internationally from the UAE — legally, instantly, at scale.",
+      description: "The license that lets you send money internationally from the UAE - legally, instantly, at scale.",
       hoverData: {
         title: "Sending money home shouldn't require paperwork, waiting, or worrying.",
         subtitle: "WHAT THIS LICENSE ENABLES",
@@ -144,7 +144,7 @@ const CBUAELicenseFeatures = () => {
           <span className={Style.eyebrow} data-animation="opacity-up">CBUAE Licensed &middot; Our Credibility</span>
           <h2 data-animation="opacity-up" data-anim-delay="100">Built on the strongest regulatory foundation in the UAE.</h2>
           <p data-animation="opacity-up" data-anim-delay="200">
-            Pay10 holds four Central Bank of the UAE licenses — SVF, RPS-II, Open Finance, and Remittance. Together they make Pay10 a fully regulated fintech solution provider to both merchants and consumers catering to all financial alternative payment methods.
+            Pay10 holds four Central Bank of the UAE licenses - SVF, RPS-II, Open Finance, and Remittance. Together they make Pay10 a fully regulated fintech solution provider to both merchants and consumers catering to all financial alternative payment methods.
           </p>
           <div className={Style.highlight_text} data-animation="opacity-up" data-anim-delay="300">
             Most fintechs hold 1, maybe 2. Pay10 holds all 4.

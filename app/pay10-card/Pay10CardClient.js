@@ -10,7 +10,7 @@ import Pay10WPSFeature from "./components/Pay10WPSFeature";
 const Pay10CardClient = () => {
   const cardFeature = {
     heading: "The first local Debit Card accredited by the Central Bank of the UAE.",
-    subheading: "Pay10 is issuing UAE's first CBUAE-accredited local debit card directly through the Pay10 UAE App — offering an instant, secure, and seamless payment experience for everyone who calls the UAE home.",
+    subheading: "Pay10 is issuing UAE's first CBUAE-accredited local debit card directly through the Pay10 UAE App - offering an instant, secure, and seamless payment experience for everyone who calls the UAE home.",
     points: [],
     extraContent: (
       <div style={{ marginTop: '24px', fontWeight: 'bold', fontSize: '18px', letterSpacing: '1px', textTransform: 'uppercase', color: '#444' }}>
@@ -31,7 +31,7 @@ const Pay10CardClient = () => {
             Pay10 Card, UAE has been waiting for.
           </h2>
           <p>
-            The first local Debit Card accredited by the Central Bank of the UAE — instant, secure, and seamless. Built inside Pay10 UAE App. For banked professionals and WPS employees.
+            The first local Debit Card accredited by the Central Bank of the UAE - instant, secure, and seamless. Built inside Pay10 UAE App. For banked professionals and WPS employees.
           </p>
         </div>
       </section>

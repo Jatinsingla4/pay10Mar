@@ -3,7 +3,7 @@ import ContactClient from "./ContactClient";
 
 export const metadata = {
   ...defaultMetadata,
-  title: "Contact Us – Pay 10",
+  title: "Contact Us | Pay 10",
 };
 
 export default function Contact() {

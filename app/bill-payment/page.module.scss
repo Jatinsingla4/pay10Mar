@@ -99,7 +99,8 @@
       transition: all 0.3s ease;
 
       &.badge_orange {
-        color: var(--orange);
+        color: var(--white);
+        opacity: 0.75;
       }
 
       &:hover {

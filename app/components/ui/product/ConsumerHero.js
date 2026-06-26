@@ -28,7 +28,7 @@ const features = [
   {
     icon: "ph:receipt-bold",
     title: "Pay Bills (Coming Soon)",
-    description: "All your bills; Utility, Telcom, Transport, and Gift Cards - . All 7 Emirates. One app.",
+    description: "All your bills; Utility, Telecom, Transport, and Gift Cards. All 7 Emirates. One app.",
   },
   {
     icon: "ph:globe-hemisphere-west-bold",

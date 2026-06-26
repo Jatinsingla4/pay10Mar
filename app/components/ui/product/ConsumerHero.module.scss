@@ -91,8 +91,12 @@
       font-family: 'bold', sans-serif;
       margin: 0;
 
+      @include tab {
+        font-size: 36px;
+      }
+
       @include mobile {
-        font-size: 32px;
+        font-size: 28px;
       }
     }
 
@@ -103,6 +107,10 @@
       font-family: 'medium', sans-serif;
       margin: 0;
       max-width: 900px;
+
+      @include tab {
+        font-size: 18px;
+      }
 
       @include mobile {
         font-size: 16px;
@@ -138,11 +146,19 @@
 
       @include tab {
         grid-template-columns: repeat(3, 1fr);
-        padding: 0; // Padding handled by wrapper
+        padding: 0;
+
+        .feature_card:last-child:nth-child(3n + 1) {
+          grid-column: 1 / -1;
+        }
       }
 
       @include mobile {
         grid-template-columns: repeat(2, 1fr);
+
+        .feature_card:last-child:nth-child(odd) {
+          grid-column: 1 / -1;
+        }
       }
 
       .feature_card {
@@ -181,7 +197,7 @@
 
         .feature_desc {
           font-size: 0.9rem;
-          color: #666;
+          color: var(--gray);
           line-height: 1.45;
         }
       }

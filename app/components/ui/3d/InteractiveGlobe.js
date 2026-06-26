@@ -39,11 +39,13 @@ const GlobeMesh = () => {
       {/* Outer Sphere: Light Grey Oceans with transparent land cutouts */}
       <Sphere args={[2.4, 64, 64]}>
         <meshStandardMaterial
-          color="#dbe0e3" // Light grey for oceans
+          color="#dcf1fb" // Soft ocean blue
           alphaMap={alphaMap}
           transparent={true}
-          roughness={0.4}
-          metalness={0.1}
+          roughness={1}
+          metalness={0}
+          emissive="#dcf1fb"
+          emissiveIntensity={0.2}
         />
       </Sphere>
 

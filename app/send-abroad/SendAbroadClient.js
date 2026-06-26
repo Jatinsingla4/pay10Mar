@@ -72,37 +72,7 @@ const SendAbroadClient = () => {
         </div>
       </section>
 
-      <section className={Style.download_cta}>
-        <div data-animation="opacity-up">
-          <h3>Get the App Now</h3>
-        </div>
 
-        <div className={Style.apps_container} data-animation="opacity-up" data-anim-delay="100">
-          <div className={Style.app_type}>
-            <h4>Consumer App</h4>
-            <div className={Style.store_buttons}>
-              <a href="https://apps.apple.com/ae/app/pay10-uae/id6739810874" target="_blank" rel="noopener noreferrer">
-                <img src="/images/foo-app1.svg?v=3" alt="Download Consumer App on the App Store" />
-              </a>
-              <a href="https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en" target="_blank" rel="noopener noreferrer">
-                <img src="/images/foo-app2.svg?v=3" alt="Get Consumer App on Google Play" />
-              </a>
-            </div>
-          </div>
-
-          <div className={Style.app_type}>
-            <h4>Merchant App</h4>
-            <div className={Style.store_buttons}>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="/images/foo-app1.svg?v=3" alt="Download Merchant App on the App Store" />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <img src="/images/foo-app2.svg?v=3" alt="Get Merchant App on Google Play" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <ConsumerFeatureSection
         heading={
@@ -164,6 +134,38 @@ const SendAbroadClient = () => {
         isGreyBg={false}
         isTransparent={true}
       />
+      <section className={Style.download_cta}>
+        <div data-animation="opacity-up">
+          <h3>Get the App Now</h3>
+        </div>
+
+        <div className={Style.apps_container} data-animation="opacity-up" data-anim-delay="100">
+          <div className={Style.app_type}>
+            <h4>Consumer App</h4>
+            <div className={Style.store_buttons}>
+              <a href="https://apps.apple.com/ae/app/pay10-uae/id6739810874" target="_blank" rel="noopener noreferrer">
+                <img src="/images/foo-app1.svg?v=3" alt="Download Consumer App on the App Store" />
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en" target="_blank" rel="noopener noreferrer">
+                <img src="/images/foo-app2.svg?v=3" alt="Get Consumer App on Google Play" />
+              </a>
+            </div>
+          </div>
+
+          <div className={Style.app_type}>
+            <h4>Merchant App</h4>
+            <div className={Style.store_buttons}>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <img src="/images/foo-app1.svg?v=3" alt="Download Merchant App on the App Store" />
+              </a>
+              <a href="#" target="_blank" rel="noopener noreferrer">
+                <img src="/images/foo-app2.svg?v=3" alt="Get Merchant App on Google Play" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       </div>
 
     </main>

@@ -495,15 +495,15 @@ const faqData = [
     ]
   },
   {
-    tabName: "FAQ Pay10 Merchant Biz App",
+    tabName: "FAQ Pay10 Biz UAE App",
     faqs: [
       {
         question: "1. How do I sign up for Pay10 as a merchant?",
-        answer: "To sign up for Pay10 as a merchant, you can either register through the Pay10 Biz App or contact the Pay10 Merchant Support Team for manual onboarding. During the registration process, you’ll need to submit essential documents such as your Trade License, Company Documents, Emirates ID, and Bank Details. Once your application is approved, your login credentials will be sent to your registered email address, allowing you to start using Pay10’s merchant services."
+        answer: "To sign up for Pay10 as a merchant, you can either register through the Pay10 Biz UAE App or contact the Pay10 Merchant Support Team for manual onboarding. During the registration process, you’ll need to submit essential documents such as your Trade License, Company Documents, Emirates ID, and Bank Details. Once your application is approved, your login credentials will be sent to your registered email address, allowing you to start using Pay10’s merchant services."
       },
       {
         question: "2. Is there a fee to create a merchant account?",
-        answer: "There is no fee to create a merchant account with Pay10. However, when using the Pay10 Biz App, transaction charges apply according to the rates specified in your Merchant Agreement. For complete details, it’s best to review the Merchant Agreement and the Schedule of Charges (SOC)."
+        answer: "There is no fee to create a merchant account with Pay10. However, when using the Pay10 Biz UAE App, transaction charges apply according to the rates specified in your Merchant Agreement. For complete details, it’s best to review the Merchant Agreement and the Schedule of Charges (SOC)."
       },
       {
         question: "3. How long does it take to get my account approved?",
@@ -511,7 +511,7 @@ const faqData = [
       },
       {
         question: "4. Can I change my business type once my account is created?",
-        answer: "Once your registration with Pay10 is complete, the business type cannot be changed directly through the app or portal. To make changes, you’ll need to contact the Pay10 Merchant Support Team, who will guide you through the necessary steps. You can reach them by phone at 800 729 110 or via email at merchant.support@pay10.ae."
+        answer: "Once your registration with Pay10 is complete, the business type cannot be changed directly through the Pay10 Biz UAE App or portal. To make changes, you’ll need to contact the Pay10 Merchant Support Team, who will guide you through the necessary steps. You can reach them by phone at 800 729 110 or via email at <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>."
       },
       {
         question: "5. I don’t have a business bank account. How can I proceed?",
@@ -523,35 +523,35 @@ const faqData = [
       },
       {
         question: "7. I have completed onboarding. How do I set up my password?",
-        answer: "Once you’ve completed onboarding, you’ll receive an activation email containing your temporary login credentials for the Pay10 Biz app. Use these credentials to log in, and then follow the prompts within the app to set up your new password. This ensures your account is secure and personalized for future access."
+        answer: "Once you’ve completed onboarding, you’ll receive an activation email containing your temporary login credentials for the Pay10 Biz UAE App. Use these credentials to log in, and then follow the prompts within the Pay10 Biz UAE App to set up your new password. This ensures your account is secure and personalized for future access."
       },
       {
         question: "8. How to reset my password?",
-        answer: "To reset your password on the Pay10 Biz App, tap the “Forgot Password” option on the login screen. Then, enter your registered email address associated with Pay10. You’ll receive an email with instructions to reset your password and regain access to your account."
+        answer: "To reset your password on the Pay10 Biz UAE App, tap the “Forgot Password” option on the login screen. Then, enter your registered email address associated with Pay10. You’ll receive an email with instructions to reset your password and regain access to your account."
       },
       {
-        question: "9. How to unlock Pay10 Biz account?",
-        answer: "If your Pay10 Biz account is locked, the best course of action is to contact the Pay10 Merchant Support Team. They will help verify your identity and assist you in regaining access to your account. You can reach them by phone at 800 729 110 or via email at merchant.support@pay10.ae."
+        question: "9. How to unlock Pay10 Biz UAE App account?",
+        answer: "If your Pay10 Biz UAE App account is locked, the best course of action is to contact the Pay10 Merchant Support Team. They will help verify your identity and assist you in regaining access to your account. You can reach them by phone at 800 729 110 or via email at <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>."
       },
       {
         question: "10. How do I change the registered phone number or email of my account?",
-        answer: "To change the registered phone number or email on your Pay10 account, you’ll need to contact the Merchant Support Team directly. You can either call them at 800 729 110 or send a request from your currently registered email address to merchant.support@pay10.ae. The support team will verify your identity and guide you through the necessary steps to update your contact information."
+        answer: "To change the registered phone number or email on your Pay10 account, you’ll need to contact the Merchant Support Team directly. You can either call them at 800 729 110 or send a request from your currently registered email address to <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>. The support team will verify your identity and guide you through the necessary steps to update your contact information."
       },
       {
         question: "11. Where can I find my Merchant ID?",
-        answer: "You can locate your Merchant ID in the Pay10 Biz App by going to Profile, then selecting Accounts, followed by Merchant Information, and finally tapping on Show QR Code. Your Merchant ID will be displayed along with the QR code."
+        answer: "You can locate your Merchant ID in the Pay10 Biz UAE App by going to Profile, then selecting Accounts, followed by Merchant Information, and finally tapping on Show QR Code. Your Merchant ID will be displayed along with the QR code."
       },
       {
-        question: "12. How can I accept payments using Pay10 Biz app?",
-        answer: "You can accept payments using the Pay10 Biz App through Dynamic QR codes. These QR codes are generated for each individual transaction and include the exact payment amount, ensuring a smooth and error-free process. This method eliminates the risk of customers entering incorrect amounts, speeds up payment completion, and improves accuracy for tracking and reconciliation. It’s a secure and efficient way to manage transactions directly from the app."
+        question: "12. How can I accept payments using Pay10 Biz UAE App?",
+        answer: "You can accept payments using the Pay10 Biz UAE App through Dynamic QR codes. These QR codes are generated for each individual transaction and include the exact payment amount, ensuring a smooth and error-free process. This method eliminates the risk of customers entering incorrect amounts, speeds up payment completion, and improves accuracy for tracking and reconciliation. It’s a secure and efficient way to manage transactions directly from the Pay10 Biz UAE App."
       },
       {
-        question: "13. How to generate a QR code from Pay10 Biz App?",
-        answer: "To generate a QR code using the Pay10 Biz App, simply tap on “Checkout” from the app’s homepage. Enter the exact payment amount for the transaction, and the app will instantly generate a Dynamic QR code. Customers can then scan this code to complete their payment quickly and accurately."
+        question: "13. How to generate a QR code from Pay10 Biz UAE App?",
+        answer: "To generate a QR code using the Pay10 Biz UAE App, simply tap on “Checkout” from the Pay10 Biz UAE App’s homepage. Enter the exact payment amount for the transaction, and the Pay10 Biz UAE App will instantly generate a Dynamic QR code. Customers can then scan this code to complete their payment quickly and accurately."
       },
       {
         question: "14. Can I use a single QR code for multiple payments?",
-        answer: "No, you cannot use a single QR code for multiple payments. Dynamic QR codes in the Pay10 Biz App are designed for one-time use only. Each transaction requires a new QR code to be generated, ensuring the correct payment amount is captured and reducing the risk of errors or duplication."
+        answer: "No, you cannot use a single QR code for multiple payments. Dynamic QR codes in the Pay10 Biz UAE App are designed for one-time use only. Each transaction requires a new QR code to be generated, ensuring the correct payment amount is captured and reducing the risk of errors or duplication."
       },
       {
         question: "15. Are there any transaction limits for Pay10 merchants to accept?",
@@ -559,7 +559,7 @@ const faqData = [
       },
       {
         question: "16. Customer amount is debited, but I haven’t received a notification.",
-        answer: "If a customer’s amount has been debited but you haven’t received a notification, start by refreshing the homepage of your Pay10 Biz App, as transaction statuses update in real time. If the transaction still doesn’t appear, ask the customer to provide proof of payment, including the transaction ID, date, mobile number, and amount. Once you have these details, contact the Pay10 Merchant Support Team to help resolve the issue. Customers can also check their Pay10 UAE App for complete transaction information."
+        answer: "If a customer’s amount has been debited but you haven’t received a notification, start by refreshing the homepage of your Pay10 Biz UAE App, as transaction statuses update in real time. If the transaction still doesn’t appear, ask the customer to provide proof of payment, including the transaction ID, date, mobile number, and amount. Once you have these details, contact the Pay10 Merchant Support Team to help resolve the issue. Customers can also check their Pay10 UAE App for complete transaction information."
       },
       {
         question: "17. What is the settlement process and how long does it take to receive funds?",
@@ -567,11 +567,11 @@ const faqData = [
       },
       {
         question: "18. Do I need a POS machine to accept payments?",
-        answer: "You don’t need a POS machine to accept payments with Pay10. While a POS machine is available as an additional payment channel, the Pay10 Biz App allows you to accept payments seamlessly using dynamic QR codes. This method is simple, fast, and effective for handling transactions directly through the app."
+        answer: "You don’t need a POS machine to accept payments with Pay10. While a POS machine is available as an additional payment channel, the Pay10 Biz UAE App allows you to accept payments seamlessly using dynamic QR codes. This method is simple, fast, and effective for handling transactions directly through the Pay10 Biz UAE App."
       },
       {
         question: "19. For what duration is transaction history available through the application?",
-        answer: "Transaction history is available in the Pay10 Biz App for up to one year from the date you search. If you need access to records older than one year, you’ll need to contact the Pay10 Merchant Support Team, who can assist you in retrieving the necessary information."
+        answer: "Transaction history is available in the Pay10 Biz UAE App for up to one year from the date you search. If you need access to records older than one year, you’ll need to contact the Pay10 Merchant Support Team, who can assist you in retrieving the necessary information."
       },
       {
         question: "20. Can customers from other countries use their wallets to pay me?",
@@ -579,35 +579,35 @@ const faqData = [
       },
       {
         question: "21. Is there a dashboard to track transactions?",
-        answer: "Yes, the Pay10 Biz App includes a dashboard that allows you to view and monitor your recent transactions right from the homepage. It provides a clear overview of your payment activity, helping you stay on top of your business performance in real time."
+        answer: "Yes, the Pay10 Biz UAE App includes a dashboard that allows you to view and monitor your recent transactions right from the homepage. It provides a clear overview of your payment activity, helping you stay on top of your business performance in real time."
       },
       {
-        question: "22. Can I issue refunds through the Pay10 biz app?",
-        answer: "Yes, you can issue refunds directly through the Pay10 Biz App. Once processed, the refunded amount will be credited back to the customer’s Pay10 wallet balance, making it a quick and convenient way to handle reversals."
+        question: "22. Can I issue refunds through the Pay10 Biz UAE App?",
+        answer: "Yes, you can issue refunds directly through the Pay10 Biz UAE App. Once processed, the refunded amount will be credited back to the customer’s Pay10 UAE App wallet balance, making it a quick and convenient way to handle reversals."
       },
       {
         question: "23. How to initiate a refund?",
-        answer: "To initiate a refund using the Pay10 Biz App or web portal, navigate to the Transaction History section and select the specific transaction you want to refund. Tap on “Refund” and confirm the action. Once completed, the full amount will be credited back to the customer’s Pay10 wallet balance."
+        answer: "To initiate a refund using the Pay10 Biz UAE App or web portal, navigate to the Transaction History section and select the specific transaction you want to refund. Tap on “Refund” and confirm the action. Once completed, the full amount will be credited back to the customer’s Pay10 UAE App wallet balance."
       },
       {
         question: "24. What are the refund timelines?",
-        answer: "Refunds through the Pay10 Biz App are processed instantly, provided there is enough balance available in your Pay10 Biz wallet to cover the refund amount. This ensures a quick and seamless experience for both merchants and customers."
+        answer: "Refunds through the Pay10 Biz UAE App are processed instantly, provided there is enough balance available in your Pay10 Biz UAE App wallet to cover the refund amount. This ensures a quick and seamless experience for both merchants and customers."
       },
       {
         question: "25. Can we do partial refunds as well?",
-        answer: "Partial refunds are not currently supported in the Pay10 Biz App, but the feature is coming soon. Once available, it will allow merchants to refund a portion of the transaction amount directly through the app, offering more flexibility in handling customer payments."
+        answer: "Partial refunds are not currently supported in the Pay10 Biz UAE App, but the feature is coming soon. Once available, it will allow merchants to refund a portion of the transaction amount directly through the Pay10 Biz UAE App, offering more flexibility in handling customer payments."
       },
       {
-        question: "26. What if I don’t have a balance in my Pay10 Biz wallet and want to refund?",
-        answer: "If your Pay10 Biz wallet doesn’t have sufficient balance, you won’t be able to process a refund. To resolve this, you’ll need to ensure your wallet is funded before initiating the refund. For further assistance, you can contact the Pay10 Merchant Support team by phone at 800 729 110 or via email at merchant.support@pay10.ae."
+        question: "26. What if I don’t have a balance in my Pay10 Biz UAE App wallet and want to refund?",
+        answer: "If your Pay10 Biz UAE App wallet doesn’t have sufficient balance, you won’t be able to process a refund. To resolve this, you’ll need to ensure your wallet is funded before initiating the refund. For further assistance, you can contact the Pay10 Merchant Support team by phone at 800 729 110 or via email at <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>."
       },
       {
         question: "27. How can I access my transaction report?",
-        answer: "You can access your transaction report by viewing the “Recent Transactions” section on the homepage of the Pay10 Biz App. While an advanced reporting feature via the Pay10 Merchant Portal is on its way, you can request specific reports by contacting the Pay10 Merchant Support Team at 800 729 110 or emailing merchant.support@pay10.ae."
+        answer: "You can access your transaction report by viewing the “Recent Transactions” section on the homepage of the Pay10 Biz UAE App. While an advanced reporting feature via the Pay10 Merchant Portal is on its way, you can request specific reports by contacting the Pay10 Merchant Support Team at 800 729 110 or emailing <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>."
       },
       {
         question: "28. Can I receive the transaction report on my email?",
-        answer: "Yes, you can receive your transaction report via email by contacting the Pay10 Merchant Support Team. Simply reach out to them at 800 729 110 or send an email to merchant.support@pay10.ae with your request, and they’ll assist you in getting the report delivered to your inbox."
+        answer: "Yes, you can receive your transaction report via email by contacting the Pay10 Merchant Support Team. Simply reach out to them at 800 729 110 or send an email to <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a> with your request, and they’ll assist you in getting the report delivered to your inbox."
       },
       {
         question: "29. Will Pay10 provide me a VAT statement every month?",
@@ -615,27 +615,27 @@ const faqData = [
       },
       {
         question: "30. How can I change my bank account for settlement?",
-        answer: "To change your settlement bank account in Pay10, you’ll need to submit a bank account IBAN confirmation letter to the Pay10 Merchant Support Team. You can reach them by phone at 800 729 110 or email them at merchant.support@pay10.ae for further guidance and processing."
+        answer: "To change your settlement bank account in Pay10, you’ll need to submit a bank account IBAN confirmation letter to the Pay10 Merchant Support Team. You can reach them by phone at 800 729 110 or email them at <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a> for further guidance and processing."
       },
       {
         question: "31. I didn’t receive my settlement. What should I do?",
-        answer: "If you haven’t received your settlement, start by checking your Pay10 Biz App wallet under the Recent Transactions section to locate the transaction ID linked to your settlement request. If the settlement still hasn’t arrived, reach out to the Pay10 Merchant Support Team and share the transaction ID so they can investigate and assist you. You can contact them by phone at 800 729 110 or email them at merchant.support@pay10.ae."
+        answer: "If you haven’t received your settlement, start by checking your Pay10 Biz UAE App wallet under the Recent Transactions section to locate the transaction ID linked to your settlement request. If the settlement still hasn’t arrived, reach out to the Pay10 Merchant Support Team and share the transaction ID so they can investigate and assist you. You can contact them by phone at 800 729 110 or email them at <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>."
       },
       {
         question: "32. How secure is your payment process?",
-        answer: "Pay10’s payment process is highly secure, backed by its status as a licensed entity regulated by the Central Bank of the UAE. The platform adheres to industry-leading security standards such as PCI DSS and SOC compliance, ensuring that all data and transactions are safeguarded through advanced encryption and tokenization. To further enhance protection, the Pay10 Biz App includes biometric authentication and PIN-based access, providing an additional layer of security for merchants using the app."
+        answer: "Pay10’s payment process is highly secure, backed by its status as a licensed entity regulated by the Central Bank of the UAE. The platform adheres to industry-leading security standards such as PCI DSS and SOC compliance, ensuring that all data and transactions are safeguarded through advanced encryption and tokenization. To further enhance protection, the Pay10 Biz UAE App includes biometric authentication and PIN-based access, providing an additional layer of security for merchants using the Pay10 Biz UAE App."
       },
       {
         question: "33. What kind of support is available for merchants?",
-        answer: "Pay10 offers dedicated merchant support every day from 8 AM to 8 PM, including weekends. If you need assistance, you can reach the support team by calling 800 729 110 or emailing merchant.support@pay10.ae. They’re available to help with any queries or issues related to your account, transactions, settlements, or technical concerns."
+        answer: "Pay10 offers dedicated merchant support every day from 8 AM to 8 PM, including weekends. If you need assistance, you can reach the support team by calling 800 729 110 or emailing <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>. They’re available to help with any queries or issues related to your account, transactions, settlements, or technical concerns."
       },
       {
         question: "34. What should I do if I suspect fraudulent activity?",
-        answer: "If you suspect any fraudulent activity related to your Pay10 account or transactions, it’s important to act quickly. Immediately contact the Pay10 Merchant Support Team to report the issue and provide any relevant details that can help them investigate. You can reach them by phone at 800 729 110 or by email at merchant.support@pay10.ae. Prompt reporting ensures that appropriate measures can be taken to protect your account and prevent further risk."
+        answer: "If you suspect any fraudulent activity related to your Pay10 account or transactions, it’s important to act quickly. Immediately contact the Pay10 Merchant Support Team to report the issue and provide any relevant details that can help them investigate. You can reach them by phone at 800 729 110 or by email at <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>. Prompt reporting ensures that appropriate measures can be taken to protect your account and prevent further risk."
       },
       {
         question: "35. There are multiple products from Pay10. How do I know which one is best for my business?",
-        answer: "To determine which Pay10 product best suits your business, you can reach out directly to the Merchant Success team at sales@pay10.ae. They’ll evaluate your specific business requirements and guide you toward the most suitable solution, whether it’s QR payments, payment gateway integration, POS systems, or other offerings tailored to your operations."
+        answer: "To determine which Pay10 product best suits your business, you can reach out directly to the Merchant Success team at <a href='mailto:sales@pay10.ae'>sales@pay10.ae</a>. They’ll evaluate your specific business requirements and guide you toward the most suitable solution, whether it’s QR payments, payment gateway integration, POS systems, or other offerings tailored to your operations."
       },
       {
         question: "36. Do you support cryptocurrency business models?",
@@ -643,11 +643,11 @@ const faqData = [
       },
       {
         question: "37. Can I delete my Pay10 account?",
-        answer: "Yes, you can delete your Pay10 account by contacting the Pay10 Merchant Support Team for assistance. Reach out to them by phone at 800 729 110 or email merchant.support@pay10.ae, and they’ll guide you through the account deletion process."
+        answer: "Yes, you can delete your Pay10 account by contacting the Pay10 Merchant Support Team for assistance. Reach out to them by phone at 800 729 110 or email <a href='mailto:merchant.support@pay10.ae'>merchant.support@pay10.ae</a>, and they’ll guide you through the account deletion process."
       },
       {
-        question: "38. Where can I find the terms and conditions for using the PAY10 Biz App?",
-        answer: "To find the terms and conditions for using the Pay10 Biz App, you should refer to your Pay10 Merchant Agreement, which outlines the detailed terms specific to your business relationship with Pay10. Additionally, the general Terms of Service and Privacy Policy are available on the Pay10 UAE website."
+        question: "38. Where can I find the terms and conditions for using the Pay10 Biz UAE App?",
+        answer: "To find the terms and conditions for using the Pay10 Biz UAE App, you should refer to your Pay10 Merchant Agreement, which outlines the detailed terms specific to your business relationship with Pay10. Additionally, the general Terms of Service and Privacy Policy are available on the Pay10 UAE website."
       }
     ]
   }

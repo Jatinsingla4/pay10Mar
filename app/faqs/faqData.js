@@ -281,7 +281,7 @@ const faqData = [
       },
       {
         question: "10. Is Send Abroad secure?",
-        answer: "Yes. Send money abroad via Pay10 UAE app is completely secured method and is protected with multi-tier validations; which includes App PIN or Biometric authentication, Encrypted communication for transfer of funds, device security controls as well as regulatory guidelines."
+        answer: "Yes. Send money abroad via Pay10 UAE App is completely secured method and is protected with multi-tier validations; which includes App PIN or Biometric authentication, Encrypted communication for transfer of funds, device security controls as well as regulatory guidelines."
       },
       {
         question: "11. What are the minimum and maximum transfer limits?",
@@ -293,7 +293,7 @@ const faqData = [
       },
       {
         question: "13. What are the exchange rates and fees to send money abroad?",
-        answer: "Pay10 offers competitive exchange rate and conversion fees. You can check the current rates directly through the Pay10 UAE app before initiating the transfer. The service charges vary from time to time and are shown clearly at the time of transaction before you proceed ahead with the send money abroad."
+        answer: "Pay10 offers competitive exchange rate and conversion fees. You can check the current rates directly through the Pay10 UAE App before initiating the transfer. The service charges vary from time to time and are shown clearly at the time of transaction before you proceed ahead with the send money abroad."
       },
       {
         question: "14. Will intermediary or receiving banks charge additional fees?",
@@ -301,7 +301,7 @@ const faqData = [
       },
       {
         question: "15. How can I track my Send Abroad?",
-        answer: "You can track the status of Your transfer in the app under transaction history."
+        answer: "You can track the status of Your transfer in the Pay10 UAE App under transaction history."
       },
       {
         question: "16. Will I receive notifications for my transfer?",
@@ -313,7 +313,7 @@ const faqData = [
       },
       {
         question: "18. What happens if the beneficiary’s account is inactive or closed?",
-        answer: "The transfer will likely fail, and the amount will be refunded to Your wallet."
+        answer: "The transfer will likely fail, and the amount will be refunded to Your Pay10 UAE App."
       }
     ]
   },

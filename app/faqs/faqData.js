@@ -32,12 +32,12 @@ const faqData = [
         answer: "Once a bill payment is successfully processed and acknowledged by the biller, it cannot be reversed. Always verify account or consumer number before proceeding ahead with the transaction."
       },
       {
-        question: "8. Why is my biller not showing in the app?",
+        question: "8. Why is my biller not showing in the Pay10 UAE App?",
         answer: "Only billers integrated and enabled in the system are displayed. If a biller is not available, it may not yet be supported or may be temporarily disabled"
       },
       {
         question: "9. Is there any limit on bill payments?",
-        answer: "Transaction limits depend on: your Pay10 Account’s limits, regulatory thresholds and/or biller specific caps. If you exceed a limit, the app will notify you before you initiate a transaction."
+        answer: "Transaction limits depend on: your Pay10 Account’s limits, regulatory thresholds and/or biller specific caps. If you exceed a limit, the Pay10 UAE App will notify you before you initiate a transaction."
       },
       {
         question: "10. Why I am not asked for Salik details when making a payment?",

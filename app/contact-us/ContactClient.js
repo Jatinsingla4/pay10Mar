@@ -296,33 +296,6 @@ const ContactClient = () => {
           </div>
         </section>
 
-        {/* Contact Info Cards */}
-        <section className={Style.infoCardsSection}>
-          <div className={Style.infoCardsGrid}>
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="0">
-              <div className={Style.infoCardIcon}><Icon icon="weui:location-outlined" /></div>
-              <h3>Address</h3>
-              <p>1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates</p>
-            </div>
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="150">
-              <div className={Style.infoCardIcon}><Icon icon="ic:outline-email" /></div>
-              <h3>Email</h3>
-              <p><a href="mailto:info@pay10.ae" className={Style.emailLink}>info@pay10.ae</a></p>
-            </div>
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="300">
-              <div className={Style.infoCardIcon}><Icon icon="ic:outline-support-agent" /></div>
-              <h3>Merchant Support</h3>
-              <p><a href="mailto:merchant.support@pay10.ae" className={Style.emailLink}>merchant.support@pay10.ae</a></p>
-            </div>
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="450">
-              <div className={Style.infoCardIcon}><Icon icon="prime:mobile" /></div>
-              <h3>Phone</h3>
-              <p>For Pay10 Queries:<br /><a href="tel:80072910" className={Style.phoneLink}>80072910</a></p>
-              <p>For Pay10 Business Queries:<br /><a href="tel:800729110" className={Style.phoneLink}>800729110</a></p>
-            </div>
-          </div>
-        </section>
-
         {/* Map Section */}
         <section className={Style.mapSection} data-animation="opacity">
           <iframe

@@ -6,11 +6,9 @@ import Style from "./privacy-policy.module.scss";
 const PrivacyClient = () => {
   return (
     <main className={Style.mainPriv}>
-      <section className={Style.privacy_policy_banner}>
-        <h2 data-animation="fade-up">Privacy Policy</h2>
-      </section>
-
       <section className={Style.content_section}>
+        <h1 className={Style.title} data-animation="fade-up">PRIVACY POLICY</h1>
+
         <div className={Style.arabic_btn_row} data-animation="fade-up">
           <a href="/privacy-policy/#" className={Style.arabic_btn}>يبرع</a>
         </div>
@@ -168,8 +166,7 @@ const PrivacyClient = () => {
             {/* How personal data is collected */}
             <h2 data-animation="fade-up">How Your personal data is collected</h2>
             <p data-animation="fade-up">
-              We collect most of Your personal data directly from You when You register for and use the Pay10
-              App, complete onboarding and KYC/CDD checks, use Pay10 services, submit transaction
+              We collect most of Your personal data directly from You when You register for and use the Pay10 UAE App, complete onboarding and KYC/CDD checks, use Pay10 services, submit transaction
               instructions, contact customer support, respond to Pay10 requests, or provide additional
               information requested by Pay10 for compliance, regulatory, security or customer-support
               purposes. Pay10 will never ask You to disclose Your PIN, OTP, password or other confidential
@@ -342,7 +339,7 @@ const PrivacyClient = () => {
             <ul data-animation="fade-up">
               <li>Contacting Us at <a href="mailto:support@pay10.ae">support@pay10.ae</a></li>
               <li>Using the &lsquo;unsubscribe&rsquo; link in emails or &lsquo;STOP&rsquo; number in texts.</li>
-              <li>Disabling marketing notifications from Your Pay10 app.</li>
+              <li>Disabling marketing notifications from Your Pay10 UAE App.</li>
             </ul>
             <p data-animation="fade-up">
               We may ask You to confirm or update Your marketing preferences if You instruct Us to provide

@@ -33,6 +33,28 @@
   }
 }
 
+.title {
+  text-align: center;
+  font-family: 'bold', sans-serif;
+  font-size: 3.5rem;
+  color: var(--black);
+  margin-bottom: 8px;
+  line-height: 1.2;
+
+  @include tab {
+    font-size: 2.8rem;
+  }
+
+  @include lessTab {
+    font-size: 2rem;
+    padding: 0;
+  }
+
+  @include mobile {
+    font-size: 1.6rem;
+  }
+}
+
 .content_section {
   max-width: 1300px;
   margin: 0 auto;

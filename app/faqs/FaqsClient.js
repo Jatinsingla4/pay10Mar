@@ -25,7 +25,7 @@ export default function FaqsClient() {
 
   return (
     <div className={styles.faqs_container}>
-      <h1 className={styles.title} data-animation="opacity-up">Frequently Asked Questions</h1>
+      <h1 className={styles.title} data-animation="opacity-up">FREQUENTLY ASKED QUESTIONS</h1>
 
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}

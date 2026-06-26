@@ -13,7 +13,7 @@ const faqData = [
       },
       {
         question: "3. What details do I need to pay a bill?",
-        answer: "The Pay10 App will prompt you to provide the required bill payment details during the bill payment journey. Pay10 primarily relies on the information provided by you during Pay10 App registration and through the Pay10 App. Pay10 will never ask you to disclose your PIN, OTP, password or other confidential security credentials by phone, SMS, email or social media."
+        answer: "The Pay10 UAE App will prompt you to provide the required bill payment details during the bill payment journey. Pay10 primarily relies on the information provided by you during Pay10 UAE App registration and through the Pay10 UAE App. Pay10 will never ask you to disclose your PIN, OTP, password or other confidential security credentials by phone, SMS, email or social media."
       },
       {
         question: "4. Are bill payments processed instantly?",
@@ -25,7 +25,7 @@ const faqData = [
       },
       {
         question: "6. What happens if my bill payment fails?",
-        answer: "If the payment fails: the full payment will be refunded to your Pay10 Account and you will receive a confirmation notification. If you face any issues, feel free to contact Pay10 support team for assistance."
+        answer: "If the payment fails: the full payment will be refunded to your Pay10 Account and you will receive a confirmation notification. If you face any issues, feel free to contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> for assistance."
       },
       {
         question: "7. Can I reverse a bill payment after successful completion?",
@@ -66,7 +66,7 @@ const faqData = [
       },
       {
         question: "5. How do I activate my card?",
-        answer: "Card activation is allowed only via the Pay10 app. Follow the instructions included in your welcome envelope to activate your card. When you click on the card banner or card menu, it will take you directly to manage card for activation flow. Follow the steps as described on the screen. For any support contact 800-PAY10 (72910)"
+        answer: "Card activation is allowed only via the Pay10 UAE App. Follow the instructions included in your welcome envelope to activate your card. When you click on the card banner or card menu, it will take you directly to manage card for activation flow. Follow the steps as described on the screen. For any support contact 800-PAY10 (72910)"
       },
       {
         question: "6. Can I reload my prepaid card?",
@@ -82,7 +82,7 @@ const faqData = [
       },
       {
         question: "9. What should I do if my card is lost or stolen?",
-        answer: "Immediately report the loss or theft to customer service on 80072910 or via the Pay10 app, under card management section."
+        answer: "Immediately report the loss or theft to customer service on 80072910 or via the Pay10 UAE App, under card management section."
       },
       {
         question: "10. Can I get a supplementary Pay10 card?",
@@ -90,7 +90,7 @@ const faqData = [
       },
       {
         question: "11. How can I contact customer support?",
-        answer: "You can contact Pay10 customer support team on 800-PAY10 (72910) or at support@pay10.ae"
+        answer: "You can Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>"
       }
     ]
   },
@@ -99,7 +99,7 @@ const faqData = [
     faqs: [
       {
         question: "1. What should I do if I notice suspicious activity on my account?",
-        answer: "If you notice any suspicious transaction, login attempt, or activity that you do not recognize, please report it immediately. You can contact our support team by calling +971 800 729 10 or by emailing support@pay10.ae."
+        answer: "If you notice any suspicious transaction, login attempt, or activity that you do not recognize, please report it immediately. You can contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>."
       },
       {
         question: "2. What is considered suspicious activity?",
@@ -107,7 +107,7 @@ const faqData = [
       },
       {
         question: "3. How can I report fraud or suspicious activity from the app?",
-        answer: "You can report by contacting our support team via phone +971 800 729 10 or by emailing support@pay10.ae."
+        answer: "You can report by contacting Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>."
       },
       {
         question: "4. What happens after I report suspicious activity?",
@@ -132,22 +132,22 @@ const faqData = [
     faqs: [
       {
         question: "1. About Pay10 WPS - What is Pay10 WPS?",
-        answer: "Pay10 WPS is a service made available by Pay10 to support salary or wage credits under the UAE Wage Protection System (WPS). Your employer has selected Pay10 to pay your salary safely and on time into your Pay10 app universal account."
+        answer: "Pay10 WPS is a service made available by Pay10 to support salary or wage credits under the UAE Wage Protection System (WPS). Your employer has selected Pay10 to pay your salary safely and on time into your Pay10 UAE App universal account."
       },
       {
         question: "1. About Pay10 WPS - Why am I receiving my salary through Pay10?",
-        answer: "Your employer has selected Pay10 as their WPS partner to: Pay salaries securely, Comply with UAE labor rules and give employees access to their salary through the Pay10 App, and where issued, through a Pay10 Card linked to their Pay10 account."
+        answer: "Your employer has selected Pay10 as their WPS partner to: Pay salaries securely, Comply with UAE labor rules and give employees access to their salary through the Pay10 UAE App, and where issued, through a Pay10 Card linked to their Pay10 account."
       },
       {
-        question: "2. Pay10 Account & App - What is the Pay10 app?",
-        answer: "The Pay10 app is a mobile app where you can: Receive your salary, Pay at local merchants (shops), Send money locally or internationally, Pay bills, and Manage your Pay10 issued card."
+        question: "2. Pay10 Account & App - What is the Pay10 UAE App?",
+        answer: "The Pay10 UAE App is a mobile app where you can: Receive your salary, Pay at local merchants (shops), Send money locally or internationally, Pay bills, and Manage your Pay10 issued card."
       },
       {
         question: "2. Pay10 Account & App - Do I need a bank account to use Pay10?",
-        answer: "No, you do not need a bank account to receive your salary through the Pay10 app. However, if you have a bank account, you can connect it to add money to your Pay10 app."
+        answer: "No, you do not need a bank account to receive your salary through the Pay10 UAE App. However, if you have a bank account, you can connect it to add money to your Pay10 UAE App."
       },
       {
-        question: "2. Pay10 Account & App - Is the Pay10 app safe?",
+        question: "2. Pay10 Account & App - Is the Pay10 UAE App safe?",
         answer: "Yes, Pay10 follows UAE Central Bank regulations and uses secure systems to protect your money and transaction data."
       },
       {
@@ -160,11 +160,11 @@ const faqData = [
       },
       {
         question: "3. Salary & WPS - Can I see my salary history?",
-        answer: "Yes, you can view salary credits and past transactions directly in the Pay10 app transaction history."
+        answer: "Yes, you can view salary credits and past transactions directly in the Pay10 UAE App transaction history."
       },
       {
         question: "4. Pay10 Jaywan Card - What is the Pay10 Jaywan Card?",
-        answer: "The Pay10 Jaywan Card is a prepaid card issued by Pay10 and linked to your Pay10 app account."
+        answer: "The Pay10 Jaywan Card is a prepaid card issued by Pay10 and linked to your Pay10 UAE App account."
       },
       {
         question: "4. Pay10 Jaywan Card - Where can I use my Jaywan card?",
@@ -176,35 +176,35 @@ const faqData = [
       },
       {
         question: "4. Pay10 Jaywan Card - What if my card is lost or damaged?",
-        answer: "You can block the card instantly from the Pay10 app through the card management section or by contacting Pay10 consumer support team on 800-72910. Request a replacement card (charges may apply) through your employer."
+        answer: "You can block the card instantly from the Pay10 UAE App through the card management section or by contacting Pay10 consumer support team on 800-72910. Request a replacement card (charges may apply) through your employer."
       },
       {
         question: "5. Paying & Spending Money - How can I pay at shops using Pay10?",
-        answer: "You can scan Pay10 DQR (QR Code) using the Pay10 app, or subject to merchant acceptance, pay using your Pay10 Jaywan card like any other card."
+        answer: "You can scan Pay10 DQR (QR Code) using the Pay10 UAE App, or subject to merchant acceptance, pay using your Pay10 Jaywan card like any other card."
       },
       {
         question: "5. Paying & Spending Money - What is DQR?",
-        answer: "DQR is a Dynamic QR code generated to securely process a payment transaction by the Pay10 merchant. It allows you to make payments by scanning the DQR using the Pay10 app on your phone."
+        answer: "DQR is a Dynamic QR code generated to securely process a payment transaction by the Pay10 merchant. It allows you to make payments by scanning the DQR using the Pay10 UAE App on your phone."
       },
       {
         question: "6. Sending & Receiving Money - Can I send money to family or friends in the UAE?",
-        answer: "Yes, you can send money from your Pay10 app to your family or friends who are either using the Pay10 App or to a bank account issued in the UAE."
+        answer: "Yes, you can send money from your Pay10 UAE App to your family or friends who are either using the Pay10 UAE App or to a bank account issued in the UAE."
       },
       {
         question: "6. Sending & Receiving Money - Can I use Send Abroad?",
-        answer: "Yes, where available to you, Pay10 may allow you to send money to supported countries through the Send Abroad service. Please refer to the Send Abroad terms and the Pay10 App for availability, limits, fees, and processing timelines."
+        answer: "Yes, where available to you, Pay10 may allow you to send money to supported countries through the Send Abroad service. Please refer to the Send Abroad terms and the Pay10 UAE App for availability, limits, fees, and processing timelines."
       },
       {
         question: "6. Sending & Receiving Money - How long does an international transfer take?",
         answer: "Transfer time depends on destination country and payment method. You will see expected timelines in the app."
       },
       {
-        question: "7. Adding Money to Pay10 App - Can I add extra money to my Pay10 App?",
-        answer: "Yes, you can add money by connecting your own bank account and using any other supported top-up methods available in the Pay10 app."
+        question: "7. Adding Money to Pay10 UAE App - Can I add extra money to my Pay10 UAE App?",
+        answer: "Yes, you can add money by connecting your own bank account and using any other supported top-up methods available in the Pay10 UAE App."
       },
       {
         question: "8. Bill Payments - What bills can I pay using Pay10?",
-        answer: "Bill payment options are updated from time to time. You can pay bills available in the Pay10 app, such as Utilities, Telecom services, Transportation, and other listed services in the Bill Payment section."
+        answer: "Bill payment options are updated from time to time. You can pay bills available in the Pay10 UAE App, such as Utilities, Telecom services, Transportation, and other listed services in the Bill Payment section."
       },
       {
         question: "9. Card & App Controls - Can I control my card from the app?",
@@ -212,7 +212,7 @@ const faqData = [
       },
       {
         question: "9. Card & App Controls - Can I change my PIN?",
-        answer: "Yes, you can change or reset your card PIN through the Pay10 app."
+        answer: "Yes, you can change or reset your card PIN through the Pay10 UAE App."
       },
       {
         question: "10. Charges & Fees - Are there any fees?",
@@ -220,14 +220,14 @@ const faqData = [
       },
       {
         question: "11. Support & Help - What if I have a problem or question?",
-        answer: "You can contact the Pay10 customer support team at 800-PAY10 (72910)."
+        answer: "You can Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>."
       },
       {
         question: "11. Support & Help - What if my salary is delayed?",
-        answer: "Salary payments depend on employer submission under WPS. If your salary is delayed, check the Pay10 app notifications, SMS, or email before contacting your employer, HR, or Pay10 support (if advised by your HR)."
+        answer: "Salary payments depend on employer submission under WPS. If your salary is delayed, check the Pay10 UAE App notifications, SMS, or email before contacting your employer, HR, or Pay10 support (if advised by your HR)."
       },
       {
-        question: "12. Important Information - Is Pay10 approved in the UAE?",
+        question: "12. Important Information - Is Pay10 UAE Approved in the UAE?",
         answer: "Yes, Pay10 operates under UAE regulations and supports WPS salary payments."
       },
       {
@@ -277,7 +277,7 @@ const faqData = [
       },
       {
         question: "9. Why was my transfer put on hold or rejected?",
-        answer: "Your transfer may be held or rejected due to regulatory checks or incorrect beneficiary details. For more information, please contact Pay10 support."
+        answer: "Your transfer may be held or rejected due to regulatory checks or incorrect beneficiary details. For more information, please contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>."
       },
       {
         question: "10. Is Send Abroad secure?",
@@ -321,16 +321,16 @@ const faqData = [
     tabName: "FAQ Pay10 UAE App",
     faqs: [
       {
-        question: "1. What is the Pay10 Customer App?",
-        answer: "The Pay10 Customer App is a comprehensive digital wallet designed to simplify your financial life. It enables you to send money, shop online or in-store, pay bills, and manage your finances securely—all from a single platform. With features like QR code scanning for quick purchases and direct bill payments through the app, it offers a seamless and efficient way to handle everyday transactions."
+        question: "1. What is the Pay10 UAE App?",
+        answer: "The Pay10 UAE App is a comprehensive digital wallet designed to simplify your financial life. It enables you to send money, shop online or in-store, pay bills, and manage your finances securely—all from a single platform. With features like QR code scanning for quick purchases and direct bill payments through the app, it offers a seamless and efficient way to handle everyday transactions."
       },
       {
         question: "2. How do I create an account?",
-        answer: "To create an account, simply download the Pay10 app from the App Store or Play Store and register using your UAE mobile number and email. Next, complete your KYC by scanning your Emirates ID and verifying through facial recognition. Finally, set a personalized PIN and enable biometric login for secure access to the app."
+        answer: "To create an account, simply download the Pay10 UAE App from the App Store or Play Store and register using your UAE mobile number and email. Next, complete your KYC by scanning your Emirates ID and verifying through facial recognition. Finally, set a personalized PIN and enable biometric login for secure access to the app."
       },
       {
         question: "3. How do I log in to my account?",
-        answer: "You can log in to your account using the personalized PIN you created during account setup, or by using biometric authentication if you have enabled it in the Pay10 App."
+        answer: "You can log in to your account using the personalized PIN you created during account setup, or by using biometric authentication if you have enabled it in the Pay10 UAE App."
       },
       {
         question: "4. What is UAEPASS and why is it used during Pay10 registration?",
@@ -346,7 +346,7 @@ const faqData = [
       },
       {
         question: "7. I faced an error while verifying with UAEPASS. What should I do?",
-        answer: "First, make sure your UAEPASS app is updated and that you have a stable internet connection. If the issue continues, please contact Pay10 Support for assistance."
+        answer: "First, make sure your UAEPASS app is updated and that you have a stable internet connection. If the issue continues, please contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> for assistance."
       },
       {
         question: "8. Can I register on Pay10 without UAEPASS?",
@@ -361,36 +361,36 @@ const faqData = [
         answer: "If you forget your password or PIN, simply tap “Forgot Password” or “Forgot PIN” on the login screen, verify your identity using a one-time password (OTP), and then set a new password or PIN to regain access."
       },
       {
-        question: "11. Can I use the wallet on multiple devices?",
-        answer: "You can use the wallet on multiple devices, but concurrent sessions are not allowed—meaning you cannot stay logged in on more than one device at the same time. Logging in on a new device is supported; however, doing so will automatically terminate the session on your previous device. This approach enhances security and helps prevent unauthorized access from multiple devices."
+        question: "11. Can I use the Pay10 UAE App on multiple devices?",
+        answer: "You can use the Pay10 UAE App on multiple devices, but concurrent sessions are not allowed—meaning you cannot stay logged in on more than one device at the same time. Logging in on a new device is supported; however, doing so will automatically terminate the session on your previous device. This approach enhances security and helps prevent unauthorized access from multiple devices."
       },
       {
         question: "12. What happens if I lose my phone?",
-        answer: "If you lose your phone, immediately contact Pay10 Support to block your account temporarily and prevent unauthorized access. Once you’re able to log in again, reach out to Pay10 Support to have your account unblocked and receive further assistance."
+        answer: "If you lose your phone, immediately contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> to block your account temporarily and prevent unauthorized access. Once you’re able to log in again, reach out to Pay10 Support to have your account unblocked and receive further assistance."
       },
       {
         question: "13. How do I update my profile information?",
-        answer: "To update your profile information, simply navigate to Profile > Personal Details within the app, where you can verify and make any necessary changes to your details."
+        answer: "To update your profile information, simply navigate to Profile > Personal Details within the Pay10 UAE App, where you can verify and make any necessary changes to your details."
       },
       {
-        question: "14. How do I delete my wallet account?",
-        answer: "To delete your wallet account, open the Profile section in the app and navigate to the Security tab. Locate the “Delete Account” option and follow the on-screen steps to confirm your decision. Please note that this action may permanently erase your transaction history and linked data, and can only be completed if all account balances have been cleared."
+        question: "14. How do I delete my Pay10 UAE App account?",
+        answer: "To delete your Pay10 UAE App account, open the Profile section in the app and navigate to the Security tab. Locate the “Delete Account” option and follow the on-screen steps to confirm your decision. Please note that this action may permanently erase your transaction history and linked data, and can only be completed if all account balances have been cleared."
       },
       {
         question: "15. In the event when the account is deleted given 0 amount, are we allowing the customer to use the same mobile number to re-register?",
-        answer: "If you delete your wallet account with a zero balance, you can re-register using the same mobile number—provided you’re not blocked by Pay10 due to security or regulatory reasons."
+        answer: "If you delete your Pay10 UAE App account with a zero balance, you can re-register using the same mobile number—provided you’re not blocked by Pay10 due to security or regulatory reasons."
       },
       {
         question: "16. In case of a Freeze account, will the customer have option to unfreeze themself?",
-        answer: "If your account is frozen, you won’t be able to unfreeze it on your own. You’ll need to contact Pay10 Support directly to request assistance and have your account reactivated."
+        answer: "If your account is frozen, you won’t be able to unfreeze it on your own. You’ll need to contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> to request assistance and have your account reactivated."
       },
       {
-        question: "17. How do I secure my wallet?",
-        answer: "To secure your wallet, it’s important to use a strong PIN—avoiding simple or easily guessed sequences—and enable biometric authentication such as face or fingerprint recognition. Always keep your personalized PIN, OTPs, and personal information confidential, and stay alert for phishing messages or fake calls that may attempt to trick you into revealing sensitive details. Never share your OTPs or PIN with anyone."
+        question: "17. How do I secure my Pay10 UAE App?",
+        answer: "To secure your Pay10 UAE App, it’s important to use a strong PIN—avoiding simple or easily guessed sequences—and enable biometric authentication such as face or fingerprint recognition. Always keep your personalized PIN, OTPs, and personal information confidential, and stay alert for phishing messages or fake calls that may attempt to trick you into revealing sensitive details. Never share your OTPs or PIN with anyone."
       },
       {
-        question: "18. Can I use the wallet offline?",
-        answer: "No, you cannot use the wallet offline—an active internet connection is required to access its features and perform transactions."
+        question: "18. Can I use the Pay10 UAE App offline?",
+        answer: "No, you cannot use the Pay10 UAE App offline—an active internet connection is required to access its features and perform transactions."
       },
       {
         question: "19. How do I know Pay10 deleted my data?",
@@ -398,19 +398,19 @@ const faqData = [
       },
       {
         question: "20. Why can’t I log in?",
-        answer: "If you’re unable to log in, start by checking your internet connection to ensure it’s stable. Make sure your app is updated to the latest version and verify that you’re entering the correct credentials. If needed, reset your PIN or password to regain access."
+        answer: "If you’re unable to log in, start by checking your internet connection to ensure it’s stable. Make sure your Pay10 UAE App is updated to the latest version and verify that you’re entering the correct credentials. If needed, reset your PIN or password to regain access."
       },
       {
-        question: "21. Why is my wallet blocked?",
-        answer: "Your wallet may be blocked due to multiple incorrect login attempts or because you’ve exceeded transaction limits. To resolve this, please contact Pay10 Customer Support for assistance and further guidance."
+        question: "21. Why is my Pay10 UAE App blocked?",
+        answer: "Your Pay10 UAE App may be blocked due to multiple incorrect login attempts or because you’ve exceeded transaction limits. To resolve this, please contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> for assistance and further guidance."
       },
       {
         question: "22. Why didn’t I receive an OTP?",
-        answer: "If you didn’t receive an OTP, try tapping the “Resend OTP” option. If the issue persists and you still haven’t received it, please contact Pay10 Support for further assistance."
+        answer: "If you didn’t receive an OTP, try tapping the “Resend OTP” option. If the issue persists and you still haven’t received it, please contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> for further assistance."
       },
       {
-        question: "23. What can I do with the Pay10 app?",
-        answer: "With the Pay10 app, you can send and receive money (top-Up) instantly from your Pay10 contacts, link your wallet to your UAE bank account for seamless payments, and enjoy the benefits of the new Open Finance experience. You can also shop for your favorite brands both in-store and online using your Pay10 Wallet. Just scan the QR code for secure, hassle-free payments, no manual data entry, no errors."
+        question: "23. What can I do with the Pay10 UAE App?",
+        answer: "With the Pay10 UAE App, you can send and receive money (top-Up) instantly from your Pay10 contacts, link your wallet to your UAE bank account for seamless payments, and enjoy the benefits of the new Open Finance experience. You can also shop for your favorite brands both in-store and online using your Pay10 UAE App. Just scan the QR code for secure, hassle-free payments, no manual data entry, no errors."
       },
       {
         question: "24. Can I use my credit/debit card to top-up?",
@@ -418,39 +418,39 @@ const faqData = [
       },
       {
         question: "25. Can I add multiple bank accounts?",
-        answer: "Yes, you can link multiple bank accounts to your Pay10 app, allowing for greater flexibility and convenience in managing your payments and transfers."
+        answer: "Yes, you can link multiple bank accounts to your Pay10 UAE App, allowing for greater flexibility and convenience in managing your payments and transfers."
       },
       {
-        question: "26. What is the wallet limit?",
-        answer: "The wallet limit defined is AED 1,000 per month. However, Pay10 may change or update this limit at its sole discretion at any time. While doing so, Pay10 will make reasonable efforts to notify users about such changes."
+        question: "26. What is the Pay10 UAE App limit?",
+        answer: "The Pay10 UAE App limit defined is AED 1,000 per month. However, Pay10 may change or update this limit at its sole discretion at any time. While doing so, Pay10 will make reasonable efforts to notify users about such changes."
       },
       {
         question: "27. What is the transaction limit?",
-        answer: "There is a transaction cap of AED 1,000 for a single transaction, and the total monthly wallet usage is also limited to AED 1,000. These limits may be changed or updated by Pay10 at its sole discretion, and the company will make reasonable efforts to notify users of any such changes."
+        answer: "There is a transaction cap of AED 1,000 for a single transaction, and the total monthly Pay10 UAE App usage is also limited to AED 1,000. These limits may be changed or updated by Pay10 at its sole discretion, and the company will make reasonable efforts to notify users of any such changes."
       },
       {
-        question: "28. Can I use the wallet internationally?",
-        answer: "No, the wallet currently supports only domestic transactions. International use is not available at this time."
+        question: "28. Can I use the Pay10 UAE App internationally?",
+        answer: "No, the Pay10 UAE App currently supports only domestic transactions. International use is not available at this time."
       },
       {
         question: "29. Can I transfer money to a bank account?",
-        answer: "Yes, you can transfer money from your Pay10 wallet to a bank account within the UAE. Keep in mind that domestic transfers may incur a small withdrawal fee, depending on the transaction details."
+        answer: "Yes, you can transfer money from your Pay10 UAE App to a bank account within the UAE. Keep in mind that domestic transfers may incur a small withdrawal fee, depending on the transaction details."
       },
       {
-        question: "30. What are the fees for wallet transactions?",
-        answer: "To view the latest fees for wallet transactions, please refer to the Pay10 schedule of charges available on their official website at www.pay10.ae. Keep in mind that all listed charges are exclusive of VAT and any other applicable federal taxes."
+        question: "30. What are the fees for Pay10 UAE App transactions?",
+        answer: "To view the latest fees for Pay10 UAE App transactions, please refer to the Pay10 schedule of charges available on their official website at <a href='https://www.pay10.ae' target='_blank' rel='noopener noreferrer'>www.pay10.ae</a>. Keep in mind that all listed charges are exclusive of VAT and any other applicable federal taxes."
       },
       {
         question: "31. How do I make a payment?",
-        answer: "To make a payment using the Pay10 app, you have several convenient options. You can scan and pay via QR code at your favorite stores, allowing you to make secure payments directly from your wallet. Alternatively, you can transfer funds from your Pay10 wallet to a bank account by adding the IBAN details of your own or a loved one’s account—just link your bank account for seamless transfers. You can also send money to friends and family using their Pay10-linked mobile number, making peer-to-peer payments quick and easy."
+        answer: "To make a payment using the Pay10 UAE App, you have several convenient options. You can scan and pay via QR code at your favorite stores, allowing you to make secure payments directly from your wallet. Alternatively, you can transfer funds from your Pay10 UAE App to a bank account by adding the IBAN details of your own or a loved one’s account—just link your bank account for seamless transfers. You can also send money to friends and family using their Pay10-linked mobile number, making peer-to-peer payments quick and easy."
       },
       {
         question: "32. What should I do if a transaction fails?",
-        answer: "If a transaction fails, the Pay10 app will show the reason for the failure. You should review this message and take the necessary corrective steps based on the issue. If you’re still uncertain or need help resolving the problem, it’s recommended to contact the Pay10 support team directly for further assistance."
+        answer: "If a transaction fails, the Pay10 UAE App will show the reason for the failure. You should review this message and take the necessary corrective steps based on the issue. If you’re still uncertain or need help resolving the problem, it’s recommended to contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> for further assistance."
       },
       {
         question: "33. What should I do if I was charged twice?",
-        answer: "If you believe you were charged twice, start by checking your payment history to confirm the duplicate transaction. Then, contact the Pay10 customer support team to validate the duplicate debit on your account. If an incorrect charge is confirmed, the support team will initiate a refund. Additionally, Pay10’s system automatically monitors transactions and may flag and reverse duplicate payments without requiring manual intervention."
+        answer: "If you believe you were charged twice, start by checking your payment history to confirm the duplicate transaction. Then, contact Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a> to validate the duplicate debit on your account. If an incorrect charge is confirmed, the support team will initiate a refund. Additionally, Pay10’s system automatically monitors transactions and may flag and reverse duplicate payments without requiring manual intervention."
       },
       {
         question: "34. What if I made an incorrect payment?",
@@ -458,7 +458,7 @@ const faqData = [
       },
       {
         question: "35. Can I cancel a transaction?",
-        answer: "Transactions made through the Pay10 wallet are processed instantly and cannot be canceled once authorized. If you need to reverse a payment or request a refund, you should contact the merchant or receiver directly for assistance."
+        answer: "Transactions made through the Pay10 UAE App are processed instantly and cannot be canceled once authorized. If you need to reverse a payment or request a refund, you should contact the merchant or receiver directly for assistance."
       },
       {
         question: "36. How long do refunds take?",
@@ -466,11 +466,11 @@ const faqData = [
       },
       {
         question: "37. What are Pay10’s support hours?",
-        answer: "Pay10’s customer support is available every day of the week from 8:00 AM to 10:00 PM, ensuring assistance is accessible throughout the day."
+        answer: "Pay10’s customer support is a multi-language human support team available 24/7, ensuring assistance and access at any time you require."
       },
       {
         question: "38. How do I contact support?",
-        answer: "You can reach the Pay10 support team by calling 80072910 or emailing them at support@pay10.ae. They’re available to assist you with any queries or issues."
+        answer: "You can reach Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>. They’re available to assist you with any queries or issues."
       },
       {
         question: "39. What is Open Banking?",
@@ -485,12 +485,12 @@ const faqData = [
         answer: "The main benefit of Open Banking for users is greater control and access to their financial data and services. It empowers individuals to securely share their financial information with trusted third-party apps like Pay10, enabling more personalized financial management, easier payments, and improved transparency across accounts—all while maintaining user consent and data security."
       },
       {
-        question: "42. How can I link my Pay10 Wallet and my bank on Open Banking?",
-        answer: "To link your Pay10 Wallet with your bank using Open Banking, open the Pay10 App and tap the ‘Add Money’ icon on the Home Screen. Select your bank from the list, then tap ‘Authorize using Altareq’ to initiate the secure connection through the UAE’s national Open Finance gateway. You’ll be redirected to your banking app, where you must log in using your bank credentials. After logging in, ‘approve’ the connection and grant consent. Once linked, your bank account will be connected to the Pay10 app, allowing you to seamlessly top up your wallet and make payments."
+        question: "42. How can I link my Pay10 UAE App and my bank on Open Banking?",
+        answer: "To link your Pay10 UAE App with your bank using Open Banking, open the Pay10 UAE App and tap the ‘Add Money’ icon on the Home Screen. Select your bank from the list, then tap ‘Authorize using Altareq’ to initiate the secure connection through the UAE’s national Open Finance gateway. You’ll be redirected to your banking app, where you must log in using your bank credentials. After logging in, ‘approve’ the connection and grant consent. Once linked, your bank account will be connected to the Pay10 UAE App, allowing you to seamlessly top up your wallet and make payments."
       },
       {
         question: "43. What kind of actions can I do once I have granted consent to connect an account with Pay10?",
-        answer: "Once you’ve granted consent to connect your bank account with Pay10, you can top up your Pay10 Wallet directly from your bank account. You’ll also be able to initiate payments to Pay10 merchants straight from your linked account. Additionally, you can update your permissions and set custom payment rules, such as daily limits, expiry dates, and transaction amounts. You can view and manage all connected accounts within the app settings for easy oversight and adjustments."
+        answer: "Once you’ve granted consent to connect your bank account with Pay10, you can top up your Pay10 UAE App directly from your bank account. You’ll also be able to initiate payments to Pay10 merchants straight from your linked account. Additionally, you can update your permissions and set custom payment rules, such as daily limits, expiry dates, and transaction amounts. You can view and manage all connected accounts within the app settings for easy oversight and adjustments.<br><br>Once your account is connected, you can:<ul><li>Top up your Pay10 UAE App using your bank account.</li><li>Initiate payments to Pay10 merchants directly from your linked account.</li><li>Update your permission and set new payment rules (e.g., daily limits, modify expiry date, amounts).</li><li>View and manage connected accounts under the app settings.</li></ul>"
       }
     ]
   },
@@ -559,7 +559,7 @@ const faqData = [
       },
       {
         question: "16. Customer amount is debited, but I haven’t received a notification.",
-        answer: "If a customer’s amount has been debited but you haven’t received a notification, start by refreshing the homepage of your Pay10 Biz App, as transaction statuses update in real time. If the transaction still doesn’t appear, ask the customer to provide proof of payment, including the transaction ID, date, mobile number, and amount. Once you have these details, contact the Pay10 Merchant Support Team to help resolve the issue. Customers can also check their Pay10 Customer App for complete transaction information."
+        answer: "If a customer’s amount has been debited but you haven’t received a notification, start by refreshing the homepage of your Pay10 Biz App, as transaction statuses update in real time. If the transaction still doesn’t appear, ask the customer to provide proof of payment, including the transaction ID, date, mobile number, and amount. Once you have these details, contact the Pay10 Merchant Support Team to help resolve the issue. Customers can also check their Pay10 UAE App for complete transaction information."
       },
       {
         question: "17. What is the settlement process and how long does it take to receive funds?",

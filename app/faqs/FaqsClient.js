@@ -79,7 +79,7 @@ export default function FaqsClient() {
                     className={`${styles.accordion_content} ${isOpen ? styles.open_content : ''}`}
                     style={isOpen ? { maxHeight: '1000px' } : { maxHeight: '0px' }}
                   >
-                    <p className={styles.answer_text}>{faq.answer}</p>
+                    <p className={styles.answer_text} dangerouslySetInnerHTML={{ __html: faq.answer }} />
                   </div>
                 </div>
               );

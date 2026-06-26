@@ -3,7 +3,7 @@
 .security_section {
   width: 100%;
   padding: 120px 0;
-  background-color: #ffffff;
+  background-color: var(--white);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -41,7 +41,7 @@
 
   .subheading {
     font-size: 1.6rem;
-    font-weight: 800;
+    font-family: 'extrabold';
     color: var(--black);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -61,7 +61,7 @@
     font-family: "bold";
     line-height: 1;
     margin-bottom: 30px;
-    background: linear-gradient(90deg, #ffb100 0%, #ff0000 100%);
+    background: linear-gradient(90deg, #FFBB07 0%, #EF1A23 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -78,7 +78,7 @@
 
   .description {
     font-size: 1.25rem;
-    color: #555;
+    color: var(--gray);
     line-height: 1.7;
     max-width: 800px;
     margin: 0 auto 20px auto;
@@ -98,7 +98,7 @@
     h4 {
       font-size: 1.15rem;
       font-family: "medium";
-      color: #666;
+      color: var(--gray);
       margin-bottom: 24px;
       font-weight: 500;
     }

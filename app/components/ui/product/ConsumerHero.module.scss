@@ -79,7 +79,7 @@
     .intro_label {
       font-size: 18px;
       font-weight: 500;
-      color: var(--black, #111111);
+      color: var(--black);
       font-family: 'medium', sans-serif;
     }
 
@@ -87,7 +87,7 @@
       font-size: 48px;
       font-weight: 700;
       line-height: 1.2;
-      color: var(--black, #111111);
+      color: var(--black);
       font-family: 'bold', sans-serif;
       margin: 0;
 
@@ -103,7 +103,7 @@
     .intro_para {
       font-size: 20px;
       line-height: 1.6;
-      color: var(--black, #111111);
+      color: var(--black);
       font-family: 'medium', sans-serif;
       margin: 0;
       max-width: 900px;
@@ -135,8 +135,8 @@
       margin: 0 auto;
       
       // Borders applied to the centered container instead of full width
-      border-top: 1px solid #eaeaea;
-      border-left: 1px solid #eaeaea;
+      border-top: 1px solid var(--events-box-bg);
+      border-left: 1px solid var(--events-box-bg);
       border-radius: 12px; // Optional: soft corners for the grid
       overflow: hidden; // Keeps borders clean
 
@@ -163,8 +163,8 @@
 
       .feature_card {
         padding: 40px 16px;
-        border-right: 1px solid #eaeaea;
-        border-bottom: 1px solid #eaeaea;
+        border-right: 1px solid var(--events-box-bg);
+        border-bottom: 1px solid var(--events-box-bg);
         display: flex;
         flex-direction: column;
 

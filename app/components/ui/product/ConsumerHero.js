@@ -68,8 +68,8 @@ const ConsumerHero = () => {
       <svg width="0" height="0">
         <defs>
           <linearGradient id="heroIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ffb100" />
-            <stop offset="100%" stopColor="#ff0000" />
+            <stop offset="0%" stopColor="#FFBB07" />
+            <stop offset="100%" stopColor="#EF1A23" />
           </linearGradient>
         </defs>
       </svg>

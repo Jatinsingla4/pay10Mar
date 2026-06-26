@@ -73,7 +73,7 @@
       font-weight: 500;
       line-height: 1.6;
       margin-bottom: 28px;
-      color: #444;
+      color: var(--charcoal);
     }
 
     .points_list {
@@ -85,7 +85,7 @@
         display: flex;
         align-items: flex-start;
         font-size: 1.05rem;
-        color: #555;
+        color: var(--gray);
         margin-bottom: 16px;
         line-height: 1.6;
 

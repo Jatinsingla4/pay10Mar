@@ -106,7 +106,7 @@ const faqData = [
         answer: "Suspicious activity may include: Transactions you did not authorize, OTP requests you did not initiate, Unexpected login alerts or password changes, Someone is asking for your OTP, PIN, or account details, Any unusual behavior in your account or wallet balance. If you experience any of these, please report it immediately."
       },
       {
-        question: "3. How can I report fraud or suspicious activity from the app?",
+        question: "3. How can I report fraud or suspicious activity from the Pay10 UAE App?",
         answer: "You can report by contacting Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>."
       },
       {
@@ -119,7 +119,7 @@ const faqData = [
       },
       {
         question: "7. How can I protect myself from fraud?",
-        answer: "To keep your account secure: Never share your OTP, PIN, or password, Do not click on unknown links or messages, Always verify requests claiming to be from support, Use only the official Pay10 UAE mobile application"
+        answer: "To keep your account secure: Never share your OTP, PIN, or password, Do not click on unknown links or messages, Always verify requests claiming to be from support, Use only the official Pay10 UAE App"
       },
       {
         question: "8. How long does it take to resolve a fraud complaint?",

@@ -46,7 +46,7 @@ const faqData = [
     ]
   },
   {
-    tabName: "FAQ For Card Issuing",
+    tabName: "FAQ Card Issuing",
     faqs: [
       {
         question: "1. What is the Pay10 Card ?",
@@ -66,7 +66,7 @@ const faqData = [
       },
       {
         question: "5. How do I activate my card?",
-        answer: "Card activation is allowed only via the Pay10 UAE App. Follow the instructions included in your welcome envelope to activate your card. When you click on the card banner or card menu, it will take you directly to manage card for activation flow. Follow the steps as described on the screen. For any support contact 800-PAY10 (72910)"
+        answer: "Card activation is allowed only via the Pay10 UAE App. Follow the instructions included in your welcome envelope to activate your card. When you click on the card banner or card menu, it will take you directly to manage card for activation flow. Follow the steps as described on the screen. For any support contact 800 72910"
       },
       {
         question: "6. Can I reload my prepaid card?",
@@ -74,7 +74,7 @@ const faqData = [
       },
       {
         question: "7. Are there any fees associated with the card?",
-        answer: "Yes, fees may include card enrollment fees (one time when ordering/ replacing a card), certain transaction fees (such as ATM withdrawal). Refer to the fee schedule (Link to KFS)."
+        answer: "Yes, fees may include card enrollment fees (one time when ordering/ replacing a card), certain transaction fees (such as ATM withdrawal). Refer to the <a href='/key-fact-statement'>fee schedule (KFS)</a>."
       },
       {
         question: "8. How can I check my balance?",
@@ -82,7 +82,7 @@ const faqData = [
       },
       {
         question: "9. What should I do if my card is lost or stolen?",
-        answer: "Immediately report the loss or theft to customer service on 80072910 or via the Pay10 UAE App, under card management section."
+        answer: "Immediately report the loss or theft to customer service on 800 72910 or via the Pay10 UAE App, under card management section."
       },
       {
         question: "10. Can I get a supplementary Pay10 card?",
@@ -90,7 +90,7 @@ const faqData = [
       },
       {
         question: "11. How can I contact customer support?",
-        answer: "You can Pay10 Support on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>"
+        answer: "You can contact Pay10 customer support team on 800 - 72910 or at <a href='mailto:support@pay10.ae'>support@pay10.ae</a>"
       }
     ]
   },

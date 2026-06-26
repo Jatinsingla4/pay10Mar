@@ -303,6 +303,17 @@
   flex-wrap: nowrap;
   gap: 12px;
   margin-bottom: 32px;
+
+  @include mobile {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 .categoryTab {
@@ -316,6 +327,13 @@
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
+
+  @include mobile {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
 
   &:hover {
     background: #eaeaea;

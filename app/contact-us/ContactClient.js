@@ -275,7 +275,7 @@ const ContactClient = () => {
   const getButtonText = () => {
     switch (activeFormType) {
       case "SME Sales":
-      case "Enterprise Sales": return "Send Business inquiry";
+      case "Enterprise Sales": return "Send Business Inquiry";
       case "Channel Partner": return "Submit Request";
       default: return "Send Inquiry";
     }
@@ -291,7 +291,7 @@ const ContactClient = () => {
             <h5 data-animation="opacity-up">GET IN TOUCH</h5>
             <h1 data-animation="opacity-up">Contact Us</h1>
             <p data-animation="opacity-up">
-              Need assistance or have questions? Reach out to us anytime. Our team are always happy to help.
+              Need assistance or have questions? Reach out to us anytime. Our team is always happy to help.
             </p>
           </div>
         </section>

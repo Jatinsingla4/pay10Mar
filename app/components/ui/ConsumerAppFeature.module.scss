@@ -1,9 +1,15 @@
+@import "../../../styles/globals/mixin";
+
 .consumerFeatureSection {
-  padding: 80px 20px;
+  padding: 80px 56px;
   background-color: var(--white);
-  
-  @media (max-width: 991px) {
-    padding: 60px 15px;
+
+  @include tab {
+    padding: 60px 24px;
+  }
+
+  @include mobile {
+    padding: 60px 20px;
   }
 }
 
@@ -13,9 +19,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
-  align-items: center;
+  align-items: flex-start;
 
-  @media (max-width: 991px) {
+  @include tab {
     grid-template-columns: 1fr;
     gap: 40px;
   }
@@ -32,30 +38,40 @@
   color: var(--black);
   line-height: 1.2;
   margin: 0 0 20px 0;
-  
-  @media (max-width: 1200px) {
+
+  @include large {
     font-size: 2.5rem;
   }
-  @media (max-width: 768px) {
+
+  @include lessTab {
     font-size: 2rem;
+  }
+
+  @include mobile {
+    font-size: 1.7rem;
   }
 }
 
 .subheading {
-  font-family: 'medium', sans-serif;
+  font-family: 'semibold', sans-serif;
   font-size: 1.8rem;
-  color: var(--primary-color, #f35b04); /* Orange brand color */
+  color: var(--red);
   margin: 0 0 30px 0;
 
-  @media (max-width: 768px) {
+  @include lessTab {
     font-size: 1.4rem;
     margin: 0 0 20px 0;
+  }
+
+  @include mobile {
+    font-size: 1.2rem;
   }
 }
 
 .storeBadges {
   display: flex;
   gap: 16px;
+  margin-top: 16px;
   margin-bottom: 40px;
   flex-wrap: wrap;
 
@@ -78,7 +94,7 @@
     .badgeText {
       display: flex;
       flex-direction: column;
-      
+
       .smallText {
         font-family: 'regular', sans-serif;
         font-size: 0.6rem;
@@ -86,7 +102,7 @@
         margin-bottom: 2px;
         text-transform: uppercase;
       }
-      
+
       .largeText {
         font-family: 'bold', sans-serif;
         font-size: 1.1rem;
@@ -95,7 +111,7 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @include mobile {
     margin-bottom: 30px;
   }
 }
@@ -118,13 +134,13 @@
     line-height: 1.5;
 
     .checkIcon {
-      color: var(--primary-color, #f35b04);
+      color: var(--red);
       flex-shrink: 0;
       font-size: 1.2rem;
       margin-top: 2px;
     }
 
-    @media (max-width: 768px) {
+    @include mobile {
       font-size: 1rem;
     }
   }

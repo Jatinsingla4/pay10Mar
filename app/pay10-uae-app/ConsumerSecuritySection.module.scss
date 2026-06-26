@@ -61,7 +61,7 @@
     font-family: "bold";
     line-height: 1;
     margin-bottom: 30px;
-    background: linear-gradient(90deg, #FFBB07 0%, #EF1A23 100%);
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -78,6 +78,7 @@
 
   .description {
     font-size: 1.25rem;
+    font-family: 'regular', sans-serif;
     color: var(--gray);
     line-height: 1.7;
     max-width: 800px;
@@ -97,10 +98,9 @@
 
     h4 {
       font-size: 1.15rem;
-      font-family: "medium";
+      font-family: 'medium', sans-serif;
       color: var(--gray);
       margin-bottom: 24px;
-      font-weight: 500;
     }
 
     .badgesMarquee {

@@ -129,10 +129,9 @@
   padding: 16px 48px;
   border-radius: 999px;
   background: var(--primary-gradient);
-  color: #ffffff;
+  color: var(--white);
   text-decoration: none;
   font-size: 18px;
-  font-weight: 600;
   font-family: 'semibold', sans-serif;
   white-space: nowrap;
   will-change: transform, opacity;
@@ -169,7 +168,7 @@
 .scrollingText {
   display: inline-block;
   font-size: 80px;
-  font-weight: 800;
+  font-family: 'extrabold', sans-serif;
   line-height: 1;
   white-space: nowrap;
   will-change: transform;

@@ -65,7 +65,7 @@
   .description {
     font-size: 20px;
     color: var(--gray);
-    font-weight: 100;
+    font-family: 'light', sans-serif;
     @include tab {
       font-size: 14px;
     }
@@ -79,10 +79,10 @@
       padding: 20px 64px;
       border-radius: 999px;
       background: var(--primary-gradient);
-      color: #ffffff;
+      color: var(--white);
       text-decoration: none;
       font-size: 16px;
-      font-weight: 500;
+      font-family: 'medium', sans-serif;
       transition: transform 200ms ease, box-shadow 200ms ease;
       &:hover {
         transform: translateY(-2px);

@@ -19,7 +19,7 @@
     h3.kicker {
       font-size: 30px;
       line-height: 1.4;
-      font-weight: 500;
+      font-family: 'medium', sans-serif;
       color: var(--black);
       margin: 0;
       @include tab{
@@ -124,7 +124,7 @@
 .singleCardTitle {
   margin: 0;
   font-size: 32px;
-  font-weight: 600;
+  font-family: 'semibold', sans-serif;
   color: var(--white);
   line-height: 1.2;
   @include tab {

@@ -7,7 +7,7 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  color: #ffffff;
+  color: var(--white);
   border-radius: 24px;
   overflow: hidden;
   display: flex;
@@ -85,7 +85,7 @@
   margin: 0 auto;
   display: inline-flex;
   align-items: center;
-  color: #ffffff;
+  color: var(--white);
   transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
 }
 
@@ -106,11 +106,10 @@
   padding: 20px 60px;
   border-radius: 999px;
   border: 2px solid rgba(255, 255, 255, 0.9);
-  color: #ffffff;
+  color: var(--white);
   text-decoration: none;
   font-size: 18px;
-  font-weight: 500;
-  font-family: inherit;
+  font-family: 'medium', sans-serif;
   cursor: pointer;
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.08);

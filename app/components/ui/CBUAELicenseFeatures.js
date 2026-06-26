@@ -8,58 +8,20 @@ const ArrowIcon = () => (
   </svg>
 );
 
-const WalletIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="3" y="6" width="18" height="12" rx="2" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M3 10H21" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="16" cy="14" r="1" fill="url(#orange-grad-cbuae)" />
-    <defs>
-      <linearGradient id="orange-grad-cbuae" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#f79d00" />
-        <stop offset="100%" stopColor="#eb1e23" />
-      </linearGradient>
-    </defs>
-  </svg>
-);
-
-const POSIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="6" y="4" width="12" height="16" rx="2" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M6 15h12" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <circle cx="10" cy="18" r="1" fill="url(#orange-grad-cbuae)" />
-    <circle cx="14" cy="18" r="1" fill="url(#orange-grad-cbuae)" />
-    <path d="M10 4V2h4v2" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M2 10h4" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M4 8v4" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const BankIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M3 21h18" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M3 10h18" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M5 10v7" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M10 10v7" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M14 10v7" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M19 10v7" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M12 2L2 7h20L12 2z" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
-
-const GlobeIcon = () => (
-  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="10" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M2 12h20" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M18 4l-4 4" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M20 6v-2h-2" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-    <path d="M20 4h-4" stroke="url(#orange-grad-cbuae)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+const WalletIcon = () => <img src="/images/home/cbuae-icon-1.png" alt="" width="24" height="24" style={{imageRendering:'crisp-edges'}} />;
+const POSIcon    = () => <img src="/images/home/cbuae-icon-2.png" alt="" width="28" height="24" style={{imageRendering:'crisp-edges'}} />;
+const BankIcon   = () => <img src="/images/home/cbuae-icon-3.png" alt="" width="24" height="24" style={{imageRendering:'crisp-edges'}} />;
+const GlobeIcon  = () => <img src="/images/home/cbuae-icon-4.png" alt="" width="24" height="24" style={{imageRendering:'crisp-edges'}} />;
 
 const CheckIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0, marginTop: '4px' }}>
-    <path d="M5 12L10 17L20 7" stroke="url(#orange-grad-cbuae)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+    <defs>
+      <linearGradient id="check-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stopColor="#FFBB07"/>
+        <stop offset="100%" stopColor="#EF1A23"/>
+      </linearGradient>
+    </defs>
+    <path d="M5 12L10 17L20 7" stroke="url(#check-grad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 

@@ -26,9 +26,9 @@ export default function SuperAppSection() {
           </div>
 
           <div className={`${styles.imageCard} ${styles.consumerImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.2s' }}>
-            <img 
-              src="/images/home/consumer-screen.jpg" 
-              alt="Pay10 Consumer App" 
+            <img
+              src="/images/home/merchant-screen.jpg"
+              alt="Pay10 Consumer App"
             />
           </div>
 

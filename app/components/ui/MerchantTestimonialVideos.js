@@ -39,23 +39,11 @@ const VideoCard = ({ videoSrc, placeholderImage, caption }) => {
       />
       <div className={Style.videoOverlay}></div>
       
-      {/* Top right watermark logo */}
+      {/* Top left logo */}
       <div className={Style.watermark}>
-        <img src="/images/logo_icon.png" alt="Pay10 Logo" />
+        <img src="/images/common/logo.png" alt="Pay10 Logo" />
       </div>
 
-      <div className={Style.bottomInfo}>
-        <div className={Style.profileRow}>
-          <div className={Style.avatar}>
-            <img src="/images/logo_icon.png" alt="Pay10 Profile" />
-          </div>
-          <span className={Style.username}>pay10.uae</span>
-          <button className={Style.followBtn}>Follow</button>
-        </div>
-        <div className={Style.caption}>
-          {caption} <span className={Style.more}>... more</span>
-        </div>
-      </div>
 
       <div className={Style.controls} onClick={toggleMute}>
         {isMuted ? <MuteIcon /> : <UnmuteIcon />}

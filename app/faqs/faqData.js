@@ -318,7 +318,7 @@ const faqData = [
     ]
   },
   {
-    tabName: "FAQ Pay10 Customer App",
+    tabName: "FAQ Pay10 UAE App",
     faqs: [
       {
         question: "1. What is the Pay10 Customer App?",

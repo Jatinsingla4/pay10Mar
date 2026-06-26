@@ -296,6 +296,70 @@ const ContactClient = () => {
           </div>
         </section>
 
+        {/* Info Cards Section */}
+        <section className={Style.infoCardsSection}>
+          <div className={Style.infoCardsGrid}>
+            {/* Consumer Support */}
+            <div className={Style.infoCard} data-animation="opacity-up">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:headset" /></div>
+              <h3>Customer Support</h3>
+              <p>24/7 Human Multi-Language Support</p>
+              <p>Toll Free: <a href="tel:80072910" className={Style.phoneLink}>800 729 10</a></p>
+              <p><a href="mailto:support@pay10.ae" className={Style.emailLink}>support@pay10.ae</a></p>
+            </div>
+            {/* Merchant Support */}
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="50">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:store-outline" /></div>
+              <h3>Merchant Support</h3>
+              <p>24/7 Human Multi-Language Support</p>
+              <p>Toll Free: <a href="tel:800729110" className={Style.phoneLink}>800 729 110</a></p>
+              <p><a href="mailto:merchant.support@pay10.ae" className={Style.emailLink}>merchant.support@pay10.ae</a></p>
+            </div>
+            {/* SME Merchants */}
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="100">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:briefcase-outline" /></div>
+              <h3>SME Merchants</h3>
+              <p>Register Your SME Business with Pay10</p>
+              <p><a href="mailto:sales@pay10.ae" className={Style.emailLink}>sales@pay10.ae</a></p>
+            </div>
+            {/* Enterprise */}
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="150">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:office-building-outline" /></div>
+              <h3>Enterprise Merchants</h3>
+              <p>Contact our Enterprise Team for Enterprise Solutions</p>
+              <p><a href="mailto:enterprisesales@pay10.ae" className={Style.emailLink}>enterprisesales@pay10.ae</a></p>
+            </div>
+            {/* Channel Partners */}
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="200">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:handshake-outline" /></div>
+              <h3>Channel Partners</h3>
+              <p>Contact us to become a Pay10 Channel Partner</p>
+              <p><a href="mailto:channelpartners@pay10.ae" className={Style.emailLink}>channelpartners@pay10.ae</a></p>
+            </div>
+            {/* Media & PR */}
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="250">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:microphone-outline" /></div>
+              <h3>Media &amp; PR</h3>
+              <p>Contact our PR Team</p>
+              <p><a href="mailto:pr@pay10.ae" className={Style.emailLink}>pr@pay10.ae</a></p>
+            </div>
+            {/* Marketing & Events */}
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="300">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:bullhorn-outline" /></div>
+              <h3>Marketing &amp; Events</h3>
+              <p>Contact our Marketing Team</p>
+              <p><a href="mailto:marketing@pay10.ae" className={Style.emailLink}>marketing@pay10.ae</a></p>
+            </div>
+            {/* General Inquiries */}
+            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="350">
+              <div className={Style.infoCardIcon}><Icon icon="mdi:information-outline" /></div>
+              <h3>General Inquiries</h3>
+              <p>Contact our Team for General Inquiries</p>
+              <p><a href="mailto:info@pay10.ae" className={Style.emailLink}>info@pay10.ae</a></p>
+            </div>
+          </div>
+        </section>
+
         {/* Map Section */}
         <section className={Style.mapSection} data-animation="opacity">
           <iframe

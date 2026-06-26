@@ -2,22 +2,28 @@
 
 .bill_hero {
   width: 100%;
-  height: 785px; // Restored original fixed height for desktop
+  height: 785px;
   display: flex;
-  align-items: center; // Vertically center the text safely
+  align-items: center;
   background-image: url('/images/prod_imports/Nebras-Page-Mockup-Approved-09.png');
   background-size: cover;
   background-position: center;
   border-radius: 24px;
   position: relative;
   overflow: hidden;
-  padding: 60px 56px; // Safe padding instead of absolute positioning
-  
+  padding: 60px 56px;
+
   @include tab {
     height: auto;
     min-height: 400px;
     border-radius: 16px;
     padding: 60px 24px;
+  }
+
+  @include mobile {
+    background-position: left center;
+    min-height: 340px;
+    padding: 40px 20px;
   }
 }
 
@@ -31,28 +37,26 @@
 
   h2 {
     margin: 0;
-    font-size: clamp(28px, 4vw, 42px); // Fluid typography for root responsiveness
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.2;
+    font-size: clamp(28px, 4vw, 42px);
     font-family: 'bold', sans-serif;
-    word-break: break-word; // Prevents overflow on tiny screens
+    color: var(--white);
+    line-height: 1.2;
+    word-break: break-word;
   }
 
   p {
     margin: 0;
     font-size: 18px;
-    font-weight: 500;
-    color: #ffffff;
+    font-family: 'medium', sans-serif;
+    color: var(--white);
     line-height: 1.5;
   }
   
   .slogan {
     font-size: clamp(22px, 3vw, 28px);
-    font-weight: 700;
-    color: #ffffff;
-    margin-top: 10px;
     font-family: 'bold', sans-serif;
+    color: var(--white);
+    margin-top: 10px;
     line-height: 1.2;
   }
 
@@ -72,11 +76,10 @@
   gap: 12px;
 
   .provider_heading {
-    color: var(--black, #111111);
+    color: var(--black);
     font-size: 14px;
-    font-weight: 600;
+    font-family: 'semibold', sans-serif;
     margin: 0;
-    font-family: 'medium', sans-serif;
   }
 
   .badges_container {
@@ -88,21 +91,20 @@
       padding: 8px 16px;
       border-radius: 40px;
       font-size: 13px;
-      font-weight: 600;
       font-family: 'bold', sans-serif;
-      background: var(--primary-gradient, linear-gradient(135deg, #ffb100 0%, #ff0000 100%));
+      background: var(--primary-gradient, linear-gradient(135deg, #FFBB07 0%, #EF1A23 100%));
       border: none;
-      color: #ffffff;
-      box-shadow: 0 4px 10px rgba(255, 0, 0, 0.15);
+      color: var(--white);
+      box-shadow: 0 4px 10px rgba(239, 26, 35, 0.15);
       transition: all 0.3s ease;
 
       &.badge_orange {
-        color: #ffb100;
+        color: var(--orange);
       }
 
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 6px 14px rgba(255, 0, 0, 0.25);
+        box-shadow: 0 6px 14px rgba(239, 26, 35, 0.25);
       }
     }
   }
@@ -110,28 +112,53 @@
 
 .bg_circle_wrapper {
   width: 100%;
-  background-image: url("/images/body_bg_circle.png"), url("/images/body_bg_circle.png"), url("/images/body_bg_circle.png");
-  background-position: left 5%, right 50%, left 95%;
-  background-repeat: no-repeat, no-repeat, no-repeat;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/body_bg_circle.png");
+    background-position: right 15%;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/body_bg_circle.png");
+    background-position: right 80%;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
+    opacity: 0.25;
+    pointer-events: none;
+    transform: scaleX(-1);
+  }
 }
 
 @media only screen and (max-width: 991px) {
-  .bg_circle_wrapper {
-    background-size: 80% auto, 80% auto, 80% auto;
-    background-position: left 5%, right 50%, left 95%;
+  .bg_circle_wrapper::before {
+    background-size: 80% auto;
+    background-position: right 50%;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .bg_circle_wrapper {
-    background-size: 90% auto, 90% auto, 90% auto;
-    background-position: left 2%, right 50%, left 98%;
+  .bg_circle_wrapper::before {
+    background-size: 90% auto;
+    background-position: right 50%;
   }
 }
 
 @media only screen and (max-width: 563px) {
-  .bg_circle_wrapper {
-    background-size: 120% auto, 120% auto, 120% auto;
-    background-position: left 2%, right 50%, left 98%;
+  .bg_circle_wrapper::before {
+    background-size: 120% auto;
+    background-position: right 50%;
   }
 }

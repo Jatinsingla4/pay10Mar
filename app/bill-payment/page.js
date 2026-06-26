@@ -1,7 +1,7 @@
 import BillPaymentClient from "./BillPaymentClient";
 
 export const metadata = {
-  title: "Bill Payment App - Pay10",
+  title: "Bill Payment | Pay10 UAE",
   description: "Never miss a bill. Never switch apps again. All your UAE bills paid from one place.",
   alternates: {
     canonical: "https://pay10.ae/bill-payment",

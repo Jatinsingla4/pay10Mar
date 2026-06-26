@@ -127,7 +127,10 @@
     font-family: "bold";
     margin-top: 16px;
     margin-bottom: 8px;
-    color: var(--black);
+    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
   }
 
   p {

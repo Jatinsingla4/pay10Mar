@@ -1,191 +1,67 @@
 @import "../../../../styles/globals/mixin";
 
 .careersHeroBanner {
-  position: relative;
   width: 100%;
-  margin: 80px 0;
-  padding: 56px 56px;
-  min-height: 560px;
-  border-radius: 24px;
-  overflow: hidden;
+  height: 90vh;
   background-image: url("/images/careers/careers_banner_img.jpg");
   background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  color: #ffffff;
-
-  @include tab {
-    border-radius: 16px;
-    min-height: 470px;
-    padding: 44px 20px 0 20px;
-    margin: 50px 0;
-  }
-
-  @include lessTab {
-    min-height: 420px;
-    padding: 40px 16px 0 16px;
-    margin: 40px 0;
-    border-radius: 12px;
-  }
-
-  @include mobile {
-    min-height: 360px;
-    padding: 32px 12px 0 12px;
-    margin: 30px 0;
-  }
-}
-
-.decorations {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-  border-radius: inherit;
-}
-
-.circleDecoration {
-  position: absolute;
-  top: var(--top-desktop);
-  left: var(--left-desktop);
-  right: var(--right-desktop);
-  bottom: var(--bottom-desktop);
-  width: var(--width);
-  height: var(--height);
-  translate: -50% -50%;
-  border-radius: 999px;
-  border: var(--stroke, 2px) solid rgba(255, 255, 255, 0.35);
-  background: transparent;
-  opacity: var(--opacity, 0.22);
-
-  @include tab {
-    top: var(--top-mobile, var(--top-desktop));
-    left: var(--left-mobile, var(--left-desktop));
-    right: var(--right-mobile, var(--right-desktop));
-    bottom: var(--bottom-mobile, var(--bottom-desktop));
-  }
-}
-
-.layout {
+  background-position: center;
+  border-radius: 2rem;
   position: relative;
-  z-index: 3;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  gap: 32px;
-  max-width: 1400px;
-  width: 100%;
-  min-width: 0;
-  margin: 0 auto;
-  min-height: 500px;
-  height: 100%;
-
-  @include tab {
-    gap: 20px;
-    padding: 0 4px;
-    min-height: 420px;
-    align-items: stretch;
-  }
-
-  @include lessTab {
-    gap: 16px;
-    min-height: 380px;
-    padding: 0;
-  }
-
-  @include mobile {
-    gap: 12px;
-    min-height: 320px;
-  }
-}
-
-.copy {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-
-  @include tab {
-    gap: 15px;
-    align-items: stretch;
-  }
-
-  @include lessTab {
-    gap: 12px;
-  }
-
-  @include mobile {
-    gap: 10px;
-  }
-}
-
-.title {
-  display: block;
-  align-self: stretch;
-  margin: 0 auto;
-  font-size: 64px;
-  font-family: "bold";
-  line-height: 1.1;
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-  white-space: normal;
-  overflow-wrap: anywhere;
-  word-break: break-word;
-  text-align: center;
-
-  @include tab {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    font-size: clamp(30px, 9vw, 44px);
-    line-height: 1.15;
-  }
-
-  @include lessTab {
-    font-size: clamp(24px, 7.5vw, 36px);
-    line-height: 1.2;
-  }
-
-  @include mobile {
-    font-size: clamp(20px, 6.5vw, 28px);
-    line-height: 1.15;
-  }
-}
-
-.imageWrap {
-  margin-top: auto;
-  width: 100%;
-  display: flex;
   justify-content: center;
-  align-items: flex-end;
-  overflow: visible;
+  overflow: hidden;
+}
 
-  @include tab {
-    width: 100%;
+.bannerContent {
+  width: 90%;
+  text-align: center;
+  color: var(--white);
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% - 160px));
+
+  h2 {
+    text-transform: capitalize;
+    font-family: "bold";
+    font-size: 4.5rem;
+    color: var(--white);
+    line-height: 1.1;
+
+    @include tab { font-size: 3.5rem; }
+    @include mobile { font-size: 2.5rem; }
   }
 
-  @include lessTab {
-    margin-top: 10px;
-  }
+  p {
+    font-size: 1.2rem;
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 0.88);
+    line-height: 1.5;
 
-  @include mobile {
-    margin-top: 8px;
+    @include tab { font-size: 1rem; }
+    @include mobile { font-size: 0.95rem; }
   }
 }
 
-.image {
-  width: 100% !important;
-  max-width: 50% !important;
-  border: none;
-  height: auto;
+@media only screen and (max-width: 1200px) {
+  .careersHeroBanner .bannerContent {
+    transform: translate(-50%, calc(-50% - 200px));
+  }
+}
 
-  @include tab {
-    max-width: 100% !important;
+@media only screen and (max-width: 767px) {
+  .careersHeroBanner .bannerContent {
+    width: 90%;
+    transform: translate(-50%, calc(-50% - 130px));
+  }
+}
+
+@media only screen and (max-width: 563px) {
+  .careersHeroBanner .bannerContent {
+    width: 95%;
+    transform: translate(-50%, calc(-50% - 90px));
   }
 }

@@ -83,7 +83,6 @@ export default function NewsRoomClient() {
       <section className={styles.bannerSection}>
         <div className={styles.bannerOverlay} />
         <div className={styles.bannerContent}>
-          <h5>MEDIA &amp; RESOURCES</h5>
           <h1>Press Releases</h1>
           <p>Stay informed with the latest news, strategic announcements, and media updates directly from the Pay10 ecosystem.</p>
         </div>
@@ -109,14 +108,10 @@ export default function NewsRoomClient() {
             <div className={styles.emptyState}>No press releases found.</div>
           ) : (
             items.map((item) => (
-              <a
+              <div
                 key={item.id}
-                href={item.url || undefined}
-                target={item.url ? "_blank" : undefined}
-                rel={item.url ? "noopener noreferrer" : undefined}
                 className={styles.newsCard}
                 data-animation="opacity-up"
-                style={!item.url ? { cursor: "default" } : undefined}
               >
                 <div className={styles.cardMedia}>
                   <Image
@@ -132,14 +127,44 @@ export default function NewsRoomClient() {
                   <p className={styles.cardDate}>{formatDisplayDate(item.publishedAt)}</p>
                   <h3>{item.title}</h3>
                   <p>{item.description}</p>
-                  {item.url && (
-                    <div className={styles.readMoreBtn}>
-                      <span>Read More</span>
-                      <Icon icon="fa6-solid:angle-right" />
+                  <div className={styles.cardFooter}>
+                    {item.url && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.readMoreBtn}
+                      >
+                        <span>Read More</span>
+                        <Icon icon="fa6-solid:angle-right" />
+                      </a>
+                    )}
+                    <div className={styles.shareRow}>
+                      <span>Share:</span>
+                      <a
+                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(item.url || 'https://www.pay10.ae/news-room')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.shareBtn}
+                        aria-label="Share on LinkedIn"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Icon icon="mdi:linkedin" />
+                      </a>
+                      <a
+                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(item.url || 'https://www.pay10.ae/news-room')}&text=${encodeURIComponent(item.title)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.shareBtn}
+                        aria-label="Share on X"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Icon icon="ri:twitter-x-fill" />
+                      </a>
                     </div>
-                  )}
+                  </div>
                 </div>
-              </a>
+              </div>
             ))
           )}
         </div>

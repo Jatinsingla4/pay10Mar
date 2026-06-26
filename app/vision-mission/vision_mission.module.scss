@@ -109,7 +109,10 @@
 
   .vision_content {
     h5 {
-      color: var(--gray);
+      background: var(--primary-gradient);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
       font-size: 1rem;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -117,10 +120,7 @@
 
     p {
       margin-top: 0.5rem;
-      background: var(--primary-gradient);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
+      color: #666666;
       font-size: 2.8rem;
       line-height: 1.35;
     }

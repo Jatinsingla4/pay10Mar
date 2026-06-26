@@ -121,7 +121,10 @@
     h2 {
       font-size: 48px;
       font-family: "bold";
-      color: var(--black);
+      background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
       margin-bottom: 2rem;
       line-height: 1.2;
       flex-shrink: 0;
@@ -203,7 +206,7 @@
       .timeline_dash {
         color: #292D32;
         font-size: 2rem;
-        font-family: 'light', sans-serif;
+        font-family: 'regular', sans-serif;
         line-height: 1;
         transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
           transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -216,7 +219,7 @@
       .timeline_plus {
         color: #292D32;
         font-size: 2rem;
-        font-family: 'light', sans-serif;
+        font-family: 'regular', sans-serif;
         line-height: 1;
         transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
           transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);

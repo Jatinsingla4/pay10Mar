@@ -135,7 +135,10 @@
   h2 {
     font-size: 40px;
     font-family: 'bold', sans-serif;
-    color: var(--black);
+    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
     line-height: 1.15;
     margin-bottom: 16px;
 
@@ -151,7 +154,7 @@
   p {
     font-size: 17px;
     font-family: 'medium', sans-serif;
-    color: var(--gray);
+    color: #666666;
     line-height: 1.6;
     margin: 0;
 
@@ -319,7 +322,10 @@
   h3 {
     font-size: 22px;
     font-family: 'bold', sans-serif;
-    color: var(--black);
+    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
     margin-bottom: 10px;
 
     @include mobile {
@@ -330,7 +336,7 @@
   p {
     font-size: 15px;
     font-family: 'regular', sans-serif;
-    color: var(--gray);
+    color: #666666;
     line-height: 1.6;
     margin: 0;
   }

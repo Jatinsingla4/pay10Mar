@@ -21,8 +21,17 @@ export default function ConsumerAppFeature() {
         {/* Left Content */}
         <div className={styles.leftContent} data-animation="fade-up">
           <h2 className={styles.heading}>Your complete financial life in one place.</h2>
-          <h3 className={styles.subheading} style={{ color: '#ff3d00' }}>Consumer App</h3>
+          <h3 className={styles.subheading} style={{ color: '#000' }}>Consumer App</h3>
           
+          <ul className={styles.featuresList}>
+            {features.map((feature, index) => (
+              <li key={index} data-animation="fade-up" style={{ transitionDelay: `${index * 0.1}s` }}>
+                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: '#ff3d00' }} />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
           <div className={styles.storeBadges}>
             <a href="#" className={styles.badge} aria-label="Download on the App Store">
               <span className={styles.iconWrapper}>
@@ -44,15 +53,6 @@ export default function ConsumerAppFeature() {
               </div>
             </a>
           </div>
-
-          <ul className={styles.featuresList}>
-            {features.map((feature, index) => (
-              <li key={index} data-animation="fade-up" style={{ transitionDelay: `${index * 0.1}s` }}>
-                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: '#ff3d00' }} />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
         {/* Right Image */}

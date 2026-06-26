@@ -49,7 +49,10 @@
     font-size: 42px;
     line-height: 1.1;
     font-family: 'bold', sans-serif;
-    color: var(--black);
+    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
     margin-bottom: 24px;
 
     @include tab {
@@ -65,7 +68,7 @@
     font-size: 16px;
     line-height: 1.6;
     font-family: 'medium', sans-serif;
-    color: var(--gray);
+    color: #666666;
 
     @include mobile {
       font-size: 15px;

@@ -49,12 +49,19 @@
         }
 
         h3 {
-            font-size: 48px;
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-family: 'bold', sans-serif;
+            background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
             transition: all ease 0.5s;
 
             @include tab {
                 max-width: 400px;
-                font-size: 32px;
+                font-size: 2rem;
             }
         }
         
@@ -93,21 +100,22 @@
         ul,
         ol {
             li {
-                margin-top: 20px;
-                color: var(--gray);
-                font-size: 20px;
-                font-family: 'light';
+                margin-top: 16px;
+                color: #666666;
+                font-size: 1.1rem;
+                font-family: 'regular', sans-serif;
+                line-height: 1.5;
             }
         }
-        p{
-          margin-top: 20px;
-          color: var(--gray);
-          font-size: 20px;
-          font-family: 'light';
-          line-height: 1.4;
+        p {
+          margin-top: 16px;
+          color: #666666;
+          font-size: 1.1rem;
+          font-family: 'regular', sans-serif;
+          line-height: 1.5;
 
           @include tab {
-            font-size: 20px;
+            font-size: 1rem;
           }
         }
     }
@@ -165,11 +173,10 @@
         /* CMS wrapper: normalize any block inside description column */
         > div:first-child:not(:only-child) ~ div,
         > div:only-child {
-            color: var(--gray);
-            font-family: 'regular';
-            font-weight: 400;
-            font-size: 20px;
-            line-height: 1.55;
+            color: #666666;
+            font-family: 'regular', sans-serif;
+            font-size: 1.1rem;
+            line-height: 1.5;
 
             p {
                 margin: 0;
@@ -181,13 +188,13 @@
 
                 strong,
                 b {
-                    font-weight: 600;
-                    color: var(--gray);
+                    font-family: 'semibold', sans-serif;
+                    color: var(--black);
                 }
             }
 
             p + p {
-                margin-top: 12px;
+                margin-top: 16px;
             }
 
             div {

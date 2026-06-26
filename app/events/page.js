@@ -52,8 +52,7 @@ const page = () => {
       <section className={Style.bannerSection}>
         <div className={Style.bannerOverlay} />
         <div className={Style.bannerContent}>
-          <h5 data-animation="opacity-up">EVENTS &amp; CONFERENCES</h5>
-          <h1 data-animation="opacity-up" data-anim-delay="100">Our Events</h1>
+          <h1 data-animation="opacity-up">Our Events</h1>
           <p data-animation="opacity-up" data-anim-delay="200">Discover the events and conferences where Pay10 connects, innovates, and leads the future of digital payments.</p>
         </div>
       </section>

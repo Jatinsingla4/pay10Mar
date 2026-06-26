@@ -32,8 +32,17 @@ export default function MerchantAppFeature() {
         {/* Right Content (Desktop) */}
         <div className={styles.rightContent} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
           <h2 className={styles.heading}>The merchant app that works as hard as you do.</h2>
-          <h3 className={styles.subheading} style={{ color: '#ff3d00' }}>Merchant App</h3>
+          <h3 className={styles.subheading} style={{ color: '#000' }}>Merchant App</h3>
           
+          <ul className={styles.featuresList}>
+            {features.map((feature, index) => (
+              <li key={index} data-animation="fade-up" style={{ transitionDelay: `${0.1 + (index * 0.1)}s` }}>
+                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: '#ff3d00' }} />
+                <span>{feature}</span>
+              </li>
+            ))}
+          </ul>
+
           <div className={styles.storeBadges}>
             <a href="#" className={styles.badge} aria-label="Download on the App Store">
               <span className={styles.iconWrapper}>
@@ -55,15 +64,6 @@ export default function MerchantAppFeature() {
               </div>
             </a>
           </div>
-
-          <ul className={styles.featuresList}>
-            {features.map((feature, index) => (
-              <li key={index} data-animation="fade-up" style={{ transitionDelay: `${0.1 + (index * 0.1)}s` }}>
-                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: '#ff3d00' }} />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
         </div>
 
       </div>

@@ -90,11 +90,11 @@
 }
 
   @media only screen and (max-width: 767px) {
-     /* banner content on small tablets */
   .about_banner {
     .banner_content {
       width: 90%;
-      transform: translate(-50%, calc(-50% - 100px));
+      top: 10%;
+      transform: translateX(-50%);
 
       h5 {
         font-size: 1rem;
@@ -115,7 +115,8 @@
     .about_banner {
       .banner_content {
         width: 95%;
-        transform: translate(-50%, calc(-50% - 60px));
+        top: 8%;
+        transform: translateX(-50%);
 
         h5 {
           font-size: 0.95rem;

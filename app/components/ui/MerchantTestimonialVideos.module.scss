@@ -41,9 +41,12 @@
   h2 {
     font-size: 3.5rem;
     font-family: 'bold', sans-serif;
-    color: var(--black);
+    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     line-height: 1.2;
     margin-bottom: 30px;
+    display: inline-block;
 
     @include large {
       font-size: 2.8rem;
@@ -61,7 +64,7 @@
   p {
     font-size: 1.25rem;
     font-family: 'medium', sans-serif;
-    color: var(--gray);
+    color: #666666;
     line-height: 1.6;
 
     @include lessTab {

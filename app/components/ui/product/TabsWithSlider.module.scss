@@ -13,7 +13,10 @@
     h2 {
         font-size: 48px;
         text-align: center;
-        color: var(--black);
+        background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
         margin-bottom: 48px;
         transition: all ease 0.5s;
     }

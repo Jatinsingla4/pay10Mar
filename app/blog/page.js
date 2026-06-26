@@ -108,12 +108,35 @@ const Blog = () => {
                 <h6>{FEATURED_POST.author} &nbsp;|&nbsp; {FEATURED_POST.date}</h6>
                 <h3>{FEATURED_POST.title}</h3>
                 <p>{FEATURED_POST.excerpt}</p>
-                <Link
-                  href={`/blog/${FEATURED_POST.slug}`}
-                  className={Style.blog_content_icon}
-                >
-                  <Icon icon="carbon:arrow-right" width={20} height={20} />
-                </Link>
+                <div className={Style.featuredBottom}>
+                  <Link
+                    href={`/blog/${FEATURED_POST.slug}`}
+                    className={Style.blog_content_icon}
+                  >
+                    <Icon icon="carbon:arrow-right" width={20} height={20} />
+                  </Link>
+                  <div className={Style.shareRow}>
+                    <span>Share:</span>
+                    <a
+                      href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.pay10.ae/blog/${FEATURED_POST.slug}`)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={Style.shareBtn}
+                      aria-label="Share on LinkedIn"
+                    >
+                      <Icon icon="mdi:linkedin" />
+                    </a>
+                    <a
+                      href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://www.pay10.ae/blog/${FEATURED_POST.slug}`)}&text=${encodeURIComponent(FEATURED_POST.title)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={Style.shareBtn}
+                      aria-label="Share on X"
+                    >
+                      <Icon icon="ri:twitter-x-fill" />
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -123,9 +146,8 @@ const Blog = () => {
       <section className={Style.wrapper}>
         <div className={Style.blog_boxes_main}>
           {BLOG_POSTS.map((post, idx) => (
-            <Link
+            <div
               key={post.slug}
-              href={`/blog/${post.slug}`}
               className={Style.blog_box_content}
               data-animation="opacity-up"
               data-anim-delay={idx * 100}
@@ -145,7 +167,34 @@ const Blog = () => {
               </p>
               <h3 className={Style.blog_heading}>{post.title}</h3>
               <p className={Style.blog_desc}>{post.excerpt}</p>
-            </Link>
+              <div className={Style.cardFooter}>
+                <Link href={`/blog/${post.slug}`} className={Style.readMoreLink}>
+                  <span>Read More</span>
+                  <Icon icon="fa6-solid:angle-right" />
+                </Link>
+                <div className={Style.shareRow}>
+                  <span>Share:</span>
+                  <a
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.pay10.ae/blog/${post.slug}`)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={Style.shareBtn}
+                    aria-label="Share on LinkedIn"
+                  >
+                    <Icon icon="mdi:linkedin" />
+                  </a>
+                  <a
+                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://www.pay10.ae/blog/${post.slug}`)}&text=${encodeURIComponent(post.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={Style.shareBtn}
+                    aria-label="Share on X"
+                  >
+                    <Icon icon="ri:twitter-x-fill" />
+                  </a>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </section>

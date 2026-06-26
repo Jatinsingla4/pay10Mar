@@ -18,7 +18,10 @@
         h2 {
             font-size: 32px;
             line-height: 1.1;
-            color: var(--black);
+            background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
             transition: all ease 0.5s;
 
             @include tab {
@@ -30,7 +33,7 @@
             font-family: 'regular';
             margin-top: 36px;
             line-height: 1.4;
-            color: var(--gray);
+            color: #666666;
             transition: all ease 0.5s;
 
             @include tab {

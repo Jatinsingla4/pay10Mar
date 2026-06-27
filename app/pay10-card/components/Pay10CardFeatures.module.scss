@@ -46,7 +46,7 @@
   }
 
   h2 {
-    font-size: 42px;
+    font-size: 3rem;
     line-height: 1.1;
     font-family: 'bold', sans-serif;
     background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
@@ -56,7 +56,7 @@
     margin-bottom: 24px;
 
     @include tab {
-      font-size: 34px;
+      font-size: 2.2rem;
     }
 
     @include mobile {

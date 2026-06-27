@@ -56,6 +56,20 @@
       font-size: 15px;
     }
   }
+
+  @include mobile {
+    top: 80px;
+    left: 20px;
+    max-width: calc(55% - 20px);
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      display: none;
+    }
+  }
 }
 
 .biz_benefits {
@@ -64,6 +78,7 @@
   gap: 60px;
   padding: 80px 56px;
   align-items: start;
+  background: var(--body-bg);
 
   @include tab {
     grid-template-columns: 1fr;
@@ -88,6 +103,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    @include mobile {
+      font-size: 1.6rem;
+    }
   }
 
   > p {
@@ -116,6 +135,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: var(--white);
 }
 
 .benefit_num {
@@ -162,14 +182,29 @@
 
 .benefit_bullets {
   margin: 0 0 16px;
-  padding-left: 20px;
+  padding-left: 0;
   font-size: 0.875rem;
   font-family: 'regular', sans-serif;
   color: #666;
   line-height: 1.6;
+  list-style: none;
 
   li {
     margin-bottom: 4px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+
+    &::before {
+      content: "•";
+      font-size: 1rem;
+      line-height: 1.6;
+      flex-shrink: 0;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
   }
 }
 
@@ -184,7 +219,7 @@
 
 .api_integration {
   padding: 80px 56px;
-  background-color: #fff;
+  background-color: var(--body-bg);
 
   @include tab {
     padding: 56px 16px;
@@ -216,6 +251,11 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    word-break: break-word;
+
+    @include mobile {
+      font-size: 1.6rem;
+    }
   }
 
   p {
@@ -224,11 +264,13 @@
     font-family: 'regular', sans-serif;
     color: #555;
     line-height: 1.6;
+    word-break: break-word;
   }
 }
 
 .api_right {
   width: 100%;
+  overflow: hidden;
 }
 
 .code_window {
@@ -288,7 +330,7 @@
 
 .enterprise_section {
   padding: 80px 56px;
-  background-color: #f9f9f9;
+  background-color: var(--body-bg);
   text-align: center;
   overflow: hidden;
 
@@ -313,6 +355,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    @include mobile {
+      font-size: 1.6rem;
+    }
   }
 
   p {
@@ -410,7 +456,7 @@
 
 .final_cta_section {
   text-align: center;
-  background-color: #fff;
+  background-color: var(--body-bg);
   padding-top: 16px;
 }
 
@@ -428,6 +474,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    @include mobile {
+      font-size: 1.3rem;
+    }
   }
 
   p {
@@ -468,7 +518,7 @@
 }
 
 .final_cta_banner {
-  background-color: #f7f9fa;
+  background-color: var(--body-bg);
   padding: 80px 16px 80px;
   display: flex;
   justify-content: center;
@@ -530,7 +580,7 @@
 
 .reasons_section {
   padding: 80px 56px;
-  background-color: #fff;
+  background-color: var(--body-bg);
   
   @include tab {
     padding: 56px 16px;
@@ -551,6 +601,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    @include mobile {
+      font-size: 1.6rem;
+    }
   }
 
   p {
@@ -564,7 +618,7 @@
 
 .reasons_list {
   width: 100%;
-  max-width: 1400px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -572,8 +626,8 @@
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 32px 0;
+  gap: 56px;
+  padding: 28px 0;
   border-bottom: 1px solid rgba(0,0,0,0.08);
   cursor: pointer;
   transition: all 0.3s ease;
@@ -585,7 +639,7 @@
   @include tab {
     flex-direction: column;
     align-items: flex-start;
-    gap: 16px;
+    gap: 12px;
   }
 
   &:hover {
@@ -606,30 +660,37 @@
 .reason_left {
   display: flex;
   align-items: center;
-  gap: 24px;
-  width: 35%;
-  
+  gap: 20px;
+  flex: 0 0 300px;
+
   @include tab {
+    flex: unset;
     width: 100%;
   }
 }
 
 .reason_num {
-  font-size: 1.2rem;
+  flex-shrink: 0;
+  width: 24px;
+  font-size: 1rem;
   font-family: 'medium', sans-serif;
-  color: #ccc;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .reason_title {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-family: 'bold', sans-serif;
   color: var(--black);
   transition: all 0.3s ease;
+  line-height: 1.3;
 }
 
 .reason_mid {
-  width: 50%;
-  
+  flex: 1;
+
   p {
     margin: 0;
     font-size: 0.95rem;
@@ -658,8 +719,21 @@
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
   z-index: 10;
-  
+
   @include tab {
     display: none;
+  }
+
+  @include mobile {
+    display: block;
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    width: 100%;
+    height: 160px;
+    border-radius: 10px;
+    margin-top: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   }
 }

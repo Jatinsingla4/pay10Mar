@@ -87,7 +87,10 @@
       font-size: 48px;
       font-weight: 700;
       line-height: 1.2;
-      color: var(--black);
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       font-family: 'bold', sans-serif;
       margin: 0;
 

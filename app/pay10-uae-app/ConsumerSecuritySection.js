@@ -73,7 +73,8 @@ const ConsumerSecuritySection = () => {
         
         <p className={Style.description} data-animation="opacity-up" data-anim-delay="200">
           Your data deserves the best protection in the world.
-          <br /><br />
+        </p>
+        <p className={Style.description_sub} data-animation="opacity-up" data-anim-delay="250">
           Pay10 UAE is PCI DSS Level 1 Certified and SOC 2 Type II Compliant - aligned with the most rigorous security standards globally. Fully licensed by the Central Bank of the UAE.
         </p>
 

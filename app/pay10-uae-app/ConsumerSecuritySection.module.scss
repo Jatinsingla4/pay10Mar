@@ -79,7 +79,7 @@
   .description {
     font-size: 1.25rem;
     font-family: 'regular', sans-serif;
-    color: var(--gray);
+    color: var(--black);
     line-height: 1.7;
     max-width: 800px;
     margin: 0 auto 20px auto;
@@ -87,6 +87,19 @@
     @include mobile {
       font-size: 1.05rem;
       margin-bottom: 20px;
+    }
+  }
+
+  .description_sub {
+    font-size: 1.1rem;
+    font-family: 'regular', sans-serif;
+    color: var(--gray);
+    line-height: 1.7;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+
+    @include mobile {
+      font-size: 1rem;
     }
   }
 

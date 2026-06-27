@@ -74,20 +74,22 @@ const SendAbroadClient = () => {
 
 
 
-      <ConsumerFeatureSection
-        heading={
-          <>
-            Instant. Same day.<br />
-            No waiting. No excuses.
-          </>
-        }
-        subheading="Every other way to send money abroad asks you to wait - to add a beneficiary, wait for approval, then wait again for the money to arrive. Pay10 UAE App Send Abroad doesn't. When you Send Abroad with Pay10, your transfer moves the moment you confirm it."
-        imageSrc="/images/prod_imports/consumer-app-phone.png"
-        imageAlt="Instant Money Transfer"
-        isReversed={false}
-        isGreyBg={false}
-        isTransparent={true}
-      />
+      <div className={Style.grey_subtitle_wrap}>
+        <ConsumerFeatureSection
+          heading={
+            <>
+              Instant. Same day.<br />
+              No waiting. No excuses.
+            </>
+          }
+          subheading="Every other way to send money abroad asks you to wait - to add a beneficiary, wait for approval, then wait again for the money to arrive. Pay10 UAE App Send Abroad doesn't. When you Send Abroad with Pay10, your transfer moves the moment you confirm it."
+          imageSrc="/images/prod_imports/consumer-app-phone.png"
+          imageAlt="Instant Money Transfer"
+          isReversed={false}
+          isGreyBg={false}
+          isTransparent={true}
+        />
+      </div>
 
       <section className={Style.steps_section}>
         <div className={Style.steps_header} data-animation="opacity-up">
@@ -124,16 +126,18 @@ const SendAbroadClient = () => {
         </div>
       </section>
 
-      <ConsumerFeatureSection
-        heading="Where can you Send Abroad today?"
-        subheading="Pay10 UAE App Send Abroad is live, growing fast, and on its way to 140+ countries. Check where you can send right now - and where we're headed next."
-        extraContent={countriesContent}
-        imageSrc="/images/prod_imports/consumer-app-phone.png"
-        imageAlt="Countries"
-        isReversed={true}
-        isGreyBg={false}
-        isTransparent={true}
-      />
+      <div className={Style.grey_subtitle_wrap}>
+        <ConsumerFeatureSection
+          heading="Where can you Send Abroad today?"
+          subheading="Pay10 UAE App Send Abroad is live, growing fast, and on its way to 140+ countries. Check where you can send right now - and where we're headed next."
+          extraContent={countriesContent}
+          imageSrc="/images/prod_imports/consumer-app-phone.png"
+          imageAlt="Countries"
+          isReversed={true}
+          isGreyBg={false}
+          isTransparent={true}
+        />
+      </div>
       <section className={Style.download_cta}>
         <div data-animation="opacity-up">
           <h3>Get the App Now</h3>

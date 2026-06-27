@@ -41,7 +41,10 @@
 .heading {
   font-family: 'bold', sans-serif;
   font-size: 3rem;
-  color: var(--black);
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.2;
   margin: 0 0 20px 0;
 
@@ -61,7 +64,7 @@
 .subheading {
   font-family: 'semibold', sans-serif;
   font-size: 1.8rem;
-  color: var(--red);
+  color: var(--black);
   margin: 0 0 20px 0;
 
   @include lessTab {
@@ -82,7 +85,7 @@
 
   strong {
     font-family: 'bold', sans-serif;
-    color: var(--black);
+    color: var(--gray);
   }
 
   @include mobile {

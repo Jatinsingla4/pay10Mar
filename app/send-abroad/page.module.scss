@@ -181,7 +181,7 @@
   p {
     font-size: 18px;
     font-family: 'medium', sans-serif;
-    color: #666666;
+    color: var(--black);
     line-height: 1.6;
     margin: 0;
 
@@ -247,10 +247,7 @@
     h3 {
       font-size: 24px;
       font-family: 'bold', sans-serif;
-      background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+      color: var(--black);
       line-height: 1.3;
       margin: 0;
     }
@@ -303,11 +300,7 @@
         font-size: 28px;
         font-family: 'bold', sans-serif;
         margin-bottom: 20px;
-        background: var(--primary-gradient, linear-gradient(90deg, #FFBB07 0%, #EF1A23 100%));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        display: inline-block;
+        color: var(--black);
       }
 
       .store_buttons {
@@ -440,4 +433,11 @@
   font-family: 'regular', sans-serif;
   line-height: 1.6;
   color: var(--gray);
+}
+
+.grey_subtitle_wrap {
+  [class*="subtitle"] {
+    color: var(--gray) !important;
+    -webkit-text-fill-color: var(--gray) !important;
+  }
 }

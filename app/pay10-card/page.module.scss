@@ -322,10 +322,7 @@
   h3 {
     font-size: 22px;
     font-family: 'bold', sans-serif;
-    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
+    color: var(--black);
     margin-bottom: 10px;
 
     @include mobile {
@@ -339,5 +336,12 @@
     color: #666666;
     line-height: 1.6;
     margin: 0;
+  }
+}
+
+.grey_subtitle_wrap {
+  [class*="subtitle"] {
+    color: var(--gray) !important;
+    -webkit-text-fill-color: var(--gray) !important;
   }
 }

@@ -14,7 +14,7 @@ const Pay10CardClient = () => {
     points: [],
     extraContent: (
       <div style={{ marginTop: '24px', fontFamily: "'bold', sans-serif", fontSize: '18px', letterSpacing: '1px', textTransform: 'uppercase', color: '#444' }}>
-        POWERED BY JAYWAN &middot; UAE'S NATIONAL CARD SCHEME
+        POWERED BY JAYWAN · UAE&apos;S NATIONAL CARD SCHEME
       </div>
     ),
     imageSrc: "/images/prod_imports/link_acc.png",
@@ -37,6 +37,7 @@ const Pay10CardClient = () => {
 
       <div className={Style.bg_circle_wrapper}>
 
+        <div className={Style.grey_subtitle_wrap}>
         <ConsumerFeatureSection
           heading={cardFeature.heading}
           subheading={cardFeature.subheading}
@@ -48,6 +49,7 @@ const Pay10CardClient = () => {
           isGreyBg={false}
           isTransparent={true}
         />
+        </div>
 
         <Pay10CardFeatures />
 

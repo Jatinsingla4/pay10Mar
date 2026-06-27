@@ -55,6 +55,7 @@
 
 .merchant_scale {
   padding: 80px 56px;
+  background: var(--body-bg);
 
   @include tab { padding: 56px 16px; }
 }
@@ -109,6 +110,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  background: var(--white);
 }
 
 .card_num {
@@ -166,6 +168,7 @@
   gap: 60px;
   padding: 80px 56px;
   align-items: start;
+  background: var(--body-bg);
 
   @include tab {
     grid-template-columns: 1fr;
@@ -236,6 +239,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  background: var(--white);
 }
 
 .benefit_num {
@@ -294,6 +298,7 @@
   flex-direction: column;
   gap: 32px;
   padding: 80px 56px;
+  background: var(--body-bg);
 
   @include tab { padding: 56px 16px; }
 }
@@ -731,6 +736,7 @@
 
 .biz_steps {
   padding: 80px 56px;
+  background: var(--body-bg);
 
   @include tab { padding: 60px 24px; }
   @include mobile { padding: 48px 16px; }
@@ -894,6 +900,7 @@
   text-align: center;
   padding: 80px 56px;
   gap: 24px;
+  background: var(--body-bg);
 
   @include tab { padding: 72px 24px; }
   @include mobile { padding: 56px 16px; }

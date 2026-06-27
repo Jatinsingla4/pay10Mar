@@ -41,7 +41,7 @@ const footerData = {
             { label: 'Pay10 Biz UAE App', href: '/pay10-biz-uae-app' },
             { label: 'Merchant Portal', href: '/merchant-portal' },
             { label: 'Payment Gateways', href: '/products/payment-gateway' },
-            { label: 'POS Devices', href: '#' },
+            { label: 'POS Devices', href: '/pos-devices' },
             { label: 'WPS & Payroll', href: '/wps-payroll' },
             { label: 'Channel Partners', href: '/ecosystem-partners' },
           ],

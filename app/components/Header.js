@@ -71,7 +71,7 @@ const navigationData = {
           },
           {
             label: 'POS Devices',
-            href: '#',
+            href: '/pos-devices',
             icon: '/images/header/payments.svg',
           },
           {

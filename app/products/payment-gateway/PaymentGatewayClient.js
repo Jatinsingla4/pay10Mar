@@ -25,7 +25,7 @@ const PaymentGatewayClient = () => {
             Two powerful ways,<br/>your customers pay online.
           </h2>
           <p className={Style.centered_paragraph}>
-            Add Pay10's payment methods to your checkout in minutes &mdash; a Dynamic QR button and a Pay by Bank option &mdash; giving your customers the fastest, most trusted ways to pay online in the UAE.
+            Add Pay10's payment methods to your checkout in minutes: a Dynamic QR button and a Pay by Bank option, giving your customers the fastest, most trusted ways to pay online in the UAE.
           </p>
         </div>
       </section>
@@ -50,7 +50,7 @@ const PaymentGatewayClient = () => {
                 <span>Order total</span>
                 <strong>AED 349.00</strong>
               </div>
-              <div className={Style.mockup_divider}>&mdash; Choose payment method &mdash;</div>
+              <div className={Style.mockup_divider}>Choose payment method</div>
               <button className={Style.mockup_pay10_btn}>
                 <Icon icon="mdi:cellphone" width={18} /> Pay with Pay10
               </button>
@@ -76,7 +76,7 @@ const PaymentGatewayClient = () => {
                 <span>Order total</span>
                 <strong>AED 349.00</strong>
               </div>
-              <div className={Style.mockup_divider}>&mdash; Choose payment method &mdash;</div>
+              <div className={Style.mockup_divider}>Choose payment method</div>
               <button className={Style.mockup_bank_btn}>
                 <Icon icon="mdi:bank-outline" width={18} /> Pay by Bank
               </button>
@@ -95,7 +95,7 @@ const PaymentGatewayClient = () => {
               <span className={Style.card_badge}>APM &middot; Dynamic QR</span>
             </div>
             <p className={Style.card_desc}>
-              Customer scans a Dynamic QR code to pay &mdash; directly from their Pay10 UAE App.
+              Customer scans a Dynamic QR code to pay: directly from their Pay10 UAE App.
             </p>
             
             <div className={Style.card_list_section}>
@@ -105,25 +105,25 @@ const PaymentGatewayClient = () => {
               <ul className={Style.journey_card_list}>
                 <li>
                   <span className={Style.step_num}>1</span>
-                  <span>Clicks "Pay with Pay10" &mdash; a Dynamic QR code is instantly generated on screen.</span>
+                  <span>Clicks "Pay with Pay10": a Dynamic QR code is instantly generated on screen.</span>
                 </li>
                 <li>
                   <span className={Style.step_num}>2</span>
-                  <span>Opens Pay10 UAE App &mdash; scans the Dynamic QR code with their phone.</span>
+                  <span>Opens Pay10 UAE App, scans the Dynamic QR code with their phone.</span>
                 </li>
                 <li>
                   <span className={Style.step_num}>3</span>
-                  <span>Confirms payment &mdash; amount and merchant name shown in app before confirming.</span>
+                  <span>Confirms payment: amount and merchant name shown in app before confirming.</span>
                 </li>
                 <li>
                   <span className={Style.step_num}>4</span>
-                  <span>Payment confirmed &mdash; order confirmed on your checkout. Instant. Done.</span>
+                  <span>Payment confirmed: order confirmed on your checkout. Instant. Done.</span>
                 </li>
               </ul>
             </div>
 
             <div className={Style.card_footer}>
-              Customer doesn't have Pay10 UAE App? They're directed to download it &mdash; turning your checkout into a Pay10 acquisition moment.
+              Customer doesn't have Pay10 UAE App? They're directed to download it, turning your checkout into a Pay10 acquisition moment.
             </div>
           </div>
 
@@ -134,7 +134,7 @@ const PaymentGatewayClient = () => {
               <span className={Style.card_badge}>TPP &middot; Open Finance &middot; Al Tareq</span>
             </div>
             <p className={Style.card_desc}>
-              Customer pays directly from their bank account &mdash; no card, no wallet, just their bank.
+              Customer pays directly from their bank account: no card, no wallet, just their bank.
             </p>
             
             <div className={Style.card_list_section}>
@@ -144,7 +144,7 @@ const PaymentGatewayClient = () => {
               <ul className={Style.journey_card_list}>
                 <li>
                   <span className={Style.step_num}>1</span>
-                  <span>Clicks "Pay by Bank" &mdash; redirected to securely connect to their bank.</span>
+                  <span>Clicks "Pay by Bank": redirected to securely connect to their bank.</span>
                 </li>
                 <li>
                   <span className={Style.step_num}>2</span>
@@ -156,13 +156,13 @@ const PaymentGatewayClient = () => {
                 </li>
                 <li>
                   <span className={Style.step_num}>4</span>
-                  <span>Payment confirmed &mdash; order confirmed on your checkout. Instant. Done.</span>
+                  <span>Payment confirmed: order confirmed on your checkout. Instant. Done.</span>
                 </li>
               </ul>
             </div>
 
             <div className={Style.card_footer}>
-              Powered by Al Tareq &mdash; the UAE's regulated Open Finance infrastructure. Secure, consent-driven, CBUAE compliant. <strong>The approved sentence: Connect your Account via AL TAREQ and start transacting.</strong>
+              Powered by Al Tareq: the UAE's regulated Open Finance infrastructure. Secure, consent-driven, CBUAE compliant. <strong>The approved sentence: Connect your Account via AL TAREQ and start transacting.</strong>
             </div>
           </div>
         </div>
@@ -174,7 +174,7 @@ const PaymentGatewayClient = () => {
             From checkout button to confirmed order,<br/>here's exactly what happens.
           </h2>
           <p className={Style.centered_paragraph}>
-            Two different journeys. The same outcome &mdash; a completed payment, settled to your account today.
+            Two different journeys. The same outcome: a completed payment, settled to your account today.
           </p>
         </div>
       </section>
@@ -183,7 +183,7 @@ const PaymentGatewayClient = () => {
         <div className={Style.journey_list_wrapper}>
           {/* DQR Journey */}
           <div className={Style.journey_column}>
-            <h3 className={Style.journey_col_heading}>PAY WITH PAY10 &mdash; DQR JOURNEY</h3>
+            <h3 className={Style.journey_col_heading}>PAY WITH PAY10: DQR JOURNEY</h3>
             <div className={Style.journey_steps}>
               
               <div className={Style.step_item}>
@@ -191,7 +191,7 @@ const PaymentGatewayClient = () => {
                 <div className={Style.step_content}>
                   <div className={Style.step_title}>Button appears at checkout</div>
                   <div className={Style.step_desc}>
-                    "Pay with Pay10" button sits alongside your existing payment options &mdash; card, COD, or other APMs.
+                    "Pay with Pay10" button sits alongside your existing payment options: card, COD, or other APMs.
                   </div>
                 </div>
               </div>
@@ -201,7 +201,7 @@ const PaymentGatewayClient = () => {
                 <div className={Style.step_content}>
                   <div className={Style.step_title}>Dynamic QR generated</div>
                   <div className={Style.step_desc}>
-                    Unique QR code created for this transaction &mdash; amount pre-filled, merchant name shown. No manual entry.
+                    Unique QR code created for this transaction: amount pre-filled, merchant name shown. No manual entry.
                   </div>
                   <span className={Style.step_tag}>Instant generation</span>
                 </div>
@@ -212,7 +212,7 @@ const PaymentGatewayClient = () => {
                 <div className={Style.step_content}>
                   <div className={Style.step_title}>Customer scans with Pay10 UAE App</div>
                   <div className={Style.step_desc}>
-                    Opens Pay10 UAE App, scans QR &mdash; payment details shown for confirmation. One tap to pay.
+                    Opens Pay10 UAE App, scans QR: payment details shown for confirmation. One tap to pay.
                   </div>
                   <span className={Style.step_tag}>Under 10 seconds</span>
                 </div>
@@ -221,7 +221,7 @@ const PaymentGatewayClient = () => {
               <div className={Style.step_item}>
                 <div className={Style.step_number}>4</div>
                 <div className={Style.step_content}>
-                  <div className={Style.step_title}>Order confirmed &mdash; settlement today</div>
+                  <div className={Style.step_title}>Order confirmed: settlement today</div>
                   <div className={Style.step_desc}>
                     Payment posted to your merchant portal instantly. Settlement to your account the same day.
                   </div>
@@ -234,7 +234,7 @@ const PaymentGatewayClient = () => {
 
           {/* TPP Journey */}
           <div className={Style.journey_column}>
-            <h3 className={Style.journey_col_heading}>PAY BY BANK &mdash; TPP JOURNEY</h3>
+            <h3 className={Style.journey_col_heading}>PAY BY BANK: TPP JOURNEY</h3>
             <div className={Style.journey_steps}>
               
               <div className={Style.step_item}>
@@ -242,7 +242,7 @@ const PaymentGatewayClient = () => {
                 <div className={Style.step_content}>
                   <div className={Style.step_title}>Button appears at checkout</div>
                   <div className={Style.step_desc}>
-                    "Pay by Bank" button sits at the checkout &mdash; clear, trusted, no card details needed.
+                    "Pay by Bank" button sits at the checkout: clear, trusted, no card details needed.
                   </div>
                 </div>
               </div>
@@ -252,7 +252,7 @@ const PaymentGatewayClient = () => {
                 <div className={Style.step_content}>
                   <div className={Style.step_title}>Directed to Al Tareq</div>
                   <div className={Style.step_desc}>
-                    Customers land on Al Tareq's Open Finance screen &mdash; selects their UAE bank from the list.
+                    Customers land on Al Tareq's Open Finance screen, selects their UAE bank from the list.
                   </div>
                   <span className={Style.step_tag}>Secure redirect</span>
                 </div>
@@ -263,7 +263,7 @@ const PaymentGatewayClient = () => {
                 <div className={Style.step_content}>
                   <div className={Style.step_title}>Bank authentication</div>
                   <div className={Style.step_desc}>
-                    Customers redirected to their bank &mdash; approves the payment using their existing banking credentials.
+                    Customers redirected to their bank, approves the payment using their existing banking credentials.
                   </div>
                   <span className={Style.step_tag}>Bank-level security</span>
                 </div>
@@ -272,7 +272,7 @@ const PaymentGatewayClient = () => {
               <div className={Style.step_item}>
                 <div className={Style.step_number}>4</div>
                 <div className={Style.step_content}>
-                  <div className={Style.step_title}>Order confirmed &mdash; settlement today</div>
+                  <div className={Style.step_title}>Order confirmed: settlement today</div>
                   <div className={Style.step_desc}>
                     Payment confirmed, customer returned to your checkout. Settlement to your account the same day.
                   </div>
@@ -291,7 +291,7 @@ const PaymentGatewayClient = () => {
             Every Pay10 merchant gets the same unbeatable deal.
           </h2>
           <p className={Style.centered_paragraph}>
-            The benefits below apply to every merchant using Pay10's Payment Gateway &mdash; regardless of size, volume, or industry.
+            The benefits below apply to every merchant using Pay10's Payment Gateway, regardless of size, volume, or industry.
           </p>
         </div>
 
@@ -344,7 +344,7 @@ const PaymentGatewayClient = () => {
 
       <section className={Style.biz_final_cta}>
         <p className={Style.cta_sub}>
-          Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients &mdash; tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.
+          Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients: tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.
         </p>
         <div className={Style.cta_buttons}>
           <Link href="/contact-us?type=Enterprise+Sales" className={Style.cta_btn_primary}>Enterprise Sales</Link>

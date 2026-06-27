@@ -1,6 +1,7 @@
 import React from "react";
 import { Icon } from '@iconify/react';
 import styles from "./ecosystem.module.scss";
+import PartnerForm from "./PartnerForm";
 
 export const metadata = {
   title: "Channel Partners – Pay 10",
@@ -18,7 +19,7 @@ export default function EcosystemPartnersPage() {
           <div className={styles.altareq_hero_text}>
             <h2>Partner with Pay10.<br/>Grow faster. Earn more.</h2>
             <p>
-              Unlock new revenue by adding Pay10's payment methods to your platform. One integration. Thousands of merchant opportunities. Backed by the UAE's most complete fintech ecosystem &mdash; licensed by the Central Bank of the UAE.
+              Unlock new revenue by adding Pay10's payment methods to your platform. One integration. Thousands of merchant opportunities. Backed by the UAE's most complete fintech ecosystem : licensed by the Central Bank of the UAE.
             </p>
           </div>
         </div>
@@ -41,7 +42,7 @@ export default function EcosystemPartnersPage() {
           <div className={styles.reason_card}>
             <Icon icon="mdi:trending-up" className={styles.reason_icon} />
             <h3>Earn More</h3>
-            <p className={styles.reason_desc}>Attractive commissions and recurring revenue on every merchant you bring to Pay10 &mdash; building a revenue stream that grows as your merchants grow.</p>
+            <p className={styles.reason_desc}>Attractive commissions and recurring revenue on every merchant you bring to Pay10 : building a revenue stream that grows as your merchants grow.</p>
             <ul>
               <li>Commission on merchant onboarding</li>
               <li>Recurring revenue on transaction volume</li>
@@ -53,24 +54,24 @@ export default function EcosystemPartnersPage() {
           <div className={styles.reason_card}>
             <Icon icon="mdi:rocket-launch-outline" className={styles.reason_icon} />
             <h3>Grow Faster</h3>
-            <p className={styles.reason_desc}>Expand your product portfolio instantly &mdash; without building anything from scratch. Add Pay10's full payment suite to what you already offer merchants.</p>
+            <p className={styles.reason_desc}>Expand your product portfolio instantly : without building anything from scratch. Add Pay10's full payment suite to what you already offer merchants.</p>
             <ul>
               <li>Add UAE-native payment methods to your checkout</li>
               <li>Offer DQR in-person payment devices</li>
               <li>Differentiate with Pay10's Open Finance capabilities</li>
-              <li>Single integration &mdash; all products activated at once</li>
+              <li>Single integration : all products activated at once</li>
             </ul>
           </div>
 
           <div className={styles.reason_card}>
             <Icon icon="mdi:shield-check-outline" className={styles.reason_icon} />
             <h3>Partner with Confidence</h3>
-            <p className={styles.reason_desc}>Dedicated onboarding, training, marketing support, and account management &mdash; Pay10 treats every Tech Partner as a long-term growth relationship.</p>
+            <p className={styles.reason_desc}>Dedicated onboarding, training, marketing support, and account management : Pay10 treats every Tech Partner as a long-term growth relationship.</p>
             <ul>
               <li>Dedicated partner onboarding team</li>
               <li>Technical integration support end-to-end</li>
               <li>Co-marketing and joint go-to-market support</li>
-              <li>Named account manager &mdash; always available</li>
+              <li>Named account manager : always available</li>
             </ul>
           </div>
         </div>
@@ -80,9 +81,9 @@ export default function EcosystemPartnersPage() {
         <div className={styles.benefits_left}>
           <h2>One integration.<br/>Every Pay10 merchant opportunity.</h2>
           <p>
-            As a Tech Partner you integrate once with Pay10's API &mdash; then any merchant on your platform who wants Pay10 as a payment method signs up through you. Pay10 handles their onboarding. You earn on every one.
+            As a Tech Partner you integrate once with Pay10's API : then any merchant on your platform who wants Pay10 as a payment method signs up through you. Pay10 handles their onboarding. You earn on every one.
             <br/><br/>
-            <strong>Portal access:</strong> Tech Partners receive dedicated merchant portal access &mdash; giving you full visibility of your connected merchants' activity, settlements, and performance from one dashboard.
+            <strong>Portal access:</strong> Tech Partners receive dedicated merchant portal access : giving you full visibility of your connected merchants' activity, settlements, and performance from one dashboard.
           </p>
         </div>
         <div className={styles.benefits_grid}>
@@ -91,7 +92,7 @@ export default function EcosystemPartnersPage() {
               num: '01',
               icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" /></svg>,
               title: 'Single API integration',
-              desc: 'You integrate Pay10 once — all payment methods, all products, activated through one connection.',
+              desc: 'You integrate Pay10 once : all payment methods, all products, activated through one connection.',
             },
             {
               num: '02',
@@ -103,7 +104,7 @@ export default function EcosystemPartnersPage() {
               num: '03',
               icon: <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>,
               title: 'Pay10 onboards them',
-              desc: 'Pay10\'s team handles full merchant onboarding — credentials, setup, devices, and portal access.',
+              desc: 'Pay10\'s team handles full merchant onboarding : credentials, setup, devices, and portal access.',
             },
             {
               num: '04',
@@ -125,7 +126,7 @@ export default function EcosystemPartnersPage() {
 
       <section className={styles.reasons_section}>
         <div className={styles.reasons_header} style={{ maxWidth: '800px', marginBottom: '40px' }}>
-          <h2>Security and licensing &mdash; partner with a platform you can trust</h2>
+          <h2>Security and licensing : partner with a platform you can trust</h2>
         </div>
         <div className={styles.reasons_grid}>
           <div className={styles.reason_card}>
@@ -137,24 +138,24 @@ export default function EcosystemPartnersPage() {
           <div className={styles.reason_card}>
             <Icon icon="mdi:shield-lock-outline" className={styles.reason_icon} />
             <h3>PCI DSS Level 1 + SOC 2 Type II</h3>
-            <p className={styles.reason_desc}>The highest global standards for payment security and data protection. Every transaction certified, audited, and protected &mdash; giving your merchants and their customers full confidence.</p>
+            <p className={styles.reason_desc}>The highest global standards for payment security and data protection. Every transaction certified, audited, and protected : giving your merchants and their customers full confidence.</p>
           </div>
 
           <div className={styles.reason_card}>
             <Icon icon="mdi:flag-outline" className={styles.reason_icon} />
             <h3>UAE National Policy aligned</h3>
-            <p className={styles.reason_desc}>Pay10 is aligned with the UAE's National Policy on Open Finance driven by CBUAE &mdash; meaning every partnership is future-proofed against the direction of UAE financial regulation.</p>
+            <p className={styles.reason_desc}>Pay10 is aligned with the UAE's National Policy on Open Finance driven by CBUAE : meaning every partnership is future-proofed against the direction of UAE financial regulation.</p>
           </div>
         </div>
       </section>
 
       <section className={styles.biz_benefits}>
         <div className={styles.benefits_left}>
-          <h2>What your merchants get &mdash; the full Pay10 ecosystem</h2>
+          <h2>What your merchants get : the full Pay10 ecosystem</h2>
           <p>
             The most complete fintech ecosystem in the UAE behind one API.
             <br/><br/>
-            When you partner with Pay10, your merchants access a complete end-to-end financial platform &mdash; consumer solutions, merchant tools, DQR hardware, and payment gateway capabilities all under four CBUAE licences.
+            When you partner with Pay10, your merchants access a complete end-to-end financial platform : consumer solutions, merchant tools, DQR hardware, and payment gateway capabilities all under four CBUAE licences.
           </p>
         </div>
         <div className={styles.benefits_grid}>
@@ -279,61 +280,7 @@ export default function EcosystemPartnersPage() {
           </div>
           
           <div className={styles.apply_right}>
-            <form className={styles.partner_form}>
-              <div className={styles.form_group}>
-                <label>Name</label>
-                <input type="text" placeholder="Enter your name" />
-              </div>
-              
-              <div className={styles.form_group}>
-                <label>Company Name</label>
-                <input type="text" placeholder="Enter company name" />
-              </div>
-              
-              <div className={styles.form_group}>
-                <label>Designation</label>
-                <input type="text" placeholder="Enter your designation" />
-              </div>
-              
-              <div className={styles.form_group}>
-                <label>Email</label>
-                <input type="email" placeholder="Enter your email" />
-              </div>
-              
-              <div className={styles.form_group}>
-                <label>Phone No</label>
-                <input type="tel" placeholder="Enter phone number" />
-              </div>
-              
-              <div className={styles.form_group}>
-                <label>Monthly Transaction Volume</label>
-                <div className={styles.select_wrapper}>
-                  <select>
-                    <option value="">Select volume</option>
-                    <option value="Under AED 500K">Under AED 500K</option>
-                    <option value="AED 500K - AED 2Mn">AED 500K - AED 2Mn</option>
-                    <option value="AED 2Mn - AED 5 Mn">AED 2Mn - AED 5 Mn</option>
-                    <option value="AED 5 Mn - AED 10 Mn">AED 5 Mn - AED 10 Mn</option>
-                    <option value="AED 10Mn - AED 50 Mn">AED 10Mn - AED 50 Mn</option>
-                    <option value="AED 50Mn+">AED 50Mn+</option>
-                  </select>
-                  <Icon icon="mdi:chevron-down" className={styles.select_icon} />
-                </div>
-              </div>
-              
-              <div className={styles.form_group}>
-                <label>Integration Type</label>
-                <div className={styles.select_wrapper}>
-                  <select>
-                    <option value="">Select integration type</option>
-                    <option value="Pay with Pay10 (DQR)">Pay with Pay10 (DQR)</option>
-                  </select>
-                  <Icon icon="mdi:chevron-down" className={styles.select_icon} />
-                </div>
-              </div>
-
-              <button type="submit" className={styles.submit_btn}>Submit Application</button>
-            </form>
+            <PartnerForm />
           </div>
         </div>
       </section>

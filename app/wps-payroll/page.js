@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 import styles from "./wps.module.scss";
 import { Icon } from "@iconify/react";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
@@ -167,6 +168,179 @@ const WpsPayrollPage = () => {
               </ul>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className={styles.steps_section}>
+        <svg width="0" height="0" style={{ position: 'absolute' }}>
+          <linearGradient id="pay10_grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stopColor="#FFBB07" />
+            <stop offset="100%" stopColor="#EF1A23" />
+          </linearGradient>
+        </svg>
+        <div className={styles.steps_container}>
+          <div className={styles.steps_header}>
+            <h2>Getting started — 6 simple steps</h2>
+            <p>Simple onboarding. Faster than you think.</p>
+          </div>
+          
+          <div className={styles.steps_grid}>
+            {[
+              { num: '01', title: 'Registration', desc: 'Employers submit onboarding documents and employee data to Pay10.', icon: 'mdi:file-document-edit-outline' },
+              { num: '02', title: 'Account creation', desc: 'Universal Accounts are set up for unbanked employees by the Pay10 team.', icon: 'mdi:account-plus-outline' },
+              { num: '03', title: 'Card issuance', desc: 'Jaywan cards are issued to unbanked employees and linked to their Universal Account.', icon: 'mdi:credit-card-plus-outline' },
+              { num: '04', title: 'App activation', desc: 'Employees download the Pay10 UAE App to access their account, view balance, and manage transactions.', icon: 'mdi:cellphone-check' },
+              { num: '05', title: 'First salary run', desc: 'The employer uploads the SIF file and transfers funds. Pay10 processes the salary instantly.', icon: 'mdi:cash-fast' },
+              { num: '06', title: 'Ongoing management', desc: 'Employers manage payroll through the analytics dashboard with full visibility and 24/7 support.', icon: 'mdi:chart-line' }
+            ].map((step, index) => (
+              <div key={index} className={styles.step_card}>
+                <div className={styles.step_icon_wrapper}>
+                  <Icon icon={step.icon} className={styles.step_icon} />
+                </div>
+                <h3><span>{step.num}</span> {step.title}</h3>
+                <p>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.comparison_section}>
+        <div className={styles.comparison_container}>
+          <div className={styles.comparison_header}>
+            <h2>Competitive comparison</h2>
+            <p>Pay10 is competing against exchange houses and established salary card providers. This table makes the case without naming anyone directly.</p>
+          </div>
+
+          <div className={styles.table_responsive}>
+            <table className={styles.compare_table}>
+              <thead>
+                <tr>
+                  <th>What matters</th>
+                  <th>Traditional WPS providers</th>
+                  <th className={styles.highlight_col}>Pay10 WPS</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    feature: 'CBUAE licensed',
+                    trad: { type: 'check', text: 'Most are' },
+                    pay10: { type: 'check', text: 'Fully licensed 4 CBUAE licences' }
+                  },
+                  {
+                    feature: 'Named IBAN per worker',
+                    trad: { type: 'cross', text: 'Generic salary card no name' },
+                    pay10: { type: 'check', text: 'Every worker gets a named Pay10 IBAN' }
+                  },
+                  {
+                    feature: 'Unbanked worker account',
+                    trad: { type: 'cross', text: 'Anonymous card only' },
+                    pay10: { type: 'check', text: 'Named Universal Account fully theirs' }
+                  },
+                  {
+                    feature: 'Mobile invitation flow',
+                    trad: { type: 'cross', text: 'Worker must visit a branch' },
+                    pay10: { type: 'check', text: 'SMS invite register from any phone' }
+                  },
+                  {
+                    feature: 'Debit card for workers',
+                    trad: { type: 'text', text: 'Salary card only limited use' },
+                    pay10: { type: 'check', text: 'Jaywan debit card ATM, POS, online' }
+                  },
+                  {
+                    feature: 'Employee app',
+                    trad: { type: 'cross', text: 'None or basic' },
+                    pay10: { type: 'check', text: 'Pay10 UAE App full financial control' }
+                  },
+                  {
+                    feature: 'International transfers',
+                    trad: { type: 'text', text: 'Separate service extra fees' },
+                    pay10: { type: 'check', text: 'Built into Pay10 app Send Abroad' }
+                  },
+                  {
+                    feature: 'Bill payments',
+                    trad: { type: 'cross', text: 'Not offered' },
+                    pay10: { type: 'check', text: 'All UAE bills in one app' }
+                  },
+                  {
+                    feature: '24/7 human support',
+                    trad: { type: 'text', text: 'Limited often bots or queues' },
+                    pay10: { type: 'check', text: 'Human, multi-language, zero wait' }
+                  },
+                  {
+                    feature: 'Employer WPS portal',
+                    trad: { type: 'text', text: 'Basic SIF upload minimal visibility' },
+                    pay10: { type: 'check', text: 'Full analytics dashboard + payroll history' }
+                  },
+                  {
+                    feature: 'Open Finance',
+                    trad: { type: 'cross', text: 'Not available' },
+                    pay10: { type: 'check', text: 'Licensed for Open Finance future-ready' }
+                  }
+                ].map((row, idx) => (
+                  <tr key={idx}>
+                    <td>{row.feature}</td>
+                    <td>
+                      {row.trad.type === 'check' && <Icon icon="mdi:check-circle" className={styles.icon_check} />}
+                      {row.trad.type === 'cross' && <Icon icon="mdi:close-circle" className={styles.icon_cross} />}
+                      {row.trad.text}
+                    </td>
+                    <td className={styles.highlight_col}>
+                      {row.pay10.type === 'check' && <Icon icon="mdi:check-circle" className={styles.icon_check} />}
+                      {row.pay10.type === 'cross' && <Icon icon="mdi:close-circle" className={styles.icon_cross} />}
+                      {row.pay10.text}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <ConsumerFeatureSection
+        heading={<span className={styles.gradient_heading}>Ensuring minimal disruption to your existing salary processing</span>}
+        subheading="Our end-to-end WPS solution is built to make switching effortless."
+        points={[
+          "Smooth migration for existing payroll cards — no disruption to employees",
+          "Seamless salary disbursement from day one",
+          "Full regulatory compliance with the new CBUAE WPS framework",
+          "Reduced administrative effort for HR and payroll teams",
+          "Digital access for all employees via Pay10 UAE App",
+          "Transparent fee structure and simplified onboarding process"
+        ]}
+        imageSrc="/images/prod_imports/consumer-app-phone.png"
+        imageAlt="Minimal Disruption"
+        isReversed={true}
+        isGreyBg={true}
+      />
+
+      <section className={styles.biz_final_cta}>
+        <h2 className={styles.cta_heading}>Ready to pay your employees the smarter way?</h2>
+        <p className={styles.cta_sub}>Contact our sales team we'll handle registration, account setup, and your first salary run.</p>
+        <div className={styles.cta_buttons}>
+          <Link href="/contact-us?type=Enterprise+Sales" className={styles.cta_btn_primary}>Enterprise Sales</Link>
+        </div>
+      </section>
+
+      <section className={styles.biz_app_download}>
+        <h2 className={styles.app_download_heading}>Merchant App</h2>
+        <div className={styles.app_download_badges}>
+          <a href="#" className={styles.app_badge} aria-label="Download on the App Store">
+            <Icon icon="ic:baseline-apple" width={28} />
+            <div>
+              <span>Download on the</span>
+              <strong>App Store</strong>
+            </div>
+          </a>
+          <a href="#" className={styles.app_badge} aria-label="Get it on Google Play">
+            <Icon icon="logos:google-play-icon" width={24} />
+            <div>
+              <span>GET IT ON</span>
+              <strong>Google Play</strong>
+            </div>
+          </a>
         </div>
       </section>
     </main>

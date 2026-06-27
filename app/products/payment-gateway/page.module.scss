@@ -240,6 +240,45 @@
   }
 }
 
+.centered_text_section {
+  width: 100%;
+  padding: 100px 24px;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.centered_container {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.centered_heading {
+  margin: 0;
+  font-size: 2.5rem;
+  font-family: 'bold', sans-serif;
+  color: #111;
+  text-transform: uppercase;
+  line-height: 1.3;
+
+  @include tab { font-size: 1.8rem; }
+}
+
+.centered_paragraph {
+  margin: 0;
+  font-size: 1.125rem;
+  font-family: 'medium', sans-serif;
+  color: #333;
+  line-height: 1.7;
+
+  @include tab { font-size: 1rem; }
+}
+
 .trusted_checkout {
   margin: 56px auto 0;
   max-width: 1400px;
@@ -293,34 +332,75 @@
   }
 }
 
-/* Checkout Mockups */
-.checkout_mockups_wrapper {
+/* Checkout Mockups & Showcase */
+.showcase_section {
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 100px;
+}
+
+.showcase_wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background-color: #222;
-  padding: 24px;
-  gap: 2px;
+  gap: 24px;
   max-width: 1100px;
-  margin: 0 auto 40px;
-  
+  margin: 0 auto;
+  padding: 0 24px;
+
   @include tab {
     grid-template-columns: 1fr;
-    gap: 24px;
-    background-color: transparent;
-    padding: 0;
+    padding: 0 16px;
   }
+}
+
+.showcase_item {
+  position: relative;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  height: 600px;
+  border: 1px solid #eaeaea;
+}
+
+.phone_wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-right: 0;
+  padding-top: 40px;
+}
+
+.showcase_phone_img {
+  width: auto;
+  height: 560px;
+  object-fit: contain;
+  margin-right: -40px; /* Bleed off the right edge a bit */
+}
+
+.showcase_card_overlay {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  width: calc(100% - 48px);
+  max-width: 330px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  border: none;
 }
 
 .checkout_card {
   background: #fff;
   border-radius: 12px;
-  padding: 32px 40px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   
   @include tab {
     border: 2px solid #222;
-    padding: 24px;
+    padding: 20px;
   }
 }
 
@@ -403,107 +483,413 @@
   margin: 0;
 }
 
-/* Journey Grid */
-.journey_grid {
+/* Journey Cards (Pricing Plan style) */
+.journey_cards_section {
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 80px;
+}
+
+.journey_cards_wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  gap: 24px;
   max-width: 1100px;
   margin: 0 auto;
-  border: 2px solid #000;
-  
+  padding: 0 24px;
+
   @include tab {
     grid-template-columns: 1fr;
+    padding: 0 16px;
   }
 }
 
-.journey_col {
+.journey_card {
+  border-radius: 20px;
+  padding: 40px;
   display: flex;
   flex-direction: column;
-  border-right: 2px solid #000;
+  border: 1px solid #eaeaea;
+
+  @include mobile {
+    padding: 24px;
+  }
+}
+
+.card_white {
+  background-color: #fff;
+}
+
+.card_tinted {
+  background-color: #faf5ff; /* soft purple */
+  border-color: #f3e8ff;
+}
+
+.card_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eaeaea;
+
+  h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'bold', sans-serif;
+    color: #111;
+  }
+}
+
+.card_badge {
+  font-size: 0.9rem;
+  font-family: 'bold', sans-serif;
+  color: #8b5cf6; /* purple accent */
+  text-transform: uppercase;
+}
+
+.card_desc {
+  font-size: 1.1rem;
+  font-family: 'medium', sans-serif;
+  color: #333;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.card_list_section {
+  flex: 1;
+}
+
+.list_heading {
+  font-size: 1.05rem;
+  font-family: 'bold', sans-serif;
+  color: #111;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.list_icon {
+  color: #8b5cf6;
+}
+
+.journey_card_list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 1rem;
+    font-family: 'regular', sans-serif;
+    color: #444;
+    line-height: 1.5;
+  }
+}
+
+.step_num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background-color: #f1f5f9;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-family: 'bold', sans-serif;
+  color: #475569;
+  margin-top: 2px;
+}
+
+.card_footer {
+  margin-top: auto;
+  padding-top: 24px;
+  border-top: 1px solid #eaeaea;
+  font-size: 0.95rem;
+  font-family: 'medium', sans-serif;
+  color: #64748b;
+  line-height: 1.6;
+
+  strong {
+    color: #1e293b;
+  }
+}
+
+/* Journey List (Invest Style) */
+.journey_list_section {
+  width: 100%;
+  background-color: #fff;
+  padding: 40px 24px 80px;
+}
+
+.journey_list_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include tab {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.journey_column {
+  display: flex;
+  flex-direction: column;
+}
+
+.journey_col_heading {
+  font-size: 1.5rem;
+  font-family: 'bold', sans-serif;
+  color: #111;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.journey_steps {
+  display: flex;
+  flex-direction: column;
+}
+
+.step_item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid #eaeaea;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.step_number {
+  font-size: 1.2rem;
+  font-family: 'bold', sans-serif;
+  color: #111;
+  min-width: 24px;
+  margin-top: 2px;
+}
+
+.step_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.step_title {
+  font-size: 1.1rem;
+  font-family: 'bold', sans-serif;
+  color: #111;
+}
+
+.step_desc {
+  font-size: 1rem;
+  font-family: 'medium', sans-serif;
+  color: #555;
+  line-height: 1.5;
+}
+
+.step_tag {
+  font-size: 0.85rem;
+  font-family: 'semibold', sans-serif;
+  color: #475569;
+  background-color: #f1f5f9;
+  padding: 6px 12px;
+  border-radius: 100px;
+  margin-top: 4px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+/* Benefits Section */
+.benefits_section {
+  padding: 80px 24px;
+  background-color: #fff;
+}
+
+.benefits_grid_wrapper {
+  max-width: 1300px;
+  margin: 60px auto 0;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.benefits_grid {
+  display: flex;
   
+  @include tab {
+    flex-direction: column;
+  }
+}
+
+.benefit_col {
+  flex: 1;
+  padding: 40px 24px;
+  border-right: 1px solid #eaeaea;
+  display: flex;
+  flex-direction: column;
+
   &:last-child {
     border-right: none;
   }
 
   @include tab {
     border-right: none;
-    border-bottom: 2px solid #000;
-    
-    &:last-child { border-bottom: none; }
+    border-bottom: 1px solid #eaeaea;
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
-.journey_top {
-  padding: 24px;
-  border-bottom: 2px solid #000;
-}
-
-.journey_label {
-  display: block;
-  font-size: 0.9rem;
-  font-family: 'medium', sans-serif;
-  color: #333;
+.benefit_icon_wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background-color: #fff8f0;
+  border-radius: 10px;
   margin-bottom: 24px;
 }
 
-.journey_title_box {
-  h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    font-family: 'regular', sans-serif;
-    color: #111;
-    line-height: 1.5;
-
-    strong {
-      font-family: 'bold', sans-serif;
-      font-size: 1.25rem;
-      display: block;
-      margin-bottom: 8px;
-    }
-  }
+.benefit_icon {
+  font-size: 24px;
+  color: #ff8105;
 }
 
-.journey_steps {
-  padding: 24px;
-  flex: 1;
-  border-bottom: 2px solid #000;
-  background-color: #fff;
-
-  h4 {
-    margin: 0 0 16px;
-    font-size: 1rem;
-    font-family: 'medium', sans-serif;
-    color: #444;
-  }
-
-  ol {
-    margin: 0;
-    padding-left: 0;
-    list-style: none;
-
-    li {
-      margin-bottom: 16px;
-      font-size: 1rem;
-      font-family: 'regular', sans-serif;
-      color: #111;
-      line-height: 1.5;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
+.benefit_title {
+  font-size: 1.1rem;
+  font-family: 'bold', sans-serif;
+  color: #111;
+  margin: 0 0 12px 0;
 }
 
-.journey_footer {
-  padding: 24px;
-  background-color: #f8fafc;
-  
-  p {
-    margin: 0;
-    font-size: 0.95rem;
-    font-family: 'regular', sans-serif;
-    color: #334155;
-    line-height: 1.5;
+.benefit_desc {
+  font-size: 0.95rem;
+  font-family: 'regular', sans-serif;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.biz_final_cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 56px;
+  gap: 24px;
+  background: #fdfdfd;
+
+  @include tab { padding: 72px 24px; }
+  @include mobile { padding: 56px 16px; }
+}
+
+.cta_heading {
+  margin: 0;
+  font-size: 3rem;
+  font-family: 'bold', sans-serif;
+  color: #111;
+  line-height: 1.2;
+
+  @include tab { font-size: 2.25rem; }
+  @include mobile { font-size: 1.75rem; }
+}
+
+.cta_sub {
+  margin: 0;
+  font-size: 1.1rem;
+  font-family: 'regular', sans-serif;
+  color: #444;
+  max-width: 800px;
+  line-height: 1.7;
+}
+
+.cta_buttons {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.cta_btn_primary {
+  padding: 14px 36px;
+  border-radius: 100px;
+  background: linear-gradient(90deg, #ff8105, #ff5722);
+  color: #fff;
+  font-family: 'semibold', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  &:hover { opacity: 0.88; }
+}
+
+.biz_app_download {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 56px;
+  gap: 28px;
+  background: #f8fafc; /* light grey matching other pages body-bg */
+
+  @include tab { padding: 48px 24px; }
+  @include mobile { padding: 40px 16px; margin: 0 16px; }
+}
+
+.app_download_heading {
+  margin: 0;
+  font-size: 2.5rem;
+  font-family: 'bold', sans-serif;
+  background: linear-gradient(90deg, #ff8105, #ff5722);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.app_download_badges {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.app_badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 24px;
+  background: #000;
+  border-radius: 100px;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 0.8; }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    span { font-size: 0.65rem; font-family: 'regular', sans-serif; opacity: 0.8; }
+    strong { font-size: 1rem; font-family: 'semibold', sans-serif; }
   }
 }

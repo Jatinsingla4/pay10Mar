@@ -35,7 +35,7 @@ const PosDevicesPage = () => {
       <ConsumerFeatureSection
         heading={
           <>
-            <div style={{color: '#FF8105', fontWeight: 'bold', fontSize: '0.9rem', letterSpacing: '1px', marginBottom: '16px', textTransform: 'uppercase'}}>
+            <div style={{color: '#FF8105', WebkitTextFillColor: '#FF8105', fontWeight: 'bold', fontSize: '0.9rem', letterSpacing: '1px', marginBottom: '16px', textTransform: 'uppercase'}}>
               🇦🇪 UAE FIRST &middot; DYNAMIC QR TECHNOLOGY
             </div>
             <span className={styles.gradient_heading}>
@@ -61,7 +61,7 @@ const PosDevicesPage = () => {
       <section className={styles.compare_section}>
         <div className={styles.container}>
           <div className={styles.compare_header}>
-            <h2>Choose the right device for your business</h2>
+            <h2 className={styles.gradient_heading}>Choose the right device for your business</h2>
             <p>Whether you need an elegant countertop solution or a rugged mobile device, we have you covered.</p>
           </div>
           
@@ -273,49 +273,49 @@ const PosDevicesPage = () => {
       <section className={styles.guarantee_section}>
         <div className={styles.guarantee_container}>
           <div className={styles.guarantee_header}>
-            <h2>Every Pay10 device. The same guarantee.</h2>
+            <h2 className={styles.gradient_heading}>Every Pay10 device. The same guarantee.</h2>
             <p>Whether you choose the POS10, P5, or P10 — every device ships with the same core capabilities, the same security standards, and the same Pay10 commitment.</p>
           </div>
 
           <div className={styles.guarantee_grid}>
             {[
               {
-                title: '01 Dynamic QR on every device',
+                title: '1 Dynamic QR on every device',
                 desc: "UAE's first DQR device family — unique QR per transaction, every time.",
                 icon: 'mdi:qrcode-scan'
               },
               {
-                title: '02 OTA updates',
+                title: '2 OTA updates',
                 desc: 'Software pushed remotely — no engineer visit, no downtime, always current.',
                 icon: 'mdi:cloud-download-outline'
               },
               {
-                title: '03 Remote configuration',
+                title: '3 Remote configuration',
                 desc: 'Manage all devices centrally from the Pay10 Biz portal — any location.',
                 icon: 'mdi:remote-desktop'
               },
               {
-                title: '04 PCI-DSS certified',
+                title: '4 PCI-DSS certified',
                 desc: 'Every device ships pre-certified — compliance built in, not bolted on.',
                 icon: 'mdi:shield-check-outline'
               },
               {
-                title: '05 Audio confirmation',
+                title: '5 Audio confirmation',
                 desc: 'Loudspeaker alert on every payment — no ambiguity, no silent failures.',
                 icon: 'mdi:volume-high'
               },
               {
-                title: '06 SIM pre-installed',
+                title: '6 SIM pre-installed',
                 desc: 'Ships ready to connect — dedicated 4G SIM pre-installed, no setup needed.',
                 icon: 'mdi:sim'
               },
               {
-                title: '07 Delivered & installed',
+                title: '7 Delivered & installed',
                 desc: 'Pay10 team delivers and sets up your device at your premises — you just start accepting.',
                 icon: 'mdi:truck-delivery-outline'
               },
               {
-                title: '08 Pay10 Biz App linked',
+                title: '8 Pay10 Biz App linked',
                 desc: 'Every device links to the Pay10 Biz UAE App — one tap to register, manage, and monitor.',
                 icon: 'mdi:cellphone-link'
               }
@@ -335,8 +335,10 @@ const PosDevicesPage = () => {
       <section className={styles.ecosystem_flow_section}>
         <div className={styles.container}>
           <div className={styles.flow_header}>
-            <h2>Your device is the start.</h2>
-            <h3 className={styles.gradient_heading}>The ecosystem is what makes it powerful.</h3>
+            <div className={styles.flow_gradient_block}>
+              <span className={styles.flow_h2}>Your device is the start.</span>
+              <span className={styles.flow_h3}>The ecosystem is what makes it powerful.</span>
+            </div>
             <p>
               Every Pay10 POS device connects into a complete merchant ecosystem — the Pay10 Biz UAE App, the Merchant Portal, instant settlement, and 24/7 human support. It's not a standalone terminal. It's the physical entry point to Pay10's full payment infrastructure.
             </p>
@@ -394,25 +396,25 @@ const PosDevicesPage = () => {
         <div className={styles.getting_started_grid}>
           {[
             {
-              num: '01',
+              num: '1',
               icon: 'mdi:power',
               title: 'Power on',
               desc: 'Charge fully. Hold Power button 3 seconds. Device boots and displays registration QR on customer screen.'
             },
             {
-              num: '02',
+              num: '2',
               icon: 'mdi:cellphone',
               title: 'Open Pay10 Biz UAE App',
               desc: 'Login with your merchant credentials. Tap Manage Devices on the home screen.'
             },
             {
-              num: '03',
+              num: '3',
               icon: 'mdi:qrcode-scan',
               title: 'Register the device',
               desc: 'Select your device from the list. Tap Register. Scan the QR on the device screen. Confirm. Status changes to Active.'
             },
             {
-              num: '04',
+              num: '4',
               icon: 'mdi:check-decagram-outline',
               title: 'Verify & start accepting',
               desc: 'Run a test transaction — AED amount, Dynamic QR generated, customer scans, audio + visual confirmation. You\'re live.'

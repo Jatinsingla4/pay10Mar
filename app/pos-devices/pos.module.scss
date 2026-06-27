@@ -20,6 +20,11 @@
   @include tab {
     height: 500px;
   }
+
+  @include mobile {
+    height: 420px;
+    background-position: right center;
+  }
 }
 
 .altareq_hero_content {
@@ -76,7 +81,7 @@
 
 .compare_section {
   padding: 80px 24px;
-  background: #fff;
+  background: var(--body-bg);
 }
 
 .container {
@@ -93,14 +98,17 @@
     font-family: 'bold', sans-serif;
     margin-bottom: 16px;
     color: #111;
+    @include tab { font-size: 2rem; }
+    @include mobile { font-size: 1.6rem; }
   }
 
   p {
     font-size: 1.125rem;
-    color: #666;
+    color: var(--black);
     font-family: 'medium', sans-serif;
     max-width: 600px;
     margin: 0 auto;
+    @include mobile { font-size: 1rem; }
   }
 }
 
@@ -133,12 +141,16 @@
     font-size: 2rem;
     font-family: 'bold', sans-serif;
     margin-bottom: 8px;
-    color: #111;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
   }
 
   .tagline {
     font-size: 0.95rem;
-    color: #4b5563;
+    color: var(--black);
     min-height: 48px;
     margin-bottom: 24px;
   }
@@ -196,7 +208,7 @@
 
 .guarantee_section {
   padding: 80px 24px;
-  background: #fdfdfd;
+  background: var(--body-bg);
 }
 
 .guarantee_container {
@@ -213,15 +225,18 @@
     font-family: 'bold', sans-serif;
     margin-bottom: 16px;
     color: #111;
+    @include tab { font-size: 2rem; }
+    @include mobile { font-size: 1.6rem; }
   }
 
   p {
     font-size: 1.125rem;
-    color: #666;
+    color: var(--black);
     font-family: 'medium', sans-serif;
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.6;
+    @include mobile { font-size: 1rem; }
   }
 }
 
@@ -285,7 +300,7 @@
 
 .ecosystem_flow_section {
   padding: 80px 24px;
-  background: #fdfdfd; /* Light theme */
+  background: var(--body-bg);
   color: #111;
 }
 
@@ -293,17 +308,30 @@
   text-align: center;
   margin-bottom: 64px;
 
-  h2 {
-    font-size: 2.25rem;
-    font-family: 'regular', sans-serif;
-    color: #111;
-    margin-bottom: 8px;
+  .flow_gradient_block {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: block;
+    margin-bottom: 24px;
   }
-  
-  h3 {
+
+  .flow_h2 {
+    display: block;
     font-size: 2.25rem;
     font-family: 'bold', sans-serif;
-    margin-bottom: 24px;
+    margin-bottom: 8px;
+    @include tab { font-size: 1.8rem; }
+    @include mobile { font-size: 1.5rem; }
+  }
+
+  .flow_h3 {
+    display: block;
+    font-size: 2.25rem;
+    font-family: 'bold', sans-serif;
+    @include tab { font-size: 1.8rem; }
+    @include mobile { font-size: 1.5rem; }
   }
 
   p {
@@ -313,12 +341,13 @@
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
+    @include mobile { font-size: 1rem; }
   }
 }
 
 .flow_container {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 16px;
   max-width: 1400px;
@@ -381,6 +410,7 @@
   font-size: 24px;
   color: #ff8105;
   flex-shrink: 0;
+  align-self: center;
   
   @include mobile {
     display: none;
@@ -392,8 +422,8 @@
   grid-template-columns: 1fr 2fr;
   gap: 60px;
   padding: 80px 24px;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 100%;
+  background: var(--body-bg);
   align-items: start;
 
   @include tab {
@@ -469,7 +499,7 @@
   font-size: 1.125rem;
   font-family: 'bold', sans-serif;
   line-height: 1.3;
-  color: #ff8105;
+  color: var(--black);
 }
 
 .step_desc {
@@ -494,7 +524,7 @@
   text-align: center;
   padding: 80px 56px;
   gap: 24px;
-  background: #fdfdfd;
+  background: var(--body-bg);
 
   @include tab { padding: 72px 24px; }
   @include mobile { padding: 56px 16px; }
@@ -504,7 +534,11 @@
   margin: 0;
   font-size: 3rem;
   font-family: 'bold', sans-serif;
-  color: #111;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
   line-height: 1.2;
 
   @include tab { font-size: 2.25rem; }

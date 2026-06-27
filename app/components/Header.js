@@ -50,14 +50,39 @@ const navigationData = {
         ],
       },
       {
-        id: 'payments',
-        label: 'Payments',
-        icon: '/images/header/payments.svg',
+        id: 'business',
+        label: 'Business Solutions',
+        icon: '/images/header/pay-10-biz.svg',
         items: [
           {
-            label: 'Integration Methods',
-            href: '/integration-methods',
+            label: 'Pay10 Biz UAE App',
+            href: '/pay10-biz-uae-app',
+            icon: '/images/header/pay-10-biz.svg',
+          },
+          {
+            label: 'Merchant Portal',
+            href: '/merchant-portal',
             icon: '/images/header/integration-method.svg',
+          },
+          {
+            label: 'Payment Gateways',
+            href: '/products/payment-gateway',
+            icon: '/images/header/payment-gateway.svg',
+          },
+          {
+            label: 'POS Devices',
+            href: '#',
+            icon: '/images/header/payments.svg',
+          },
+          {
+            label: 'WPS & Payroll',
+            href: '/wps-payroll',
+            icon: '/images/header/sf.svg',
+          },
+          {
+            label: 'Channel Partners',
+            href: '/ecosystem-partners',
+            icon: '/images/header/collect-world.svg',
           },
         ],
       },

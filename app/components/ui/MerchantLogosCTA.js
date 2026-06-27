@@ -12,12 +12,11 @@ const logos = [
   { src: "/images/merchants/agemono.png", alt: "Agemono Express" },
 ];
 
-export default function MerchantLogosCTA() {
+export default function MerchantLogosCTA({ showCta = true }) {
   return (
     <section className={Style.logosCtaSection}>
       <div className={Style.container}>
-        
-        {/* Logos Row */}
+
         <div className={Style.logosRow} data-animation="fade-up">
           {logos.map((logo, index) => (
             <div key={index} className={Style.logoCard}>
@@ -26,13 +25,14 @@ export default function MerchantLogosCTA() {
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className={Style.ctaContent} data-animation="fade-up" data-anim-delay="150">
-          <h2>Get Started Today</h2>
-          <Link href="/contact-us" className={Style.ctaButton}>
-            Get In Touch
-          </Link>
-        </div>
+        {showCta && (
+          <div className={Style.ctaContent} data-animation="fade-up" data-anim-delay="150">
+            <h2>Get Started Today</h2>
+            <Link href="/contact-us" className={Style.ctaButton}>
+              Get In Touch
+            </Link>
+          </div>
+        )}
 
       </div>
     </section>

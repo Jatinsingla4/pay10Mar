@@ -184,3 +184,326 @@
     }
   }
 }
+
+.altareq_section {
+  width: 100%;
+}
+
+.altareq_hero {
+  width: 100%;
+  height: 785px;
+  background-image: url('/images/prod_imports/Nebras-Page-Mockup-Approved-09.png');
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  overflow: hidden;
+
+  @include tab {
+    height: 500px;
+  }
+}
+
+.altareq_hero_text {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'bold', sans-serif;
+    color: #ffffff;
+    display: inline-block;
+    line-height: 1.2;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: 'medium', sans-serif;
+    color: #ffffff;
+    line-height: 1.5;
+  }
+
+  @include tab {
+    left: 24px;
+    max-width: 90%;
+    
+    h2 { font-size: 24px; }
+    p { font-size: 0.9rem; }
+  }
+}
+
+.trusted_checkout {
+  margin: 56px auto 0;
+  max-width: 1400px;
+  text-align: left;
+  
+  p {
+    margin: 0;
+    font-size: 1.5rem;
+    font-family: 'medium', sans-serif;
+    color: #111;
+  }
+
+  @include tab {
+    margin-top: 32px;
+    p { font-size: 1.2rem; }
+  }
+}
+
+/* Payment Methods Section */
+.methods_section {
+  padding: 80px 56px;
+  background: #f7f9fa;
+  
+  @include tab {
+    padding: 64px 16px;
+  }
+}
+
+.methods_header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 64px;
+
+  h2 {
+    font-size: 3rem;
+    font-family: 'bold', sans-serif;
+    color: #111;
+    margin: 0 0 24px;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: #555;
+    font-family: 'medium', sans-serif;
+    line-height: 1.6;
+  }
+
+  @include tab {
+    h2 { font-size: 2.25rem; }
+  }
+}
+
+/* Checkout Mockups */
+.checkout_mockups_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background-color: #222;
+  padding: 24px;
+  gap: 2px;
+  max-width: 1100px;
+  margin: 0 auto 40px;
+  
+  @include tab {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    background-color: transparent;
+    padding: 0;
+  }
+}
+
+.checkout_card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 32px 40px;
+  display: flex;
+  flex-direction: column;
+  
+  @include tab {
+    border: 2px solid #222;
+    padding: 24px;
+  }
+}
+
+.mockup_header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'semibold', sans-serif;
+  color: #334155;
+  font-size: 1.1rem;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e2e8f0;
+  margin-bottom: 24px;
+}
+
+.mockup_total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+
+  span {
+    font-size: 1.1rem;
+    color: #64748b;
+    font-family: 'medium', sans-serif;
+  }
+
+  strong {
+    font-size: 1.4rem;
+    font-family: 'bold', sans-serif;
+    color: #0f172a;
+  }
+}
+
+.mockup_divider {
+  text-align: center;
+  color: #94a3b8;
+  font-family: 'medium', sans-serif;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.mockup_pay10_btn, .mockup_bank_btn {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-size: 1.1rem;
+  font-family: 'semibold', sans-serif;
+  color: #f1f5f9;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 16px;
+
+  &:hover {
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+}
+
+.mockup_pay10_btn {
+  color: #000;
+}
+
+.mockup_bank_btn {
+  color: #000;
+}
+
+.mockup_hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-family: 'regular', sans-serif;
+  margin: 0;
+}
+
+/* Journey Grid */
+.journey_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 1100px;
+  margin: 0 auto;
+  border: 2px solid #000;
+  
+  @include tab {
+    grid-template-columns: 1fr;
+  }
+}
+
+.journey_col {
+  display: flex;
+  flex-direction: column;
+  border-right: 2px solid #000;
+  
+  &:last-child {
+    border-right: none;
+  }
+
+  @include tab {
+    border-right: none;
+    border-bottom: 2px solid #000;
+    
+    &:last-child { border-bottom: none; }
+  }
+}
+
+.journey_top {
+  padding: 24px;
+  border-bottom: 2px solid #000;
+}
+
+.journey_label {
+  display: block;
+  font-size: 0.9rem;
+  font-family: 'medium', sans-serif;
+  color: #333;
+  margin-bottom: 24px;
+}
+
+.journey_title_box {
+  h3 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-family: 'regular', sans-serif;
+    color: #111;
+    line-height: 1.5;
+
+    strong {
+      font-family: 'bold', sans-serif;
+      font-size: 1.25rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.journey_steps {
+  padding: 24px;
+  flex: 1;
+  border-bottom: 2px solid #000;
+  background-color: #fff;
+
+  h4 {
+    margin: 0 0 16px;
+    font-size: 1rem;
+    font-family: 'medium', sans-serif;
+    color: #444;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+
+    li {
+      margin-bottom: 16px;
+      font-size: 1rem;
+      font-family: 'regular', sans-serif;
+      color: #111;
+      line-height: 1.5;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.journey_footer {
+  padding: 24px;
+  background-color: #f8fafc;
+  
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-family: 'regular', sans-serif;
+    color: #334155;
+    line-height: 1.5;
+  }
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Style from "./contact.module.scss";
 import { Icon } from "@iconify/react";
 
@@ -63,8 +64,14 @@ const CustomSelect = ({ options, value, onChange, placeholder, name, error }) =>
   );
 };
 
-const ContactClient = () => {
-  const [activeFormType, setActiveFormType] = useState("General Inquiry");
+const VALID_FORM_TYPES = ["General Inquiry", "SME Sales", "Enterprise Sales", "Channel Partner"];
+
+const ContactClient = ({ pageData = null }) => {
+  const searchParams = useSearchParams();
+  const [activeFormType, setActiveFormType] = useState(() => {
+    const type = searchParams.get("type");
+    return VALID_FORM_TYPES.includes(type) ? type : "General Inquiry";
+  });
   const [formSubmitting, setFormSubmitting] = useState(false);
 
   // Form state holding all possible fields across 4 forms
@@ -285,77 +292,99 @@ const ContactClient = () => {
     <>
       <main>
         {/* Hero Banner */}
-        <section className={Style.heroBanner}>
+        <section
+          className={Style.heroBanner}
+          style={pageData?.banner_image ? { backgroundImage: `url(${pageData.banner_image})` } : undefined}
+        >
           <div className={Style.heroOverlay}></div>
           <div className={Style.heroContent}>
-            <h1 data-animation="opacity-up">Contact Us</h1>
-            <p data-animation="opacity-up">
-              Need assistance or have questions? Reach out to us anytime. Our team is always happy to help.
-            </p>
+            <h1 data-animation="opacity-up">{pageData?.page_title || "Contact Us"}</h1>
+            {pageData?.page_description ? (
+              <div
+                data-animation="opacity-up"
+                dangerouslySetInnerHTML={{ __html: pageData.page_description }}
+              />
+            ) : (
+              <p data-animation="opacity-up">
+                Need assistance or have questions? Reach out to us anytime. Our team is always happy to help.
+              </p>
+            )}
           </div>
         </section>
 
         {/* Info Cards Section */}
         <section className={Style.infoCardsSection}>
           <div className={Style.infoCardsGrid}>
-            {/* Consumer Support */}
-            <div className={Style.infoCard} data-animation="opacity-up">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:headset" /></div>
-              <h3>Customer Support</h3>
-              <p>24/7 Human Multi-Language Support</p>
-              <p>Toll Free: <a href="tel:80072910" className={Style.phoneLink}>800 729 10</a></p>
-              <p><a href="mailto:support@pay10.ae" className={Style.emailLink}>support@pay10.ae</a></p>
-            </div>
-            {/* Merchant Support */}
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="50">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:store-outline" /></div>
-              <h3>Merchant Support</h3>
-              <p>24/7 Human Multi-Language Support</p>
-              <p>Toll Free: <a href="tel:800729110" className={Style.phoneLink}>800 729 110</a></p>
-              <p><a href="mailto:merchant.support@pay10.ae" className={Style.emailLink}>merchant.support@pay10.ae</a></p>
-            </div>
-            {/* SME Merchants */}
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="100">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:briefcase-outline" /></div>
-              <h3>SME Merchants</h3>
-              <p>Register Your SME Business with Pay10</p>
-              <p><a href="mailto:sales@pay10.ae" className={Style.emailLink}>sales@pay10.ae</a></p>
-            </div>
-            {/* Enterprise */}
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="150">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:office-building-outline" /></div>
-              <h3>Enterprise Merchants</h3>
-              <p>Contact our Enterprise Team for Enterprise Solutions</p>
-              <p><a href="mailto:enterprisesales@pay10.ae" className={Style.emailLink}>enterprisesales@pay10.ae</a></p>
-            </div>
-            {/* Channel Partners */}
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="200">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:handshake-outline" /></div>
-              <h3>Channel Partners</h3>
-              <p>Contact us to become a Pay10 Channel Partner</p>
-              <p><a href="mailto:channelpartners@pay10.ae" className={Style.emailLink}>channelpartners@pay10.ae</a></p>
-            </div>
-            {/* Media & PR */}
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="250">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:microphone-outline" /></div>
-              <h3>Media &amp; PR</h3>
-              <p>Contact our PR Team</p>
-              <p><a href="mailto:pr@pay10.ae" className={Style.emailLink}>pr@pay10.ae</a></p>
-            </div>
-            {/* Marketing & Events */}
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="300">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:bullhorn-outline" /></div>
-              <h3>Marketing &amp; Events</h3>
-              <p>Contact our Marketing Team</p>
-              <p><a href="mailto:marketing@pay10.ae" className={Style.emailLink}>marketing@pay10.ae</a></p>
-            </div>
-            {/* General Inquiries */}
-            <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="350">
-              <div className={Style.infoCardIcon}><Icon icon="mdi:information-outline" /></div>
-              <h3>General Inquiries</h3>
-              <p>Contact our Team for General Inquiries</p>
-              <p><a href="mailto:info@pay10.ae" className={Style.emailLink}>info@pay10.ae</a></p>
-            </div>
+            {pageData?.contact_cards?.length > 0 ? (
+              pageData.contact_cards.map((card, idx) => (
+                <div
+                  key={idx}
+                  className={Style.infoCard}
+                  data-animation="opacity-up"
+                  data-anim-delay={idx * 50}
+                >
+                  {card.icon && (
+                    <div className={Style.infoCardIcon}>
+                      <img src={card.icon} alt={card.title} />
+                    </div>
+                  )}
+                  <div dangerouslySetInnerHTML={{ __html: card.content }} />
+                </div>
+              ))
+            ) : (
+              <>
+                <div className={Style.infoCard} data-animation="opacity-up">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:headset" /></div>
+                  <h3>Customer Support</h3>
+                  <p>24/7 Human Multi-Language Support</p>
+                  <p>Toll Free: <a href="tel:80072910" className={Style.phoneLink}>800 729 10</a></p>
+                  <p><a href="mailto:support@pay10.ae" className={Style.emailLink}>support@pay10.ae</a></p>
+                </div>
+                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="50">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:store-outline" /></div>
+                  <h3>Merchant Support</h3>
+                  <p>24/7 Human Multi-Language Support</p>
+                  <p>Toll Free: <a href="tel:800729110" className={Style.phoneLink}>800 729 110</a></p>
+                  <p><a href="mailto:merchant.support@pay10.ae" className={Style.emailLink}>merchant.support@pay10.ae</a></p>
+                </div>
+                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="100">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:briefcase-outline" /></div>
+                  <h3>SME Merchants</h3>
+                  <p>Register Your SME Business with Pay10</p>
+                  <p><a href="mailto:sales@pay10.ae" className={Style.emailLink}>sales@pay10.ae</a></p>
+                </div>
+                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="150">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:office-building-outline" /></div>
+                  <h3>Enterprise Merchants</h3>
+                  <p>Contact our Enterprise Team for Enterprise Solutions</p>
+                  <p><a href="mailto:enterprisesales@pay10.ae" className={Style.emailLink}>enterprisesales@pay10.ae</a></p>
+                </div>
+                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="200">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:handshake-outline" /></div>
+                  <h3>Channel Partners</h3>
+                  <p>Contact us to become a Pay10 Channel Partner</p>
+                  <p><a href="mailto:channelpartners@pay10.ae" className={Style.emailLink}>channelpartners@pay10.ae</a></p>
+                </div>
+                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="250">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:microphone-outline" /></div>
+                  <h3>Media &amp; PR</h3>
+                  <p>Contact our PR Team</p>
+                  <p><a href="mailto:pr@pay10.ae" className={Style.emailLink}>pr@pay10.ae</a></p>
+                </div>
+                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="300">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:bullhorn-outline" /></div>
+                  <h3>Marketing &amp; Events</h3>
+                  <p>Contact our Marketing Team</p>
+                  <p><a href="mailto:marketing@pay10.ae" className={Style.emailLink}>marketing@pay10.ae</a></p>
+                </div>
+                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="350">
+                  <div className={Style.infoCardIcon}><Icon icon="mdi:information-outline" /></div>
+                  <h3>General Inquiries</h3>
+                  <p>Contact our Team for General Inquiries</p>
+                  <p><a href="mailto:info@pay10.ae" className={Style.emailLink}>info@pay10.ae</a></p>
+                </div>
+              </>
+            )}
           </div>
         </section>
 
@@ -388,7 +417,7 @@ const ContactClient = () => {
               <ul className={Style.formLeftInfo} data-animation="opacity-up" data-anim-delay="300">
                 <li>
                   <Icon icon="weui:location-outlined" className={Style.formLeftInfoIcon} />
-                  <span>1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates</span>
+                  <span>{pageData?.address || "1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates"}</span>
                 </li>
                 <li>
                   <Icon icon="ic:outline-email" className={Style.formLeftInfoIcon} />

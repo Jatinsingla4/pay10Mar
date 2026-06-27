@@ -36,9 +36,14 @@ const footerData = {
           ],
         },
         {
-          label: 'Payments',
+          label: 'Business Solutions',
           subItems: [
-            { label: 'Integration Methods', href: '/integration-methods' },
+            { label: 'Pay10 Biz UAE App', href: '/pay10-biz-uae-app' },
+            { label: 'Merchant Portal', href: '/merchant-portal' },
+            { label: 'Payment Gateways', href: '/products/payment-gateway' },
+            { label: 'POS Devices', href: '#' },
+            { label: 'WPS & Payroll', href: '/wps-payroll' },
+            { label: 'Channel Partners', href: '/ecosystem-partners' },
           ],
         },
       ],
@@ -186,7 +191,7 @@ const Footer = () => {
               <div className="footer__nav-subitems">
                 {navigation.products.items.map((item) => (
                   <div key={item.label} className="footer__nav-subitem">
-                    <span className="footer__nav-sublink" style={{ fontWeight: 'bold' }}>{item.label}</span>
+                    <span className="footer__nav-sublink">{item.label}</span>
                     {item.subItems && (
                       <div className="footer__nav-subsubitems" style={{ paddingLeft: 0, marginTop: '0.25rem' }}>
                         {item.subItems.map((subItem) => (

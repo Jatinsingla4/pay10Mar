@@ -63,13 +63,14 @@ export default function PartnerForm() {
       });
 
       const data = await res.json();
-
-      if (res.ok && data.success !== false) {
+      if (res.ok && data.status === true) {
         setStatus("success");
-        setSuccessMsg(data.message || "Thank you! We'll be in touch soon.");
+        setSuccessMsg(data.message);
         setForm(INITIAL);
-      } else if (data.errors) {
-        setErrors(data.errors);
+      } else if (data.errors && Object.keys(data.errors).length > 0) {
+        const mapped = { ...data.errors };
+        if (mapped.mobile) { mapped.phone = mapped.mobile; delete mapped.mobile; }
+        setErrors(mapped);
         setStatus("idle");
       } else {
         setServerError(data.message || "Something went wrong. Please try again.");
@@ -83,13 +84,6 @@ export default function PartnerForm() {
 
   return (
     <form className={styles.partner_form} onSubmit={handleSubmit} noValidate>
-      {status === "success" && (
-        <div className={styles.form_message_success}>
-          <Icon icon="mdi:check-circle-outline" width={18} />
-          {successMsg}
-        </div>
-      )}
-
       <div className={styles.form_card_header}>
         <div className={styles.form_card_bar} />
         <p className={styles.form_card_label}>Tech Partner Programme</p>
@@ -223,6 +217,13 @@ export default function PartnerForm() {
         </div>
       )}
 
+      {status === "success" && (
+        <div className={styles.form_message_success}>
+          <Icon icon="mdi:check-circle-outline" width={18} />
+          Thank you! We&apos;ll be in touch soon.
+        </div>
+      )}
+
       <button type="submit" className={styles.submit_btn} disabled={status === "loading"}>
         {status === "loading" ? (
           <>
@@ -250,7 +251,7 @@ function Field({ label, error, children }) {
     <div className={styles.form_group}>
       <label>{label}</label>
       {children}
-      {error && <span className={styles.field_error}><Icon icon="mdi:alert-circle-outline" width={12} />{error[0]}</span>}
+      {error && <span className={styles.field_error}><Icon icon="mdi:alert-circle-outline" width={12} />{Array.isArray(error) ? error[0] : error}</span>}
     </div>
   );
 }

@@ -48,7 +48,14 @@ async function handleProxy(request, params) {
     }
 
     const response = await fetch(targetUrl, fetchOptions);
-    const data = await response.json();
+    const text = await response.text();
+    let data;
+    try {
+      data = JSON.parse(text);
+    } catch {
+      console.error('Proxy non-JSON response:', response.status, text.slice(0, 300));
+      data = { status: false, message: `Backend returned ${response.status}: ${text.slice(0, 100)}` };
+    }
     return NextResponse.json(data, { status: response.status });
   } catch (err) {
     console.error('Proxy error:', err);

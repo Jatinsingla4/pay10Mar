@@ -4,12 +4,13 @@ import ContactClient from "./ContactClient";
 
 async function getContactPageData() {
   try {
-    const res = await fetch("https://pay10d.grapesmobile.com/api/pages/contact-us", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/pages/contact-us`, {
+      headers: { 'X-Api-Key': process.env.NEXT_PUBLIC_AUTH_KEY },
       next: { revalidate: 3600 },
     });
     if (!res.ok) return null;
     const data = await res.json();
-    return data.success ? data.data : null;
+    return (data.status || data.success) ? (data.data ?? null) : null;
   } catch {
     return null;
   }

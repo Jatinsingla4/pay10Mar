@@ -118,38 +118,37 @@ const ContactClient = ({ pageData = null }) => {
   };
 
   const submitContactForm = async (mobileValue) => {
-    const formDataToSend = new FormData();
-    formDataToSend.append("name", formData.name.trim());
-    formDataToSend.append("email", formData.email.trim());
-    formDataToSend.append("mobile", mobileValue.trim());
-    
+    const fd = new FormData();
+    fd.append("name", formData.name.trim());
+    fd.append("email", formData.email.trim());
+    fd.append("mobile", mobileValue.trim());
+    fd.append("form_type", activeFormType);
+
     if (activeFormType !== "Channel Partner") {
-      formDataToSend.append("company_name", formData.company_name.trim());
+      fd.append("company_name", formData.company_name.trim());
     }
 
     if (activeFormType === "General Inquiry") {
-      formDataToSend.append("message", formData.message.trim());
+      fd.append("message", formData.message.trim());
     } else if (activeFormType === "SME Sales") {
-      formDataToSend.append("position", formData.position.trim());
-      formDataToSend.append("location", formData.location.trim());
-      formDataToSend.append("industry", formData.industry.trim());
+      fd.append("position", formData.position.trim());
+      fd.append("location", formData.location.trim());
+      fd.append("industry", formData.industry.trim());
     } else if (activeFormType === "Enterprise Sales") {
-      formDataToSend.append("position", formData.position.trim());
-      formDataToSend.append("location", formData.location.trim());
-      formDataToSend.append("industry", formData.industry.trim());
-      formDataToSend.append("company_size", formData.company_size);
+      fd.append("position", formData.position.trim());
+      fd.append("location", formData.location.trim());
+      fd.append("industry", formData.industry.trim());
+      fd.append("company_size", formData.company_size);
     } else if (activeFormType === "Channel Partner") {
-      formDataToSend.append("country", formData.country.trim());
-      formDataToSend.append("emirate", formData.emirate.trim());
-      formDataToSend.append("company_website", formData.company_website.trim());
-      formDataToSend.append("partnership_model", formData.partnership_model);
+      fd.append("country", formData.country.trim());
+      fd.append("emirate", formData.emirate.trim());
+      fd.append("company_website", formData.company_website.trim());
+      fd.append("partnership_model", formData.partnership_model);
     }
-
-    formDataToSend.append("form_type", activeFormType);
 
     const response = await fetch("/api/proxy/form_post", {
       method: "POST",
-      body: formDataToSend,
+      body: fd,
     });
 
     const contentType = response.headers.get("content-type") || "";
@@ -207,13 +206,24 @@ const ContactClient = ({ pageData = null }) => {
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
+    let { name, value } = e.target;
+    if (name === "mobile") {
+      value = value.replace(/[^\d+]/g, "");
+      if (value.indexOf("+") > 0) value = value.replace(/\+/g, "");
+    }
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (formErrors[name]) setFormErrors((prev) => ({ ...prev, [name]: "" }));
     if (formSubmitStatus) {
       setFormSubmitStatus(null);
       setFormSubmitMessage("");
     }
+  };
+
+  const handleMobileKeyDown = (e) => {
+    const allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
+    if (allowed.includes(e.key)) return;
+    if (e.key === "+" && e.target.selectionStart === 0 && !formData.mobile.startsWith("+")) return;
+    if (!/^\d$/.test(e.key)) e.preventDefault();
   };
 
   const handleSubmit = async (e) => {
@@ -233,13 +243,12 @@ const ContactClient = ({ pageData = null }) => {
     try {
       let { response, result } = await submitContactForm(formData.mobile);
 
-      if (!result?.status && /^800\d{5}$/.test(formData.mobile.trim()) && (result?.errors?.mobile || "").toLowerCase().includes("invalid mobile")) {
+      if (!result?.status && /^800\d{5}$/.test(formData.mobile.trim()) && (result?.errors?.phone || "").toLowerCase().includes("invalid")) {
         ({ response, result } = await submitContactForm(`971${formData.mobile.trim()}`));
       }
 
       if (response.ok && result?.status) {
         setFormSubmitStatus("success");
-        setFormSubmitMessage(result.message || "Successfully sent");
         setFormData({
           name: "", email: "", mobile: "", company_name: "", message: "",
           position: "", location: "", industry: "", company_size: "",
@@ -250,15 +259,11 @@ const ContactClient = ({ pageData = null }) => {
         setFormSubmitStatus("error");
         setFormSubmitMessage(result?.message || "Failed to submit form. Please try again.");
         if (result?.errors && typeof result.errors === "object") {
-          if (Array.isArray(result.errors)) {
-            const apiErrors = {};
-            result.errors.forEach((error) => {
-              if (error.field) apiErrors[error.field] = error.message;
-            });
-            setFormErrors((prev) => ({ ...prev, ...apiErrors }));
-          } else {
-            setFormErrors((prev) => ({ ...prev, ...result.errors }));
-          }
+          const mapped = Array.isArray(result.errors)
+            ? result.errors.reduce((acc, e) => { if (e.field) acc[e.field] = e.message; return acc; }, {})
+            : { ...result.errors };
+          if (mapped.phone) { mapped.mobile = mapped.phone; delete mapped.phone; }
+          setFormErrors((prev) => ({ ...prev, ...mapped }));
         }
       }
     } catch (error) {
@@ -447,12 +452,8 @@ const ContactClient = ({ pageData = null }) => {
               </div>
 
               <form className={Style.contactForm} onSubmit={handleSubmit}>
-                {formSubmitStatus && (
-                  <div
-                    className={`${Style.formMessage} ${
-                      formSubmitStatus === "success" ? Style.formMessageSuccess : Style.formMessageError
-                    }`}
-                  >
+                {formSubmitStatus === "error" && (
+                  <div className={`${Style.formMessage} ${Style.formMessageError}`}>
                     {formSubmitMessage}
                   </div>
                 )}
@@ -489,10 +490,11 @@ const ContactClient = ({ pageData = null }) => {
                     <input
                       type="tel"
                       name="mobile"
-                      placeholder="Mobile Number*"
+                      placeholder="+971501234567"
                       className={`${Style.formInput} ${formErrors.mobile ? Style.formInputError : ""}`}
                       value={formData.mobile}
                       onChange={handleInputChange}
+                      onKeyDown={handleMobileKeyDown}
                       maxLength={15}
                       inputMode="numeric"
                     />
@@ -650,6 +652,12 @@ const ContactClient = ({ pageData = null }) => {
                       ></textarea>
                       {formErrors.message && <span className={Style.formError}>{formErrors.message}</span>}
                     </div>
+                  </div>
+                )}
+
+                {formSubmitStatus === "success" && (
+                  <div className={`${Style.formMessage} ${Style.formMessageSuccess}`}>
+                    Thank you! We&apos;ll be in touch soon.
                   </div>
                 )}
 

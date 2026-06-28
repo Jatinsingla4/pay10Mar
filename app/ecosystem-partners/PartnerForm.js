@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import styles from "./ecosystem.module.scss";
 
-const API_URL = "/api/partners";
+const API_URL = "/api/proxy/form_post";
 
 const INITIAL = {
   name: "",
@@ -47,10 +47,19 @@ export default function PartnerForm() {
     setServerError("");
 
     try {
+      const fd = new FormData();
+      fd.append("name", form.name);
+      fd.append("company_name", form.company_name);
+      fd.append("designation", form.designation);
+      fd.append("email", form.email);
+      fd.append("mobile", form.phone);
+      fd.append("monthly_transaction_volume", form.monthly_transaction_volume);
+      fd.append("integration_type", form.integration_type);
+      fd.append("form_type", "Channel Partner");
+
       const res = await fetch(API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(form),
+        body: fd,
       });
 
       const data = await res.json();

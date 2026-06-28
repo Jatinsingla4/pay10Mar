@@ -5,6 +5,7 @@
       "name": "pay10-dev",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
+      "cwd": "/Users/ketansingla/Desktop/Grapes/Pay10 AE/pay10.ae",
       "port": 3186
     }
   ]

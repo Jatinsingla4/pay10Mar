@@ -21,7 +21,7 @@
     .html_content {
       strong, b {
         display: block;
-        font-size: 2.8rem;
+        font-size: 48px;
         text-transform: capitalize;
         background: var(--primary-gradient);
         background-clip: text;
@@ -31,20 +31,20 @@
         line-height: 1.1;
         margin-bottom: 20px;
 
-        @include tab { font-size: 2rem; }
-        @include lessTab { font-size: 1.6rem; }
-        @include mobile { font-size: 1.3rem; }
+        @include tab { font-size: 32px; }
+        @include lessTab { font-size: 32px; }
+        @include mobile { font-size: 26px; }
       }
 
       p {
-        font-size: 1.3rem;
+        font-size: 18px;
         line-height: 1.85;
         color: var(--gray);
         font-family: 'regular', sans-serif;
         margin-bottom: 28px;
 
-        @include tab { font-size: 1.1rem; }
-        @include mobile { font-size: 1rem; }
+        @include tab { font-size: 16px; }
+        @include mobile { font-size: 16px; }
       }
 
       div[style] {
@@ -79,21 +79,21 @@
       }
       h3 {
         color: var(--gray);
-        font-size: 3rem;
+        font-size: 48px;
         text-transform: capitalize;
         background: var(--primary-gradient);
         background-clip: text;
         -webkit-background-clip: text;
         color: transparent;
         @include tab{
-          font-size: 24px;
+          font-size: 32px;
         }
       }
 
       p {
         margin-top: 0.5rem;
         color: var(--gray);
-        font-size: 20px;
+        font-size: 18px;
         font-family: 'regular', sans-serif;
         line-height: 1.4;
         @include tab{
@@ -108,7 +108,7 @@
         b,
         strong {
           display: block;
-          font-size: 3rem;
+          font-size: 48px;
           text-transform: capitalize;
           background: var(--primary-gradient);
           background-clip: text;
@@ -118,19 +118,19 @@
           line-height: 1.1;
 
           @include tab{
-            font-size: 40px;
+            font-size: 32px;
           }
         }
 
         p {
           margin-top: 0.5rem;
           color: var(--gray);
-          font-size: 20px;
+          font-size: 18px;
           font-family: 'regular';
           line-height: 1.4;
 
           @include tab{
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.4;
           }
         }
@@ -141,7 +141,7 @@
           margin-top: 0.75rem;
           padding-left: 1.25rem;
           color: var(--gray);
-          font-size: 20px;
+          font-size: 18px;
           font-family: 'regular', sans-serif;
           line-height: 1.4;
 

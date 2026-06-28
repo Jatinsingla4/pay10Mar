@@ -72,7 +72,8 @@
     .features_title {
       color: var(--black);
       font-size: 48px;
-      font-weight: 500;
+      font-family: 'bold', sans-serif;
+      font-weight: 700;
       margin-bottom: 24px;
       line-height: 1.1;
       max-height: 775px;
@@ -84,7 +85,7 @@
       gap: 24px;
 
       .feature_card {
-        background: #fff;
+        background: var(--white);
         border-radius: 16px;
         padding: 32px 32px;
         display: flex;
@@ -111,7 +112,8 @@
 
         p {
           color: var(--black);
-          font-size: 24px;
+          font-size: 26px;
+          font-family: 'medium', sans-serif;
           font-weight: 500;
           text-align: left;
           margin: 0;
@@ -126,8 +128,10 @@
 
     .features_content {
       .features_title {
-        font-size: 2rem;
-        margin-bottom: 2rem;
+        font-size: 32px;
+        font-family: 'bold', sans-serif;
+        font-weight: 700;
+        margin-bottom: 32px;
       }
 
       .features_grid {
@@ -143,8 +147,9 @@
           }
 
           p {
-            font-size: 14px;
-            font-family: 'bold', sans-serif;
+            font-size: 20px;
+            font-family: 'medium', sans-serif;
+            font-weight: 500;
           }
         }
       }
@@ -156,8 +161,10 @@
 
     .features_content {
       .features_title {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
+        font-size: 26px;
+        font-family: 'bold', sans-serif;
+        font-weight: 700;
+        margin-bottom: 24px;
       }
 
       .features_grid {

@@ -55,8 +55,8 @@ const ConsumerSecuritySection = () => {
           <svg width="80" height="100" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="lockGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#FFBB07" />
-                <stop offset="100%" stopColor="#EF1A23" />
+                <stop offset="0%" stopColor="var(--yellow)" />
+                <stop offset="100%" stopColor="var(--red)" />
               </linearGradient>
             </defs>
             <path d="M19 11H18V7C18 3.686 15.314 1 12 1C8.686 1 6 3.686 6 7V11H5C3.895 11 3 11.895 3 13V27C3 28.105 3.895 29 5 29H19C20.105 29 21 28.105 21 27V13C21 11.895 20.105 11 19 11ZM8 7C8 4.791 9.791 3 12 3C14.209 3 16 4.791 16 7V11H8V7ZM19 27H5V13H19V27ZM12 22C10.895 22 10 21.105 10 20C10 18.895 10.895 18 12 18C13.105 18 14 18.895 14 20C14 21.105 13.105 22 12 22Z" fill="url(#lockGradient)"/>
@@ -75,7 +75,7 @@ const ConsumerSecuritySection = () => {
           Your data deserves the best protection in the world.
         </p>
         <p className={Style.description_sub} data-animation="opacity-up" data-anim-delay="250">
-          Pay10 UAE is PCI DSS Level 1 Certified and SOC 2 Type II Compliant - aligned with the most rigorous security standards globally. Fully licensed by the Central Bank of the UAE.
+          Pay10 UAE is PCI DSS Level 1 Certified and SOC 2 Type II Compliant, aligned with the most rigorous security standards globally. Fully licensed by the Central Bank of the UAE.
         </p>
 
         <div className={Style.certifications} data-animation="opacity-up" data-anim-delay="250">

@@ -92,12 +92,12 @@
   }
 
   .ctaButton {
-    background: var(--primary-gradient);
+    background: var(--button-gradient);
     color: var(--white);
     padding: 18px 40px;
     border-radius: 50px;
     font-size: 1.2rem;
-    font-family: 'semibold', sans-serif;
+    font-family: 'medium', sans-serif;
     text-decoration: none;
     transition: box-shadow 0.3s, transform 0.3s;
     display: inline-block;

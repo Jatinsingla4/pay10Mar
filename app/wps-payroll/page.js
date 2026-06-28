@@ -33,7 +33,7 @@ const WpsPayrollPage = () => {
       <ConsumerFeatureSection
         heading={<span className={styles.gradient_heading}>What is the Wage Protection System (WPS)?</span>}
         subheading={<span className={styles.grey_text}>The Wage Protection System (WPS) is a UAE government mandate managed by the Central Bank of the UAE (CBUAE). It requires every employer in the UAE: across all industries, for all workers, blue collar and white collar: to process salaries digitally through a CBUAE-licensed provider. The system verifies that every employee is paid what their labour contract says, and that they are paid on time. Non-compliance carries significant penalties. Pay10 is a fully licensed WPS provider: meaning every salary processed through Pay10 satisfies this mandate completely.</span>}
-        imageSrc="/images/prod_imports/consumer-app-phone.png"
+        imageSrc="/images/prod_imports/wps-labor-bubble.png"
         imageAlt="Wage Protection System"
         isReversed={false}
         isGreyBg={true}
@@ -310,7 +310,7 @@ const WpsPayrollPage = () => {
           "Digital access for all employees via Pay10 UAE App",
           "Transparent fee structure and simplified onboarding process"
         ]}
-        imageSrc="/images/prod_imports/consumer-app-phone.png"
+        imageSrc="/images/prod_imports/wps-02-bubble.png"
         imageAlt="Minimal Disruption"
         isReversed={true}
         isGreyBg={true}

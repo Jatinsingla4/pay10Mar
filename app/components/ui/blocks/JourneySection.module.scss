@@ -20,10 +20,10 @@
           margin-left: 50px;
         }
         .timeline_title {
-          font-size: 32px;
+          font-size: 24px;
         }
         .timeline_description {
-          font-size: 20px;
+          font-size: 18px;
         }
       }
     }
@@ -121,7 +121,7 @@
     h2 {
       font-size: 48px;
       font-family: "bold";
-      background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+      background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -142,7 +142,7 @@
     .timeline_line {
       position: relative;
       width: 2px;
-      background: #d7d7d7; // Light gray base line
+      background: var(--border-clr); // Light gray base line
       flex-shrink: 0;
       align-self: stretch;
       height: 100%;
@@ -152,7 +152,7 @@
       position: absolute;
       left: 0;
       width: 100%;
-      background: linear-gradient(180deg, #FF8800 0%, var(--red) 100%); // Bright orange to red gradient
+      background: var(--primary-gradient2); // Bright orange to red gradient
       transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
         top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
@@ -204,8 +204,8 @@
       }
 
       .timeline_dash {
-        color: #292D32;
-        font-size: 2rem;
+        color: var(--charcoal);
+        font-size: 32px;
         font-family: 'regular', sans-serif;
         line-height: 1;
         transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -217,8 +217,8 @@
       }
 
       .timeline_plus {
-        color: #292D32;
-        font-size: 2rem;
+        color: var(--charcoal);
+        font-size: 32px;
         font-family: 'regular', sans-serif;
         line-height: 1;
         transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
@@ -231,7 +231,7 @@
 
       .timeline_content {
         .timeline_year {
-          font-size: 1.5rem;
+          font-size: 24px;
           font-family: "bold";
           margin-bottom: 0.3rem;
           line-height: 1.3;
@@ -244,7 +244,7 @@
         }
 
         .timeline_title {
-          font-size: 1.2rem;
+          font-size: 18px;
           font-family: 'medium', sans-serif;
           color: var(--black);
           margin-bottom: 0.5rem;
@@ -253,8 +253,8 @@
         }
 
         .timeline_description {
-          font-size: 0.95rem;
-          font-family: "light";
+          font-size: 18px;
+          font-family: "regular";
           color: var(--gray);
           line-height: 1.5;
           max-height: 0;
@@ -391,7 +391,7 @@
           position: absolute;
           top: 1rem;
           left: 1rem;
-          font-size: 1.3rem;
+          font-size: 20px;
           font-family: "bold";
           color: var(--white);
           z-index: 2;
@@ -468,12 +468,12 @@
           width: 0;
           height: 0;
           border-radius: 50%;
-          background: var(--orange);
+          background: var(--yellow);
           transition: all 0.3s ease;
         }
 
         &.active {
-          background: var(--orange);
+          background: var(--yellow);
           width: 10px;
           height: 10px;
 
@@ -485,7 +485,7 @@
         }
 
         &:hover {
-          background: var(--orange);
+          background: var(--yellow);
           transform: scale(1.2);
         }
       }
@@ -519,7 +519,7 @@
     .timeline_item {
       .timeline_content {
         .timeline_description {
-          font-size: 1.05rem;
+          font-size: 16px;
           line-height: 1.65;
 
           p {
@@ -560,14 +560,14 @@
 
     .journey_timeline {
       h2 {
-        font-size: 2rem;
+        font-size: 32px;
         margin-bottom: 1.5rem;
       }
 
       .timeline_item {
         .timeline_content {
           .timeline_year {
-            font-size: 1.4rem;
+            font-size: 20px;
             display: inline-block;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
@@ -577,11 +577,11 @@
           }
 
           .timeline_title {
-            font-size: 1.15rem;
+            font-size: 20px;
           }
 
           .timeline_description {
-            font-size: 0.9rem;
+            font-size: 16px;
           }
         }
       }
@@ -614,7 +614,7 @@
       order: 2;
 
       h2 {
-        font-size: 1.8rem;
+        font-size: 32px;
         margin-bottom: 1.5rem;
         text-align: center;
       }
@@ -628,7 +628,7 @@
 
         .timeline_content {
           .timeline_year {
-            font-size: 1.3rem;
+            font-size: 20px;
             display: inline-block;
             background: var(--primary-gradient);
             -webkit-background-clip: text;
@@ -638,11 +638,11 @@
           }
 
           .timeline_title {
-            font-size: 1.1rem;
+            font-size: 20px;
           }
 
           .timeline_description {
-            font-size: 0.85rem;
+            font-size: 16px;
           }
         }
       }
@@ -692,7 +692,7 @@
 
     .journey_timeline {
       h2 {
-        font-size: 1.6rem;
+        font-size: 26px;
         margin-bottom: 1rem;
       }
 
@@ -713,7 +713,7 @@
 
         .timeline_content {
           .timeline_year {
-            font-size: 1.2rem;
+            font-size: 18px;
             margin-bottom: 0.3rem;
             display: inline-block;
             background: var(--primary-gradient);
@@ -724,12 +724,12 @@
           }
 
           .timeline_title {
-            font-size: 1rem;
+            font-size: 18px;
             margin-bottom: 0.4rem;
           }
 
           .timeline_description {
-            font-size: 0.85rem;
+            font-size: 16px;
             line-height: 1.4;
           }
         }
@@ -747,7 +747,7 @@
           .journey_card_year {
             top: 0.75rem;
             left: 0.75rem;
-            font-size: 1.1rem;
+            font-size: 18px;
             padding: 0.3rem 0.6rem;
           }
         }

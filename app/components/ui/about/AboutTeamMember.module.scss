@@ -31,14 +31,14 @@
     .eyebrow {
       text-transform: uppercase;
       letter-spacing: 2px;
-      font-size: 0.9rem;
+      font-size: 14px;
       color: var(--primary);
       margin-bottom: 0.4rem;
     }
 
     h2 {
       font-size: 48px;
-      background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+      background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -67,7 +67,7 @@
       border: 1px solid var(--border-clr);
       background: var(--white);
       color: var(--black);
-      font-size: 1.4rem;
+      font-size: 24px;
       display: grid;
       place-items: center;
       cursor: pointer;
@@ -90,8 +90,8 @@
       }
 
       &:hover {
-        border-color: var(--orange);
-        color: var(--orange);
+        border-color: var(--yellow);
+        color: var(--yellow);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
       }
 
@@ -211,7 +211,7 @@
 
       h4 {
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 24px;
         color: var(--white);
         text-align: left;
         line-height: 1.1;
@@ -228,10 +228,10 @@
       .member_role {
         margin: 0;
         color: var(--white);
-        font-size: 1.07rem;
+        font-size: 16px;
         line-height: 1.4;
         font-weight: 400;
-        font-family: "light";
+        font-family: "regular";
         text-align: left;
         max-width: 95%;
         opacity: 1;
@@ -247,14 +247,14 @@
     .member_description {
       margin: 1.1rem 0 0;
       color: var(--white);
-      font-size: 1.06rem;
+      font-size: 16px;
       line-height: 1.55;
       max-height: 5.7em;
       overflow: hidden;
       opacity: 0;
       transform: translateY(18px);
       text-align: left;
-      font-family: "light";
+      font-family: "regular";
       transition:
         opacity 0.45s cubic-bezier(.39,.58,.57,1),
         transform 0.45s cubic-bezier(.39,.58,.57,1),
@@ -262,7 +262,7 @@
         margin 0.45s cubic-bezier(.39,.58,.57,1);
       will-change: opacity, transform, max-height, margin;
       scrollbar-width: thin;
-      scrollbar-color: var(--orange) transparent;
+      scrollbar-color: var(--yellow) transparent;
     }
   }
 
@@ -279,12 +279,12 @@
       opacity: 1;
       h4 {
         color: var(--white);
-        font-size: 1.65rem;
+        font-size: 24px;
         font-weight: 700;
       }
       .member_role {
         color: var(--white);
-        font-size: 1.13rem;
+        font-size: 16px;
       }
     }
     .member_description {
@@ -294,7 +294,7 @@
       overflow-y: auto;
       padding-right: 6px;
       scrollbar-width: thin;
-      scrollbar-color: var(--orange) transparent;
+      scrollbar-color: var(--yellow) transparent;
     }
     // Custom scrollbar for description
     .member_description::-webkit-scrollbar {
@@ -302,7 +302,7 @@
       background: transparent;
     }
     .member_description::-webkit-scrollbar-thumb {
-      background: var(--orange);
+      background: var(--yellow);
       border-radius: 4px;
     }
     .member_description::-webkit-scrollbar-track {
@@ -327,7 +327,7 @@
       gap: 0.5rem;
 
       h2 {
-        font-size: 2.2rem;
+        font-size: 32px;
       }
     }
   }
@@ -340,10 +340,10 @@
       
       .member_identity {
         h4 {
-          font-size: 1.1rem;
+          font-size: 18px;
         }
         .member_role {
-          font-size: 0.85rem;
+          font-size: 12px;
         }
       }
 
@@ -356,16 +356,16 @@
     .member_card:hover .member_meta {
       .member_identity {
         h4 {
-          font-size: 1.15rem;
+          font-size: 18px;
         }
         .member_role {
-          font-size: 0.9rem;
+          font-size: 12px;
         }
       }
       .member_description {
         margin-top: 1.1rem;
         max-height: 288px;
-        font-size: 0.85rem;
+        font-size: 12px;
         padding-right: 2px;
       }
     }

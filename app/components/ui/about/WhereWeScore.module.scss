@@ -4,7 +4,7 @@
   width: 100%;
   margin: 160px 0 0 0;
   padding: 4rem 2rem;
-  background: linear-gradient(90deg, #f79d00 0%, #eb1e23 100%);
+  background: var(--primary-gradient);
   border-radius: 1.5rem;
   position: relative;
   text-align: center;
@@ -14,18 +14,18 @@
     margin-bottom: 3rem;
     
     h2 {
-      font-size: 2.5rem;
+      font-size: 48px;
       margin-bottom: 1rem;
       color: var(--white);
       font-family: "medium";
     }
 
     .subheading {
-      font-size: 1.1rem;
+      font-size: 18px;
       max-width: 800px;
       margin: 0 auto;
       line-height: 1.5;
-      font-family: "light";
+      font-family: "regular";
     }
   }
 
@@ -69,10 +69,10 @@
       }
 
       .box_text {
-        font-size: 0.95rem;
+        font-size: 18px;
         line-height: 1.5;
         font-family: "medium";
-        color: #e52822;
+        color: var(--red);
         margin: 0;
       }
     }
@@ -96,7 +96,7 @@
     padding: 3rem 1.5rem;
     
     .header_content h2 {
-      font-size: 2rem;
+      font-size: 32px;
     }
     
     .score_container {

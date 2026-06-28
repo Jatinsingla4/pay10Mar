@@ -3,8 +3,8 @@ import Style from "./CBUAELicenseFeatures.module.scss";
 
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5 12H19" stroke="#FF4D4D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-    <path d="M12 5L19 12L12 19" stroke="#FF4D4D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M5 12H19" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 5L19 12L12 19" stroke="var(--red)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
   </svg>
 );
 
@@ -17,8 +17,9 @@ const CheckIcon = () => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ flexShrink: 0, marginTop: '4px' }}>
     <defs>
       <linearGradient id="check-grad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
-        <stop offset="0%" stopColor="#FFBB07"/>
-        <stop offset="100%" stopColor="#EF1A23"/>
+        <stop offset="0%" stopColor="var(--red)"/>
+        <stop offset="40%" stopColor="var(--orange)"/>
+        <stop offset="100%" stopColor="var(--yellow)"/>
       </linearGradient>
     </defs>
     <path d="M5 12L10 17L20 7" stroke="url(#check-grad)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>

@@ -44,7 +44,7 @@ const VisionMissionClient = () => {
               <img src={fallback.section2.image} className={Style.bubble_img} alt="Our Vision" />
             </div>
             <div className={Style.vision_content}>
-              <h5 data-animation="opacity-up">{fallback.section2.heading}</h5>
+              <h2 data-animation="opacity-up">{fallback.section2.heading}</h2>
               <p data-animation="opacity-up" data-anim-delay="100">
                 {fallback.section2.content}
               </p>
@@ -55,7 +55,7 @@ const VisionMissionClient = () => {
         <section className={`${Style.wrapper} ${Style.last_wrapper}`}>
           <div className={`${Style.vision_second_section} ${Style.bottom_section}`}>
             <div className={Style.vision_content}>
-              <h5 data-animation="opacity-up">{fallback.section4.heading}</h5>
+              <h2 data-animation="opacity-up">{fallback.section4.heading}</h2>
               <p
                 data-animation="opacity-up"
                 data-anim-delay="100"

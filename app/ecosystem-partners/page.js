@@ -4,7 +4,7 @@ import styles from "./ecosystem.module.scss";
 import PartnerForm from "./PartnerForm";
 
 export const metadata = {
-  title: "Channel Partners – Pay 10",
+  title: "Channel Partners - Pay 10",
   description: "Unlock new revenue by adding Pay10's payment methods to your platform.",
   alternates: {
     canonical: "https://pay10.ae/ecosystem-partners",

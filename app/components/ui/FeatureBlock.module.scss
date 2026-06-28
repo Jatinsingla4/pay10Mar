@@ -43,9 +43,9 @@
   width: 50%;
   backdrop-filter: blur(20px);
   // -webkit-backdrop-filter: blur(20px);
-  background: #ffffffb8;
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 24px;
-  box-shadow: 0px 2px 8px 1px #0000004a;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.29);
   will-change: transform, opacity;
   transform: translateZ(0);
   @include tab {
@@ -63,11 +63,11 @@
     }
   }
   .description {
-    font-size: 20px;
+    font-size: 18px;
     color: var(--gray);
     font-family: 'regular', sans-serif;
     @include tab {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
   .ctaWa{
@@ -93,7 +93,7 @@
       }
       @include tab {
         padding: 12px 28px;
-        font-size: 15px;
+        font-size: 16px;
       }
     }
   }
@@ -108,9 +108,9 @@
   left: 5%;
   justify-content: center;
   border-radius: 24px;
-  background: #FFFFFFCC;
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(40px);
-  box-shadow: 0px 2px 8px 1px #0000004a;
+  box-shadow: 0px 2px 8px 1px rgba(0, 0, 0, 0.29);
   will-change: transform, opacity;
   transform: translateZ(0);
   @include tab {
@@ -161,7 +161,7 @@
 
   .text {
     margin: 0;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.1;
     color: var(--black);
     font-family: 'medium', sans-serif;

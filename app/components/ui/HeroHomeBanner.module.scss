@@ -47,8 +47,7 @@
     }
   }
 
-  .eyebrow,
-  .body {
+  .eyebrow {
     margin: 0;
     font-size: 24px;
     font-family: 'medium', sans-serif;
@@ -65,21 +64,21 @@
   .title {
     margin: 0;
     font-size: 64px;
-    font-family: 'semibold', sans-serif;
+    font-family: 'bold', sans-serif;
 
     @include tab {
-      font-size: 32px;
+      font-size: 48px;
     }
 
     @include mobile {
-      font-size: 26px;
+      font-size: 32px;
     }
   }
 
   .body {
     margin: 0;
     font-size: 24px;
-    font-family: 'medium', sans-serif;
+    font-family: 'regular', sans-serif;
 
     @include tab {
       font-size: 20px;

@@ -20,19 +20,28 @@
     }
 
     h2 {
-        font-size: 32px;
-        font-weight: 400;
-        color: var(--black);
+        font-size: 48px;
+        font-family: 'bold', sans-serif;
+        font-weight: 700;
+        background: var(--primary-gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+
+        @include tab {
+            font-size: 32px;
+        }
 
         @include lessTab {
-            font-size: 24px;
+            font-size: 26px;
         }
     }
 
     p {
-        color: #6C7073;
-        font-size: 20px;
-        line-height: 30px;
+        color: var(--gray);
+        font-size: 18px;
+        line-height: 1.6;
+        font-family: 'regular', sans-serif;
         font-weight: 400;
 
         @include tab {
@@ -41,7 +50,7 @@
         }
 
         @include lessTab {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.4;
         }
 
@@ -59,18 +68,18 @@
 
     iframe {
         width: 100%;
-        height: 600px !important;
+        height: 400px !important;
 
         @include tab {
-            height: 500px !important;
+            height: 400px !important;
         }
 
         @include lessTab {
-            height: 450px !important;
+            height: 350px !important;
         }
 
         @include mobile {
-            height: 400px !important;
+            height: 350px !important;
         }
     }
 }

@@ -72,10 +72,13 @@
   @include tab {
     font-size: 32px;
   }
+  @include mobile {
+    font-size: 26px;
+  }
 }
 
 .description {
-  font-size: 20px;
+  font-size: 18px;
   color: var(--gray);
   line-height: 1.6;
   margin: 0;

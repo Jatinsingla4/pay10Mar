@@ -17,7 +17,7 @@
     display: grid;
     gap: 24px;
     h3.kicker {
-      font-size: 30px;
+      font-size: 24px;
       line-height: 1.4;
       font-family: 'medium', sans-serif;
       color: var(--black);
@@ -27,9 +27,9 @@
       }
     }
     .desc{
-      font-size: 32px;
+      font-size: 24px;
       @include tab{
-        font-size: 24px;
+        font-size: 16px;
       }
     }
   }
@@ -64,7 +64,7 @@
     }
     
     h3 {
-      font-size: 32px;
+      font-size: 24px;
       color: var(--white);
     }
 
@@ -124,7 +124,7 @@
 .singleCardTitle {
   margin: 0;
   font-size: 32px;
-  font-family: 'semibold', sans-serif;
+  font-family: 'medium', sans-serif;
   color: var(--white);
   line-height: 1.2;
   @include tab {

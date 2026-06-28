@@ -17,7 +17,7 @@ const Pay10CardClient = () => {
         POWERED BY JAYWAN · UAE&apos;S NATIONAL CARD SCHEME
       </div>
     ),
-    imageSrc: "/images/prod_imports/link_acc.png",
+    imageSrc: "/images/prod_imports/pay10-card-aluminium.png",
     imageAlt: "Pay10 Card",
     isReversed: false,
   };

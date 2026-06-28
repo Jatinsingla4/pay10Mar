@@ -3,7 +3,7 @@
 .altareq_hero {
   width: 100%;
   height: 785px;
-  background-image: url('/images/prod_imports/Nebras-Page-Mockup-Approved-09.png');
+  background-image: url('/images/prod_imports/merchant-portal-hero.jpg');
   background-size: cover;
   background-position: 50% 50%;
   border-radius: 24px;
@@ -30,16 +30,16 @@
     font-size: 38px;
     font-weight: 700;
     font-family: 'bold', sans-serif;
-    color: #ffffff;
+    color: var(--white);
     display: inline-block;
     line-height: 1.2;
   }
 
   p {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 20px;
     font-family: 'medium', sans-serif;
-    color: #ffffff;
+    color: var(--white);
     line-height: 1.5;
   }
 
@@ -96,7 +96,7 @@
 
   h2 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 32px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
@@ -105,15 +105,15 @@
     background-clip: text;
 
     @include mobile {
-      font-size: 1.6rem;
+      font-size: 24px;
     }
   }
 
   > p {
     margin: 0;
-    font-size: 0.9375rem;
+    font-size: 15px;
     font-family: 'regular', sans-serif;
-    color: #555;
+    color: var(--gray);
     line-height: 1.6;
   }
 
@@ -139,7 +139,7 @@
 }
 
 .benefit_num {
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-family: 'medium', sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -149,13 +149,13 @@
 }
 
 .benefit_icon {
-  color: #FF8105;
+  color: var(--orange);
   margin-top: 4px;
 }
 
 .benefit_card h3 {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-family: 'bold', sans-serif;
   line-height: 1.3;
   background: var(--primary-gradient);
@@ -166,16 +166,16 @@
 
 .benefit_sub {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 15px;
   font-family: 'bold', sans-serif;
   color: var(--black);
 }
 
 .benefit_desc {
   margin: 0;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-family: 'regular', sans-serif;
-  color: #666;
+  color: var(--gray);
   line-height: 1.6;
   flex: 1;
 }
@@ -183,9 +183,9 @@
 .benefit_bullets {
   margin: 0 0 16px;
   padding-left: 0;
-  font-size: 0.875rem;
+  font-size: 14px;
   font-family: 'regular', sans-serif;
-  color: #666;
+  color: var(--gray);
   line-height: 1.6;
   list-style: none;
 
@@ -197,7 +197,7 @@
 
     &::before {
       content: "•";
-      font-size: 1rem;
+      font-size: 16px;
       line-height: 1.6;
       flex-shrink: 0;
       background: var(--primary-gradient);
@@ -209,7 +209,7 @@
 }
 
 .benefit_arrow {
-  font-size: 1.25rem;
+  font-size: 20px;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -244,7 +244,7 @@
 
   h2 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 32px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
@@ -254,15 +254,15 @@
     word-break: break-word;
 
     @include mobile {
-      font-size: 1.6rem;
+      font-size: 24px;
     }
   }
 
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 16px;
     font-family: 'regular', sans-serif;
-    color: #555;
+    color: var(--gray);
     line-height: 1.6;
     word-break: break-word;
   }
@@ -293,19 +293,19 @@
     height: 12px;
     border-radius: 50%;
   }
-  .dot_red { background: #ff5f56; }
-  .dot_yellow { background: #ffbd2e; }
-  .dot_green { background: #27c93f; margin-right: 16px; }
+  .dot_red { background: var(--red); }
+  .dot_yellow { background: var(--yellow); }
+  .dot_green { background: var(--charcoal); margin-right: 16px; }
 
   .tab_active {
-    color: #4ade80;
-    font-size: 0.8rem;
+    color: var(--charcoal);
+    font-size: 13px;
     font-family: monospace;
     margin-right: 16px;
   }
   .tab_inactive {
-    color: #6e7681;
-    font-size: 0.8rem;
+    color: var(--gray);
+    font-size: 13px;
     font-family: monospace;
     margin-right: 16px;
   }
@@ -315,12 +315,12 @@
   margin: 0;
   padding: 24px;
   font-family: monospace;
-  font-size: 0.875rem;
+  font-size: 14px;
   line-height: 1.6;
-  color: #c9d1d9;
+  color: var(--gray);
   overflow-x: auto;
 
-  .code_comment { color: #8b949e; }
+  .code_comment { color: var(--gray); }
   .code_keyword { color: #ff7b72; }
   .code_variable { color: #79c0ff; }
   .code_object { color: #79c0ff; }
@@ -348,7 +348,7 @@
 
   h2 {
     margin: 0;
-    font-size: 2.2rem;
+    font-size: 32px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
@@ -357,15 +357,15 @@
     background-clip: text;
 
     @include mobile {
-      font-size: 1.6rem;
+      font-size: 24px;
     }
   }
 
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 16px;
     font-family: 'regular', sans-serif;
-    color: #555;
+    color: var(--gray);
     line-height: 1.6;
   }
 }
@@ -395,7 +395,7 @@
   width: 100%;
   padding: 24px 16px;
   border: 1px solid rgba(0,0,0,0.05);
-  background: #fff;
+  background: var(--white);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -414,7 +414,7 @@
     position: absolute;
     top: 32px;
     right: 24px;
-    font-size: 0.8125rem;
+    font-size: 13px;
     font-family: 'medium', sans-serif;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
@@ -423,7 +423,7 @@
   }
 
   .card_icon {
-    color: #FF8105;
+    color: var(--orange);
     svg {
       width: 32px;
       height: 32px;
@@ -432,7 +432,7 @@
 
   h3 {
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 20px;
     font-family: 'bold', sans-serif;
     color: var(--black);
     line-height: 1.3;
@@ -440,16 +440,16 @@
 
   .benefit_sub {
     margin: 0 0 8px;
-    font-size: 0.95rem;
+    font-size: 15px;
     font-family: 'bold', sans-serif;
     color: var(--black);
   }
 
   p {
     margin: 0;
-    font-size: 0.875rem;
+    font-size: 14px;
     font-family: 'regular', sans-serif;
-    color: #666;
+    color: var(--gray);
     line-height: 1.6;
   }
 }
@@ -466,7 +466,7 @@
   padding: 0 16px;
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 32px;
     font-family: 'bold', sans-serif;
     margin: 0 0 40px;
     line-height: 1.4;
@@ -476,13 +476,13 @@
     background-clip: text;
 
     @include mobile {
-      font-size: 1.3rem;
+      font-size: 20px;
     }
   }
 
   p {
-    font-size: 1.05rem;
-    color: #888;
+    font-size: 16px;
+    color: var(--gray);
     font-family: 'regular', sans-serif;
     line-height: 1.6;
     margin: 0 0 40px;
@@ -501,8 +501,8 @@
   border-radius: 40px;
   border: none;
   background: var(--primary-gradient);
-  color: #fff;
-  font-size: 1rem;
+  color: var(--white);
+  font-size: 16px;
   font-family: 'bold', sans-serif;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(255, 129, 5, 0.3);
@@ -540,7 +540,7 @@
 
 .app_download_heading {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -560,9 +560,9 @@
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  background: #222;
+  background: var(--black);
   border-radius: 100px;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   transition: opacity 0.2s;
 
@@ -573,8 +573,8 @@
     flex-direction: column;
     text-align: left;
 
-    span { font-size: 0.65rem; font-family: 'regular', sans-serif; opacity: 0.8; line-height: 1; margin-bottom: 2px;}
-    strong { font-size: 1.1rem; font-family: 'semibold', sans-serif; line-height: 1; }
+    span { font-size: 10px; font-family: 'regular', sans-serif; opacity: 0.8; line-height: 1; margin-bottom: 2px;}
+    strong { font-size: 18px; font-family: 'semibold', sans-serif; line-height: 1; }
   }
 }
 
@@ -594,7 +594,7 @@
 
   h2 {
     margin: 0 0 16px;
-    font-size: 2.2rem;
+    font-size: 32px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
@@ -603,15 +603,15 @@
     background-clip: text;
 
     @include mobile {
-      font-size: 1.6rem;
+      font-size: 24px;
     }
   }
 
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 16px;
     font-family: 'regular', sans-serif;
-    color: #555;
+    color: var(--gray);
     line-height: 1.6;
   }
 }
@@ -672,7 +672,7 @@
 .reason_num {
   flex-shrink: 0;
   width: 24px;
-  font-size: 1rem;
+  font-size: 16px;
   font-family: 'medium', sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -681,7 +681,7 @@
 }
 
 .reason_title {
-  font-size: 1.15rem;
+  font-size: 18px;
   font-family: 'bold', sans-serif;
   color: var(--black);
   transition: all 0.3s ease;
@@ -693,9 +693,9 @@
 
   p {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 15px;
     font-family: 'regular', sans-serif;
-    color: #666;
+    color: var(--gray);
     line-height: 1.6;
   }
 

@@ -9,7 +9,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: #faf9f6;
+  background: var(--body-bg);
   padding: 80px 56px;
   isolation: isolate;
   @include tab {
@@ -132,7 +132,7 @@
   color: var(--white);
   text-decoration: none;
   font-size: 18px;
-  font-family: 'semibold', sans-serif;
+  font-family: 'regular', sans-serif;
   white-space: nowrap;
   will-change: transform, opacity;
   transition: transform 200ms ease, box-shadow 200ms ease;
@@ -167,15 +167,30 @@
 
 .scrollingText {
   display: inline-block;
-  font-size: 80px;
+  font-size: 64px;
   font-family: 'extrabold', sans-serif;
   line-height: 1;
   white-space: nowrap;
   will-change: transform;
   transform: translateZ(0);
   flex-shrink: 0;
-  @include tab {
+  @include tab{
+    font-size: 48px;
+  }
+  @include mobile {
+    font-size: 32px;
+  }
+}
+
+.description {
+  margin-top: 24px;
+  color: var(--gray);
+  font-size: 24px;
+  @include tab{
     font-size: 20px;
+  }
+  @include mobile {
+    font-size: 16px;
   }
 }
 

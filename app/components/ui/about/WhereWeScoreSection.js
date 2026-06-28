@@ -5,8 +5,8 @@ const VolumeIcon = () => (
   <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="url(#orange-grad)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
     <defs>
       <linearGradient id="orange-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" stopColor="#f79d00" />
-        <stop offset="100%" stopColor="#eb1e23" />
+        <stop offset="0%" stopColor="var(--yellow)" />
+        <stop offset="100%" stopColor="var(--red)" />
       </linearGradient>
     </defs>
     <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>

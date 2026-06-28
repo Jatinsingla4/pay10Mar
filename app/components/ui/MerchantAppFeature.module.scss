@@ -38,8 +38,8 @@
 
 .heading {
   font-family: 'bold', sans-serif;
-  font-size: 3rem;
-  background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+  font-size: 48px;
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1.2;
@@ -47,31 +47,31 @@
   display: inline-block;
 
   @include large {
-    font-size: 2.5rem;
+    font-size: 32px;
   }
 
   @include lessTab {
-    font-size: 2rem;
+    font-size: 32px;
   }
 
   @include mobile {
-    font-size: 1.7rem;
+    font-size: 26px;
   }
 }
 
 .subheading {
-  font-family: 'semibold', sans-serif;
-  font-size: 1.8rem;
+  font-family: 'medium', sans-serif;
+  font-size: 24px;
   color: var(--red);
   margin: 0 0 30px 0;
 
   @include lessTab {
-    font-size: 1.4rem;
+    font-size: 20px;
     margin: 0 0 20px 0;
   }
 
   @include mobile {
-    font-size: 1.2rem;
+    font-size: 18px;
   }
 }
 
@@ -104,7 +104,7 @@
 
       .smallText {
         font-family: 'regular', sans-serif;
-        font-size: 0.5rem;
+        font-size: 8px;
         line-height: 1;
         margin-bottom: 2px;
         text-transform: uppercase;
@@ -112,7 +112,7 @@
 
       .largeText {
         font-family: 'bold', sans-serif;
-        font-size: 0.9rem;
+        font-size: 14px;
         line-height: 1;
       }
     }
@@ -136,19 +136,19 @@
     align-items: flex-start;
     gap: 12px;
     font-family: 'regular', sans-serif;
-    font-size: 1.1rem;
-    color: #666666;
+    font-size: 18px;
+    color: var(--gray);
     line-height: 1.5;
 
     .checkIcon {
       color: var(--red);
       flex-shrink: 0;
-      font-size: 1.2rem;
+      font-size: 16px;
       margin-top: 2px;
     }
 
     @include mobile {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 }
@@ -159,7 +159,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1.1;
-  background-color: #f7f9fc;
+  background-color: var(--body-bg);
 
   @include tab {
     order: 2;

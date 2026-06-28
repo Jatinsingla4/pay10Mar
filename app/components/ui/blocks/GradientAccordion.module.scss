@@ -24,7 +24,7 @@
   position: absolute;
   left: 0;
   width: 100%;
-  background: linear-gradient(180deg, #ff8800 0%, var(--red) 100%);
+  background: var(--button-gradient);
   transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1),
     top 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
@@ -73,8 +73,8 @@
 
 .dash,
 .plus {
-  color: #292d32;
-  font-size: 2rem;
+  color: var(--charcoal);
+  font-size: 32px;
   font-weight: 300;
   line-height: 1;
   display: inline-block;
@@ -143,9 +143,7 @@
       font-size: 20px;
     }
     .description {
-      font-size: 16px;
+     font-size: 18px;
     }
   }
 }
-
-

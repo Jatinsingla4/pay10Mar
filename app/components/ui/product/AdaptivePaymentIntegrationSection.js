@@ -76,8 +76,9 @@ const ExternalLinkIcon = ({ className = "" }) => {
       />
       <defs>
         <linearGradient id={g0} x1="2.5" y1="10" x2="17.5" y2="10" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FFBB07" />
-          <stop offset="1" stopColor="#EF1A23" />
+          <stop offset="0%" stopColor="var(--red)" />
+          <stop offset="40%" stopColor="var(--orange)" />
+          <stop offset="100%" stopColor="var(--yellow)" />
         </linearGradient>
         <linearGradient id={g1} x1="10" y1="6.25" x2="17.5" y2="6.25" gradientUnits="userSpaceOnUse">
           <stop stopColor="#FFBB07" />

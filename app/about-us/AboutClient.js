@@ -22,7 +22,7 @@ const journeyData = [
   {
     year: "2024",
     description:
-      "<p>Pay10 UAE received licenses from The Central Bank of the UAE (CBUAE) under Payment Services & Card Schemes (RPSCS Category II) and Stored Value Facilities (SVF) frameworks.</p><p>Together, these licenses authorize Pay10 to offer Merchant Acquiring Services, Account Issuing, Payment Aggregation Services, Domestic Fund Transfer Services, Cross Border Remittances and Opening & Maintaining Digital Wallets—further reinforcing its position as a leader in digital-first financial services across the region.</p>",
+      "<p>Pay10 UAE received licenses from The Central Bank of the UAE (CBUAE) under Payment Services & Card Schemes (RPSCS Category II) and Stored Value Facilities (SVF) frameworks.</p><p>Together, these licenses authorize Pay10 to offer Merchant Acquiring Services, Account Issuing, Payment Aggregation Services, Domestic Fund Transfer Services, Cross Border Remittances and Opening & Maintaining Digital Wallets, further reinforcing its position as a leader in digital-first financial services across the region.</p>",
     image: "/images/about_images/journey-2024-v2.png",
   },
   {
@@ -34,7 +34,7 @@ const journeyData = [
   {
     year: "2026",
     description:
-      "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4) – Cross Border Remittances",
+      "Pay10 UAE received from The Central Bank of the UAE (CBUAE) the License to Conduct Exchange Business Activity (Category 4), Cross Border Remittances",
     image: "/images/about_images/journey-2026-v2.png",
   },
 ];
@@ -69,7 +69,7 @@ const hardcodedBoardMembers = [
     Name: "Shweta Sood",
     "Designation ": "Board Member",
     Description:
-      "Shweta Sood is a senior fintech risk and governance professional with over 19 years of experience in regulated environments, specializing in enterprise risk management, regulatory compliance, and operational resilience. She currently serves as Chief Risk Officer – Global at Pay10, where she oversees group-wide risk strategy, governance frameworks, and regulatory alignment across international operations, ensuring scalable and compliant growth. Shweta holds a master's degree in International Tourism Management, a BSc in Hotel, Motel & Restaurant Management, and is a Certified Risk Management Professional (CRMP).",
+      "Shweta Sood is a senior fintech risk and governance professional with over 19 years of experience in regulated environments, specializing in enterprise risk management, regulatory compliance, and operational resilience. She currently serves as Chief Risk Officer, Global at Pay10, where she oversees group-wide risk strategy, governance frameworks, and regulatory alignment across international operations, ensuring scalable and compliant growth. Shweta holds a master's degree in International Tourism Management, a BSc in Hotel, Motel & Restaurant Management, and is a Certified Risk Management Professional (CRMP).",
     Image: "/images/prod_imports/shweta-sood.jpg",
     _isLocal: true,
   },
@@ -147,7 +147,7 @@ const AboutClient = () => {
               imgPrimary="/images/about_images/dream_big_large.jpg"
               imgSecondary="/images/about_images/dream_big_small.png"
               heading="Giving You the Power to Dream Big"
-              description="As an alternative payment services provider, we aim to make your life easier and richer by empowering you with quick, secure, and accessible digital payment solutions – whether you are an individual looking to make the most of your hard-earned money or a business looking to scale up like never before."
+              description="As an alternative payment services provider, we aim to make your life easier and richer by empowering you with quick, secure, and accessible digital payment solutions. Whether you are an individual looking to make the most of your hard-earned money or a business looking to scale up like never before."
             />
 
             <WhereWeScoreSection

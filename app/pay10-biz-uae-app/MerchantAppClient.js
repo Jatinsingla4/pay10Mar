@@ -115,7 +115,7 @@ const MerchantAppClient = () => {
           <div className={Style.circle_outer}>
             <div className={Style.circle_mid}>
               <div className={Style.circle_inner}>
-                <Image src="/images/temp/a1.png" alt="Pay10 support" width={200} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
+                <Image src="/images/prod_imports/customer-executive.jpg" alt="Pay10 support" width={200} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
               </div>
             </div>
           </div>
@@ -126,8 +126,8 @@ const MerchantAppClient = () => {
         <h2 className={Style.command_heading}>Everything you need to run your payments,<br />in one app.</h2>
         <div className={Style.command_body}>
           <div className={Style.command_phones}>
-            <Image src="/images/temp/a1.png" alt="Pay10 Biz App" width={280} height={560} className={Style.phone_img_back} />
-            <Image src="/images/temp/a3.png" alt="Pay10 Biz App" width={280} height={560} className={Style.phone_img_front} />
+            <Image src="/images/prod_imports/biz-home-screen.png" alt="Pay10 Biz App Home" width={280} height={560} className={Style.phone_img_back} />
+            <Image src="/images/prod_imports/biz-transaction-history.png" alt="Pay10 Biz App Transactions" width={280} height={560} className={Style.phone_img_front} />
           </div>
           <div className={Style.command_right}>
             <p className={Style.command_desc}>The Pay10 Biz UAE App is your merchant command centre linked directly to your DQR device, giving you real-time visibility and full control from your phone.</p>

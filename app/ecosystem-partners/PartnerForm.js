@@ -177,10 +177,10 @@ export default function PartnerForm() {
               >
                 <option value="">Select volume</option>
                 <option value="Under AED 500K">Under AED 500K</option>
-                <option value="AED 500K - AED 2Mn">AED 500K – AED 2Mn</option>
-                <option value="AED 2Mn - AED 5 Mn">AED 2Mn – AED 5Mn</option>
-                <option value="AED 5 Mn - AED 10 Mn">AED 5Mn – AED 10Mn</option>
-                <option value="AED 10Mn - AED 50 Mn">AED 10Mn – AED 50Mn</option>
+                <option value="AED 500K - AED 2Mn">AED 500K - AED 2Mn</option>
+                <option value="AED 2Mn - AED 5 Mn">AED 2Mn - AED 5Mn</option>
+                <option value="AED 5 Mn - AED 10 Mn">AED 5Mn - AED 10Mn</option>
+                <option value="AED 10Mn - AED 50 Mn">AED 10Mn - AED 50Mn</option>
                 <option value="AED 50Mn+">AED 50Mn+</option>
               </select>
               <Icon icon="mdi:chevron-down" className={styles.select_chevron} />

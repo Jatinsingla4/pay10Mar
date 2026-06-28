@@ -22,28 +22,28 @@ export default function SuperAppSection() {
           {/* Top Left: For Consumers Text */}
           <div className={styles.textCard} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
             <h3>For Consumers</h3>
-            <p>Pay, send, receive, remit &mdash; all financial needs in a single app. Link all your bank accounts.</p>
+            <p>Pay, send, receive, remit. All financial needs in a single app. Link all your bank accounts.</p>
           </div>
 
           <div className={`${styles.imageCard} ${styles.consumerImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.2s' }}>
             <img
-              src="/images/home/merchant-screen.jpg"
+              src="/images/home/consumer-home-screen.jpg"
               alt="Pay10 Consumer App"
             />
           </div>
 
           {/* Bottom Left: Merchant Image */}
           <div className={`${styles.imageCard} ${styles.merchantImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.3s' }}>
-            <img 
-              src="/images/home/merchant-screen.jpg" 
-              alt="Pay10 Merchant App" 
+            <img
+              src="/images/home/merchant-home-screen.jpg"
+              alt="Pay10 Merchant App"
             />
           </div>
 
           {/* Bottom Right: For Merchants Text */}
           <div className={`${styles.textCard} ${styles.merchantTextCard}`} data-animation="fade-up" style={{ transitionDelay: '0.4s' }}>
             <h3>For Merchants</h3>
-            <p>Accept payments, Instant Settlement, Manage cash flow, 24X7 Customer Support &mdash; SME to enterprise, all served.</p>
+            <p>Accept payments, Instant Settlement, Manage cash flow, 24X7 Customer Support. SME to enterprise, all served.</p>
           </div>
         </div>
       </div>

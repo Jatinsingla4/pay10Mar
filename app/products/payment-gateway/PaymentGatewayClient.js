@@ -34,12 +34,12 @@ const PaymentGatewayClient = () => {
         <div className={Style.showcase_wrapper}>
           <div className={Style.showcase_item}>
             <div className={Style.phone_wrapper}>
-              <Image 
-                src="/images/prod_imports/consumer-app-phone.png" 
-                alt="Pay10 App on Phone" 
-                width={300} 
-                height={600} 
-                className={Style.showcase_phone_img} 
+              <Image
+                src="/images/prod_imports/pg-pay-mobile.png"
+                alt="Pay10 App on Phone"
+                width={300}
+                height={600}
+                className={Style.showcase_phone_img}
               />
             </div>
             <div className={`${Style.checkout_card} ${Style.showcase_card_overlay}`}>
@@ -60,12 +60,12 @@ const PaymentGatewayClient = () => {
 
           <div className={Style.showcase_item}>
             <div className={Style.phone_wrapper}>
-              <Image 
-                src="/images/prod_imports/consumer-app-phone.png" 
-                alt="Bank App on Phone" 
-                width={300} 
-                height={600} 
-                className={Style.showcase_phone_img} 
+              <Image
+                src="/images/prod_imports/pg-pay-bank.png"
+                alt="Bank App on Phone"
+                width={300}
+                height={600}
+                className={Style.showcase_phone_img}
               />
             </div>
             <div className={`${Style.checkout_card} ${Style.showcase_card_overlay}`}>
@@ -90,6 +90,9 @@ const PaymentGatewayClient = () => {
         <div className={Style.journey_cards_wrapper}>
           {/* Card 1 */}
           <div className={`${Style.journey_card} ${Style.card_white}`}>
+            <div className={Style.journey_card_img}>
+              <img src="/images/prod_imports/pg-pay-qr.png" alt="Pay with Pay10 QR" />
+            </div>
             <div className={Style.card_header}>
               <h3>Pay with Pay10</h3>
               <span className={Style.card_badge}>APM &middot; Dynamic QR</span>
@@ -129,6 +132,9 @@ const PaymentGatewayClient = () => {
 
           {/* Card 2 */}
           <div className={`${Style.journey_card} ${Style.card_tinted}`}>
+            <div className={Style.journey_card_img}>
+              <img src="/images/prod_imports/pg-pay-desktop.png" alt="Pay by Bank Desktop" />
+            </div>
             <div className={Style.card_header}>
               <h3>Pay by Bank</h3>
               <span className={Style.card_badge}>TPP &middot; Open Finance &middot; Al Tareq</span>

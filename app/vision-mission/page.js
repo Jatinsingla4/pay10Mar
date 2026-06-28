@@ -3,7 +3,7 @@ import VisionMissionClient from "./VisionMissionClient";
 
 export const metadata = {
   ...defaultMetadata,
-  title: "Vision & Mission – Pay 10",
+  title: "Vision & Mission - Pay 10",
 };
 
 export default function VisionMission() {

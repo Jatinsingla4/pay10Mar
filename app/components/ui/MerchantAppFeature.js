@@ -8,7 +8,7 @@ import styles from "./MerchantAppFeature.module.scss";
 export default function MerchantAppFeature() {
   const features = [
     "Pay10 Biz app linked to DQR POS device",
-    "Instant same-day settlement \u2014 better cash flow",
+    "Instant same-day settlement, better cash flow",
     "Lowest MDRs in the UAE market",
     "Refunds, chargebacks, dispute management",
     "Real-time transaction monitoring & reporting",
@@ -22,8 +22,8 @@ export default function MerchantAppFeature() {
         {/* Left Image (Desktop) */}
         <div className={styles.leftImage} data-animation="fade-up">
           <Image 
-            src="/images/home/merchant-hero.jpg" 
-            alt="Pay10 Merchant using app" 
+            src="/images/home/merchant-hero.jpg"
+            alt="Pay10 Merchant using app"
             fill 
             style={{ objectFit: 'cover' }}
           />
@@ -32,12 +32,12 @@ export default function MerchantAppFeature() {
         {/* Right Content (Desktop) */}
         <div className={styles.rightContent} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
           <h2 className={styles.heading}>The merchant app that works as hard as you do.</h2>
-          <h3 className={styles.subheading} style={{ color: '#000' }}>Merchant App</h3>
+          <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>Merchant App</h3>
           
           <ul className={styles.featuresList}>
             {features.map((feature, index) => (
               <li key={index} data-animation="fade-up" style={{ transitionDelay: `${0.1 + (index * 0.1)}s` }}>
-                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: '#ff3d00' }} />
+                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: 'var(--red)' }} />
                 <span>{feature}</span>
               </li>
             ))}

@@ -72,7 +72,7 @@ const HomeSecuritySection = () => {
         </h1>
         
         <p className={Style.description} data-animation="opacity-up" data-anim-delay="200" style={{ maxWidth: '800px', margin: '0 auto 40px auto' }}>
-          Pay10's security framework is built to the most rigorous standards in the world &mdash; protecting every transaction, every user, every merchant account. Compliance is built in, not bolted on.
+          Pay10's security framework is built to the most rigorous standards in the world, protecting every transaction, every user, every merchant account. Compliance is built in, not bolted on.
         </p>
 
         <div className={Style.certifications} data-animation="opacity-up" data-anim-delay="250">

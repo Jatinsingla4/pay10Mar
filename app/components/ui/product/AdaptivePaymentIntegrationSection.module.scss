@@ -108,7 +108,7 @@
   }
   a{
     text-decoration: underline;
-    color: var(--orange);
+    color: var(--yellow);
   }
 }
 
@@ -124,7 +124,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--primary-gradient);
+  background: var(--button-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
@@ -151,7 +151,7 @@
   justify-content: center;
   padding: 20px 27px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #ffbb07 0%, #ef1a23 100%);
+  background: var(--button-gradient);
   color: var(--white);
   font-family: "medium";
   font-size: 18px;

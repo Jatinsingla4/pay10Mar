@@ -405,11 +405,11 @@ ul {
 }
 @media (min-width: 992px) {
   .header__nav-item.is-open .header__nav-link--dropdown {
-    color: var(--orange-icon);
+    color: var(--orange);
   }
   .header__nav-item.is-open .header__nav-link--dropdown .header__nav-chevron {
     transform: rotate(180deg);
-    color: var(--orange-icon);
+    color: var(--orange);
   }
 }
 .header__nav-item.is-active .header__nav-link {

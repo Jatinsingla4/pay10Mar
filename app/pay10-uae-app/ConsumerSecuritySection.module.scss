@@ -40,25 +40,27 @@
   }
 
   .subheading {
-    font-size: 1.6rem;
-    font-family: 'extrabold';
+    font-size: 26px;
+    font-family: 'extrabold', sans-serif;
+    font-weight: 800;
     color: var(--black);
     text-transform: uppercase;
     letter-spacing: 2px;
     margin-bottom: 10px;
 
     @include tab {
-      font-size: 1.3rem;
+      font-size: 20px;
     }
 
     @include mobile {
-      font-size: 1.1rem;
+      font-size: 18px;
     }
   }
 
   .main_heading {
-    font-size: 8rem;
-    font-family: "bold";
+    font-size: 128px;
+    font-family: 'bold', sans-serif;
+    font-weight: 700;
     line-height: 1;
     margin-bottom: 30px;
     background: var(--primary-gradient);
@@ -67,39 +69,41 @@
     background-clip: text;
 
     @include tab {
-      font-size: 5rem;
+      font-size: 80px;
     }
 
     @include mobile {
-      font-size: 2.4rem;
+      font-size: 40px;
       word-break: break-word;
     }
   }
 
   .description {
-    font-size: 1.25rem;
+    font-size: 20px;
     font-family: 'regular', sans-serif;
+    font-weight: 400;
     color: var(--black);
     line-height: 1.7;
     max-width: 800px;
     margin: 0 auto 20px auto;
 
     @include mobile {
-      font-size: 1.05rem;
+      font-size: 16px;
       margin-bottom: 20px;
     }
   }
 
   .description_sub {
-    font-size: 1.1rem;
+    font-size: 18px;
     font-family: 'regular', sans-serif;
+    font-weight: 400;
     color: var(--gray);
     line-height: 1.7;
     max-width: 800px;
     margin: 0 auto 20px auto;
 
     @include mobile {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 
@@ -110,8 +114,9 @@
     margin-top: 20px;
 
     h4 {
-      font-size: 1.15rem;
+      font-size: 18px;
       font-family: 'medium', sans-serif;
+      font-weight: 500;
       color: var(--gray);
       margin-bottom: 24px;
     }

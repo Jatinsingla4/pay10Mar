@@ -102,7 +102,7 @@
 
       h4 {
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 24px;
         color: var(--white);
         text-align: left;
         line-height: 1.1;
@@ -119,10 +119,10 @@
       p {
         margin: 0;
         color: var(--white);
-        font-size: 1.07rem;
+        font-size: 16px;
         line-height: 1.4;
         font-weight: 400;
-        font-family: "light";
+        font-family: "regular";
         text-align: left;
         max-width: 95%;
         opacity: 1;
@@ -138,21 +138,21 @@
     > p {
       margin: 1.1rem 0 0;
       color: var(--white);
-      font-size: 1.06rem;
+      font-size: 16px;
       line-height: 1.55;
       max-height: 5.7em; // max 4 lines visible at rest (em for size scaling)
       overflow: hidden;
       opacity: 0;
       transform: translateY(18px);
       text-align: left;
-      font-family: "light";
+      font-family: "regular";
       transition:
         opacity 0.45s cubic-bezier(.39,.58,.57,1),
         transform 0.45s cubic-bezier(.39,.58,.57,1),
         max-height 0.45s cubic-bezier(.39,.58,.57,1);
       will-change: opacity, transform, max-height;
       scrollbar-width: thin;
-      scrollbar-color: var(--orange) transparent;
+      scrollbar-color: var(--yellow) transparent;
     }
   }
 
@@ -171,12 +171,12 @@
       h4 {
         color: var(--white);
         // Increase size slightly for focus
-        font-size: 1.65rem;
+        font-size: 24px;
         font-weight: 700;
       }
       p {
         color: var(--white);
-        font-size: 1.13rem;
+        font-size: 16px;
       }
     }
     > p {
@@ -188,7 +188,7 @@
       padding-right: 6px;
       // Pretty scrollbar for description
       scrollbar-width: thin;
-      scrollbar-color: var(--orange) transparent;
+      scrollbar-color: var(--yellow) transparent;
     }
     // Custom scrollbar
     > p::-webkit-scrollbar {
@@ -197,7 +197,7 @@
     }
 
     > p::-webkit-scrollbar-thumb {
-      background: var(--orange);
+      background: var(--yellow);
       border-radius: 4px;
     }
     > p::-webkit-scrollbar-track {
@@ -241,7 +241,7 @@
     padding-bottom: 0.5rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
-    scrollbar-color: var(--orange) transparent;
+    scrollbar-color: var(--yellow) transparent;
     flex-wrap: nowrap;
 
     & {
@@ -275,7 +275,7 @@
         padding-bottom: 0.5rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
-        scrollbar-color: var(--orange) transparent;
+        scrollbar-color: var(--yellow) transparent;
         flex-wrap: nowrap;
         gap: 16px;
 
@@ -288,7 +288,7 @@
         }
 
         &::-webkit-scrollbar-thumb {
-          background: var(--orange);
+          background: var(--yellow);
           border-radius: 3px;
         }
 
@@ -306,12 +306,12 @@
           padding: 1.25rem;
 
           .identity {
-            h4 { font-size: 1.3rem; }
-            p { font-size: 0.95rem; }
+            h4 { font-size: 18px; }
+            p { font-size: 12px; }
           }
-
-          > p {
-            font-size: 0.95rem;
+          
+          .member_description {
+            font-size: 12px;
             max-height: 56px;
           }
         }
@@ -325,7 +325,7 @@
         padding-bottom: 0.5rem;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: thin;
-        scrollbar-color: var(--orange) transparent;
+        scrollbar-color: var(--yellow) transparent;
         flex-wrap: nowrap;
         gap: 14px;
 
@@ -338,7 +338,7 @@
         }
 
         &::-webkit-scrollbar-thumb {
-          background: var(--orange);
+          background: var(--yellow);
           border-radius: 3px;
         }
 
@@ -356,12 +356,12 @@
           padding: 1rem;
 
           .identity {
-            h4 { font-size: 1.2rem; }
-            p { font-size: 0.9rem; }
+            h4 { font-size: 18px; }
+            p { font-size: 12px; }
           }
-
-          > p {
-            font-size: 0.9rem;
+          
+          .member_description {
+            font-size: 12px;
             max-height: 42px;
           }
         }

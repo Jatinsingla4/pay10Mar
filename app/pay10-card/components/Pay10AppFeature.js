@@ -19,11 +19,9 @@ export default function Pay10AppFeature() {
     <section className={styles.merchantFeatureSection}>
       <div className={styles.container}>
         
-        {/* Left Image (Desktop) - Placeholder */}
+        {/* Left Image */}
         <div className={styles.leftImage} data-animation="fade-up">
-           <div style={{ width: '100%', height: '100%', backgroundColor: '#f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#888', fontSize: '1.2rem', fontFamily: 'medium', border: '2px dashed #ccc', borderRadius: '32px' }}>
-             [Card Image Placeholder]
-           </div>
+          <img src="/images/prod_imports/pay10-card-bubble.png" alt="Pay10 Jaywan Prepaid Card" />
         </div>
 
         {/* Right Content (Desktop) */}

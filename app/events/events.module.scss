@@ -172,8 +172,8 @@
         }
 
         &:hover {
-          border: 2px solid var(--orange);
-          color: var(--orange);
+          border: 2px solid var(--yellow);
+          color: var(--yellow);
         }
       }
     }
@@ -538,7 +538,7 @@
 
 .event_tag_upcoming {
   background: rgba(243, 120, 16, 0.12);
-  color: var(--orange);
+  color: var(--yellow);
 }
 
 .event_tag_past {

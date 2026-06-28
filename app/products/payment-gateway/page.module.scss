@@ -7,7 +7,7 @@
 }
 
 .wrapper {
-  background-color: #f5f5f5;
+  background-color: var(--body-bg);
     width: 100%;
     padding: 56px 56px;
     overflow-x: hidden;
@@ -74,7 +74,7 @@
     .features_title {
       color: var(--black);
       font-size: 48px;
-      font-weight: 500;
+      font-family: 'medium', sans-serif;
       margin-bottom: 24px;
       line-height: 1.1;
       max-height: 775px;
@@ -87,7 +87,7 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
       .feature_card {
-        background: #fff;
+        background: var(--white);
         border-radius: 16px;
         padding: 32px 32px;
         display: flex;
@@ -112,7 +112,7 @@
         p {
           color: var(--black);
           font-size: 24px;
-          font-weight: 500;
+          font-family: 'medium', sans-serif;
           text-align: left;
           margin: 0;
         }
@@ -126,7 +126,7 @@
 
     .features_content {
       .features_title {
-        font-size: 2rem;
+        font-size: 32px;
         margin-bottom: 2rem;
       }
 
@@ -166,7 +166,7 @@
 
     .features_content {
       .features_title {
-        font-size: 1.75rem;
+        font-size: 28px;
         margin-bottom: 1.5rem;
       }
 
@@ -192,7 +192,7 @@
 .altareq_hero {
   width: 100%;
   height: 785px;
-  background-image: url('/images/prod_imports/Nebras-Page-Mockup-Approved-09.png');
+  background-image: url('/images/prod_imports/payment-gateway-hero.jpg');
   background-size: cover;
   background-position: 50% 50%;
   position: relative;
@@ -223,16 +223,16 @@
     font-size: 32px;
     font-weight: 700;
     font-family: 'bold', sans-serif;
-    color: #ffffff;
+    color: var(--white);
     display: inline-block;
     line-height: 1.2;
   }
 
   p {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 18px;
     font-family: 'medium', sans-serif;
-    color: #ffffff;
+    color: var(--white);
     line-height: 1.5;
   }
 
@@ -241,7 +241,7 @@
     max-width: 90%;
 
     h2 { font-size: 24px; }
-    p { font-size: 0.9rem; }
+    p { font-size: 14px; }
   }
 
   @include mobile {
@@ -250,14 +250,14 @@
     max-width: calc(100% - 32px);
 
     h2 { font-size: 20px; }
-    p { font-size: 0.85rem; }
+    p { font-size: 14px; }
   }
 }
 
 .centered_text_section {
   width: 100%;
   padding: 100px 24px;
-  background-color: #fff;
+  background-color: var(--body-bg);
   display: flex;
   justify-content: center;
 
@@ -278,23 +278,26 @@
 
 .centered_heading {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
-  color: #111;
-  text-transform: uppercase;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.3;
 
-  @include tab { font-size: 1.8rem; }
+  @include tab { font-size: 32px; }
+  @include mobile { font-size: 26px; }
 }
 
 .centered_paragraph {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-family: 'medium', sans-serif;
-  color: #333;
+  color: var(--gray);
   line-height: 1.7;
 
-  @include tab { font-size: 1rem; }
+  @include tab { font-size: 16px; }
 }
 
 .trusted_checkout {
@@ -304,22 +307,22 @@
   
   p {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-family: 'medium', sans-serif;
-    color: #111;
+    color: var(--black);
   }
 
   @include tab {
     margin-top: 32px;
-    p { font-size: 1.2rem; }
+    p { font-size: 20px; }
   }
 }
 
 /* Payment Methods Section */
 .methods_section {
   padding: 80px 56px;
-  background: #f7f9fa;
-  
+  background: var(--body-bg);
+
   @include tab {
     padding: 64px 16px;
   }
@@ -331,22 +334,25 @@
   margin: 0 auto 64px;
 
   h2 {
-    font-size: 3rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
-    color: #111;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: 0 0 24px;
     line-height: 1.2;
   }
 
   p {
-    font-size: 1.1rem;
-    color: #555;
+    font-size: 18px;
+    color: var(--gray);
     font-family: 'medium', sans-serif;
     line-height: 1.6;
   }
 
   @include tab {
-    h2 { font-size: 2.25rem; }
+    h2 { font-size: 36px; }
   }
 }
 
@@ -373,13 +379,9 @@
 
 .showcase_item {
   position: relative;
-  background-color: #fff;
-  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   height: 600px;
-  border: 1px solid #eaeaea;
 
   @include mobile {
     height: auto;
@@ -420,14 +422,14 @@
 }
 
 .checkout_card {
-  background: #fff;
+  background: var(--white);
   border-radius: 12px;
   padding: 24px;
   display: flex;
   flex-direction: column;
   
   @include tab {
-    border: 2px solid #222;
+    border: 2px solid var(--black);
     padding: 20px;
   }
 }
@@ -438,10 +440,10 @@
   justify-content: center;
   gap: 8px;
   font-family: 'semibold', sans-serif;
-  color: #334155;
-  font-size: 1.1rem;
+  color: var(--black);
+  font-size: 18px;
   padding-bottom: 24px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--border-clr);
   margin-bottom: 24px;
 }
 
@@ -452,37 +454,37 @@
   margin-bottom: 32px;
 
   span {
-    font-size: 1.1rem;
-    color: #64748b;
+    font-size: 18px;
+    color: var(--gray);
     font-family: 'medium', sans-serif;
   }
 
   strong {
-    font-size: 1.4rem;
+    font-size: 20px;
     font-family: 'bold', sans-serif;
-    color: #0f172a;
+    color: var(--black);
   }
 }
 
 .mockup_divider {
   text-align: center;
-  color: #94a3b8;
+  color: var(--gray);
   font-family: 'medium', sans-serif;
-  font-size: 0.9rem;
+  font-size: 14px;
   margin-bottom: 24px;
 }
 
 .mockup_pay10_btn, .mockup_bank_btn {
   width: 100%;
   padding: 16px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-clr);
   border-radius: 8px;
-  background: #fff;
+  background: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-  font-size: 1.1rem;
+  font-size: 18px;
   font-family: 'semibold', sans-serif;
   color: #f1f5f9;
   cursor: pointer;
@@ -496,17 +498,17 @@
 }
 
 .mockup_pay10_btn {
-  color: #000;
+  color: var(--black);
 }
 
 .mockup_bank_btn {
-  color: #000;
+  color: var(--black);
 }
 
 .mockup_hint {
   text-align: center;
-  font-size: 0.85rem;
-  color: #94a3b8;
+  font-size: 14px;
+  color: var(--gray);
   font-family: 'regular', sans-serif;
   margin: 0;
 }
@@ -544,13 +546,26 @@
   }
 }
 
+.journey_card_img {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 28px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+}
+
 .card_white {
-  background-color: #fff;
+  background-color: var(--white);
 }
 
 .card_tinted {
-  background-color: #faf5ff; /* soft purple */
-  border-color: #f3e8ff;
+  background-color: var(--white);
 }
 
 .card_header {
@@ -563,23 +578,23 @@
 
   h3 {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-family: 'bold', sans-serif;
-    color: #111;
+    color: var(--black);
   }
 }
 
 .card_badge {
-  font-size: 0.9rem;
+  font-size: 14px;
   font-family: 'bold', sans-serif;
-  color: #8b5cf6; /* purple accent */
+  color: var(--orange);
   text-transform: uppercase;
 }
 
 .card_desc {
-  font-size: 1.1rem;
+  font-size: 18px;
   font-family: 'medium', sans-serif;
-  color: #333;
+  color: var(--gray);
   margin-bottom: 32px;
   line-height: 1.6;
 }
@@ -589,9 +604,9 @@
 }
 
 .list_heading {
-  font-size: 1.05rem;
+  font-size: 16px;
   font-family: 'bold', sans-serif;
-  color: #111;
+  color: var(--black);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -599,7 +614,7 @@
 }
 
 .list_icon {
-  color: #8b5cf6;
+  color: var(--orange);
 }
 
 .journey_card_list {
@@ -614,9 +629,9 @@
     display: flex;
     gap: 12px;
     align-items: flex-start;
-    font-size: 1rem;
+    font-size: 16px;
     font-family: 'regular', sans-serif;
-    color: #444;
+    color: var(--gray);
     line-height: 1.5;
   }
 }
@@ -628,11 +643,11 @@
   width: 24px;
   height: 24px;
   min-width: 24px;
-  background-color: #f1f5f9;
+  background: var(--primary-gradient);
   border-radius: 50%;
-  font-size: 0.8rem;
+  font-size: 13px;
   font-family: 'bold', sans-serif;
-  color: #475569;
+  color: var(--white);
   margin-top: 2px;
 }
 
@@ -640,20 +655,20 @@
   margin-top: auto;
   padding-top: 24px;
   border-top: 1px solid #eaeaea;
-  font-size: 0.95rem;
+  font-size: 15px;
   font-family: 'medium', sans-serif;
-  color: #64748b;
+  color: var(--gray);
   line-height: 1.6;
 
   strong {
-    color: #1e293b;
+    color: var(--black);
   }
 }
 
 /* Journey List (Invest Style) */
 .journey_list_section {
   width: 100%;
-  background-color: #fff;
+  background-color: var(--body-bg);
   padding: 40px 24px 80px;
 }
 
@@ -676,10 +691,12 @@
 }
 
 .journey_col_heading {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-family: 'bold', sans-serif;
-  color: #111;
-  text-transform: uppercase;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   margin-bottom: 24px;
 }
 
@@ -701,9 +718,9 @@
 }
 
 .step_number {
-  font-size: 1.2rem;
+  font-size: 20px;
   font-family: 'bold', sans-serif;
-  color: #111;
+  color: var(--black);
   min-width: 24px;
   margin-top: 2px;
 }
@@ -716,23 +733,23 @@
 }
 
 .step_title {
-  font-size: 1.1rem;
+  font-size: 18px;
   font-family: 'bold', sans-serif;
-  color: #111;
+  color: var(--black);
 }
 
 .step_desc {
-  font-size: 1rem;
+  font-size: 16px;
   font-family: 'medium', sans-serif;
-  color: #555;
+  color: var(--gray);
   line-height: 1.5;
 }
 
 .step_tag {
-  font-size: 0.85rem;
+  font-size: 14px;
   font-family: 'semibold', sans-serif;
-  color: #475569;
-  background-color: #f1f5f9;
+  color: var(--orange);
+  background-color: rgba(255, 129, 5, 0.1);
   padding: 6px 12px;
   border-radius: 100px;
   margin-top: 4px;
@@ -793,27 +810,27 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  background-color: #fff8f0;
+  background-color: rgba(255, 129, 5, 0.1);
   border-radius: 10px;
   margin-bottom: 24px;
 }
 
 .benefit_icon {
   font-size: 24px;
-  color: #ff8105;
+  color: var(--orange);
 }
 
 .benefit_title {
-  font-size: 1.1rem;
+  font-size: 18px;
   font-family: 'bold', sans-serif;
-  color: #111;
+  color: var(--black);
   margin: 0 0 12px 0;
 }
 
 .benefit_desc {
-  font-size: 0.95rem;
+  font-size: 15px;
   font-family: 'regular', sans-serif;
-  color: #555;
+  color: var(--gray);
   line-height: 1.6;
   margin: 0;
 }
@@ -833,20 +850,23 @@
 
 .cta_heading {
   margin: 0;
-  font-size: 3rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
-  color: #111;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   line-height: 1.2;
 
-  @include tab { font-size: 2.25rem; }
-  @include mobile { font-size: 1.75rem; }
+  @include tab { font-size: 36px; }
+  @include mobile { font-size: 28px; }
 }
 
 .cta_sub {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 18px;
   font-family: 'regular', sans-serif;
-  color: #444;
+  color: var(--gray);
   max-width: 800px;
   line-height: 1.7;
 }
@@ -862,13 +882,13 @@
 .cta_btn_primary {
   padding: 14px 36px;
   border-radius: 100px;
-  background: linear-gradient(90deg, #ff8105, #ff5722);
-  color: #fff;
+  background: var(--primary-gradient);
+  color: var(--white);
   font-family: 'semibold', sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
   text-decoration: none;
   transition: opacity 0.2s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(239, 26, 35, 0.2);
 
   &:hover { opacity: 0.88; }
 }
@@ -880,7 +900,7 @@
   text-align: center;
   padding: 80px 56px;
   gap: 28px;
-  background: #f8fafc; /* light grey matching other pages body-bg */
+  background: var(--body-bg);
 
   @include tab { padding: 48px 24px; }
   @include mobile { padding: 40px 16px; margin: 0 16px; }
@@ -888,9 +908,9 @@
 
 .app_download_heading {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
-  background: linear-gradient(90deg, #ff8105, #ff5722);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -908,9 +928,9 @@
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  background: #000;
+  background: var(--black);
   border-radius: 100px;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   transition: opacity 0.2s;
 
@@ -921,7 +941,7 @@
     flex-direction: column;
     text-align: left;
 
-    span { font-size: 0.65rem; font-family: 'regular', sans-serif; opacity: 0.8; }
-    strong { font-size: 1rem; font-family: 'semibold', sans-serif; }
+    span { font-size: 10px; font-family: 'regular', sans-serif; opacity: 0.8; }
+    strong { font-size: 16px; font-family: 'semibold', sans-serif; }
   }
 }

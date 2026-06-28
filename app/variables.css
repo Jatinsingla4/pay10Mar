@@ -33,21 +33,22 @@
   --active-li: #e6e7e9;
   --white: #ffffff;
   --whitetransparent: #ffffff2b;
-  --orange: #FFBB07;
-  --orange-icon: #FF8105;
+  --yellow: #FFBB07;
+  --orange: #FF8105;
   --red: #EF1A23;
   --gray: #6C7073;
   --charcoal: #2D2D2D;
   --events-box-bg: #EAEAEA;
   --border-clr: #d7d7d7;
-  --primary-gradient: linear-gradient(100deg, #FFBB07 0%, #FF8105 40%, #EF1A23 100%);
-  --primary-gradient2: linear-gradient(to bottom, #FFBB07 0%, #FF8105 40%, #EF1A23 100%);
-  --primary-gradient3: linear-gradient(100deg, #FFBB07 0%, #FF8105 40%, #EF1A23 100%);
-  --reverse-primary-gradient: linear-gradient(280deg, #FFBB07 0%, #FF8105 40%, #EF1A23 100%);
-  --primary-gradient-light: linear-gradient(100deg, #ffbd079c 0%, #FF810580 40%, #ef1a25a0 100%);
+  --primary-gradient: linear-gradient(-150deg, var(--red) 0%, var(--orange) 40%, var(--yellow) 100%);
+  --button-gradient: linear-gradient(100deg, var(--yellow) 50%, var(--red) 100%);
+  --primary-gradient2: linear-gradient(to bottom, var(--yellow) 0%, var(--orange) 40%, var(--red) 100%);
+  --primary-gradient3: linear-gradient(-150deg, var(--red) 0%, var(--orange) 40%, var(--yellow) 100%);
+  --reverse-primary-gradient: linear-gradient(280deg, var(--yellow) 0%, var(--orange) 40%, var(--red) 100%);
+  --primary-gradient-light: linear-gradient(-150deg, rgba(239, 26, 35, 0.63) 0%, rgba(255, 129, 5, 0.5) 40%, rgba(255, 187, 7, 0.61) 100%);
   --gradient-light: linear-gradient(135deg, rgba(255, 187, 7, 0.9) 0%, rgba(255, 129, 5, 0.9) 40%, rgba(239, 26, 35, 0.9) 100%);
   --black-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 75%);
-  --primary-gradient-medium: linear-gradient(100deg, #FFBB07 0%, #FF8105 40%, #EF1A23 100%);
+  --primary-gradient-medium: linear-gradient(-150deg, var(--red) 0%, var(--orange) 40%, var(--yellow) 100%);
 
   /* font sizes  */
 

@@ -65,9 +65,12 @@
 
 .heading {
   margin: 0;
-  font-size: 48px;
+  font-size: 64px;
   line-height: 1.1;
   @include tab{
+    font-size: 48px;
+  }
+  @include mobile {
     font-size: 32px;
   }
 }
@@ -77,6 +80,9 @@
   line-height: 1.25;
   font-size: 24px;
   @include tab{
+    font-size: 20px;
+  }
+  @include mobile {
     font-size: 16px;
   }
 }

@@ -39,9 +39,15 @@
   }
 
   .eyebrow {
-    font-size: 14px;
+    font-size: 24px;
+    @include tab {
+      font-size: 20px;
+    }
+    @include mobile {
+      font-size: 18px;
+    }
     font-family: 'bold', sans-serif;
-    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-transform: uppercase;
@@ -51,10 +57,10 @@
   }
 
   h2 {
-    font-size: 38px;
+    font-size: 48px;
     line-height: 1.2;
     font-family: 'bold', sans-serif;
-    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 24px;
@@ -70,21 +76,21 @@
   }
 
   p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.6;
-    font-family: 'medium', sans-serif;
-    color: #36454F;
+    font-family: 'regular', sans-serif;
+    color: var(--charcoal);
     margin-bottom: 24px;
 
     @include mobile {
-      font-size: 15px;
+      font-size: 16px;
     }
   }
 
   .highlight_text {
     font-size: 16px;
     font-family: 'bold', sans-serif;
-    color: var(--orange);
+    color: var(--yellow);
     margin-bottom: 40px;
   }
 
@@ -113,7 +119,7 @@
 
 .feature_card {
   background: var(--white);
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--events-box-bg);
   border-radius: 20px;
   position: relative;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
@@ -160,7 +166,7 @@
     .number {
       font-size: 18px;
       font-family: 'bold', sans-serif;
-      color: var(--orange);
+      color: var(--yellow);
     }
   }
 
@@ -220,7 +226,7 @@
 
     .hover_subtitle {
       font-size: 10px;
-      font-family: 'semibold', sans-serif;
+      font-family: 'medium', sans-serif;
       color: var(--gray);
       text-transform: uppercase;
       letter-spacing: 0.5px;

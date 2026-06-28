@@ -155,7 +155,7 @@
 }
 
 .emailLink {
-  color: var(--orange-icon);
+  color: var(--orange);
   text-decoration: none;
   transition: opacity 0.2s ease;
 
@@ -166,7 +166,7 @@
 }
 
 .phoneLink {
-  color: var(--orange-icon);
+  color: var(--orange);
   text-decoration: none;
   font-family: "bold", sans-serif;
   transition: opacity 0.2s ease;
@@ -298,7 +298,7 @@
 
 .formLeftInfoIcon {
   font-size: 20px;
-  color: var(--orange-icon);
+  color: var(--orange);
   flex-shrink: 0;
 }
 
@@ -416,7 +416,7 @@
 
   &:focus {
     background-color: var(--white);
-    border-color: var(--orange-icon);
+    border-color: var(--orange);
     box-shadow: 0 0 0 3px rgba(243, 120, 16, 0.1);
   }
 }
@@ -499,7 +499,7 @@ select.formInput {
 
 .customSelectOptionActive {
   background: rgba(243, 120, 16, 0.08);
-  color: var(--orange-icon);
+  color: var(--orange);
   font-family: "bold";
 }
 

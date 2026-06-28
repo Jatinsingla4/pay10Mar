@@ -8,12 +8,12 @@ const features = [
   {
     icon: "ph:qr-code-bold",
     title: "Scan & Pay",
-    description: "Scan any Pay10 DQR code at merchants across all 7 Emirates. Pay instantly - no card, no cash.",
+    description: "Scan any Pay10 DQR code at merchants across all 7 Emirates. Pay instantly. No card, no cash.",
   },
   {
     icon: "ph:paper-plane-tilt-bold",
     title: "Transfer & Send",
-    description: "Transfer to yourself or anyone - just enter the IBAN. No login waits, no approvals. Instant.",
+    description: "Transfer to yourself or anyone. Just enter the IBAN. No login waits, no approvals. Instant.",
   },
   {
     icon: "ph:device-mobile-bold",
@@ -23,7 +23,7 @@ const features = [
   {
     icon: "ph:clock-counter-clockwise-bold",
     title: "Track & Control",
-    description: "Every payment, every transfer - your full financial history in one place.",
+    description: "Every payment, every transfer. Your full financial history in one place.",
   },
   {
     icon: "ph:receipt-bold",
@@ -58,18 +58,19 @@ const ConsumerHero = () => {
       <div className={Style.intro_text_section} data-animation="opacity-up">
         <span className={Style.intro_label}>Pay10 UAE App &middot; Consumer super app</span>
         <h2 className={Style.intro_heading}>
-          PAY SMARTER, SEND FASTER,<br />LIVE EASIER - ALL IN ONE APP.
+          PAY SMARTER, SEND FASTER,<br />LIVE EASIER: ALL IN ONE APP.
         </h2>
         <p className={Style.intro_para}>
-          One app for every payment moment in the UAE. scan and pay, transfer money, send to mobile, pay bills, send abroad and track it all - all from Pay10.
+          One app for every payment moment in the UAE. Scan and pay, transfer money, send to mobile, pay bills, send abroad and track it all from Pay10.
         </p>
       </div>
 
       <svg width="0" height="0">
         <defs>
           <linearGradient id="heroIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFBB07" />
-            <stop offset="100%" stopColor="#EF1A23" />
+            <stop offset="0%" stopColor="var(--red)" />
+            <stop offset="40%" stopColor="var(--orange)" />
+            <stop offset="100%" stopColor="var(--yellow)" />
           </linearGradient>
         </defs>
       </svg>

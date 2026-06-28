@@ -63,35 +63,35 @@
   h2 {
     color: var(--white);
     font-family: 'bold', sans-serif;
-    font-size: 2.6rem;
+    font-size: 48px;
     line-height: 1.3;
     margin: 0;
     text-align: center;
 
     @include large {
-      font-size: 2.2rem;
+      font-size: 32px;
     }
 
     @include lessTab {
-      font-size: 1.8rem;
+      font-size: 32px;
     }
 
     @include mobile {
-      font-size: 1.5rem;
+      font-size: 26px;
     }
   }
 }
 
 .bottomText {
   color: var(--white);
-  font-family: 'medium', sans-serif;
-  font-size: 1.2rem;
+  font-family: 'regular', sans-serif;
+  font-size: 18px;
   margin: 0;
   text-align: center;
   padding-top: 40px;
 
   @include lessTab {
-    font-size: 1rem;
+    font-size: 16px;
     padding-top: 30px;
   }
 }
@@ -110,7 +110,7 @@
 }
 
 .textCard {
-  background-color: #f7f9fc;
+  background-color: var(--body-bg);
   border-radius: 32px;
   padding: 40px 30px;
   display: flex;
@@ -119,28 +119,28 @@
 
   h3 {
     font-family: 'bold', sans-serif;
-    font-size: 1.8rem;
+    font-size: 24px;
     color: var(--black);
     margin-bottom: 16px;
 
     @include large {
-      font-size: 1.5rem;
+      font-size: 20px;
     }
 
     @include mobile {
-      font-size: 1.3rem;
+      font-size: 18px;
     }
   }
 
   p {
     font-family: 'regular', sans-serif;
-    font-size: 1.05rem;
+    font-size: 18px;
     color: var(--gray);
     line-height: 1.6;
     margin: 0;
 
     @include mobile {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 }
@@ -149,7 +149,7 @@
   border-radius: 32px;
   overflow: hidden;
   position: relative;
-  background-color: #f7f9fc;
+  background-color: var(--body-bg);
   min-height: 320px;
 
   img {

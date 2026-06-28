@@ -9,7 +9,7 @@ export default function ConsumerAppFeature() {
   const features = [
     "Scan & Pay at DQR POS machines across all 7 Emirates",
     "Send money to friends via mobile number",
-    "Send money abroad \u2014 remit home to family",
+    "Send money abroad, remit home to family",
     "Link all your bank accounts in one view",
     "Bill payments, top-ups, card controls",
     "24/7 human consumer support"
@@ -21,12 +21,12 @@ export default function ConsumerAppFeature() {
         {/* Left Content */}
         <div className={styles.leftContent} data-animation="fade-up">
           <h2 className={styles.heading}>Your complete financial life in one place.</h2>
-          <h3 className={styles.subheading} style={{ color: '#000' }}>Consumer App</h3>
+          <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>Consumer App</h3>
           
           <ul className={styles.featuresList}>
             {features.map((feature, index) => (
               <li key={index} data-animation="fade-up" style={{ transitionDelay: `${index * 0.1}s` }}>
-                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: '#ff3d00' }} />
+                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: 'var(--red)' }} />
                 <span>{feature}</span>
               </li>
             ))}
@@ -58,8 +58,8 @@ export default function ConsumerAppFeature() {
         {/* Right Image */}
         <div className={styles.rightImage} data-animation="fade-up" style={{ transitionDelay: '0.2s' }}>
           <Image 
-            src="/images/home/consumer-qr.jpg" 
-            alt="Pay10 Consumer App scanning QR Code" 
+            src="/images/home/consumer-qr.jpg"
+            alt="Pay10 Consumer App scanning QR Code"
             fill 
             style={{ objectFit: 'cover' }}
           />

@@ -96,7 +96,7 @@ const Pay10CardFeatures = () => {
           {/* 04 Image Card */}
           <div className={`${Style.feature_card} ${Style.image_card}`} data-animation="opacity-up" data-anim-delay="400">
             <span className={Style.number_overlay}>04</span>
-            <img src="/images/prod_imports/link_acc.png" alt="Jaywan Pay10 Card" />
+            <img src="/images/prod_imports/jaywan-cards-mockup.png" alt="Jaywan Pay10 Card" />
           </div>
         </div>
 

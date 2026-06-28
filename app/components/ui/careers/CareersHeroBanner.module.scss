@@ -6,7 +6,7 @@
   background-image: url("/images/careers/careers_banner_img.jpg");
   background-size: cover;
   background-position: center;
-  border-radius: 2rem;
+  border-radius: 32px;
   position: relative;
   display: flex;
   align-items: center;
@@ -26,23 +26,25 @@
 
   h2 {
     text-transform: capitalize;
-    font-family: "bold";
-    font-size: 4.5rem;
+    font-family: "bold", sans-serif;
+    font-weight: 700;
+    font-size: 64px;
     color: var(--white);
     line-height: 1.1;
 
-    @include tab { font-size: 3.5rem; }
-    @include mobile { font-size: 2.5rem; }
+    @include tab { font-size: 48px; }
+    @include mobile { font-size: 32px; }
   }
 
   p {
-    font-size: 1.2rem;
-    margin-top: 0.75rem;
+    font-size: 18px;
+    font-family: 'regular', sans-serif;
+    margin-top: 12px;
     color: rgba(255, 255, 255, 0.88);
     line-height: 1.5;
 
-    @include tab { font-size: 1rem; }
-    @include mobile { font-size: 0.95rem; }
+    @include tab { font-size: 16px; }
+    @include mobile { font-size: 14px; }
   }
 }
 

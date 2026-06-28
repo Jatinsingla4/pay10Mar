@@ -65,11 +65,9 @@ export default function Pay10WPSFeature() {
           </div>
         </div>
 
-        {/* Image Placeholder (Right Side) */}
+        {/* Image (Right Side) */}
         <div className={styles.leftImage} data-animation="opacity-up" data-anim-delay="100">
-          <div style={{ width: '100%', height: '100%', backgroundColor: '#fff5ed', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#f35b04', fontSize: '1.2rem', fontFamily: 'medium', border: '2px dashed #f35b04', borderRadius: '32px', textAlign: 'center', padding: '20px' }}>
-            [WPS Card Image Placeholder]
-          </div>
+          <img src="/images/prod_imports/prepaid-card-bubble.png" alt="Pay10 WPS Card" />
         </div>
 
       </div>

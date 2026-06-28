@@ -66,7 +66,7 @@ const navigationData = {
           },
           {
             label: 'Payment Gateways',
-            href: '/products/payment-gateway',
+            href: '/payment-gateway',
             icon: '/images/header/payment-gateway.svg',
           },
           {
@@ -81,7 +81,7 @@ const navigationData = {
           },
           {
             label: 'Channel Partners',
-            href: '/ecosystem-partners',
+            href: '/channel-partners',
             icon: '/images/header/collect-world.svg',
           },
         ],

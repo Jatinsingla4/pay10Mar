@@ -132,7 +132,7 @@
     margin: 0;
     font-size: 42px;
     font-family: 'bold', sans-serif;
-    background: var(--primary-gradient, linear-gradient(90deg, #FFBB07 0%, #EF1A23 100%));
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -167,7 +167,7 @@
   h2 {
     font-size: 36px;
     font-family: 'bold', sans-serif;
-    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -255,7 +255,7 @@
     p {
       font-size: 16px;
       font-family: 'medium', sans-serif;
-      color: #666666;
+      color: var(--gray);
       line-height: 1.5;
       margin: 0;
     }
@@ -267,7 +267,7 @@
   position: relative;
   z-index: 1;
   padding: 80px 24px;
-  background-color: #fafafa;
+  background-color: var(--body-bg);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -279,7 +279,7 @@
     margin: 0;
     font-size: 36px;
     font-family: 'bold', sans-serif;
-    background: var(--primary-gradient, linear-gradient(90deg, #FFBB07 0%, #EF1A23 100%));
+    background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -356,7 +356,7 @@
 .bg_circle_wrapper {
   width: 100%;
   position: relative;
-  background-color: #fafafa;
+  background-color: var(--body-bg);
 
   &::before {
     content: "";

@@ -156,7 +156,7 @@
   min-width: 0;
   padding-top: 0;
   padding-left: 44px;
-  border-left: 3px solid #F37810;
+  border-left: 3px solid var(--orange);
   min-height: 500px;
   color: #7A7A7A;
 
@@ -164,7 +164,7 @@
     padding-left: 0;
     padding-top: 32px;
     border-left: none;
-    border-top: 3px solid #F37810;
+    border-top: 3px solid var(--orange);
     min-height: unset;
   }
 

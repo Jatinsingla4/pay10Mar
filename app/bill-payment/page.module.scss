@@ -39,7 +39,6 @@
     margin: 0;
     font-size: 48px;
     font-family: 'bold', sans-serif;
-    font-weight: 700;
     color: var(--white);
     line-height: 1.2;
     word-break: break-word;
@@ -49,15 +48,13 @@
     margin: 0;
     font-size: 18px;
     font-family: 'medium', sans-serif;
-    font-weight: 500;
     color: var(--white);
     line-height: 1.5;
   }
-  
+
   .slogan {
     font-size: 32px;
     font-family: 'bold', sans-serif;
-    font-weight: 700;
     color: var(--white);
     margin-top: 10px;
     line-height: 1.2;
@@ -86,7 +83,6 @@
     color: var(--black);
     font-size: 14px;
     font-family: 'semibold', sans-serif;
-    font-weight: 600;
     margin: 0;
   }
 
@@ -100,28 +96,27 @@
       border-radius: 40px;
       font-size: 14px;
       font-family: 'bold', sans-serif;
-    font-weight: 700;
-      background: var(--primary-gradient, linear-gradient(135deg, var(--yellow) 0%, var(--red) 100%));
+      background: var(--primary-gradient);
       border: none;
       color: var(--white);
       box-shadow: 0 4px 10px color-mix(in srgb, var(--red) 15%, transparent);
       transition: all 0.3s ease;
 
       &.badge_orange {
-        background: linear-gradient(135deg, var(--orange) 0%, var(--red) 100%);
-        box-shadow: 0 4px 10px color-mix(in srgb, var(--orange) 15%, transparent);
-        
+        background: var(--primary-gradient);
+        box-shadow: 0 4px 10px color-mix(in srgb, var(--red) 15%, transparent);
+
         &:hover {
-          box-shadow: 0 6px 14px color-mix(in srgb, var(--orange) 25%, transparent);
+          box-shadow: 0 6px 14px color-mix(in srgb, var(--red) 25%, transparent);
         }
       }
 
       &.badge_green {
-        background: linear-gradient(135deg, #27AE60 0%, #219150 100%);
-        box-shadow: 0 4px 10px rgba(39, 174, 96, 0.25);
+        background: var(--primary-gradient);
+        box-shadow: 0 4px 10px color-mix(in srgb, var(--red) 15%, transparent);
 
         &:hover {
-          box-shadow: 0 6px 14px rgba(39, 174, 96, 0.35);
+          box-shadow: 0 6px 14px color-mix(in srgb, var(--red) 25%, transparent);
         }
       }
 

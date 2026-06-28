@@ -33,18 +33,18 @@
   top: 50%;
   transform: translateY(-50%);
   max-width: 600px;
-  color: #fff;
+  color: var(--white);
   z-index: 2;
 
   h1 {
-    font-size: 42px;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
     margin-bottom: 24px;
   }
 
   p {
-    font-size: 1.125rem;
+    font-size: 18px;
     font-family: 'medium', sans-serif;
     line-height: 1.6;
     margin-bottom: 40px;
@@ -59,14 +59,18 @@
     h1 {
       font-size: 32px;
     }
+
+    p {
+      font-size: 16px;
+    }
   }
 
   @include mobile {
     h1 {
-      font-size: 28px;
+      font-size: 26px;
     }
     p {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 }
@@ -77,6 +81,16 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
   display: inline-block;
+}
+
+.uae_label {
+  color: var(--orange);
+  font-family: 'bold', sans-serif;
+  font-size: 14px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  display: block;
 }
 
 .compare_section {
@@ -94,21 +108,20 @@
   margin-bottom: 56px;
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     margin-bottom: 16px;
-    color: #111;
-    @include tab { font-size: 2rem; }
-    @include mobile { font-size: 1.6rem; }
+    @include tab { font-size: 32px; }
+    @include mobile { font-size: 26px; }
   }
 
   p {
-    font-size: 1.125rem;
-    color: var(--black);
+    font-size: 18px;
+    color: var(--gray);
     font-family: 'medium', sans-serif;
     max-width: 600px;
     margin: 0 auto;
-    @include mobile { font-size: 1rem; }
+    @include mobile { font-size: 16px; }
   }
 }
 
@@ -124,8 +137,8 @@
 }
 
 .device_card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--white);
+  border: 1px solid var(--events-box-bg);
   border-radius: 16px;
   padding: 32px 24px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
@@ -136,9 +149,9 @@
 .card_header {
   text-align: center;
   margin-bottom: 32px;
-  
+
   h3 {
-    font-size: 2rem;
+    font-size: 32px;
     font-family: 'bold', sans-serif;
     margin-bottom: 8px;
     background: var(--primary-gradient);
@@ -149,10 +162,11 @@
   }
 
   .tagline {
-    font-size: 0.95rem;
+    font-size: 14px;
     color: var(--black);
     min-height: 48px;
     margin-bottom: 24px;
+    font-family: 'regular', sans-serif;
   }
 }
 
@@ -171,14 +185,14 @@
 }
 
 .section_title {
-  font-size: 0.75rem;
+  font-size: 12px;
   font-family: 'bold', sans-serif;
-  color: #9ca3af;
+  color: var(--gray);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin: 24px 0 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--events-box-bg);
 }
 
 .section_block {
@@ -191,17 +205,17 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  
+
   .lbl {
-    font-size: 0.8rem;
+    font-size: 13px;
     font-family: 'semibold', sans-serif;
-    color: #374151;
+    color: var(--black);
   }
-  
+
   .val {
-    font-size: 0.9rem;
+    font-size: 14px;
     font-family: 'regular', sans-serif;
-    color: #6b7280;
+    color: var(--gray);
     line-height: 1.4;
   }
 }
@@ -221,22 +235,21 @@
   margin-bottom: 56px;
 
   h2 {
-    font-size: 2.5rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     margin-bottom: 16px;
-    color: #111;
-    @include tab { font-size: 2rem; }
-    @include mobile { font-size: 1.6rem; }
+    @include tab { font-size: 32px; }
+    @include mobile { font-size: 26px; }
   }
 
   p {
-    font-size: 1.125rem;
-    color: var(--black);
+    font-size: 18px;
+    color: var(--gray);
     font-family: 'medium', sans-serif;
     max-width: 700px;
     margin: 0 auto;
     line-height: 1.6;
-    @include mobile { font-size: 1rem; }
+    @include mobile { font-size: 16px; }
   }
 }
 
@@ -246,7 +259,7 @@
   gap: 16px;
   max-width: 1600px;
   margin: 0 auto;
-  
+
   @include tab {
     grid-template-columns: repeat(4, 1fr);
     gap: 16px;
@@ -258,25 +271,25 @@
 }
 
 .guarantee_card {
-  background: #fff;
-  border: 1px solid #f3f4f6;
+  background: var(--white);
+  border: 1px solid var(--events-box-bg);
   border-radius: 8px;
   padding: 16px 12px;
   display: flex;
   flex-direction: column;
 
   h4 {
-    font-size: 0.9rem;
+    font-size: 14px;
     font-family: 'semibold', sans-serif;
-    color: #111;
+    color: var(--black);
     margin-bottom: 8px;
     line-height: 1.2;
   }
 
   p {
-    font-size: 0.75rem;
+    font-size: 12px;
     font-family: 'regular', sans-serif;
-    color: #6b7280;
+    color: var(--gray);
     line-height: 1.4;
     margin: 0;
   }
@@ -285,7 +298,7 @@
 .icon_wrap {
   width: 36px;
   height: 36px;
-  background: #fff3e0; /* Light orange */
+  background: rgba(255, 129, 5, 0.1);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -294,14 +307,14 @@
 
   .card_icon {
     font-size: 18px;
-    color: #ff8105; /* Pay10 orange */
+    color: var(--orange);
   }
 }
 
 .ecosystem_flow_section {
   padding: 80px 24px;
   background: var(--body-bg);
-  color: #111;
+  color: var(--black);
 }
 
 .flow_header {
@@ -319,29 +332,29 @@
 
   .flow_h2 {
     display: block;
-    font-size: 2.25rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     margin-bottom: 8px;
-    @include tab { font-size: 1.8rem; }
-    @include mobile { font-size: 1.5rem; }
+    @include tab { font-size: 32px; }
+    @include mobile { font-size: 26px; }
   }
 
   .flow_h3 {
     display: block;
-    font-size: 2.25rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
-    @include tab { font-size: 1.8rem; }
-    @include mobile { font-size: 1.5rem; }
+    @include tab { font-size: 32px; }
+    @include mobile { font-size: 26px; }
   }
 
   p {
-    font-size: 1.125rem;
-    color: #666;
+    font-size: 18px;
+    color: var(--gray);
     font-family: 'medium', sans-serif;
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
-    @include mobile { font-size: 1rem; }
+    @include mobile { font-size: 16px; }
   }
 }
 
@@ -353,11 +366,10 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 32px 16px;
-  
+
   @include tab {
     justify-content: flex-start;
     overflow-x: auto;
-    /* Hide scrollbar */
     -ms-overflow-style: none;
     scrollbar-width: none;
     &::-webkit-scrollbar {
@@ -367,8 +379,8 @@
 }
 
 .flow_card {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--white);
+  border: 1px solid var(--events-box-bg);
   border-radius: 12px;
   padding: 24px 16px;
   flex: 1;
@@ -379,39 +391,39 @@
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  
+
   &:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    border-color: #ff8105;
+    border-color: var(--orange);
   }
 
   .flow_icon {
     font-size: 32px;
-    color: #ff8105; /* Pay10 orange */
+    color: var(--orange);
     margin-bottom: 16px;
   }
 
   h4 {
-    font-size: 1.125rem;
+    font-size: 18px;
     font-family: 'semibold', sans-serif;
-    color: #111;
+    color: var(--black);
     margin-bottom: 8px;
   }
 
   span {
-    font-size: 0.8rem;
+    font-size: 13px;
     font-family: 'medium', sans-serif;
-    color: #6b7280;
+    color: var(--gray);
   }
 }
 
 .flow_arrow {
   font-size: 24px;
-  color: #ff8105;
+  color: var(--orange);
   flex-shrink: 0;
   align-self: center;
-  
+
   @include mobile {
     display: none;
   }
@@ -442,22 +454,24 @@
 
   h2 {
     margin: 0;
-    font-size: 2.25rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
+    @include tab { font-size: 32px; }
+    @include mobile { font-size: 26px; }
   }
 
   .getting_started_tagline {
-    font-size: 1.125rem;
+    font-size: 18px;
     font-family: 'semibold', sans-serif;
-    color: #111;
+    color: var(--black);
   }
 
   .getting_started_desc {
     margin: 0;
-    font-size: 1rem;
+    font-size: 16px;
     font-family: 'regular', sans-serif;
-    color: #555;
+    color: var(--gray);
     line-height: 1.6;
   }
 
@@ -473,30 +487,30 @@
 }
 
 .step_card {
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--events-box-bg);
   border-radius: 16px;
   padding: 28px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #fff;
+  background: var(--white);
 }
 
 .step_num {
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-family: 'bold', sans-serif;
-  color: #ff8105;
+  color: var(--orange);
   align-self: flex-end;
 }
 
 .step_icon {
-  color: #FF8105;
+  color: var(--orange);
   margin-top: -12px;
 }
 
 .step_card h3 {
   margin: 0;
-  font-size: 1.125rem;
+  font-size: 18px;
   font-family: 'bold', sans-serif;
   line-height: 1.3;
   color: var(--black);
@@ -504,16 +518,16 @@
 
 .step_desc {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 16px;
   font-family: 'regular', sans-serif;
-  color: #666;
+  color: var(--gray);
   line-height: 1.6;
   flex: 1;
 }
 
 .step_arrow {
-  font-size: 1.25rem;
-  color: #ff8105;
+  font-size: 20px;
+  color: var(--orange);
   margin-top: 8px;
 }
 
@@ -532,7 +546,7 @@
 
 .cta_heading {
   margin: 0;
-  font-size: 3rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -541,15 +555,15 @@
   display: inline-block;
   line-height: 1.2;
 
-  @include tab { font-size: 2.25rem; }
-  @include mobile { font-size: 1.75rem; }
+  @include tab { font-size: 32px; }
+  @include mobile { font-size: 26px; }
 }
 
 .cta_sub {
   margin: 0;
-  font-size: 1rem;
+  font-size: 16px;
   font-family: 'regular', sans-serif;
-  color: #666;
+  color: var(--gray);
   max-width: 600px;
   line-height: 1.7;
 }
@@ -565,13 +579,13 @@
 .cta_btn_primary {
   padding: 14px 36px;
   border-radius: 100px;
-  background: var(--primary-gradient);
-  color: #fff;
+  background: var(--button-gradient);
+  color: var(--white);
   font-family: 'semibold', sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
   text-decoration: none;
   transition: opacity 0.2s;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(239, 26, 35, 0.2);
 
   &:hover { opacity: 0.88; }
 }
@@ -583,7 +597,7 @@
   text-align: center;
   padding: 80px 56px;
   gap: 28px;
-  background: #f5f5f5;
+  background: var(--body-bg);
 
   @include tab { padding: 48px 24px; }
   @include mobile { padding: 40px 16px; margin: 0 16px; }
@@ -591,12 +605,15 @@
 
 .app_download_heading {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
+  @include tab { font-size: 32px; }
+  @include mobile { font-size: 26px; }
 }
 
 .app_download_badges {
@@ -611,9 +628,9 @@
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  background: #111;
+  background: var(--black);
   border-radius: 100px;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   transition: opacity 0.2s;
 
@@ -624,7 +641,7 @@
     flex-direction: column;
     text-align: left;
 
-    span { font-size: 0.65rem; font-family: 'regular', sans-serif; opacity: 0.8; }
-    strong { font-size: 1rem; font-family: 'semibold', sans-serif; }
+    span { font-size: 10px; font-family: 'regular', sans-serif; opacity: 0.8; }
+    strong { font-size: 16px; font-family: 'semibold', sans-serif; }
   }
 }

@@ -72,7 +72,7 @@
 .bg_circle_wrapper {
   width: 100%;
   position: relative;
-  background-color: #fafafa;
+  background-color: var(--body-bg);
 
   &::before {
     content: "";
@@ -135,7 +135,7 @@
   h2 {
     font-size: 40px;
     font-family: 'bold', sans-serif;
-    background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+    background: var(--button-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
@@ -154,7 +154,7 @@
   p {
     font-size: 17px;
     font-family: 'medium', sans-serif;
-    color: #666666;
+    color: var(--gray);
     line-height: 1.6;
     margin: 0;
 
@@ -206,7 +206,7 @@
     content: "";
     position: absolute;
     inset: 0;
-    background: var(--primary-gradient, linear-gradient(135deg, #FFBB07 0%, #EF1A23 100%));
+    background: var(--primary-gradient);
     z-index: 0;
   }
 
@@ -333,7 +333,7 @@
   p {
     font-size: 15px;
     font-family: 'regular', sans-serif;
-    color: #666666;
+    color: var(--gray);
     line-height: 1.6;
     margin: 0;
   }

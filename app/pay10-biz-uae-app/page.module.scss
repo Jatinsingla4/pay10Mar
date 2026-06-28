@@ -28,18 +28,17 @@
 
   h2 {
     margin: 0;
-    font-size: 38px;
-    font-weight: 700;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
-    color: #ffffff;
+    color: var(--white);
     line-height: 1.2;
   }
 
   p {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 18px;
     font-family: 'medium', sans-serif;
-    color: #ffffff;
+    color: var(--white);
     line-height: 1.5;
   }
 
@@ -48,8 +47,8 @@
     left: 24px;
     max-width: 80%;
 
-    h2 { font-size: 26px; }
-    p { font-size: 15px; }
+    h2 { font-size: 32px; }
+    p { font-size: 16px; }
   }
 }
 
@@ -69,7 +68,7 @@
 
   h2 {
     margin: 0;
-    font-size: 2.75rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     line-height: 1.1;
     text-transform: uppercase;
@@ -81,7 +80,7 @@
 
   p {
     margin: 0;
-    font-size: 1rem;
+    font-size: 16px;
     font-family: 'medium', sans-serif;
     color: var(--gray);
     line-height: 1.6;
@@ -91,7 +90,7 @@
   @include tab {
     grid-template-columns: 1fr;
     gap: 16px;
-    h2 { font-size: 2rem; }
+    h2 { font-size: 32px; }
   }
 }
 
@@ -139,7 +138,7 @@
 
 .card_desc {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 16px;
   font-family: 'regular', sans-serif;
   color: var(--gray);
   line-height: 1.6;
@@ -186,20 +185,22 @@
 
   h2 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    @include tab { font-size: 32px; }
   }
 
   > p {
     margin: 0;
-    font-size: 0.9375rem;
+    font-size: 16px;
     font-family: 'regular', sans-serif;
-    color: #555;
+    color: var(--gray);
     line-height: 1.6;
   }
 
@@ -253,7 +254,7 @@
 }
 
 .benefit_icon {
-  color: #FF8105;
+  color: var(--orange);
   margin-top: 4px;
 }
 
@@ -279,7 +280,7 @@
   margin: 0;
   font-size: 0.875rem;
   font-family: 'regular', sans-serif;
-  color: #666;
+  color: var(--gray);
   line-height: 1.6;
   flex: 1;
 }
@@ -317,15 +318,15 @@
 
 .command_heading {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
   line-height: 1.15;
-  background: linear-gradient(to right, #FFBB07 0%, #FF8105 40%, #EF1A23 100%);
+  background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 
-  @include tab { font-size: 1.75rem; }
+  @include tab { font-size: 32px; }
 }
 
 .command_phones {
@@ -382,9 +383,9 @@
 
 .command_desc {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 16px;
   font-family: 'regular', sans-serif;
-  color: #555;
+  color: var(--gray);
   line-height: 1.6;
 }
 
@@ -413,7 +414,7 @@
   margin: 0;
   font-size: 0.875rem;
   font-family: 'regular', sans-serif;
-  color: #666;
+  color: var(--gray);
   line-height: 1.6;
 }
 
@@ -438,7 +439,7 @@
 
   h2 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
@@ -446,7 +447,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
 
-    @include tab { font-size: 1.5rem; }
+    @include tab { font-size: 32px; }
   }
 }
 
@@ -468,9 +469,9 @@
 
 .support_desc {
   margin: 0;
-  font-size: 0.9375rem;
+  font-size: 16px;
   font-family: 'regular', sans-serif;
-  color: #555;
+  color: var(--gray);
   line-height: 1.7;
 }
 
@@ -591,7 +592,7 @@
 
 .section_space {
   padding-top: 80px;
-  background-color: #f5f5f5;
+  background-color: var(--body-bg);
 }
 
 .section5BannerWrap {
@@ -640,17 +641,15 @@
     .features_title {
       color: var(--black);
       font-size: 48px;
-      font-weight: 500;
       margin-bottom: 24px;
       line-height: 1.1;
-      max-height: 775px;
     }
     .features_grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
       .feature_card {
-        background: #fff;
+        background: var(--white);
         border-radius: 16px;
         padding: 32px 32px;
         display: flex;
@@ -675,7 +674,6 @@
         p {
           color: var(--black);
           font-size: 24px;
-          font-weight: 500;
           text-align: left;
           margin: 0;
         }
@@ -755,7 +753,7 @@
 
 .steps_heading {
   margin: 0;
-  font-size: 2.75rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -763,8 +761,8 @@
   background-clip: text;
   text-transform: uppercase;
 
-  @include tab { font-size: 2rem; }
-  @include mobile { font-size: 1.6rem; }
+  @include tab { font-size: 32px; }
+  @include mobile { font-size: 26px; }
 }
 
 .steps_sub {
@@ -816,7 +814,7 @@
   height: 48px;
   border-radius: 50%;
   background: var(--primary-gradient);
-  color: #fff;
+  color: var(--white);
   font-family: 'bold', sans-serif;
   font-size: 0.9rem;
   display: flex;
@@ -855,12 +853,15 @@
 
 .app_download_heading {
   margin: 0;
-  font-size: 2.5rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
+  @include tab { font-size: 32px; }
+  @include mobile { font-size: 26px; }
 }
 
 .app_download_badges {
@@ -875,9 +876,9 @@
   align-items: center;
   gap: 12px;
   padding: 12px 24px;
-  background: #000;
+  background: var(--black);
   border-radius: 100px;
-  color: #fff;
+  color: var(--white);
   text-decoration: none;
   transition: opacity 0.2s;
 
@@ -908,13 +909,13 @@
 
 .cta_heading {
   margin: 0;
-  font-size: 3rem;
+  font-size: 48px;
   font-family: 'bold', sans-serif;
   color: var(--black);
   line-height: 1.2;
 
-  @include tab { font-size: 2.25rem; }
-  @include mobile { font-size: 1.75rem; }
+  @include tab { font-size: 32px; }
+  @include mobile { font-size: 26px; }
 }
 
 .cta_sub {
@@ -938,7 +939,7 @@
   padding: 14px 36px;
   border-radius: 100px;
   background: var(--primary-gradient);
-  color: #fff;
+  color: var(--white);
   font-family: 'semibold', sans-serif;
   font-size: 1rem;
   text-decoration: none;
@@ -951,7 +952,7 @@
   padding: 14px 36px;
   border-radius: 100px;
   background: var(--primary-gradient);
-  color: #fff;
+  color: var(--white);
   font-family: 'semibold', sans-serif;
   font-size: 1rem;
   text-decoration: none;

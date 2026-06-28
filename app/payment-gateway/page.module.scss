@@ -1,4 +1,4 @@
-@import "../../../styles/globals/mixin";
+@import "../../styles/globals/mixin";
 
 .section_wrapper {
   overflow-x: hidden;
@@ -220,8 +220,7 @@
 
   h2 {
     margin: 0;
-    font-size: 32px;
-    font-weight: 700;
+    font-size: 48px;
     font-family: 'bold', sans-serif;
     color: var(--white);
     display: inline-block;
@@ -240,8 +239,8 @@
     left: 24px;
     max-width: 90%;
 
-    h2 { font-size: 24px; }
-    p { font-size: 14px; }
+    h2 { font-size: 32px; }
+    p { font-size: 16px; }
   }
 
   @include mobile {
@@ -249,7 +248,7 @@
     right: 16px;
     max-width: calc(100% - 32px);
 
-    h2 { font-size: 20px; }
+    h2 { font-size: 26px; }
     p { font-size: 14px; }
   }
 }
@@ -366,13 +365,14 @@
 .showcase_wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 80px;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
 
   @include tab {
     grid-template-columns: 1fr;
+    gap: 48px;
     padding: 0 16px;
   }
 }
@@ -382,6 +382,7 @@
   display: flex;
   flex-direction: column;
   height: 600px;
+  min-width: 0;
 
   @include mobile {
     height: auto;
@@ -393,21 +394,19 @@
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: flex-start;
-  padding-right: 0;
   padding-top: 40px;
 }
 
 .showcase_phone_img {
-  width: auto;
-  height: 560px;
+  width: 100%;
+  height: auto;
+  max-height: 560px;
   object-fit: contain;
-  margin-right: -40px; /* Bleed off the right edge a bit */
 
   @include mobile {
-    height: 420px;
-    margin-right: -16px;
+    max-height: 420px;
   }
 }
 
@@ -416,7 +415,7 @@
   bottom: 24px;
   left: 24px;
   width: calc(100% - 48px);
-  max-width: 330px;
+  max-width: 270px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
   border: none;
 }
@@ -424,13 +423,13 @@
 .checkout_card {
   background: var(--white);
   border-radius: 12px;
-  padding: 24px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  
+
   @include tab {
     border: 2px solid var(--black);
-    padding: 20px;
+    padding: 14px;
   }
 }
 
@@ -441,26 +440,26 @@
   gap: 8px;
   font-family: 'semibold', sans-serif;
   color: var(--black);
-  font-size: 18px;
-  padding-bottom: 24px;
+  font-size: 14px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--border-clr);
-  margin-bottom: 24px;
+  margin-bottom: 14px;
 }
 
 .mockup_total {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 
   span {
-    font-size: 18px;
+    font-size: 14px;
     color: var(--gray);
     font-family: 'medium', sans-serif;
   }
 
   strong {
-    font-size: 20px;
+    font-size: 15px;
     font-family: 'bold', sans-serif;
     color: var(--black);
   }
@@ -470,39 +469,30 @@
   text-align: center;
   color: var(--gray);
   font-family: 'medium', sans-serif;
-  font-size: 14px;
-  margin-bottom: 24px;
+  font-size: 12px;
+  margin-bottom: 14px;
 }
 
 .mockup_pay10_btn, .mockup_bank_btn {
   width: 100%;
-  padding: 16px;
-  border: 1px solid var(--border-clr);
+  padding: 10px;
+  border: none;
   border-radius: 8px;
-  background: var(--white);
+  background: var(--button-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  font-size: 18px;
+  gap: 8px;
+  font-size: 14px;
   font-family: 'semibold', sans-serif;
-  color: #f1f5f9;
+  color: var(--white);
   cursor: pointer;
-  transition: all 0.2s;
-  margin-bottom: 16px;
+  transition: opacity 0.2s;
+  margin-bottom: 10px;
 
   &:hover {
-    border-color: #cbd5e1;
-    background: #f8fafc;
+    opacity: 0.88;
   }
-}
-
-.mockup_pay10_btn {
-  color: var(--black);
-}
-
-.mockup_bank_btn {
-  color: var(--black);
 }
 
 .mockup_hint {
@@ -517,7 +507,7 @@
 .journey_cards_section {
   width: 100%;
   background: var(--body-bg);
-  padding-bottom: 80px;
+  padding: 80px 0;
 }
 
 .journey_cards_wrapper {
@@ -536,21 +526,19 @@
 
 .journey_card {
   border-radius: 20px;
-  padding: 40px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #eaeaea;
-
-  @include mobile {
-    padding: 24px;
-  }
+  border: none;
+  background: var(--white);
+  box-shadow: 0 2px 24px rgba(0,0,0,0.06);
 }
 
 .journey_card_img {
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 
   img {
     width: 100%;
@@ -572,30 +560,33 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid #eaeaea;
+  margin-bottom: 16px;
 
   h3 {
     margin: 0;
-    font-size: 24px;
+    font-size: 22px;
     font-family: 'bold', sans-serif;
     color: var(--black);
   }
 }
 
 .card_badge {
-  font-size: 14px;
+  font-size: 11px;
   font-family: 'bold', sans-serif;
   color: var(--orange);
   text-transform: uppercase;
+  background: rgba(255, 129, 5, 0.1);
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  letter-spacing: 0.03em;
 }
 
 .card_desc {
-  font-size: 18px;
-  font-family: 'medium', sans-serif;
+  font-size: 15px;
+  font-family: 'regular', sans-serif;
   color: var(--gray);
-  margin-bottom: 32px;
+  margin: 0 0 20px;
   line-height: 1.6;
 }
 
@@ -604,13 +595,15 @@
 }
 
 .list_heading {
-  font-size: 16px;
+  font-size: 13px;
   font-family: 'bold', sans-serif;
-  color: var(--black);
+  color: var(--gray);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
 .list_icon {
@@ -620,19 +613,25 @@
 .journey_card_list {
   list-style: none;
   padding: 0;
-  margin: 0 0 32px 0;
+  margin: 0 0 24px 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 0;
 
   li {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: flex-start;
-    font-size: 16px;
+    font-size: 14px;
     font-family: 'regular', sans-serif;
     color: var(--gray);
     line-height: 1.5;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--events-box-bg);
+
+    &:last-child {
+      border-bottom: none;
+    }
   }
 }
 
@@ -640,23 +639,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
   background: var(--primary-gradient);
   border-radius: 50%;
-  font-size: 13px;
+  font-size: 12px;
   font-family: 'bold', sans-serif;
   color: var(--white);
-  margin-top: 2px;
+  flex-shrink: 0;
 }
 
 .card_footer {
   margin-top: auto;
-  padding-top: 24px;
-  border-top: 1px solid #eaeaea;
-  font-size: 15px;
-  font-family: 'medium', sans-serif;
+  padding: 14px 16px;
+  border-left: 3px solid var(--orange);
+  background: rgba(255, 129, 5, 0.04);
+  border-radius: 0 8px 8px 0;
+  font-size: 13px;
+  font-family: 'regular', sans-serif;
   color: var(--gray);
   line-height: 1.6;
 
@@ -710,7 +711,7 @@
   align-items: flex-start;
   gap: 16px;
   padding: 24px 0;
-  border-bottom: 1px solid #eaeaea;
+  border-bottom: 1px solid var(--events-box-bg);
 
   &:last-child {
     border-bottom: none;
@@ -770,7 +771,7 @@
 .benefits_grid_wrapper {
   max-width: 1300px;
   margin: 60px auto 0;
-  border: 1px solid #eaeaea;
+  border: 1px solid var(--events-box-bg);
   border-radius: 12px;
   overflow: hidden;
 }
@@ -786,7 +787,7 @@
 .benefit_col {
   flex: 1;
   padding: 40px 24px;
-  border-right: 1px solid #eaeaea;
+  border-right: 1px solid var(--events-box-bg);
   display: flex;
   flex-direction: column;
 
@@ -796,7 +797,7 @@
 
   @include tab {
     border-right: none;
-    border-bottom: 1px solid #eaeaea;
+    border-bottom: 1px solid var(--events-box-bg);
 
     &:last-child {
       border-bottom: none;
@@ -828,7 +829,7 @@
 }
 
 .benefit_desc {
-  font-size: 15px;
+  font-size: 16px;
   font-family: 'regular', sans-serif;
   color: var(--gray);
   line-height: 1.6;
@@ -863,12 +864,15 @@
 }
 
 .cta_sub {
-  margin: 0;
-  font-size: 18px;
-  font-family: 'regular', sans-serif;
-  color: var(--gray);
-  max-width: 800px;
-  line-height: 1.7;
+  margin: 0 0 12px;
+  font-size: 28px;
+  font-family: 'bold', sans-serif;
+  color: var(--black);
+  max-width: 900px;
+  line-height: 1.5;
+
+  @include tab { font-size: 22px; }
+  @include mobile { font-size: 18px; }
 }
 
 .cta_buttons {
@@ -882,7 +886,7 @@
 .cta_btn_primary {
   padding: 14px 36px;
   border-radius: 100px;
-  background: var(--primary-gradient);
+  background: var(--button-gradient);
   color: var(--white);
   font-family: 'semibold', sans-serif;
   font-size: 16px;

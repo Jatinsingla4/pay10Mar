@@ -13,7 +13,7 @@ const Pay10CardClient = () => {
     subheading: "Pay10 is issuing UAE's first CBUAE-accredited local debit card directly through the Pay10 UAE App - offering an instant, secure, and seamless payment experience for everyone who calls the UAE home.",
     points: [],
     extraContent: (
-      <div style={{ marginTop: '24px', fontFamily: "'bold', sans-serif", fontSize: '18px', letterSpacing: '1px', textTransform: 'uppercase', color: '#444' }}>
+      <div style={{ marginTop: '24px', fontFamily: "'bold', sans-serif", fontSize: '18px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gray)' }}>
         POWERED BY JAYWAN · UAE&apos;S NATIONAL CARD SCHEME
       </div>
     ),

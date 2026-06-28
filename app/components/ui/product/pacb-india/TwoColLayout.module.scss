@@ -53,9 +53,10 @@
             line-height: 1.2;
             margin-bottom: 20px;
             font-family: 'bold', sans-serif;
-            background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+            background: var(--primary-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
             display: inline-block;
             transition: all ease 0.5s;
 
@@ -101,7 +102,7 @@
         ol {
             li {
                 margin-top: 16px;
-                color: #666666;
+                color: var(--gray);
                 font-size: 1.1rem;
                 font-family: 'regular', sans-serif;
                 line-height: 1.5;
@@ -109,7 +110,7 @@
         }
         p {
           margin-top: 16px;
-          color: #666666;
+          color: var(--gray);
           font-size: 1.1rem;
           font-family: 'regular', sans-serif;
           line-height: 1.5;
@@ -129,9 +130,8 @@
         h3 {
             font-family: 'medium';
             font-size: 48px;
-            font-weight: 500;
             font-style: normal;
-            color: #000000;
+            color: var(--black);
             line-height: 1.15;
             margin: 0 0 18px;
             transition: none;
@@ -152,7 +152,6 @@
             color: var(--gray);
             font-family: 'regular';
             font-size: 20px;
-            font-weight: 400;
             font-style: normal;
             line-height: 1.55;
         }
@@ -166,14 +165,13 @@
             color: var(--gray);
             font-family: 'regular';
             font-size: 20px;
-            font-weight: 400;
             line-height: 1.55;
         }
 
         /* CMS wrapper: normalize any block inside description column */
         > div:first-child:not(:only-child) ~ div,
         > div:only-child {
-            color: #666666;
+            color: var(--gray);
             font-family: 'regular', sans-serif;
             font-size: 1.1rem;
             line-height: 1.5;
@@ -182,7 +180,6 @@
                 margin: 0;
                 color: inherit;
                 font-family: inherit;
-                font-weight: 400;
                 font-size: inherit;
                 line-height: inherit;
 
@@ -198,7 +195,6 @@
             }
 
             div {
-                font-weight: 400;
                 color: inherit;
             }
         }

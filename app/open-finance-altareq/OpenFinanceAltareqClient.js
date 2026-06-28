@@ -36,8 +36,7 @@ const ALTAREQ_CONNECTED_INTRO = {
 };
 
 /** Matches design: English link + Arabic FAQ line accent (see .altareqArabicFaqLink). */
-const ALTAREQ_LINK_COLOR = "#b03050";
-const ALTAREQ_LINK_STYLE = `color:${ALTAREQ_LINK_COLOR};font-weight:600;text-decoration:none;`;
+const ALTAREQ_LINK_STYLE = `color:var(--red);font-family:'semibold',sans-serif;text-decoration:none;`;
 
 const OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS = [
   {

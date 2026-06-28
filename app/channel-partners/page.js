@@ -7,7 +7,7 @@ export const metadata = {
   title: "Channel Partners - Pay 10",
   description: "Unlock new revenue by adding Pay10's payment methods to your platform.",
   alternates: {
-    canonical: "https://pay10.ae/ecosystem-partners",
+    canonical: "https://pay10.ae/channel-partners",
   },
 };
 
@@ -28,8 +28,8 @@ export default function EcosystemPartnersPage() {
       <svg width="0" height="0" style={{ position: 'absolute' }}>
         <defs>
           <linearGradient id="pay10-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#ff8105" />
-            <stop offset="100%" stopColor="#ffb020" />
+            <stop offset="0%" stopColor="var(--orange)" />
+            <stop offset="100%" stopColor="var(--yellow)" />
           </linearGradient>
         </defs>
       </svg>
@@ -125,7 +125,7 @@ export default function EcosystemPartnersPage() {
       </section>
 
       <section className={styles.reasons_section}>
-        <div className={styles.reasons_header} style={{ maxWidth: '800px', marginBottom: '40px' }}>
+        <div className={`${styles.reasons_header} ${styles.reasons_header_narrow}`}>
           <h2>Security and licensing : partner with a platform you can trust</h2>
         </div>
         <div className={styles.reasons_grid}>

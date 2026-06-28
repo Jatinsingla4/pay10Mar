@@ -12,7 +12,7 @@ const MerchantAppClient = () => {
     <main>
       <section className={Style.biz_hero}>
         <div className={Style.biz_hero_text}>
-          <h2>Every dirham you earn, settled today.</h2>
+          <h2>Every dirham you earn, <br />settled today.</h2>
           <p>Pay10 UAE Biz App is built for every merchant in the UAE: micro, SME, and enterprise. Lowest transaction fees. Same-day settlement. 24/7 multi-language, human support. Licensed by the Central Bank of the UAE.</p>
         </div>
       </section>

@@ -316,7 +316,7 @@
         }
 
         &:hover {
-          background: linear-gradient(to right, #FFBB07, #EF1A23);
+          background: var(--button-gradient);
           border-radius: 8px;
 
           .header__products-mega-item-label {
@@ -446,7 +446,7 @@
       text-align: left;
 
       &:hover {
-        background: linear-gradient(to right, #FFBB07, #EF1A23);
+        background: var(--button-gradient);
         border-radius: 8px;
         color: var(--white);
 

@@ -13,10 +13,10 @@ export default async function sitemap() {
     '/pay10-uae-app',
     '/pay10-biz-uae-app',
     '/open-finance-altareq',
-    '/products/payment-gateway',
+    '/payment-gateway',
     '/faqs',
     '/key-fact-statement',
-    '/ecosystem-partners',
+    '/channel-partners',
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),

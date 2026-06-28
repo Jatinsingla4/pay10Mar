@@ -32,7 +32,7 @@
             line-height: 1.2;
             margin-bottom: 20px;
             font-family: 'bold', sans-serif;
-            background: linear-gradient(to right, #FFBB07 0%, #EF1A23 100%);
+            background: var(--button-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;

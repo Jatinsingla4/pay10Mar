@@ -31,13 +31,13 @@ const WpsPayrollPage = () => {
       </section>
 
       <ConsumerFeatureSection
-        heading={<span className={styles.gradient_heading}>What is the Wage Protection System (WPS)?</span>}
-        subheading={<span className={styles.grey_text}>The Wage Protection System (WPS) is a UAE government mandate managed by the Central Bank of the UAE (CBUAE). It requires every employer in the UAE: across all industries, for all workers, blue collar and white collar: to process salaries digitally through a CBUAE-licensed provider. The system verifies that every employee is paid what their labour contract says, and that they are paid on time. Non-compliance carries significant penalties. Pay10 is a fully licensed WPS provider: meaning every salary processed through Pay10 satisfies this mandate completely.</span>}
-        imageSrc="/images/prod_imports/wps-labor-bubble.png"
-        imageAlt="Wage Protection System"
-        isReversed={false}
-        isGreyBg={true}
-      />
+          heading="What is the Wage Protection System (WPS)?"
+          subheading={<span className={styles.grey_text}>The Wage Protection System (WPS) is a UAE government mandate managed by the Central Bank of the UAE (CBUAE). It requires every employer in the UAE: across all industries, for all workers, blue collar and white collar: to process salaries digitally through a CBUAE-licensed provider. The system verifies that every employee is paid what their labour contract says, and that they are paid on time. Non-compliance carries significant penalties. Pay10 is a fully licensed WPS provider: meaning every salary processed through Pay10 satisfies this mandate completely.</span>}
+          imageSrc="/images/prod_imports/wps-labor-bubble.png"
+          imageAlt="Wage Protection System"
+          isReversed={false}
+          isGreyBg={true}
+        />
 
       <section className={styles.who_is_for_section}>
         <div className={styles.who_container}>
@@ -174,8 +174,8 @@ const WpsPayrollPage = () => {
       <section className={styles.steps_section}>
         <svg width="0" height="0" style={{ position: 'absolute' }}>
           <linearGradient id="pay10_grad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#FFBB07" />
-            <stop offset="100%" stopColor="#EF1A23" />
+            <stop offset="0%" stopColor="var(--yellow)" />
+            <stop offset="100%" stopColor="var(--red)" />
           </linearGradient>
         </svg>
         <div className={styles.steps_container}>
@@ -300,21 +300,21 @@ const WpsPayrollPage = () => {
       </section>
 
       <ConsumerFeatureSection
-        heading={<span className={styles.gradient_heading}>Ensuring minimal disruption to your existing salary processing</span>}
-        subheading="Our end-to-end WPS solution is built to make switching effortless."
-        points={[
-          "Smooth migration for existing payroll cards: no disruption to employees",
-          "Seamless salary disbursement from day one",
-          "Full regulatory compliance with the new CBUAE WPS framework",
-          "Reduced administrative effort for HR and payroll teams",
-          "Digital access for all employees via Pay10 UAE App",
-          "Transparent fee structure and simplified onboarding process"
-        ]}
-        imageSrc="/images/prod_imports/wps-02-bubble.png"
-        imageAlt="Minimal Disruption"
-        isReversed={true}
-        isGreyBg={true}
-      />
+          heading="Ensuring minimal disruption to your existing salary processing"
+          subheading="Our end-to-end WPS solution is built to make switching effortless."
+          points={[
+            "Smooth migration for existing payroll cards: no disruption to employees",
+            "Seamless salary disbursement from day one",
+            "Full regulatory compliance with the new CBUAE WPS framework",
+            "Reduced administrative effort for HR and payroll teams",
+            "Digital access for all employees via Pay10 UAE App",
+            "Transparent fee structure and simplified onboarding process"
+          ]}
+          imageSrc="/images/prod_imports/wps-02-bubble.png"
+          imageAlt="Minimal Disruption"
+          isReversed={true}
+          isGreyBg={true}
+        />
 
       <section className={styles.biz_final_cta}>
         <h2 className={styles.cta_heading}>Ready to pay your employees the smarter way?</h2>

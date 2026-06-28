@@ -80,7 +80,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(rgb(239, 26, 35) 0%, rgb(242, 41, 91) 100%);
+  background: var(--button-gradient);
   color: #ffffff;
   text-decoration: none;
   font-size: 15px;
@@ -130,7 +130,7 @@
   border: none;
   cursor: default;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(243, 120, 16, 0.25);
+  box-shadow: 0 6px 20px rgba(255, 129, 5, 0.25);
 
   @include tab {
     width: 100%;
@@ -140,13 +140,13 @@
 .content_panel {
   flex: 1;
   min-width: 0;
-  border-left: 3px solid #F37810;
+  border-left: 3px solid var(--orange);
   padding-left: 44px;
 
   @include tab {
     border-left: none;
     padding-left: 0;
-    border-top: 3px solid #F37810;
+    border-top: 3px solid var(--orange);
     padding-top: 32px;
   }
 }
@@ -206,7 +206,7 @@
   }
 
   a {
-    color: #F37810;
+    color: var(--orange);
     text-decoration: underline;
   }
 
@@ -238,7 +238,7 @@
     background-color: #fff5e6;
     color: #1a1a1a;
     font-weight: 700;
-    border-bottom: 2px solid #F37810;
+    border-bottom: 2px solid var(--orange);
   }
 
   tr:nth-child(even) {

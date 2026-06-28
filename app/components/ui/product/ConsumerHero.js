@@ -49,7 +49,7 @@ const ConsumerHero = () => {
         <div className={Style.hero_banner}>
           <div className={Style.hero_banner_text}>
             <h1 className={Style.headline} data-animation="opacity-up">
-              EVERY PAYMENT. EVERY TRANSFER. <br /> EVERY BILL. ONE UAE APP.
+              EVERY PAYMENT. <br /> EVERY TRANSFER. <br /> EVERY BILL. ONE UAE APP.
             </h1>
           </div>
         </div>

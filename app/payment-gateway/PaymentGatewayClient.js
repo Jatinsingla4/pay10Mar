@@ -177,7 +177,7 @@ const PaymentGatewayClient = () => {
       <section className={Style.centered_text_section}>
         <div className={Style.centered_container}>
           <h2 className={Style.centered_heading}>
-            From checkout button to confirmed order,<br/>here's exactly what happens.
+            From checkout button to<br/>confirmed order,<br/>here's exactly what happens.
           </h2>
           <p className={Style.centered_paragraph}>
             Two different journeys. The same outcome: a completed payment, settled to your account today.

@@ -72,8 +72,8 @@ export const generateApiMetadata = (pageData, fallbackTitle = 'Pay 10', fallback
     rawTitle = 'Key Fact Statement \u2013 Pay 10';
   } else if (currentSlug === 'privacy-policy' || titleLower.includes('privacy policy') || titleLower.includes('privacy-policy')) {
     rawTitle = 'Privacy Policy \u2013 Pay 10';
-  } else if (currentSlug === 'ecosystem-partners' || titleLower.includes('ecosystem partners') || titleLower.includes('ecosystem-partners')) {
-    rawTitle = 'Ecosystem Partners \u2013 Pay 10';
+  } else if (currentSlug === 'channel-partners' || titleLower.includes('channel partners') || titleLower.includes('channel-partners')) {
+    rawTitle = 'Channel Partners \u2013 Pay 10';
   }
 
   const slug = pageData?.slug === 'home' || !pageData?.slug ? '' : pageData.slug;

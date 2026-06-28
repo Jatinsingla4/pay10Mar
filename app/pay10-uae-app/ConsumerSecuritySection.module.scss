@@ -42,7 +42,6 @@
   .subheading {
     font-size: 26px;
     font-family: 'extrabold', sans-serif;
-    font-weight: 800;
     color: var(--black);
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -60,7 +59,6 @@
   .main_heading {
     font-size: 128px;
     font-family: 'bold', sans-serif;
-    font-weight: 700;
     line-height: 1;
     margin-bottom: 30px;
     background: var(--primary-gradient);
@@ -81,7 +79,6 @@
   .description {
     font-size: 20px;
     font-family: 'regular', sans-serif;
-    font-weight: 400;
     color: var(--black);
     line-height: 1.7;
     max-width: 800px;
@@ -96,7 +93,6 @@
   .description_sub {
     font-size: 18px;
     font-family: 'regular', sans-serif;
-    font-weight: 400;
     color: var(--gray);
     line-height: 1.7;
     max-width: 800px;
@@ -116,7 +112,6 @@
     h4 {
       font-size: 18px;
       font-family: 'medium', sans-serif;
-      font-weight: 500;
       color: var(--gray);
       margin-bottom: 24px;
     }

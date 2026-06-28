@@ -42,7 +42,7 @@ const SendAbroadClient = () => {
       <section className={Style.send_hero}>
         <div className={Style.send_hero_text}>
           <h2>
-            Your family <br /> shouldn't wait <br /> for their money.
+            Your family shouldn't wait <br /> for their money.
           </h2>
           <p>
             With Pay10 UAE App Send Abroad, your transfer reaches your loved ones the same day - instantly. No days of waiting. No beneficiary delays. Just send, and it's there.

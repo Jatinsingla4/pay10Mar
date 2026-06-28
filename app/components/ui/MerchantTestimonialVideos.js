@@ -58,7 +58,7 @@ const MerchantTestimonialVideos = () => {
       <div className={Style.container}>
         
         <div className={Style.textContent} data-animation="fade-up">
-          <h2>Don't take our word for it. Hear it from the merchants themselves.</h2>
+          <h2>Don't take our word for it.<br /> Hear it from the merchants themselves.</h2>
           <p>
             From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.
           </p>

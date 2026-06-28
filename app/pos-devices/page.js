@@ -33,30 +33,30 @@ const PosDevicesPage = () => {
       </section>
 
       <ConsumerFeatureSection
-        heading={
-          <>
-            <div style={{color: '#FF8105', WebkitTextFillColor: '#FF8105', fontWeight: 'bold', fontSize: '0.9rem', letterSpacing: '1px', marginBottom: '16px', textTransform: 'uppercase'}}>
-              🇦🇪 UAE FIRST &middot; DYNAMIC QR TECHNOLOGY
-            </div>
-            <span className={styles.gradient_heading}>
-              The UAE's first Dynamic QR POS device.<br/>A new era of in-person payments.
-            </span>
-          </>
-        }
-        subheading="Every Pay10 device generates a unique Dynamic QR code per transaction — created fresh, linked to the exact amount, confirmed instantly. Not a static sticker. Not a shared code. A live, secure QR generated every single time a customer pays."
-        points={[
-          "Dynamic QR generated per transaction - unique, amount-specific, instant",
-          "Customer scans with Pay10 UAE App, payment confirmed in under 2 seconds",
-          "Audio and visual confirmation on device with no ambiguity and no errors",
-          "Static QR also supported for merchants who need both options",
-          "Sound box confirmation with an audible payment alert in any environment",
-          "UAE's first device family to bring DQR to in-store payments at scale"
-        ]}
-        imageSrc="/images/prod_imports/consumer-app-phone.png"
-        imageAlt="Dynamic QR Technology"
-        isReversed={false}
-        isGreyBg={true}
-      />
+          heading={
+            <>
+              <div className={styles.uae_label}>
+                🇦🇪 UAE FIRST &middot; DYNAMIC QR TECHNOLOGY
+              </div>
+              <span className={styles.gradient_heading}>
+                The UAE's first Dynamic QR POS device.<br/>A new era of in-person payments.
+              </span>
+            </>
+          }
+          subheading="Every Pay10 device generates a unique Dynamic QR code per transaction — created fresh, linked to the exact amount, confirmed instantly. Not a static sticker. Not a shared code. A live, secure QR generated every single time a customer pays."
+          points={[
+            "Dynamic QR generated per transaction - unique, amount-specific, instant",
+            "Customer scans with Pay10 UAE App, payment confirmed in under 2 seconds",
+            "Audio and visual confirmation on device with no ambiguity and no errors",
+            "Static QR also supported for merchants who need both options",
+            "Sound box confirmation with an audible payment alert in any environment",
+            "UAE's first device family to bring DQR to in-store payments at scale"
+          ]}
+          imageSrc="/images/prod_imports/consumer-app-phone.png"
+          imageAlt="Dynamic QR Technology"
+          isReversed={false}
+          isGreyBg={true}
+        />
 
       <section className={styles.compare_section}>
         <div className={styles.container}>
@@ -389,8 +389,8 @@ const PosDevicesPage = () => {
       <section className={styles.getting_started}>
         <div className={styles.getting_started_left}>
           <h2 className={styles.gradient_heading}>Lets get you Started</h2>
-          <p className={styles.getting_started_tagline}>From box to first payment — in 4 steps.</p>
-          <p className={styles.getting_started_desc}>Pay10 delivers and sets up your device. Here's what happens after it arrives — straight from the device manual.</p>
+          <p className={styles.getting_started_tagline}>From box to first payment. In 4 steps.</p>
+          <p className={styles.getting_started_desc}>Pay10 delivers and sets up your device. Here's what happens after it arrives, straight from the device manual.</p>
         </div>
         
         <div className={styles.getting_started_grid}>
@@ -417,7 +417,7 @@ const PosDevicesPage = () => {
               num: '4',
               icon: 'mdi:check-decagram-outline',
               title: 'Verify & start accepting',
-              desc: 'Run a test transaction — AED amount, Dynamic QR generated, customer scans, audio + visual confirmation. You\'re live.'
+              desc: 'Run a test transaction: AED amount, Dynamic QR generated, customer scans, audio + visual confirmation. You\'re live.'
             }
           ].map((item) => (
             <div key={item.num} className={styles.step_card}>

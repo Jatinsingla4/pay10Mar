@@ -50,7 +50,6 @@
     .headline {
       margin: 0;
       font-family: 'bold', sans-serif;
-      font-weight: 700;
       font-size: 48px;
       line-height: 1.2;
       color: var(--white);
@@ -79,14 +78,12 @@
 
     .intro_label {
       font-size: 18px;
-      font-weight: 500;
-      color: var(--black);
       font-family: 'medium', sans-serif;
+      color: var(--black);
     }
 
     .intro_heading {
       font-size: 48px;
-      font-weight: 700;
       line-height: 1.2;
       background: var(--primary-gradient);
       -webkit-background-clip: text;
@@ -194,7 +191,6 @@
 
         .feature_title {
           font-family: 'bold', sans-serif;
-      font-weight: 700;
           font-size: 16px;
           margin-bottom: 12px;
           line-height: 1.3;
@@ -202,6 +198,7 @@
 
         .feature_desc {
           font-size: 14px;
+          font-family: 'regular', sans-serif;
           color: var(--gray);
           line-height: 1.45;
         }

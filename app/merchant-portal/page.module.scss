@@ -14,6 +14,10 @@
     height: 500px;
     border-radius: 16px;
   }
+
+  @include mobile {
+    background-image: url('/images/prod_imports/merchant-portal-hero-mobile.png');
+  }
 }
 
 .altareq_hero_text {

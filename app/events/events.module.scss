@@ -12,7 +12,11 @@
   overflow: hidden;
 
   @include tab { min-height: 500px; background-position: center center; }
-  @include mobile { min-height: 420px; }
+  @include mobile {
+    min-height: 420px;
+    background-image: url("/images/events_images/events-banner-mobile.png");
+    background-position: center center;
+  }
 }
 
 .bannerOverlay {

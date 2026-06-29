@@ -17,6 +17,11 @@
     padding: 40px 16px 0px 16px;
   }
 
+  @include mobile {
+    background: url('/images/prod_imports/home-page-hero-mobile.png') no-repeat center center;
+    background-size: cover;
+  }
+
   .desktopLayout {
     position: relative;
     z-index: 2;

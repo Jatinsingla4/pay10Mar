@@ -9,6 +9,9 @@
     margin: 56px 0;
     padding: 0px 16px;
   }
+  @include mobile {
+    margin: 40px 0;
+  }
 }
 
 .bg_circle {
@@ -184,6 +187,12 @@
     height: 500px;
     border-radius: 16px;
   }
+
+  @include mobile {
+    height: 400px;
+    background-image: url('/images/prod_imports/altareq_mobile_banner.jpg');
+    background-position: center;
+  }
 }
 
 .altareq_hero_text {
@@ -225,6 +234,21 @@
       font-size: 15px;
     }
   }
+
+  @include mobile {
+    top: 100px;
+    left: 16px;
+    max-width: 100%;
+    padding-right: 16px;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
 }
 
 /** Second section: “future of finance” + Al Tareq logo (hardcoded until CMS). */
@@ -235,6 +259,10 @@
 
   @include tab {
     padding: 56px 16px 0;
+  }
+
+  @include mobile {
+    padding: 40px 16px 0;
   }
 
   /* AlTareq logo: correct landscape aspect ratio (2084×819) */

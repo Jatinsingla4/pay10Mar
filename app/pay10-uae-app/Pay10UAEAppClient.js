@@ -17,8 +17,8 @@ const CustomerAppClient = () => {
         "Real-time, secure connection with bank-grade encryption and your consent, always",
         "Track and monitor all linked accounts and transactions in one place"
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
-      imageAlt: "Link bank account",
+      imageSrc: "/images/pay10-uae-app/link-bank-account.png",
+      imageAlt: "Link bank account — Al Tareq Open Finance",
       isReversed: false,
       isGreyBg: true,
     },
@@ -31,8 +31,8 @@ const CustomerAppClient = () => {
         "No card. No cash. No waiting. Just open Pay10 UAE App, scan the code, and walk away paid.",
         "Scan & Pay at thousands of merchants across all 7 Emirates, including retail, restaurants, services, and more."
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
-      imageAlt: "Dynamic QR POS",
+      imageSrc: "/images/pay10-uae-app/scan-pay-bubble.png",
+      imageAlt: "Scan & Pay",
       isReversed: true,
       isGreyBg: true,
     },
@@ -44,7 +44,7 @@ const CustomerAppClient = () => {
         "Behind every Pay10 bank transfer is Aani, the CBUAE real-time payments network. Instant. 24/7.",
         "Transfer any time: midnight, weekend, or public holiday. Pay10 doesn't keep banking hours because your life doesn't either."
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
+      imageSrc: "/images/pay10-uae-app/bank-transfer-bubble.png",
       imageAlt: "Bank Transfer",
       isReversed: false,
       isGreyBg: true,
@@ -58,8 +58,8 @@ const CustomerAppClient = () => {
         "Not on Pay10 yet? They get an SMS to join and claim what you sent. It waits for them.",
         "Send to anyone in the UAE. No bank details, no IBAN, no awkward \"what's your account number\" conversation."
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
-      imageAlt: "Send money",
+      imageSrc: "/images/pay10-uae-app/send-to-mobile-bubble.png",
+      imageAlt: "Send to Mobile",
       isReversed: true,
       isGreyBg: true,
     },
@@ -70,8 +70,8 @@ const CustomerAppClient = () => {
         "Utilities, telecom, transportation and even gift cards across every bill category, every provider, across all 7 Emirates.",
         "One login. One app. No more switching between portals, websites, or queues."
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
-      imageAlt: "Pay Bill",
+      imageSrc: "/images/pay10-uae-app/pay-bills-bubble.png",
+      imageAlt: "Pay Bills",
       isReversed: false,
       isGreyBg: true,
     },
@@ -83,7 +83,7 @@ const CustomerAppClient = () => {
         "No more adding beneficiaries and waiting for approvals. Enter once. Send anytime.",
         "Whether it's rent, school fees, or just because, your money moves the moment you decide."
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
+      imageSrc: "/images/pay10-uae-app/send-abroad-bubble.png",
       imageAlt: "Send Money Abroad",
       isReversed: true,
       isGreyBg: true,
@@ -97,7 +97,7 @@ const CustomerAppClient = () => {
         "Withdraw cash at any UAE ATM. Pay at all Jaywan-enabled POS devices across all 7 Emirates.",
         "Pay10 Card is coming. The UAE's first CBUAE-accredited local debit card, and it's worth the wait."
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
+      imageSrc: "/images/pay10-uae-app/pay10-card-bubble.png",
       imageAlt: "Pay10 Card",
       isReversed: false,
       isGreyBg: true,
@@ -111,7 +111,7 @@ const CustomerAppClient = () => {
         "Pull up to 60 days of transactions instantly, in-app, anytime.",
         "Need more than 60 days? Our multi-language, human support team is available 24/7. No bots, no wait times, just answers."
       ],
-      imageSrc: "/images/prod_imports/consumer-app-phone.png",
+      imageSrc: "/images/pay10-uae-app/transaction-history-bubble.png",
       imageAlt: "Transaction History",
       isReversed: true,
       isGreyBg: true,

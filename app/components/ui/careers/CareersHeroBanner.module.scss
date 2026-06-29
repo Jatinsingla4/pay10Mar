@@ -12,6 +12,10 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+
+  @include mobile {
+    background-image: url("/images/careers/careers_mobile_banner.jpg");
+  }
 }
 
 .bannerContent {

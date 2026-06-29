@@ -35,6 +35,10 @@
         @include lessTab {
             font-size: 26px;
         }
+
+        @include mobile {
+            font-size: 22px;
+        }
     }
 
     p {

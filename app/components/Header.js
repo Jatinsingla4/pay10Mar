@@ -19,7 +19,7 @@ const navigationData = {
     groups: [
       {
         id: 'consumer',
-        label: 'Consumer Section',
+        label: 'Customer Solution',
         icon: '/images/header/prepaid.svg',
         items: [
           {

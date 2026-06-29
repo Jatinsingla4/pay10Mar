@@ -26,7 +26,7 @@ const footerData = {
       label: 'Products',
       items: [
         {
-          label: 'Consumer Section',
+          label: 'Customer Solution',
           subItems: [
             { label: 'Pay10 UAE App', href: '/pay10-uae-app' },
             { label: 'Bill Payment', href: '/bill-payment' },

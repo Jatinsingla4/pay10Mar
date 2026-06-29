@@ -21,7 +21,8 @@
   }
 
   @include mobile {
-    background-position: left center;
+    background-image: url('/images/prod_imports/send-abroad-hero-mobile.png');
+    background-position: center center;
     min-height: 340px;
     padding: 40px 20px;
   }

@@ -118,37 +118,36 @@ const ContactClient = ({ pageData = null }) => {
   };
 
   const submitContactForm = async (mobileValue) => {
-    const fd = new FormData();
-    fd.append("name", formData.name.trim());
-    fd.append("email", formData.email.trim());
-    fd.append("mobile", mobileValue.trim());
-    fd.append("form_type", activeFormType);
+    const payload = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: mobileValue.trim(),
+      company: activeFormType !== "Channel Partner" ? formData.company_name.trim() : "",
+      message: formData.message?.trim() || "",
+      type: activeFormType.toLowerCase(),
+    };
 
-    if (activeFormType !== "Channel Partner") {
-      fd.append("company_name", formData.company_name.trim());
+    if (activeFormType === "SME Sales" || activeFormType === "Enterprise Sales") {
+      payload.position = formData.position.trim();
+      payload.location = formData.location.trim();
+      payload.industry = formData.industry.trim();
     }
 
-    if (activeFormType === "General Inquiry") {
-      fd.append("message", formData.message.trim());
-    } else if (activeFormType === "SME Sales") {
-      fd.append("position", formData.position.trim());
-      fd.append("location", formData.location.trim());
-      fd.append("industry", formData.industry.trim());
-    } else if (activeFormType === "Enterprise Sales") {
-      fd.append("position", formData.position.trim());
-      fd.append("location", formData.location.trim());
-      fd.append("industry", formData.industry.trim());
-      fd.append("company_size", formData.company_size);
-    } else if (activeFormType === "Channel Partner") {
-      fd.append("country", formData.country.trim());
-      fd.append("emirate", formData.emirate.trim());
-      fd.append("company_website", formData.company_website.trim());
-      fd.append("partnership_model", formData.partnership_model);
+    if (activeFormType === "Enterprise Sales") {
+      payload.company_size = formData.company_size;
     }
 
-    const response = await fetch("/api/proxy/form_post", {
+    if (activeFormType === "Channel Partner") {
+      payload.country = formData.country.trim();
+      payload.emirate = formData.emirate.trim();
+      payload.company_website = formData.company_website.trim();
+      payload.partnership_model = formData.partnership_model;
+    }
+
+    const response = await fetch("/api/proxy/contact/enquiry", {
       method: "POST",
-      body: fd,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
     });
 
     const contentType = response.headers.get("content-type") || "";
@@ -247,8 +246,9 @@ const ContactClient = ({ pageData = null }) => {
         ({ response, result } = await submitContactForm(`971${formData.mobile.trim()}`));
       }
 
-      if (response.ok && result?.status) {
+      if (response.ok) {
         setFormSubmitStatus("success");
+        setFormSubmitMessage(result?.message || "Thank you! We'll be in touch soon.");
         setFormData({
           name: "", email: "", mobile: "", company_name: "", message: "",
           position: "", location: "", industry: "", company_size: "",
@@ -452,11 +452,6 @@ const ContactClient = ({ pageData = null }) => {
               </div>
 
               <form className={Style.contactForm} onSubmit={handleSubmit}>
-                {formSubmitStatus === "error" && (
-                  <div className={`${Style.formMessage} ${Style.formMessageError}`}>
-                    {formSubmitMessage}
-                  </div>
-                )}
 
                 {/* Row 1: Name & Email */}
                 <div className={Style.formRow}>
@@ -655,12 +650,6 @@ const ContactClient = ({ pageData = null }) => {
                   </div>
                 )}
 
-                {formSubmitStatus === "success" && (
-                  <div className={`${Style.formMessage} ${Style.formMessageSuccess}`}>
-                    Thank you! We&apos;ll be in touch soon.
-                  </div>
-                )}
-
                 <div style={{ textAlign: "center", marginTop: "16px" }}>
                   <button
                     type="submit"
@@ -670,6 +659,18 @@ const ContactClient = ({ pageData = null }) => {
                     {formSubmitting ? "Sending..." : getButtonText()}
                   </button>
                 </div>
+
+                {formSubmitStatus === "success" && (
+                  <div className={`${Style.formMessage} ${Style.formMessageSuccess}`}>
+                    {formSubmitMessage}
+                  </div>
+                )}
+
+                {formSubmitStatus === "error" && (
+                  <div className={`${Style.formMessage} ${Style.formMessageError}`}>
+                    {formSubmitMessage}
+                  </div>
+                )}
               </form>
             </div>
           </div>

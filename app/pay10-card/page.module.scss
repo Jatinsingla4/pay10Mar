@@ -23,9 +23,12 @@
   }
 
   @include mobile {
-    background-position: left center;
-    min-height: 340px;
+    background-image: url('/images/prod_imports/pay10-card-hero-mobile.png');
+    background-position: top center;
+    height: 100svh;
+    min-height: 100svh;
     padding: 40px 20px;
+    align-items: flex-start;
   }
 }
 

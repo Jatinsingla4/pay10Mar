@@ -16,6 +16,8 @@
   }
 
   @include mobile {
+    height: 100svh;
+    min-height: 100svh;
     background-image: url('/images/prod_imports/merchant-portal-hero-mobile.png');
   }
 }
@@ -61,16 +63,19 @@
   }
 
   @include mobile {
-    top: 80px;
+    top: auto;
+    bottom: 60px;
     left: 20px;
-    max-width: calc(55% - 20px);
+    right: 20px;
+    max-width: calc(100% - 40px);
 
     h2 {
-      font-size: 26px;
+      font-size: 22px;
     }
 
     p {
-      display: none;
+      font-size: 13px;
+      line-height: 1.4;
     }
   }
 }

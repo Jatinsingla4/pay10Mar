@@ -22,7 +22,8 @@
   }
 
   @include mobile {
-    height: 420px;
+    height: 100svh;
+    min-height: 100svh;
     background-position: right center;
     background-image: url('/images/prod_imports/pos-devices-hero-mobile.png');
   }
@@ -67,11 +68,23 @@
   }
 
   @include mobile {
+    top: auto;
+    bottom: 60px;
+    transform: none;
+    left: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+    text-align: left;
+
     h1 {
-      font-size: 26px;
+      font-size: 22px;
+      margin-bottom: 8px;
     }
+
     p {
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 1.4;
+      margin-bottom: 0;
     }
   }
 }

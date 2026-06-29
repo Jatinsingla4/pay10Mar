@@ -13,7 +13,7 @@ const PaymentGatewayClient = () => {
         <div className={Style.altareq_hero}>
           <div className={Style.altareq_hero_text}>
             <h2>
-              The UAE's most trusted checkout buttons now on your store
+              The UAE's most trusted checkout buttons now on your store.
             </h2>
           </div>
         </div>

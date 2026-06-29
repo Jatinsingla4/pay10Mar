@@ -189,7 +189,8 @@
   }
 
   @include mobile {
-    height: 400px;
+    height: 100svh;
+    min-height: 100svh;
     background-image: url('/images/prod_imports/altareq_mobile_banner.jpg');
     background-position: center;
   }
@@ -236,10 +237,12 @@
   }
 
   @include mobile {
-    top: 100px;
-    left: 16px;
-    max-width: 100%;
-    padding-right: 16px;
+    top: auto;
+    bottom: 60px;
+    left: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+    padding-right: 0;
 
     h2 {
       font-size: 22px;

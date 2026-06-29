@@ -27,8 +27,8 @@
     background-position: top center;
     height: 100svh;
     min-height: 100svh;
-    padding: 40px 20px;
-    align-items: flex-start;
+    padding: 40px 20px 60px;
+    align-items: flex-end;
   }
 }
 
@@ -67,6 +67,15 @@
 
   @include mobile {
     max-width: 100%;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.4;
+    }
   }
 }
 

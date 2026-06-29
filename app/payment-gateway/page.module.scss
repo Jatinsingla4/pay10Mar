@@ -203,8 +203,9 @@
   }
 
   @include mobile {
-    height: 420px;
-    background-position: left center;
+    height: 100svh;
+    min-height: 100svh;
+    background-position: center;
     background-image: url('/images/prod_imports/payment-gateway-hero-mobile.png');
   }
 }
@@ -245,9 +246,12 @@
   }
 
   @include mobile {
-    left: 16px;
-    right: 16px;
-    max-width: calc(100% - 32px);
+    top: auto;
+    bottom: 60px;
+    transform: none;
+    left: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
 
     h2 { font-size: 26px; }
     p { font-size: 14px; }

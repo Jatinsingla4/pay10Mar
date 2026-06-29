@@ -20,8 +20,8 @@ const WpsPayrollPage = () => {
         <div className={styles.altareq_hero}>
           <div className={styles.altareq_hero_content}>
             <h1>
-              UAE's seamless solution for<br />
-              salary compliance.
+              UAE's seamless solution<br />
+              for salary compliance.
             </h1>
             <p>
               Pay all your employees' salaries digitally: compliant, scalable, and fully powered by Pay10. A CBUAE-licensed WPS provider built for every type of UAE employer and every type of UAE employee.

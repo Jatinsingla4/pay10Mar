@@ -16,7 +16,7 @@
   overflow: hidden;
 
   @include tab { min-height: 500px; background-position: center center; }
-  @include mobile { min-height: 420px; }
+  @include mobile { height: 100svh; min-height: 100svh; background-image: url("/images/news-banner-mobile.png"); background-position: center center; }
 }
 
 .bannerOverlay {
@@ -329,7 +329,8 @@
 
 @media (max-width: 600px) {
   .bannerSection {
-    min-height: 325px;
+    height: 100svh;
+    min-height: 100svh;
   }
 
   .bannerContent {

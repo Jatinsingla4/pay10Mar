@@ -33,9 +33,13 @@
     }
 
     @include mobile {
-      background-position: left center;
-      min-height: 340px;
+      background-position: center;
+      height: 100svh;
+      min-height: 100svh;
       padding: 40px 20px;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 80px;
       background-image: url('/images/prod_imports/uae-app-hero-mobile.png');
     }
   }
@@ -59,10 +63,29 @@
 
     @include tab {
       max-width: 100%;
-      
+
       .headline {
         font-size: 32px;
       }
+    }
+
+    @include mobile {
+      .headline {
+        font-size: 22px;
+      }
+    }
+  }
+
+  .hero_desc {
+    display: none;
+
+    @include mobile {
+      display: block;
+      font-size: 13px;
+      font-family: 'medium', sans-serif;
+      color: var(--white);
+      line-height: 1.4;
+      margin: 8px 0 0;
     }
   }
 

@@ -13,7 +13,8 @@
 
   @include tab { min-height: 500px; background-position: center center; }
   @include mobile {
-    min-height: 420px;
+    height: 100svh;
+    min-height: 100svh;
     background-image: url("/images/events_images/events-banner-mobile.png");
     background-position: center center;
   }

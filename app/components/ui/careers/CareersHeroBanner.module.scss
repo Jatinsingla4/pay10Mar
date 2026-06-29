@@ -19,6 +19,7 @@
 }
 
 .bannerContent {
+  display: none;
   width: 90%;
   text-align: center;
   color: var(--white);
@@ -27,6 +28,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, calc(-50% - 160px));
+
+  @include mobile {
+    display: block;
+  }
 
   h2 {
     text-transform: capitalize;

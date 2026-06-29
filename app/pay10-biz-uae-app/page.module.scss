@@ -17,6 +17,8 @@
   }
 
   @include mobile {
+    height: 100svh;
+    min-height: 100svh;
     background-image: url('/images/prod_imports/pay10-biz-uae-app-hero-mobile.png');
   }
 }
@@ -53,6 +55,17 @@
 
     h2 { font-size: 32px; }
     p { font-size: 16px; }
+  }
+
+  @include mobile {
+    top: auto;
+    bottom: 60px;
+    left: 20px;
+    right: 20px;
+    max-width: calc(100% - 40px);
+
+    h2 { font-size: 22px; }
+    p { font-size: 13px; line-height: 1.4; }
   }
 }
 

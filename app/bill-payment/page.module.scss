@@ -21,9 +21,11 @@
   }
 
   @include mobile {
-    background-position: left center;
-    min-height: 340px;
-    padding: 40px 20px;
+    height: 100svh;
+    min-height: 100svh;
+    background-position: center;
+    padding: 40px 20px 60px;
+    align-items: flex-end;
     background-image: url('/images/prod_imports/bill-payment-hero-mobile.png');
   }
 }
@@ -71,6 +73,19 @@
 
   @include mobile {
     max-width: 100%;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .slogan {
+      display: none;
+    }
   }
 }
 

@@ -91,8 +91,8 @@
     background-image: url('/images/prod_imports/about-us-hero-mobile.png');
     .banner_content {
       width: 90%;
-      top: 10%;
-      transform: translateX(-50%);
+      top: 50%;
+      transform: translate(-50%, -50%);
 
       h5 {
         font-size: 16px;
@@ -113,8 +113,8 @@
     .about_banner {
       .banner_content {
         width: 95%;
-        top: 8%;
-        transform: translateX(-50%);
+        top: 50%;
+        transform: translate(-50%, -50%);
 
         h5 {
           font-size: 16px;

@@ -25,7 +25,11 @@ async function handleProxy(request, params) {
 
     const fetchOptions = {
       method: request.method,
-      headers: { 'X-Api-Key': API_KEY },
+      headers: {
+        'X-Api-Key': API_KEY,
+        'Origin': API_BASE.replace('/api', ''),
+        'Referer': API_BASE.replace('/api', ''),
+      },
       cache: 'no-store',
     };
 

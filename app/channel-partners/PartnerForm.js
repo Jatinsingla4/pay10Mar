@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import styles from "./ecosystem.module.scss";
 
-const API_URL = "/api/proxy/form_post";
+const API_URL = "/api/proxy/partners";
 
 const INITIAL = {
   name: "",
@@ -47,23 +47,22 @@ export default function PartnerForm() {
     setServerError("");
 
     try {
-      const fd = new FormData();
-      fd.append("name", form.name);
-      fd.append("company_name", form.company_name);
-      fd.append("designation", form.designation);
-      fd.append("email", form.email);
-      fd.append("mobile", form.phone);
-      fd.append("monthly_transaction_volume", form.monthly_transaction_volume);
-      fd.append("integration_type", form.integration_type);
-      fd.append("form_type", "Channel Partner");
-
       const res = await fetch(API_URL, {
         method: "POST",
-        body: fd,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          company_name: form.company_name,
+          designation: form.designation,
+          email: form.email,
+          phone: form.phone,
+          monthly_transaction_volume: form.monthly_transaction_volume,
+          integration_type: form.integration_type,
+        }),
       });
 
       const data = await res.json();
-      if (res.ok && data.status === true) {
+      if (res.ok && data.success === true) {
         setStatus("success");
         setSuccessMsg(data.message);
         setForm(INITIAL);
@@ -181,9 +180,9 @@ export default function PartnerForm() {
                 <option value="">Select volume</option>
                 <option value="Under AED 500K">Under AED 500K</option>
                 <option value="AED 500K - AED 2Mn">AED 500K - AED 2Mn</option>
-                <option value="AED 2Mn - AED 5 Mn">AED 2Mn - AED 5Mn</option>
-                <option value="AED 5 Mn - AED 10 Mn">AED 5Mn - AED 10Mn</option>
-                <option value="AED 10Mn - AED 50 Mn">AED 10Mn - AED 50Mn</option>
+                <option value="AED 2Mn - AED 5Mn">AED 2Mn - AED 5Mn</option>
+                <option value="AED 5Mn - AED 10Mn">AED 5Mn - AED 10Mn</option>
+                <option value="AED 10Mn - AED 50Mn">AED 10Mn - AED 50Mn</option>
                 <option value="AED 50Mn+">AED 50Mn+</option>
               </select>
               <Icon icon="mdi:chevron-down" className={styles.select_chevron} />

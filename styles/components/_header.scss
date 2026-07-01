@@ -456,7 +456,13 @@
       }
 
       &.is-active {
-        color: var(--black);
+        background: var(--primary-gradient);
+        border-radius: 8px;
+        color: var(--white);
+
+        span, img, svg {
+          filter: brightness(0) invert(1);
+        }
       }
 
       @include tab {

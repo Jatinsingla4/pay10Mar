@@ -2,7 +2,7 @@
 
 import React from "react";
 import { formatFaqRichText } from "./formatFaqMarks";
-import Style from "./faq-customer-app.module.scss";
+import Style from "./faq-merchant-bizz-app.module.scss";
 
 const FaqAccordionItem = ({
   id,

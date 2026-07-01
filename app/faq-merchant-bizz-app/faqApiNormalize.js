@@ -1,5 +1,5 @@
 /**
- * Normalize `/page/faq-customer-app` into FAQ UI shape.
+ * Normalize `/page/faq-merchant-bizz-app` into FAQ UI shape.
  * Primary shape: `custom_data.section2`, `section3`, … each with `heading` + `faq_list[]` of `{ Title, Description }`.
  */
 

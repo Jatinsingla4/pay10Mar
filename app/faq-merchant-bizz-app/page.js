@@ -1,4 +1,4 @@
-import FAQCustomerAppClient from "./FAQCustomerAppClient";
+import FAQMerchantBizzAppClient from "./FAQMerchantBizzAppClient";
 import { stagingRobots } from "../lib/metadata";
 
 const site =
@@ -15,6 +15,6 @@ export const metadata = {
   ...(site ? { alternates: { canonical: `${site}/faq-merchant-bizz-app` } } : {}),
 };
 
-export default function FaqCustomerAppPage() {
-  return <FAQCustomerAppClient />;
+export default function FaqMerchantBizzAppPage() {
+  return <FAQMerchantBizzAppClient />;
 }

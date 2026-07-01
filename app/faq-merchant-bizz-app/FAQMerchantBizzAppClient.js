@@ -3,7 +3,7 @@
 import React, { useCallback, useState } from "react";
 import FaqAccordionItem from "./FaqAccordionItem";
 import { normalizeFaqHero } from "./faqApiNormalize";
-import Style from "./faq-customer-app.module.scss";
+import Style from "./faq-merchant-bizz-app.module.scss";
 
 const scrollToSection = (sectionId) => {
   if (typeof document === "undefined") return;
@@ -19,7 +19,7 @@ const STATIC_SECTIONS = [];
 /**
  * FAQ Merchant App — static (no API calls).
  */
-const FAQCustomerAppClient = () => {
+const FAQMerchantBizzAppClient = () => {
   const [openIds, setOpenIds] = useState(() => new Set());
 
   const toggleItem = useCallback((id) => {
@@ -96,4 +96,4 @@ const FAQCustomerAppClient = () => {
   );
 };
 
-export default FAQCustomerAppClient;
+export default FAQMerchantBizzAppClient;

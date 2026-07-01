@@ -15,12 +15,17 @@ function getCspSources() {
     defaultSrc: ["'self'"],
     scriptSrc: uniqueSources([
       "'self'",
-      // No 'unsafe-inline' — there is currently no active inline <script>
-      // anywhere in the app (grep confirmed the only candidates, GA/GTM,
-      // are commented out). If that changes, load it via next/script with
-      // an external src on an allowlisted host below, or via
-      // @next/third-parties/google, rather than reintroducing unsafe-inline.
-      ...(process.env.NODE_ENV === 'development' ? ["'unsafe-eval'", "'unsafe-inline'"] : []),
+      // 'unsafe-inline' is required in production too: Next.js's own App
+      // Router emits inline <script> tags on every page (self.__next_f.push
+      // calls that stream RSC payload data for hydration) - this is core
+      // framework behavior, not something in our own code, and there's no
+      // way to disable it. The only way to drop unsafe-inline here is a
+      // per-request nonce read via headers() in the root layout, which
+      // forces the entire site from static to dynamic rendering (verified
+      // by testing it - see git history). Not worth that trade-off for a
+      // mostly-static marketing site.
+      "'unsafe-inline'",
+      ...(process.env.NODE_ENV === 'development' ? ["'unsafe-eval'"] : []),
       ...parseEnvSources(process.env.CSP_SCRIPT_SRC_EXTRA),
     ]),
     styleSrc: uniqueSources(["'self'", "'unsafe-inline'"]),

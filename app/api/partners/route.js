@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 const API_BASE = process.env.NEXT_PUBLIC_API;
-const API_KEY = process.env.NEXT_PUBLIC_AUTH_KEY;
+const API_KEY = process.env.BACKEND_AUTH_KEY;
 
 export async function POST(request) {
   const body = await request.json();

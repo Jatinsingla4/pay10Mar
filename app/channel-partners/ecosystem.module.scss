@@ -82,7 +82,7 @@
 .reasons_section {
   padding: 80px 56px;
   background: var(--body-bg);
-  max-width: 1400px;
+  max-width: 1920px;
   margin: 0 auto;
 
   @include large {
@@ -356,7 +356,7 @@
 }
 
 .apply_container {
-  max-width: 1400px;
+  max-width: 1920px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;

@@ -2,7 +2,7 @@
 
 .kfs_container {
   padding: 80px 56px 80px;
-  max-width: 1300px;
+  max-width: 1920px;
   margin: 0 auto;
   background-color: #ffffff;
   min-height: 100vh;
@@ -39,7 +39,7 @@
 .layout {
   display: flex;
   gap: 40px;
-  max-width: 1200px;
+  max-width: 1920px;
   margin: 0 auto;
 
   @media (max-width: 1200px) {
@@ -134,7 +134,7 @@
 .arabic_btn_row {
   display: flex;
   justify-content: flex-end;
-  max-width: 1200px;
+  max-width: 1920px;
   margin: 0 auto 24px;
 }
 

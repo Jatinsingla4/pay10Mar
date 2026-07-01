@@ -7,6 +7,10 @@
   position: relative;
   z-index: 1;
 
+  @include large {
+    padding: 60px 32px;
+  }
+
   @include tab {
     padding: 60px 24px;
   }
@@ -19,6 +23,10 @@
   grid-template-columns: 1fr 1.3fr;
   gap: 60px;
   align-items: center;
+
+  @include large {
+    gap: 40px;
+  }
 
   @include tab {
     grid-template-columns: 1fr;
@@ -80,6 +88,10 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+
+  @include lessTab {
+    grid-template-columns: 1fr;
+  }
 
   @include mobile {
     grid-template-columns: 1fr;

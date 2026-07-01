@@ -4,6 +4,9 @@
   background-color: #fff;
     width: 100%;
     padding: 50px 56px;
+    @include large {
+        padding: 50px 32px;
+    }
     @include tab {
         padding: 46px 16px;
     }

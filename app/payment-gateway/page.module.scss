@@ -11,6 +11,9 @@
     width: 100%;
     padding: 56px 56px;
     overflow-x: hidden;
+    @include large {
+      padding: 56px 32px;
+    }
     @include tab {
       padding: 56px 16px;
     }
@@ -118,6 +121,10 @@
         }
       }
     }
+  }
+
+  @include large {
+    grid-template-columns: .4fr .6fr;
   }
 
   @include tab {
@@ -326,6 +333,10 @@
 .methods_section {
   padding: 80px 56px;
   background: var(--body-bg);
+
+  @include large {
+    padding: 80px 32px;
+  }
 
   @include tab {
     padding: 64px 16px;
@@ -850,6 +861,7 @@
   gap: 24px;
   background: var(--body-bg);
 
+  @include large { padding: 80px 32px; }
   @include tab { padding: 72px 24px; }
   @include mobile { padding: 56px 16px; }
 }
@@ -911,6 +923,7 @@
   gap: 28px;
   background: var(--body-bg);
 
+  @include large { padding: 80px 32px; }
   @include tab { padding: 48px 24px; }
   @include mobile { padding: 40px 16px; margin: 0 16px; }
 }

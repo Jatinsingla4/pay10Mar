@@ -103,6 +103,10 @@
   justify-content: center;
   align-items: center;
 
+  @include large {
+    padding: 60px 32px;
+  }
+
   @include tab {
     padding: 60px 24px;
   }
@@ -114,6 +118,10 @@
   gap: 30px;
   width: 100%;
   max-width: 1200px;
+
+  @include large {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   @include tab {
     grid-template-columns: repeat(2, 1fr);
@@ -169,6 +177,10 @@
   z-index: 1;
   padding: 80px 56px;
   background-color: transparent;
+
+  @include large {
+    padding: 80px 32px;
+  }
 
   @include tab {
     padding: 60px 24px;

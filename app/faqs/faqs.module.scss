@@ -31,6 +31,10 @@
   margin: 0 auto;
   padding: 0 20px;
 
+  @media (max-width: 1200px) {
+    gap: 32px;
+  }
+
   @media (max-width: 991px) {
     flex-direction: column;
     gap: 30px;
@@ -45,6 +49,10 @@
   align-self: flex-start;
   position: sticky;
   top: 100px;
+
+  @media (max-width: 1200px) {
+    flex: 0 0 260px;
+  }
 
   @media (max-width: 991px) {
     position: static;
@@ -115,6 +123,10 @@
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
   min-height: 500px;
+
+  @media (max-width: 1200px) {
+    padding: 32px;
+  }
 
   @media (max-width: 768px) {
     padding: 24px 16px;

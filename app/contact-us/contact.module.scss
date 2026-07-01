@@ -85,6 +85,10 @@
   padding: 40px 56px;
   background: var(--body-bg);
 
+  @include large {
+    padding: 32px 32px;
+  }
+
   @include tab {
     padding: 32px 20px;
   }
@@ -211,6 +215,10 @@
   background: var(--white);
   padding: 80px 56px;
 
+  @include large {
+    padding: 60px 32px;
+  }
+
   @include tab {
     padding: 60px 20px;
   }
@@ -226,6 +234,10 @@
   align-items: flex-start;
   max-width: 1200px;
   margin: 0 auto;
+
+  @include large {
+    gap: 40px;
+  }
 
   @include tab {
     flex-direction: column;

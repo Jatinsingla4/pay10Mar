@@ -130,6 +130,9 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 100%;
+  @include large {
+    grid-template-columns: repeat(2, 1fr);
+  }
   @include tab {
     grid-template-columns: 1fr;
   }

@@ -9,6 +9,9 @@
   text-align: center;
   background: var(--white);
   color: var(--black);
+  @include large{
+    padding: 80px 32px;
+  }
   @include tab{
     padding: 56px 16px;
   }
@@ -84,6 +87,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  @include large {
+    padding: 80px 32px;
+  }
   @include tab {
     padding: 56px 16px;
   }

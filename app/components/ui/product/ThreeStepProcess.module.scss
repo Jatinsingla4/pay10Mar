@@ -13,6 +13,9 @@
 .wrapper {
   width: 100%;
   padding: 0 56px;
+  @include large {
+    padding: 0 32px;
+  }
   @include tab {
     padding: 0 16px;
   }

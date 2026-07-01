@@ -69,6 +69,9 @@
   padding: 0px 56px;
   margin: 80px 0;
   margin-bottom: 0;
+  @include large {
+    padding: 0 32px;
+  }
   @include tab {
     margin: 56px 0;
     margin-bottom: 0;
@@ -115,6 +118,10 @@
     align-items: center;
     justify-content: center;
     gap: 2rem;
+
+    @include large {
+      grid-template-columns: 1fr;
+    }
 
     .events_banner_left_img {
       width: 100%;
@@ -425,6 +432,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 24px;
 
+  @include large { grid-template-columns: 1fr; }
   @include mobile { grid-template-columns: 1fr; }
   @include lessTab { grid-template-columns: 1fr; }
 
@@ -447,6 +455,10 @@
     }
 
     @include tab { display: flex; }
+
+    @include lessTab {
+      padding: 32px;
+    }
 
     @include mobile {
       padding: 24px;

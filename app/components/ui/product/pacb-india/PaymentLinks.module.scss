@@ -3,6 +3,9 @@
 .wrapper {
     width: 100%;
     padding: 80px 56px;
+    @include large {
+      padding: 80px 32px;
+    }
     @include tab {
       padding: 56px 16px;
     }
@@ -59,6 +62,10 @@
     align-items: center;
     gap: 32px;
     // padding: 38px 0;
+
+    @include large {
+      gap: 32px;
+    }
 
     @include tab {
       grid-template-columns: 1fr;

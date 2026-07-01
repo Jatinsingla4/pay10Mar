@@ -4,6 +4,10 @@
   padding: 80px 56px;
   background-color: var(--white);
 
+  @include large {
+    padding: 70px 32px;
+  }
+
   @include tab {
     padding: 60px 24px;
   }
@@ -101,6 +105,10 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
   gap: 24px;
+
+  @include large {
+    grid-template-columns: 1fr;
+  }
 
   @include lessTab {
     grid-template-columns: 1fr;

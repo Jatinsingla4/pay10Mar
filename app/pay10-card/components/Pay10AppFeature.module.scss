@@ -6,6 +6,10 @@
   position: relative;
   z-index: 1;
 
+  @include large {
+    padding: 70px 32px;
+  }
+
   @include tab {
     padding: 60px 24px;
   }
@@ -22,6 +26,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: flex-start;
+
+  @include large {
+    gap: 40px;
+  }
 
   @include tab {
     grid-template-columns: 1fr;

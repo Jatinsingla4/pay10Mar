@@ -3,6 +3,9 @@
 .integration_second_section {
     width: 100%;
     padding: 80px 56px;
+    @include large {
+        padding: 80px 32px;
+    }
     @include tab {
         padding: 80px 16px;
     }

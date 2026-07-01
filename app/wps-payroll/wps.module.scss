@@ -115,6 +115,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 64px;
 
+  @include large {
+    gap: 40px;
+  }
+
   @include tab {
     grid-template-columns: 1fr;
     gap: 48px;
@@ -179,6 +183,11 @@
   gap: 80px;
   padding: 80px 56px;
   background: var(--body-bg);
+
+  @include large {
+    gap: 40px;
+    padding: 80px 32px;
+  }
 
   @include tab {
     grid-template-columns: 1fr;
@@ -345,6 +354,10 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 0;
   padding-bottom: 24px;
+
+  @include large {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
   @include tab {
     grid-template-columns: repeat(2, 1fr);
@@ -528,6 +541,7 @@
   gap: 24px;
   background: var(--body-bg);
 
+  @include large { padding: 80px 32px; }
   @include tab { padding: 72px 24px; }
   @include mobile { padding: 56px 16px; }
 }
@@ -587,6 +601,7 @@
   gap: 28px;
   background: var(--body-bg);
 
+  @include large { padding: 80px 32px; }
   @include tab { padding: 48px 24px; }
   @include mobile { padding: 40px 16px; margin: 0 16px; }
 }

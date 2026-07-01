@@ -12,6 +12,10 @@
   color: var(--white);
   padding: 64px 56px 0 56px;
 
+  @include large {
+    padding: 48px 32px 0 32px;
+  }
+
   @include tab {
     border-radius: 16px;
     padding: 40px 16px 0px 16px;

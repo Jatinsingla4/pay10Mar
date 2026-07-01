@@ -22,6 +22,13 @@
   overflow-y: hidden;
   box-sizing: border-box;
 
+  @include large {
+    .member_box {
+      flex: 0 1 calc((100% - 48px) / 3);
+      max-width: calc((100% - 48px) / 3);
+    }
+  }
+
   .member_box {
     flex: 0 1 calc((100% - 72px) / 4);
     min-width: 0;
@@ -228,6 +235,15 @@
       flex: 0 1 calc((100% - 72px) / 4);
       min-width: 0;
       max-width: calc((100% - 72px) / 4);
+    }
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+  .board_members_box {
+    .member_box {
+      flex: 0 1 calc((100% - 48px) / 3);
+      max-width: calc((100% - 48px) / 3);
     }
   }
 }

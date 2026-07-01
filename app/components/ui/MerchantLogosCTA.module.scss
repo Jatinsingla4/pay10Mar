@@ -5,6 +5,10 @@
   background-color: var(--body-bg);
   text-align: center;
 
+  @include large {
+    padding: 80px 32px;
+  }
+
   @include tab {
     padding: 60px 24px;
   }

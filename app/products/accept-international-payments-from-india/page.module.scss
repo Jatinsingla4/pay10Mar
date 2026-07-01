@@ -5,6 +5,9 @@
     width: 100%;
     padding: 0px 56px;
     margin: 56px 0;
+    @include large {
+      padding: 0 32px;
+    }
     @include tab {
       margin: 56px 0;
       padding: 0px 16px;

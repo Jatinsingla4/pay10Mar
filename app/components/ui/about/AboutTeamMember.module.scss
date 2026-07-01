@@ -113,6 +113,7 @@
     }
 
     @include large {
+      padding: 0 32px;
       .member_card {
         width: calc((100% - 40px) / 3);
       }

@@ -130,6 +130,10 @@
   position: relative;
   z-index: 1;
 
+  @include large {
+    padding: 80px 32px;
+  }
+
   @include tab {
     padding: 70px 24px;
   }

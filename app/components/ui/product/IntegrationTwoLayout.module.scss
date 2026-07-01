@@ -3,6 +3,9 @@
 .integration_layout {
     width: 100%;
     padding: 0 56px 80px 56px;
+    @include large {
+        padding: 0 32px 80px 32px;
+    }
     @include tab {
         padding: 0 16px 80px 16px;
     }
@@ -14,7 +17,11 @@
     grid-template-columns: 1fr 1fr;
     align-items: center;
     gap: 40px;
-    
+
+    @include large {
+        gap: 24px;
+    }
+
     @include tab {
         grid-template-columns: 1fr;
     }
@@ -37,6 +44,10 @@
         font-size: 48px;
         line-height: 1.1;
         margin: 0;
+
+        @include large {
+            font-size: 40px;
+        }
 
         @include tab {
             font-size: 32px;

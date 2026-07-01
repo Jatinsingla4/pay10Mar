@@ -7,6 +7,9 @@
     position: relative;
     overflow: hidden;
     background-color: var(--body-bg);
+    @include large {
+      padding: 80px 32px;
+    }
     @include tab {
       // margin: 56px 0;
       padding: 80px 16px 0 16px;

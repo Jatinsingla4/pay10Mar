@@ -25,6 +25,11 @@
   gap: 60px;
   width: 100%;
 
+  @include large {
+    padding: 60px 40px;
+    gap: 40px;
+  }
+
   @include tab {
     flex-direction: column;
     gap: 32px;
@@ -46,6 +51,9 @@
       font-family: "bold";
       line-height: 1.1;
       margin: 0;
+      @include large {
+        font-size: 72px;
+      }
       @include tab {
         font-size: 56px;
       }

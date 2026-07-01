@@ -88,6 +88,11 @@
   align-items: start;
   background: var(--body-bg);
 
+  @include large {
+    gap: 40px;
+    padding: 80px 32px;
+  }
+
   @include tab {
     grid-template-columns: 1fr;
     padding: 56px 16px;
@@ -225,6 +230,10 @@
   padding: 80px 56px;
   background-color: var(--body-bg);
 
+  @include large {
+    padding: 80px 32px;
+  }
+
   @include tab {
     padding: 56px 16px;
   }
@@ -235,6 +244,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
+
+  @include large {
+    gap: 40px;
+  }
 
   @include tab {
     grid-template-columns: 1fr;
@@ -337,6 +350,10 @@
   text-align: center;
   overflow: hidden;
 
+  @include large {
+    padding: 80px 32px;
+  }
+
   @include tab {
     padding: 56px 16px;
   }
@@ -383,6 +400,10 @@
   grid-template-columns: repeat(6, 1fr);
   gap: 16px;
   margin: 0 auto;
+
+  @include large {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
   @include tab {
     grid-template-columns: repeat(3, 1fr);
@@ -579,7 +600,11 @@
 .reasons_section {
   padding: 80px 56px;
   background-color: var(--body-bg);
-  
+
+  @include large {
+    padding: 80px 32px;
+  }
+
   @include tab {
     padding: 56px 16px;
   }
@@ -631,6 +656,10 @@
 
   &:first-child {
     border-top: 1px solid rgba(0,0,0,0.08);
+  }
+
+  @include large {
+    gap: 32px;
   }
 
   @include tab {

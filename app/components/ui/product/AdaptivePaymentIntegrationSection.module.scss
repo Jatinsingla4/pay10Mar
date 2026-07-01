@@ -12,6 +12,9 @@
 .wrapper {
   width: 100%;
   padding: 0 56px;
+  @include large {
+    padding: 0 32px;
+  }
   @include tab {
     padding: 0 16px;
     // margin: 56px 0;
@@ -28,6 +31,10 @@
   // @media screen and (min-width: 991px) and (max-width: 1136px) {
   //   gap: 32px;
   // }
+
+  @include large {
+    gap: 32px;
+  }
 
   @include tab {
     grid-template-columns: 1fr;

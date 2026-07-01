@@ -9,6 +9,9 @@
   text-align: center;
   background-color: #f7f7f7;
   color: var(--black);
+  @include large {
+    padding: 80px 32px;
+  }
   @include tab {
     padding: 56px 16px;
   }

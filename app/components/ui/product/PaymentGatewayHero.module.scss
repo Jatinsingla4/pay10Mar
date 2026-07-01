@@ -9,6 +9,9 @@
   color: #ffffff;
   min-height: 650px;
   padding: 64px 56px;
+  @include large {
+    padding: 64px 32px;
+  }
   @include tab {
     // Mobile layout (<=991px) per design:
     // - gradient becomes a top "card"
@@ -55,6 +58,10 @@
     gap: 80px;
     align-items: center;
     height: 100%;
+    @include large {
+      grid-template-columns: 1.5fr 1fr;
+      gap: 40px;
+    }
     @include tab {
       grid-template-columns: 1fr;
       gap: 40px;

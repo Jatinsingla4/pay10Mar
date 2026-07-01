@@ -4,6 +4,9 @@
     width: 100%;
     padding: 80px 56px;
     margin: 0;
+    @include large {
+      padding: 80px 32px;
+    }
     @include tab {
       padding: 80px 16px;
     }
@@ -47,6 +50,14 @@
         grid-template-columns: repeat(6, minmax(0, 1fr));
         column-gap: 24px;
         row-gap: 26px;
+
+        @include large {
+            grid-template-columns: repeat(2, 1fr);
+
+            & > * {
+                grid-column: span 1 !important;
+            }
+        }
 
         @include tab {
             grid-template-columns: 1fr;

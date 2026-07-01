@@ -67,6 +67,10 @@
   width: 100%;
   padding: 0 56px;
   margin: 0 auto;
+
+  @include large {
+    padding: 0 32px;
+  }
 }
 
 .searchRow {
@@ -117,6 +121,10 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
+
+  @include large {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .newsCard {

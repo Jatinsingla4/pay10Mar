@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import kfsData from './kfsData';
 import styles from './kfs.module.scss';
+import { sanitizeHtml } from '../lib/sanitizeHtml';
 
 export default function KfsClient() {
   const [activeTabName, setActiveTabName] = useState(kfsData[0]?.tabName || '');
@@ -56,7 +57,7 @@ export default function KfsClient() {
           
           <div 
             className={styles.table_content}
-            dangerouslySetInnerHTML={{ __html: processedContent }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(processedContent) }}
           />
         </div>
       </div>

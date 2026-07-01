@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Style from "./JourneySection.module.scss";
+import { sanitizeHtml } from "../../../lib/sanitizeHtml";
 
 const JourneySection = ({
   journeyData = [],
@@ -229,7 +230,7 @@ const JourneySection = ({
                       {typeof item.description === "string" ? (
                         <div
                           className={Style.timeline_description}
-                          dangerouslySetInnerHTML={{ __html: item.description }}
+                          dangerouslySetInnerHTML={{ __html: sanitizeHtml(item.description) }}
                         />
                       ) : (
                         <div className={Style.timeline_description}>

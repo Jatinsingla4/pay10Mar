@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import tosData from './tosData';
 import styles from './terms_and_conditions.module.scss';
+import { sanitizeHtml } from '../lib/sanitizeHtml';
 
 export default function TermsClient() {
   const [activeTabName, setActiveTabName] = useState(tosData[0]?.tabName || '');
@@ -42,7 +43,7 @@ export default function TermsClient() {
           <div
             key={activeTabName}
             className={styles.legal_content}
-            dangerouslySetInnerHTML={{ __html: activeTab?.content || '' }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeTab?.content || '') }}
           />
         </main>
       </div>

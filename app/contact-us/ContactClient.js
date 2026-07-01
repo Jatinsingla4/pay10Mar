@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import Style from "./contact.module.scss";
 import { Icon } from "@iconify/react";
+import { sanitizeHtml } from "../lib/sanitizeHtml";
 
 // Hardcoded Google Maps embed URL
 const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.6651841438556!2d55.270962999999995!3d25.1807808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6978338fd387%3A0xb7eeb833237a2ede!2sUbora%20Office%20Tower!5e0!3m2!1sen!2sin!4v1778165481176!5m2!1sen!2sin";
@@ -307,7 +308,7 @@ const ContactClient = ({ pageData = null }) => {
             {pageData?.page_description ? (
               <div
                 data-animation="opacity-up"
-                dangerouslySetInnerHTML={{ __html: pageData.page_description }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_description) }}
               />
             ) : (
               <p data-animation="opacity-up">
@@ -333,7 +334,7 @@ const ContactClient = ({ pageData = null }) => {
                       <img src={card.icon} alt={card.title} />
                     </div>
                   )}
-                  <div dangerouslySetInnerHTML={{ __html: card.content }} />
+                  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.content) }} />
                 </div>
               ))
             ) : (

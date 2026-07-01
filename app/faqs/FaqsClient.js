@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import faqData from './faqData';
 import styles from './faqs.module.scss';
+import { sanitizeHtml } from '../lib/sanitizeHtml';
 
 export default function FaqsClient() {
   const [activeTabName, setActiveTabName] = useState(faqData[0]?.tabName || '');
@@ -79,7 +80,7 @@ export default function FaqsClient() {
                     className={`${styles.accordion_content} ${isOpen ? styles.open_content : ''}`}
                     style={isOpen ? { maxHeight: '1000px' } : { maxHeight: '0px' }}
                   >
-                    <p className={styles.answer_text} dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                    <p className={styles.answer_text} dangerouslySetInnerHTML={{ __html: sanitizeHtml(faq.answer) }} />
                   </div>
                 </div>
               );

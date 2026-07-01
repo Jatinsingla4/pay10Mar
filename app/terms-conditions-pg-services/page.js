@@ -1,5 +1,6 @@
 import React from "react";
 import Style from "../terms-of-service/terms_and_conditions.module.scss";
+import { sanitizeHtml } from "../lib/sanitizeHtml";
 
 const contentHtml = `
   <h3>TERMS AND CONDITIONS</h3>
@@ -359,7 +360,7 @@ const Page = () => {
 
       <section className={Style.wrapper}>
         <div className={Style.terms_and_conditions_content}>
-          <div dangerouslySetInnerHTML={{ __html: contentHtml }} />
+          <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(contentHtml) }} />
         </div>
       </section>
     </main>

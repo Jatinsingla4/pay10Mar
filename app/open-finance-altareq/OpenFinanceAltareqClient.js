@@ -5,13 +5,14 @@ import TwoColLayout from "@/app/components/ui/product/pacb-india/TwoColLayout";
 import GetStarted from "@/app/components/ui/GetStarted";
 import { TextCenterAppCard } from "@/app/components/ui/TextCenterBlock";
 import Style from "./page.module.scss";
+import { sanitizeHtml } from "@/app/lib/sanitizeHtml";
 
 /** Plain-text CMS descriptions (e.g. with \\r\\n) vs HTML snippets for dangerouslySetInnerHTML. */
 function normalizeCmsDescriptionHtml(description) {
   if (description == null) return "";
   const s = String(description).trim();
   if (!s) return "";
-  if (/<\s*[a-z]/i.test(s)) return s;
+  if (/<\s*[a-z]/i.test(s)) return sanitizeHtml(s);
   const blocks = s.split(/\r?\n\r?\n/).map((b) => b.trim()).filter(Boolean);
   const esc = (t) =>
     t

@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Style from "./vision_mission.module.scss";
+import { sanitizeHtml } from "../lib/sanitizeHtml";
 
 const fallback = {
   topHeading: "Vision & Mission",
@@ -59,7 +60,7 @@ const VisionMissionClient = () => {
               <p
                 data-animation="opacity-up"
                 data-anim-delay="100"
-                dangerouslySetInnerHTML={{ __html: section4Content }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(section4Content) }}
               />
             </div>
             <div className={Style.right_img} data-animation="opacity-up">

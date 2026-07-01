@@ -1,5 +1,6 @@
 import React from "react";
 import Style from './AboutBanner.module.scss';
+import { sanitizeHtml } from '../../../lib/sanitizeHtml';
 
 const AboutBanner = ({ topSubHeading, topHeading, topDescription }) => {
   // Provide fallbacks if the props are not passed in
@@ -37,7 +38,7 @@ const AboutBanner = ({ topSubHeading, topHeading, topDescription }) => {
             <p
               data-animation="opacity-up"
               data-anim-delay="200"
-              dangerouslySetInnerHTML={{ __html: formattedDescription }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(formattedDescription) }}
             />
           </div>
         </div>

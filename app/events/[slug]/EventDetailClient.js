@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import { Icon, InlineIcon } from "@iconify/react";
 import Link from "next/link";
 import Style from "./events-details.module.scss";
+import { sanitizeHtml } from "../../lib/sanitizeHtml";
 
 const FALLBACK_EVENT_DETAILS = {
   "gitex-global-2024": {
@@ -286,13 +287,13 @@ const EventDetailClient = () => {
             )}
             {contentWithoutFirstParagraph && (
               <div
-                dangerouslySetInnerHTML={{ __html: contentWithoutFirstParagraph }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(contentWithoutFirstParagraph) }}
                 className={Style.contentBody}
               />
             )}
             {content2WithoutFirstParagraph && (
               <div
-                dangerouslySetInnerHTML={{ __html: content2WithoutFirstParagraph }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(content2WithoutFirstParagraph) }}
                 className={Style.contentBody}
               />
             )}

@@ -1,6 +1,7 @@
 import React from "react";
 import Style from "./TwoColLayout.module.scss";
 import Image from "next/image";
+import { sanitizeHtml } from "../../../../lib/sanitizeHtml";
 
 const TwoColLayout = ({ item = null, imageBase = "", reverse = false, copyVariant, unoptimized = false }) => {
   const title = item?.Title || "";
@@ -41,7 +42,7 @@ const TwoColLayout = ({ item = null, imageBase = "", reverse = false, copyVarian
       ) : null}
       <div data-animation="opacity-up" data-animation-delay="100">
         {descriptionHtml ? (
-          <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+          <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(descriptionHtml) }} />
         ) : null}
       </div>
     </div>

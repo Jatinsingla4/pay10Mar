@@ -1,5 +1,6 @@
 import React from "react";
 import Style from './AboutSecondSection.module.scss';
+import { sanitizeHtml } from '../../../lib/sanitizeHtml';
 
 const AboutSecondSection = ({ section2Heading, section2Content, section2Html, section2Image, colReverse = false }) => {
   const imageComponent = (
@@ -19,7 +20,7 @@ const AboutSecondSection = ({ section2Heading, section2Content, section2Html, se
         <div
           className={Style.html_content}
           data-animation="opacity-up"
-          dangerouslySetInnerHTML={{ __html: section2Html }}
+          dangerouslySetInnerHTML={{ __html: sanitizeHtml(section2Html) }}
         />
       ) : (
         <>

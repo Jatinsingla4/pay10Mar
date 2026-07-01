@@ -5,6 +5,7 @@ import Style from "./ReverseLayout.module.scss";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { sanitizeHtml } from "../../../../lib/sanitizeHtml";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -86,7 +87,7 @@ const ReverseLayout = ({
       ) : null}
       <div data-animation="opacity-up" data-animation-delay="100">
         {descriptionHtml ? (
-          <div dangerouslySetInnerHTML={{ __html: descriptionHtml }} />
+          <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(descriptionHtml) }} />
         ) : null}
       </div>
     </div>

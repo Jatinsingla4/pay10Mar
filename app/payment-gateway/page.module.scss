@@ -311,24 +311,6 @@
   @include tab { font-size: 16px; }
 }
 
-.trusted_checkout {
-  margin: 56px auto 0;
-  max-width: 1920px;
-  text-align: left;
-  
-  p {
-    margin: 0;
-    font-size: 24px;
-    font-family: 'medium', sans-serif;
-    color: var(--black);
-  }
-
-  @include tab {
-    margin-top: 32px;
-    p { font-size: 20px; }
-  }
-}
-
 /* Payment Methods Section */
 .methods_section {
   padding: 80px 56px;

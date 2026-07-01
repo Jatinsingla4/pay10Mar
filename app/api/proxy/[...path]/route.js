@@ -3,6 +3,14 @@ import { NextResponse } from 'next/server';
 const API_BASE = process.env.NEXT_PUBLIC_API;
 const API_KEY = process.env.BACKEND_AUTH_KEY;
 
+// Every backend path this proxy is allowed to forward to. Add new entries
+// here deliberately when a new frontend feature needs a new endpoint —
+// this route must never blindly forward an arbitrary path.
+const ALLOWED_PATHS = new Set([
+  'contact/enquiry',
+  'partners',
+]);
+
 export async function GET(request, { params }) {
   return handleProxy(request, params);
 }
@@ -19,6 +27,11 @@ async function handleProxy(request, params) {
 
     const resolvedParams = await params;
     const endpointPath = resolvedParams.path ? resolvedParams.path.join('/') : '';
+
+    if (!ALLOWED_PATHS.has(endpointPath)) {
+      return NextResponse.json({ status: false, message: 'Not found' }, { status: 404 });
+    }
+
     const { searchParams } = new URL(request.url);
     const queryString = searchParams.toString();
     const targetUrl = queryString ? `${API_BASE}/${endpointPath}?${queryString}` : `${API_BASE}/${endpointPath}`;
@@ -58,7 +71,7 @@ async function handleProxy(request, params) {
       data = JSON.parse(text);
     } catch {
       console.error('Proxy non-JSON response:', response.status, text.slice(0, 300));
-      data = { status: false, message: `Backend returned ${response.status}: ${text.slice(0, 100)}` };
+      data = { status: false, message: 'An error occurred. Please try again later.' };
     }
     return NextResponse.json(data, { status: response.status });
   } catch (err) {

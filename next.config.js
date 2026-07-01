@@ -1,80 +1,8 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
+const { buildCspHeader } = require('./csp-config');
 
-const parseEnvSources = (value = '') =>
-  value
-    .split(',')
-    .map((item) => item.trim())
-    .filter(Boolean);
-
-const uniqueSources = (sources) => [...new Set(sources)];
-
-const cspSources = {
-  defaultSrc: ["'self'"],
-  scriptSrc: uniqueSources([
-    "'self'",
-    "'unsafe-inline'",
-    ...(process.env.NODE_ENV === 'development' ? ["'unsafe-eval'"] : []),
-    // Staging: analytics disabled — re-enable for production if using GA/GTM
-    // 'https://www.googletagmanager.com',
-    // 'https://www.google-analytics.com',
-    ...parseEnvSources(process.env.CSP_SCRIPT_SRC_EXTRA),
-  ]),
-  styleSrc: uniqueSources(["'self'", "'unsafe-inline'"]),
-  imgSrc: uniqueSources([
-    "'self'",
-    'blob:',
-    'data:',
-    // 'https://www.googletagmanager.com',
-    // 'https://www.google-analytics.com',
-    'https://www.google.com',
-    // 'https://stats.g.doubleclick.net',
-    'https://pcms.pay10.in',
-    'https://gww.grapesmobile.com',
-    'https://pay10.grapesmobile.com',
-    'https://adminpayd.grapesmobile.com',
-    'https://pay10.webhr.co',
-    ...parseEnvSources(process.env.CSP_IMG_SRC_EXTRA),
-  ]),
-  fontSrc: uniqueSources(["'self'", 'data:']),
-  connectSrc: uniqueSources([
-    "'self'",
-    // 'https://www.googletagmanager.com',
-    // 'https://www.google-analytics.com',
-    // 'https://region1.google-analytics.com',
-    'https://www.google.com',
-    // 'https://stats.g.doubleclick.net',
-    'https://api.iconify.design',
-    'https://api.simplesvg.com',
-    'https://api.unisvg.com',
-    'https://pcms.pay10.in',
-    'https://adminpayd.grapesmobile.com',
-    'https://pay10.webhr.co',
-    ...parseEnvSources(process.env.CSP_CONNECT_SRC_EXTRA),
-  ]),
-  frameSrc: uniqueSources([
-    "'self'",
-    'https://www.google.com',
-    'https://maps.google.com',
-    'https://pay10.webhr.co',
-    ...parseEnvSources(process.env.CSP_FRAME_SRC_EXTRA),
-  ]),
-};
-
-const cspHeader = [
-  `default-src ${cspSources.defaultSrc.join(' ')}`,
-  `script-src ${cspSources.scriptSrc.join(' ')}`,
-  `style-src ${cspSources.styleSrc.join(' ')}`,
-  `img-src ${cspSources.imgSrc.join(' ')}`,
-  `font-src ${cspSources.fontSrc.join(' ')}`,
-  `connect-src ${cspSources.connectSrc.join(' ')}`,
-  `frame-src ${cspSources.frameSrc.join(' ')}`,
-  "object-src 'none'",
-  "base-uri 'self'",
-  'upgrade-insecure-requests',
-]
-  .join('; ')
-  .trim();
+const cspHeader = buildCspHeader();
 
 const nextConfig = {
   images: {

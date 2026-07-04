@@ -115,11 +115,18 @@
         }
       }
 
-      // Desktop open state — no color change, match prod (#1F2124)
+      // Desktop open state — gradient text, matches active/open treatment used elsewhere in this file
       @media (min-width: 992px) {
         &.is-open {
           .header__nav-link--dropdown {
-            color: #CC3366;
+            // Dedicated red→orange gradient (not var(--primary-gradient)) — that gradient's
+            // -150deg angle + 3 color stops is tuned for wide surfaces (pills/buttons); on a
+            // short text string like "Company" it clips to just the orange-yellow tail.
+            background: linear-gradient(90deg, var(--red) 0%, var(--orange) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
 
             .header__nav-chevron {
               transform: rotate(180deg);

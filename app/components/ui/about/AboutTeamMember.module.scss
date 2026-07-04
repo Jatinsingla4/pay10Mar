@@ -292,7 +292,7 @@
       opacity: 1;
       max-height: 288px;
       transform: translateY(0);
-      overflow-y: auto;
+      overflow-y: scroll;
       padding-right: 6px;
       scrollbar-width: thin;
       scrollbar-color: var(--yellow) transparent;

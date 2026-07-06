@@ -39,6 +39,7 @@ function getCspSources() {
       'https://pay10.grapesmobile.com',
       'https://adminpayd.grapesmobile.com',
       'https://pay10.webhr.co',
+      'https://bucket-7vbln7.s3.ap-south-1.amazonaws.com',
       ...parseEnvSources(process.env.CSP_IMG_SRC_EXTRA),
     ]),
     fontSrc: uniqueSources(["'self'", 'data:']),

@@ -177,6 +177,24 @@
     color: #585862;
     margin-bottom: 24px;
   }
+
+  .cardDesc {
+    font-size: 15px;
+    line-height: 1.5;
+    color: #585862;
+    margin-bottom: 24px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    
+    * {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #585862;
+      margin-bottom: 0;
+    }
+  }
 }
 
 .newsCard {

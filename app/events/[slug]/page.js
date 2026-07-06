@@ -1,19 +1,50 @@
 import { defaultMetadata } from "../../lib/metadata";
 import EventDetailClient from "./EventDetailClient";
 
-// Generate static metadata
 export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  try {
+    const res = await fetch(`https://pay10d.grapesmobile.com/api/events/${slug}`, {
+      next: { revalidate: 60 }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.data) {
+        return {
+          ...defaultMetadata,
+          title: `${data.data.title} | Pay10`,
+          description: data.data.subtitle || defaultMetadata.description,
+        };
+      }
+    }
+  } catch (error) {}
+  
   return {
     ...defaultMetadata,
     title: "Event | Pay10",
   };
 }
 
+async function getEventData(slug) {
+  try {
+    const res = await fetch(`https://pay10d.grapesmobile.com/api/events/${slug}`, {
+      next: { revalidate: 60 }
+    });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json?.data || null;
+  } catch (error) {
+    return null;
+  }
+}
+
 export default async function EventDetail({ params }) {
+  const { slug } = await params;
+  const data = await getEventData(slug);
+  
   return (
     <>
-      {/* Staging: JSON-LD off — uncomment for production */}
-      <EventDetailClient />
+      <EventDetailClient initialData={data} />
     </>
   );
 }

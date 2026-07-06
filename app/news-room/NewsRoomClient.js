@@ -7,40 +7,7 @@ import styles from "./news-room.module.scss";
 
 const FALLBACK_IMAGE = "/images/news_images/news_banner_img.png";
 
-const PRESS_RELEASES = [
-  {
-    id: "pay10-cbuae-license",
-    title: "Pay10 Receives Central Bank of UAE Licence for Payment Services",
-    description: "Pay10 has been officially licensed by the Central Bank of the UAE to operate as a payment service provider, marking a major milestone in the company's growth across the MENA region.",
-    publishedAt: "2024-10-15",
-    image: "/images/events_images/events_details_imgs/1.png",
-    url: "https://pay10.ae",
-  },
-  {
-    id: "pay10-cross-border-launch",
-    title: "Pay10 Launches Cross-Border Payment Solution for UAE Merchants",
-    description: "Pay10 has introduced its cross-border payment product, enabling UAE-based merchants to accept international payments in multiple currencies with real-time conversion and competitive exchange rates.",
-    publishedAt: "2025-02-20",
-    image: "/images/events_images/events_details_imgs/3.png",
-    url: "https://pay10.ae",
-  },
-  {
-    id: "pay10-bank-partnership",
-    title: "Pay10 Partners with Leading UAE Banks to Expand Digital Wallet Network",
-    description: "Pay10 has signed strategic partnership agreements with two of the UAE's largest commercial banks to integrate its digital wallet infrastructure, expanding financial access for consumers and SMEs.",
-    publishedAt: "2025-04-08",
-    image: "/images/events_images/events_details_imgs/5.png",
-    url: "https://pay10.ae",
-  },
-  {
-    id: "pay10-growth-2024",
-    title: "Pay10 Reports 200% Growth in Transaction Volume for 2024",
-    description: "Pay10 announced record-breaking growth in 2024, processing over $500 million in total transaction volume — a 200% year-on-year increase — driven by strong adoption of its merchant and consumer payment platforms.",
-    publishedAt: "2025-01-30",
-    image: "/images/events_images/events_details_imgs/7.png",
-    url: "https://pay10.ae",
-  },
-];
+// Dynamic news list passed from server component
 
 function formatDisplayDate(dateInput) {
   const parsed = new Date(dateInput);
@@ -59,7 +26,7 @@ function formatDisplayDate(dateInput) {
   return `${day}${suffix} ${month}, ${year}`;
 }
 
-export default function NewsRoomClient() {
+export default function NewsRoomClient({ initialNews = [] }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
@@ -71,12 +38,12 @@ export default function NewsRoomClient() {
   }, [searchTerm]);
 
   const items = debouncedSearch
-    ? PRESS_RELEASES.filter(
+    ? initialNews.filter(
         (item) =>
-          item.title.toLowerCase().includes(debouncedSearch) ||
-          item.description.toLowerCase().includes(debouncedSearch)
+          item.title?.toLowerCase().includes(debouncedSearch) ||
+          item.content?.toLowerCase().includes(debouncedSearch)
       )
-    : PRESS_RELEASES;
+    : initialNews;
 
   return (
     <main className={styles.newsRoomMain}>
@@ -114,23 +81,23 @@ export default function NewsRoomClient() {
                 data-animation="opacity-up"
               >
                 <div className={styles.cardMedia}>
-                  <Image
+                  <img
                     src={item.image || FALLBACK_IMAGE}
-                    alt={item.title}
-                    width={640}
-                    height={360}
+                    alt={item.title || "News Article"}
                     className={styles.cardImage}
-                    unoptimized={item.image?.startsWith("http")}
                   />
                 </div>
                 <div className={styles.cardBody}>
-                  <p className={styles.cardDate}>{formatDisplayDate(item.publishedAt)}</p>
+                  <p className={styles.cardDate}>{formatDisplayDate(item.posted_date)}</p>
                   <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <div 
+                    className={styles.cardDesc} 
+                    dangerouslySetInnerHTML={{ __html: item.content }} 
+                  />
                   <div className={styles.cardFooter}>
-                    {item.url && (
+                    {item.slug && (
                       <a
-                        href={item.url}
+                        href={`/news-room/${item.slug}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.readMoreBtn}
@@ -142,7 +109,7 @@ export default function NewsRoomClient() {
                     <div className={styles.shareRow}>
                       <span>Share:</span>
                       <a
-                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(item.url || 'https://www.pay10.ae/news-room')}`}
+                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(item.slug ? `https://www.pay10.ae/news-room/${item.slug}` : 'https://www.pay10.ae/news-room')}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.shareBtn}
@@ -152,7 +119,7 @@ export default function NewsRoomClient() {
                         <Icon icon="mdi:linkedin" />
                       </a>
                       <a
-                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(item.url || 'https://www.pay10.ae/news-room')}&text=${encodeURIComponent(item.title)}`}
+                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(item.slug ? `https://www.pay10.ae/news-room/${item.slug}` : 'https://www.pay10.ae/news-room')}&text=${encodeURIComponent(item.title)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.shareBtn}

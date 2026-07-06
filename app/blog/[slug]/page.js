@@ -1,17 +1,56 @@
-import { stagingRobots } from "../../lib/metadata";
+import { defaultMetadata } from "../../lib/metadata";
 import BlogDetailClient from "./BlogDetailClient";
 
-// Generate static metadata
 export async function generateMetadata({ params }) {
-  return { title: 'Blog | Pay10', robots: stagingRobots };
+  const { slug } = await params;
+  try {
+    const res = await fetch(`https://pay10d.grapesmobile.com/api/blogs/${slug}`, {
+      next: { revalidate: 60 }
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data?.data?.seo) {
+        return {
+          ...defaultMetadata,
+          title: data.data.seo.title || `${data.data.title} | Pay10`,
+          description: data.data.seo.description || data.data.subtitle || defaultMetadata.description,
+        };
+      } else if (data?.data) {
+        return {
+          ...defaultMetadata,
+          title: `${data.data.title} | Pay10`,
+          description: data.data.subtitle || defaultMetadata.description,
+        };
+      }
+    }
+  } catch (error) {}
+  
+  return {
+    ...defaultMetadata,
+    title: "Blog | Pay10",
+  };
+}
+
+async function getBlogData(slug) {
+  try {
+    const res = await fetch(`https://pay10d.grapesmobile.com/api/blogs/${slug}`, {
+      next: { revalidate: 60 }
+    });
+    if (!res.ok) return null;
+    const json = await res.json();
+    return json?.data || null;
+  } catch (error) {
+    return null;
+  }
 }
 
 export default async function BlogDetail({ params }) {
   const { slug } = await params;
+  const data = await getBlogData(slug);
+  
   return (
     <>
-      {/* Staging: JSON-LD off — uncomment for production */}
-      <BlogDetailClient slug={slug} />
+      <BlogDetailClient initialData={data} />
     </>
   );
 }

@@ -14,7 +14,7 @@ npm run lint     # Run ESLint (errors are intentionally ignored during builds)
 
 No test suite is configured.
 
-Node version: **20.13.1** (see `.nvmrc`).
+Node version: **20.20.2** (see `.nvmrc`).
 
 ## Architecture
 

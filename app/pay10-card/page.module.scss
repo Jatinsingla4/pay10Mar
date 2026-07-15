@@ -7,7 +7,7 @@
   height: 785px;
   display: flex;
   align-items: center;
-  background-image: url('/images/prod_imports/pay10-card-hero.jpg');
+  background-image: var(--desktop-bg, url('/images/prod_imports/pay10-card-hero.jpg'));
   background-size: cover;
   background-position: center;
   border-radius: 24px;
@@ -23,7 +23,7 @@
   }
 
   @include mobile {
-    background-image: url('/images/prod_imports/pay10-card-hero-mobile.png');
+    background-image: var(--mobile-bg, url('/images/prod_imports/pay10-card-hero-mobile.png'));
     background-position: top center;
     height: 100svh;
     min-height: 100svh;
@@ -153,6 +153,7 @@
     font-family: 'bold', sans-serif;
     background: var(--button-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
     line-height: 1.15;

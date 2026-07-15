@@ -243,7 +243,7 @@ const ContactClient = ({ pageData = null }) => {
     try {
       let { response, result } = await submitContactForm(formData.mobile);
 
-      if (!result?.status && /^800\d{5}$/.test(formData.mobile.trim()) && (result?.errors?.phone || "").toLowerCase().includes("invalid")) {
+      if (!result?.success && /^800\d{5}$/.test(formData.mobile.trim()) && (result?.errors?.phone || "").toLowerCase().includes("invalid")) {
         ({ response, result } = await submitContactForm(`971${formData.mobile.trim()}`));
       }
 
@@ -304,16 +304,12 @@ const ContactClient = ({ pageData = null }) => {
         >
           <div className={Style.heroOverlay}></div>
           <div className={Style.heroContent}>
-            <h1 data-animation="opacity-up">{pageData?.page_title || "Contact Us"}</h1>
-            {pageData?.page_description ? (
+            {pageData?.page_title && <h1 data-animation="opacity-up">{pageData.page_title}</h1>}
+            {pageData?.page_description && (
               <div
                 data-animation="opacity-up"
                 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_description) }}
               />
-            ) : (
-              <p data-animation="opacity-up">
-                Need assistance or have questions? Reach out to us anytime. Our team is always happy to help.
-              </p>
             )}
           </div>
         </section>
@@ -322,75 +318,39 @@ const ContactClient = ({ pageData = null }) => {
         <section className={Style.infoCardsSection}>
           <div className={Style.infoCardsGrid}>
             {pageData?.contact_cards?.length > 0 ? (
-              pageData.contact_cards.map((card, idx) => (
-                <div
-                  key={idx}
-                  className={Style.infoCard}
-                  data-animation="opacity-up"
-                  data-anim-delay={idx * 50}
-                >
-                  {card.icon && (
+              pageData.contact_cards.map((card, idx) => {
+                const getCardIcon = (title) => {
+                  const t = (title || "").toLowerCase();
+                  if (t.includes("customer")) return "mdi:headphones";
+                  if (t.includes("merchant support")) return "mdi:storefront";
+                  if (t.includes("sme")) return "mdi:briefcase";
+                  if (t.includes("enterprise")) return "mdi:office-building";
+                  if (t.includes("channel")) return "mdi:handshake";
+                  if (t.includes("media") || t.includes("pr")) return "mdi:microphone";
+                  if (t.includes("marketing") || t.includes("event")) return "mdi:bullhorn";
+                  return "mdi:information-variant";
+                };
+
+                return (
+                  <div
+                    key={idx}
+                    className={Style.infoCard}
+                    data-animation="opacity-up"
+                    data-anim-delay={idx * 50}
+                  >
                     <div className={Style.infoCardIcon}>
-                      <img src={card.icon} alt={card.title} />
+                      {card.icon ? (
+                        <img src={card.icon} alt={card.title} style={{ width: "24px", height: "24px", objectFit: "contain", filter: "brightness(0) invert(1)" }} />
+                      ) : (
+                        <Icon icon={getCardIcon(card.title)} />
+                      )}
                     </div>
-                  )}
-                  <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.content) }} />
-                </div>
-              ))
-            ) : (
-              <>
-                <div className={Style.infoCard} data-animation="opacity-up">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:headset" /></div>
-                  <h3>Customer Support</h3>
-                  <p>24/7 Human Multi-Language Support</p>
-                  <p>Toll Free: <a href="tel:80072910" className={Style.phoneLink}>800 729 10</a></p>
-                  <p><a href="mailto:support@pay10.ae" className={Style.emailLink}>support@pay10.ae</a></p>
-                </div>
-                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="50">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:store-outline" /></div>
-                  <h3>Merchant Support</h3>
-                  <p>24/7 Human Multi-Language Support</p>
-                  <p>Toll Free: <a href="tel:800729110" className={Style.phoneLink}>800 729 110</a></p>
-                  <p><a href="mailto:merchant.support@pay10.ae" className={Style.emailLink}>merchant.support@pay10.ae</a></p>
-                </div>
-                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="100">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:briefcase-outline" /></div>
-                  <h3>SME Merchants</h3>
-                  <p>Register Your SME Business with Pay10</p>
-                  <p><a href="mailto:sales@pay10.ae" className={Style.emailLink}>sales@pay10.ae</a></p>
-                </div>
-                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="150">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:office-building-outline" /></div>
-                  <h3>Enterprise Merchants</h3>
-                  <p>Contact our Enterprise Team for Enterprise Solutions</p>
-                  <p><a href="mailto:enterprisesales@pay10.ae" className={Style.emailLink}>enterprisesales@pay10.ae</a></p>
-                </div>
-                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="200">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:handshake-outline" /></div>
-                  <h3>Channel Partners</h3>
-                  <p>Contact us to become a Pay10 Channel Partner</p>
-                  <p><a href="mailto:channelpartners@pay10.ae" className={Style.emailLink}>channelpartners@pay10.ae</a></p>
-                </div>
-                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="250">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:microphone-outline" /></div>
-                  <h3>Media &amp; PR</h3>
-                  <p>Contact our PR Team</p>
-                  <p><a href="mailto:pr@pay10.ae" className={Style.emailLink}>pr@pay10.ae</a></p>
-                </div>
-                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="300">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:bullhorn-outline" /></div>
-                  <h3>Marketing &amp; Events</h3>
-                  <p>Contact our Marketing Team</p>
-                  <p><a href="mailto:marketing@pay10.ae" className={Style.emailLink}>marketing@pay10.ae</a></p>
-                </div>
-                <div className={Style.infoCard} data-animation="opacity-up" data-anim-delay="350">
-                  <div className={Style.infoCardIcon}><Icon icon="mdi:information-outline" /></div>
-                  <h3>General Inquiries</h3>
-                  <p>Contact our Team for General Inquiries</p>
-                  <p><a href="mailto:info@pay10.ae" className={Style.emailLink}>info@pay10.ae</a></p>
-                </div>
-              </>
-            )}
+                    {card.title && <h3>{card.title}</h3>}
+                    <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.content) }} />
+                  </div>
+                );
+              })
+            ) : null}
           </div>
         </section>
 
@@ -421,18 +381,24 @@ const ContactClient = ({ pageData = null }) => {
                 Whether you&apos;re a business looking to integrate payments or a customer needing support, we&apos;d love to hear from you.
               </p>
               <ul className={Style.formLeftInfo} data-animation="opacity-up" data-anim-delay="300">
-                <li>
-                  <Icon icon="weui:location-outlined" className={Style.formLeftInfoIcon} />
-                  <span>{pageData?.address || "1004, 10th Floor, U-Bora Tower, Business Bay, Dubai, United Arab Emirates"}</span>
-                </li>
-                <li>
-                  <Icon icon="ic:outline-email" className={Style.formLeftInfoIcon} />
-                  <span>{getContactEmail()}</span>
-                </li>
-                <li>
-                  <Icon icon="prime:mobile" className={Style.formLeftInfoIcon} />
-                  <span>80072910</span>
-                </li>
+                {pageData?.address && (
+                  <li>
+                    <Icon icon="weui:location-outlined" className={Style.formLeftInfoIcon} />
+                    <span>{pageData.address}</span>
+                  </li>
+                )}
+                {pageData?.email && (
+                  <li>
+                    <Icon icon="ic:outline-email" className={Style.formLeftInfoIcon} />
+                    <span>{pageData.email}</span>
+                  </li>
+                )}
+                {pageData?.phone && (
+                  <li>
+                    <Icon icon="prime:mobile" className={Style.formLeftInfoIcon} />
+                    <span>{pageData.phone}</span>
+                  </li>
+                )}
               </ul>
             </div>
 

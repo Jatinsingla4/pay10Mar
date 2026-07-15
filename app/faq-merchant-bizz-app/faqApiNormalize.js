@@ -6,8 +6,8 @@
 /** @typedef {{ id: string, question: string, answer?: string, answerList?: string[] }} NormalizedFaqItem */
 /** @typedef {{ id: string, title: string, items: NormalizedFaqItem[] }} NormalizedFaqSection */
 
-const DEFAULT_KICKER = "FAQ | Pay10 Consumer Wallet";
-const DEFAULT_TITLE = "FAQ Customer App";
+const DEFAULT_KICKER = "FAQ | Pay10 Biz UAE";
+const DEFAULT_TITLE = "FAQ Merchant App";
 
 function slugify(value, fallback) {
   const s = String(value || "")

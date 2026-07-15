@@ -1,0 +1,21 @@
+# Dependabot config — travels with the repo.
+# Whoever hosts this repo on GitHub gets automatic security patch PRs
+# once they enable Dependabot alerts on their account (see SECURITY.md).
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    # Bundle all security fixes into one PR to reduce noise.
+    groups:
+      security-patches:
+        applies-to: security-updates
+        patterns: ["*"]
+    open-pull-requests-limit: 5
+
+  # Keep the CI action itself patched too.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"

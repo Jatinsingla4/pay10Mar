@@ -32,11 +32,22 @@ const ConsumerFeatureSection = ({
               ))}
             </ul>
           )}
-          {extraContent && (
-            <div className={Style.extra_content} data-animation="opacity-up" data-anim-delay="250">
+          {extraContent && typeof extraContent === 'string' ? (
+            <div 
+              className={Style.extra_content} 
+              data-animation="opacity-up" 
+              data-anim-delay="250"
+              dangerouslySetInnerHTML={{ __html: extraContent }}
+            />
+          ) : extraContent ? (
+            <div 
+              className={Style.extra_content} 
+              data-animation="opacity-up" 
+              data-anim-delay="250"
+            >
               {extraContent}
             </div>
-          )}
+          ) : null}
         </div>
 
         <div className={`${Style.image_col} ${isReversed ? Style.order_1 : Style.order_2}`} data-animation="opacity-up">

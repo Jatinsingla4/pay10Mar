@@ -17,7 +17,7 @@
     height: 785px; // Matches Al Tareq banner exactly
     display: flex;
     align-items: center;
-    background-image: url('/images/prod_imports/pay10-uae-app-hero.jpg');
+    background-image: var(--bg-desktop);
     background-size: cover;
     background-position: center;
     border-radius: 24px;
@@ -40,8 +40,15 @@
       align-items: flex-end;
       justify-content: center;
       padding-bottom: 80px;
-      background-image: url('/images/prod_imports/uae-app-hero-mobile.png');
     }
+
+    @media (max-width: 768px) {
+      background-image: var(--bg-mobile);
+    }
+  }
+
+  .fallback_gradient {
+    background: var(--primary-gradient);
   }
 
   .hero_banner_text {
@@ -206,6 +213,18 @@
           align-items: center;
           justify-content: center;
           margin-bottom: 24px;
+
+          .img_icon_gradient {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-gradient);
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+          }
 
           svg * {
             fill: url(#heroIconGradient);

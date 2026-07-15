@@ -5,7 +5,7 @@
   height: 785px;
   display: flex;
   align-items: center;
-  background-image: url('/images/prod_imports/bill-payment-hero.jpg');
+  background-image: var(--bg-desktop, url('/images/prod_imports/bill-payment-hero.jpg'));
   background-size: cover;
   background-position: center;
   border-radius: 24px;
@@ -26,7 +26,7 @@
     background-position: center;
     padding: 40px 20px 60px;
     align-items: flex-end;
-    background-image: url('/images/prod_imports/bill-payment-hero-mobile.png');
+    background-image: var(--bg-mobile, url('/images/prod_imports/bill-payment-hero-mobile.png'));
   }
 }
 

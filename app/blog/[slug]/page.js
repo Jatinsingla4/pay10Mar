@@ -1,11 +1,13 @@
 import { defaultMetadata } from "../../lib/metadata";
+import { API_BASE, API_HEADERS } from "../../lib/fetchPageData";
 import BlogDetailClient from "./BlogDetailClient";
 
 export async function generateMetadata({ params }) {
   const { slug } = await params;
   try {
-    const res = await fetch(`https://pay10d.grapesmobile.com/api/blogs/${slug}`, {
-      next: { revalidate: 60 }
+    const res = await fetch(`${API_BASE}/blogs/${slug}`, {
+      next: { revalidate: 60 },
+      headers: API_HEADERS,
     });
     if (res.ok) {
       const data = await res.json();
@@ -33,8 +35,9 @@ export async function generateMetadata({ params }) {
 
 async function getBlogData(slug) {
   try {
-    const res = await fetch(`https://pay10d.grapesmobile.com/api/blogs/${slug}`, {
-      next: { revalidate: 60 }
+    const res = await fetch(`${API_BASE}/blogs/${slug}`, {
+      next: { revalidate: 60 },
+      headers: API_HEADERS,
     });
     if (!res.ok) return null;
     const json = await res.json();

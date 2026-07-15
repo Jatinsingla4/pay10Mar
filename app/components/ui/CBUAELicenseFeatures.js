@@ -26,7 +26,13 @@ const CheckIcon = () => (
   </svg>
 );
 
-const CBUAELicenseFeatures = () => {
+const CBUAELicenseFeatures = ({ 
+  eyebrow = "CBUAE Licensed · Our Credibility",
+  title = "Built on the strongest regulatory foundation in the UAE.",
+  content = "",
+  cardsData = [],
+  logo
+}) => {
   const cards = [
     {
       id: "01",
@@ -98,37 +104,55 @@ const CBUAELicenseFeatures = () => {
     }
   ];
 
+  const parseContent = (htmlString) => {
+    if (!htmlString) return { __html: "" };
+    // Replace [gradient]...[/gradient] with a span containing the global gradient-text class
+    const parsed = htmlString.replace(/\[gradient\](.*?)\[\/gradient\]/g, '<span class="gradient-text">$1</span>');
+    return { __html: parsed };
+  };
+
   return (
     <section className={Style.feature_grid_section}>
       <div className={Style.container}>
         
         {/* Left Content */}
         <div className={Style.left_content}>
-          <span className={Style.eyebrow} data-animation="opacity-up">CBUAE Licensed &middot; Our Credibility</span>
-          <h2 data-animation="opacity-up" data-anim-delay="100">Built on the strongest regulatory foundation in the UAE.</h2>
-          <p data-animation="opacity-up" data-anim-delay="200">
-            Pay10 holds four Central Bank of the UAE licenses - SVF, RPS-II, Open Finance, and Remittance. Together they make Pay10 a fully regulated fintech solution provider to both merchants and consumers catering to all financial alternative payment methods.
-          </p>
-          <div className={Style.highlight_text} data-animation="opacity-up" data-anim-delay="300">
-            Most fintechs hold 1, maybe 2. Pay10 holds all 4.
-          </div>
+          {eyebrow && <span className={Style.eyebrow} data-animation="opacity-up">{eyebrow}</span>}
+          {title && <h2 data-animation="opacity-up" data-anim-delay="100">{title}</h2>}
           
-          <div className={Style.logo_wrapper} data-animation="opacity-up" data-anim-delay="400">
-            <img src="/images/home/cbuae-logo.png" alt="Central Bank of the UAE" className={Style.cbuae_logo} />
-          </div>
+          {content ? (
+            <div className={Style.cms_content} data-animation="opacity-up" data-anim-delay="200" dangerouslySetInnerHTML={parseContent(content)} />
+          ) : (
+            <>
+              <p data-animation="opacity-up" data-anim-delay="200">
+                Pay10 holds four Central Bank of the UAE licenses - SVF, RPS-II, Open Finance, and Remittance. Together they make Pay10 a fully regulated fintech solution provider to both merchants and consumers catering to all financial alternative payment methods.
+              </p>
+              <div className={Style.highlight_text} data-animation="opacity-up" data-anim-delay="300">
+                Most fintechs hold 1, maybe 2. Pay10 holds all 4.
+              </div>
+            </>
+          )}
+          
+          {logo && (
+            <div className={Style.logo_wrapper} data-animation="opacity-up" data-anim-delay="400">
+              <img src={logo} alt="Central Bank of the UAE" className={Style.cbuae_logo} />
+            </div>
+          )}
         </div>
 
         {/* Right Grid */}
         <div className={Style.right_grid}>
-          {cards.map((card, index) => (
-            <div key={card.id} className={Style.feature_card} data-animation="opacity-up" data-anim-delay={`${100 * (index + 1)}`}>
+          {cardsData && cardsData.map((card, index) => (
+            <div key={index} className={Style.feature_card} data-animation="opacity-up" data-anim-delay={`${100 * (index + 1)}`}>
               <div className={Style.card_content}>
                 <div className={Style.card_header}>
-                  <div className={Style.icon}>{card.icon}</div>
-                  <span className={Style.number}>{card.id}</span>
+                  <div className={Style.icon}>
+                    {card.icon && <img src={card.icon} alt="" width="24" height="24" style={{imageRendering:'crisp-edges', objectFit:'contain'}} />}
+                  </div>
+                  <span className={Style.number}>{(index + 1).toString().padStart(2, '0')}</span>
                 </div>
                 <h3 className={Style.card_title}>{card.title}</h3>
-                <p className={Style.card_desc}>{card.description}</p>
+                {card.subtitle && <p className={Style.card_desc}>{card.subtitle}</p>}
                 <div className={Style.arrow_wrapper}>
                   <ArrowIcon />
                 </div>
@@ -136,16 +160,9 @@ const CBUAELicenseFeatures = () => {
               
               {/* Hover Overlay */}
               <div className={Style.card_hover_overlay}>
-                <h4 className={Style.hover_title}>{card.hoverData.title}</h4>
-                <div className={Style.hover_subtitle}>{card.hoverData.subtitle}</div>
-                <ul className={Style.hover_features}>
-                  {card.hoverData.features.map((feature, i) => (
-                    <li key={i}>
-                      <CheckIcon />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
+                {card.content && (
+                  <div className={Style.hover_cms_content} dangerouslySetInnerHTML={{ __html: card.content }} />
+                )}
               </div>
             </div>
           ))}

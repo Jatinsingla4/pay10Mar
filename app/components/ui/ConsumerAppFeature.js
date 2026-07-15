@@ -5,32 +5,41 @@ import Image from "next/image";
 import { Icon } from "@iconify/react";
 import styles from "./ConsumerAppFeature.module.scss";
 
-export default function ConsumerAppFeature() {
-  const features = [
-    "Scan & Pay at DQR POS machines across all 7 Emirates",
-    "Send money to friends via mobile number",
-    "Send money abroad, remit home to family",
-    "Link all your bank accounts in one view",
-    "Bill payments, top-ups, card controls",
-    "24/7 human consumer support"
-  ];
+export default function ConsumerAppFeature({
+  title = "",
+  subtitle = "",
+  cardsData = [],
+  image = "",
+  content = ""
+}) {
+  // If no data is provided from CMS, don't render
+  if (!title && !subtitle && (!cardsData || cardsData.length === 0) && !content) {
+    return null;
+  }
+
+  // Map CMS cards to feature strings
+  const features = cardsData.map(card => card.title).filter(Boolean);
 
   return (
     <section className={styles.consumerFeatureSection}>
       <div className={styles.container}>
         {/* Left Content */}
         <div className={styles.leftContent} data-animation="fade-up">
-          <h2 className={styles.heading}>Your complete financial life in one place.</h2>
-          <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>Consumer App</h3>
+          {title && <h2 className={styles.heading} dangerouslySetInnerHTML={{ __html: title }}></h2>}
+          {subtitle && <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>{subtitle}</h3>}
           
-          <ul className={styles.featuresList}>
-            {features.map((feature, index) => (
-              <li key={index} data-animation="fade-up" style={{ transitionDelay: `${index * 0.1}s` }}>
-                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: 'var(--red)' }} />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
+          {content ? (
+            <div className={styles.cms_content} dangerouslySetInnerHTML={{ __html: content }} />
+          ) : (
+            <ul className={styles.featuresList}>
+              {features.map((feature, index) => (
+                <li key={index} data-animation="fade-up" style={{ transitionDelay: `${index * 0.1}s` }}>
+                  <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: 'var(--red)' }} />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <div className={styles.storeBadges}>
             <a href="#" className={styles.badge} aria-label="Download on the App Store">
@@ -57,12 +66,14 @@ export default function ConsumerAppFeature() {
 
         {/* Right Image */}
         <div className={styles.rightImage} data-animation="fade-up" style={{ transitionDelay: '0.2s' }}>
-          <Image 
-            src="/images/home/consumer-qr.jpg"
-            alt="Pay10 Consumer App scanning QR Code"
-            fill 
-            style={{ objectFit: 'cover' }}
-          />
+          {image && (
+            <Image 
+              src={image}
+              alt="Pay10 Consumer App"
+              fill 
+              style={{ objectFit: 'cover' }}
+            />
+          )}
         </div>
       </div>
     </section>

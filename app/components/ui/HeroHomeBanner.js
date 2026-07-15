@@ -94,9 +94,9 @@ const defaultDecorations = [
 ];
 
 export default function HeroHomeBanner({
-  eyebrow = 'YOUR ALTERNATIVE PAYMENT PARTNER',
-  title = 'Why Pay, When You Can Pay10',
-  description = 'Tap into a world of possibilities with Pay10 digital payments to boost your life or business.',
+  eyebrow = 'Your Trusted Alternative Payment Method',
+  subtitle = 'Licensed by Central Bank of the UAE\nInstant. Secure. Interoperable.',
+  description = '<h1>Why Pay, When You Can Pay10</h1>',
   ctaLabel = 'Get Started',
   ctaHref = '/contact-us',
   heroImage = {
@@ -106,6 +106,8 @@ export default function HeroHomeBanner({
     height: 640,
   },
   decorations = defaultDecorations,
+  bgImage,
+  mobileBgImage,
 }) {
   const hasHeroImage = heroImage && heroImage.src;
   const rootRef = useRef(null);
@@ -212,17 +214,29 @@ export default function HeroHomeBanner({
   }, []);
 
   return (
-    <section ref={rootRef} className={styles.heroHomeBanner}>
+    <section 
+      ref={rootRef} 
+      className={styles.heroHomeBanner}
+      style={{
+        '--hero-bg-desktop': bgImage ? `url(${bgImage})` : "url('/images/home/home_banner_headspace.jpg')",
+        '--hero-bg-mobile': mobileBgImage ? `url(${mobileBgImage})` : (bgImage ? `url(${bgImage})` : "url('/images/prod_imports/home-page-hero-mobile.png')")
+      }}
+    >
       <div className={styles.desktopLayout}>
         <div className={styles.desktopInner}>
-          <p className={styles.eyebrow} data-anim="eyebrow">{eyebrow}</p>
-          <p className={styles.body} data-anim="sub1">
-            Licensed by Central Bank of the UAE
-          </p>
-          <p className={styles.body} data-anim="sub2">
-            Instant. Secure. Interoperable.
-          </p>
-          <h1 className={styles.title} data-anim="title">{title}</h1>
+          {eyebrow && <p className={styles.eyebrow} data-anim="eyebrow">{eyebrow}</p>}
+          {subtitle && (
+            <p className={styles.body} data-anim="sub1" style={{ whiteSpace: 'pre-line' }}>
+              {subtitle}
+            </p>
+          )}
+          {description && (
+            <div 
+              className={styles.titleWrapper} 
+              data-anim="title"
+              dangerouslySetInnerHTML={{ __html: description }}
+            />
+          )}
           {ctaLabel && (
             <Link href={ctaHref} className={styles.ctaDesktop} data-anim="cta">
               <span>{ctaLabel}</span>

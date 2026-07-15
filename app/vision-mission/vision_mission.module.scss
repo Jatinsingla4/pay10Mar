@@ -2,8 +2,8 @@
 
 .vision_banner {
   width: 100%;
-  height: 90vh;
-  background-image: url("/images/about_images/vision-mission-banner.jpg");
+  height: 785px;
+  background-image: var(--desktop-bg);
   background-size: cover;
   background-position: center;
   border-radius: 2rem;
@@ -133,9 +133,7 @@
       line-height: 1.35;
     }
   }
-  .right_img {
-    // keeping previous adjustments
-  }
+
 }
 
 @media only screen and (max-width: 1200px) {
@@ -256,7 +254,9 @@
 
 @media only screen and (max-width: 767px) {
   .vision_banner {
-    background-image: url('/images/prod_imports/vision-mission-hero-mobile.png');
+    background-image: var(--mobile-bg, var(--desktop-bg));
+    height: 100svh;
+    min-height: 100svh;
     h2 {
       font-size: 48px;
       transform: translateY(-100px);

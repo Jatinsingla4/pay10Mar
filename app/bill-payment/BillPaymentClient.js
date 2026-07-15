@@ -4,10 +4,12 @@ import React from 'react';
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 
-const BillPaymentClient = () => {
+const BillPaymentClient = ({ pageData = null }) => {
+  const heroSection = pageData?.sections?.[0];
+
   const utilitySection = {
     heading: "Utility Bill Payments (Coming Soon)",
-    subheading: "Your home runs on it. Pay10 makes it easy. Electricity, water, gas, chiller, wherever you live in the UAE, Pay10 UAE App connects you to your authority's billing system directly.",
+    subheading: "Your home runs on it. Pay10 makes it easy. Electricity, water, gas, chiller, wherever you live in the UAE, Pay10 UAE connects you to your authority's billing system directly.",
     points: [
       "Pay electricity, water, gas, and chiller bills in one place",
       "Covers all 7 Emirates. Your provider is here",
@@ -106,67 +108,73 @@ const BillPaymentClient = () => {
 
   return (
     <main>
-      <section className={Style.bill_hero}>
+      <section
+        className={Style.bill_hero}
+        style={{
+          '--bg-desktop': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
+          '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : undefined),
+          '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : undefined,
+        }}
+      >
         <div className={Style.bill_hero_text}>
-          <h2>
-            Never miss a bill. <br /> Never switch apps again.
-          </h2>
-          <p>
-            All your UAE bills (utilities, telecom, transport, and gift cards) paid from one place. No more juggling apps, portals, or queues.
-          </p>
+          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Never miss a bill. <br /> Never switch apps again." }} />
+          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "All your UAE bills (utilities, telecom, transport, and gift cards) paid from one place. No more juggling apps, portals, or queues." }} />
           <p className={Style.slogan}>
-            Why Pay, When You Can Pay10
+            {pageData?.banner_text || "Why Pay, When You Can Pay10"}
           </p>
         </div>
       </section>
 
       <div className={Style.bg_circle_wrapper}>
-        <ConsumerFeatureSection
-          heading={utilitySection.heading}
-          subheading={utilitySection.subheading}
-          points={utilitySection.points}
-          extraContent={utilitySection.extraContent}
-          imageSrc={utilitySection.imageSrc}
-          imageAlt={utilitySection.imageAlt}
-          isReversed={utilitySection.isReversed}
-          isGreyBg={utilitySection.isGreyBg}
-          isTransparent={true}
-        />
+        {pageData?.sections && pageData.sections.length > 0 && (
+          pageData.sections.map((section, index) => {
+            const hardcodedExtras = [
+              utilitySection.extraContent,
+              telecomSection.extraContent,
+              transportSection.extraContent,
+              null
+            ];
+            
+            // Extract bullets either from <li> tags or from `---` separated text in content
+            let extractedPoints = [];
+            if (section.content) {
+              const liMatches = Array.from(section.content.matchAll(/<li[^>]*>(.*?)<\/li>/g));
+              if (liMatches.length > 0) {
+                extractedPoints = liMatches.map(m => m[1].trim());
+              } else if (section.content.includes('---')) {
+                const parts = section.content.split('---');
+                extractedPoints = parts[1].split(',').map(p => p.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean);
+              }
+            }
+            
+            // If we found bullets in the content, we don't want to show the original content block with standard bullets
+            // But if there's text before the bullets, we might want to show it. For now, if we extracted points from <li>, 
+            // we'll hide the raw content so we don't double-render bullets.
+            const showRawContent = !section.content?.includes('<li') && !section.content?.includes('---') && section.content !== '<p><br></p>';
 
-        <ConsumerFeatureSection
-          heading={telecomSection.heading}
-          subheading={telecomSection.subheading}
-          points={telecomSection.points}
-          extraContent={telecomSection.extraContent}
-          imageSrc={telecomSection.imageSrc}
-          imageAlt={telecomSection.imageAlt}
-          isReversed={telecomSection.isReversed}
-          isGreyBg={telecomSection.isGreyBg}
-          isTransparent={true}
-        />
-
-        <ConsumerFeatureSection
-          heading={transportSection.heading}
-          subheading={transportSection.subheading}
-          points={transportSection.points}
-          extraContent={transportSection.extraContent}
-          imageSrc={transportSection.imageSrc}
-          imageAlt={transportSection.imageAlt}
-          isReversed={transportSection.isReversed}
-          isGreyBg={transportSection.isGreyBg}
-          isTransparent={true}
-        />
-
-        <ConsumerFeatureSection
-          heading={giftCardSection.heading}
-          subheading={giftCardSection.subheading}
-          points={giftCardSection.points}
-          imageSrc={giftCardSection.imageSrc}
-          imageAlt={giftCardSection.imageAlt}
-          isReversed={giftCardSection.isReversed}
-          isGreyBg={giftCardSection.isGreyBg}
-          isTransparent={true}
-        />
+            return (
+              <ConsumerFeatureSection
+                key={index}
+                heading={section.title}
+                subheading={section.subtitle}
+                points={extractedPoints.length > 0 ? extractedPoints : (section.cards?.map(card => card.title) || [])}
+                extraContent={
+                  <>
+                    {showRawContent && (
+                      <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                    )}
+                    {hardcodedExtras[index] || null}
+                  </>
+                }
+                imageSrc={section.images?.[0] || hardcodedExtras[index]?.imageSrc}
+                imageAlt={section.title}
+                isReversed={index % 2 !== 0}
+                isGreyBg={true}
+                isTransparent={true}
+              />
+            );
+          })
+        )}
       </div>
     </main>
   );

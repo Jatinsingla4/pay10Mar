@@ -9,14 +9,23 @@ const licenseImages = [
   '/images/prod_imports/pci.png'
 ];
 
-const ConsumerSecuritySection = () => {
+const ConsumerSecuritySection = ({ 
+  title = "SECURITY", 
+  subtitle = "WORLD'S MOST RIGOROUS", 
+  description = "Your data deserves the best protection in the world.",
+  content = "Pay10 UAE is PCI DSS Level 1 Certified and SOC 2 Type II Compliant, aligned with the most rigorous security standards globally. Fully licensed by the Central Bank of the UAE.",
+  images = []
+}) => {
   const trackRef = useRef(null);
   const marqueeRef = useRef(null);
   const indexRef = useRef(0);
 
+  // Use CMS images if provided, otherwise use fallback
+  const displayImages = images && images.length > 0 ? images : licenseImages;
+
   useEffect(() => {
-    if (!licenseImages || licenseImages.length === 0) return;
-    const total = licenseImages.length;
+    if (!displayImages || displayImages.length === 0) return;
+    const total = displayImages.length;
 
     const slide = () => {
       const track = trackRef.current;
@@ -44,7 +53,7 @@ const ConsumerSecuritySection = () => {
 
     const id = setInterval(slide, 3500);
     return () => clearInterval(id);
-  }, []);
+  }, [displayImages]);
 
   return (
     <section className={Style.security_section}>
@@ -63,27 +72,39 @@ const ConsumerSecuritySection = () => {
           </svg>
         </div>
 
-        <h3 className={Style.subheading} data-animation="opacity-up" data-anim-delay="100">
-          WORLD'S MOST RIGOROUS
-        </h3>
+        {subtitle && (
+          <h3 className={Style.subheading} data-animation="opacity-up" data-anim-delay="100">
+            {subtitle}
+          </h3>
+        )}
         
-        <h1 className={Style.main_heading} data-animation="opacity-up" data-anim-delay="150">
-          SECURITY
-        </h1>
+        {title && (
+          <h1 className={Style.main_heading} data-animation="opacity-up" data-anim-delay="150">
+            {title}
+          </h1>
+        )}
         
-        <p className={Style.description} data-animation="opacity-up" data-anim-delay="200">
-          Your data deserves the best protection in the world.
-        </p>
-        <p className={Style.description_sub} data-animation="opacity-up" data-anim-delay="250">
-          Pay10 UAE is PCI DSS Level 1 Certified and SOC 2 Type II Compliant, aligned with the most rigorous security standards globally. Fully licensed by the Central Bank of the UAE.
-        </p>
+        {description && (
+          <p className={Style.description} data-animation="opacity-up" data-anim-delay="200">
+            {description}
+          </p>
+        )}
+        
+        {content && (
+          <div 
+            className={Style.description_sub} 
+            data-animation="opacity-up" 
+            data-anim-delay="250"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+        )}
 
         <div className={Style.certifications} data-animation="opacity-up" data-anim-delay="250">
           <h4>Certified by</h4>
           
           <div className={Style.badgesMarquee} ref={marqueeRef}>
             <div className={Style.badgesTrack} ref={trackRef}>
-              {[...licenseImages, ...licenseImages, ...licenseImages].map((item, index) => (
+              {[...displayImages, ...displayImages, ...displayImages].map((item, index) => (
                 <div key={index} className={Style.badgeCard}>
                   <img
                     src={item}

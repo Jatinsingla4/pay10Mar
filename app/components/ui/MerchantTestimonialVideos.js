@@ -52,30 +52,47 @@ const VideoCard = ({ videoSrc, placeholderImage, caption }) => {
   );
 };
 
-const MerchantTestimonialVideos = () => {
+const MerchantTestimonialVideos = ({
+  title = "",
+  content = "",
+  cardsData = [],
+  sectionVideo = null,
+  videos = [],
+}) => {
+  if (!title && !content && cardsData.length === 0 && videos.length === 0) return null;
+
   return (
     <section className={Style.videoSection}>
       <div className={Style.container}>
-        
+
         <div className={Style.textContent} data-animation="fade-up">
-          <h2>Don't take our word for it.<br /> Hear it from the merchants themselves.</h2>
-          <p>
-            From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.
-          </p>
+          {title && <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>}
+          {content && <div dangerouslySetInnerHTML={{ __html: content }}></div>}
         </div>
 
         <div className={Style.videosGrid}>
-          {/* Using the downloaded Instagram reels */}
-          <VideoCard 
-            videoSrc="/videos/testimonial_1.mp4" 
-            placeholderImage="/images/placeholder_video_1.jpg"
-            caption="No change? No problem. She's got Pay10."
-          />
-          <VideoCard 
-            videoSrc="/videos/testimonial_2.mp4" 
-            placeholderImage="/images/placeholder_video_2.jpg"
-            caption="Queue cleared in just a few minutes."
-          />
+          {cardsData && cardsData.length > 0 ? (
+            cardsData.map((card, idx) => (
+              <VideoCard
+                key={idx}
+                videoSrc={card.subtitle || card.content}
+                placeholderImage={card.icon}
+                caption={card.title}
+              />
+            ))
+          ) : videos.length > 0 ? (
+            videos.map((url, idx) => (
+              <VideoCard key={idx} videoSrc={url} />
+            ))
+          ) : sectionVideo ? (
+            <VideoCard videoSrc={sectionVideo} />
+          ) : (
+            <>
+              <VideoCard videoSrc="/videos/merchant-1.mp4" />
+              <VideoCard videoSrc="/videos/merchant-2.mp4" />
+              <VideoCard videoSrc="/videos/merchant-3.mp4" />
+            </>
+          )}
         </div>
 
       </div>

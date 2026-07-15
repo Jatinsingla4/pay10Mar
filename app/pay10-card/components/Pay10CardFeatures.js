@@ -45,8 +45,8 @@ const TerminalIcon = () => (
   </svg>
 );
 
-const Pay10CardFeatures = () => {
-  const cards = [
+const Pay10CardFeatures = ({ data = null }) => {
+  const defaultCards = [
     {
       id: "01",
       icon: <UaeCardIcon />,
@@ -67,6 +67,13 @@ const Pay10CardFeatures = () => {
     }
   ];
 
+  const cards = data?.cards?.length > 0 ? data.cards.map((card, index) => ({
+    id: `0${index + 1}`,
+    icon: index === 0 ? <UaeCardIcon /> : index === 1 ? <TerminalIcon /> : <SecurityIcon />,
+    title: card.title,
+    description: card.description || card.subtitle
+  })) : defaultCards;
+
   return (
     <section className={Style.feature_grid_section}>
       <div className={Style.container}>
@@ -74,9 +81,9 @@ const Pay10CardFeatures = () => {
         {/* Left Content */}
         <div className={Style.left_content}>
           <span className={Style.eyebrow} data-animation="opacity-up">Built by the UAE. For the UAE.</span>
-          <h2 data-animation="opacity-up" data-anim-delay="100">Accepted everywhere that matters.</h2>
+          <h2 data-animation="opacity-up" data-anim-delay="100">{data?.title || "Accepted everywhere that matters."}</h2>
           <p data-animation="opacity-up" data-anim-delay="200">
-            Pay10 Card runs on Jaywan - the UAE's first domestic card payment scheme, launched by Al Etihad Payments, a subsidiary of the Central Bank of the UAE. Jaywan means "precious pearl" in Arabic - a nod to the UAE's heritage and its vision for a sovereign, future-ready financial system.
+            {data?.subtitle || "Pay10 Card runs on Jaywan - the UAE's first domestic card payment scheme, launched by Al Etihad Payments, a subsidiary of the Central Bank of the UAE. Jaywan means \"precious pearl\" in Arabic - a nod to the UAE's heritage and its vision for a sovereign, future-ready financial system."}
           </p>
         </div>
 
@@ -96,7 +103,7 @@ const Pay10CardFeatures = () => {
           {/* 04 Image Card */}
           <div className={`${Style.feature_card} ${Style.image_card}`} data-animation="opacity-up" data-anim-delay="400">
             <span className={Style.number_overlay}>04</span>
-            <img src="/images/prod_imports/jaywan-cards-mockup.png" alt="Jaywan Pay10 Card" />
+            <img src={data?.images?.[0] || "/images/prod_imports/jaywan-cards-mockup.png"} alt="Jaywan Pay10 Card" />
           </div>
         </div>
 

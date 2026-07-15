@@ -1,24 +1,57 @@
-import CareersHeroBanner from "@/app/components/ui/careers/CareersHeroBanner";
+import { fetchPageData } from "../lib/fetchPageData";
 import styles from "./careers.module.scss";
 
-export const metadata = {
-  title: "Careers - Pay 10",
-  description: "Join the Pay10 team. Build your future with Pay10, building smart, secure, and fast payment solutions in the UAE.",
-  alternates: {
-    canonical: "https://pay10.ae/careers",
-  },
-};
+export async function generateMetadata() {
+  const data = await fetchPageData('careers');
+  if (data?.seo) {
+    return {
+      title: data.seo.title || "Careers - Pay10",
+      description: data.seo.description || "Join the Pay10 team. Build your future with Pay10, building smart, secure, and fast payment solutions in the UAE.",
+      alternates: { canonical: "https://pay10.ae/careers" },
+    };
+  }
+  return {
+    title: "Careers - Pay 10",
+    description: "Join the Pay10 team. Build your future with Pay10, building smart, secure, and fast payment solutions in the UAE.",
+    alternates: { canonical: "https://pay10.ae/careers" },
+  };
+}
 
-export default function CareersPage() {
+export default async function CareersPage() {
+  const pageData = await fetchPageData('careers');
+
   return (
     <main className={styles.careers}>
-      <CareersHeroBanner />
+      {(pageData?.banner_image || pageData?.mobile_image) && (
+        <section 
+          className={styles.careersHeroBanner} 
+          aria-label="Careers"
+          style={{ 
+            '--desktop-bg': pageData?.banner_image ? `url(${pageData.banner_image})` : 'none',
+            '--mobile-bg': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : 'none')
+          }}
+        >
+          <div className={styles.bannerContent}>
+            {pageData?.page_title && <h2>{pageData.page_title}</h2>}
+          </div>
+        </section>
+      )}
 
       <section className="wrapper">
-        <div className={styles.content} data-animation="fade-up">
-          <h2>Build Your Future With Pay10</h2>
-          <p>At Pay10, we’re building smart, secure, and fast payment solutions - and we’re looking for people who want to grow with us. If you love solving real-world problems, enjoy teamwork, and want to work in a place where your ideas actually matter, you’ll fit right in. Join us and help shape the future of digital payments.</p>
-        </div>
+        {(pageData?.page_subtitle || pageData?.page_description) && (
+          <div className={styles.content} data-animation="fade-up">
+            {pageData?.page_subtitle && <h2>{pageData.page_subtitle}</h2>}
+            {pageData?.page_description && <div dangerouslySetInnerHTML={{ __html: pageData.page_description }} />}
+          </div>
+        )}
+
+        {pageData?.sections?.map((section, idx) => (
+          <div key={idx} className={styles.content} data-animation="fade-up">
+            {section.title && <h2>{section.title}</h2>}
+            {section.content && <div dangerouslySetInnerHTML={{ __html: section.content }} />}
+            {section.image && <img src={section.image} alt={section.title} style={{ maxWidth: '100%', marginTop: '20px' }} />}
+          </div>
+        ))}
 
         <div className={styles.jobs_box} data-animation="fade-up" data-anim-delay="300">
           <iframe

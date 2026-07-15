@@ -54,10 +54,10 @@ export const generateApiMetadata = (pageData, fallbackTitle = 'Pay 10', fallback
     rawTitle = 'About Us \u2013 Pay 10';
   } else if (currentSlug === 'vision-mission' || currentSlug === 'vision-and-mission' || titleLower.includes('vision & mission') || titleLower.includes('vision and mission')) {
     rawTitle = 'Vision & Mission \u2013 Pay 10';
-  } else if (currentSlug === 'pay10-uae-app' || titleLower.includes('pay10 uae app')) {
-    rawTitle = 'Pay10 UAE App \u2013 Pay 10';
+  } else if (currentSlug === 'pay10-uae-app' || titleLower.includes('Pay10 UAE')) {
+    rawTitle = 'Pay10 UAE \u2013 Pay 10';
   } else if (currentSlug === 'pay10-biz-uae-app' || currentSlug === 'merchant-app' || titleLower.includes('merchant-app') || titleLower.includes('merchant app')) {
-    rawTitle = 'Pay10 Biz UAE App \u2013 Pay 10';
+    rawTitle = 'Pay10 Biz UAE \u2013 Pay 10';
   } else if (currentSlug === 'open-finance-altareq' || currentSlug === 'open-finance-altareeq' || titleLower.includes('open finance') || titleLower.includes('altareq') || titleLower.includes('altareeq')) {
     rawTitle = 'Open Finance Al Tareeq \u2013 Pay 10';
   } else if (currentSlug === 'integration-methods' || titleLower.includes('integration methods') || titleLower.includes('integration-methods')) {

@@ -1,5 +1,6 @@
 import React from "react";
 import EventsClient from "./EventsClient";
+import { API_BASE, API_HEADERS } from "../lib/fetchPageData";
 
 export const metadata = {
   title: "Events | Pay10",
@@ -8,8 +9,9 @@ export const metadata = {
 
 async function getEvents() {
   try {
-    const res = await fetch("https://pay10d.grapesmobile.com/api/events", {
+    const res = await fetch(`${API_BASE}/events`, {
       next: { revalidate: 60 }, // Revalidate every 60 seconds
+      headers: API_HEADERS,
     });
     
     if (!res.ok) {

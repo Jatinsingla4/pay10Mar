@@ -2,7 +2,7 @@ import React from "react";
 import Style from './AboutBanner.module.scss';
 import { sanitizeHtml } from '../../../lib/sanitizeHtml';
 
-const AboutBanner = ({ topSubHeading, topHeading, topDescription }) => {
+const AboutBanner = ({ topSubHeading, topHeading, topDescription, bannerImage, mobileImage }) => {
   // Provide fallbacks if the props are not passed in
   const fallbackSubHeading = '';
   const fallbackHeading = 'About Us';
@@ -26,7 +26,13 @@ const AboutBanner = ({ topSubHeading, topHeading, topDescription }) => {
 
   return (
     <section>
-      <div className={Style.about_banner}>
+      <div 
+        className={Style.about_banner}
+        style={{
+          '--bg-desktop': bannerImage ? `url(${bannerImage})` : undefined,
+          '--bg-mobile': mobileImage ? `url(${mobileImage})` : (bannerImage ? `url(${bannerImage})` : undefined)
+        }}
+      >
         <div className={Style.banner_svg}>
           <div className={Style.banner_content}>
             <h5 data-animation="opacity-up">

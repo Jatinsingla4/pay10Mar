@@ -15,36 +15,13 @@ import HomeSecuritySection from './components/ui/HomeSecuritySection';
 import MerchantTestimonialVideos from './components/ui/MerchantTestimonialVideos';
 import MerchantLogosCTA from './components/ui/MerchantLogosCTA';
 
-const walletFeatures = [
-  {
-    title: "Send Money to Family and Friends",
-    description: "Supporting your family or sharing expenses with friends? Add them to your list of regulars for speedy transfers.",
-  },
-  {
-    title: "Shop",
-    description: "Scan a QR code and tap to pay. It doesn't get simpler than that. No manual data entry. No errors. No fuss.",
-  },
-  {
-    title: "Pay Bills",
-    description: "Settle your bills in minutes. Just select the relevant icon and tap to pay.",
-  },
-  {
-    title: "Link Your Bank Account",
-    description: "Transfer funds instantly from your bank into your wallet, save on fees, and track your spending.",
-  },
-  {
-    title: "Schedule Payments",
-    description: "Never miss a payment again. Simply add your regular payments into the calendar and leave the rest to us.",
-  },
-];
-
 import React from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function HomeClient() {
+export default function HomeClient({ pageData = null }) {
   const containerRef = React.useRef(null);
 
   React.useEffect(() => {
@@ -87,21 +64,117 @@ export default function HomeClient() {
 
   return (
     <main ref={containerRef}>
-      <HeroHomeBanner
-        eyebrow={undefined}
-        title={undefined}
-        description={undefined}
-        ctaLabel={null}
-        heroImage={null}
-        decorations={[]}
-      />
-      <CBUAELicenseFeatures />
-      <SuperAppSection />
-      <ConsumerAppFeature />
-      <MerchantAppFeature />
-      <HomeSecuritySection />
-      <MerchantTestimonialVideos />
-      <MerchantLogosCTA />
+      {pageData && (pageData.page_title || pageData.banner_image || pageData.page_description) && (
+        <HeroHomeBanner
+          eyebrow={pageData.page_title}
+          subtitle={pageData.page_subtitle}
+          description={pageData.page_description}
+          ctaLabel={pageData.banner_text}
+          bgImage={pageData.banner_image}
+          mobileBgImage={pageData.mobile_image}
+          heroImage={null}
+          decorations={[]}
+        />
+      )}
+      
+      {/* 
+        API sections mapping can be added here once the CMS structure for homepage sections is defined.
+        For now, all static hardcoded UI has been removed as requested.
+      */}
+      {pageData?.sections?.map((section, idx) => {
+        if (section.title === 'CBUAE Licensed · Our Credibility') {
+          return (
+            <CBUAELicenseFeatures 
+              key={idx}
+              eyebrow={section.title}
+              title={section.subtitle}
+              content={section.content}
+              cardsData={section.cards}
+              logo={section.images?.[0]}
+            />
+          );
+        }
+
+        if (section.title.includes('complete financial life')) {
+          return (
+            <ConsumerAppFeature
+              key={idx}
+              title={section.title}
+              subtitle={section.subtitle}
+              cardsData={section.cards}
+              image={section.images?.[0]}
+              content={section.content}
+            />
+          );
+        }
+
+        if (section.title.includes('The merchant app') || section.title.includes('merchant app that works')) {
+          return (
+            <MerchantAppFeature
+              key={idx}
+              title={section.title}
+              subtitle={section.subtitle}
+              cardsData={section.cards}
+              image={section.images?.[0]}
+              content={section.content}
+            />
+          );
+        }
+
+        if (section.title.includes('SECURITY')) {
+          return (
+            <HomeSecuritySection
+              key={idx}
+              title={section.title}
+              subtitle={section.subtitle}
+              content={section.content}
+              images={section.images}
+            />
+          );
+        }
+
+        if (section.title.includes('Don\'t take our word') || section.title.includes('merchants themselves')) {
+          return (
+            <MerchantTestimonialVideos
+              key={idx}
+              title={section.title}
+              content={section.content}
+              cardsData={section.cards}
+              videos={section.videos || []}
+              sectionVideo={section.video}
+            />
+          );
+        }
+
+        if (section.title.includes('Get Started Today') || section.title.includes('Logos')) {
+          return (
+            <MerchantLogosCTA
+              key={idx}
+              title={section.title}
+              images={section.images}
+            />
+          );
+        }
+        
+        if (section.title.includes('Super App') || section.title.includes('Everything financial')) {
+          const hasContent = section.content && section.content.replace(/<[^>]*>?/gm, '').trim().length > 0;
+          return (
+            <SuperAppSection 
+              key={idx}
+              title={hasContent ? section.content : section.title}
+              cardsData={section.cards}
+              bgImage={section.images?.[0]}
+            />
+          );
+        }
+        return (
+          <div key={idx} style={{ padding: '40px', textAlign: 'center' }}>
+            {section.title && <h2>{section.title}</h2>}
+            {section.content && <div dangerouslySetInnerHTML={{ __html: section.content }} />}
+            {section.image && <img src={section.image} alt={section.title} style={{ maxWidth: '100%', height: 'auto', marginTop: '20px' }} />}
+          </div>
+        );
+      })}
     </main>
   );
 }

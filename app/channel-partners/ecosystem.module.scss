@@ -1,4 +1,4 @@
-@import "../styles/globals/mixin";
+@import "../../styles/globals/mixin";
 
 .ecosystem {
   width: 100%;
@@ -11,7 +11,7 @@
 .altareq_hero {
   width: 100%;
   height: 785px;
-  background-image: url('/images/prod_imports/channel-partners-hero.jpg');
+  background-image: var(--bg-desktop);
   background-size: cover;
   background-position: 50% 50%;
   position: relative;
@@ -25,7 +25,7 @@
     height: 100svh;
     min-height: 100svh;
     background-position: center;
-    background-image: url('/images/prod_imports/channel-partners-hero-mobile.png');
+    background-image: var(--bg-mobile);
   }
 }
 
@@ -205,7 +205,7 @@
   }
 }
 
-/* Biz Benefits Section (Copied from Pay10 Biz UAE App) */
+/* Biz Benefits Section (Copied from Pay10 Biz UAE) */
 .biz_benefits {
   display: grid;
   grid-template-columns: 1fr 2fr;

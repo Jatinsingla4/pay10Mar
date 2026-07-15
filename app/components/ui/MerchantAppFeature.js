@@ -5,15 +5,20 @@ import Image from "next/image";
 import { Icon } from "@iconify/react";
 import styles from "./MerchantAppFeature.module.scss";
 
-export default function MerchantAppFeature() {
-  const features = [
-    "Pay10 Biz app linked to DQR POS device",
-    "Instant same-day settlement, better cash flow",
-    "Lowest MDRs in the UAE market",
-    "Refunds, chargebacks, dispute management",
-    "Real-time transaction monitoring & reporting",
-    "24/7 human multilanguage merchant support"
-  ];
+export default function MerchantAppFeature({
+  title = "",
+  subtitle = "",
+  cardsData = [],
+  image = "",
+  content = ""
+}) {
+  // If no data is provided from CMS, don't render
+  if (!title && !subtitle && (!cardsData || cardsData.length === 0) && !content) {
+    return null;
+  }
+
+  // Map CMS cards to feature strings
+  const features = cardsData.map(card => card.title).filter(Boolean);
 
   return (
     <section className={styles.merchantFeatureSection}>
@@ -21,27 +26,33 @@ export default function MerchantAppFeature() {
         
         {/* Left Image (Desktop) */}
         <div className={styles.leftImage} data-animation="fade-up">
-          <Image 
-            src="/images/home/merchant-hero.jpg"
-            alt="Pay10 Merchant using app"
-            fill 
-            style={{ objectFit: 'cover' }}
-          />
+          {image && (
+            <Image 
+              src={image}
+              alt="Pay10 Merchant using app"
+              fill 
+              style={{ objectFit: 'cover' }}
+            />
+          )}
         </div>
 
         {/* Right Content (Desktop) */}
         <div className={styles.rightContent} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
-          <h2 className={styles.heading}>The merchant app that works as hard as you do.</h2>
-          <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>Merchant App</h3>
+          {title && <h2 className={styles.heading} dangerouslySetInnerHTML={{ __html: title }}></h2>}
+          {subtitle && <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>{subtitle}</h3>}
           
-          <ul className={styles.featuresList}>
-            {features.map((feature, index) => (
-              <li key={index} data-animation="fade-up" style={{ transitionDelay: `${0.1 + (index * 0.1)}s` }}>
-                <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: 'var(--red)' }} />
-                <span>{feature}</span>
-              </li>
-            ))}
-          </ul>
+          {content ? (
+            <div className={styles.cms_content} dangerouslySetInnerHTML={{ __html: content }} />
+          ) : (
+            <ul className={styles.featuresList}>
+              {features.map((feature, index) => (
+                <li key={index} data-animation="fade-up" style={{ transitionDelay: `${0.1 + (index * 0.1)}s` }}>
+                  <Icon icon="mdi:check" className={styles.checkIcon} style={{ color: 'var(--red)' }} />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          )}
 
           <div className={styles.storeBadges}>
             <a href="#" className={styles.badge} aria-label="Download on the App Store">

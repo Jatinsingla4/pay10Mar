@@ -5,140 +5,80 @@ import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureS
 import ConsumerSecuritySection from "./ConsumerSecuritySection";
 import Style from "./page.module.scss";
 
-const CustomerAppClient = () => {
-  const featureSectionsData = [
-    {
-      // 2nd Section
-      heading: "Link your bank account. Once. Done. Forever.",
-      subheading: "Powered by Al Tareq, the UAE's Open Finance infrastructure. Connect your Account via AL TAREQ and start transacting. Download Pay10 UAE app, Link Bank Accounts. Look at your stopwatch, all it took was 20 seconds.",
-      points: [
-        "Connect once, Pay10 remembers. No re-linking, ever",
-        "Pay directly from your bank account. No card needed",
-        "Real-time, secure connection with bank-grade encryption and your consent, always",
-        "Track and monitor all linked accounts and transactions in one place"
-      ],
-      imageSrc: "/images/pay10-uae-app/link-bank-account.png",
-      imageAlt: "Link bank account — Al Tareq Open Finance",
-      isReversed: false,
-      isGreyBg: true,
-    },
-    {
-      // 3rd Section
-      heading: "Scan. Tap. Done.",
-      subheading: "Pay10 merchants use the UAE's first Dynamic QR POS device built for instant, secure in-person payments.",
-      points: [
-        "Payment confirmed in under 2 seconds, faster than handing over cash.",
-        "No card. No cash. No waiting. Just open Pay10 UAE App, scan the code, and walk away paid.",
-        "Scan & Pay at thousands of merchants across all 7 Emirates, including retail, restaurants, services, and more."
-      ],
-      imageSrc: "/images/pay10-uae-app/scan-pay-bubble.png",
-      imageAlt: "Scan & Pay",
-      isReversed: true,
-      isGreyBg: true,
-    },
-    {
-      // 4th Section
-      heading: "Bank transfers the way they should have always worked.",
-      points: [
-        "Just enter the IBAN to yourself or anyone else. No extra steps, no approvals, no waiting.",
-        "Behind every Pay10 bank transfer is Aani, the CBUAE real-time payments network. Instant. 24/7.",
-        "Transfer any time: midnight, weekend, or public holiday. Pay10 doesn't keep banking hours because your life doesn't either."
-      ],
-      imageSrc: "/images/pay10-uae-app/bank-transfer-bubble.png",
-      imageAlt: "Bank Transfer",
-      isReversed: false,
-      isGreyBg: true,
-    },
-    {
-      // 5th Section
-      heading: "Send money. All you need is their mobile number.",
-      points: [
-        "Open Pay10. Enter their UAE mobile number. Send. Done.",
-        "Already on Pay10? Money lands in their app instantly.",
-        "Not on Pay10 yet? They get an SMS to join and claim what you sent. It waits for them.",
-        "Send to anyone in the UAE. No bank details, no IBAN, no awkward \"what's your account number\" conversation."
-      ],
-      imageSrc: "/images/pay10-uae-app/send-to-mobile-bubble.png",
-      imageAlt: "Send to Mobile",
-      isReversed: true,
-      isGreyBg: true,
-    },
-    {
-      // 6th Section
-      heading: "Pay Bill. In Any Emirate",
-      points: [
-        "Utilities, telecom, transportation and even gift cards across every bill category, every provider, across all 7 Emirates.",
-        "One login. One app. No more switching between portals, websites, or queues."
-      ],
-      imageSrc: "/images/pay10-uae-app/pay-bills-bubble.png",
-      imageAlt: "Pay Bills",
-      isReversed: false,
-      isGreyBg: true,
-    },
-    {
-      // 7th Section
-      heading: "Send Money Abroad (Coming Soon)",
-      points: [
-        "Transfers reach your loved ones instantly with no waiting, no processing days, and no checking if it arrived.",
-        "No more adding beneficiaries and waiting for approvals. Enter once. Send anytime.",
-        "Whether it's rent, school fees, or just because, your money moves the moment you decide."
-      ],
-      imageSrc: "/images/pay10-uae-app/send-abroad-bubble.png",
-      imageAlt: "Send Money Abroad",
-      isReversed: true,
-      isGreyBg: true,
-    },
-    {
-      // 8th Section
-      heading: "Pay10 Card, Is all you need (Coming Soon)",
-      points: [
-        "Pay10 Card (Jaywan) The first UAE local Debit Card accredited by the Central Bank of the UAE, linked to your Pay10 UAE App. instant, secure, and seamless by design.",
-        "Built for WPS employees and banked professionals, because everyone who earns in the UAE deserves a card that works here.",
-        "Withdraw cash at any UAE ATM. Pay at all Jaywan-enabled POS devices across all 7 Emirates.",
-        "Pay10 Card is coming. The UAE's first CBUAE-accredited local debit card, and it's worth the wait."
-      ],
-      imageSrc: "/images/pay10-uae-app/pay10-card-bubble.png",
-      imageAlt: "Pay10 Card",
-      isReversed: false,
-      isGreyBg: true,
-    },
-    {
-      // 9th Section
-      heading: "Transaction History: Every Emirati Dirham. Every detail. Right here.",
-      points: [
-        "Tap any transaction to see the full details: amount, merchant, time, status. Nothing hidden, nothing missing.",
-        "Need a record? Filter by date and export your history as a PDF, exactly the way you need it.",
-        "Pull up to 60 days of transactions instantly, in-app, anytime.",
-        "Need more than 60 days? Our multi-language, human support team is available 24/7. No bots, no wait times, just answers."
-      ],
-      imageSrc: "/images/pay10-uae-app/transaction-history-bubble.png",
-      imageAlt: "Transaction History",
-      isReversed: true,
-      isGreyBg: true,
-    }
-  ];
+// These sections must render right after the hero, ahead of everything else —
+// CMS only allows appending new sections at the end, so we reorder by title here.
+const PINNED_TO_TOP = [
+  'Register in Minutes',
+  'Login. Securely. Every Time.',
+  'Manage Your Profile. Your Way.',
+];
+
+const CustomerAppClient = ({ pageData = null }) => {
+  // Extract the first section which acts as the hero content
+  const heroSection = pageData?.sections?.[0];
+  const remainingSections = [...(pageData?.sections?.slice(1) || [])].sort((a, b) => {
+    const aRank = PINNED_TO_TOP.findIndex((t) => t.toLowerCase() === a.title?.trim().toLowerCase());
+    const bRank = PINNED_TO_TOP.findIndex((t) => t.toLowerCase() === b.title?.trim().toLowerCase());
+    return (aRank === -1 ? PINNED_TO_TOP.length : aRank) - (bRank === -1 ? PINNED_TO_TOP.length : bRank);
+  });
 
   return (
     <main>
-      <ConsumerHero />
+      <ConsumerHero 
+        title={pageData?.page_title}
+        eyebrow={heroSection?.title || pageData?.banner_text}
+        subtitle={heroSection?.subtitle || pageData?.page_subtitle}
+        description={heroSection?.content || pageData?.page_description}
+        bgImage={pageData?.banner_image}
+        mobileImage={pageData?.mobile_image}
+        mobileBgImage={pageData?.mobile_image}
+        cardsData={heroSection?.cards || pageData?.contact_cards || []}
+      />
 
-      <div className={Style.bg_circle_wrapper}>
-        {featureSectionsData.map((section, index) => (
-          <ConsumerFeatureSection
-            key={index}
-            heading={section.heading}
-            subheading={section.subheading}
-            points={section.points}
-            imageSrc={section.imageSrc}
-            imageAlt={section.imageAlt}
-            isReversed={section.isReversed}
-            isGreyBg={section.isGreyBg}
-            isTransparent={true}
-          />
-        ))}
-      </div>
+      {remainingSections && remainingSections.length > 0 && (
+        <div className={Style.bg_circle_wrapper}>
+          {remainingSections.map((section, index) => {
+            // Check if this section is the security section
+            if (section.title?.toUpperCase().includes('SECURITY')) {
+              return (
+                <ConsumerSecuritySection 
+                  key={index} 
+                  title={section.title}
+                  subtitle={section.subtitle}
+                  content={section.content}
+                  images={section.images}
+                />
+              );
+            }
 
-      <ConsumerSecuritySection />
+            // Bullets can come from an actual <li> list typed into the CMS
+            // content field, instead of requiring separate "cards" per bullet.
+            const liMatches = section.content
+              ? Array.from(section.content.matchAll(/<li[^>]*>(.*?)<\/li>/g))
+              : [];
+            const pointsFromContent = liMatches.map((m) => m[1].replace(/<[^>]*>?/gm, '').trim());
+            const points = pointsFromContent.length > 0
+              ? pointsFromContent
+              : (section.cards?.map(card => card.title) || []);
+
+            // Otherwise, render it as a feature section
+            return (
+              <ConsumerFeatureSection
+                key={index}
+                heading={section.title}
+                subheading={section.subtitle}
+                points={points}
+                imageSrc={section.images?.[0]}
+                imageAlt={section.title}
+                isReversed={index % 2 !== 0} // Alternate left/right based on index
+                isGreyBg={true}
+                isTransparent={true}
+                extraContent={pointsFromContent.length > 0 ? null : section.content}
+              />
+            );
+          })}
+        </div>
+      )}
     </main>
   );
 };

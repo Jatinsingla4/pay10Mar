@@ -1,4 +1,5 @@
 import NewsRoomClient from "./NewsRoomClient";
+import { API_BASE, API_HEADERS } from "../lib/fetchPageData";
 
 export const metadata = {
   title: "News Room | Pay10",
@@ -8,11 +9,9 @@ export const metadata = {
 
 async function getNews() {
   try {
-    const res = await fetch("https://pay10d.grapesmobile.com/api/news", {
+    const res = await fetch(`${API_BASE}/news`, {
       next: { revalidate: 60 },
-      headers: {
-        Accept: "application/json",
-      },
+      headers: API_HEADERS,
     });
 
     if (!res.ok) {

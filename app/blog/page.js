@@ -1,6 +1,7 @@
 import React from "react";
 import BlogClient from "./BlogClient";
 import { defaultMetadata } from "../lib/metadata";
+import { API_BASE, API_HEADERS } from "../lib/fetchPageData";
 
 export const metadata = {
   ...defaultMetadata,
@@ -10,8 +11,9 @@ export const metadata = {
 
 async function getBlogs() {
   try {
-    const res = await fetch("https://pay10d.grapesmobile.com/api/blogs", {
-      next: { revalidate: 60 }
+    const res = await fetch(`${API_BASE}/blogs`, {
+      next: { revalidate: 60 },
+      headers: API_HEADERS,
     });
     if (!res.ok) return [];
     const json = await res.json();

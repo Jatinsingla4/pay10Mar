@@ -7,31 +7,28 @@ import Pay10CardFeatures from "./components/Pay10CardFeatures";
 import Pay10AppFeature from "./components/Pay10AppFeature";
 import Pay10WPSFeature from "./components/Pay10WPSFeature";
 
-const Pay10CardClient = () => {
+const Pay10CardClient = ({ pageData = null }) => {
   const cardFeature = {
-    heading: "The first local Debit Card accredited by the Central Bank of the UAE.",
-    subheading: "Pay10 is issuing UAE's first CBUAE-accredited local debit card directly through the Pay10 UAE App - offering an instant, secure, and seamless payment experience for everyone who calls the UAE home.",
-    points: [],
-    extraContent: (
-      <div style={{ marginTop: '24px', fontFamily: "'bold', sans-serif", fontSize: '18px', letterSpacing: '1px', textTransform: 'uppercase', color: 'var(--gray)' }}>
-        POWERED BY JAYWAN · UAE&apos;S NATIONAL CARD SCHEME
-      </div>
-    ),
-    imageSrc: "/images/prod_imports/pay10-card-aluminium.png",
-    imageAlt: "Pay10 Card",
+    heading: pageData?.sections?.[0]?.title || "The first local Debit Card accredited by the Central Bank of the UAE.",
+    subheading: pageData?.sections?.[0]?.subtitle || "Pay10 is issuing UAE's first CBUAE-accredited local debit card directly through the Pay10 UAE - offering an instant, secure, and seamless payment experience for everyone who calls the UAE home.",
+    points: pageData?.sections?.[0]?.cards?.map(c => c.title) || [],
+    imageSrc: pageData?.sections?.[0]?.images?.[0] || "/images/prod_imports/pay10-card-aluminium.png",
+    imageAlt: pageData?.sections?.[0]?.title || "Pay10 Card",
     isReversed: false,
   };
 
   return (
     <main>
-      <section className={Style.altareq_hero}>
+      <section 
+        className={Style.altareq_hero}
+        style={{
+          '--desktop-bg': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
+          '--mobile-bg': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : undefined)
+        }}
+      >
         <div className={Style.altareq_hero_text}>
-          <h2>
-            Pay10 Card, UAE has been waiting for.
-          </h2>
-          <p>
-            The first local Debit Card accredited by the Central Bank of the UAE — instant, secure, and seamless. Built inside Pay10 UAE App. For banked professionals and WPS employees.
-          </p>
+          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Pay10 Card, UAE has been waiting for." }} />
+          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "The first local Debit Card accredited by the Central Bank of the UAE — instant, secure, and seamless. Built inside Pay10 UAE. For banked professionals and WPS employees." }} />
         </div>
       </section>
 
@@ -42,7 +39,13 @@ const Pay10CardClient = () => {
           heading={cardFeature.heading}
           subheading={cardFeature.subheading}
           points={cardFeature.points}
-          extraContent={cardFeature.extraContent}
+          extraContent={
+            <>
+              {pageData?.sections?.[0]?.content && pageData.sections[0].content !== '<p><br></p>' && (
+                <div dangerouslySetInnerHTML={{ __html: pageData.sections[0].content }} />
+              )}
+            </>
+          }
           imageSrc={cardFeature.imageSrc}
           imageAlt={cardFeature.imageAlt}
           isReversed={cardFeature.isReversed}
@@ -51,13 +54,13 @@ const Pay10CardClient = () => {
         />
         </div>
 
-        <Pay10CardFeatures />
+        <Pay10CardFeatures data={pageData?.sections?.[1]} />
 
         {/* ── Dual Debit Card Section ── */}
         <section className={Style.dual_card_section}>
           <div className={Style.dual_card_header} data-animation="opacity-up">
-            <h2>Two cards. One app. Every need covered.</h2>
-            <p>Whether you're a salaried professional or a WPS employee, Pay10 has a Jaywan-powered debit card built for your life in the UAE.</p>
+            <h2>{pageData?.sections?.[2]?.title || "Two cards. One app. Every need covered."}</h2>
+            <p>{pageData?.sections?.[2]?.subtitle || "Whether you're a salaried professional or a WPS employee, Pay10 has a Jaywan-powered debit card built for your life in the UAE."}</p>
           </div>
 
           <div className={Style.dual_card_grid}>
@@ -67,7 +70,7 @@ const Pay10CardClient = () => {
                 <div className={Style.debit_card_inner_circle} />
                 <div className={Style.card_top}>
                   <span className={Style.card_logo}>Pay10</span>
-                  <span className={Style.card_type_badge}>Consumer</span>
+                  <span className={Style.card_type_badge}>{pageData?.sections?.[2]?.cards?.[0]?.title?.split(' ')[0] || "Consumer"}</span>
                 </div>
                 <div className={Style.card_chip}>
                   <svg viewBox="0 0 44 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,8 +92,8 @@ const Pay10CardClient = () => {
                 </div>
               </div>
               <div className={Style.card_info}>
-                <h3>Consumer Debit Card</h3>
-                <p>For Pay10 UAE App users. Tap, swipe, or pay online — works at 90%+ of UAE POS terminals and all major ATMs.</p>
+                <h3>{pageData?.sections?.[2]?.cards?.[0]?.title || "Consumer Debit Card"}</h3>
+                <p>{pageData?.sections?.[2]?.cards?.[0]?.subtitle || pageData?.sections?.[2]?.cards?.[0]?.description || "For Pay10 UAE users. Tap, swipe, or pay online — works at 90%+ of UAE POS terminals and all major ATMs."}</p>
               </div>
             </div>
 
@@ -100,7 +103,7 @@ const Pay10CardClient = () => {
                 <div className={Style.debit_card_inner_circle} />
                 <div className={Style.card_top}>
                   <span className={Style.card_logo}>Pay10</span>
-                  <span className={Style.card_type_badge}>WPS</span>
+                  <span className={Style.card_type_badge}>{pageData?.sections?.[2]?.cards?.[1]?.title?.split(' ')[0] || "WPS"}</span>
                 </div>
                 <div className={Style.card_chip}>
                   <svg viewBox="0 0 44 34" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -122,16 +125,16 @@ const Pay10CardClient = () => {
                 </div>
               </div>
               <div className={Style.card_info}>
-                <h3>WPS Debit Card</h3>
-                <p>For WPS-enrolled employees. Receive your salary directly and spend instantly — no bank account required.</p>
+                <h3>{pageData?.sections?.[2]?.cards?.[1]?.title || "WPS Debit Card"}</h3>
+                <p>{pageData?.sections?.[2]?.cards?.[1]?.subtitle || pageData?.sections?.[2]?.cards?.[1]?.description || "For WPS-enrolled employees. Receive your salary directly and spend instantly — no bank account required."}</p>
               </div>
             </div>
           </div>
         </section>
 
-        <Pay10AppFeature />
+        <Pay10AppFeature data={pageData?.sections?.[3]} />
 
-        <Pay10WPSFeature />
+        {pageData?.sections?.[4] && <Pay10WPSFeature data={pageData.sections[4]} />}
 
       </div>
     </main>

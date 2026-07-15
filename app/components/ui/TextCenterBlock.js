@@ -21,7 +21,7 @@ const gridBoxes = [
 
 export default function TextCenterBlock({
   heading = 'The Possibilities are Endless',
-  description = 'Protect your time, money, and peace of mind with fast, easy, secure payments and transfers from anywhere in the world. Thanks to the Pay10 UAE App, you can spend your time and money on living your best life.',
+  description = 'Protect your time, money, and peace of mind with fast, easy, secure payments and transfers from anywhere in the world. Thanks to the Pay10 UAE, you can spend your time and money on living your best life.',
 }) {
   return (
     <section className={styles.banner}>

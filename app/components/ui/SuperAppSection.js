@@ -4,47 +4,68 @@ import React from "react";
 import Image from "next/image";
 import styles from "./SuperAppSection.module.scss";
 
-export default function SuperAppSection() {
+export default function SuperAppSection({
+  title = "",
+  cardsData = [],
+  bgImage,
+  mobileImage
+}) {
+  const consumerCard = cardsData?.[0];
+  const merchantCard = cardsData?.[1];
+
+  // If no cards are provided from CMS, don't render the section
+  if (!consumerCard && !merchantCard && !title) {
+    return null;
+  }
+
   return (
     <section className={styles.superAppSection}>
       <div className={styles.container}>
         {/* Left Column: Large Gradient Card */}
-        <div className={styles.leftCard} data-animation="fade-up">
+        <div 
+          className={styles.leftCard} 
+          data-animation="fade-up"
+          style={{
+            '--bg-desktop': bgImage ? `url(${bgImage})` : undefined,
+            '--bg-mobile': mobileImage ? `url(${mobileImage})` : (bgImage ? `url(${bgImage})` : undefined)
+          }}
+        >
           <div className={styles.leftCardContent}>
             <div className={styles.mainText}>
-              <h2>Everything financial.<br />One place. One platform. One UAE.</h2>
+              <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
             </div>
           </div>
         </div>
 
         {/* Right Column: 2x2 Grid */}
         <div className={styles.rightGrid}>
-          {/* Top Left: For Consumers Text */}
-          <div className={styles.textCard} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
-            <h3>For Consumers</h3>
-            <p>Pay, send, receive, remit. All financial needs in a single app. Link all your bank accounts.</p>
-          </div>
+          {/* Consumer Blocks */}
+          {consumerCard && (
+            <>
+              <div className={styles.textCard} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
+                <h3>{consumerCard.title}</h3>
+                <p>{consumerCard.subtitle}</p>
+              </div>
 
-          <div className={`${styles.imageCard} ${styles.consumerImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.2s' }}>
-            <img
-              src="/images/home/consumer-home-screen.jpg"
-              alt="Pay10 Consumer App"
-            />
-          </div>
+              <div className={`${styles.imageCard} ${styles.consumerImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.2s' }}>
+                {consumerCard.icon && <img src={consumerCard.icon} alt={consumerCard.title} />}
+              </div>
+            </>
+          )}
 
-          {/* Bottom Left: Merchant Image */}
-          <div className={`${styles.imageCard} ${styles.merchantImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.3s' }}>
-            <img
-              src="/images/home/merchant-home-screen.jpg"
-              alt="Pay10 Merchant App"
-            />
-          </div>
+          {/* Merchant Blocks */}
+          {merchantCard && (
+            <>
+              <div className={`${styles.imageCard} ${styles.merchantImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.3s' }}>
+                {merchantCard.icon && <img src={merchantCard.icon} alt={merchantCard.title} />}
+              </div>
 
-          {/* Bottom Right: For Merchants Text */}
-          <div className={`${styles.textCard} ${styles.merchantTextCard}`} data-animation="fade-up" style={{ transitionDelay: '0.4s' }}>
-            <h3>For Merchants</h3>
-            <p>Accept payments, Instant Settlement, Manage cash flow, 24X7 Customer Support. SME to enterprise, all served.</p>
-          </div>
+              <div className={`${styles.textCard} ${styles.merchantTextCard}`} data-animation="fade-up" style={{ transitionDelay: '0.4s' }}>
+                <h3>{merchantCard.title}</h3>
+                <p>{merchantCard.subtitle}</p>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

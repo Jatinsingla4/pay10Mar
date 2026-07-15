@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# compiled sass output (globals.scss is the source)
+styles/globals.css
+styles/globals.css.map

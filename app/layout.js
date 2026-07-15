@@ -2,9 +2,9 @@ import Script from "next/script";
 import "@/styles/globals.scss";
 import "./variables.css";
 
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import GlobalInViewInitializer from "./components/GlobalInViewInitializer";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
+import GlobalInViewInitializer from "./components/layout/GlobalInViewInitializer";
 import { ResponsiveProvider } from "./contexts/ResponsiveContext";
 import { defaultMetadata } from "./lib/metadata";
 

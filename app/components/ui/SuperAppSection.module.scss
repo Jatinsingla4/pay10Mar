@@ -30,7 +30,7 @@
 }
 
 .leftCard {
-  background-image: url('/images/home/super-app-bg.jpg');
+  background-image: var(--bg-desktop, url('/images/home/super-app-bg.jpg'));
   background-size: cover;
   background-position: center;
   border-radius: 32px;
@@ -47,6 +47,10 @@
   @include lessTab {
     padding: 40px 30px;
     min-height: 450px;
+  }
+
+  @include mobile {
+    background-image: var(--bg-mobile, var(--bg-desktop, url('/images/home/super-app-bg.jpg')));
   }
 }
 

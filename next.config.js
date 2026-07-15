@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const path = require('path');
-const { buildCspHeader } = require('./csp-config');
+const { buildCspHeader } = require('./config/csp-config');
 
 const cspHeader = buildCspHeader();
 
@@ -29,6 +29,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'pay10.webhr.co',
+      },
+      {
+        protocol: 'https',
+        hostname: 'bucket-7vbln7.s3.ap-south-1.amazonaws.com',
       },
     ],
   },
@@ -140,13 +144,6 @@ const nextConfig = {
       },
     ];
   },
-
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
-
 };
 
 module.exports = nextConfig;

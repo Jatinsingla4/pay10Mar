@@ -4,7 +4,7 @@
   "private": true,
   "author": "neel448",
   "scripts": {
-    "dev": "next dev --turbopack -p 3186",
+    "dev": "next dev -p 3186",
     "build": "next build",
     "start": "next start -p 3186",
     "lint": "eslint"
@@ -14,17 +14,16 @@
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.6.1",
     "gsap": "^3.12.7",
-    "next": "^15.5.20",
-    "react": "19.2.1",
-    "react-dom": "19.2.1",
+    "next": "16.2.10",
+    "react": "19.2.7",
+    "react-dom": "19.2.7",
     "sanitize-html": "^2.17.5",
     "swiper": "^14.0.1",
     "three": "^0.185.0"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.5.9",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "16.2.10",
     "sass": "^1.83.4"
   },
   "overrides": {

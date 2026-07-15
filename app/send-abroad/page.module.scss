@@ -5,7 +5,7 @@
   height: 785px;
   display: flex;
   align-items: center;
-  background-image: url('/images/prod_imports/send-abroad-hero.jpg');
+  background-image: var(--desktop-bg, url('/images/prod_imports/send-abroad-hero.jpg'));
   background-size: cover;
   background-position: center;
   border-radius: 24px;
@@ -23,7 +23,7 @@
   @include mobile {
     height: 100svh;
     min-height: 100svh;
-    background-image: url('/images/prod_imports/send-abroad-hero-mobile.png');
+    background-image: var(--mobile-bg, url('/images/prod_imports/send-abroad-hero-mobile.png'));
     background-position: center;
     padding: 40px 20px 60px;
     align-items: flex-end;
@@ -197,6 +197,7 @@
     font-family: 'bold', sans-serif;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
     margin-bottom: 16px;

@@ -31,7 +31,7 @@ const ALTAREQ_CONNECTED_INTRO = {
   Title: "The future of finance is connected",
   Image: "/images/prod_imports/altareq-logo.png",
   Description: `
-<p>AlTareq is now live in your Pay10 UAE App, giving you seamless, secure access to your bank account, add money, and pay directly from your bank account.</p>
+<p>AlTareq is now live in your Pay10 UAE, giving you seamless, secure access to your bank account, add money, and pay directly from your bank account.</p>
 <p>AlTareq is the UAE's national Open Finance gateway launched by the Central Bank of the UAE to securely connect licensed financial institutions, and third-party providers.</p>
 `.trim(),
 };
@@ -103,27 +103,47 @@ const connectedIntroItem = {
   Image: "/images/prod_imports/altareq-logo.png",
 };
 
-const OpenFinanceAltareqClient = () => {
+const OpenFinanceAltareqClient = ({ pageData = null }) => {
+  // Override ALTAREQ_CONNECTED_INTRO if CMS data exists
+  const cmsIntroItem = pageData?.sections?.[0] ? {
+    Title: pageData.sections[0].title,
+    Image: pageData.sections[0].images?.[0] || "/images/prod_imports/altareq-logo.png",
+    Description: pageData.sections[0].content || pageData.sections[0].subtitle || "",
+  } : null;
+
+  const connectedIntroItemToUse = cmsIntroItem || connectedIntroItem;
+
+  // Build Simple Rows from sections[1] onwards
+  const cmsSimpleRows = pageData?.sections?.length > 1 
+    ? pageData.sections.slice(1).map(sec => ({
+        Title: sec.title || "",
+        Image: sec.images?.[0] || "",
+        Description: sec.content || sec.subtitle || "",
+      }))
+    : OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS;
+
   return (
     <main>
-      <section className={Style.altareq_hero}>
+      <section 
+        className={Style.altareq_hero}
+        style={{
+          '--desktop-bg': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
+          '--mobile-bg': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : undefined)
+        }}
+      >
         <div className={Style.altareq_hero_text}>
-          <h2>
-            Real-time Payments via AlTareq
-          </h2>
-          <p>
-            Discover new ways to access financial services in your Pay10 UAE App with AlTareq, the UAE's open finance initiative.
-          </p>
+          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Real-time Payments via AlTareq" }} />
+          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "Discover new ways to access financial services in your Pay10 UAE with AlTareq, the UAE's open finance initiative." }} />
         </div>
       </section>
 
       <section className={Style.connected_finance_intro}>
-        <TwoColLayout item={connectedIntroItem} imageBase="" reverse unoptimized />
+        <TwoColLayout item={connectedIntroItemToUse} imageBase="" reverse unoptimized />
       </section>
 
       <div className={Style.section_spacing}>
         <SimpleLayout
-          items={OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS}
+          items={cmsSimpleRows}
           imageBase=""
           startWithImageLeft={true}
           useBackgroundCircle={true}

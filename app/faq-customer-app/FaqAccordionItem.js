@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { formatFaqRichText } from "./formatFaqMarks";
+import { formatFaqRichText } from "../lib/formatFaqMarks";
 import Style from "./faq-customer-app.module.scss";
 
 const FaqAccordionItem = ({

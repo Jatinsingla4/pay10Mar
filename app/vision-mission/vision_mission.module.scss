@@ -17,7 +17,8 @@
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    padding-top: 80px;
     justify-content: center;
     position: relative;
     z-index: 2;
@@ -41,7 +42,7 @@
     font-size: 64px;
     z-index: 3;
     transition: all ease 0.5s;
-    transform: translateY(-220px); // Shifting the text up
+    transform: none;
   }
 }
 
@@ -138,8 +139,11 @@
 
 @media only screen and (max-width: 1200px) {
   .vision_banner {
+    .banner_svg {
+      padding-top: 40px;
+    }
     h2 {
-      transform: translateY(-160px);
+      transform: none;
     }
   }
 }
@@ -257,9 +261,13 @@
     background-image: var(--mobile-bg, var(--desktop-bg));
     height: 100svh;
     min-height: 100svh;
+    align-items: flex-start;
+    .banner_svg {
+      padding-top: 50px;
+    }
     h2 {
       font-size: 48px;
-      transform: translateY(-100px);
+      transform: none;
     }
     img {
       width: 90%;

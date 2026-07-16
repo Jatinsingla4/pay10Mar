@@ -1,0 +1,51 @@
+@import "../../../styles/globals/mixin";
+
+.cta_section {
+  text-align: center;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.cta_heading {
+  font-family: 'bold', sans-serif;
+  font-weight: 700;
+  font-size: 48px;
+  background: var(--primary-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 16px;
+  line-height: 1.2;
+
+  @include tab { font-size: 32px; }
+  @include mobile { font-size: 26px; }
+}
+
+.cta_sub {
+  font-family: 'regular', sans-serif;
+  font-size: 18px;
+  color: var(--gray);
+  margin-bottom: 36px;
+  line-height: 1.6;
+
+  @include tab { font-size: 16px; }
+}
+
+.cta_btn {
+  display: inline-block;
+  padding: 15px 48px;
+  border-radius: 100px;
+  background: var(--primary-gradient);
+  color: var(--white);
+  font-family: 'bold', sans-serif;
+  font-size: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+  }
+
+  @include mobile { width: 100%; text-align: center; }
+}

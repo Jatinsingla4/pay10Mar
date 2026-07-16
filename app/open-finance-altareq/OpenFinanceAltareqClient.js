@@ -123,7 +123,7 @@ const OpenFinanceAltareqClient = ({ pageData = null }) => {
     : OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS;
 
   return (
-    <main>
+    <main className={Style.mainWrapper}>
       <section 
         className={Style.altareq_hero}
         style={{

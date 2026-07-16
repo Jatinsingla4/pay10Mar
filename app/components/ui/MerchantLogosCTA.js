@@ -3,6 +3,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Style from "./MerchantLogosCTA.module.scss";
+import GlobalContactCTA from "./GlobalContactCTA";
 
 export default function MerchantLogosCTA({ 
   title = "", 
@@ -28,12 +29,7 @@ export default function MerchantLogosCTA({
         </div>
 
         {showCta && title && (
-          <div className={Style.ctaContent} data-animation="fade-up" data-anim-delay="150">
-            <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
-            <Link href="/contact-us" className={Style.ctaButton}>
-              Get In Touch
-            </Link>
-          </div>
+          <GlobalContactCTA title={title} />
         )}
 
       </div>

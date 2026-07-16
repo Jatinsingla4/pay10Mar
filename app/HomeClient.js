@@ -63,7 +63,7 @@ export default function HomeClient({ pageData = null }) {
   }, []);
 
   return (
-    <main ref={containerRef}>
+    <main ref={containerRef} style={{ backgroundColor: 'var(--body-bg)' }}>
       {pageData && (pageData.page_title || pageData.banner_image || pageData.page_description) && (
         <HeroHomeBanner
           eyebrow={pageData.page_title}

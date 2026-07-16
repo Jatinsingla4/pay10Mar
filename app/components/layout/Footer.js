@@ -205,7 +205,7 @@ const Footer = () => {
                   <div key={item.label} className="footer__nav-subitem">
                     <span className="footer__nav-sublink">{item.label}</span>
                     {item.subItems && (
-                      <div className="footer__nav-subsubitems" style={{ paddingLeft: 0, marginTop: '0.25rem' }}>
+                      <div className="footer__nav-subsubitems" style={{ marginTop: '0.25rem' }}>
                         {item.subItems.map((subItem) => (
                           <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
                             {subItem.label}
@@ -266,7 +266,7 @@ const Footer = () => {
                       {item.label}
                     </Link>
                     {item.subItems && (
-                      <div className="footer__nav-subsubitems" style={{ paddingLeft: 0, marginTop: '0.25rem' }}>
+                      <div className="footer__nav-subsubitems" style={{ marginTop: '0.25rem' }}>
                         {item.subItems.map((subItem) => (
                           <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
                             {subItem.label}

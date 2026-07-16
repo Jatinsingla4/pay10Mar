@@ -1,5 +1,9 @@
 @import "../../styles/globals/mixin";
 
+.mainWrapper {
+  background-color: var(--body-bg);
+}
+
 
 .wrapper {
   width: 100%;

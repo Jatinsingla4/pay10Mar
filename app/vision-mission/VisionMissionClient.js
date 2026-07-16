@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import BannerBreaker from '../components/ui/BannerBreaker';
+import GlobalContactCTA from '../components/ui/GlobalContactCTA';
 import Style from "./vision_mission.module.scss";
 import { sanitizeHtml } from "../lib/sanitizeHtml";
 
@@ -65,11 +66,7 @@ const VisionMissionClient = ({ pageData }) => {
           );
         })}
 
-        <section className={Style.cta_section} data-animation="opacity-up">
-          <h3 className={Style.cta_heading}>For Any Inquiries</h3>
-          <p className={Style.cta_sub}>Please feel free to contact us</p>
-          <Link href="/contact-us" className={Style.cta_btn}>Contact Us</Link>
-        </section>
+        <GlobalContactCTA />
       </div>
     </main>
   );

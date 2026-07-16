@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import Style from './GetStarted.module.scss'
+import GlobalContactCTA from './GlobalContactCTA';
 
 const GetToKnow = () => {
 
@@ -31,13 +32,8 @@ const GetToKnow = () => {
 
   return (
     <section className={Style.wrapper}>
-      <div className={Style.get_to_know}>
-        <div data-animation="opacity-up">
-          <h2>Get Started Today</h2>
-        </div>
-        <div data-animation="opacity-up">
-          <Link href='/contact-us'>Get In Touch</Link>
-        </div>
+      <div style={{ width: '100%' }}>
+        <GlobalContactCTA title="Get Started Today" />
       </div>
       <div className={Style.image_container} data-animation="opacity-up">
         {allImages.map((image, idx)=>

@@ -22,8 +22,11 @@
   }
 
   @include mobile {
-    height: 100svh;
-    min-height: 100svh;
+    // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+    // header — without subtracting it, 100svh pushes content below the
+    // viewport.
+    height: calc(100svh - 73px);
+    min-height: calc(100svh - 73px);
     background-position: right center;
     background-image: var(--bg-mobile);
   }
@@ -54,9 +57,9 @@
 
   @include tab {
     left: 24px;
-    right: 24px;
-    text-align: center;
-    max-width: 100%;
+    // Was right:24px + text-align:center + max-width:100%, which centered
+    // text straight over the POS device graphic on the right.
+    max-width: 55%;
 
     h1 {
       font-size: 32px;

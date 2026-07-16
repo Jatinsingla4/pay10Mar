@@ -25,8 +25,11 @@
   @include mobile {
     background-image: var(--mobile-bg, url('/images/prod_imports/pay10-card-hero-mobile.png'));
     background-position: top center;
-    height: 100svh;
-    min-height: 100svh;
+    // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+    // header — without subtracting it, 100svh pushes bottom-aligned
+    // content below the viewport.
+    height: calc(100svh - 73px);
+    min-height: calc(100svh - 73px);
     padding: 40px 20px 60px;
     align-items: flex-end;
   }

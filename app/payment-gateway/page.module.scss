@@ -226,8 +226,11 @@
   }
 
   @include mobile {
-    height: 100svh;
-    min-height: 100svh;
+    // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+    // header — without subtracting it, 100svh pushes content below the
+    // viewport.
+    height: calc(100svh - 73px);
+    min-height: calc(100svh - 73px);
     background-position: center;
     background-image: var(--bg-mobile);
   }
@@ -262,7 +265,8 @@
 
   @include tab {
     left: 24px;
-    max-width: 90%;
+    // 90% ran text over the checkout-mockup graphic on the right.
+    max-width: 55%;
 
     h2 {
       font-size: 32px;
@@ -904,7 +908,43 @@
   border: 1px solid rgba(255, 255, 255, 0.25);
   pointer-events: none;
 
-  @include tab { width: 220px; height: 220px; top: -80px; right: -80px; }
+  @include mobile {
+    width: 24px;
+    height: 24px;
+    top: -12px;
+    right: 20%;
+  }
+}
+
+.app_qr_card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+
+  &:hover { opacity: 0.85; }
+
+  img {
+    border-radius: 8px;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    span {
+      font-size: 0.875rem;
+      font-family: 'medium', sans-serif;
+      color: var(--black);
+    }
+  }
 }
 
 .combo_ring_small {

@@ -26,24 +26,32 @@
     overflow: hidden;
 
     @include tab {
+      // Aspect-ratio (not a flat min-height) keeps the crop close to the
+      // desktop image's ~2:1 ratio across this wide breakpoint range —
+      // a fixed px height made wider tab widths crop into a short, wide
+      // sliver that cut off the phone graphic and ran text over the hand.
       height: auto;
-      min-height: 400px;
+      aspect-ratio: 2 / 1;
+      min-height: 320px;
       border-radius: 16px;
       padding: 60px 24px;
     }
 
     @include mobile {
+      // mobileBgImage is composed for this bottom-aligned portrait layout —
+      // must switch together with it, not at a separate 768px breakpoint,
+      // or the tab layout's wide 2:1 box crops it from the top.
+      background-image: var(--bg-mobile);
       background-position: center;
-      height: 100svh;
-      min-height: 100svh;
+      // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+      // header — without subtracting it, 100svh pushes the bottom-anchored
+      // text below the viewport.
+      height: calc(100svh - 73px);
+      min-height: calc(100svh - 73px);
       padding: 40px 20px;
       align-items: flex-end;
       justify-content: center;
       padding-bottom: 80px;
-    }
-
-    @media (max-width: 768px) {
-      background-image: var(--bg-mobile);
     }
   }
 
@@ -69,7 +77,10 @@
     }
 
     @include tab {
-      max-width: 100%;
+      // Capped, not 100% — the background image still shows the desktop
+      // phone graphic on the right at this width, so full-width text
+      // overlaps it.
+      max-width: 60%;
 
       .headline {
         font-size: 32px;
@@ -77,6 +88,8 @@
     }
 
     @include mobile {
+      max-width: 100%;
+
       .headline {
         font-size: 22px;
       }

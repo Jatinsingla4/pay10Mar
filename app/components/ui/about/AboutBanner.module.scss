@@ -95,9 +95,17 @@
 
   @media only screen and (max-width: 767px) {
   .about_banner {
+    // A fixed height fights `background-size: cover` across the whole mobile
+    // width range: too tall relative to width crops the sides, too short
+    // crops top/bottom. Locking the box to the mobile image's own aspect
+    // ratio (3001x5337) means cover never has to crop either axis, at any
+    // viewport width.
+    height: auto;
+    aspect-ratio: 3001 / 5337;
+    border-radius: 0;
     background-image: var(--bg-mobile, url('/images/prod_imports/about-us-hero-mobile.png'));
     .banner_svg {
-      padding-top: 50px;
+      padding-top: 150px;
     }
     .banner_content {
       width: 90%;
@@ -121,7 +129,7 @@
   @media only screen and (max-width: 563px) {
     .about_banner {
       .banner_svg {
-        padding-top: 40px;
+        padding-top: 140px;
       }
       .banner_content {
         width: 95%;

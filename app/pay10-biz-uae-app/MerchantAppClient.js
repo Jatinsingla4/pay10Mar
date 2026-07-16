@@ -174,7 +174,10 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
         </div>
         <div className={Style.support_visual}>
           <div className={Style.circle_outer}>
+            <img src={pageData?.sections?.[2]?.images?.[1] || "/images/support-avatar-1.jpg"} alt="support agent" className={Style.floating_avatar_1} />
             <div className={Style.circle_mid}>
+              <img src={pageData?.sections?.[2]?.images?.[2] || "/images/support-avatar-2.jpg"} alt="support agent" className={Style.floating_avatar_2} />
+              <img src={pageData?.sections?.[2]?.images?.[3] || "/images/support-avatar-3.jpg"} alt="support agent" className={Style.floating_avatar_3} />
               <div className={Style.circle_inner}>
                 <Image src={pageData?.sections?.[2]?.images?.[0] || "/images/prod_imports/customer-executive.jpg"} alt="Pay10 support" width={200} height={200} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }} />
               </div>
@@ -223,7 +226,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
       </section>
 
       <MerchantTestimonialVideos
-        title="Don't take our word for it.<br />Hear it from the merchants themselves."
+        title="Don't take our word for it. Hear it from the merchants themselves."
         content="<p>From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.</p>"
         videos={testimonialVideos}
       />

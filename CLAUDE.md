@@ -59,10 +59,18 @@ GSAP is available for imperative animation (`gsap` package). Swiper is available
 
 The Content-Security-Policy is built in `next.config.js` from a structured `cspSources` object. When adding new external domains (scripts, images, fonts, API calls), add them there rather than inline. CSP sources can be extended at runtime via `CSP_*_EXTRA` environment variables. Google Analytics / GTM is currently commented out (staging environment).
 
+### Backend proxy
+
+The frontend never calls the backend API directly from the client. `app/api/proxy/[...path]/route.js` forwards `GET`/`POST` to `${NEXT_PUBLIC_API}/<path>` with the `BACKEND_AUTH_KEY` injected server-side. It only forwards paths listed in its `ALLOWED_PATHS` allowlist — add new entries there deliberately when a feature needs a new backend endpoint. Server components can also call the backend directly via `app/lib/fetchPageData.js` (`fetchPageData`/`fetchPageMeta`), which uses the same `NEXT_PUBLIC_API`/`BACKEND_AUTH_KEY` env vars.
+
 ### Redirects
 
-Legacy PHP URLs and old slug variants are permanently redirected in `next.config.js` under `redirects()`. The middleware (`middleware.js`) redirects bare `pay10.ae` → `www.pay10.ae` with a 308.
+Legacy PHP URLs and old slug variants are permanently redirected in `next.config.js` under `redirects()`. `proxy.js` (the middleware, exported as `proxy`/`config` — despite the filename it's the Next.js middleware) redirects bare `pay10.ae` → `www.pay10.ae` with a 308, and rate-limits `/api/proxy/*` (10 req/min per IP, in-memory store — valid only because this runs as a single long-lived `next start` process, not serverless/edge).
 
 ### Fonts
 
 Outfit is loaded via `next/font/google` and exposed as CSS variable `--font-outfit`. Additional weight variants are loaded as local `.woff2` files in `fonts/` and exposed as font-family names (`extrabold`, `bold`, `semibold`, `medium`, `regular`, `light`) in `app/variables.css`.
+
+### Security & dependency patching
+
+See `SECURITY.md` for the full policy (critical CVEs patched within 72h, non-critical monthly). In short: `.github/dependabot.yml` opens patch PRs automatically, `.github/workflows/security-audit.yml` fails CI on any HIGH/CRITICAL CVE, and `package.json` `overrides` pins vulnerable transitive deps. Merging a Dependabot PR is sufficient — the next deploy picks up the patched version.

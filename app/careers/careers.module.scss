@@ -19,7 +19,13 @@
   overflow: hidden;
 
   @include mobile {
+    // A fixed height fights `background-size: cover` across the mobile
+    // width range — locking the box to the mobile image's own aspect ratio
+    // (3001x5337) means cover never has to crop either axis.
+    height: auto;
+    aspect-ratio: 3001 / 5337;
     background-image: var(--mobile-bg, var(--desktop-bg));
+    border-radius: 0;
   }
 }
 

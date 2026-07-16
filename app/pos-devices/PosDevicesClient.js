@@ -344,7 +344,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       </section>
 
       <MerchantTestimonialVideos
-        title={testimonialTitle || "Don't take our word for it.<br />Hear it from the merchants themselves."}
+        title={testimonialTitle || "Don't take our word for it. Hear it from the merchants themselves."}
         content={testimonialContent || "<p>From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.</p>"}
         videos={testimonialVideos}
       />

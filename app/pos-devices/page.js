@@ -17,7 +17,7 @@ export default async function page() {
   ]);
   const testimonialSection = homeData?.sections?.find(s => s.title?.includes("Don't take our word") || s.title?.includes('merchants themselves')) || homeData?.sections?.[5] || {};
   const testimonialVideos = testimonialSection.videos || [];
-  const testimonialTitle = testimonialSection.title || "Don't take our word for it.<br />Hear it from the merchants themselves.";
+  const testimonialTitle = testimonialSection.title || "Don't take our word for it. Hear it from the merchants themselves.";
   const testimonialContent = testimonialSection.content || "<p>From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.</p>";
   
   const logosSection = homeData?.sections?.find(s => s.title?.includes('Logos') || s.title?.includes('Get Started Today'));

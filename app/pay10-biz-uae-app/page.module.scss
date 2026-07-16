@@ -17,8 +17,11 @@
   }
 
   @include mobile {
-    height: 100svh;
-    min-height: 100svh;
+    // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+    // header — without subtracting it, 100svh pushes content below the
+    // viewport.
+    height: calc(100svh - 73px);
+    min-height: calc(100svh - 73px);
     background-image: var(--bg-mobile, var(--bg-desktop));
   }
 }
@@ -51,7 +54,8 @@
   @include tab {
     top: 140px;
     left: 24px;
-    max-width: 80%;
+    // 80% ran text over the QR/device graphic on the right.
+    max-width: 55%;
 
     h2 { font-size: 32px; }
     p { font-size: 16px; }
@@ -515,6 +519,7 @@
   background: rgba(255, 129, 5, 0.07);
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: center;
 
   @include tab {
@@ -535,6 +540,7 @@
   background: rgba(255, 129, 5, 0.12);
   display: flex;
   align-items: center;
+  position: relative;
   justify-content: center;
 
   @include tab {
@@ -563,6 +569,45 @@
     width: min(105px, 30vw);
     height: min(105px, 30vw);
   }
+}
+
+.floating_avatar_1, .floating_avatar_2, .floating_avatar_3 {
+  position: absolute;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--white);
+  box-shadow: 0 12px 24px rgba(255, 129, 5, 0.15);
+  animation: float 6s ease-in-out infinite;
+}
+
+.floating_avatar_1 {
+  width: 70px;
+  height: 70px;
+  top: 10%;
+  right: 8%;
+  animation-delay: 0s;
+}
+
+.floating_avatar_2 {
+  width: 60px;
+  height: 60px;
+  top: 0%;
+  left: 15%;
+  animation-delay: 2s;
+}
+
+.floating_avatar_3 {
+  width: 80px;
+  height: 80px;
+  bottom: 5%;
+  left: 5%;
+  animation-delay: 4s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
 }
 
 .wrapper {

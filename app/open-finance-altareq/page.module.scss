@@ -206,8 +206,11 @@
   }
 
   @include mobile {
-    height: 100svh;
-    min-height: 100svh;
+    // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+    // header — without subtracting it, 100svh pushes content below the
+    // viewport.
+    height: calc(100svh - 73px);
+    min-height: calc(100svh - 73px);
     background-image: var(--mobile-bg, url('/images/prod_imports/altareq_mobile_banner.jpg'));
     background-position: center;
   }
@@ -242,7 +245,9 @@
   @include tab {
     top: 140px;
     left: 24px;
-    max-width: 80%;
+    // 80% ran text over the phone graphic on the right — same crop zone
+    // that ConsumerHero.module.scss text-overlap fix addresses.
+    max-width: 55%;
 
     h2 {
       font-size: 26px;

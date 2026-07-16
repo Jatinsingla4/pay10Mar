@@ -47,5 +47,7 @@
     transform: translateY(-2px);
   }
 
-  @include mobile { width: 100%; text-align: center; }
+  @include mobile {
+    padding: 12px 32px;
+  }
 }

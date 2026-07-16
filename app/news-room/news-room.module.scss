@@ -16,7 +16,9 @@
   overflow: hidden;
 
   @include tab { min-height: 500px; background-position: center center; }
-  @include mobile { height: 100svh; min-height: 100svh; background-image: var(--bg-mobile, url("/images/news-banner-mobile.png")); background-position: center center; }
+  // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+  // header — without subtracting it, 100svh pushes content below the viewport.
+  @include mobile { height: calc(100svh - 73px); min-height: calc(100svh - 73px); background-image: var(--bg-mobile, url("/images/news-banner-mobile.png")); background-position: center center; }
 }
 
 .bannerOverlay {
@@ -355,8 +357,11 @@
 
 @media (max-width: 600px) {
   .bannerSection {
-    height: 100svh;
-    min-height: 100svh;
+    // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
+    // header. This rule comes after @include mobile above and wins
+    // (same specificity, later in file) — must match its fix here too.
+    height: calc(100svh - 73px);
+    min-height: calc(100svh - 73px);
   }
 
   .bannerContent {

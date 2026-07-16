@@ -316,18 +316,28 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <div className={Style.combo_download}>
           <h2 className={Style.combo_heading}>Merchant App</h2>
           <div className={Style.combo_badges}>
-            <a href="#" className={Style.app_badge} aria-label="Download on the App Store">
-              <Icon icon="ic:baseline-apple" width={28} />
+            <a
+              href="https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={Style.app_qr_card}
+            >
+              <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={140} height={140} />
               <div>
-                <span>Download on the</span>
-                <strong>App Store</strong>
+                <Icon icon="ic:baseline-apple" width={20} color="#000" />
+                <span>Download on the App Store</span>
               </div>
             </a>
-            <a href="#" className={Style.app_badge} aria-label="Get it on Google Play">
-              <Icon icon="logos:google-play-icon" width={24} />
+            <a
+              href="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={Style.app_qr_card}
+            >
+              <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={140} height={140} />
               <div>
-                <span>GET IT ON</span>
-                <strong>Google Play</strong>
+                <Icon icon="logos:google-play-icon" width={18} />
+                <span>Get it on Google Play</span>
               </div>
             </a>
           </div>

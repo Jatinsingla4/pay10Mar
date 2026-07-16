@@ -2,19 +2,12 @@
 
 import Style from "./page.module.scss";
 import Image from "next/image";
-import Link from "next/link";
 import { Icon } from "@iconify/react";
 import MerchantTestimonialVideos from "../components/ui/MerchantTestimonialVideos";
 import MerchantLogosCTA from "../components/ui/MerchantLogosCTA";
+import BizLeadForm from "./BizLeadForm";
 
 const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLogos = [] }) => {
-  // Default Data Fallbacks
-  const defaultTags = [
-    ['Street vendors', 'Solo traders', 'Home businesses', 'Market stalls'],
-    ['Retail stores', 'Restaurants', 'Salons', 'Clinics', 'Service Businesses'],
-    ['Retail chains', 'Hotels', 'Education groups', 'Healthcare networks', 'Government'],
-  ];
-
   const scaleCards = pageData?.sections?.[0]?.cards?.map((c, i) => {
     const cleanDesc = (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim();
     return {
@@ -22,7 +15,6 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
       title: c.title,
       sub: c.subtitle || null,
       desc: cleanDesc,
-      tags: defaultTags[i] || [],
     };
   }) || [
     {
@@ -30,21 +22,18 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
       title: 'Micro Merchant',
       sub: 'Starting out or going solo',
       desc: 'Single location, lower transaction volumes. Pay10 gives micro merchants the same tools and rates that only big players used to get.',
-      tags: ['Street vendors', 'Solo traders', 'Home businesses', 'Market stalls'],
     },
     {
       num: '02',
       title: 'Growing businesses',
       sub: null,
       desc: 'Multi-cashier, real-time reporting, instant settlement. Everything an SME needs to manage payments and cash flow without a finance team.',
-      tags: ['Retail stores', 'Restaurants', 'Salons', 'Clinics', 'Service Businesses'],
     },
     {
       num: '03',
       title: 'Multi-location. Complex operations.',
       sub: null,
       desc: 'Fleet management, hierarchy controls, analytics at scale. Pay10 handles enterprise payment infrastructure across locations, teams, and transaction volumes.',
-      tags: ['Retail chains', 'Hotels', 'Education groups', 'Healthcare networks', 'Government'],
     },
   ];
 
@@ -128,7 +117,6 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
         className={Style.biz_hero}
         style={{
           '--bg-desktop': pageData?.banner_image ? `url(${pageData.banner_image})` : 'none',
-          '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : 'none'),
           '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : undefined,
         }}
       >
@@ -150,9 +138,6 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
               <h3>{card.title}</h3>
               {card.sub && <p className={Style.card_sub}>{card.sub}</p>}
               <p className={Style.card_desc}>{card.desc}</p>
-              <div className={Style.card_tags}>
-                {card.tags.map((tag, idx) => <span key={idx}>{tag}</span>)}
-              </div>
             </div>
           ))}
         </div>
@@ -171,7 +156,6 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
               <h3>{item.title}</h3>
               <p className={Style.benefit_sub}>{item.sub}</p>
               <p className={Style.benefit_desc}>{item.desc}</p>
-              <span className={Style.benefit_arrow}>→</span>
             </div>
           ))}
         </div>
@@ -181,12 +165,12 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
         <div className={Style.support_left}>
           <h2>{pageData?.sections?.[2]?.title || "24/7 human support · multi-language · zero wait time"}</h2>
           <p className={Style.support_sub}>{pageData?.sections?.[2]?.subtitle || "Call. A human picks up. Every time."}</p>
-          <p className={Style.support_desc}>
-            {pageData?.sections?.[2]?.content 
-              ? <span dangerouslySetInnerHTML={{ __html: pageData.sections[2].content }} />
-              : "In a world of bots and long waits, Pay10 is different. Human support, available 24 hours a day, 7 days a week, 365 days a year, in multiple languages. For every merchant, regardless of size. Call and your call will be picked up. No queues. No bots. No waiting."
+          <div className={Style.support_desc}>
+            {pageData?.sections?.[2]?.content
+              ? <div dangerouslySetInnerHTML={{ __html: pageData.sections[2].content }} />
+              : <p>In a world of bots and long waits, Pay10 is different. Human support, available 24 hours a day, 7 days a week, 365 days a year, in multiple languages. For every merchant, regardless of size. Call and your call will be picked up. No queues. No bots. No waiting.</p>
             }
-          </p>
+          </div>
         </div>
         <div className={Style.support_visual}>
           <div className={Style.circle_outer}>
@@ -247,35 +231,41 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
 
       <section className={Style.biz_final_cta}>
         <h2 className={Style.cta_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[5]?.title || "Ready to accept payments<br />the smarter way?" }} />
-        <p className={Style.cta_sub}>{pageData?.sections?.[5]?.subtitle || "Lowest MDRs. Same-day settlement. 24/7 human support. CBUAE licensed. Everything your business deserves, and nothing you don't need."}</p>
-        <div className={Style.cta_buttons}>
-          {(pageData?.sections?.[5]?.cards?.length ? pageData.sections[5].cards : [{ title: 'SME Sales' }, { title: 'Enterprise Sales' }]).map((c, i) => (
-            <Link
-              key={c.title}
-              href={`/contact-us?type=${encodeURIComponent(c.title)}`}
-              className={i === 0 ? Style.cta_btn_primary : Style.cta_btn_outline}
-            >
-              {c.title}
-            </Link>
-          ))}
-        </div>
+        {(() => {
+          // An empty CMS subtitle means "intentionally removed" — don't fall
+          // back to the hardcoded default in that case, only when the field
+          // is missing entirely (e.g. pageData hasn't loaded).
+          const ctaSubtitle = pageData?.sections?.[5]?.subtitle ?? "Lowest MDRs. Same-day settlement. 24/7 human support. CBUAE licensed. Everything your business deserves, and nothing you don't need.";
+          return ctaSubtitle && <p className={Style.cta_sub}>{ctaSubtitle}</p>;
+        })()}
+        <BizLeadForm />
       </section>
 
       <section className={Style.biz_app_download}>
         <h2 className={Style.app_download_heading}>Merchant App</h2>
         <div className={Style.app_download_badges}>
-          <a href="#" className={Style.app_badge} aria-label="Download on the App Store">
-            <Icon icon="ic:baseline-apple" width={28} />
+          <a
+            href="https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={Style.app_qr_card}
+          >
+            <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={140} height={140} />
             <div>
-              <span>Download on the</span>
-              <strong>App Store</strong>
+              <Icon icon="ic:baseline-apple" width={20} />
+              <span>Download on the App Store</span>
             </div>
           </a>
-          <a href="#" className={Style.app_badge} aria-label="Get it on Google Play">
-            <Icon icon="logos:google-play-icon" width={24} />
+          <a
+            href="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={Style.app_qr_card}
+          >
+            <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={140} height={140} />
             <div>
-              <span>GET IT ON</span>
-              <strong>Google Play</strong>
+              <Icon icon="logos:google-play-icon" width={18} />
+              <span>Get it on Google Play</span>
             </div>
           </a>
         </div>

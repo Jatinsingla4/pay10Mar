@@ -570,16 +570,15 @@
 
 .journey_card_img {
   width: 100%;
-  border-radius: 50%;
+  border-radius: 16px;
   overflow: hidden;
   margin-bottom: 24px;
-  aspect-ratio: 1;
 
   img {
     width: 100%;
-    height: 100%;
+    height: auto;
     display: block;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 

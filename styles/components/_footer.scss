@@ -245,20 +245,24 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
+      width: 32px;
+      height: 32px;
+      background-color: #EF1A23; /* Ensure a consistent red background for all */
       color: var(--white);
       text-decoration: none;
-      transition: opacity 0.2s var(--ease-out-cubic);
+      transition: all 0.2s var(--ease-out-cubic);
       border-radius: 50%;
+      border: 1px solid transparent;
 
       &:hover {
         opacity: 0.8;
+        transform: translateY(-2px);
       }
     }
 
     &-icon {
-      font-size: 1.25rem;
+      font-size: 18px; /* Icon size inside the circle */
+      display: block;
     }
   }
 

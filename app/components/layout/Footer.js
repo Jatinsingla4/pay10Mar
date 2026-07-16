@@ -55,7 +55,19 @@ const footerData = {
         { label: 'Privacy Policy', href: '/privacy-policy' },
         { label: 'Key Facts Statement', href: '/key-fact-statement' },
         { label: 'Schedule of Charges', href: '/coming-soon' },
-        { label: 'FAQ', href: '/faqs' },
+        { 
+          label: 'FAQ', 
+          href: '/faqs',
+          subItems: [
+            { label: 'Bill Payment', href: '/faqs?category=Bill+Payment' },
+            { label: 'Card Issuing', href: '/faqs?category=Card+Issuing' },
+            { label: 'Fraud', href: '/faqs?category=Fraud' },
+            { label: 'WPS Employee', href: '/faqs?category=WPS+Employee' },
+            { label: 'Send Abroad', href: '/faqs?category=Send+Abroad' },
+            { label: 'Pay10 UAE App', href: '/faqs?category=Pay10+UAE+App' },
+            { label: 'Pay10 Biz UAE App', href: '/faqs?category=Pay10+Biz+UAE+App' },
+          ]
+        },
         { label: 'Al Tareq FAQ', href: '/faq-altareq' },
       ],
     },
@@ -226,9 +238,20 @@ const Footer = () => {
               {openSections.legal && (
                 <div className="footer__nav-subitems">
                   {navigation.legal.items.map((item) => (
-                    <Link key={item.label} href={item.href} className="footer__nav-sublink">
-                      {item.label}
-                    </Link>
+                    <div key={item.label} className="footer__nav-subitem" style={{ marginBottom: item.subItems ? '0.5rem' : '0' }}>
+                      <Link href={item.href} className="footer__nav-sublink">
+                        {item.label}
+                      </Link>
+                      {item.subItems && (
+                        <div className="footer__nav-subsubitems" style={{ marginTop: '0.25rem' }}>
+                          {item.subItems.map((subItem) => (
+                            <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
+                              {subItem.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   ))}
                 </div>
               )}
@@ -238,9 +261,20 @@ const Footer = () => {
               <div className="footer__nav-heading">{navigation.legal.label}</div>
               <div className="footer__nav-subitems">
                 {navigation.legal.items.map((item) => (
-                  <Link key={item.label} href={item.href} className="footer__nav-sublink">
-                    {item.label}
-                  </Link>
+                  <div key={item.label} className="footer__nav-subitem" style={{ marginBottom: item.subItems ? '0.5rem' : '0' }}>
+                    <Link href={item.href} className="footer__nav-sublink">
+                      {item.label}
+                    </Link>
+                    {item.subItems && (
+                      <div className="footer__nav-subsubitems" style={{ paddingLeft: 0, marginTop: '0.25rem' }}>
+                        {item.subItems.map((subItem) => (
+                          <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
             </>
@@ -339,19 +373,19 @@ const Footer = () => {
         <div className="footer__actions footer__actions--desktop">
           <div className="footer__social">
             <a href={footerData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn">
-              <Image width={24} height={24} src="/images/common/linkedin.svg" alt="LinkedIn" className="footer__social-icon" />
+              <Icon icon="mdi:linkedin" className="footer__social-icon" />
             </a>
             <a href={footerData.socialMedia.x} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="X">
-              <Image width={24} height={24} src="/images/common/x.svg" alt="X" className="footer__social-icon" />
+              <Icon icon="bi:twitter-x" className="footer__social-icon" />
             </a>
             <a href={footerData.socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
-              <Image width={24} height={24} src="/images/common/instagram.svg" alt="Instagram" className="footer__social-icon" />
+              <Icon icon="mdi:instagram" className="footer__social-icon" />
             </a>
             <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
-              <Image width={24} height={24} src="/images/common/facebook.svg" alt="Facebook" className="footer__social-icon" />
+              <Icon icon="mdi:facebook" className="footer__social-icon" />
             </a>
             <a href={footerData.socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="YouTube">
-              <Image width={24} height={24} src="/images/common/youtube.svg" alt="YouTube" className="footer__social-icon" />
+              <Icon icon="mdi:youtube" className="footer__social-icon" />
             </a>
           </div>
         </div>
@@ -372,19 +406,19 @@ const Footer = () => {
       <div className="footer__actions footer__actions--mobile">
         <div className="footer__social">
           <a href={footerData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn">
-            <Image width={24} height={24} src="/images/common/linkedin.svg" alt="LinkedIn" className="footer__social-icon" />
+            <Icon icon="mdi:linkedin" className="footer__social-icon" />
           </a>
           <a href={footerData.socialMedia.x} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="X">
-            <Image width={24} height={24} src="/images/common/x.svg" alt="X" className="footer__social-icon" />
+            <Icon icon="bi:twitter-x" className="footer__social-icon" />
           </a>
           <a href={footerData.socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
-            <Image width={24} height={24} src="/images/common/instagram.svg" alt="Instagram" className="footer__social-icon" />
+            <Icon icon="mdi:instagram" className="footer__social-icon" />
           </a>
           <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
-            <Image width={24} height={24} src="/images/common/facebook.svg" alt="Facebook" className="footer__social-icon" />
+            <Icon icon="mdi:facebook" className="footer__social-icon" />
           </a>
           <a href={footerData.socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="YouTube">
-            <Image width={24} height={24} src="/images/common/youtube.svg" alt="YouTube" className="footer__social-icon" />
+            <Icon icon="mdi:youtube" className="footer__social-icon" />
           </a>
         </div>
       </div>

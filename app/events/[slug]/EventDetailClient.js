@@ -191,7 +191,7 @@ const EventDetailClient = ({ initialData }) => {
       {images.length > 0 && (
         <section className={Style.wrapper}>
           <div className={Style.pictures_container}>
-            <h2 data-animation="opacity-up">Pictures from the event</h2>
+            <h2 data-animation="opacity-up">Event Gallery</h2>
             <div className={Style.pictures}>
               {displayedImages.map((img, idx) => {
                 const imageSrc = resolveImageSrc(img);

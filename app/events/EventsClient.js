@@ -31,7 +31,7 @@ function formatEventDate(start, end) {
   return `${startDay} ${startMonth} ${startYear} - ${endDay} ${endMonth} ${endYear}`;
 }
 
-export default function EventsClient({ initialEvents = [] }) {
+export default function EventsClient({ initialEvents = [], pageData = null }) {
   const getEventStatus = (endDateStr) => {
     if (!endDateStr) return "upcoming";
     const today = new Date();
@@ -42,13 +42,17 @@ export default function EventsClient({ initialEvents = [] }) {
 
   return (
     <main>
-      <section className={Style.bannerSection}>
+      <section 
+        className={Style.bannerSection}
+        style={{
+          ...(pageData?.banner_image ? { '--bg-desktop': `url(${pageData.banner_image})` } : {}),
+          ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : (pageData?.banner_image ? { '--bg-mobile': `url(${pageData.banner_image})` } : {})),
+        }}
+      >
         <div className={Style.bannerOverlay} />
         <div className={Style.bannerContent}>
-          <h1 data-animation="opacity-up">Our Events</h1>
-          <p data-animation="opacity-up" data-anim-delay="200">
-            Discover the events and conferences where Pay10 connects, innovates, and leads the future of digital payments.
-          </p>
+          <h1 data-animation="opacity-up" dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Our Events" }} />
+          <p data-animation="opacity-up" data-anim-delay="200" dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || "Discover the events and conferences where Pay10 connects, innovates, and leads the future of digital payments." }} />
         </div>
       </section>
 

@@ -211,124 +211,16 @@
   max-width: 420px;
   aspect-ratio: 1.586 / 1;
   border-radius: 20px;
-  padding: 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   position: relative;
   overflow: hidden;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.18);
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: var(--primary-gradient);
-    z-index: 0;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.07);
-    top: -80px;
-    right: -60px;
-    z-index: 1;
-  }
 }
 
-.debit_card_inner_circle {
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
-  bottom: -50px;
-  left: -40px;
-  z-index: 1;
-}
-
-.card_top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-
-  .card_logo {
-    font-size: 20px;
-    font-family: 'bold', sans-serif;
-    color: var(--white);
-    letter-spacing: 0.5px;
-  }
-
-  .card_type_badge {
-    font-size: 11px;
-    font-family: 'semibold', sans-serif;
-    color: rgba(255, 255, 255, 0.85);
-    background: rgba(255, 255, 255, 0.15);
-    padding: 4px 10px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
-}
-
-.card_chip {
-  position: relative;
-  z-index: 2;
-
-  svg {
-    width: 44px;
-    height: 34px;
-  }
-}
-
-.card_bottom {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-
-  .card_number {
-    font-size: 17px;
-    font-family: 'medium', sans-serif;
-    color: var(--white);
-    letter-spacing: 3px;
-    opacity: 0.9;
-  }
-
-  .card_meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    .card_name {
-      font-size: 13px;
-      font-family: 'semibold', sans-serif;
-      color: var(--white);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-    }
-
-    .card_scheme {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-
-      img {
-        height: 28px;
-        width: auto;
-        object-fit: contain;
-        filter: brightness(0) invert(1);
-        opacity: 0.9;
-      }
-    }
-  }
+.debit_card_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .card_info {

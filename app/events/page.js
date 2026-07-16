@@ -1,6 +1,6 @@
 import React from "react";
 import EventsClient from "./EventsClient";
-import { API_BASE, API_HEADERS } from "../lib/fetchPageData";
+import { API_BASE, API_HEADERS, fetchPageData } from "../lib/fetchPageData";
 
 export const metadata = {
   title: "Events | Pay10",
@@ -29,6 +29,7 @@ async function getEvents() {
 
 export default async function EventsPage() {
   const events = await getEvents();
+  const pageData = await fetchPageData('event-conferences');
   
-  return <EventsClient initialEvents={events} />;
+  return <EventsClient initialEvents={events} pageData={pageData} />;
 }

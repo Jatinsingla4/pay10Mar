@@ -168,22 +168,6 @@
   flex: 1;
 }
 
-.card_tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 8px;
-
-  span {
-    font-size: 0.8125rem;
-    font-family: 'medium', sans-serif;
-    color: var(--black);
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 100px;
-    padding: 4px 12px;
-  }
-}
-
 .biz_benefits {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -271,6 +255,18 @@
   flex-direction: column;
   gap: 10px;
   background: var(--white);
+
+  // An odd card count leaves a lone card in the last row — span it full width
+  // instead of leaving a gap next to it.
+  &:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+
+    h3,
+    .benefit_sub,
+    .benefit_desc {
+      max-width: 620px;
+    }
+  }
 }
 
 .benefit_num {
@@ -313,15 +309,6 @@
   color: var(--gray);
   line-height: 1.6;
   flex: 1;
-}
-
-.benefit_arrow {
-  font-size: 1.25rem;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-top: 8px;
 }
 
 .biz_command {
@@ -924,26 +911,34 @@
   justify-content: center;
 }
 
-.app_badge {
+.app_qr_card {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
-  padding: 12px 24px;
-  background: var(--black);
-  border-radius: 100px;
-  color: var(--white);
+  padding: 20px;
+  background: var(--white);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
   text-decoration: none;
   transition: opacity 0.2s;
 
-  &:hover { opacity: 0.8; }
+  &:hover { opacity: 0.85; }
+
+  img {
+    border-radius: 8px;
+  }
 
   div {
     display: flex;
-    flex-direction: column;
-    text-align: left;
+    align-items: center;
+    gap: 8px;
 
-    span { font-size: 0.65rem; font-family: 'regular', sans-serif; opacity: 0.8; }
-    strong { font-size: 1rem; font-family: 'semibold', sans-serif; }
+    span {
+      font-size: 0.875rem;
+      font-family: 'medium', sans-serif;
+      color: var(--black);
+    }
   }
 }
 
@@ -982,36 +977,100 @@
   line-height: 1.7;
 }
 
-.cta_buttons {
+.biz_lead_form {
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
+  width: 100%;
+  max-width: 720px;
   margin-top: 12px;
+  text-align: left;
 }
 
-.cta_btn_primary {
-  padding: 14px 36px;
+.biz_lead_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @include mobile { grid-template-columns: 1fr; }
+}
+
+.biz_lead_group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  input,
+  select {
+    height: 52px;
+    padding: 0 18px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    background: var(--white);
+    font-size: 0.9375rem;
+    font-family: 'regular', sans-serif;
+    color: var(--black);
+    width: 100%;
+
+    &:focus {
+      outline: none;
+      border-color: var(--orange);
+    }
+  }
+
+  select {
+    color: var(--gray);
+    appearance: auto;
+
+    &:has(option:checked:not([value=""])) {
+      color: var(--black);
+    }
+  }
+}
+
+.biz_lead_input_error {
+  border-color: var(--red) !important;
+}
+
+.biz_lead_error {
+  font-size: 0.8125rem;
+  color: var(--red);
+  font-family: 'regular', sans-serif;
+}
+
+.biz_lead_submit {
+  align-self: center;
+  margin-top: 8px;
+  padding: 14px 48px;
   border-radius: 100px;
   background: var(--primary-gradient);
   color: var(--white);
   font-family: 'semibold', sans-serif;
   font-size: 1rem;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
   transition: opacity 0.2s;
 
   &:hover { opacity: 0.88; }
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
 }
 
-.cta_btn_outline {
-  padding: 14px 36px;
-  border-radius: 100px;
-  background: var(--primary-gradient);
-  color: var(--white);
-  font-family: 'semibold', sans-serif;
-  font-size: 1rem;
-  text-decoration: none;
-  transition: opacity 0.2s;
+.biz_lead_success {
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(34, 197, 94, 0.1);
+  color: #15803d;
+  font-size: 0.9375rem;
+  font-family: 'medium', sans-serif;
+}
 
-  &:hover { opacity: 0.88; }
+.biz_lead_error_box {
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--red);
+  font-size: 0.9375rem;
+  font-family: 'medium', sans-serif;
 }

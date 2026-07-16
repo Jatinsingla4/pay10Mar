@@ -1,13 +1,28 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import faqData from './faqData';
 import styles from './faqs.module.scss';
 import { sanitizeHtml } from '../lib/sanitizeHtml';
 
 export default function FaqsClient() {
-  const [activeTabName, setActiveTabName] = useState(faqData[0]?.tabName || '');
+  const searchParams = useSearchParams();
+  const categoryQuery = searchParams.get('category');
+
+  const [activeTabName, setActiveTabName] = useState(
+    categoryQuery && faqData.some(tab => tab.tabName === categoryQuery) 
+      ? categoryQuery 
+      : faqData[0]?.tabName || ''
+  );
   const [openIndex, setOpenIndex] = useState(null);
+
+  useEffect(() => {
+    if (categoryQuery && faqData.some(tab => tab.tabName === categoryQuery)) {
+      setActiveTabName(categoryQuery);
+      setOpenIndex(null);
+    }
+  }, [categoryQuery]);
 
   const handleTabChange = (tabName) => {
     setActiveTabName(tabName);

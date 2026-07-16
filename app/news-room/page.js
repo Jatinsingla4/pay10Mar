@@ -1,5 +1,5 @@
 import NewsRoomClient from "./NewsRoomClient";
-import { API_BASE, API_HEADERS } from "../lib/fetchPageData";
+import { API_BASE, API_HEADERS, fetchPageData } from "../lib/fetchPageData";
 
 export const metadata = {
   title: "News Room | Pay10",
@@ -31,10 +31,11 @@ async function getNews() {
 
 export default async function page() {
   const newsList = await getNews();
+  const pageData = await fetchPageData('news-room');
 
   return (
     <>
-      <NewsRoomClient initialNews={newsList} />
+      <NewsRoomClient initialNews={newsList} pageData={pageData} />
     </>
   );
 }

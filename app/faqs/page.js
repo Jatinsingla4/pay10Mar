@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import FaqsClient from './FaqsClient';
 
 export const metadata = {
@@ -11,7 +12,9 @@ export const metadata = {
 export default function FaqsPage() {
   return (
     <main style={{ backgroundColor: 'var(--body-bg)', paddingTop: '80px', paddingBottom: '80px' }}>
-      <FaqsClient />
+      <Suspense fallback={<div style={{ textAlign: 'center', padding: '100px 0' }}>Loading FAQs...</div>}>
+        <FaqsClient />
+      </Suspense>
     </main>
   );
 }

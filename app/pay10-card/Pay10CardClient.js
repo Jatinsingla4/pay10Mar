@@ -64,32 +64,14 @@ const Pay10CardClient = ({ pageData = null }) => {
           </div>
 
           <div className={Style.dual_card_grid}>
-            {/* Consumer Debit Card */}
+            {/* Consumer Debit Card — grey card image */}
             <div className={Style.card_wrapper} data-animation="opacity-up" data-anim-delay="100">
               <div className={Style.debit_card}>
-                <div className={Style.debit_card_inner_circle} />
-                <div className={Style.card_top}>
-                  <span className={Style.card_logo}>Pay10</span>
-                  <span className={Style.card_type_badge}>{pageData?.sections?.[2]?.cards?.[0]?.title?.split(' ')[0] || "Consumer"}</span>
-                </div>
-                <div className={Style.card_chip}>
-                  <svg viewBox="0 0 44 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1" y="1" width="42" height="32" rx="5" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.4)" strokeWidth="1"/>
-                    <rect x="13" y="1" width="1.5" height="32" fill="rgba(255,255,255,0.3)"/>
-                    <rect x="29" y="1" width="1.5" height="32" fill="rgba(255,255,255,0.3)"/>
-                    <rect x="1" y="11" width="42" height="1.5" fill="rgba(255,255,255,0.3)"/>
-                    <rect x="1" y="21" width="42" height="1.5" fill="rgba(255,255,255,0.3)"/>
-                  </svg>
-                </div>
-                <div className={Style.card_bottom}>
-                  <span className={Style.card_number}>•••• •••• •••• 4210</span>
-                  <div className={Style.card_meta}>
-                    <span className={Style.card_name}>Pay10 Holder</span>
-                    <div className={Style.card_scheme}>
-                      <img src="/images/prod_imports/Mastercard.svg" alt="Mastercard" />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={pageData?.sections?.[2]?.cards?.[0]?.icon}
+                  alt={pageData?.sections?.[2]?.cards?.[0]?.title || "Consumer Debit Card"}
+                  className={Style.debit_card_img}
+                />
               </div>
               <div className={Style.card_info}>
                 <h3>{pageData?.sections?.[2]?.cards?.[0]?.title || "Consumer Debit Card"}</h3>
@@ -97,32 +79,14 @@ const Pay10CardClient = ({ pageData = null }) => {
               </div>
             </div>
 
-            {/* WPS Debit Card */}
+            {/* WPS Debit Card — orange card image */}
             <div className={Style.card_wrapper} data-animation="opacity-up" data-anim-delay="200">
               <div className={Style.debit_card}>
-                <div className={Style.debit_card_inner_circle} />
-                <div className={Style.card_top}>
-                  <span className={Style.card_logo}>Pay10</span>
-                  <span className={Style.card_type_badge}>{pageData?.sections?.[2]?.cards?.[1]?.title?.split(' ')[0] || "WPS"}</span>
-                </div>
-                <div className={Style.card_chip}>
-                  <svg viewBox="0 0 44 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="1" y="1" width="42" height="32" rx="5" fill="rgba(255,255,255,0.25)" stroke="rgba(255,255,255,0.4)" strokeWidth="1"/>
-                    <rect x="13" y="1" width="1.5" height="32" fill="rgba(255,255,255,0.3)"/>
-                    <rect x="29" y="1" width="1.5" height="32" fill="rgba(255,255,255,0.3)"/>
-                    <rect x="1" y="11" width="42" height="1.5" fill="rgba(255,255,255,0.3)"/>
-                    <rect x="1" y="21" width="42" height="1.5" fill="rgba(255,255,255,0.3)"/>
-                  </svg>
-                </div>
-                <div className={Style.card_bottom}>
-                  <span className={Style.card_number}>•••• •••• •••• 1099</span>
-                  <div className={Style.card_meta}>
-                    <span className={Style.card_name}>WPS Employee</span>
-                    <div className={Style.card_scheme}>
-                      <img src="/images/prod_imports/Mastercard.svg" alt="Mastercard" />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={pageData?.sections?.[2]?.cards?.[1]?.icon}
+                  alt={pageData?.sections?.[2]?.cards?.[1]?.title || "WPS Debit Card"}
+                  className={Style.debit_card_img}
+                />
               </div>
               <div className={Style.card_info}>
                 <h3>{pageData?.sections?.[2]?.cards?.[1]?.title || "WPS Debit Card"}</h3>

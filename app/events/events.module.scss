@@ -4,7 +4,7 @@
 
 .bannerSection {
   height: 785px;
-  background-image: url("/images/events_images/events-banner.jpg");
+  background-image: var(--bg-desktop, url("/images/events_images/events-banner.jpg"));
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -15,7 +15,7 @@
   @include mobile {
     height: 100svh;
     min-height: 100svh;
-    background-image: url("/images/events_images/events-banner-mobile.png");
+    background-image: var(--bg-mobile, url("/images/events_images/events-banner-mobile.png"));
     background-position: center center;
   }
 }

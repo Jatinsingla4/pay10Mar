@@ -26,7 +26,7 @@ function formatDisplayDate(dateInput) {
   return `${day}${suffix} ${month}, ${year}`;
 }
 
-export default function NewsRoomClient({ initialNews = [] }) {
+export default function NewsRoomClient({ initialNews = [], pageData = null }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
 
@@ -47,11 +47,17 @@ export default function NewsRoomClient({ initialNews = [] }) {
 
   return (
     <main className={styles.newsRoomMain}>
-      <section className={styles.bannerSection}>
+      <section 
+        className={styles.bannerSection}
+        style={{
+          ...(pageData?.banner_image ? { '--bg-desktop': `url(${pageData.banner_image})` } : {}),
+          ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : (pageData?.banner_image ? { '--bg-mobile': `url(${pageData.banner_image})` } : {})),
+        }}
+      >
         <div className={styles.bannerOverlay} />
         <div className={styles.bannerContent}>
-          <h1>Press Releases</h1>
-          <p>Stay informed with the latest news, strategic announcements, and media updates directly from the Pay10 ecosystem.</p>
+          <h1 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Press Releases" }} />
+          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || "Stay informed with the latest news, strategic announcements, and media updates directly from the Pay10 ecosystem." }} />
         </div>
       </section>
 

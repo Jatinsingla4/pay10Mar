@@ -55,7 +55,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
       icon: pageData.sections[2].cards[0].icon,
       steps: ((pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[1] || pageData.sections[2].cards[0].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
       footer: (pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[2]?.trim() || pageData.sections[2].cards[0].content || "",
-      img: pageData.sections[2].cards[0].images?.[0] || '/images/prod_imports/pg-pay-qr.png'
+      img: pageData.sections[2].cards[0].images?.[0] || pageData.sections[2].images?.[0] || '/images/prod_imports/pg-pay-qr.png',
+      mobileImg: pageData.sections[2].cards[0].images?.[1] || pageData.sections[2].images?.[2] || pageData.sections[2].images?.[0] || '/images/prod_imports/pg-pay-qr.png'
     },
     {
       title: pageData.sections[2].cards[1].title,
@@ -64,7 +65,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
       icon: pageData.sections[2].cards[1].icon,
       steps: ((pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[1] || pageData.sections[2].cards[1].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
       footer: (pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[2]?.trim() || pageData.sections[2].cards[1].content || "",
-      img: pageData.sections[2].cards[1].images?.[0] || '/images/prod_imports/pg-pay-desktop.png'
+      img: pageData.sections[2].cards[1].images?.[0] || pageData.sections[2].images?.[1] || '/images/prod_imports/pg-pay-desktop.png',
+      mobileImg: pageData.sections[2].cards[1].images?.[1] || pageData.sections[2].images?.[3] || pageData.sections[2].images?.[1] || '/images/prod_imports/pg-pay-desktop.png'
     }
   ] : defaultJourneyCards;
 
@@ -144,39 +146,14 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <div className={Style.showcase_wrapper}>
           <div className={Style.showcase_item}>
             <div className={Style.phone_wrapper}>
-              <Image
-                src={pageData?.sections?.[1]?.images?.[0] || "/images/prod_imports/pg-pay-mobile.png"}
-                alt="Pay10 App on Phone"
-                width={300}
-                height={600}
-                className={Style.showcase_phone_img}
-              />
-            </div>
-            <div className={`${Style.checkout_card} ${Style.showcase_card_overlay}`}>
-              <div className={Style.mockup_header}>
-                <Icon icon="mdi:cart-outline" width={20} /> Your Online Checkout
-              </div>
-              <div className={Style.mockup_total}>
-                <span>Order total</span>
-                <strong>AED 349.00</strong>
-              </div>
-              <div className={Style.mockup_divider}>Choose payment method</div>
-              <button className={Style.mockup_pay10_btn}>
-                <Icon icon="mdi:cellphone" width={18} /> Pay with Pay10
-              </button>
-              <p className={Style.mockup_hint}>&uarr; Customer clicks this button on your checkout</p>
-            </div>
-          </div>
-
-          <div className={Style.showcase_item}>
-            <div className={Style.phone_wrapper}>
-              <Image
-                src={pageData?.sections?.[1]?.images?.[1] || "/images/prod_imports/pg-pay-bank.png"}
-                alt="Bank App on Phone"
-                width={300}
-                height={600}
-                className={Style.showcase_phone_img}
-              />
+              <picture>
+                <source media="(max-width: 767px)" srcSet={pageData?.sections?.[1]?.images?.[2] || pageData?.sections?.[1]?.images?.[0] || "/images/prod_imports/pg-pay-mobile.png"} />
+                <img
+                  src={pageData?.sections?.[1]?.images?.[0] || "/images/prod_imports/pg-pay-mobile.png"}
+                  alt="Pay10 App on Phone"
+                  className={Style.showcase_phone_img}
+                />
+              </picture>
             </div>
             <div className={`${Style.checkout_card} ${Style.showcase_card_overlay}`}>
               <div className={Style.mockup_header}>
@@ -193,6 +170,33 @@ const PaymentGatewayClient = ({ pageData = null }) => {
               <p className={Style.mockup_hint}>&uarr; Customer clicks this button on your checkout</p>
             </div>
           </div>
+
+          <div className={Style.showcase_item}>
+            <div className={Style.phone_wrapper}>
+              <picture>
+                <source media="(max-width: 767px)" srcSet={pageData?.sections?.[1]?.images?.[3] || pageData?.sections?.[1]?.images?.[1] || "/images/prod_imports/pg-pay-bank.png"} />
+                <img
+                  src={pageData?.sections?.[1]?.images?.[1] || "/images/prod_imports/pg-pay-bank.png"}
+                  alt="Bank App on Phone"
+                  className={Style.showcase_phone_img}
+                />
+              </picture>
+            </div>
+            <div className={`${Style.checkout_card} ${Style.showcase_card_overlay}`}>
+              <div className={Style.mockup_header}>
+                <Icon icon="mdi:cart-outline" width={20} /> Your Online Checkout
+              </div>
+              <div className={Style.mockup_total}>
+                <span>Order total</span>
+                <strong>AED 349.00</strong>
+              </div>
+              <div className={Style.mockup_divider}>Choose payment method</div>
+              <button className={Style.mockup_pay10_btn}>
+                <Icon icon="mdi:cellphone" width={18} /> Pay with Pay10
+              </button>
+              <p className={Style.mockup_hint}>&uarr; Customer clicks this button on your checkout</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -201,7 +205,10 @@ const PaymentGatewayClient = ({ pageData = null }) => {
           {journeyCards.map((card, idx) => (
             <div key={idx} className={`${Style.journey_card} ${idx === 0 ? Style.card_white : Style.card_tinted}`}>
               <div className={Style.journey_card_img}>
-                <img src={card.img} alt={card.title} />
+                <picture>
+                  <source media="(max-width: 767px)" srcSet={card.mobileImg || card.img} />
+                  <img src={card.img} alt={card.title} />
+                </picture>
               </div>
               <div className={Style.card_header}>
                 <h3>{card.title}</h3>

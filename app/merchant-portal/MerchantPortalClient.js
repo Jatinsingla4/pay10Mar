@@ -2,6 +2,7 @@
 
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
+import Image from 'next/image';
 import Style from "./page.module.scss";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
@@ -10,55 +11,6 @@ const renderIcon = (cmsIcon, className, width) => {
   return /^(https?:)?\//.test(cmsIcon)
     ? <img src={cmsIcon} alt="" width={width} height={width} className={className} />
     : <Icon icon={cmsIcon} width={width} className={className} />;
-};
-
-// Re-applies the code-mockup's syntax colors to CMS-authored plain text.
-// The CMS stores the snippet as one <p> per line (indentation as &nbsp;);
-// this decodes that, then colors strings/keywords/comments/method-calls
-// via a single token regex, re-escaping for safe dangerouslySetInnerHTML.
-const highlightCode = (rawHtml, cssClasses) => {
-  const decode = (s) => s
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'");
-  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-  const lines = rawHtml
-    .split(/<\/p>\s*<p>/)
-    .map(s => decode(s.replace(/^<p>/, '').replace(/<\/p>$/, '')));
-
-  const KEYWORDS = 'const|let|var|await|async|function|return|new|if|else';
-  const tokenRe = new RegExp(
-    `(\\/\\/.*$)|("(?:[^"\\\\]|\\\\.)*")|\\b(${KEYWORDS})\\b|\\b([A-Za-z_$][\\w$]*(?:\\.[A-Za-z_$][\\w$]*)*)\\.([A-Za-z_$][\\w$]*)(?=\\()|\\b([A-Za-z_$][\\w$]*)(?=\\()`,
-    'g'
-  );
-
-  const highlightLine = (line) => {
-    let result = '';
-    let lastIndex = 0;
-    let m;
-    tokenRe.lastIndex = 0;
-    while ((m = tokenRe.exec(line)) !== null) {
-      result += esc(line.slice(lastIndex, m.index));
-      if (m[1]) result += `<span class="${cssClasses.comment}">${esc(m[1])}</span>`;
-      else if (m[2]) result += `<span class="${cssClasses.string}">${esc(m[2])}</span>`;
-      else if (m[3]) result += `<span class="${cssClasses.keyword}">${esc(m[3])}</span>`;
-      else if (m[4] && m[5]) result += `<span class="${cssClasses.object}">${esc(m[4])}</span>.<span class="${cssClasses.method}">${esc(m[5])}</span>`;
-      else if (m[6]) result += `<span class="${cssClasses.method}">${esc(m[6])}</span>`;
-      lastIndex = tokenRe.lastIndex;
-    }
-    result += esc(line.slice(lastIndex));
-    return result;
-  };
-
-  return lines.map((l) => {
-    const trimmed = l.trim();
-    if (trimmed === '' || /^<br\s*\/?>$/i.test(trimmed)) return '';
-    return highlightLine(l);
-  }).join('<br/>');
 };
 
 const MerchantPortalClient = ({ pageData = null }) => {
@@ -163,52 +115,6 @@ const MerchantPortalClient = ({ pageData = null }) => {
             <h2>{pageData?.sections?.[1]?.title || "Your settlements. In your ERP. The moment they happen"}</h2>
             <p>{pageData?.sections?.[1]?.subtitle || "Pay10's REST API connects your merchant portal directly to your ERP so settlement data, transaction records, and VAT figures sync automatically, without anyone lifting a finger. No spreadsheets. No manual entry. No end-of-day reconciliation panic."}</p>
           </div>
-          <div className={Style.api_right}>
-            <div className={Style.code_window}>
-              <div className={Style.code_header}>
-                <span className={Style.dot_red}></span>
-                <span className={Style.dot_yellow}></span>
-                <span className={Style.dot_green}></span>
-                <span className={Style.tab_active}>settlements.js</span>
-                <span className={Style.tab_inactive}>transactions.js</span>
-                <span className={Style.tab_inactive}>webhook.js</span>
-              </div>
-              <pre className={Style.code_body}>
-                <code>
-{pageData?.sections?.[1]?.content ? (
-  <span dangerouslySetInnerHTML={{ __html: highlightCode(pageData.sections[1].content, {
-    comment: Style.code_comment,
-    string: Style.code_string,
-    keyword: Style.code_keyword,
-    object: Style.code_object,
-    method: Style.code_method,
-  }) }} />
-) : (
-<>
-<span className={Style.code_comment}>{"// Pull today's settlements directly into your ERP"}</span>
-<br />
-<span className={Style.code_keyword}>const</span> <span className={Style.code_variable}>settlements</span> = <span className={Style.code_keyword}>await</span> <span className={Style.code_object}>pay10.portal</span>.<span className={Style.code_method}>getSettlements</span>({'{'}
-<br />
-{'  '}merchantId: <span className={Style.code_string}>"mid_8fj2kd9x"</span>,
-<br />
-{'  '}date: <span className={Style.code_string}>"today"</span>,
-<br />
-{'  '}currency: <span className={Style.code_string}>"AED"</span>,
-<br />
-{'  '}format: <span className={Style.code_string}>"erp_ready"</span>
-<br />
-{'});'}
-<br />
-<br />
-<span className={Style.code_comment}>{"// Response → settlement posted to your ERP instantly"}</span>
-<br />
-<span className={Style.code_object}>console</span>.<span className={Style.code_method}>log</span>(settlements.status); <span className={Style.code_comment}>{'// "synced"'}</span>
-</>
-)}
-                </code>
-              </pre>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -292,18 +198,28 @@ const MerchantPortalClient = ({ pageData = null }) => {
         <div className={Style.combo_download}>
           <h2 className={Style.combo_heading}>Merchant App</h2>
           <div className={Style.combo_badges}>
-            <a href="#" className={Style.app_badge} aria-label="Download on the App Store">
-              <Icon icon="ic:baseline-apple" width={28} />
+            <a
+              href="https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={Style.app_qr_card}
+            >
+              <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={120} height={120} />
               <div>
-                <span>Download on the</span>
-                <strong>App Store</strong>
+                <Icon icon="ic:baseline-apple" width={18} />
+                <span>Download on the App Store</span>
               </div>
             </a>
-            <a href="#" className={Style.app_badge} aria-label="Get it on Google Play">
-              <Icon icon="logos:google-play-icon" width={24} />
+            <a
+              href="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={Style.app_qr_card}
+            >
+              <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={120} height={120} />
               <div>
-                <span>GET IT ON</span>
-                <strong>Google Play</strong>
+                <Icon icon="logos:google-play-icon" width={16} />
+                <span>Get it on Google Play</span>
               </div>
             </a>
           </div>

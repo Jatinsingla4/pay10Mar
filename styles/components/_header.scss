@@ -46,10 +46,10 @@
 
   // Logo
   &__logo {
+    flex: 1;
     display: flex;
     align-items: center;
     text-decoration: none;
-    flex-shrink: 0;
     z-index: 1102;
 
     &-text {
@@ -646,6 +646,17 @@
   }
 
   // App Store Buttons
+  &__app-store--desktop {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    @include tab {
+      display: none;
+    }
+  }
+
   &__app-store {
     display: flex;
     align-items: center;

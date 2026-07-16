@@ -390,13 +390,17 @@ const ContactClient = ({ pageData = null }) => {
                 {pageData?.email && (
                   <li>
                     <Icon icon="ic:outline-email" className={Style.formLeftInfoIcon} />
-                    <span>{pageData.email}</span>
+                    <span>{getContactEmail()}</span>
                   </li>
                 )}
                 {pageData?.phone && (
                   <li>
                     <Icon icon="prime:mobile" className={Style.formLeftInfoIcon} />
-                    <span>{pageData.phone}</span>
+                    <span>
+                      {["SME Sales", "Enterprise Sales", "Channel Partner"].includes(activeFormType)
+                        ? "800729110"
+                        : pageData.phone}
+                    </span>
                   </li>
                 )}
               </ul>

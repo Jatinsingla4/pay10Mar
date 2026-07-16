@@ -82,7 +82,10 @@ export default function HomeClient({ pageData = null }) {
         For now, all static hardcoded UI has been removed as requested.
       */}
       {pageData?.sections?.map((section, idx) => {
-        if (section.title === 'CBUAE Licensed · Our Credibility') {
+        const titleLower = section.title ? section.title.toLowerCase() : '';
+
+        // Added fallback to idx so that even if the title is completely changed in the CMS, the sections will still render in the correct order.
+        if (titleLower.includes('cbuae licensed') || idx === 0) {
           return (
             <CBUAELicenseFeatures 
               key={idx}
@@ -94,8 +97,20 @@ export default function HomeClient({ pageData = null }) {
             />
           );
         }
+        
+        if (titleLower.includes('super app') || titleLower.includes('everything financial') || idx === 1) {
+          const hasContent = section.content && section.content.replace(/<[^>]*>?/gm, '').trim().length > 0;
+          return (
+            <SuperAppSection 
+              key={idx}
+              title={hasContent ? section.content : section.title}
+              cardsData={section.cards}
+              bgImage={section.images?.[0]}
+            />
+          );
+        }
 
-        if (section.title.includes('complete financial life')) {
+        if (titleLower.includes('complete financial life') || idx === 2) {
           return (
             <ConsumerAppFeature
               key={idx}
@@ -108,7 +123,7 @@ export default function HomeClient({ pageData = null }) {
           );
         }
 
-        if (section.title.includes('The merchant app') || section.title.includes('merchant app that works')) {
+        if (titleLower.includes('the merchant app') || titleLower.includes('merchant app that works') || idx === 3) {
           return (
             <MerchantAppFeature
               key={idx}
@@ -121,7 +136,7 @@ export default function HomeClient({ pageData = null }) {
           );
         }
 
-        if (section.title.includes('SECURITY')) {
+        if (titleLower.includes('security') || idx === 4) {
           return (
             <HomeSecuritySection
               key={idx}
@@ -133,7 +148,7 @@ export default function HomeClient({ pageData = null }) {
           );
         }
 
-        if (section.title.includes('Don\'t take our word') || section.title.includes('merchants themselves')) {
+        if (titleLower.includes("don't take our word") || titleLower.includes('merchants themselves') || idx === 5) {
           return (
             <MerchantTestimonialVideos
               key={idx}
@@ -146,7 +161,7 @@ export default function HomeClient({ pageData = null }) {
           );
         }
 
-        if (section.title.includes('Get Started Today') || section.title.includes('Logos')) {
+        if (titleLower.includes('get started today') || titleLower.includes('logos') || idx === 6) {
           return (
             <MerchantLogosCTA
               key={idx}
@@ -155,18 +170,7 @@ export default function HomeClient({ pageData = null }) {
             />
           );
         }
-        
-        if (section.title.includes('Super App') || section.title.includes('Everything financial')) {
-          const hasContent = section.content && section.content.replace(/<[^>]*>?/gm, '').trim().length > 0;
-          return (
-            <SuperAppSection 
-              key={idx}
-              title={hasContent ? section.content : section.title}
-              cardsData={section.cards}
-              bgImage={section.images?.[0]}
-            />
-          );
-        }
+
         return (
           <div key={idx} style={{ padding: '40px', textAlign: 'center' }}>
             {section.title && <h2>{section.title}</h2>}

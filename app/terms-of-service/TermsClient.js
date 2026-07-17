@@ -1,12 +1,32 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import tosData from './tosData';
 import styles from './terms_and_conditions.module.scss';
 import { sanitizeHtml } from '../lib/sanitizeHtml';
 
+// Maps the #hash used by cross-links (e.g. clause 3.2's "Send Abroad
+// Special Terms" link) to the tab it should open — tabs are client-side
+// React state, not routes, so a plain <a href> can't switch them on its own.
+const HASH_TO_TAB = {
+  'send-abroad': 'Send Abroad',
+  'bill-payment': 'Bill Payment',
+  'card-special': 'Card Special',
+  'wps-service': 'WPS Service',
+};
+
 export default function TermsClient() {
   const [activeTabName, setActiveTabName] = useState(tosData[0]?.tabName || '');
+
+  useEffect(() => {
+    const applyHash = () => {
+      const tabName = HASH_TO_TAB[window.location.hash.slice(1)];
+      if (tabName) setActiveTabName(tabName);
+    };
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
+    return () => window.removeEventListener('hashchange', applyHash);
+  }, []);
 
   const handleTabChange = (tabName) => {
     setActiveTabName(tabName);

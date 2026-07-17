@@ -17,9 +17,9 @@
   }
 
   @include mobile {
-    height: 100svh;
-    min-height: 100svh;
-    background-image: url("/images/contact_images/contact-banner-mobile.png");
+    height: auto;
+    aspect-ratio: 3001 / 5337;
+    background-image: var(--bg-mobile, url("/images/contact_images/contact-banner-mobile.png"));
     background-position: center center;
   }
 }

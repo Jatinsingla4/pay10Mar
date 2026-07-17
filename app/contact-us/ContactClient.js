@@ -300,7 +300,10 @@ const ContactClient = ({ pageData = null }) => {
         {/* Hero Banner */}
         <section
           className={Style.heroBanner}
-          style={pageData?.banner_image ? { backgroundImage: `url(${pageData.banner_image})` } : undefined}
+          style={{
+            '--bg-desktop': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
+            '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : undefined,
+          }}
         >
           <div className={Style.heroOverlay}></div>
           <div className={Style.heroContent}>

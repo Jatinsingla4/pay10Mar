@@ -4,7 +4,7 @@
 
 .heroBanner {
   height: 785px;
-  background-image: url("/images/contact_images/contact-banner.jpg");
+  background-image: var(--bg-desktop, url("/images/contact_images/contact-banner.jpg"));
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -12,7 +12,10 @@
   overflow: hidden;
 
   @include tab {
-    height: 500px;
+    // Match the desktop image's own aspect ratio (4321x2359) here too, so
+    // `cover` never has to crop top/bottom at the upper end of this range.
+    height: auto;
+    aspect-ratio: 4321 / 2359;
     background-position: center center;
   }
 

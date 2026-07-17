@@ -141,7 +141,6 @@ const WPSPayrollClient = ({ pageData = null }) => {
           className={styles.altareq_hero}
           style={{
             ...(pageData?.banner_image ? { '--bg-desktop': `url(${pageData.banner_image})` } : {}),
-            ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : (pageData?.banner_image ? { '--bg-mobile': `url(${pageData.banner_image})` } : {})),
             ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : {}),
           }}
         >

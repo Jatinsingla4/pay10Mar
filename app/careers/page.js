@@ -23,16 +23,18 @@ export default async function CareersPage() {
   return (
     <main className={styles.careers}>
       {(pageData?.banner_image || pageData?.mobile_image) && (
-        <section 
-          className={styles.careersHeroBanner} 
+        <section
+          className={styles.careersHeroBanner}
           aria-label="Careers"
-          style={{ 
-            '--desktop-bg': pageData?.banner_image ? `url(${pageData.banner_image})` : 'none',
-            '--mobile-bg': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : 'none')
+          style={{
+            '--bg-desktop': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
+            '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : undefined,
           }}
         >
-          <div className={styles.bannerContent}>
-            {pageData?.page_title && <h2>{pageData.page_title}</h2>}
+          <div className={styles.banner_svg}>
+            <div className={styles.bannerContent}>
+              {pageData?.page_title && <h2>{pageData.page_title}</h2>}
+            </div>
           </div>
         </section>
       )}

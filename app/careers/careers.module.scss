@@ -5,86 +5,109 @@
     margin: 0 auto;
 }
 
+// Structure copied from AboutBanner (app/components/ui/about/AboutBanner.module.scss)
+// — flexbox centering instead of absolute-position + viewport-tuned transform
+// offsets, so the title reliably shows and centers at every screen size.
 .careersHeroBanner {
   width: 100%;
-  height: 100vh;
-  background-image: var(--desktop-bg);
+  height: 90vh;
+  background-image: var(--bg-desktop);
   background-size: cover;
   background-position: center;
-  border-radius: 32px;
+  border-radius: 2rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 
-  @include mobile {
-    // A fixed height fights `background-size: cover` across the mobile
-    // width range — locking the box to the mobile image's own aspect ratio
-    // (3001x5337) means cover never has to crop either axis.
-    height: auto;
-    aspect-ratio: 3001 / 5337;
-    background-image: var(--mobile-bg, var(--desktop-bg));
-    border-radius: 0;
+  .banner_svg {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 80px;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    text-align: center;
   }
 }
 
 .bannerContent {
-  display: none;
   width: 90%;
   text-align: center;
   color: var(--white);
   z-index: 3;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% - 160px));
-
-  @include mobile {
-    display: block;
-  }
+  transition: all ease 0.5s;
 
   h2 {
     text-transform: capitalize;
     font-family: "bold", sans-serif;
-    font-weight: 700;
     font-size: 64px;
     color: var(--white);
     line-height: 1.1;
-
-    @include tab { font-size: 48px; }
-    @include mobile { font-size: 32px; }
   }
 
   p {
-    font-size: 18px;
+    font-size: 24px;
     font-family: 'regular', sans-serif;
-    margin-top: 12px;
-    color: rgba(255, 255, 255, 0.88);
     line-height: 1.5;
-
-    @include tab { font-size: 16px; }
-    @include mobile { font-size: 14px; }
+    margin-top: 1rem;
+    color: rgba(255, 255, 255, 0.88);
   }
 }
 
 @media only screen and (max-width: 1200px) {
-  .careersHeroBanner .bannerContent {
-    transform: translate(-50%, calc(-50% - 200px));
+  .careersHeroBanner .banner_svg {
+    padding-top: 70px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .careersHeroBanner .banner_svg {
+    padding-top: 60px;
+  }
+  .bannerContent {
+    width: 80%;
+
+    h2 { font-size: 48px; }
+    p { font-size: 20px; }
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .careersHeroBanner .bannerContent {
+  .careersHeroBanner {
+    // A fixed height fights `background-size: cover` across the whole mobile
+    // width range — locking the box to the mobile image's own aspect ratio
+    // (3001x5337) means cover never has to crop either axis, at any
+    // viewport width.
+    height: auto;
+    aspect-ratio: 3001 / 5337;
+    border-radius: 0;
+    background-image: var(--bg-mobile, var(--bg-desktop));
+
+    .banner_svg {
+      padding-top: 150px;
+    }
+  }
+  .bannerContent {
     width: 90%;
-    transform: translate(-50%, calc(-50% - 130px));
+
+    h2 { font-size: 32px; }
+    p { font-size: 16px; }
   }
 }
 
 @media only screen and (max-width: 563px) {
-  .careersHeroBanner .bannerContent {
+  .careersHeroBanner .banner_svg {
+    padding-top: 140px;
+  }
+  .bannerContent {
     width: 95%;
-    transform: translate(-50%, calc(-50% - 90px));
+
+    h2 { font-size: 32px; }
+    p { font-size: 16px; }
   }
 }
 

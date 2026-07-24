@@ -6,6 +6,9 @@ import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureS
 import Pay10CardFeatures from "./components/Pay10CardFeatures";
 import Pay10AppFeature from "./components/Pay10AppFeature";
 import Pay10WPSFeature from "./components/Pay10WPSFeature";
+import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 const Pay10CardClient = ({ pageData = null }) => {
   const cardFeature = {
@@ -27,8 +30,8 @@ const Pay10CardClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Pay10 Card, UAE has been waiting for." }} />
-          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "The first local Debit Card accredited by the Central Bank of the UAE — instant, secure, and seamless. Built inside Pay10 UAE. For banked professionals and WPS employees." }} />
+          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Pay10 Card, UAE has been waiting for.") }} />
+          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "The first local Debit Card accredited by the Central Bank of the UAE — instant, secure, and seamless. Built inside Pay10 UAE. For banked professionals and WPS employees.") }} />
         </div>
       </section>
 
@@ -41,7 +44,7 @@ const Pay10CardClient = ({ pageData = null }) => {
           points={cardFeature.points}
           extraContent={
             <>
-              {pageData?.sections?.[0]?.content && pageData.sections[0].content !== '<p><br></p>' && (
+              {!isEmptyHtml(pageData?.sections?.[0]?.content) && (
                 <div dangerouslySetInnerHTML={{ __html: pageData.sections[0].content }} />
               )}
             </>
@@ -75,7 +78,7 @@ const Pay10CardClient = ({ pageData = null }) => {
               </div>
               <div className={Style.card_info}>
                 <h3>{pageData?.sections?.[2]?.cards?.[0]?.title || "Consumer Debit Card"}</h3>
-                <p>{pageData?.sections?.[2]?.cards?.[0]?.subtitle || pageData?.sections?.[2]?.cards?.[0]?.description || "For Pay10 UAE users. Tap, swipe, or pay online — works at 90%+ of UAE POS terminals and all major ATMs."}</p>
+                <p>{firstNonEmptyHtml(pageData?.sections?.[2]?.cards?.[0]?.subtitle, pageData?.sections?.[2]?.cards?.[0]?.description, "For Pay10 UAE users. Tap, swipe, or pay online — works at 90%+ of UAE POS terminals and all major ATMs.")}</p>
               </div>
             </div>
 
@@ -90,7 +93,7 @@ const Pay10CardClient = ({ pageData = null }) => {
               </div>
               <div className={Style.card_info}>
                 <h3>{pageData?.sections?.[2]?.cards?.[1]?.title || "WPS Debit Card"}</h3>
-                <p>{pageData?.sections?.[2]?.cards?.[1]?.subtitle || pageData?.sections?.[2]?.cards?.[1]?.description || "For WPS-enrolled employees. Receive your salary directly and spend instantly — no bank account required."}</p>
+                <p>{firstNonEmptyHtml(pageData?.sections?.[2]?.cards?.[1]?.subtitle, pageData?.sections?.[2]?.cards?.[1]?.description, "For WPS-enrolled employees. Receive your salary directly and spend instantly — no bank account required.")}</p>
               </div>
             </div>
           </div>

@@ -1,4 +1,5 @@
 import { fetchPageData } from "../lib/fetchPageData";
+import { isEmptyHtml } from "../lib/sanitizeHtml";
 import styles from "./careers.module.scss";
 
 export async function generateMetadata() {
@@ -40,17 +41,17 @@ export default async function CareersPage() {
       )}
 
       <section className="wrapper">
-        {(pageData?.page_subtitle || pageData?.page_description) && (
+        {(!isEmptyHtml(pageData?.page_subtitle) || !isEmptyHtml(pageData?.page_description)) && (
           <div className={styles.content} data-animation="fade-up">
-            {pageData?.page_subtitle && <h2>{pageData.page_subtitle}</h2>}
-            {pageData?.page_description && <div dangerouslySetInnerHTML={{ __html: pageData.page_description }} />}
+            {!isEmptyHtml(pageData?.page_subtitle) && <h2>{pageData.page_subtitle}</h2>}
+            {!isEmptyHtml(pageData?.page_description) && <div dangerouslySetInnerHTML={{ __html: pageData.page_description }} />}
           </div>
         )}
 
         {pageData?.sections?.map((section, idx) => (
           <div key={idx} className={styles.content} data-animation="fade-up">
             {section.title && <h2>{section.title}</h2>}
-            {section.content && <div dangerouslySetInnerHTML={{ __html: section.content }} />}
+            {!isEmptyHtml(section.content) && <div dangerouslySetInnerHTML={{ __html: section.content }} />}
             {section.image && <img src={section.image} alt={section.title} style={{ maxWidth: '100%', marginTop: '20px' }} />}
           </div>
         ))}

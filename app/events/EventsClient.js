@@ -4,6 +4,9 @@ import React from "react";
 import Link from "next/link";
 import Style from "./events.module.scss";
 import { Icon } from "@iconify/react";
+import { isEmptyHtml } from "../lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 
 function formatEventDate(start, end) {
@@ -51,8 +54,8 @@ export default function EventsClient({ initialEvents = [], pageData = null }) {
       >
         <div className={Style.bannerOverlay} />
         <div className={Style.bannerContent}>
-          <h1 data-animation="opacity-up" dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Our Events" }} />
-          <p data-animation="opacity-up" data-anim-delay="200" dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || "Discover the events and conferences where Pay10 connects, innovates, and leads the future of digital payments." }} />
+          <h1 data-animation="opacity-up" dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Our Events") }} />
+          <p data-animation="opacity-up" data-anim-delay="200" dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, "Discover the events and conferences where Pay10 connects, innovates, and leads the future of digital payments.") }} />
         </div>
       </section>
 

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Style from "./blog-details.module.scss";
-import { sanitizeHtml } from "../../lib/sanitizeHtml";
+import { sanitizeHtml, isEmptyHtml } from "../../lib/sanitizeHtml";
 
 
 const formatDate = (dateStr) => {
@@ -109,7 +109,7 @@ const BlogDetailClient = ({ initialData }) => {
           </div>
 
           {/* Summary Box */}
-          {summaryHtml && (
+          {!isEmptyHtml(summaryHtml) && (
             <div className={Style.summary_box} data-animation="opacity-up" data-anim-delay="150">
               <h3>Summary</h3>
               <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(summaryHtml) }} />
@@ -120,7 +120,7 @@ const BlogDetailClient = ({ initialData }) => {
           {sections.map((section, i) => (
             <section key={i} id={`section-${i}`} className={Style.section}>
               <h2>{section.key_heading}</h2>
-              {section.content && (
+              {!isEmptyHtml(section.content) && (
                 <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }} />
               )}
             </section>

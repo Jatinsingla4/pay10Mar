@@ -10,7 +10,7 @@ import AboutBanner from "../components/ui/about/AboutBanner";
 import AboutSecondSection from "../components/ui/about/AboutSecondSection";
 import WhereWeScoreSection from "../components/ui/about/WhereWeScoreSection";
 import AboutTeamMember from "../components/ui/about/AboutTeamMember";
-import { sanitizeHtml } from "../lib/sanitizeHtml";
+import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
 
 const AboutClient = ({ apiData }) => {
   const sections = apiData?.sections || [];
@@ -18,7 +18,7 @@ const AboutClient = ({ apiData }) => {
   // --- 0. About Pay10 UAE ---
   const aboutPay10SectionApi = sections.find(s => s.title === "About Pay10 UAE");
   const aboutHeading = aboutPay10SectionApi?.title || "";
-  const aboutContent = aboutPay10SectionApi?.content || "";
+  const aboutContent = isEmptyHtml(aboutPay10SectionApi?.content) ? "" : aboutPay10SectionApi.content;
   const aboutImage = aboutPay10SectionApi?.images?.[0] || aboutPay10SectionApi?.image || null;
 
   // --- 1. Board Members ---
@@ -27,7 +27,8 @@ const AboutClient = ({ apiData }) => {
     our_team_list: (boardSectionApi?.cards || []).map(card => ({
       Name: card.title,
       "Designation ": card.subtitle || "",
-      Description: card.content ? sanitizeHtml(card.content) : "",
+      // AboutTeamMember renders this as plain text (not dangerouslySetInnerHTML), so strip tags rather than sanitize them.
+      Description: card.content ? card.content.replace(/<[^>]*>?/gm, '').trim() : "",
       Image: card.icon, // null if no image
       _isLocal: false
     }))
@@ -38,14 +39,15 @@ const AboutClient = ({ apiData }) => {
   const journeySectionApi = sections.find(s => s.title === "Our Journey So Far");
   const journeyData = (journeySectionApi?.cards || []).map(card => ({
     year: card.title,
-    description: card.content ? sanitizeHtml(card.content) : "",
+    description: isEmptyHtml(card.content) ? "" : sanitizeHtml(card.content),
     image: card.icon
   }));
 
   // --- 3. Power To Dream Big ---
   const dreamBigSectionApi = sections.find(s => s.title === "Giving You the Power to Dream Big");
   const dreamBigHeading = dreamBigSectionApi?.title || "";
-  const dreamBigDesc = dreamBigSectionApi?.content ? sanitizeHtml(dreamBigSectionApi.content) : "";
+  // PowerToDreamSection renders this as plain text (not dangerouslySetInnerHTML), so strip tags rather than sanitize them.
+  const dreamBigDesc = dreamBigSectionApi?.content ? dreamBigSectionApi.content.replace(/<[^>]*>?/gm, '').trim() : "";
   const dreamBigImgPrimary = dreamBigSectionApi?.images?.[0] || dreamBigSectionApi?.image || null;
   const dreamBigImgSecondary = dreamBigSectionApi?.images?.[1] || null;
 

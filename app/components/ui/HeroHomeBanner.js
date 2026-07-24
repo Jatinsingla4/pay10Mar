@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import styles from './HeroHomeBanner.module.scss';
+import { isEmptyHtml } from '../../lib/sanitizeHtml';
 
 const defaultDecorations = [
   {
@@ -95,8 +96,8 @@ const defaultDecorations = [
 
 export default function HeroHomeBanner({
   eyebrow = 'Your Trusted Alternative Payment Method',
-  subtitle = 'Licensed by Central Bank of the UAE\nInstant. Secure. Interoperable.',
-  description = '<h1>Why Pay, When You Can Pay10</h1>',
+  subtitle: subtitleProp = 'Licensed by Central Bank of the UAE\nInstant. Secure. Interoperable.',
+  description: descriptionProp = '<h1>Why Pay, When You Can Pay10</h1>',
   ctaLabel = 'Get Started',
   ctaHref = '/contact-us',
   heroImage = {
@@ -109,6 +110,8 @@ export default function HeroHomeBanner({
   bgImage,
   mobileBgImage,
 }) {
+  const description = isEmptyHtml(descriptionProp) ? '<h1>Why Pay, When You Can Pay10</h1>' : descriptionProp;
+  const subtitle = isEmptyHtml(subtitleProp) ? 'Licensed by Central Bank of the UAE\nInstant. Secure. Interoperable.' : subtitleProp;
   const hasHeroImage = heroImage && heroImage.src;
   const rootRef = useRef(null);
 

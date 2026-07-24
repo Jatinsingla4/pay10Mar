@@ -3,6 +3,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Style from "./ConsumerHero.module.scss";
+import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
 
 const ConsumerHero = ({ 
   title = "", 
@@ -13,8 +14,11 @@ const ConsumerHero = ({
   eyebrow = "",
   cardsData = []
 }) => {
+  const hasSubtitle = !isEmptyHtml(subtitle);
+  const hasDescription = !isEmptyHtml(description);
+
   // If no data provided, don't render the section
-  if (!title && !subtitle && !description && !bgImage && cardsData.length === 0) return null;
+  if (!title && !hasSubtitle && !hasDescription && !bgImage && cardsData.length === 0) return null;
 
   return (
     <section 
@@ -34,15 +38,15 @@ const ConsumerHero = ({
         </div>
       </div>
 
-      {(subtitle || description || eyebrow) && (
+      {(hasSubtitle || hasDescription || eyebrow) && (
         <div className={Style.intro_text_section} data-animation="opacity-up">
           {eyebrow && (
             <span className={Style.intro_label}>{eyebrow}</span>
           )}
-          {subtitle && (
+          {hasSubtitle && (
             <h2 className={Style.intro_heading} dangerouslySetInnerHTML={{ __html: subtitle }}></h2>
           )}
-          {description && (
+          {hasDescription && (
             <div className={Style.intro_para} dangerouslySetInnerHTML={{ __html: description }}></div>
           )}
         </div>

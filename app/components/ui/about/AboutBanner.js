@@ -1,6 +1,6 @@
 import React from "react";
 import Style from './AboutBanner.module.scss';
-import { sanitizeHtml } from '../../../lib/sanitizeHtml';
+import { sanitizeHtml, isEmptyHtml } from '../../../lib/sanitizeHtml';
 
 const AboutBanner = ({ topSubHeading, topHeading, topDescription, bannerImage, mobileImage }) => {
   // Provide fallbacks if the props are not passed in
@@ -21,7 +21,7 @@ const AboutBanner = ({ topSubHeading, topHeading, topDescription, bannerImage, m
     return formatted;
   };
 
-  const description = topDescription || fallbackDescription;
+  const description = isEmptyHtml(topDescription) ? fallbackDescription : topDescription;
   const formattedDescription = formatDescription(description);
 
   return (

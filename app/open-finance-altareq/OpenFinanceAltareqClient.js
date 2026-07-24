@@ -5,7 +5,9 @@ import TwoColLayout from "@/app/components/ui/product/pacb-india/TwoColLayout";
 import GetStarted from "@/app/components/ui/GetStarted";
 import { TextCenterAppCard } from "@/app/components/ui/TextCenterBlock";
 import Style from "./page.module.scss";
-import { sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { sanitizeHtml, isEmptyHtml } from "@/app/lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 /** Plain-text CMS descriptions (e.g. with \\r\\n) vs HTML snippets for dangerouslySetInnerHTML. */
 function normalizeCmsDescriptionHtml(description) {
@@ -108,7 +110,7 @@ const OpenFinanceAltareqClient = ({ pageData = null }) => {
   const cmsIntroItem = pageData?.sections?.[0] ? {
     Title: pageData.sections[0].title,
     Image: pageData.sections[0].images?.[0] || "/images/prod_imports/altareq-logo.png",
-    Description: pageData.sections[0].content || pageData.sections[0].subtitle || "",
+    Description: firstNonEmptyHtml(pageData.sections[0].content, pageData.sections[0].subtitle, ""),
   } : null;
 
   const connectedIntroItemToUse = cmsIntroItem || connectedIntroItem;
@@ -118,7 +120,7 @@ const OpenFinanceAltareqClient = ({ pageData = null }) => {
     ? pageData.sections.slice(1).map(sec => ({
         Title: sec.title || "",
         Image: sec.images?.[0] || "",
-        Description: sec.content || sec.subtitle || "",
+        Description: firstNonEmptyHtml(sec.content, sec.subtitle, ""),
       }))
     : OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS;
 
@@ -132,8 +134,8 @@ const OpenFinanceAltareqClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Real-time Payments via AlTareq" }} />
-          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "Discover new ways to access financial services in your Pay10 UAE with AlTareq, the UAE's open finance initiative." }} />
+          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Real-time Payments via AlTareq") }} />
+          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "Discover new ways to access financial services in your Pay10 UAE with AlTareq, the UAE's open finance initiative.") }} />
         </div>
       </section>
 

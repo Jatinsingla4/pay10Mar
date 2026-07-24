@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Icon, InlineIcon } from "@iconify/react";
 import Link from "next/link";
 import Style from "./events-details.module.scss";
-import { sanitizeHtml } from "../../lib/sanitizeHtml";
+import { sanitizeHtml, isEmptyHtml } from "../../lib/sanitizeHtml";
 
 // Local Next.js public paths (starting with /) bypass cmsImageSrc to avoid CDN URL prepending
 const resolveImageSrc = (path) => {
@@ -71,7 +71,7 @@ const EventDetailClient = ({ initialData }) => {
   const eventBannerImage = (initialData.banner && resolveImageSrc(initialData.banner)) || null;
   const eventThumbnail = (initialData.thumbnail && resolveImageSrc(initialData.thumbnail)) || null;
   
-  const content = initialData.content || "";
+  const content = isEmptyHtml(initialData.content) ? "" : initialData.content;
   const images = initialData.other_images || [];
 
   const extractFirstParagraph = (html) => {

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from "./wps.module.scss";
 import { Icon } from "@iconify/react";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
+import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className) => {
@@ -45,7 +46,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
     const parts = rawDesc.split('---');
     return {
       title: c.title || def.title,
-      description: parts[0]?.trim() || def.description,
+      description: !isEmptyHtml(parts[0]) ? parts[0].trim() : def.description,
       tags: parts[1] || c.tags || def.tags
     };
   };

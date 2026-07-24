@@ -4,6 +4,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import styles from "./news-room.module.scss";
+import { isEmptyHtml } from "../lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 const FALLBACK_IMAGE = "/images/news_images/news_banner_img.png";
 
@@ -56,8 +59,8 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
       >
         <div className={styles.bannerOverlay} />
         <div className={styles.bannerContent}>
-          <h1 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Press Releases" }} />
-          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || "Stay informed with the latest news, strategic announcements, and media updates directly from the Pay10 ecosystem." }} />
+          <h1 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Press Releases") }} />
+          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, "Stay informed with the latest news, strategic announcements, and media updates directly from the Pay10 ecosystem.") }} />
         </div>
       </section>
 

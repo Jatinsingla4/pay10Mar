@@ -5,6 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Style from "./page.module.scss";
+import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className, width) => {
@@ -54,7 +57,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
       desc: (pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
       icon: pageData.sections[2].cards[0].icon,
       steps: ((pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[1] || pageData.sections[2].cards[0].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
-      footer: (pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[2]?.trim() || pageData.sections[2].cards[0].content || "",
+      footer: firstNonEmptyHtml((pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[2]?.trim(), pageData.sections[2].cards[0].content, ""),
       img: pageData.sections[2].cards[0].images?.[0] || pageData.sections[2].images?.[0] || '/images/prod_imports/pg-pay-qr.png',
       mobileImg: pageData.sections[2].cards[0].images?.[1] || pageData.sections[2].images?.[2] || pageData.sections[2].images?.[0] || '/images/prod_imports/pg-pay-qr.png'
     },
@@ -64,7 +67,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
       desc: (pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
       icon: pageData.sections[2].cards[1].icon,
       steps: ((pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[1] || pageData.sections[2].cards[1].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
-      footer: (pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[2]?.trim() || pageData.sections[2].cards[1].content || "",
+      footer: firstNonEmptyHtml((pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[2]?.trim(), pageData.sections[2].cards[1].content, ""),
       img: pageData.sections[2].cards[1].images?.[0] || pageData.sections[2].images?.[1] || '/images/prod_imports/pg-pay-desktop.png',
       mobileImg: pageData.sections[2].cards[1].images?.[1] || pageData.sections[2].images?.[3] || pageData.sections[2].images?.[1] || '/images/prod_imports/pg-pay-desktop.png'
     }
@@ -127,8 +130,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
           }}
         >
           <div className={Style.altareq_hero_text}>
-            <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "The UAE's most trusted checkout buttons now on your store." }} />
-            {pageData?.page_subtitle && (
+            <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "The UAE's most trusted checkout buttons now on your store.") }} />
+            {!isEmptyHtml(pageData?.page_subtitle) && (
               <p dangerouslySetInnerHTML={{ __html: pageData.page_subtitle }} />
             )}
           </div>
@@ -137,8 +140,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
       <section className={Style.centered_text_section}>
         <div className={Style.centered_container}>
-          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[0]?.title || "Two powerful ways,<br/>your customers pay online." }} />
-          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[0]?.subtitle || "Add Pay10's payment methods to your checkout in minutes: a Dynamic QR button and a Pay by Bank option, giving your customers the fastest, most trusted ways to pay online in the UAE." }} />
+          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.title, "Two powerful ways,<br/>your customers pay online.") }} />
+          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.subtitle, "Add Pay10's payment methods to your checkout in minutes: a Dynamic QR button and a Pay by Bank option, giving your customers the fastest, most trusted ways to pay online in the UAE.") }} />
         </div>
       </section>
 
@@ -238,8 +241,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
       <section className={Style.centered_text_section}>
         <div className={Style.centered_container}>
-          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.title || "From checkout button to<br/>confirmed order,<br/>here's exactly what happens." }} />
-          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.subtitle || "Two different journeys. The same outcome: a completed payment, settled to your account today." }} />
+          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.title, "From checkout button to<br/>confirmed order,<br/>here's exactly what happens.") }} />
+          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.subtitle, "Two different journeys. The same outcome: a completed payment, settled to your account today.") }} />
         </div>
       </section>
 
@@ -307,7 +310,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <span className={Style.combo_ring_small} aria-hidden="true" />
 
         <div className={Style.combo_cta}>
-          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[7]?.subtitle || "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients: tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you." }} />
+          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[7]?.subtitle, "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients: tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.") }} />
           <Link href="/contact-us?type=Enterprise+Sales" className={Style.combo_btn}>Enterprise Sales</Link>
         </div>
 

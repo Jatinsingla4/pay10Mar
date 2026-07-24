@@ -4,6 +4,9 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Style from "./page.module.scss";
+import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className, width) => {
@@ -87,8 +90,8 @@ const MerchantPortalClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Your business data.<br />One portal. Full control." }} />
-          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "A dedicated merchant portal with your own secure credentials giving you complete visibility of transactions, settlements, VAT reports, and live API integration with your ERP system." }} />
+          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Your business data.<br />One portal. Full control.") }} />
+          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "A dedicated merchant portal with your own secure credentials giving you complete visibility of transactions, settlements, VAT reports, and live API integration with your ERP system.") }} />
         </div>
       </section>
       
@@ -189,7 +192,7 @@ const MerchantPortalClient = ({ pageData = null }) => {
         <span className={Style.combo_ring_small} aria-hidden="true" />
 
         <div className={Style.combo_cta}>
-          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[5]?.subtitle || pageData?.sections?.[5]?.title || "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you." }} />
+          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[5]?.subtitle, pageData?.sections?.[5]?.title, "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.") }} />
           <Link href="/contact-us?type=Enterprise+Sales" className={Style.combo_btn}>Enterprise Sales</Link>
         </div>
 

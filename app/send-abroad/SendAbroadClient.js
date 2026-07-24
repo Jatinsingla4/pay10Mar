@@ -4,6 +4,9 @@ import React from 'react';
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import InteractiveGlobe from "@/app/components/ui/3d/InteractiveGlobe";
+import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 const SendAbroadClient = ({ pageData = null }) => {
   const countriesContent = (
@@ -51,8 +54,8 @@ const SendAbroadClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.send_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Your family shouldn't wait <br /> for their money." }} />
-          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "With Pay10 UAE Send Abroad, your transfer reaches your loved ones the same day - instantly. No days of waiting. No beneficiary delays. Just send, and it's there." }} />
+          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Your family shouldn't wait <br /> for their money.") }} />
+          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "With Pay10 UAE Send Abroad, your transfer reaches your loved ones the same day - instantly. No days of waiting. No beneficiary delays. Just send, and it's there.") }} />
         </div>
       </section>
 

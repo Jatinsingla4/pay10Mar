@@ -4,7 +4,7 @@ import React from "react";
 import BannerBreaker from '../components/ui/BannerBreaker';
 import GlobalContactCTA from '../components/ui/GlobalContactCTA';
 import Style from "./vision_mission.module.scss";
-import { sanitizeHtml } from "../lib/sanitizeHtml";
+import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
 
 const VisionMissionClient = ({ pageData }) => {
   const sections = pageData?.sections || [];
@@ -43,7 +43,7 @@ const VisionMissionClient = ({ pageData }) => {
                     </div>
                     <div className={Style.vision_content}>
                       {section.title && <h2 data-animation="opacity-up">{section.title}</h2>}
-                      {section.content && (
+                      {!isEmptyHtml(section.content) && (
                         <div data-animation="opacity-up" data-anim-delay="100" dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }} />
                       )}
                     </div>
@@ -52,7 +52,7 @@ const VisionMissionClient = ({ pageData }) => {
                   <>
                     <div className={Style.vision_content}>
                       {section.title && <h2 data-animation="opacity-up">{section.title}</h2>}
-                      {section.content && (
+                      {!isEmptyHtml(section.content) && (
                         <div data-animation="opacity-up" data-anim-delay="100" dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }} />
                       )}
                     </div>

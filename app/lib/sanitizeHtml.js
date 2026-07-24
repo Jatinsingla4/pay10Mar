@@ -19,3 +19,14 @@ export function sanitizeHtml(html) {
     allowedAttributes: ALLOWED_ATTRIBUTES,
   });
 }
+
+/**
+ * The CMS rich-text editor serializes an untouched/cleared field as markup
+ * like "<p><br></p>" rather than an empty string, so a plain truthy check
+ * (`content || fallback`) treats it as real content. Strip tags/&nbsp; and
+ * check what's left.
+ */
+export function isEmptyHtml(html) {
+  if (!html) return true;
+  return html.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, '').trim() === '';
+}

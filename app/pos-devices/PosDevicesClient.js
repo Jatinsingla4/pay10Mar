@@ -7,6 +7,7 @@ import MerchantTestimonialVideos from "@/app/components/ui/MerchantTestimonialVi
 import MerchantLogosCTA from "@/app/components/ui/MerchantLogosCTA";
 import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
+import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className, width) => {
@@ -16,8 +17,12 @@ const renderIcon = (cmsIcon, className, width) => {
     : <Icon icon={cmsIcon} width={width} className={className} />;
 };
 
+// Picks the first non-CKEditor-empty value among `description`/`content`,
+// falling back to `def` only when both are genuinely empty.
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
+
 const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonialTitle, testimonialContent, merchantLogos = [] }) => {
-  
+
   // Consumer Feature Points
   const rawSubHeading = pageData?.sections?.[0]?.description || pageData?.sections?.[0]?.content || "";
   const parts = rawSubHeading.split('---');
@@ -301,7 +306,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
               <span className={styles.flow_h2} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.title || "Your device is the start." }} />
               <span className={styles.flow_h3} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.subtitle || "The ecosystem is what makes it powerful." }} />
             </div>
-            <p dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.description || pageData?.sections?.[3]?.content || "Every Pay10 POS device connects into a complete merchant ecosystem — the Pay10 Biz UAE, the Merchant Portal, instant settlement, and 24/7 human support. It's not a standalone terminal. It's the physical entry point to Pay10's full payment infrastructure." }} />
+            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.description, pageData?.sections?.[3]?.content, "Every Pay10 POS device connects into a complete merchant ecosystem — the Pay10 Biz UAE, the Merchant Portal, instant settlement, and 24/7 human support. It's not a standalone terminal. It's the physical entry point to Pay10's full payment infrastructure.") }} />
           </div>
 
           <div className={styles.flow_container}>
@@ -325,7 +330,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         <div className={styles.getting_started_left}>
           <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.title || "Lets get you Started" }} />
           <p className={styles.getting_started_tagline} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.subtitle || "From box to first payment. In 4 steps." }} />
-          <p className={styles.getting_started_desc} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.description || pageData?.sections?.[4]?.content || "Pay10 delivers and sets up your device. Here's what happens after it arrives, straight from the device manual." }} />
+          <p className={styles.getting_started_desc} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.description, pageData?.sections?.[4]?.content, "Pay10 delivers and sets up your device. Here's what happens after it arrives, straight from the device manual.") }} />
         </div>
         
         <div className={styles.getting_started_grid}>

@@ -6,6 +6,9 @@ import { Icon } from "@iconify/react";
 import MerchantTestimonialVideos from "../components/ui/MerchantTestimonialVideos";
 import MerchantLogosCTA from "../components/ui/MerchantLogosCTA";
 import BizLeadForm from "./BizLeadForm";
+import { isEmptyHtml } from "../lib/sanitizeHtml";
+
+const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLogos = [] }) => {
   const scaleCards = pageData?.sections?.[0]?.cards?.map((c, i) => {
@@ -121,8 +124,8 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
         }}
       >
         <div className={Style.biz_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "Every dirham you earn, <br />settled today." }} />
-          <p dangerouslySetInnerHTML={{ __html: pageData?.page_subtitle || pageData?.page_description || "Pay10 UAE Biz App is built for every merchant in the UAE: micro, SME, and enterprise. Lowest transaction fees. Same-day settlement. 24/7 multi-language, human support. Licensed by the Central Bank of the UAE." }} />
+          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Every dirham you earn, <br />settled today.") }} />
+          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "Pay10 UAE Biz App is built for every merchant in the UAE: micro, SME, and enterprise. Lowest transaction fees. Same-day settlement. 24/7 multi-language, human support. Licensed by the Central Bank of the UAE.") }} />
         </div>
       </section>
 
@@ -166,7 +169,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
           <h2>{pageData?.sections?.[2]?.title || "24/7 human support · multi-language · zero wait time"}</h2>
           <p className={Style.support_sub}>{pageData?.sections?.[2]?.subtitle || "Call. A human picks up. Every time."}</p>
           <div className={Style.support_desc}>
-            {pageData?.sections?.[2]?.content
+            {!isEmptyHtml(pageData?.sections?.[2]?.content)
               ? <div dangerouslySetInnerHTML={{ __html: pageData.sections[2].content }} />
               : <p>In a world of bots and long waits, Pay10 is different. Human support, available 24 hours a day, 7 days a week, 365 days a year, in multiple languages. For every merchant, regardless of size. Call and your call will be picked up. No queues. No bots. No waiting.</p>
             }

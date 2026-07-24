@@ -4,6 +4,7 @@ import React from "react";
 import { Icon } from '@iconify/react';
 import styles from "./ecosystem.module.scss";
 import PartnerForm from "./PartnerForm";
+import { isEmptyHtml } from "../lib/sanitizeHtml";
 
 // CMS rich-text saves plain-text bullets/descriptions with HTML entities
 // (e.g. "Scan &amp; Pay"). Tags get stripped via regex below, but entities
@@ -177,7 +178,7 @@ const ChannelPartnersClient = ({ pageData = null }) => {
       <section className={styles.biz_benefits}>
         <div className={styles.benefits_left}>
           <h2 dangerouslySetInnerHTML={{ __html: (pageData?.sections?.[3]?.title || "").replace(/One integration\.?\s*Every/i, "One integration.<br />Every") }} />
-          <p dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.description || pageData?.sections?.[3]?.content || "" }} />
+          <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[3]?.description) ? pageData.sections[3].description : (!isEmptyHtml(pageData?.sections?.[3]?.content) ? pageData.sections[3].content : "") }} />
         </div>
         <div className={styles.benefits_grid}>
           {ecosystems.map((item) => (

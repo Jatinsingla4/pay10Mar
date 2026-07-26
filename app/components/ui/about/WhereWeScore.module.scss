@@ -75,8 +75,12 @@
       .box_text {
         font-size: 18px;
         line-height: 1.5;
-        font-family: "medium";
-        color: var(--red);
+        font-family: "bold";
+        font-weight: 700;
+        background: var(--primary-gradient);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
         margin: 0;
       }
     }

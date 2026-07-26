@@ -166,7 +166,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
 
       <section className={Style.biz_support}>
         <div className={Style.support_left}>
-          <h2>{pageData?.sections?.[2]?.title || "24/7 human support · multi-language · zero wait time"}</h2>
+          <h2>{pageData?.sections?.[2]?.title || "24/7 Human Support · Multi-Language · Zero Wait Time"}</h2>
           <p className={Style.support_sub}>{pageData?.sections?.[2]?.subtitle || "Call. A human picks up. Every time."}</p>
           <div className={Style.support_desc}>
             {!isEmptyHtml(pageData?.sections?.[2]?.content)
@@ -229,7 +229,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
       </section>
 
       <MerchantTestimonialVideos
-        title="Don't take our word for it. Hear it from the merchants themselves."
+        title="Don't Take Our Word For It. Hear It From The Merchants Themselves."
         content="<p>From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.</p>"
         videos={testimonialVideos}
       />

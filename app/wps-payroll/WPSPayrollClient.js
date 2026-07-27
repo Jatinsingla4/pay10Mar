@@ -325,7 +325,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
         <span className={styles.combo_ring_small} aria-hidden="true" />
 
         <div className={styles.combo_cta}>
-          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[7]?.title || "Ready to pay your employees the smarter way?" }} />
+          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[7]?.title || "Ready To Pay Your Employees The Smarter Way?" }} />
           <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[7]?.subtitle || "Contact our sales team we'll handle registration, account setup, and your first salary run." }} />
           <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
         </div>

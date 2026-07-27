@@ -85,7 +85,7 @@ const HomeSecuritySection = ({
         )}
 
         <div className={Style.certifications} data-animation="opacity-up" data-anim-delay="250">
-          <h4>Certified by</h4>
+          <h4>Certified By</h4>
 
           <div className={Style.badgesMarquee} ref={marqueeRef}>
             <div className={Style.badgesTrack} ref={trackRef}>

@@ -378,7 +378,7 @@ const ContactClient = ({ pageData = null }) => {
             <div className={Style.formLeft}>
               <span className={Style.formLeftLabel} data-animation="opacity-up">SEND A MESSAGE</span>
               <h2 className={Style.formLeftHeading} data-animation="opacity-up" data-anim-delay="100">
-                {activeFormType === "General Inquiry" ? "Reach Out to Our Team" : `Reach Out to ${activeFormType}`}
+                {activeFormType === "General Inquiry" ? "Reach Out To Our Team" : `Reach Out To ${activeFormType}`}
               </h2>
               <p className={Style.formLeftDesc} data-animation="opacity-up" data-anim-delay="200">
                 Whether you&apos;re a business looking to integrate payments or a customer needing support, we&apos;d love to hear from you.

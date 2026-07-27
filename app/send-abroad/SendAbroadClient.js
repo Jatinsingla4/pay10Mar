@@ -11,7 +11,7 @@ const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[v
 const SendAbroadClient = ({ pageData = null }) => {
   const countriesContent = (
     <div className={Style.countries_box}>
-      <h4 className={Style.countries_heading}>7 countries Live</h4>
+      <h4 className={Style.countries_heading}>7 Countries Live</h4>
       <div className={Style.flag_row}>
         <div className={Style.flag_box}>🇮🇳</div>
         <div className={Style.flag_box}>🇵🇭</div>
@@ -22,7 +22,7 @@ const SendAbroadClient = ({ pageData = null }) => {
         <div className={Style.flag_box}>🇪🇬</div>
       </div>
 
-      <h4 className={Style.countries_heading} style={{ marginTop: '24px' }}>Coming soon - 8 more</h4>
+      <h4 className={Style.countries_heading} style={{ marginTop: '24px' }}>Coming Soon - 8 More</h4>
       <div className={Style.flag_row}>
         <div className={Style.flag_box}>🇯🇴</div>
         <div className={Style.flag_box}>🇲🇦</div>

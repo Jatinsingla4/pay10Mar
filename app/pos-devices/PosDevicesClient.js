@@ -328,7 +328,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
       <section className={styles.getting_started}>
         <div className={styles.getting_started_left}>
-          <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.title || "Lets get you Started" }} />
+          <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.title || "Let's Get You Started" }} />
           <p className={styles.getting_started_tagline} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.subtitle || "From box to first payment. In 4 steps." }} />
           <p className={styles.getting_started_desc} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.description, pageData?.sections?.[4]?.content, "Pay10 delivers and sets up your device. Here's what happens after it arrives, straight from the device manual.") }} />
         </div>

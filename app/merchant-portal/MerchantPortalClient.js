@@ -115,7 +115,7 @@ const MerchantPortalClient = ({ pageData = null }) => {
       <section className={Style.api_integration}>
         <div className={Style.api_content}>
           <div className={Style.api_left}>
-            <h2>{pageData?.sections?.[1]?.title || "Your settlements. In your ERP. The moment they happen"}</h2>
+            <h2>{pageData?.sections?.[1]?.title || "Your Settlements. In Your ERP. The Moment They Happen."}</h2>
             <p>{pageData?.sections?.[1]?.subtitle || "Pay10's REST API connects your merchant portal directly to your ERP so settlement data, transaction records, and VAT figures sync automatically, without anyone lifting a finger. No spreadsheets. No manual entry. No end-of-day reconciliation panic."}</p>
           </div>
         </div>

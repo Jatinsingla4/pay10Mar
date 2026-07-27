@@ -221,7 +221,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
               <div className={Style.card_list_section}>
                 <h4 className={Style.list_heading}>
-                  {renderIcon(card.icon, Style.list_icon, 20)} Customer checkout journey
+                  {renderIcon(card.icon, Style.list_icon, 20)} Customer Checkout Journey
                 </h4>
                 <ul className={Style.journey_card_list}>
                   {card.steps.map((step, sIdx) => (

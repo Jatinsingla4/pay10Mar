@@ -134,17 +134,23 @@
   }
 }
 
+// ponytail: flex-wrap, not a 2-col grid — an odd card count centers the last
+// row instead of leaving a hole, while widths stay identical to a 2-col grid.
 .right_grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
 
-  @include lessTab {
-    grid-template-columns: 1fr;
+  > * {
+    flex: 0 1 calc(50% - 10px);
+    min-width: 0;
   }
 
-  @include mobile {
-    grid-template-columns: 1fr;
+  @include lessTab {
+    > * {
+      flex-basis: 100%;
+    }
   }
 }
 

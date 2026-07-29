@@ -43,7 +43,7 @@ export default function TermsClient() {
 
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
-        <aside className={styles.sidebar} data-animation="fade-up">
+        <aside className={styles.sidebar}>
           {tosData.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (

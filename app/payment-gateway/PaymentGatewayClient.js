@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import Style from "./page.module.scss";
 import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
@@ -18,6 +19,7 @@ const renderIcon = (cmsIcon, className, width) => {
 };
 
 const PaymentGatewayClient = ({ pageData = null }) => {
+  const { isMobile } = useResponsive();
   // Section 2: Journey Cards
   const defaultJourneyCards = [
     {
@@ -319,30 +321,55 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <div className={Style.combo_download}>
           <h2 className={Style.combo_heading}>Merchant App</h2>
           <div className={Style.combo_badges}>
-            <a
-              href="https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={Style.app_qr_card}
-            >
-              <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={140} height={140} />
-              <div>
-                <Icon icon="ic:baseline-apple" width={20} color="#000" />
-                <span>Download on the App Store</span>
-              </div>
-            </a>
-            <a
-              href="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={Style.app_qr_card}
-            >
-              <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={140} height={140} />
-              <div>
-                <Icon icon="logos:google-play-icon" width={18} />
-                <span>Get it on Google Play</span>
-              </div>
-            </a>
+            {isMobile ? (
+              <>
+                <a
+                  href="https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={Style.combo_btn}
+                >
+                  <Icon icon="ic:baseline-apple" width={18} />
+                  <span>Download on the App Store</span>
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={Style.combo_btn}
+                >
+                  <Icon icon="logos:google-play-icon" width={16} />
+                  <span>Get it on Google Play</span>
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href="https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={Style.app_qr_card}
+                >
+                  <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={140} height={140} />
+                  <div>
+                    <Icon icon="ic:baseline-apple" width={20} color="#000" />
+                    <span>Download on the App Store</span>
+                  </div>
+                </a>
+                <a
+                  href="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={Style.app_qr_card}
+                >
+                  <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={140} height={140} />
+                  <div>
+                    <Icon icon="logos:google-play-icon" width={18} />
+                    <span>Get it on Google Play</span>
+                  </div>
+                </a>
+              </>
+            )}
           </div>
         </div>
       </section>

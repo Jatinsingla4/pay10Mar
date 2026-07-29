@@ -7,10 +7,12 @@ import MerchantTestimonialVideos from "../components/ui/MerchantTestimonialVideo
 import MerchantLogosCTA from "../components/ui/MerchantLogosCTA";
 import BizLeadForm from "./BizLeadForm";
 import { isEmptyHtml } from "../lib/sanitizeHtml";
+import { useResponsive } from "../contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLogos = [] }) => {
+  const { isMobile } = useResponsive();
   const scaleCards = pageData?.sections?.[0]?.cards?.map((c, i) => {
     const cleanDesc = (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim();
     return {
@@ -256,7 +258,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
             rel="noopener noreferrer"
             className={Style.app_qr_card}
           >
-            <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={140} height={140} />
+            {!isMobile && <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={140} height={140} />}
             <div>
               <Icon icon="ic:baseline-apple" width={20} />
               <span>Download on the App Store</span>
@@ -268,7 +270,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
             rel="noopener noreferrer"
             className={Style.app_qr_card}
           >
-            <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={140} height={140} />
+            {!isMobile && <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={140} height={140} />}
             <div>
               <Icon icon="logos:google-play-icon" width={18} />
               <span>Get it on Google Play</span>

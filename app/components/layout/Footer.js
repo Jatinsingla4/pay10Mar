@@ -13,65 +13,68 @@ const footerData = {
     alt: 'Pay10',
     href: '/',
   },
-  navigation: {
-    company: {
+  // ponytail: flat columns — nesting was what made the footer tall
+  columns: [
+    {
+      key: 'company',
       label: 'Company',
       items: [
         { label: 'About Us', href: '/about-us' },
         { label: 'Vision & Mission', href: '/vision-mission' },
         { label: 'Careers', href: '/careers' },
+        { label: 'Contact Us', href: '/contact-us' },
       ],
     },
-    products: {
-      label: 'Products',
+    {
+      key: 'consumer',
+      label: 'Consumer Solutions',
       items: [
-        {
-          label: 'Customer Solution',
-          subItems: [
-            { label: 'Pay10 UAE', href: '/pay10-uae-app' },
-            { label: 'Bill Payment', href: '/bill-payment' },
-            { label: 'Send Abroad', href: '/send-abroad' },
-            { label: 'Pay10 Card', href: '/pay10-card' },
-            { label: 'Open Finance Al Tareq', href: '/open-finance-altareq' },
-          ],
-        },
-        {
-          label: 'Business Solutions',
-          subItems: [
-            { label: 'Pay10 Biz UAE', href: '/pay10-biz-uae-app' },
-            { label: 'Merchant Portal', href: '/merchant-portal' },
-            { label: 'Payment Gateways', href: '/payment-gateway' },
-            { label: 'POS Devices', href: '/pos-devices' },
-            { label: 'WPS & Payroll', href: '/wps-payroll' },
-            { label: 'Channel Partners', href: '/channel-partners' },
-          ],
-        },
+        { label: 'Pay10 UAE', href: '/pay10-uae-app' },
+        { label: 'Bill Payment', href: '/bill-payment' },
+        { label: 'Send Abroad', href: '/send-abroad' },
+        { label: 'Pay10 Card', href: '/pay10-card' },
+        { label: 'Open Finance Al Tareq', href: '/open-finance-altareq' },
       ],
     },
-    legal: {
+    {
+      key: 'business',
+      label: 'Business Solutions',
+      items: [
+        { label: 'Pay10 Biz UAE', href: '/pay10-biz-uae-app' },
+        { label: 'Merchant Portal', href: '/merchant-portal' },
+        { label: 'Payment Gateways', href: '/payment-gateway' },
+        { label: 'POS Devices', href: '/pos-devices' },
+        { label: 'WPS & Payroll', href: '/wps-payroll' },
+        { label: 'Channel Partners', href: '/channel-partners' },
+      ],
+    },
+    {
+      key: 'legal',
       label: 'Legal',
       items: [
         { label: 'Terms of Services', href: '/terms-of-service' },
         { label: 'Privacy Policy', href: '/privacy-policy' },
         { label: 'Key Facts Statement', href: '/key-fact-statement' },
         { label: 'Schedule of Charges', href: '/coming-soon' },
-        { 
-          label: 'FAQ', 
-          href: '/faqs',
-          subItems: [
-            { label: 'Bill Payment', href: '/faqs?category=Bill+Payment' },
-            { label: 'Card Issuing', href: '/faqs?category=Card+Issuing' },
-            { label: 'Fraud', href: '/faqs?category=Fraud' },
-            { label: 'WPS Employee', href: '/faqs?category=WPS+Employee' },
-            { label: 'Send Abroad', href: '/faqs?category=Send+Abroad' },
-            { label: 'Pay10 UAE', href: '/faqs?category=Pay10+UAE' },
-            { label: 'Pay10 Biz UAE', href: '/faqs?category=Pay10+Biz+UAE' },
-          ]
-        },
+      ],
+    },
+    {
+      key: 'faq',
+      label: 'FAQ',
+      href: '/faqs',
+      items: [
+        { label: 'Pay10 UAE', href: '/faqs?category=Pay10+UAE' },
+        { label: 'Pay10 Biz UAE', href: '/faqs?category=Pay10+Biz+UAE' },
+        { label: 'Bill Payment', href: '/faqs?category=Bill+Payment' },
+        { label: 'Card Issuing', href: '/faqs?category=Card+Issuing' },
+        { label: 'Send Abroad', href: '/faqs?category=Send+Abroad' },
+        { label: 'WPS Employee', href: '/faqs?category=WPS+Employee' },
+        { label: 'Fraud', href: '/faqs?category=Fraud' },
         { label: 'Al Tareq FAQ', href: '/faq-altareq' },
       ],
     },
-    resources: {
+    {
+      key: 'resources',
       label: 'Resources',
       items: [
         {
@@ -91,12 +94,7 @@ const footerData = {
         },
       ],
     },
-    contact: {
-      label: 'Contact',
-      href: '/contact-us',
-      items: [],
-    },
-  },
+  ],
   socialMedia: {
     linkedin: 'https://ae.linkedin.com/company/pay10-uae',
     x: 'https://x.com/pay10UAE',
@@ -106,248 +104,93 @@ const footerData = {
   },
 }
 
+const socialIcons = [
+  { key: 'linkedin', icon: 'mdi:linkedin', label: 'LinkedIn' },
+  { key: 'x', icon: 'bi:twitter-x', label: 'X' },
+  { key: 'instagram', icon: 'mdi:instagram', label: 'Instagram' },
+  { key: 'facebook', icon: 'mdi:facebook', label: 'Facebook' },
+  { key: 'youtube', icon: 'mdi:youtube', label: 'YouTube' },
+]
+
+const SubLink = ({ item }) =>
+  item.external ? (
+    <a href={item.href} target="_blank" rel="noopener noreferrer" className="footer__nav-sublink">
+      {item.label}
+    </a>
+  ) : (
+    <Link href={item.href} className="footer__nav-sublink">
+      {item.label}
+    </Link>
+  )
+
+const SocialLinks = () => (
+  <div className="footer__social">
+    {socialIcons.map(({ key, icon, label }) => (
+      <a
+        key={key}
+        href={footerData.socialMedia[key]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="footer__social-link"
+        aria-label={label}
+      >
+        <Icon icon={icon} className="footer__social-icon" />
+      </a>
+    ))}
+  </div>
+)
+
 const Footer = () => {
   const [openSections, setOpenSections] = useState({})
   const { isMobile, isTablet } = useResponsive()
+  const isCollapsed = isMobile || isTablet
 
-  const toggleSection = useCallback((sectionKey) => {
-    if (isMobile || isTablet) {
-      setOpenSections((prev) => ({
-        ...prev,
-        [sectionKey]: !prev[sectionKey],
-      }))
-    }
-  }, [isMobile, isTablet])
+  const toggleSection = useCallback((key) => {
+    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }))
+  }, [])
 
-  const renderNavLinks = () => {
-    const { navigation } = footerData
-
-    return (
-      <>
-        {/* Company Column */}
-        <div className="footer__nav-item">
-          {isMobile || isTablet ? (
-            <>
-              <button
-                className="footer__nav-link footer__nav-link--accordion"
-                onClick={() => toggleSection('company')}
-                aria-expanded={openSections.company}
-              >
-                <span>{navigation.company.label}</span>
-                <Icon
-                  icon={openSections.company ? 'mdi:chevron-up' : 'mdi:chevron-right'}
-                  className="footer__nav-chevron"
-                />
-              </button>
-              {openSections.company && (
-                <div className="footer__nav-subitems">
-                  {navigation.company.items.map((item) => (
-                    <Link key={item.label} href={item.href} className="footer__nav-sublink">
-                      {item.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div className="footer__nav-heading">{navigation.company.label}</div>
+  const renderNavLinks = () =>
+    footerData.columns.map((col) => (
+      <div key={col.key} className="footer__nav-item">
+        {isCollapsed ? (
+          <>
+            <button
+              className="footer__nav-link footer__nav-link--accordion"
+              onClick={() => toggleSection(col.key)}
+              aria-expanded={!!openSections[col.key]}
+            >
+              <span>{col.label}</span>
+              <Icon
+                icon={openSections[col.key] ? 'mdi:chevron-up' : 'mdi:chevron-right'}
+                className="footer__nav-chevron"
+              />
+            </button>
+            {openSections[col.key] && (
               <div className="footer__nav-subitems">
-                {navigation.company.items.map((item) => (
-                  <Link key={item.label} href={item.href} className="footer__nav-sublink">
-                    {item.label}
-                  </Link>
+                {col.items.map((item) => (
+                  <SubLink key={item.label} item={item} />
                 ))}
               </div>
-            </>
-          )}
-        </div>
-
-        {/* Products Column */}
-        <div className="footer__nav-item">
-          {isMobile || isTablet ? (
-            <>
-              <button
-                className="footer__nav-link footer__nav-link--accordion"
-                onClick={() => toggleSection('products')}
-                aria-expanded={openSections.products}
-              >
-                <span>{navigation.products.label}</span>
-                <Icon
-                  icon={openSections.products ? 'mdi:chevron-up' : 'mdi:chevron-right'}
-                  className="footer__nav-chevron"
-                />
-              </button>
-              {openSections.products && (
-                <div className="footer__nav-subitems">
-                  {navigation.products.items.map((item) => (
-                    <div key={item.label} className="footer__nav-subitem">
-                      <span className="footer__nav-sublink">{item.label}</span>
-                      {item.subItems && (
-                        <div className="footer__nav-subsubitems">
-                          {item.subItems.map((subItem) => (
-                            <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
-                              {subItem.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div className="footer__nav-heading">{navigation.products.label}</div>
-              <div className="footer__nav-subitems">
-                {navigation.products.items.map((item) => (
-                  <div key={item.label} className="footer__nav-subitem">
-                    <span className="footer__nav-sublink">{item.label}</span>
-                    {item.subItems && (
-                      <div className="footer__nav-subsubitems" style={{ marginTop: '0.25rem' }}>
-                        {item.subItems.map((subItem) => (
-                          <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Legal Column */}
-        <div className="footer__nav-item">
-          {isMobile || isTablet ? (
-            <>
-              <button
-                className="footer__nav-link footer__nav-link--accordion"
-                onClick={() => toggleSection('legal')}
-                aria-expanded={openSections.legal}
-              >
-                <span>{navigation.legal.label}</span>
-                <Icon
-                  icon={openSections.legal ? 'mdi:chevron-up' : 'mdi:chevron-right'}
-                  className="footer__nav-chevron"
-                />
-              </button>
-              {openSections.legal && (
-                <div className="footer__nav-subitems">
-                  {navigation.legal.items.map((item) => (
-                    <div key={item.label} className="footer__nav-subitem" style={{ marginBottom: item.subItems ? '0.5rem' : '0' }}>
-                      <Link href={item.href} className="footer__nav-sublink">
-                        {item.label}
-                      </Link>
-                      {item.subItems && (
-                        <div className="footer__nav-subsubitems" style={{ marginTop: '0.25rem' }}>
-                          {item.subItems.map((subItem) => (
-                            <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
-                              {subItem.label}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div className="footer__nav-heading">{navigation.legal.label}</div>
-              <div className="footer__nav-subitems">
-                {navigation.legal.items.map((item) => (
-                  <div key={item.label} className="footer__nav-subitem" style={{ marginBottom: item.subItems ? '0.5rem' : '0' }}>
-                    <Link href={item.href} className="footer__nav-sublink">
-                      {item.label}
-                    </Link>
-                    {item.subItems && (
-                      <div className="footer__nav-subsubitems" style={{ marginTop: '0.25rem' }}>
-                        {item.subItems.map((subItem) => (
-                          <Link key={subItem.label} href={subItem.href} className="footer__nav-subsublink">
-                            {subItem.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Resources Column */}
-        <div className="footer__nav-item">
-          {isMobile || isTablet ? (
-            <>
-              <button
-                className="footer__nav-link footer__nav-link--accordion"
-                onClick={() => toggleSection('resources')}
-                aria-expanded={openSections.resources}
-              >
-                <span>{navigation.resources.label}</span>
-                <Icon
-                  icon={openSections.resources ? 'mdi:chevron-up' : 'mdi:chevron-right'}
-                  className="footer__nav-chevron"
-                />
-              </button>
-              {openSections.resources && (
-                <div className="footer__nav-subitems">
-                  {navigation.resources.items.map((item) => (
-                    item.external ? (
-                      <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="footer__nav-sublink">
-                        {item.label}
-                      </a>
-                    ) : (
-                      <Link key={item.label} href={item.href} className="footer__nav-sublink">
-                        {item.label}
-                      </Link>
-                    )
-                  ))}
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div className="footer__nav-heading">{navigation.resources.label}</div>
-              <div className="footer__nav-subitems">
-                {navigation.resources.items.map((item) => (
-                  item.external ? (
-                    <a key={item.label} href={item.href} target="_blank" rel="noopener noreferrer" className="footer__nav-sublink">
-                      {item.label}
-                    </a>
-                  ) : (
-                    <Link key={item.label} href={item.href} className="footer__nav-sublink">
-                      {item.label}
-                    </Link>
-                  )
-                ))}
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Contact Column */}
-        <div className="footer__nav-item">
-          {isMobile || isTablet ? (
-            <Link href={navigation.contact.href} className="footer__nav-link footer__nav-link--accordion">
-              <span>{navigation.contact.label}</span>
-            </Link>
-          ) : (
-            <Link href={navigation.contact.href} className="footer__nav-heading">
-              {navigation.contact.label}
-            </Link>
-          )}
-        </div>
-
-      </>
-    )
-  }
+            )}
+          </>
+        ) : (
+          <>
+            {col.href ? (
+              <Link href={col.href} className="footer__nav-heading">
+                {col.label}
+              </Link>
+            ) : (
+              <div className="footer__nav-heading">{col.label}</div>
+            )}
+            <div className="footer__nav-subitems">
+              {col.items.map((item) => (
+                <SubLink key={item.label} item={item} />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    ))
 
   return (
     <footer className="footer">
@@ -371,30 +214,14 @@ const Footer = () => {
 
         {/* Social Media - Desktop */}
         <div className="footer__actions footer__actions--desktop">
-          <div className="footer__social">
-            <a href={footerData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn">
-              <Icon icon="mdi:linkedin" className="footer__social-icon" />
-            </a>
-            <a href={footerData.socialMedia.x} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="X">
-              <Icon icon="bi:twitter-x" className="footer__social-icon" />
-            </a>
-            <a href={footerData.socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
-              <Icon icon="mdi:instagram" className="footer__social-icon" />
-            </a>
-            <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
-              <Icon icon="mdi:facebook" className="footer__social-icon" />
-            </a>
-            <a href={footerData.socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="YouTube">
-              <Icon icon="mdi:youtube" className="footer__social-icon" />
-            </a>
-          </div>
+          <SocialLinks />
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="footer__bottom">
         <div className="footer__bottom-container">
-          <div className="footer__address footer__address--en" style={{ display: 'flex', flexDirection: 'column', gap: '4px', textAlign: 'left', color: '#ffffff', fontSize: '0.85rem' }}>
+          <div className="footer__address footer__address--en">
             <span>Copyright © 2026</span>
             <span>Pay Ten Payment Services Provider LLC is licensed by the Central Bank of the UAE, U-Bora Office Tower, Office 1004,</span>
             <span>Business Bay, Dubai, United Arab Emirates</span>
@@ -404,23 +231,7 @@ const Footer = () => {
 
       {/* Social Media - Mobile */}
       <div className="footer__actions footer__actions--mobile">
-        <div className="footer__social">
-          <a href={footerData.socialMedia.linkedin} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="LinkedIn">
-            <Icon icon="mdi:linkedin" className="footer__social-icon" />
-          </a>
-          <a href={footerData.socialMedia.x} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="X">
-            <Icon icon="bi:twitter-x" className="footer__social-icon" />
-          </a>
-          <a href={footerData.socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Instagram">
-            <Icon icon="mdi:instagram" className="footer__social-icon" />
-          </a>
-          <a href={footerData.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="Facebook">
-            <Icon icon="mdi:facebook" className="footer__social-icon" />
-          </a>
-          <a href={footerData.socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="footer__social-link" aria-label="YouTube">
-            <Icon icon="mdi:youtube" className="footer__social-icon" />
-          </a>
-        </div>
+        <SocialLinks />
       </div>
     </footer>
   )

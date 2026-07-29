@@ -585,13 +585,21 @@ const Header = () => {
     ]
   )
 
-  // Render app store buttons
+  const [appStoreUrl, setAppStoreUrl] = useState('#')
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream
+    const isAndroid = /Android/.test(ua)
+
+    if (isIOS) setAppStoreUrl('https://apps.apple.com/ae/app/pay10-uae/id6549699203')
+    else if (isAndroid) setAppStoreUrl('https://play.google.com/store/apps/details?id=ae.pay10.app')
+  }, [])
+
+  // Render app store buttons (desktop only)
   const renderAppStoreButtons = useMemo(() => {
     return (
       <div className="header__app-store">
-        <Link href="#" className="header__contact-cta" onClick={handleNavClick}>
-          Download
-        </Link>
         <Link href="/contact-us" className="header__contact-cta" onClick={handleNavClick}>
           Contact Us
         </Link>
@@ -649,6 +657,14 @@ const Header = () => {
         <nav className="header__nav header__nav--mobile" aria-label="Main navigation">
           {renderNavLinks(true)}
         </nav>
+        <div className="header__mobile-buttons">
+          <a href={appStoreUrl} className="header__contact-cta" onClick={handleNavClick} target="_blank" rel="noopener noreferrer">
+            Download
+          </a>
+          <Link href="/contact-us" className="header__contact-cta" onClick={handleNavClick}>
+            Contact Us
+          </Link>
+        </div>
       </div>
     </header>
   )

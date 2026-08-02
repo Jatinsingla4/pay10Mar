@@ -147,64 +147,6 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         </div>
       </section>
 
-      <section className={Style.showcase_section}>
-        <div className={Style.showcase_wrapper}>
-          <div className={Style.showcase_item}>
-            <div className={Style.phone_wrapper}>
-              <picture>
-                <source media="(max-width: 767px)" srcSet={pageData?.sections?.[1]?.images?.[2] || pageData?.sections?.[1]?.images?.[0] || "/images/prod_imports/pg-pay-mobile.png"} />
-                <img
-                  src={pageData?.sections?.[1]?.images?.[0] || "/images/prod_imports/pg-pay-mobile.png"}
-                  alt="Pay10 App on Phone"
-                  className={Style.showcase_phone_img}
-                />
-              </picture>
-            </div>
-            <div className={`${Style.checkout_card} ${Style.showcase_card_overlay}`}>
-              <div className={Style.mockup_header}>
-                <Icon icon="mdi:cart-outline" width={20} /> Your Online Checkout
-              </div>
-              <div className={Style.mockup_total}>
-                <span>Order total</span>
-                <strong>AED 349.00</strong>
-              </div>
-              <div className={Style.mockup_divider}>Choose payment method</div>
-              <button className={Style.mockup_bank_btn}>
-                <Icon icon="mdi:bank-outline" width={18} /> Pay by Bank
-              </button>
-              <p className={Style.mockup_hint}>&uarr; Customer clicks this button on your checkout</p>
-            </div>
-          </div>
-
-          <div className={Style.showcase_item}>
-            <div className={Style.phone_wrapper}>
-              <picture>
-                <source media="(max-width: 767px)" srcSet={pageData?.sections?.[1]?.images?.[3] || pageData?.sections?.[1]?.images?.[1] || "/images/prod_imports/pg-pay-bank.png"} />
-                <img
-                  src={pageData?.sections?.[1]?.images?.[1] || "/images/prod_imports/pg-pay-bank.png"}
-                  alt="Bank App on Phone"
-                  className={Style.showcase_phone_img}
-                />
-              </picture>
-            </div>
-            <div className={`${Style.checkout_card} ${Style.showcase_card_overlay}`}>
-              <div className={Style.mockup_header}>
-                <Icon icon="mdi:cart-outline" width={20} /> Your Online Checkout
-              </div>
-              <div className={Style.mockup_total}>
-                <span>Order total</span>
-                <strong>AED 349.00</strong>
-              </div>
-              <div className={Style.mockup_divider}>Choose payment method</div>
-              <button className={Style.mockup_pay10_btn}>
-                <Icon icon="mdi:cellphone" width={18} /> Pay with Pay10
-              </button>
-              <p className={Style.mockup_hint}>&uarr; Customer clicks this button on your checkout</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className={Style.journey_cards_section}>
         <div className={Style.journey_cards_wrapper}>
           {journeyCards.map((card, idx) => (

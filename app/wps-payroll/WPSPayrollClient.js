@@ -160,8 +160,8 @@ const WPSPayrollClient = ({ pageData = null }) => {
           }}
         >
           <div className={styles.altareq_hero_content}>
-            <h1 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "UAE's seamless solution<br />for salary compliance." }} />
-            <p dangerouslySetInnerHTML={{ __html: pageData?.page_description || "Pay all your employees' salaries digitally: compliant, scalable, and fully powered by Pay10. A CBUAE-licensed WPS provider built for every type of UAE employer and every type of UAE employee." }} />
+            <h1 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.page_title) ? pageData.page_title : "UAE's seamless solution<br />for salary compliance." }} />
+            <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.page_description) ? pageData.page_description : "Pay all your employees' salaries digitally: compliant, scalable, and fully powered by Pay10. A CBUAE-licensed WPS provider built for every type of UAE employer and every type of UAE employee." }} />
           </div>
         </div>
       </section>
@@ -178,7 +178,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
 
       <section className={styles.who_is_for_section}>
         <div className={styles.who_container}>
-          <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[1]?.title || "Who is This For?" }} />
+          <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[1]?.title) ? pageData.sections[1].title : "Who is This For?" }} />
           
           <div className={styles.who_grid}>
             {/* Employers Column */}
@@ -208,7 +208,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
 
       <section className={styles.biz_benefits}>
         <div className={styles.benefits_left}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.sections?.[2]?.title || "What Pay10 WPS offers" }} />
+          <h2 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[2]?.title) ? pageData.sections[2].title : "What Pay10 WPS offers" }} />
           <div className={styles.pill_group}>
             {pillLabels.map((label, i) => (
               <span key={i} className={styles.pill_gradient}>
@@ -231,7 +231,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
 
       <section className={styles.who_is_for_section}>
         <div className={styles.who_container}>
-          <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.title || "Banked vs Unbanked Worker Journeys" }} />
+          <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[3]?.title) ? pageData.sections[3].title : "Banked vs Unbanked Worker Journeys" }} />
           
           <div className={styles.who_grid}>
             {/* Banked Employees Column */}
@@ -268,8 +268,8 @@ const WPSPayrollClient = ({ pageData = null }) => {
         </svg>
         <div className={styles.steps_container}>
           <div className={styles.steps_header}>
-            <h2 dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.title || "Getting started: 6 simple steps" }} />
-            <p dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.subtitle || "Simple onboarding. Faster than you think." }} />
+            <h2 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[4]?.title) ? pageData.sections[4].title : "Getting started: 6 simple steps" }} />
+            <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[4]?.subtitle) ? pageData.sections[4].subtitle : "Simple onboarding. Faster than you think." }} />
           </div>
           
           <div className={styles.steps_grid}>
@@ -289,8 +289,8 @@ const WPSPayrollClient = ({ pageData = null }) => {
       <section className={styles.comparison_section}>
         <div className={styles.comparison_container}>
           <div className={styles.comparison_header}>
-            <h2 dangerouslySetInnerHTML={{ __html: pageData?.sections?.[5]?.title || "Competitive comparison" }} />
-            <p dangerouslySetInnerHTML={{ __html: pageData?.sections?.[5]?.subtitle || "Pay10 is competing against exchange houses and established salary card providers. This table makes the case without naming anyone directly." }} />
+            <h2 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[5]?.title) ? pageData.sections[5].title : "Competitive comparison" }} />
+            <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[5]?.subtitle) ? pageData.sections[5].subtitle : "Pay10 is competing against exchange houses and established salary card providers. This table makes the case without naming anyone directly." }} />
           </div>
 
           <div className={styles.table_responsive}>
@@ -339,8 +339,8 @@ const WPSPayrollClient = ({ pageData = null }) => {
         <span className={styles.combo_ring_small} aria-hidden="true" />
 
         <div className={styles.combo_cta}>
-          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[7]?.title || "Ready To Pay Your Employees The Smarter Way?" }} />
-          <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[7]?.subtitle || "Contact our sales team we'll handle registration, account setup, and your first salary run." }} />
+          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[7]?.title) ? pageData.sections[7].title : "Ready To Pay Your Employees The Smarter Way?" }} />
+          <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[7]?.subtitle) ? pageData.sections[7].subtitle : "Contact our sales team we'll handle registration, account setup, and your first salary run." }} />
           <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
         </div>
 

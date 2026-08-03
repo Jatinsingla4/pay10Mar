@@ -5,6 +5,7 @@ import "./variables.css";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import GlobalInViewInitializer from "./components/layout/GlobalInViewInitializer";
+import CookieConsent from "./components/ui/cookie/CookieConsent";
 import { ResponsiveProvider } from "./contexts/ResponsiveContext";
 import { defaultMetadata } from "./lib/metadata";
 
@@ -64,6 +65,7 @@ export default function RootLayout({ children }) {
           <Header />
           {children}
           <Footer />
+          <CookieConsent />
         </ResponsiveProvider>
       </body>
     </html>

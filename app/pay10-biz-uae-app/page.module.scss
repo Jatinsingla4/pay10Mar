@@ -98,6 +98,10 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+
+    &.full_width {
+      grid-column: 1 / -1;
+    }
   }
 
   p {

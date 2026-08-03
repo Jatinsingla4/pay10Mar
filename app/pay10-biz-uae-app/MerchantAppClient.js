@@ -133,8 +133,8 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
 
       <section className={Style.merchant_scale}>
         <div className={Style.merchant_scale_header}>
-          <h2>{pageData?.sections?.[0]?.title || "Built for every merchant, from first sale to full scale."}</h2>
-          <p>{pageData?.sections?.[0]?.subtitle || "Whether you're a solo trader, a growing SME, or a multi-location enterprise Pay10 UAE Biz App levels the playing field. The same powerful platform. The same unbeatable rates. For everyone."}</p>
+          <h2 className={!pageData?.sections?.[0]?.subtitle ? Style.full_width : undefined}>{pageData?.sections?.[0]?.title || "Built for every merchant, from first sale to full scale."}</h2>
+          {pageData?.sections?.[0]?.subtitle && <p>{pageData.sections[0].subtitle}</p>}
         </div>
         <div className={Style.merchant_scale_cards}>
           {scaleCards.map((card) => (
@@ -169,7 +169,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
       <section className={Style.biz_support}>
         <div className={Style.support_left}>
           <h2>{pageData?.sections?.[2]?.title || "24/7 Human Support · Multi-Language · Zero Wait Time"}</h2>
-          <p className={Style.support_sub}>{pageData?.sections?.[2]?.subtitle || "Call. A human picks up. Every time."}</p>
+          {pageData?.sections?.[2]?.subtitle && <p className={Style.support_sub}>{pageData.sections[2].subtitle}</p>}
           <div className={Style.support_desc}>
             {!isEmptyHtml(pageData?.sections?.[2]?.content)
               ? <div dangerouslySetInnerHTML={{ __html: pageData.sections[2].content }} />

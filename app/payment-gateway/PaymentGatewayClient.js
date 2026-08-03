@@ -52,31 +52,31 @@ const PaymentGatewayClient = ({ pageData = null }) => {
     }
   ];
 
-  const journeyCards = pageData?.sections?.[2]?.cards?.length === 2 ? [
+  const journeyCards = pageData?.sections?.[1]?.cards?.length === 2 ? [
     {
-      title: pageData.sections[2].cards[0].title,
-      badge: pageData.sections[2].cards[0].subtitle,
-      desc: (pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
-      icon: pageData.sections[2].cards[0].icon,
-      steps: ((pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[1] || pageData.sections[2].cards[0].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
-      footer: firstNonEmptyHtml((pageData.sections[2].cards[0].description || pageData.sections[2].cards[0].content || "").split('---')[2]?.trim(), pageData.sections[2].cards[0].content, ""),
-      img: pageData.sections[2].cards[0].images?.[0] || pageData.sections[2].images?.[0] || '/images/prod_imports/pg-pay-qr.png',
-      mobileImg: pageData.sections[2].cards[0].images?.[1] || pageData.sections[2].images?.[2] || pageData.sections[2].images?.[0] || '/images/prod_imports/pg-pay-qr.png'
+      title: pageData.sections[1].cards[0].title,
+      badge: pageData.sections[1].cards[0].subtitle,
+      desc: (pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
+      icon: pageData.sections[1].cards[0].icon,
+      steps: ((pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[1] || pageData.sections[1].cards[0].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
+      footer: firstNonEmptyHtml((pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[2]?.trim(), pageData.sections[1].cards[0].content, ""),
+      img: pageData.sections[1].cards[0].images?.[0] || pageData.sections[1].images?.[0] || '/images/prod_imports/pg-pay-qr.png',
+      mobileImg: pageData.sections[1].cards[0].images?.[1] || pageData.sections[1].images?.[2] || pageData.sections[1].images?.[0] || '/images/prod_imports/pg-pay-qr.png'
     },
     {
-      title: pageData.sections[2].cards[1].title,
-      badge: pageData.sections[2].cards[1].subtitle,
-      desc: (pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
-      icon: pageData.sections[2].cards[1].icon,
-      steps: ((pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[1] || pageData.sections[2].cards[1].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
-      footer: firstNonEmptyHtml((pageData.sections[2].cards[1].description || pageData.sections[2].cards[1].content || "").split('---')[2]?.trim(), pageData.sections[2].cards[1].content, ""),
-      img: pageData.sections[2].cards[1].images?.[0] || pageData.sections[2].images?.[1] || '/images/prod_imports/pg-pay-desktop.png',
-      mobileImg: pageData.sections[2].cards[1].images?.[1] || pageData.sections[2].images?.[3] || pageData.sections[2].images?.[1] || '/images/prod_imports/pg-pay-desktop.png'
+      title: pageData.sections[1].cards[1].title,
+      badge: pageData.sections[1].cards[1].subtitle,
+      desc: (pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
+      icon: pageData.sections[1].cards[1].icon,
+      steps: ((pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[1] || pageData.sections[1].cards[1].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
+      footer: firstNonEmptyHtml((pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[2]?.trim(), pageData.sections[1].cards[1].content, ""),
+      img: pageData.sections[1].cards[1].images?.[0] || pageData.sections[1].images?.[1] || '/images/prod_imports/pg-pay-desktop.png',
+      mobileImg: pageData.sections[1].cards[1].images?.[1] || pageData.sections[1].images?.[3] || pageData.sections[1].images?.[1] || '/images/prod_imports/pg-pay-desktop.png'
     }
   ] : defaultJourneyCards;
 
   // Sections 4 & 5: Journey Lists
-  const dqrSteps = pageData?.sections?.[4]?.cards?.map(c => ({
+  const dqrSteps = pageData?.sections?.[3]?.cards?.map(c => ({
     title: c.title,
     desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
     tag: c.subtitle || null
@@ -87,7 +87,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
       { title: 'Order confirmed: settlement today', desc: 'Payment posted to your merchant portal instantly. Settlement to your account the same day.', tag: 'T+0 settlement' }
     ];
 
-  const tppSteps = pageData?.sections?.[5]?.cards?.map(c => ({
+  const tppSteps = pageData?.sections?.[4]?.cards?.map(c => ({
     title: c.title,
     desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
     tag: c.subtitle || null
@@ -107,7 +107,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
     "mdi:headset"
   ];
 
-  const benefitsCards = pageData?.sections?.[6]?.cards?.map((c, i) => ({
+  const benefitsCards = pageData?.sections?.[5]?.cards?.map((c, i) => ({
     num: `0${i + 1}`,
     icon: c.icon,
     title: c.title,
@@ -185,8 +185,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
       <section className={Style.centered_text_section}>
         <div className={Style.centered_container}>
-          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.title, "From checkout button to<br/>confirmed order,<br/>here's exactly what happens.") }} />
-          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.subtitle, "Two different journeys. The same outcome: a completed payment, settled to your account today.") }} />
+          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.title, "From checkout button to<br/>confirmed order,<br/>here's exactly what happens.") }} />
+          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.subtitle, "Two different journeys. The same outcome: a completed payment, settled to your account today.") }} />
         </div>
       </section>
 
@@ -194,7 +194,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <div className={Style.journey_list_wrapper}>
           {/* DQR Journey */}
           <div className={Style.journey_column}>
-            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[4]?.title || "PAY WITH PAY10: DQR JOURNEY"}</h3>
+            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[3]?.title || "PAY WITH PAY10: DQR JOURNEY"}</h3>
             <div className={Style.journey_steps}>
               {dqrSteps.map((step, idx) => (
                 <div key={idx} className={Style.step_item}>
@@ -211,7 +211,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
           {/* TPP Journey */}
           <div className={Style.journey_column}>
-            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[5]?.title || "PAY BY BANK: TPP JOURNEY"}</h3>
+            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[4]?.title || "PAY BY BANK: TPP JOURNEY"}</h3>
             <div className={Style.journey_steps}>
               {tppSteps.map((step, idx) => (
                 <div key={idx} className={Style.step_item}>
@@ -230,8 +230,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
       <section className={Style.benefits_section}>
         <div className={Style.centered_container}>
-          <h2 className={Style.centered_heading}>{pageData?.sections?.[6]?.title || "Every Pay10 merchant gets the same unbeatable deal."}</h2>
-          <p className={Style.centered_paragraph}>{pageData?.sections?.[6]?.subtitle || "The benefits below apply to every merchant using Pay10's Payment Gateway, regardless of size, volume, or industry."}</p>
+          <h2 className={Style.centered_heading}>{pageData?.sections?.[5]?.title || "Every Pay10 merchant gets the same unbeatable deal."}</h2>
+          <p className={Style.centered_paragraph}>{pageData?.sections?.[5]?.subtitle || "The benefits below apply to every merchant using Pay10's Payment Gateway, regardless of size, volume, or industry."}</p>
         </div>
 
         <div className={Style.benefits_grid_wrapper}>
@@ -254,7 +254,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <span className={Style.combo_ring_small} aria-hidden="true" />
 
         <div className={Style.combo_cta}>
-          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[7]?.subtitle, "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients: tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.") }} />
+          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[6]?.subtitle, "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients: tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.") }} />
           <Link href="/contact-us?type=Enterprise+Sales" className={Style.combo_btn}>Enterprise Sales</Link>
         </div>
 

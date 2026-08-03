@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Icon } from "@iconify/react";
 import styles from "./news-room.module.scss";
 import { isEmptyHtml } from "../lib/sanitizeHtml";
@@ -105,15 +106,13 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
                   />
                   <div className={styles.cardFooter}>
                     {item.slug && (
-                      <a
+                      <Link
                         href={`/news-room/${item.slug}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className={styles.readMoreBtn}
                       >
                         <span>Read More</span>
                         <Icon icon="fa6-solid:angle-right" />
-                      </a>
+                      </Link>
                     )}
                     <div className={styles.shareRow}>
                       <span>Share:</span>

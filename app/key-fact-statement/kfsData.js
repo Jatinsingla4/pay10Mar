@@ -1,17 +1,18 @@
 // Direct Key Fact Statement static payload extracted from pay10.ae/key-fact-statement/
 const kfsData = [
   {
-    tabName: "Pay10 UAE",
-    sectionTitle: "Pay10 UAE KEY FACTS STATEMENT",
+    tabName: "KFS Pay10 UAE App",
+    sectionTitle: "KFS Pay10 UAE App",
     content: `
 				<div class="elementor-element elementor-element-04ae101 elementor-widget elementor-widget-text-editor animated fadeIn" data-id="04ae101" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;}" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-<p>With Pay10 UAE, you can easily send, receive, and make payments to participating merchants and other Pay10 users anytime, anywhere, using your mobile device.</p>
+<p>With Pay10 UAE App, you can easily send, receive, and make payments to participating merchants and other Pay10 users anytime, anywhere, using your mobile device.</p>
+<h6><strong>Introduction</strong></h6>
 <table>
 <tbody>
 <tr>
 <td>Product Name</td>
-<td>Pay10 UAE</td>
+<td>Pay10 UAE App</td>
 </tr>
 <tr>
 <td>Type</td>
@@ -91,7 +92,7 @@ const kfsData = [
 <td>Customer Support</td>
 <td>
 <ul>
- 	<li>24/7 support center: 800 - 729110</li>
+ 	<li>24/7 support center: 800-72910</li>
  	<li>Email: <a href="mailto:support@pay10.ae">support@pay10.ae</a></li>
 </ul>
 </td>
@@ -103,7 +104,6 @@ const kfsData = [
  	<li>Complaints may be lodged through the support center or by email</li>
  	<li>Resolution timeframe: up to 2 business days for most issues</li>
  	<li>Escalation process available if not satisfied with the resolution</li>
- 	<li>If you still believe your issue has not been resolved satisfactorily, you may contact Sanadak, the UAE Ombudsman Unit, by visiting <a href="https://www.sanadak.gov.ae" target="_blank" rel="noopener noreferrer">www.sanadak.gov.ae</a>.</li>
 </ul>
 </td>
 </tr>
@@ -111,43 +111,43 @@ const kfsData = [
 </table>
 <h6><strong>Important Notes</strong></h6>
 <ul>
- 	<li>Funds in Pay10 UAE are not interest-bearing</li>
- 	<li>Pay10 is licensed and regulated by the Central Bank of the UAE (CBUAE).</li>
+ 	<li>Funds in Pay10 UAE App are not interest-bearing</li>
+ 	<li>Pay10 is licensed and regulated by the Central Bank of the UAE.</li>
  	<li>Your consent is required for data sharing with third parties</li>
  	<li>You have the right to withdraw consent for data sharing at any time</li>
  	<li>Pay10 has the right to change the terms and conditions of the product, with a 60-day notice for any changes.</li>
  	<li>This Key Facts Statement provides only indicative fees and charges. For the full and latest fees and charges, please refer to the website for the updated schedule of charges.</li>
  	<li>All fees are exclusive of VAT. Wherever applicable, VAT will be charged at prevailing rates in addition to the fee.</li>
- 	<li>You can pause, cancel or update the Payment Initiation Permissions granted through Altareq (Open Banking) at any time.</li>
+ 	<li>You can pause, cancel or update the Payment Initiation Permissions granted through AlTareq (Open Banking) at any time.</li>
  	<li>Pay10 disclaims liability for losses arising from unauthorized transactions caused by your failure to safeguard your credentials.</li>
 </ul>
 <h6><strong>Warning</strong></h6>
-<p>By using the Pay10 UAE, you acknowledge that:</p>
+<p>By using the Pay10 UAE App, you acknowledge that:</p>
 <ol>
  	<li>Your account may be suspended if you fail to provide the required documentation or if the information provided is inaccurate or incomplete.</li>
  	<li>Pay10 may share your information with regulatory authorities in compliance with applicable laws and regulations.</li>
  	<li>You are responsible for the confidentiality of your account information and for all transactions made through your account, you must keep your Pay10 wallet credentials safe and confidential at all times.</li>
  	<li>If you see a transaction on your account that you do not recognize, or you think may be incorrect, you must contact us immediately via the call center or our website.</li>
- 	<li>You acknowledge that Pay10 will not be liable for any losses due to unauthorized use of your wallet if such unauthorized use results from your failure to keep credentials confidential</li>
+ 	<li>You acknowledge that Pay10 will not be liable for any losses due to unauthorized use of your wallet if such unauthorized use results from your failure to keep credentials confidential.</li>
 </ol>
 <p>For full details, please refer to our Terms and Conditions available at <a href="https://www.pay10.ae/terms-of-service">https://www.pay10.ae/terms-of-service</a></p>
-<p>Please note that this KFS will be updated from time to time as per mandate from Central Bank of the UAE (CBUAE).</p>							</div>
+<p>Please note that this KFS will be updated from time to time as per mandate from Central Bank of the UAE.</p>							</div>
 				</div>
 				`
   },
   {
-    tabName: "Pay10 Biz UAE",
-    sectionTitle: "Pay10 Biz UAE - Key Facts Statement",
+    tabName: "KFS Pay10 Biz UAE App",
+    sectionTitle: "KFS Pay10 Biz UAE App",
     content: `
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-5782ea8 elementor-widget elementor-widget-text-editor" data-id="5782ea8" data-element_type="widget" data-e-type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-With Pay10 Biz UAE, you can easily accept and track payments from Pay10 Customers, issue transaction refunds anytime, anywhere, using a mobile device.
+With Pay10 Biz UAE App, you can easily accept and track payments from Pay10 Customers, issue transaction refunds anytime, anywhere, using a mobile device.
 <table>
 <tbody>
 <tr>
 <td>Product Name</td>
-<td>Pay10 Biz UAE</td>
+<td>Pay10 Biz UAE App</td>
 </tr>
 <tr>
 <td>Type</td>
@@ -233,7 +233,7 @@ With Pay10 Biz UAE, you can easily accept and track payments from Pay10 Customer
 <td>Customer Support</td>
 <td>
 <ul>
- 	<li>24/7 support center: 800 - 729110</li>
+ 	<li>24/7 support center: 800-729110</li>
  	<li>Email: <a href="mailto:merchant.support@pay10.ae">merchant.support@pay10.ae</a></li>
  	<li>For more information of our Merchant Payment Solutions, please visit <a href="https://www.pay10.ae">pay10.ae</a> or contact <a href="mailto:sales@pay10.ae">sales@pay10.ae</a></li>
 </ul>
@@ -243,7 +243,7 @@ With Pay10 Biz UAE, you can easily accept and track payments from Pay10 Customer
 <td>Complaints and Dispute Resolution</td>
 <td>
 <ul>
- 	<li>Reach out 24/7 support center: 800 - 729110 or Email: <a href="mailto:merchant.support@pay10.ae">merchant.support@pay10.ae</a> for any Disputes or Complains.</li>
+ 	<li>Reach out 24/7 support center: 800-729110 or Email: <a href="mailto:merchant.support@pay10.ae">merchant.support@pay10.ae</a> for any Disputes or Complains.</li>
 </ul>
 </td>
 </tr>
@@ -251,8 +251,8 @@ With Pay10 Biz UAE, you can easily accept and track payments from Pay10 Customer
 </table>
 <h6><strong>Important Notes</strong></h6>
 <ul>
- 	<li>Funds in Pay10 UAE are not interest-bearing</li>
- 	<li>Pay10 is regulated by the Central Bank of the UAE (CBUAE)</li>
+ 	<li>Funds in Pay10 Biz UAE App are not interest-bearing</li>
+ 	<li>Pay10 is regulated by the Central Bank of UAE</li>
  	<li>Your consent is required for data sharing with third parties</li>
  	<li>You have the right to withdraw consent for data sharing at any time</li>
  	<li>Pay10 has the right to change the terms and conditions of the product, with a 60-day notice for any changes in fees or charges.</li>
@@ -260,18 +260,16 @@ With Pay10 Biz UAE, you can easily accept and track payments from Pay10 Customer
  	<li>All fees are exclusive of VAT. Wherever applicable; VAT will be charged at the prevailing rates in addition to the fee.</li>
 </ul>
 <h6><strong>Warning</strong></h6>
-<p>By using the Pay10 Biz UAE, you acknowledge that:</p>
+<p>By using the Pay10 Biz UAE App, you acknowledge that:</p>
 <ol>
  	<li>Your account may be suspended if you fail to provide the required documentation or if the information provided is inaccurate or incomplete.</li>
  	<li>Pay10 may share your information with regulatory authorities in compliance with applicable laws and regulations.</li>
- 	<li>You are responsible for the confidentiality of your account information and for all actions conducted through your account, you must always ensure your Pay10 Biz UAE credentials safe and confidential.</li>
+ 	<li>You are responsible for the confidentiality of your account information and for all actions conducted through your account, you must always ensure your Pay10 Biz UAE App credentials are safe and confidential.</li>
  	<li>If you see a transaction/withdrawal or Refund on your account that you do not recognize, or you think may be incorrect, you must contact us immediately via the call center or our website.</li>
- 	<li>Refunds for the full transaction value are available through the Pay10 Biz UAE to assist merchants in processing returns or addressing customer claims. Pay10 bears no liability for any misuse of this feature by business employees or authorized users of the Pay10 Biz UAE.</li>
- 	<li>For full details of our terms and conditions, please refer to the signed agreement.</li>
+ 	<li>Refunds for the full transaction value are available through the Pay10 Biz UAE App to assist merchants in processing returns or addressing customer claims. Pay10 bears no liability for any misuse of this feature by business employees or authorized users of the Pay10 Biz UAE App.</li>
 </ol>
-<p>Please note that this KFS will be updated from time to time as per mandate from Central Bank of the UAE (CBUAE).</p>
-
-&nbsp;							</div>
+<p>For full details, please refer to our Terms and Conditions available at <a href="https://www.pay10.ae/terms-of-service">https://www.pay10.ae/terms-of-service</a></p>
+<p>Please note that this KFS will be updated from time to time as per mandate from Central Bank of the UAE.</p>							</div>
 				</div>
 					</div>
 				`

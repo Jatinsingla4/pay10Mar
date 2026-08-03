@@ -249,6 +249,15 @@
     font-size: 24px;
     text-align: center;
   }
+
+  // Globe's camera FOV is tuned for a wide (landscape-ish) container. A narrow
+  // mobile width with the same 500px min-height makes the box too tall/narrow,
+  // clipping the sphere's left/right edges. Forcing a square box keeps the
+  // aspect ratio safe regardless of screen width.
+  @include tab {
+    min-height: unset;
+    aspect-ratio: 1 / 1;
+  }
 }
 
 .steps_right {
@@ -333,6 +342,32 @@
         font-family: 'bold', sans-serif;
         margin-bottom: 20px;
         color: var(--black);
+      }
+
+      .qr_image {
+        width: 140px;
+        height: 140px;
+        object-fit: contain;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      .single_download_btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 36px;
+        border-radius: 100px;
+        background: var(--primary-gradient);
+        color: var(--white);
+        font-family: 'semibold', sans-serif;
+        font-size: 16px;
+        text-decoration: none;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+
+        &:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
       }
 
       .store_buttons {

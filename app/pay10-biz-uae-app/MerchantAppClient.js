@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Style from "./page.module.scss";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
@@ -11,8 +12,20 @@ import { useResponsive } from "../contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
+const MERCHANT_APPLE_URL = "https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134";
+const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay10.merchant.app";
+
 const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLogos = [] }) => {
   const { isMobile } = useResponsive();
+  const merchantQr = pageData?.sections?.[6]?.images?.[0] || "/images/prod_imports/biz-app-store-qr.png";
+
+  const [merchantStoreUrl, setMerchantStoreUrl] = useState(MERCHANT_PLAY_URL);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    if (isIOS) setMerchantStoreUrl(MERCHANT_APPLE_URL);
+  }, []);
   const scaleCards = pageData?.sections?.[0]?.cards?.map((c, i) => {
     const cleanDesc = (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim();
     return {
@@ -251,32 +264,14 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
 
       <section className={Style.biz_app_download}>
         <h2 className={Style.app_download_heading}>Merchant App</h2>
-        <div className={Style.app_download_badges}>
-          <a
-            href="https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={Style.app_qr_card}
-          >
-            {!isMobile && <Image src="/images/prod_imports/biz-app-store-qr.png" alt="Scan to download on the App Store" width={140} height={140} />}
-            <div>
-              <Icon icon="ic:baseline-apple" width={20} />
-              <span>Download on the App Store</span>
-            </div>
+        {isMobile ? (
+          <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.single_download_btn}>
+            <Icon icon="mdi:download" width={20} />
+            <span>Download Now</span>
           </a>
-          <a
-            href="https://play.google.com/store/apps/details?id=ae.pay10.merchant.app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={Style.app_qr_card}
-          >
-            {!isMobile && <Image src="/images/prod_imports/biz-play-store-qr.png" alt="Scan to get it on Google Play" width={140} height={140} />}
-            <div>
-              <Icon icon="logos:google-play-icon" width={18} />
-              <span>Get it on Google Play</span>
-            </div>
-          </a>
-        </div>
+        ) : (
+          <Image src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={Style.qr_image} width={140} height={140} />
+        )}
       </section>
     </main>
   );

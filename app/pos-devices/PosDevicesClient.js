@@ -1,13 +1,15 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import MerchantTestimonialVideos from "@/app/components/ui/MerchantTestimonialVideos";
 import MerchantLogosCTA from "@/app/components/ui/MerchantLogosCTA";
 import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
 import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className, width) => {
@@ -17,11 +19,24 @@ const renderIcon = (cmsIcon, className, width) => {
     : <Icon icon={cmsIcon} width={width} className={className} />;
 };
 
+const MERCHANT_APPLE_URL = "https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134";
+const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay10.merchant.app";
+
 // Picks the first non-CKEditor-empty value among `description`/`content`,
 // falling back to `def` only when both are genuinely empty.
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonialTitle, testimonialContent, merchantLogos = [] }) => {
+  const { isMobile } = useResponsive();
+  const merchantQr = pageData?.sections?.[6]?.images?.[0] || "/images/prod_imports/biz-app-store-qr.png";
+
+  const [merchantStoreUrl, setMerchantStoreUrl] = useState(MERCHANT_PLAY_URL);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    if (isIOS) setMerchantStoreUrl(MERCHANT_APPLE_URL);
+  }, []);
 
   // Consumer Feature Points
   const rawSubHeading = pageData?.sections?.[0]?.description || pageData?.sections?.[0]?.content || "";
@@ -154,8 +169,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
           }}
         >
           <div className={styles.altareq_hero_content}>
-            <h1 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "The new way to pay<br />at every counter in the UAE." }} />
-            <p dangerouslySetInnerHTML={{ __html: pageData?.page_description || "Three devices. One ecosystem. All connected to the Pay10 Biz App, instant settlement, and 24/7 human support." }} />
+            <h1 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "The new way to pay<br />at every counter in the UAE.") }} />
+            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_description, "Three devices. One ecosystem. All connected to the Pay10 Biz App, instant settlement, and 24/7 human support.") }} />
           </div>
         </div>
       </section>
@@ -163,8 +178,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <ConsumerFeatureSection
           heading={
             <>
-              <div className={styles.uae_label} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[0]?.subtitle || "🇦🇪 UAE FIRST &middot; DYNAMIC QR TECHNOLOGY" }} />
-              <span className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[0]?.title || "The UAE's first Dynamic QR POS device.<br/>A new era of in-person payments." }} />
+              <div className={styles.uae_label} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.subtitle, "🇦🇪 UAE FIRST &middot; DYNAMIC QR TECHNOLOGY") }} />
+              <span className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.title, "The UAE's first Dynamic QR POS device.<br/>A new era of in-person payments.") }} />
             </>
           }
           subheading={subHeadingText}
@@ -178,8 +193,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <section className={styles.compare_section}>
         <div className={styles.container}>
           <div className={styles.compare_header}>
-            <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[1]?.title || "Choose the right device for your business" }} />
-            <p dangerouslySetInnerHTML={{ __html: pageData?.sections?.[1]?.subtitle || "Whether you need an elegant countertop solution or a rugged mobile device, we have you covered." }} />
+            <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[1]?.title, "Choose the right device for your business") }} />
+            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[1]?.subtitle, "Whether you need an elegant countertop solution or a rugged mobile device, we have you covered.") }} />
           </div>
           
           <div className={styles.compare_grid}>
@@ -281,8 +296,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <section className={styles.guarantee_section}>
         <div className={styles.guarantee_container}>
           <div className={styles.guarantee_header}>
-            <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[2]?.title || "Every Pay10 device. The same guarantee." }} />
-            <p dangerouslySetInnerHTML={{ __html: pageData?.sections?.[2]?.subtitle || "Whether you choose the POS10, P5, or P10 — every device ships with the same core capabilities, the same security standards, and the same Pay10 commitment." }} />
+            <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.title, "Every Pay10 device. The same guarantee.") }} />
+            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.subtitle, "Whether you choose the POS10, P5, or P10 — every device ships with the same core capabilities, the same security standards, and the same Pay10 commitment.") }} />
           </div>
 
           <div className={styles.guarantee_grid}>
@@ -303,8 +318,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         <div className={styles.container}>
           <div className={styles.flow_header}>
             <div className={styles.flow_gradient_block}>
-              <span className={styles.flow_h2} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.title || "Your device is the start." }} />
-              <span className={styles.flow_h3} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[3]?.subtitle || "The ecosystem is what makes it powerful." }} />
+              <span className={styles.flow_h2} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.title, "Your device is the start.") }} />
+              <span className={styles.flow_h3} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.subtitle, "The ecosystem is what makes it powerful.") }} />
             </div>
             <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.description, pageData?.sections?.[3]?.content, "Every Pay10 POS device connects into a complete merchant ecosystem — the Pay10 Biz UAE, the Merchant Portal, instant settlement, and 24/7 human support. It's not a standalone terminal. It's the physical entry point to Pay10's full payment infrastructure.") }} />
           </div>
@@ -328,8 +343,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
       <section className={styles.getting_started}>
         <div className={styles.getting_started_left}>
-          <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.title || "Let's Get You Started" }} />
-          <p className={styles.getting_started_tagline} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.subtitle || "From box to first payment. In 4 steps." }} />
+          <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.title, "Let's Get You Started") }} />
+          <p className={styles.getting_started_tagline} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.subtitle, "From box to first payment. In 4 steps.") }} />
           <p className={styles.getting_started_desc} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.description, pageData?.sections?.[4]?.content, "Pay10 delivers and sets up your device. Here's what happens after it arrives, straight from the device manual.") }} />
         </div>
         
@@ -360,8 +375,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         <span className={styles.combo_ring_small} aria-hidden="true" />
 
         <div className={styles.combo_cta}>
-          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[5]?.title || "Ready to accept payments<br/>the new UAE way?" }} />
-          <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[5]?.subtitle || "Our team delivers, installs, and activates your DQR device. You start accepting payments instantly. Lowest MDR. Same-day settlement. 24/7 human support. CBUAE licensed." }} />
+          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[5]?.title, "Ready to accept payments<br/>the new UAE way?") }} />
+          <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[5]?.subtitle, "Our team delivers, installs, and activates your DQR device. You start accepting payments instantly. Lowest MDR. Same-day settlement. 24/7 human support. CBUAE licensed.") }} />
           <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
         </div>
 
@@ -369,22 +384,14 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
         <div className={styles.combo_download}>
           <h2 className={styles.combo_heading}>Merchant App</h2>
-          <div className={styles.combo_badges}>
-            <a href="#" className={styles.app_badge} aria-label="Download on the App Store">
-              <Icon icon="ic:baseline-apple" width={28} />
-              <div>
-                <span>Download on the</span>
-                <strong>App Store</strong>
-              </div>
+          {isMobile ? (
+            <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
+              <Icon icon="mdi:download" width={18} />
+              <span>Download Now</span>
             </a>
-            <a href="#" className={styles.app_badge} aria-label="Get it on Google Play">
-              <Icon icon="logos:google-play-icon" width={24} />
-              <div>
-                <span>GET IT ON</span>
-                <strong>Google Play</strong>
-              </div>
-            </a>
-          </div>
+          ) : (
+            <Image src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={styles.qr_image} width={140} height={140} />
+          )}
         </div>
       </section>
     </main>

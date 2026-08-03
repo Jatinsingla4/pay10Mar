@@ -1,14 +1,37 @@
 "use client";
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import InteractiveGlobe from "@/app/components/ui/3d/InteractiveGlobe";
 import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
+const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
+const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en";
+const MERCHANT_APPLE_URL = "https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134";
+const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay10.merchant.app";
+
 const SendAbroadClient = ({ pageData = null }) => {
+  const { isMobile } = useResponsive();
+  const consumerQr = pageData?.sections?.[4]?.images?.[0] || "/images/send-abroad/consumer-app-qr.png";
+  const merchantQr = pageData?.sections?.[4]?.images?.[1] || "/images/send-abroad/merchant-app-qr.png";
+
+  const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
+  const [merchantStoreUrl, setMerchantStoreUrl] = useState(MERCHANT_PLAY_URL);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    if (isIOS) {
+      setConsumerStoreUrl(CONSUMER_APPLE_URL);
+      setMerchantStoreUrl(MERCHANT_APPLE_URL);
+    }
+  }, []);
+
   const countriesContent = (
     <div className={Style.countries_box}>
       <h4 className={Style.countries_heading}>7 Countries Live</h4>
@@ -177,26 +200,26 @@ const SendAbroadClient = ({ pageData = null }) => {
           <div className={Style.apps_container} data-animation="opacity-up" data-anim-delay="100">
             <div className={Style.app_type}>
               <h4>Consumer App</h4>
-              <div className={Style.store_buttons}>
-                <a href="https://apps.apple.com/ae/app/pay10-uae/id6739810874" target="_blank" rel="noopener noreferrer">
-                  <img src="/images/foo-app1.svg?v=3" alt="Download Consumer App on the App Store" />
+              {isMobile ? (
+                <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.single_download_btn}>
+                  <Icon icon="mdi:download" width={20} />
+                  <span>Download Now</span>
                 </a>
-                <a href="https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en" target="_blank" rel="noopener noreferrer">
-                  <img src="/images/foo-app2.svg?v=3" alt="Get Consumer App on Google Play" />
-                </a>
-              </div>
+              ) : (
+                <img src={consumerQr} alt="Scan to download the Pay10 Consumer App" className={Style.qr_image} />
+              )}
             </div>
 
             <div className={Style.app_type}>
               <h4>Merchant App</h4>
-              <div className={Style.store_buttons}>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <img src="/images/foo-app1.svg?v=3" alt="Download Merchant App on the App Store" />
+              {isMobile ? (
+                <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.single_download_btn}>
+                  <Icon icon="mdi:download" width={20} />
+                  <span>Download Now</span>
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer">
-                  <img src="/images/foo-app2.svg?v=3" alt="Get Merchant App on Google Play" />
-                </a>
-              </div>
+              ) : (
+                <img src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={Style.qr_image} />
+              )}
             </div>
           </div>
         </section>

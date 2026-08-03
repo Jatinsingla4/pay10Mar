@@ -930,35 +930,11 @@
   }
 }
 
-.app_qr_card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 20px;
+.qr_image {
   background: var(--white);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 12px;
   border-radius: 16px;
-  text-decoration: none;
-  transition: opacity 0.2s;
-
-  &:hover { opacity: 0.85; }
-
-  img {
-    border-radius: 8px;
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    span {
-      font-size: 0.875rem;
-      font-family: 'medium', sans-serif;
-      color: var(--black);
-    }
-  }
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
 .combo_ring_small {
@@ -1041,13 +1017,6 @@
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 
   &:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
-}
-
-.combo_badges {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
 .app_badge {

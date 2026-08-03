@@ -952,42 +952,29 @@
   @include mobile { font-size: 26px; }
 }
 
-.app_download_badges {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  justify-content: center;
+.qr_image {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
-.app_qr_card {
-  display: flex;
-  flex-direction: column;
+.single_download_btn {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 20px;
-  background: var(--white);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
+  gap: 8px;
+  padding: 14px 36px;
+  border-radius: 100px;
+  background: var(--primary-gradient);
+  color: var(--white);
+  font-family: 'semibold', sans-serif;
+  font-size: 16px;
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 
-  &:hover { opacity: 0.85; }
-
-  img {
-    border-radius: 8px;
-  }
-
-  div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    span {
-      font-size: 0.875rem;
-      font-family: 'medium', sans-serif;
-      color: var(--black);
-    }
-  }
+  &:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
 }
 
 .biz_final_cta {

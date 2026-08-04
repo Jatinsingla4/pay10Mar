@@ -3,16 +3,25 @@
 import { useState } from 'react';
 import kfsData from './kfsData';
 import styles from './kfs.module.scss';
-import { sanitizeHtml } from '../lib/sanitizeHtml';
+import { sanitizeHtml, isEmptyHtml } from '../lib/sanitizeHtml';
 
-export default function KfsClient() {
-  const [activeTabName, setActiveTabName] = useState(kfsData[0]?.tabName || '');
+// Each tab maps 1:1 to a CMS section (by index) — a section's `content`
+// overrides the hardcoded legal text below when present, so the CMS can
+// take over a tab without needing a code change.
+const mergeWithCms = (pageData) => kfsData.map((tab, i) => {
+  const cmsContent = pageData?.sections?.[i]?.content;
+  return isEmptyHtml(cmsContent) ? tab : { ...tab, content: cmsContent };
+});
+
+export default function KfsClient({ pageData = null }) {
+  const [tabs] = useState(() => mergeWithCms(pageData));
+  const [activeTabName, setActiveTabName] = useState(tabs[0]?.tabName || '');
 
   const handleTabChange = (tabName) => {
     setActiveTabName(tabName);
   };
 
-  const activeTab = kfsData.find((tab) => tab.tabName === activeTabName) || kfsData[0];
+  const activeTab = tabs.find((tab) => tab.tabName === activeTabName) || tabs[0];
 
   // Wrap table in a responsive div container for horizontal scrolling on mobile
   const processedContent = activeTab?.content
@@ -37,7 +46,7 @@ export default function KfsClient() {
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
         <aside className={styles.sidebar}>
-          {kfsData.map((tab) => {
+          {tabs.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (
               <button

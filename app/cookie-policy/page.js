@@ -1,5 +1,6 @@
 import React from "react";
 import CookiePolicyClient from "./CookiePolicyClient";
+import { fetchPageData } from "../lib/fetchPageData";
 
 export const metadata = {
   title: "Cookie Policy – Pay 10",
@@ -9,6 +10,7 @@ export const metadata = {
   },
 };
 
-export default function CookiePolicyPage() {
-  return <CookiePolicyClient />;
+export default async function CookiePolicyPage() {
+  const pageData = await fetchPageData('cookie-policy');
+  return <CookiePolicyClient pageData={pageData} />;
 }

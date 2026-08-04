@@ -1,5 +1,6 @@
 import React from "react";
 import PrivacyClient from "./PrivacyClient";
+import { fetchPageData } from "../lib/fetchPageData";
 
 export const metadata = {
   title: "Privacy Policy \u2013 Pay 10",
@@ -9,6 +10,7 @@ export const metadata = {
   },
 };
 
-export default function PrivacyPolicyPage() {
-  return <PrivacyClient />;
+export default async function PrivacyPolicyPage() {
+  const pageData = await fetchPageData('privacy-policy');
+  return <PrivacyClient pageData={pageData} />;
 }

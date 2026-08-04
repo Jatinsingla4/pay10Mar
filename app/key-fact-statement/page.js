@@ -1,4 +1,5 @@
 import KfsClient from './KfsClient';
+import { fetchPageData } from '../lib/fetchPageData';
 
 export const metadata = {
   title: "Key Fact Statement \u2013 Pay 10",
@@ -8,10 +9,11 @@ export const metadata = {
   },
 };
 
-export default function KeyFactStatementPage() {
+export default async function KeyFactStatementPage() {
+  const pageData = await fetchPageData('key-facts-statement');
   return (
     <main style={{ backgroundColor: '#ffffff', paddingTop: '80px', paddingBottom: '80px' }}>
-      <KfsClient />
+      <KfsClient pageData={pageData} />
     </main>
   );
 }

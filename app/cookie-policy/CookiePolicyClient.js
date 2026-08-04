@@ -2,8 +2,12 @@
 
 import React from "react";
 import Style from "../privacy-policy/privacy-policy.module.scss";
+import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
 
-const CookiePolicyClient = () => {
+const CookiePolicyClient = ({ pageData = null }) => {
+  const cmsContent = pageData?.sections?.[0]?.content || pageData?.page_description;
+  const hasCmsContent = !isEmptyHtml(cmsContent);
+
   return (
     <main className={Style.mainPriv}>
       <section className={Style.content_section}>
@@ -16,7 +20,10 @@ const CookiePolicyClient = () => {
 
           <div className={Style.content_panel}>
             <div className={Style.contentHtml}>
-
+            {hasCmsContent ? (
+              <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(cmsContent) }} />
+            ) : (
+              <>
               <h2 data-animation="fade-up">Introduction</h2>
               <p data-animation="fade-up">
                 Our website, <a href="https://pay10.ae">https://pay10.ae</a> (&ldquo;the website&rdquo;), uses
@@ -72,7 +79,8 @@ const CookiePolicyClient = () => {
                 If you have questions about this Cookie Policy, contact us at{" "}
                 <a href="mailto:support@pay10.ae">support@pay10.ae</a>.
               </p>
-
+              </>
+            )}
             </div>
           </div>
         </div>

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import tosData from './tosData';
 import styles from './terms_and_conditions.module.scss';
-import { sanitizeHtml } from '../lib/sanitizeHtml';
+import { sanitizeHtml, isEmptyHtml } from '../lib/sanitizeHtml';
 
 // Maps the #hash used by cross-links (e.g. clause 3.2's "Send Abroad
 // Special Terms" link) to the tab it should open — tabs are client-side
@@ -15,8 +15,17 @@ const HASH_TO_TAB = {
   'wps-service': 'WPS Service',
 };
 
-export default function TermsClient() {
-  const [activeTabName, setActiveTabName] = useState(tosData[0]?.tabName || '');
+// Each tab maps 1:1 to a CMS section (by index) — a section's `content`
+// overrides the hardcoded legal text below when present, so the CMS can
+// take over a tab without needing a code change.
+const mergeWithCms = (pageData) => tosData.map((tab, i) => {
+  const cmsContent = pageData?.sections?.[i]?.content;
+  return isEmptyHtml(cmsContent) ? tab : { ...tab, content: cmsContent };
+});
+
+export default function TermsClient({ pageData = null }) {
+  const [tabs] = useState(() => mergeWithCms(pageData));
+  const [activeTabName, setActiveTabName] = useState(tabs[0]?.tabName || '');
 
   useEffect(() => {
     const applyHash = () => {
@@ -34,7 +43,7 @@ export default function TermsClient() {
     if (panel) panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const activeTab = tosData.find((tab) => tab.tabName === activeTabName) || tosData[0];
+  const activeTab = tabs.find((tab) => tab.tabName === activeTabName) || tabs[0];
 
   return (
     <div className={styles.terms_container}>
@@ -44,7 +53,7 @@ export default function TermsClient() {
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
         <aside className={styles.sidebar}>
-          {tosData.map((tab) => {
+          {tabs.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (
               <button

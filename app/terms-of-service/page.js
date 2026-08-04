@@ -1,4 +1,5 @@
 import TermsClient from './TermsClient';
+import { fetchPageData } from '../lib/fetchPageData';
 
 export const metadata = {
   title: "Terms of Service \u2013 Pay 10",
@@ -8,10 +9,11 @@ export const metadata = {
   },
 };
 
-export default function TermsOfServicePage() {
+export default async function TermsOfServicePage() {
+  const pageData = await fetchPageData('terms-of-service');
   return (
     <main style={{ backgroundColor: '#ffffff', paddingTop: '80px', paddingBottom: '80px' }}>
-      <TermsClient />
+      <TermsClient pageData={pageData} />
     </main>
   );
 }

@@ -2,8 +2,12 @@
 
 import React from "react";
 import Style from "./privacy-policy.module.scss";
+import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
 
-const PrivacyClient = () => {
+const PrivacyClient = ({ pageData = null }) => {
+  const cmsContent = pageData?.sections?.[0]?.content || pageData?.page_description;
+  const hasCmsContent = !isEmptyHtml(cmsContent);
+
   return (
     <main className={Style.mainPriv}>
       <section className={Style.content_section}>
@@ -20,7 +24,10 @@ const PrivacyClient = () => {
 
           <div className={Style.content_panel}>
             <div className={Style.contentHtml}>
-
+            {hasCmsContent ? (
+              <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(cmsContent) }} />
+            ) : (
+              <>
             <h2 data-animation="fade-up">About this Policy</h2>
             <p data-animation="fade-up">
               We, Pay Ten Payment Services Provider LLC (&ldquo;Pay10&rdquo;, &ldquo;We&rdquo;, &ldquo;Us&rdquo;, &ldquo;Our&rdquo; or the &ldquo;Company&rdquo;), take Your privacy very seriously. Please read this privacy policy (&ldquo;Privacy Policy&rdquo;) carefully as it contains important information on who We are and how and why We collect, store, use and share Your personal data when You engage with Us through Your use of the Pay10 UAE App, Pay10 Biz UAE App, Our Website, or Our products and services, including Your Pay10 account, Send Abroad, Bill Payment, Pay10 Card, Pay10 WPS Service and any other Pay10 services made available from time to time. This Privacy Policy also explains Your rights in relation to Your personal data and how to contact Us or any regulatory authority if You have any concerns. This Privacy Policy also explains Your rights in relation to Your personal data and how to contact Us or any regulatory authority if You have any concerns.
@@ -458,7 +465,8 @@ const PrivacyClient = () => {
               <li>Email: <a href="mailto:support@pay10.ae">support@pay10.ae</a></li>
               <li>Address: 1004, U-bora Office Tower, Business Bay &ndash; Dubai, UAE</li>
             </ul>
-
+              </>
+            )}
             </div>
           </div>
         </div>

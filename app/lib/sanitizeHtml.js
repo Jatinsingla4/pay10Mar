@@ -4,6 +4,8 @@ const ALLOWED_ATTRIBUTES = {
   '*': ['class', 'style', 'id', 'data-e-type', 'data-id', 'data-settings'],
   a: ['href', 'name', 'target', 'rel'],
   img: ['src', 'srcset', 'alt', 'title', 'width', 'height', 'loading'],
+  td: ['rowspan', 'colspan'],
+  th: ['rowspan', 'colspan'],
 };
 
 /**

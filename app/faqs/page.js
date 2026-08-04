@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 import FaqsClient from './FaqsClient';
+import { fetchPageData } from '../lib/fetchPageData';
 
 export const metadata = {
   title: "Faqs \u2013 Pay 10",
@@ -9,11 +10,12 @@ export const metadata = {
   },
 };
 
-export default function FaqsPage() {
+export default async function FaqsPage() {
+  const pageData = await fetchPageData('faqs');
   return (
     <main style={{ backgroundColor: 'var(--body-bg)', paddingTop: '80px', paddingBottom: '80px' }}>
       <Suspense fallback={<div style={{ textAlign: 'center', padding: '100px 0' }}>Loading FAQs...</div>}>
-        <FaqsClient />
+        <FaqsClient pageData={pageData} />
       </Suspense>
     </main>
   );

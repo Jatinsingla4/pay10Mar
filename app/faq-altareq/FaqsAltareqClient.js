@@ -3,9 +3,25 @@
 import { useState } from 'react';
 import faqData from './faqAltareqData';
 import styles from '../faqs/faqs.module.scss'; // Reuse existing faqs styles
+import { sanitizeHtml } from '../lib/sanitizeHtml';
 
-export default function FaqsAltareqClient() {
-  const [activeTabName, setActiveTabName] = useState(faqData[0]?.tabName || '');
+// Each tab maps 1:1 to a CMS section (by index) — a section's cards
+// (title = question, content = answer HTML) override the hardcoded FAQs
+// below when present, so the CMS can take over a category without a
+// code change. CMS answers are HTML strings (rendered via
+// dangerouslySetInnerHTML below); hardcoded ones are JSX elements.
+const mergeWithCms = (pageData) => faqData.map((tab, i) => {
+  const cards = pageData?.sections?.[i]?.cards;
+  if (!cards?.length) return tab;
+  return {
+    ...tab,
+    faqs: cards.map((c) => ({ question: c.title, answer: c.content || c.description || '' })),
+  };
+});
+
+export default function FaqsAltareqClient({ pageData = null }) {
+  const [tabs] = useState(() => mergeWithCms(pageData));
+  const [activeTabName, setActiveTabName] = useState(tabs[0]?.tabName || '');
   const [openIndex, setOpenIndex] = useState(null);
 
   const handleTabChange = (tabName) => {
@@ -21,7 +37,7 @@ export default function FaqsAltareqClient() {
     }
   };
 
-  const activeTab = faqData.find((tab) => tab.tabName === activeTabName) || faqData[0];
+  const activeTab = tabs.find((tab) => tab.tabName === activeTabName) || tabs[0];
 
   return (
     <div className={styles.faqs_container}>
@@ -30,7 +46,7 @@ export default function FaqsAltareqClient() {
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
         <aside className={styles.sidebar} data-animation="opacity-up" data-anim-delay="100">
-          {faqData.map((tab) => {
+          {tabs.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (
               <button
@@ -101,9 +117,11 @@ export default function FaqsAltareqClient() {
                           margin-bottom: 10px;
                         }
                       `}} />
-                      <div className="answer_rich_text_override">
-                        {faq.answer}
-                      </div>
+                      {typeof faq.answer === 'string' ? (
+                        <div className="answer_rich_text_override" dangerouslySetInnerHTML={{ __html: sanitizeHtml(faq.answer) }} />
+                      ) : (
+                        <div className="answer_rich_text_override">{faq.answer}</div>
+                      )}
                     </div>
                   </div>
                 </div>

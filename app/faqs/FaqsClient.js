@@ -6,23 +6,36 @@ import faqData from './faqData';
 import styles from './faqs.module.scss';
 import { sanitizeHtml } from '../lib/sanitizeHtml';
 
-export default function FaqsClient() {
+// Each tab maps 1:1 to a CMS section (by index) — a section's cards
+// (title = question, content = answer) override the hardcoded FAQs below
+// when present, so the CMS can take over a category without a code change.
+const mergeWithCms = (pageData) => faqData.map((tab, i) => {
+  const cards = pageData?.sections?.[i]?.cards;
+  if (!cards?.length) return tab;
+  return {
+    ...tab,
+    faqs: cards.map((c) => ({ question: c.title, answer: c.content || c.description || '' })),
+  };
+});
+
+export default function FaqsClient({ pageData = null }) {
+  const [tabs] = useState(() => mergeWithCms(pageData));
   const searchParams = useSearchParams();
   const categoryQuery = searchParams.get('category');
 
   const [activeTabName, setActiveTabName] = useState(
-    categoryQuery && faqData.some(tab => tab.tabName === categoryQuery) 
-      ? categoryQuery 
-      : faqData[0]?.tabName || ''
+    categoryQuery && tabs.some(tab => tab.tabName === categoryQuery)
+      ? categoryQuery
+      : tabs[0]?.tabName || ''
   );
   const [openIndex, setOpenIndex] = useState(null);
 
   useEffect(() => {
-    if (categoryQuery && faqData.some(tab => tab.tabName === categoryQuery)) {
+    if (categoryQuery && tabs.some(tab => tab.tabName === categoryQuery)) {
       setActiveTabName(categoryQuery);
       setOpenIndex(null);
     }
-  }, [categoryQuery]);
+  }, [categoryQuery, tabs]);
 
   const handleTabChange = (tabName) => {
     setActiveTabName(tabName);
@@ -37,7 +50,7 @@ export default function FaqsClient() {
     }
   };
 
-  const activeTab = faqData.find((tab) => tab.tabName === activeTabName) || faqData[0];
+  const activeTab = tabs.find((tab) => tab.tabName === activeTabName) || tabs[0];
 
   return (
     <div className={styles.faqs_container}>
@@ -46,7 +59,7 @@ export default function FaqsClient() {
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
         <aside className={styles.sidebar} data-animation="opacity-up" data-anim-delay="100">
-          {faqData.map((tab) => {
+          {tabs.map((tab) => {
             const isActive = tab.tabName === activeTabName;
             return (
               <button

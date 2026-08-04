@@ -9,29 +9,13 @@ import { isEmptyHtml } from "../lib/sanitizeHtml";
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 
-function formatEventDate(start, end) {
+function formatEventDate(start) {
   if (!start) return "Date TBA";
   const startDate = new Date(start);
   const startDay = startDate.getDate();
   const startMonth = startDate.toLocaleString("en-US", { month: "long" });
   const startYear = startDate.getFullYear();
-
-  if (!end) {
-    return `${startDay} ${startMonth} ${startYear}`;
-  }
-
-  const endDate = new Date(end);
-  const endDay = endDate.getDate();
-  const endMonth = endDate.toLocaleString("en-US", { month: "long" });
-  const endYear = endDate.getFullYear();
-
-  if (startYear === endYear) {
-    if (startMonth === endMonth) {
-      return `${startDay}-${endDay} ${startMonth} ${startYear}`;
-    }
-    return `${startDay} ${startMonth} - ${endDay} ${endMonth} ${startYear}`;
-  }
-  return `${startDay} ${startMonth} ${startYear} - ${endDay} ${endMonth} ${endYear}`;
+  return `${startDay} ${startMonth} ${startYear}`;
 }
 
 export default function EventsClient({ initialEvents = [], pageData = null }) {
@@ -89,7 +73,7 @@ export default function EventsClient({ initialEvents = [], pageData = null }) {
                   <div className={Style.events_box_content}>
                     <div className={Style.events_box_headings}>
                       <div className={Style.events_box_meta}>
-                        <h6>{formatEventDate(event.start_date, event.end_date)}</h6>
+                        <h6>{formatEventDate(event.start_date)}</h6>
                         <span
                           className={`${Style.event_tag} ${Style[`event_tag_${status}`]}`}
                         >

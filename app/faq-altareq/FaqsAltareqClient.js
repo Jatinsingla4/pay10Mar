@@ -5,18 +5,40 @@ import faqData from './faqAltareqData';
 import styles from '../faqs/faqs.module.scss'; // Reuse existing faqs styles
 import { sanitizeHtml } from '../lib/sanitizeHtml';
 
-// Each tab maps 1:1 to a CMS section (by index) — a section's cards
+// CMS editors pasting one big block instead of per-card entries: split on
+// "Q: ... A: ..." pairs. Unwraps bold/italic/span markup (rich-text editors
+// love wrapping labels in <strong>/<span>) so "Q:"/"A:" sit next to the
+// newline; keeps other inline tags (links, lists) intact.
+function splitQnA(raw) {
+  if (!raw) return [];
+  const text = raw
+    .replace(/<\/(p|div|li)>/gi, '\n')
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<(p|div|li)[^>]*>/gi, '')
+    .replace(/<\/?(strong|b|em|i|span)[^>]*>/gi, '')
+    .trim();
+
+  return [...text.matchAll(/Q:\s*(.*?)\s*A:\s*([\s\S]*?)(?=\n*Q:|$)/gi)]
+    .map((m) => ({ question: m[1].trim(), answer: m[2].trim() }))
+    .filter((f) => f.question && f.answer);
+}
+
+// Each tab maps 1:1 to a CMS section (by index). A section's `cards`
 // (title = question, content = answer HTML) override the hardcoded FAQs
-// below when present, so the CMS can take over a category without a
-// code change. CMS answers are HTML strings (rendered via
-// dangerouslySetInnerHTML below); hardcoded ones are JSX elements.
+// below when present; otherwise a single `content`/`description` blob with
+// "Q: ... A: ..." pairs is parsed. CMS answers are HTML strings (rendered
+// via dangerouslySetInnerHTML below); hardcoded ones are JSX elements.
 const mergeWithCms = (pageData) => faqData.map((tab, i) => {
-  const cards = pageData?.sections?.[i]?.cards;
-  if (!cards?.length) return tab;
-  return {
-    ...tab,
-    faqs: cards.map((c) => ({ question: c.title, answer: c.content || c.description || '' })),
-  };
+  const section = pageData?.sections?.[i];
+  const cards = section?.cards;
+  if (cards?.length) {
+    return {
+      ...tab,
+      faqs: cards.map((c) => ({ question: c.title, answer: c.content || c.description || '' })),
+    };
+  }
+  const parsed = splitQnA(section?.content || section?.description);
+  return parsed.length ? { ...tab, faqs: parsed } : tab;
 });
 
 export default function FaqsAltareqClient({ pageData = null }) {

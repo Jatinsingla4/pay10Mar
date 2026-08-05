@@ -8,6 +8,7 @@ import GlobalInViewInitializer from "./components/layout/GlobalInViewInitializer
 import CookieConsent from "./components/ui/cookie/CookieConsent";
 import { ResponsiveProvider } from "./contexts/ResponsiveContext";
 import { defaultMetadata } from "./lib/metadata";
+import { fetchPageData } from "./lib/fetchPageData";
 
 export const metadata = defaultMetadata;
 
@@ -18,7 +19,8 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const faqPageData = await fetchPageData('faq', 300); // footer renders on every page — cache 5min
   return (
     <html lang="en">
       <head>
@@ -64,7 +66,7 @@ export default function RootLayout({ children }) {
           <GlobalInViewInitializer />
           <Header />
           {children}
-          <Footer />
+          <Footer faqPageData={faqPageData} />
           <CookieConsent />
         </ResponsiveProvider>
       </body>

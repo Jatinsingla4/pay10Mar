@@ -5,7 +5,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
 import { useResponsive } from '../../contexts/ResponsiveContext'
+import faqData from '../../faqs/faqData'
 import '@/styles/components/_footer.scss'
+
+// FAQ column items carry `?category=X` — X matches a faqData tabName 1:1.
+// If the CMS 'faqs' page has a section title at that same index, it wins.
+function applyFaqCmsLabels(items, faqPageData) {
+  if (!faqPageData?.sections?.length) return items
+  return items.map((item) => {
+    const category = item.href.split('category=')[1]
+    if (!category) return item
+    const tabName = decodeURIComponent(category.replace(/\+/g, ' '))
+    const idx = faqData.findIndex((t) => t.tabName === tabName)
+    const cmsTitle = faqPageData.sections[idx]?.title?.replace(/<[^>]+>/g, '').trim()
+    return cmsTitle ? { ...item, label: cmsTitle } : item
+  })
+}
 
 const footerData = {
   logo: {
@@ -141,7 +156,7 @@ const SocialLinks = () => (
   </div>
 )
 
-const Footer = () => {
+const Footer = ({ faqPageData = null }) => {
   const [openSections, setOpenSections] = useState({})
   const { isMobile, isTablet } = useResponsive()
   const isCollapsed = isMobile || isTablet
@@ -150,8 +165,12 @@ const Footer = () => {
     setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }))
   }, [])
 
+  const columns = footerData.columns.map((col) =>
+    col.key === 'faq' ? { ...col, items: applyFaqCmsLabels(col.items, faqPageData) } : col
+  )
+
   const renderNavLinks = () =>
-    footerData.columns.map((col) => (
+    columns.map((col) => (
       <div key={col.key} className="footer__nav-item">
         {isCollapsed ? (
           <>

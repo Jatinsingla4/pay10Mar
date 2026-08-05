@@ -6,10 +6,10 @@ export const API_HEADERS = {
   'Origin': 'https://pay10d.grapesmobile.com',
 };
 
-export async function fetchPageData(slug) {
+export async function fetchPageData(slug, revalidate = 0) {
   try {
     const res = await fetch(`${API_BASE}/pages/${slug}`, {
-      next: { revalidate: 0 },
+      next: { revalidate },
       headers: API_HEADERS,
     });
     if (!res.ok) return null;

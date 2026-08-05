@@ -202,6 +202,8 @@
 
   ul,
   ol {
+    // global reset.scss sets list-style: none on all <ul> — restore it here
+    // so CMS rich-text lists actually show bullets/numbers.
     padding-left: 20px;
     margin-bottom: 16px;
 
@@ -210,11 +212,20 @@
       line-height: 1.75;
       color: #444444;
       margin-bottom: 8px;
+      list-style: inherit;
 
       @include lessTab {
         font-size: 14px;
       }
     }
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
   }
 
   a {

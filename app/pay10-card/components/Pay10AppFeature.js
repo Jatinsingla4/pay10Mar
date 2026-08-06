@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import styles from "./Pay10AppFeature.module.scss";
+import { sanitizeHtml } from "@/app/lib/sanitizeHtml";
 
 export default function Pay10AppFeature({ data = null }) {
   const defaultFeatures = [
@@ -33,7 +34,7 @@ export default function Pay10AppFeature({ data = null }) {
           
           <p className={styles.description}>
             {data?.content ? (
-               <span dangerouslySetInnerHTML={{ __html: data.content }} />
+               <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(data.content) }} />
             ) : (
               <><strong>How to Request your card:</strong> You request your card digitally thru the Pay10 UAE, and the physical card upon approval is delivered to you.</>
             )}

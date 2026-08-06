@@ -6,7 +6,7 @@ import Image from 'next/image';
 import styles from "./wps.module.scss";
 import { Icon } from "@iconify/react";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
@@ -160,14 +160,18 @@ const WPSPayrollClient = ({ pageData = null }) => {
           }}
         >
           <div className={styles.altareq_hero_content}>
-            <h1 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.page_title) ? pageData.page_title : "UAE's seamless solution<br />for salary compliance." }} />
-            <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.page_description) ? pageData.page_description : "Pay all your employees' salaries digitally: compliant, scalable, and fully powered by Pay10. A CBUAE-licensed WPS provider built for every type of UAE employer and every type of UAE employee." }} />
+            {!isEmptyHtml(pageData?.page_title) && (
+              <h1 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+            )}
+            {!isEmptyHtml(pageData?.page_description) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_description) }} />
+            )}
           </div>
         </div>
       </section>
 
       <ConsumerFeatureSection
-          heading={pageData?.sections?.[0]?.title || "What is the Wage Protection System (WPS)?"}
+          heading={pageData?.sections?.[0]?.title}
           subheading={<span className={styles.grey_text}>{subHeadingText1}</span>}
           points={points1}
           imageSrc={pageData?.sections?.[0]?.images?.[0] || "/images/prod_imports/wps-labor-bubble.png"}
@@ -178,13 +182,15 @@ const WPSPayrollClient = ({ pageData = null }) => {
 
       <section className={styles.who_is_for_section}>
         <div className={styles.who_container}>
-          <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[1]?.title) ? pageData.sections[1].title : "Who is This For?" }} />
+          {!isEmptyHtml(pageData?.sections?.[1]?.title) && (
+            <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[1].title) }} />
+          )}
           
           <div className={styles.who_grid}>
             {/* Employers Column */}
             <div className={styles.who_col}>
               <h3>{employersCard.title}</h3>
-              <p dangerouslySetInnerHTML={{ __html: employersCard.description || employersCard.content }} />
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(employersCard.description || employersCard.content) }} />
               <ul className={styles.feature_list}>
                 {(employersCard.tags || "").split(',').map((t, idx) => (
                   <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
@@ -195,7 +201,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
             {/* Employees Column */}
             <div className={styles.who_col}>
               <h3>{employeesCard.title}</h3>
-              <p dangerouslySetInnerHTML={{ __html: employeesCard.description || employeesCard.content }} />
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(employeesCard.description || employeesCard.content) }} />
               <ul className={styles.feature_list}>
                 {(employeesCard.tags || "").split(',').map((t, idx) => (
                   <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
@@ -208,7 +214,9 @@ const WPSPayrollClient = ({ pageData = null }) => {
 
       <section className={styles.biz_benefits}>
         <div className={styles.benefits_left}>
-          <h2 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[2]?.title) ? pageData.sections[2].title : "What Pay10 WPS offers" }} />
+          {!isEmptyHtml(pageData?.sections?.[2]?.title) && (
+            <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[2].title) }} />
+          )}
           <div className={styles.pill_group}>
             {pillLabels.map((label, i) => (
               <span key={i} className={styles.pill_gradient}>
@@ -231,13 +239,15 @@ const WPSPayrollClient = ({ pageData = null }) => {
 
       <section className={styles.who_is_for_section}>
         <div className={styles.who_container}>
-          <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[3]?.title) ? pageData.sections[3].title : "Banked vs Unbanked Worker Journeys" }} />
+          {!isEmptyHtml(pageData?.sections?.[3]?.title) && (
+            <h2 className={styles.section_title} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[3].title) }} />
+          )}
           
           <div className={styles.who_grid}>
             {/* Banked Employees Column */}
             <div className={styles.who_col}>
               <h3>{bankedCard.title}</h3>
-              <p dangerouslySetInnerHTML={{ __html: bankedCard.description || bankedCard.content }} />
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(bankedCard.description || bankedCard.content) }} />
               <ul className={styles.feature_list}>
                 {(bankedCard.tags || "").split(',').map((t, idx) => (
                   <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
@@ -248,7 +258,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
             {/* Unbanked Employees Column */}
             <div className={styles.who_col}>
               <h3>{unbankedCard.title}</h3>
-              <p dangerouslySetInnerHTML={{ __html: unbankedCard.description || unbankedCard.content }} />
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(unbankedCard.description || unbankedCard.content) }} />
               <ul className={styles.feature_list}>
                 {(unbankedCard.tags || "").split(',').map((t, idx) => (
                   <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
@@ -268,8 +278,12 @@ const WPSPayrollClient = ({ pageData = null }) => {
         </svg>
         <div className={styles.steps_container}>
           <div className={styles.steps_header}>
-            <h2 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[4]?.title) ? pageData.sections[4].title : "Getting started: 6 simple steps" }} />
-            <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[4]?.subtitle) ? pageData.sections[4].subtitle : "Simple onboarding. Faster than you think." }} />
+            {!isEmptyHtml(pageData?.sections?.[4]?.title) && (
+              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[4].title) }} />
+            )}
+            {!isEmptyHtml(pageData?.sections?.[4]?.subtitle) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[4].subtitle) }} />
+            )}
           </div>
           
           <div className={styles.steps_grid}>
@@ -289,8 +303,12 @@ const WPSPayrollClient = ({ pageData = null }) => {
       <section className={styles.comparison_section}>
         <div className={styles.comparison_container}>
           <div className={styles.comparison_header}>
-            <h2 dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[5]?.title) ? pageData.sections[5].title : "Competitive comparison" }} />
-            <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[5]?.subtitle) ? pageData.sections[5].subtitle : "Pay10 is competing against exchange houses and established salary card providers. This table makes the case without naming anyone directly." }} />
+            {!isEmptyHtml(pageData?.sections?.[5]?.title) && (
+              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].title) }} />
+            )}
+            {!isEmptyHtml(pageData?.sections?.[5]?.subtitle) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].subtitle) }} />
+            )}
           </div>
 
           <div className={styles.table_responsive}>
@@ -325,7 +343,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
       </section>
 
       <ConsumerFeatureSection
-          heading={pageData?.sections?.[6]?.title || "Ensuring minimal disruption to your existing salary processing"}
+          heading={pageData?.sections?.[6]?.title}
           subheading={subHeadingText2}
           points={points2}
           imageSrc={pageData?.sections?.[6]?.images?.[0] || "/images/prod_imports/wps-02-bubble.png"}
@@ -339,8 +357,12 @@ const WPSPayrollClient = ({ pageData = null }) => {
         <span className={styles.combo_ring_small} aria-hidden="true" />
 
         <div className={styles.combo_cta}>
-          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[7]?.title) ? pageData.sections[7].title : "Ready To Pay Your Employees The Smarter Way?" }} />
-          <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[7]?.subtitle) ? pageData.sections[7].subtitle : "Contact our sales team we'll handle registration, account setup, and your first salary run." }} />
+          {!isEmptyHtml(pageData?.sections?.[7]?.title) && (
+            <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[7].title) }} />
+          )}
+          {!isEmptyHtml(pageData?.sections?.[7]?.subtitle) && (
+            <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[7].subtitle) }} />
+          )}
           <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
         </div>
 

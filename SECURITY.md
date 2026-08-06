@@ -36,6 +36,14 @@ server by hand.
 2. **Connect the deploy platform** (Render/Netlify/etc.) to this repo so pushes
    auto-deploy. After a repo transfer this connection must be re-authorized.
 
+## Third-party vendors
+
+Every external script/CDN added to the CSP allowlist (`config/csp-config.js`) gets a one-line review here before merging.
+
+| Vendor | Used for | Data shared | Security posture |
+|--------|----------|--------------|-------------------|
+| Cloudflare Turnstile (`challenges.cloudflare.com`) | Bot/spam protection on the contact and partner forms | Visitor IP, browser signals (no PII, no cookies from our site) | Cloudflare — SOC 2 Type II, ISO 27001, GDPR compliant. Token verified server-side in `app/api/proxy/[...path]/route.js`; secret key never exposed to the client. |
+
 ## How to check status manually anytime
 
 ```bash

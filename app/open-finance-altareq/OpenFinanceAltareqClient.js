@@ -134,8 +134,8 @@ const OpenFinanceAltareqClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Real-time Payments via AlTareq") }} />
-          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "Discover new ways to access financial services in your Pay10 UAE with AlTareq, the UAE's open finance initiative.") }} />
+          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />
+          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
         </div>
       </section>
 

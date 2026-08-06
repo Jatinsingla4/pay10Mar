@@ -1,9 +1,0 @@
-# Staging — block entire site (swap with commented block below for production)
-User-agent: *
-Disallow: /
-
-# --- Original (uncomment these lines and comment the two lines above when going live) ---
-# User-agent: *
-# Disallow: /.next/
-# Disallow: /api/
-# Disallow: /coming-soon

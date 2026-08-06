@@ -8,7 +8,7 @@ import MerchantTestimonialVideos from "@/app/components/ui/MerchantTestimonialVi
 import MerchantLogosCTA from "@/app/components/ui/MerchantLogosCTA";
 import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
-import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
@@ -169,8 +169,12 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
           }}
         >
           <div className={styles.altareq_hero_content}>
-            <h1 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "The new way to pay<br />at every counter in the UAE.") }} />
-            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_description, "Three devices. One ecosystem. All connected to the Pay10 Biz App, instant settlement, and 24/7 human support.") }} />
+            {!isEmptyHtml(pageData?.page_title) && (
+              <h1 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+            )}
+            {!isEmptyHtml(pageData?.page_description) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_description) }} />
+            )}
           </div>
         </div>
       </section>
@@ -178,8 +182,12 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <ConsumerFeatureSection
           heading={
             <>
-              <div className={styles.uae_label} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.subtitle, "🇦🇪 UAE FIRST &middot; DYNAMIC QR TECHNOLOGY") }} />
-              <span className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.title, "The UAE's first Dynamic QR POS device.<br/>A new era of in-person payments.") }} />
+              {!isEmptyHtml(pageData?.sections?.[0]?.subtitle) && (
+                <div className={styles.uae_label} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[0].subtitle) }} />
+              )}
+              {!isEmptyHtml(pageData?.sections?.[0]?.title) && (
+                <span className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[0].title) }} />
+              )}
             </>
           }
           subheading={subHeadingText}
@@ -193,8 +201,12 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <section className={styles.compare_section}>
         <div className={styles.container}>
           <div className={styles.compare_header}>
-            <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[1]?.title, "Choose the right device for your business") }} />
-            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[1]?.subtitle, "Whether you need an elegant countertop solution or a rugged mobile device, we have you covered.") }} />
+            {!isEmptyHtml(pageData?.sections?.[1]?.title) && (
+              <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[1].title) }} />
+            )}
+            {!isEmptyHtml(pageData?.sections?.[1]?.subtitle) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[1].subtitle) }} />
+            )}
           </div>
           
           <div className={styles.compare_grid}>
@@ -211,7 +223,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
                 <div className={styles.section_block}>
                   <div className={styles.feature_item}>
                     <span className={styles.lbl}>Best for</span>
-                    <span className={styles.val} dangerouslySetInnerHTML={{ __html: device.bestFor }} />
+                    <span className={styles.val} dangerouslySetInnerHTML={{ __html: sanitizeHtml(device.bestFor) }} />
                   </div>
                   <div className={styles.feature_item}>
                     <span className={styles.lbl}>Design</span>
@@ -296,8 +308,12 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <section className={styles.guarantee_section}>
         <div className={styles.guarantee_container}>
           <div className={styles.guarantee_header}>
-            <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.title, "Every Pay10 device. The same guarantee.") }} />
-            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.subtitle, "Whether you choose the POS10, P5, or P10 — every device ships with the same core capabilities, the same security standards, and the same Pay10 commitment.") }} />
+            {!isEmptyHtml(pageData?.sections?.[2]?.title) && (
+              <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[2].title) }} />
+            )}
+            {!isEmptyHtml(pageData?.sections?.[2]?.subtitle) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[2].subtitle) }} />
+            )}
           </div>
 
           <div className={styles.guarantee_grid}>
@@ -318,10 +334,16 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         <div className={styles.container}>
           <div className={styles.flow_header}>
             <div className={styles.flow_gradient_block}>
-              <span className={styles.flow_h2} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.title, "Your device is the start.") }} />
-              <span className={styles.flow_h3} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.subtitle, "The ecosystem is what makes it powerful.") }} />
+              {!isEmptyHtml(pageData?.sections?.[3]?.title) && (
+                <span className={styles.flow_h2} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[3].title) }} />
+              )}
+              {!isEmptyHtml(pageData?.sections?.[3]?.subtitle) && (
+                <span className={styles.flow_h3} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[3].subtitle) }} />
+              )}
             </div>
-            <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[3]?.description, pageData?.sections?.[3]?.content, "Every Pay10 POS device connects into a complete merchant ecosystem — the Pay10 Biz UAE, the Merchant Portal, instant settlement, and 24/7 human support. It's not a standalone terminal. It's the physical entry point to Pay10's full payment infrastructure.") }} />
+            {!isEmptyHtml(pageData?.sections?.[3]?.description || pageData?.sections?.[3]?.content) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[3].description || pageData.sections[3].content) }} />
+            )}
           </div>
 
           <div className={styles.flow_container}>
@@ -330,7 +352,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
                 <div className={styles.flow_card}>
                   {renderIcon(card.icon, styles.flow_icon, 32)}
                   <h4>{card.title}</h4>
-                  <span dangerouslySetInnerHTML={{ __html: card.desc }} />
+                  <span dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.desc) }} />
                 </div>
                 {idx < flowCards.length - 1 && (
                   <Icon icon="mdi:arrow-right" className={styles.flow_arrow} />
@@ -343,9 +365,15 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
       <section className={styles.getting_started}>
         <div className={styles.getting_started_left}>
-          <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.title, "Let's Get You Started") }} />
-          <p className={styles.getting_started_tagline} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.subtitle, "From box to first payment. In 4 steps.") }} />
-          <p className={styles.getting_started_desc} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[4]?.description, pageData?.sections?.[4]?.content, "Pay10 delivers and sets up your device. Here's what happens after it arrives, straight from the device manual.") }} />
+          {!isEmptyHtml(pageData?.sections?.[4]?.title) && (
+            <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[4].title) }} />
+          )}
+          {!isEmptyHtml(pageData?.sections?.[4]?.subtitle) && (
+            <p className={styles.getting_started_tagline} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[4].subtitle) }} />
+          )}
+          {!isEmptyHtml(pageData?.sections?.[4]?.description || pageData?.sections?.[4]?.content) && (
+            <p className={styles.getting_started_desc} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[4].description || pageData.sections[4].content) }} />
+          )}
         </div>
         
         <div className={styles.getting_started_grid}>
@@ -375,8 +403,12 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         <span className={styles.combo_ring_small} aria-hidden="true" />
 
         <div className={styles.combo_cta}>
-          <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[5]?.title, "Ready to accept payments<br/>the new UAE way?") }} />
-          <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[5]?.subtitle, "Our team delivers, installs, and activates your DQR device. You start accepting payments instantly. Lowest MDR. Same-day settlement. 24/7 human support. CBUAE licensed.") }} />
+          {!isEmptyHtml(pageData?.sections?.[5]?.title) && (
+            <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].title) }} />
+          )}
+          {!isEmptyHtml(pageData?.sections?.[5]?.subtitle) && (
+            <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].subtitle) }} />
+          )}
           <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
         </div>
 

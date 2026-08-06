@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import Style from "./contact.module.scss";
 import { Icon } from "@iconify/react";
 import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
+import Turnstile from "../lib/Turnstile";
+import { getCsrfToken } from "../lib/csrf";
 
 // Hardcoded Google Maps embed URL
 const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.6651841438556!2d55.270962999999995!3d25.1807808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6978338fd387%3A0xb7eeb833237a2ede!2sUbora%20Office%20Tower!5e0!3m2!1sen!2sin!4v1778165481176!5m2!1sen!2sin";
@@ -95,6 +97,7 @@ const ContactClient = ({ pageData = null }) => {
   const [formErrors, setFormErrors] = useState({});
   const [formSubmitStatus, setFormSubmitStatus] = useState(null);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const handleTabChange = (type) => {
     setActiveFormType(type);
@@ -126,6 +129,7 @@ const ContactClient = ({ pageData = null }) => {
       company: activeFormType !== "Channel Partner" ? formData.company_name.trim() : "",
       message: formData.message?.trim() || "",
       type: activeFormType.toLowerCase(),
+      turnstile_token: turnstileToken,
     };
 
     if (activeFormType === "SME Sales" || activeFormType === "Enterprise Sales") {
@@ -147,7 +151,7 @@ const ContactClient = ({ pageData = null }) => {
 
     const response = await fetch("/api/proxy/contact/enquiry", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "X-CSRF-Token": getCsrfToken() },
       body: JSON.stringify(payload),
     });
 
@@ -623,6 +627,8 @@ const ContactClient = ({ pageData = null }) => {
                     </div>
                   </div>
                 )}
+
+                <Turnstile onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} />
 
                 <div style={{ textAlign: "center", marginTop: "16px" }}>
                   <button

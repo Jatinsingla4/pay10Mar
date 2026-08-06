@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import Style from './ConsumerSecuritySection.module.scss';
 import Image from 'next/image';
+import { sanitizeHtml } from '@/app/lib/sanitizeHtml';
 
 const licenseImages = [
   '/images/home/cbuae-logo.png',
@@ -95,7 +96,7 @@ const ConsumerSecuritySection = ({
             className={Style.description_sub} 
             data-animation="opacity-up" 
             data-anim-delay="250"
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}
           />
         )}
 

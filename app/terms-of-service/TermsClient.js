@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import tosData from './tosData';
 import styles from './terms_and_conditions.module.scss';
-import { sanitizeHtml, isEmptyHtml } from '../lib/sanitizeHtml';
+import { sanitizeHtml } from '../lib/sanitizeHtml';
 
 // Maps the #hash used by cross-links (e.g. clause 3.2's "Send Abroad
 // Special Terms" link) to the tab it should open — tabs are client-side
@@ -15,13 +15,11 @@ const HASH_TO_TAB = {
   'wps-service': 'WPS Service',
 };
 
-// Each tab maps 1:1 to a CMS section (by index) — a section's `content`
-// overrides the hardcoded legal text below when present, so the CMS can
-// take over a tab without needing a code change.
-const mergeWithCms = (pageData) => tosData.map((tab, i) => {
-  const cmsContent = pageData?.sections?.[i]?.content;
-  return isEmptyHtml(cmsContent) ? tab : { ...tab, content: cmsContent };
-});
+// Each tab maps 1:1 to a CMS section (by index) — content comes from the CMS.
+const mergeWithCms = (pageData) => tosData.map((tab, i) => ({
+  ...tab,
+  content: pageData?.sections?.[i]?.content || '',
+}));
 
 export default function TermsClient({ pageData = null }) {
   const [tabs] = useState(() => mergeWithCms(pageData));

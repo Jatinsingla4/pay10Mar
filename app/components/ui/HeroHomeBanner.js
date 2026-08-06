@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
 import styles from './HeroHomeBanner.module.scss';
-import { isEmptyHtml } from '../../lib/sanitizeHtml';
+import { isEmptyHtml, sanitizeHtml } from '../../lib/sanitizeHtml';
 
 const defaultDecorations = [
   {
@@ -237,7 +237,7 @@ export default function HeroHomeBanner({
             <div 
               className={styles.titleWrapper} 
               data-anim="title"
-              dangerouslySetInnerHTML={{ __html: description }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }}
             />
           )}
           {ctaLabel && (

@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import styles from "./MerchantAppFeature.module.scss";
+import { sanitizeHtml } from "../../lib/sanitizeHtml";
 
 export default function MerchantAppFeature({
   title = "",
@@ -38,11 +39,11 @@ export default function MerchantAppFeature({
 
         {/* Right Content (Desktop) */}
         <div className={styles.rightContent} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
-          {title && <h2 className={styles.heading} dangerouslySetInnerHTML={{ __html: title }}></h2>}
+          {title && <h2 className={styles.heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}></h2>}
           {subtitle && <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>{subtitle}</h3>}
-          
+
           {content ? (
-            <div className={styles.cms_content} dangerouslySetInnerHTML={{ __html: content }} />
+            <div className={styles.cms_content} dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} />
           ) : (
             <ul className={styles.featuresList}>
               {features.map((feature, index) => (

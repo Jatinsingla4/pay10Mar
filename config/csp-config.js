@@ -12,6 +12,7 @@ function getCspSources() {
     scriptSrc: uniqueSources([
       "'self'",
       "'unsafe-inline'",
+      'https://challenges.cloudflare.com',
       ...(process.env.NODE_ENV === 'development' ? ["'unsafe-eval'"] : []),
       ...parseEnvSources(process.env.CSP_SCRIPT_SRC_EXTRA),
     ]),
@@ -45,6 +46,7 @@ function getCspSources() {
       'https://pcms.pay10.in',
       'https://adminpayd.grapesmobile.com',
       'https://pay10.webhr.co',
+      'https://challenges.cloudflare.com',
       ...parseEnvSources(process.env.CSP_CONNECT_SRC_EXTRA),
     ]),
     frameSrc: uniqueSources([
@@ -52,6 +54,7 @@ function getCspSources() {
       'https://www.google.com',
       'https://maps.google.com',
       'https://pay10.webhr.co',
+      'https://challenges.cloudflare.com',
       ...parseEnvSources(process.env.CSP_FRAME_SRC_EXTRA),
     ]),
   };

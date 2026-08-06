@@ -2,6 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import Style from '../../pay10-uae-app/ConsumerSecuritySection.module.scss';
 import Image from 'next/image';
+import { sanitizeHtml } from '../../lib/sanitizeHtml';
 
 const HomeSecuritySection = ({
   title = "",
@@ -77,11 +78,11 @@ const HomeSecuritySection = ({
         )}
         
         {title && (
-          <h1 className={Style.main_heading} data-animation="opacity-up" data-anim-delay="150" dangerouslySetInnerHTML={{ __html: title }}></h1>
+          <h1 className={Style.main_heading} data-animation="opacity-up" data-anim-delay="150" dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}></h1>
         )}
-        
+
         {content && (
-          <div className={Style.description} data-animation="opacity-up" data-anim-delay="200" style={{ maxWidth: '800px', margin: '0 auto 40px auto' }} dangerouslySetInnerHTML={{ __html: content }} />
+          <div className={Style.description} data-animation="opacity-up" data-anim-delay="200" style={{ maxWidth: '800px', margin: '0 auto 40px auto' }} dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} />
         )}
 
         <div className={Style.certifications} data-animation="opacity-up" data-anim-delay="250">

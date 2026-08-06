@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import InteractiveGlobe from "@/app/components/ui/3d/InteractiveGlobe";
-import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -58,7 +58,7 @@ const SendAbroadClient = ({ pageData = null }) => {
       </div>
 
       {pageData?.sections?.[3]?.content && pageData.sections[3].content !== '<p><br></p>' ? (
-        <div className={Style.countries_para} dangerouslySetInnerHTML={{ __html: pageData.sections[3].content }} />
+        <div className={Style.countries_para} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[3].content) }} />
       ) : (
         <p className={Style.countries_para}>
           140+ countries are expanding. Pay10 Send Abroad is built to reach every corner of the world - because the UAE's 9M+ expatriates come from everywhere. If your country isn't live yet, it's on its way. Download Pay10 and be the first to send when your corridor opens.
@@ -77,8 +77,12 @@ const SendAbroadClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.send_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Your family shouldn't wait <br /> for their money.") }} />
-          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "With Pay10 UAE Send Abroad, your transfer reaches your loved ones the same day - instantly. No days of waiting. No beneficiary delays. Just send, and it's there.") }} />
+          {!isEmptyHtml(pageData?.page_title) && (
+            <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+          )}
+          {!isEmptyHtml(pageData?.page_subtitle || pageData?.page_description) && (
+            <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_subtitle || pageData.page_description) }} />
+          )}
         </div>
       </section>
 
@@ -118,8 +122,8 @@ const SendAbroadClient = ({ pageData = null }) => {
         {/* Section 1: Instant Feature */}
         <div className={Style.grey_subtitle_wrap}>
           <ConsumerFeatureSection
-            heading={pageData?.sections?.[1]?.title || "Instant. Same day.<br />No waiting. No excuses."}
-            subheading={pageData?.sections?.[1]?.subtitle || "Every other way to send money abroad asks you to wait - to add a beneficiary, wait for approval, then wait again for the money to arrive. Pay10 UAE Send Abroad doesn't. When you Send Abroad with Pay10, your transfer moves the moment you confirm it."}
+            heading={pageData?.sections?.[1]?.title}
+            subheading={pageData?.sections?.[1]?.subtitle}
             imageSrc={pageData?.sections?.[1]?.images?.[0] || "/images/prod_imports/send-instant-bubble.png"}
             imageAlt={pageData?.sections?.[1]?.title || "Instant Money Transfer"}
             isReversed={false}
@@ -131,8 +135,8 @@ const SendAbroadClient = ({ pageData = null }) => {
         {/* Section 2: Steps */}
         <section className={Style.steps_section}>
           <div className={Style.steps_header} data-animation="opacity-up">
-            <h2>{pageData?.sections?.[2]?.title || "Four steps. One tap. Money sent."}</h2>
-            <p>{pageData?.sections?.[2]?.subtitle || "Send Abroad is built for the pace of UAE life - fast, secure, and done before you finish your coffee"}</p>
+            <h2>{pageData?.sections?.[2]?.title}</h2>
+            <p>{pageData?.sections?.[2]?.subtitle}</p>
           </div>
           <div className={Style.steps_container}>
             <div className={Style.steps_left} data-animation="opacity-up">
@@ -177,8 +181,8 @@ const SendAbroadClient = ({ pageData = null }) => {
         {/* Section 3: Countries Feature */}
         <div className={Style.grey_subtitle_wrap}>
           <ConsumerFeatureSection
-            heading={pageData?.sections?.[3]?.title || "Where can you Send Abroad today?"}
-            subheading={pageData?.sections?.[3]?.subtitle || "Pay10 UAE Send Abroad is live, growing fast, and on its way to 140+ countries. Check where you can send right now - and where we're headed next."}
+            heading={pageData?.sections?.[3]?.title}
+            subheading={pageData?.sections?.[3]?.subtitle}
             extraContent={
               <>
                 {countriesContent}

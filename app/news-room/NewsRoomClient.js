@@ -5,9 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import styles from "./news-room.module.scss";
-import { isEmptyHtml } from "../lib/sanitizeHtml";
-
-const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
+import { sanitizeHtml } from "../lib/sanitizeHtml";
 
 const FALLBACK_IMAGE = "/images/news_images/news_banner_img.png";
 
@@ -60,8 +58,8 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
       >
         <div className={styles.bannerOverlay} />
         <div className={styles.bannerContent}>
-          <h1 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Press Releases") }} />
-          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, "Stay informed with the latest news, strategic announcements, and media updates directly from the Pay10 ecosystem.") }} />
+          <h1 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />
+          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_subtitle) }} />
         </div>
       </section>
 
@@ -102,7 +100,7 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
                   <h3>{item.title}</h3>
                   <div 
                     className={styles.cardDesc} 
-                    dangerouslySetInnerHTML={{ __html: item.content }} 
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(item.content) }}
                   />
                   <div className={styles.cardFooter}>
                     {item.slug && (

@@ -4,7 +4,7 @@ import React from "react";
 import { Icon } from '@iconify/react';
 import styles from "./ecosystem.module.scss";
 import PartnerForm from "./PartnerForm";
-import { isEmptyHtml } from "../lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "../lib/sanitizeHtml";
 
 // CMS rich-text saves plain-text bullets/descriptions with HTML entities
 // (e.g. "Scan &amp; Pay"). Tags get stripped via regex below, but entities
@@ -105,8 +105,8 @@ const ChannelPartnersClient = ({ pageData = null }) => {
           }}
         >
           <div className={styles.altareq_hero_text}>
-            <h2 dangerouslySetInnerHTML={{ __html: pageData?.page_title || "" }} />
-            <p dangerouslySetInnerHTML={{ __html: pageData?.page_description || "" }} />
+            <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title || "") }} />
+            <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_description || "") }} />
           </div>
         </div>
       </section>
@@ -122,7 +122,7 @@ const ChannelPartnersClient = ({ pageData = null }) => {
 
       <section className={styles.reasons_section}>
         <div className={styles.reasons_header}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.sections?.[0]?.title || "" }} />
+          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.sections?.[0]?.title || "") }} />
         </div>
         <div className={styles.reasons_grid}>
           {reasons.map((r, i) => (
@@ -142,11 +142,11 @@ const ChannelPartnersClient = ({ pageData = null }) => {
 
       <section className={styles.biz_benefits}>
         <div className={styles.benefits_left}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.sections?.[1]?.title || "" }} />
-          <p dangerouslySetInnerHTML={{ __html:
+          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.sections?.[1]?.title || "") }} />
+          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(
             (pageData?.sections?.[1]?.description || pageData?.sections?.[1]?.content || "")
               .replace(/&lt;[^&]*&gt;/g, ' ').replace(/<[^>]*>?/gm, '').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').trim()
-          }} />
+          ) }} />
         </div>
         <div className={styles.benefits_grid}>
           {integrations.map((item) => (
@@ -162,14 +162,14 @@ const ChannelPartnersClient = ({ pageData = null }) => {
 
       <section className={styles.reasons_section}>
         <div className={`${styles.reasons_header} ${styles.reasons_header_narrow}`}>
-          <h2 dangerouslySetInnerHTML={{ __html: pageData?.sections?.[2]?.title || "" }} />
+          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.sections?.[2]?.title || "") }} />
         </div>
         <div className={styles.reasons_grid}>
           {security.map((r, i) => (
             <div key={i} className={styles.reason_card}>
               {renderIcon(r.icon, styles.reason_icon)}
-              <h3 dangerouslySetInnerHTML={{ __html: r.title }} />
-              <p className={styles.reason_desc} dangerouslySetInnerHTML={{ __html: r.desc }} />
+              <h3 dangerouslySetInnerHTML={{ __html: sanitizeHtml(r.title) }} />
+              <p className={styles.reason_desc} dangerouslySetInnerHTML={{ __html: sanitizeHtml(r.desc) }} />
             </div>
           ))}
         </div>
@@ -177,8 +177,8 @@ const ChannelPartnersClient = ({ pageData = null }) => {
 
       <section className={styles.biz_benefits}>
         <div className={styles.benefits_left}>
-          <h2 dangerouslySetInnerHTML={{ __html: (pageData?.sections?.[3]?.title || "").replace(/One integration\.?\s*Every/i, "One integration.<br />Every") }} />
-          <p dangerouslySetInnerHTML={{ __html: !isEmptyHtml(pageData?.sections?.[3]?.description) ? pageData.sections[3].description : (!isEmptyHtml(pageData?.sections?.[3]?.content) ? pageData.sections[3].content : "") }} />
+          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml((pageData?.sections?.[3]?.title || "").replace(/One integration\.?\s*Every/i, "One integration.<br />Every")) }} />
+          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(!isEmptyHtml(pageData?.sections?.[3]?.description) ? pageData.sections[3].description : (!isEmptyHtml(pageData?.sections?.[3]?.content) ? pageData.sections[3].content : "")) }} />
         </div>
         <div className={styles.benefits_grid}>
           {ecosystems.map((item) => (
@@ -202,8 +202,8 @@ const ChannelPartnersClient = ({ pageData = null }) => {
       <section className={styles.apply_section}>
         <div className={styles.apply_container}>
           <div className={styles.apply_left}>
-            <span className={styles.apply_eyebrow} dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.subtitle || "" }} />
-            <h2 dangerouslySetInnerHTML={{ __html: pageData?.sections?.[4]?.title || "" }} />
+            <span className={styles.apply_eyebrow} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.sections?.[4]?.subtitle || "") }} />
+            <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.sections?.[4]?.title || "") }} />
             <p>{formDesc}</p>
             <ul className={styles.apply_bullets}>
               {formBullets.map((b, i) => (

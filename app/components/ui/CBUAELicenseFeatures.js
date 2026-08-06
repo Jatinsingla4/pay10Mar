@@ -1,5 +1,6 @@
 import React from "react";
 import Style from "./CBUAELicenseFeatures.module.scss";
+import { sanitizeHtml } from "../../lib/sanitizeHtml";
 
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -19,7 +20,7 @@ const CBUAELicenseFeatures = ({
     if (!htmlString) return { __html: "" };
     // Replace [gradient]...[/gradient] with a span containing the global gradient-text class
     const parsed = htmlString.replace(/\[gradient\](.*?)\[\/gradient\]/g, '<span class="gradient-text">$1</span>');
-    return { __html: parsed };
+    return { __html: sanitizeHtml(parsed) };
   };
 
   return (
@@ -63,7 +64,7 @@ const CBUAELicenseFeatures = ({
               {/* Hover Overlay */}
               <div className={Style.card_hover_overlay}>
                 {card.content && (
-                  <div className={Style.hover_cms_content} dangerouslySetInnerHTML={{ __html: card.content }} />
+                  <div className={Style.hover_cms_content} dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.content) }} />
                 )}
               </div>
             </div>

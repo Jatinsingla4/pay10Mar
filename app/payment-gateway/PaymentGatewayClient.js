@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Style from "./page.module.scss";
-import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -145,9 +145,11 @@ const PaymentGatewayClient = ({ pageData = null }) => {
           }}
         >
           <div className={Style.altareq_hero_text}>
-            <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "The UAE's most trusted checkout buttons now on your store.") }} />
+            {!isEmptyHtml(pageData?.page_title) && (
+              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+            )}
             {!isEmptyHtml(pageData?.page_subtitle) && (
-              <p dangerouslySetInnerHTML={{ __html: pageData.page_subtitle }} />
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_subtitle) }} />
             )}
           </div>
         </div>
@@ -155,8 +157,12 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
       <section className={Style.centered_text_section}>
         <div className={Style.centered_container}>
-          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.title, "Two powerful ways,<br/>your customers pay online.") }} />
-          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[0]?.subtitle, "Add Pay10's payment methods to your checkout in minutes: a Dynamic QR button and a Pay by Bank option, giving your customers the fastest, most trusted ways to pay online in the UAE.") }} />
+          {!isEmptyHtml(pageData?.sections?.[0]?.title) && (
+            <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[0].title) }} />
+          )}
+          {!isEmptyHtml(pageData?.sections?.[0]?.subtitle) && (
+            <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[0].subtitle) }} />
+          )}
         </div>
       </section>
 
@@ -172,7 +178,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
               </div>
               <div className={Style.card_header}>
                 <h3>{card.title}</h3>
-                <span className={Style.card_badge} dangerouslySetInnerHTML={{ __html: card.badge }} />
+                <span className={Style.card_badge} dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.badge) }} />
               </div>
               <p className={Style.card_desc}>{card.desc}</p>
 
@@ -190,7 +196,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
                 </ul>
               </div>
 
-              <div className={Style.card_footer} dangerouslySetInnerHTML={{ __html: card.footer }} />
+              <div className={Style.card_footer} dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.footer) }} />
             </div>
           ))}
         </div>
@@ -198,8 +204,12 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
       <section className={Style.centered_text_section}>
         <div className={Style.centered_container}>
-          <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.title, "From checkout button to<br/>confirmed order,<br/>here's exactly what happens.") }} />
-          <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[2]?.subtitle, "Two different journeys. The same outcome: a completed payment, settled to your account today.") }} />
+          {!isEmptyHtml(pageData?.sections?.[2]?.title) && (
+            <h2 className={Style.centered_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[2].title) }} />
+          )}
+          {!isEmptyHtml(pageData?.sections?.[2]?.subtitle) && (
+            <p className={Style.centered_paragraph} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[2].subtitle) }} />
+          )}
         </div>
       </section>
 
@@ -207,7 +217,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <div className={Style.journey_list_wrapper}>
           {/* DQR Journey */}
           <div className={Style.journey_column}>
-            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[3]?.title || "PAY WITH PAY10: DQR JOURNEY"}</h3>
+            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[3]?.title}</h3>
             <div className={Style.journey_steps}>
               {dqrSteps.map((step, idx) => (
                 <div key={idx} className={Style.step_item}>
@@ -224,7 +234,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
           {/* TPP Journey */}
           <div className={Style.journey_column}>
-            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[4]?.title || "PAY BY BANK: TPP JOURNEY"}</h3>
+            <h3 className={Style.journey_col_heading}>{pageData?.sections?.[4]?.title}</h3>
             <div className={Style.journey_steps}>
               {tppSteps.map((step, idx) => (
                 <div key={idx} className={Style.step_item}>
@@ -243,8 +253,8 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
       <section className={Style.benefits_section}>
         <div className={Style.centered_container}>
-          <h2 className={Style.centered_heading}>{pageData?.sections?.[5]?.title || "Every Pay10 merchant gets the same unbeatable deal."}</h2>
-          <p className={Style.centered_paragraph}>{pageData?.sections?.[5]?.subtitle || "The benefits below apply to every merchant using Pay10's Payment Gateway, regardless of size, volume, or industry."}</p>
+          <h2 className={Style.centered_heading}>{pageData?.sections?.[5]?.title}</h2>
+          <p className={Style.centered_paragraph}>{pageData?.sections?.[5]?.subtitle}</p>
         </div>
 
         <div className={Style.benefits_grid_wrapper}>
@@ -267,7 +277,9 @@ const PaymentGatewayClient = ({ pageData = null }) => {
         <span className={Style.combo_ring_small} aria-hidden="true" />
 
         <div className={Style.combo_cta}>
-          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[6]?.subtitle, "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients: tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.") }} />
+          {!isEmptyHtml(pageData?.sections?.[6]?.subtitle) && (
+            <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[6].subtitle) }} />
+          )}
           <Link href="/contact-us?type=Enterprise+Sales" className={Style.combo_btn}>Enterprise Sales</Link>
         </div>
 

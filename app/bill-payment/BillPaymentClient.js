@@ -3,7 +3,7 @@
 import React from 'react';
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
@@ -120,10 +120,10 @@ const BillPaymentClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.bill_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Never miss a bill. <br /> Never switch apps again.") }} />
-          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "All your UAE bills (utilities, telecom, transport, and gift cards) paid from one place. No more juggling apps, portals, or queues.") }} />
+          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />
+          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
           <p className={Style.slogan}>
-            {pageData?.banner_text || "Why Pay, When You Can Pay10"}
+            {pageData?.banner_text}
           </p>
         </div>
       </section>
@@ -164,7 +164,7 @@ const BillPaymentClient = ({ pageData = null }) => {
                 extraContent={
                   <>
                     {showRawContent && (
-                      <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                      <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }} />
                     )}
                     {hardcodedExtras[index] || null}
                   </>

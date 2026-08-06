@@ -3,28 +3,6 @@
 import React from "react";
 import Style from "../privacy-policy/privacy-policy.module.scss";
 
-// Fallback rows, used only when the CMS has no cards yet for this section.
-const DEFAULT_ROWS = [
-  { num: "1", name: "Add Money/ Top-up", desc: "Via AlTareq (open banking)", items: [["Top-up Fees", "AED 0"]] },
-  { num: "2", name: "Withdrawal", desc: "Withdraw money from the Pay10 app to any UAE Bank Account", items: [["Upto 5 in a calendar month", "AED 0"], ["6th & above in a calendar month", "AED 5.00"]] },
-  { num: "3", name: "Customer- Send/Request Money (P2P)", desc: "Request or Send funds from/to another Pay10 user", items: [["Transfer Fees", "AED 0"]] },
-  { num: "4", name: "Send Abroad", desc: "International Money Transfer", items: [["Transfer Fees", "Varies by destination country, amount & mode selected. Real-time exchange rate & fees is displayed in app, before initiating the transfer"]] },
-  {
-    num: "5", name: "Bill Payment", desc: "Bill Payments for Utility, Transport, Telecom services", items: [
-      ["Du Pre-Paid", "AED 0"], ["Du Post-Paid", "AED 0"], ["e& Post-Paid", "AED 0"], ["e& Pre-Paid", "AED 0"],
-      ["NOL Top-Up", "AED 0"], ["Mawaqif", "AED 0"], ["Salik Voucher", "AED 0"], ["ADDC", "AED 0"], ["AADC", "AED 0"],
-      ["FEWA", "AED 3 charged by biller"], ["e& Internet Broadband", "AED 0"], ["Lootah Gas", "AED 7 charged by biller"],
-      ["Ajman Sewerage", "AED 2 charged by biller"],
-    ]
-  },
-  {
-    num: "6", name: "Card", desc: "Subscription for a Physical Pay10 Jaywan card", items: [
-      ["Card Issuing", "AED 35.00"], ["Card Replacement", "AED 35.00"], ["ATM Withdrawal", "AED 3.00"],
-      ["ATM Declined", "AED 3.00"], ["ATM PIN setting", "AED 3.00"], ["App PIN setting", "AED 0"],
-    ]
-  },
-];
-
 // CMS cards store each charge type's line items as plain text, one
 // "label: amount" pair per line — the CMS rich-text editor flattens real
 // <table> markup on save, so a table can't be authored there directly.
@@ -42,15 +20,13 @@ const parseItems = (text) => {
 };
 
 const SocClient = ({ pageData = null }) => {
-  const cards = pageData?.sections?.[0]?.cards;
-  const rows = cards?.length
-    ? cards.map((c, i) => ({
-        num: String(i + 1),
-        name: c.title,
-        desc: c.subtitle || "",
-        items: parseItems(c.content || c.description),
-      }))
-    : DEFAULT_ROWS;
+  const cards = pageData?.sections?.[0]?.cards || [];
+  const rows = cards.map((c, i) => ({
+    num: String(i + 1),
+    name: c.title,
+    desc: c.subtitle || "",
+    items: parseItems(c.content || c.description),
+  }));
 
   return (
     <main className={Style.mainPriv}>

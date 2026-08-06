@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./SuperAppSection.module.scss";
+import { sanitizeHtml } from "../../lib/sanitizeHtml";
 
 export default function SuperAppSection({
   title = "",
@@ -32,7 +33,7 @@ export default function SuperAppSection({
         >
           <div className={styles.leftCardContent}>
             <div className={styles.mainText}>
-              <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>
+              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}></h2>
             </div>
           </div>
         </div>

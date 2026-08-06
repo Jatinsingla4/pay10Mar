@@ -3,6 +3,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import styles from "./Pay10AppFeature.module.scss";
+import { sanitizeHtml } from "@/app/lib/sanitizeHtml";
 
 export default function Pay10WPSFeature({ data = null }) {
   const defaultFeatures = [
@@ -24,7 +25,7 @@ export default function Pay10WPSFeature({ data = null }) {
           <h2 className={styles.heading}>{data?.title || "Pay10 Card - WPS"}</h2>
 
           {data?.content ? (
-            <div className={styles.description} dangerouslySetInnerHTML={{ __html: data.content }} />
+            <div className={styles.description} dangerouslySetInnerHTML={{ __html: sanitizeHtml(data.content) }} />
           ) : (
             <>
               <p className={styles.description}>

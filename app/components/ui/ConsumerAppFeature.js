@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import styles from "./ConsumerAppFeature.module.scss";
+import { sanitizeHtml } from "../../lib/sanitizeHtml";
 
 export default function ConsumerAppFeature({
   title = "",
@@ -25,11 +26,11 @@ export default function ConsumerAppFeature({
       <div className={styles.container}>
         {/* Left Content */}
         <div className={styles.leftContent} data-animation="fade-up">
-          {title && <h2 className={styles.heading} dangerouslySetInnerHTML={{ __html: title }}></h2>}
+          {title && <h2 className={styles.heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}></h2>}
           {subtitle && <h3 className={styles.subheading} style={{ color: 'var(--black)' }}>{subtitle}</h3>}
-          
+
           {content ? (
-            <div className={styles.cms_content} dangerouslySetInnerHTML={{ __html: content }} />
+            <div className={styles.cms_content} dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} />
           ) : (
             <ul className={styles.featuresList}>
               {features.map((feature, index) => (

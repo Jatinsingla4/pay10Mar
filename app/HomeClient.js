@@ -14,6 +14,7 @@ import MerchantAppFeature from './components/ui/MerchantAppFeature';
 import HomeSecuritySection from './components/ui/HomeSecuritySection';
 import MerchantTestimonialVideos from './components/ui/MerchantTestimonialVideos';
 import MerchantLogosCTA from './components/ui/MerchantLogosCTA';
+import { sanitizeHtml } from './lib/sanitizeHtml';
 
 import React from "react";
 import gsap from "gsap";
@@ -174,7 +175,7 @@ export default function HomeClient({ pageData = null }) {
         return (
           <div key={idx} style={{ padding: '40px', textAlign: 'center' }}>
             {section.title && <h2>{section.title}</h2>}
-            {section.content && <div dangerouslySetInnerHTML={{ __html: section.content }} />}
+            {section.content && <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(section.content) }} />}
             {section.image && <img src={section.image} alt={section.title} style={{ maxWidth: '100%', height: 'auto', marginTop: '20px' }} />}
           </div>
         );

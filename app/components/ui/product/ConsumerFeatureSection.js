@@ -1,5 +1,6 @@
 import React from 'react';
 import Style from './ConsumerFeatureSection.module.scss';
+import { sanitizeHtml } from '@/app/lib/sanitizeHtml';
 
 const ConsumerFeatureSection = ({
   heading,
@@ -37,7 +38,7 @@ const ConsumerFeatureSection = ({
               className={Style.extra_content} 
               data-animation="opacity-up" 
               data-anim-delay="250"
-              dangerouslySetInnerHTML={{ __html: extraContent }}
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(extraContent) }}
             />
           ) : extraContent ? (
             <div 

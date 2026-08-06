@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Style from "./page.module.scss";
-import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -105,15 +105,15 @@ const MerchantPortalClient = ({ pageData = null }) => {
         }}
       >
         <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_title, "Your business data.<br />One portal. Full control.") }} />
-          <p dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description, "A dedicated merchant portal with your own secure credentials giving you complete visibility of transactions, settlements, VAT reports, and live API integration with your ERP system.") }} />
+          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />
+          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
         </div>
       </section>
       
       <section className={Style.biz_benefits}>
         <div className={Style.benefits_left}>
-          <h2>{pageData?.sections?.[0]?.title || "Connect Pay10 to how your business already runs."}</h2>
-          <p>{pageData?.sections?.[0]?.subtitle || "The Pay10 Merchant Portal integrates directly with your ERP system via API so your payment data, settlement records, and transaction history flow automatically into the tools your finance team already uses. No manual exports. No reconciliation headaches."}</p>
+          <h2>{pageData?.sections?.[0]?.title}</h2>
+          <p>{pageData?.sections?.[0]?.subtitle}</p>
         </div>
         <div className={Style.benefits_grid}>
           {apiBenefits.map((item) => (
@@ -130,16 +130,16 @@ const MerchantPortalClient = ({ pageData = null }) => {
       <section className={Style.api_integration}>
         <div className={Style.api_content}>
           <div className={Style.api_left}>
-            <h2>{pageData?.sections?.[1]?.title || "Your Settlements. In Your ERP. The Moment They Happen."}</h2>
-            <p>{pageData?.sections?.[1]?.subtitle || "Pay10's REST API connects your merchant portal directly to your ERP so settlement data, transaction records, and VAT figures sync automatically, without anyone lifting a finger. No spreadsheets. No manual entry. No end-of-day reconciliation panic."}</p>
+            <h2>{pageData?.sections?.[1]?.title}</h2>
+            <p>{pageData?.sections?.[1]?.subtitle}</p>
           </div>
         </div>
       </section>
 
       <section className={Style.enterprise_section}>
         <div className={Style.enterprise_header}>
-          <h2>{pageData?.sections?.[2]?.title || "Complex operations deserve a payment partner who gets it."}</h2>
-          <p>{pageData?.sections?.[2]?.subtitle || "For enterprise merchants, Pay10 goes beyond the standard portal. Our team has the expertise and capability to design, build, and deliver custom integrations tailored to your ERP infrastructure, your operational hierarchy, and your reporting requirements."}</p>
+          <h2>{pageData?.sections?.[2]?.title}</h2>
+          <p>{pageData?.sections?.[2]?.subtitle}</p>
         </div>
         
         <div className={Style.enterprise_cards_wrapper}>
@@ -158,8 +158,8 @@ const MerchantPortalClient = ({ pageData = null }) => {
       
       <section className={Style.biz_benefits}>
         <div className={Style.benefits_left}>
-          <h2>{pageData?.sections?.[3]?.title || "Everything you need to manage your payments in one login."}</h2>
-          <p>{pageData?.sections?.[3]?.subtitle || "Your Pay10 Merchant Portal credentials are set up by our team and handed directly to you. Login once and your entire payments operation is visible, manageable, and in your control."}</p>
+          <h2>{pageData?.sections?.[3]?.title}</h2>
+          <p>{pageData?.sections?.[3]?.subtitle}</p>
         </div>
         <div className={Style.benefits_grid}>
           {portalCards.map((item) => (
@@ -181,8 +181,8 @@ const MerchantPortalClient = ({ pageData = null }) => {
 
       <section className={Style.reasons_section}>
         <div className={Style.reasons_header}>
-          <h2>{pageData?.sections?.[4]?.title || "Why Pay10 merchants never look back."}</h2>
-          <p>{pageData?.sections?.[4]?.subtitle || "Five benefits that no other business solutions App, POS DQR Device, and Portal Dashboard platform in the UAE offers together for every merchant, at every scale."}</p>
+          <h2>{pageData?.sections?.[4]?.title}</h2>
+          <p>{pageData?.sections?.[4]?.subtitle}</p>
         </div>
         <div className={Style.reasons_list}>
           {reasonsCards.map((item, index) => (
@@ -207,7 +207,7 @@ const MerchantPortalClient = ({ pageData = null }) => {
         <span className={Style.combo_ring_small} aria-hidden="true" />
 
         <div className={Style.combo_cta}>
-          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: firstNonEmptyHtml(pageData?.sections?.[5]?.subtitle, pageData?.sections?.[5]?.title, "Pay10 has the in-house expertise and capability to build custom integrations for enterprise clients tailored to your ERP, your data architecture, and your operational structure. If your business has complex requirements, our enterprise team is ready to scope it with you.") }} />
+          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.sections?.[5]?.subtitle, pageData?.sections?.[5]?.title)) }} />
           <Link href="/contact-us?type=Enterprise+Sales" className={Style.combo_btn}>Enterprise Sales</Link>
         </div>
 

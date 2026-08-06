@@ -3,15 +3,13 @@
 import { useState } from 'react';
 import kfsData from './kfsData';
 import styles from './kfs.module.scss';
-import { sanitizeHtml, isEmptyHtml } from '../lib/sanitizeHtml';
+import { sanitizeHtml } from '../lib/sanitizeHtml';
 
-// Each tab maps 1:1 to a CMS section (by index) — a section's `content`
-// overrides the hardcoded legal text below when present, so the CMS can
-// take over a tab without needing a code change.
-const mergeWithCms = (pageData) => kfsData.map((tab, i) => {
-  const cmsContent = pageData?.sections?.[i]?.content;
-  return isEmptyHtml(cmsContent) ? tab : { ...tab, content: cmsContent };
-});
+// Each tab maps 1:1 to a CMS section (by index) — content comes from the CMS.
+const mergeWithCms = (pageData) => kfsData.map((tab, i) => ({
+  ...tab,
+  content: pageData?.sections?.[i]?.content || '',
+}));
 
 export default function KfsClient({ pageData = null }) {
   const [tabs] = useState(() => mergeWithCms(pageData));

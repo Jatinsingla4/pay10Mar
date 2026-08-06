@@ -3,7 +3,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Style from "./ConsumerHero.module.scss";
-import { isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 
 const ConsumerHero = ({ 
   title = "", 
@@ -32,7 +32,7 @@ const ConsumerHero = ({
         <div className={`${Style.hero_banner} ${!bgImage ? Style.fallback_gradient : ''}`}>
           <div className={Style.hero_banner_text}>
             {title && (
-              <h1 className={Style.headline} data-animation="opacity-up" dangerouslySetInnerHTML={{ __html: title }}></h1>
+              <h1 className={Style.headline} data-animation="opacity-up" dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}></h1>
             )}
           </div>
         </div>
@@ -44,10 +44,10 @@ const ConsumerHero = ({
             <span className={Style.intro_label}>{eyebrow}</span>
           )}
           {hasSubtitle && (
-            <h2 className={Style.intro_heading} dangerouslySetInnerHTML={{ __html: subtitle }}></h2>
+            <h2 className={Style.intro_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(subtitle) }}></h2>
           )}
           {hasDescription && (
-            <div className={Style.intro_para} dangerouslySetInnerHTML={{ __html: description }}></div>
+            <div className={Style.intro_para} dangerouslySetInnerHTML={{ __html: sanitizeHtml(description) }}></div>
           )}
         </div>
       )}

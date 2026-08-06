@@ -7,6 +7,23 @@ const WWW_HOST = 'www.pay10.ae';
 
 const SKIP_HOSTS = new Set(['localhost', '127.0.0.1']);
 
+// --- CSRF (double-submit cookie) ---
+// No login/session exists on this site, so there's nothing to bind a
+// synchronizer token to. A double-submit cookie needs no server-side
+// storage: the client can only echo the token back in a header if it can
+// read our cookie, which a cross-origin page cannot do.
+const CSRF_COOKIE = 'csrf_token';
+
+function ensureCsrfCookie(request, response) {
+  if (!request.cookies.get(CSRF_COOKIE)) {
+    response.cookies.set(CSRF_COOKIE, crypto.randomUUID(), {
+      sameSite: 'strict',
+      secure: process.env.NODE_ENV === 'production',
+      path: '/',
+    });
+  }
+}
+
 // --- Rate limiting for public, unauthenticated API routes ---
 // This app runs as a single long-lived `next start` process (confirmed —
 // not serverless/edge functions), so an in-memory store is correctly
@@ -45,6 +62,11 @@ function isRateLimited(ip) {
 }
 
 function getClientIp(request) {
+  // Netlify's edge sets this itself from the real TCP connection — a client
+  // can't forge it the way it can prepend a fake hop to x-forwarded-for.
+  const netlifyIp = request.headers.get('x-nf-client-connection-ip');
+  if (netlifyIp) return netlifyIp.trim();
+
   const forwardedFor = request.headers.get('x-forwarded-for');
   if (forwardedFor) {
     return forwardedFor.split(',')[0].trim();
@@ -70,17 +92,23 @@ export function proxy(request) {
   const hostname = hostHeader.split(':')[0].toLowerCase();
 
   if (!hostname || SKIP_HOSTS.has(hostname) || hostname.endsWith('.local')) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    ensureCsrfCookie(request, response);
+    return response;
   }
 
   if (hostname !== APEX_HOST) {
-    return NextResponse.next();
+    const response = NextResponse.next();
+    ensureCsrfCookie(request, response);
+    return response;
   }
 
   const url = request.nextUrl.clone();
   url.hostname = WWW_HOST;
   url.protocol = 'https';
-  return NextResponse.redirect(url, 308);
+  const response = NextResponse.redirect(url, 308);
+  ensureCsrfCookie(request, response);
+  return response;
 }
 
 export const config = {

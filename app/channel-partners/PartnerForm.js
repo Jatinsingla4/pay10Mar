@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import styles from "./ecosystem.module.scss";
+import Turnstile from "../lib/Turnstile";
+import { getCsrfToken } from "../lib/csrf";
 
 const API_URL = "/api/proxy/partners";
 
@@ -22,6 +24,7 @@ export default function PartnerForm() {
   const [status, setStatus] = useState("idle");
   const [successMsg, setSuccessMsg] = useState("");
   const [serverError, setServerError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -49,7 +52,7 @@ export default function PartnerForm() {
     try {
       const res = await fetch(API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": getCsrfToken() },
         body: JSON.stringify({
           name: form.name,
           company_name: form.company_name,
@@ -58,6 +61,7 @@ export default function PartnerForm() {
           phone: form.phone,
           monthly_transaction_volume: form.monthly_transaction_volume,
           integration_type: form.integration_type,
+          turnstile_token: turnstileToken,
         }),
       });
 
@@ -222,6 +226,8 @@ export default function PartnerForm() {
           Thank you! We&apos;ll be in touch soon.
         </div>
       )}
+
+      <Turnstile onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} />
 
       <button type="submit" className={styles.submit_btn} disabled={status === "loading"}>
         {status === "loading" ? (

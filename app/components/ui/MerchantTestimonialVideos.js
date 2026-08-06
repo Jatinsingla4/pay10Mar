@@ -2,6 +2,7 @@
 import React, { useRef, useState } from 'react';
 import Style from './MerchantTestimonialVideos.module.scss';
 import Image from 'next/image';
+import { sanitizeHtml } from '../../lib/sanitizeHtml';
 
 const MuteIcon = () => (
   <svg viewBox="0 0 24 24">
@@ -66,8 +67,8 @@ const MerchantTestimonialVideos = ({
       <div className={Style.container}>
 
         <div className={Style.textContent} data-animation="fade-up">
-          {title && <h2 dangerouslySetInnerHTML={{ __html: title }}></h2>}
-          {content && <div dangerouslySetInnerHTML={{ __html: content }}></div>}
+          {title && <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}></h2>}
+          {content && <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }}></div>}
         </div>
 
         <div className={Style.videosGrid}>

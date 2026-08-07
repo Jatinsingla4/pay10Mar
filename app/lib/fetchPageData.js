@@ -3,7 +3,7 @@ const API_KEY = process.env.BACKEND_AUTH_KEY;
 
 export const API_HEADERS = {
   'X-Api-Key': API_KEY,
-  'Origin': 'https://dapipay10.grapesmobile.com',
+  'Origin': API_BASE.replace('/api', ''),
 };
 
 export async function fetchPageData(slug, revalidate = 0) {

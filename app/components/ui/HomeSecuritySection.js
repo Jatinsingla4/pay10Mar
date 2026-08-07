@@ -82,7 +82,7 @@ const HomeSecuritySection = ({
         )}
 
         {content && (
-          <div className={Style.description} data-animation="opacity-up" data-anim-delay="200" style={{ maxWidth: '800px', margin: '0 auto 40px auto' }} dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} />
+          <div className={Style.description} data-animation="opacity-up" data-anim-delay="200" style={{ maxWidth: '830px', margin: '0 auto 40px auto' }} dangerouslySetInnerHTML={{ __html: sanitizeHtml(content) }} />
         )}
 
         <div className={Style.certifications} data-animation="opacity-up" data-anim-delay="250">

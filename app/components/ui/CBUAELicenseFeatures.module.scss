@@ -1,5 +1,13 @@
 @import "../../../styles/globals/mixin";
 
+// ponytail: sacrificial first rule - Turbopack's dev CSS bundler injects a stray
+// BOM before this file's first rule, breaking its selector. Keep this as rule #1
+// so the real layout rules below aren't the ones silently losing their padding.
+// Drop this once the Turbopack/Next.js bug is fixed upstream.
+._bom_workaround_keep_first {
+  display: none;
+}
+
 .feature_grid_section {
   width: 100%;
   padding: 80px 56px;

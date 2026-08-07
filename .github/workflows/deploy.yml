@@ -1,0 +1,23 @@
+name: Deploy staging
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/html/dpay1
+            git pull origin master
+            npm install
+            npm run build
+            pm2 restart dpay1-staging

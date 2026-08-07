@@ -64,6 +64,7 @@ const ALLOWED_ORIGINS = new Set([
   'https://www.pay10.ae',
   'https://pay10.ae',
   'https://pay10-ae.onrender.com',
+  'https://dpay10.grapesmobile.com',
 ]);
 
 export async function GET(request, { params }) {

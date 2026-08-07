@@ -4,6 +4,7 @@
 
 .heroBanner {
   height: 785px;
+  max-height: calc(100vh - 120px);
   background-image: var(--bg-desktop, url("/images/contact_images/contact-banner.jpg"));
   background-repeat: no-repeat;
   background-position: center top;
@@ -15,12 +16,14 @@
     // Match the desktop image's own aspect ratio (4321x2359) here too, so
     // `cover` never has to crop top/bottom at the upper end of this range.
     height: auto;
+    max-height: none;
     aspect-ratio: 4321 / 2359;
     background-position: center center;
   }
 
   @include mobile {
     height: auto;
+    max-height: none;
     aspect-ratio: 3001 / 5337;
     background-image: var(--bg-mobile, url("/images/contact_images/contact-banner-mobile.png"));
     background-position: center center;

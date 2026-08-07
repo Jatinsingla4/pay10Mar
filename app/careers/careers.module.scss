@@ -2,7 +2,6 @@
 
 .careers {
     width: 100%;
-    margin: 0 auto;
 }
 
 // Structure copied from AboutBanner (app/components/ui/about/AboutBanner.module.scss)
@@ -10,7 +9,9 @@
 // offsets, so the title reliably shows and centers at every screen size.
 .careersHeroBanner {
   width: 100%;
-  height: 90vh;
+  aspect-ratio: 16 / 9;
+  min-height: 600px;
+  max-height: calc(100vh - 120px);
   background-image: var(--bg-desktop);
   background-size: cover;
   background-position: center;
@@ -26,7 +27,7 @@
     height: 100%;
     display: flex;
     align-items: flex-start;
-    padding-top: 140px;
+    padding-top: 64px;
     justify-content: center;
     position: relative;
     z-index: 2;
@@ -60,7 +61,7 @@
 
 @media only screen and (max-width: 1200px) {
   .careersHeroBanner .banner_svg {
-    padding-top: 120px;
+    padding-top: 64px;
   }
 }
 
@@ -83,6 +84,8 @@
     // (3001x5337) means cover never has to crop either axis, at any
     // viewport width.
     height: auto;
+    min-height: unset;
+    max-height: none;
     aspect-ratio: 3001 / 5337;
     border-radius: 0;
     background-image: var(--bg-mobile, var(--bg-desktop));

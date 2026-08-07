@@ -30,7 +30,7 @@ const VisionMissionClient = ({ pageData }) => {
       <div className={Style.bg_circle_wrapper}>
         {sections.map((section, idx) => {
           const isEven = idx % 2 === 0;
-          const wrapperClass = idx === 0 ? `${Style.wrapper} ${Style.first_wrapper}` : (idx === sections.length - 1 ? `${Style.wrapper} ${Style.last_wrapper}` : Style.wrapper);
+          const wrapperClass = idx === sections.length - 1 ? `${Style.wrapper} ${Style.last_wrapper}` : Style.wrapper;
           const innerClass = isEven ? Style.vision_second_section : `${Style.vision_second_section} ${Style.bottom_section}`;
           
           return (

@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Style from "./contact.module.scss";
 import { Icon } from "@iconify/react";
 import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
-import Turnstile from "../lib/Turnstile";
+import Recaptcha from "../lib/Recaptcha";
 import { getCsrfToken } from "../lib/csrf";
 
 // Hardcoded Google Maps embed URL
@@ -99,7 +99,7 @@ const ContactClient = ({ pageData = null }) => {
   const [formErrors, setFormErrors] = useState({});
   const [formSubmitStatus, setFormSubmitStatus] = useState(null);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
-  const [turnstileToken, setTurnstileToken] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState("");
 
   const handleTabChange = (type) => {
     setActiveFormType(type);
@@ -193,7 +193,7 @@ const ContactClient = ({ pageData = null }) => {
       company: activeFormType !== "Channel Partner" ? formData.company_name.trim() : getChannelPartnerCompany(),
       message: formData.message?.trim() || buildFallbackMessage(),
       type: activeFormType.toLowerCase(),
-      turnstile_token: turnstileToken,
+      recaptcha_token: recaptchaToken,
     };
 
     if (activeFormType === "SME Sales" || activeFormType === "Enterprise Sales") {
@@ -308,7 +308,7 @@ const ContactClient = ({ pageData = null }) => {
       return;
     }
 
-    if (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken) {
+    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
       setFormSubmitStatus("error");
       setFormSubmitMessage("Please complete the security check above before submitting.");
       return;
@@ -734,7 +734,7 @@ const ContactClient = ({ pageData = null }) => {
                   </div>
                 )}
 
-                <Turnstile onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} />
+                <Recaptcha onVerify={setRecaptchaToken} onExpire={() => setRecaptchaToken("")} />
 
                 <div style={{ textAlign: "center", marginTop: "16px" }}>
                   <button

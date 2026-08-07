@@ -3,10 +3,7 @@ import { NextResponse } from 'next/server';
 const API_BASE = process.env.NEXT_PUBLIC_API;
 const API_KEY = process.env.BACKEND_AUTH_KEY;
 const TURNSTILE_SECRET_KEY = process.env.TURNSTILE_SECRET_KEY;
-
-// Paths that require a verified Turnstile token — public lead-gen forms with
-// no other bot defense besides the per-IP rate limit in proxy.js.
-const CAPTCHA_PATHS = new Set(['contact/enquiry', 'partners']);
+const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -51,6 +48,30 @@ async function verifyTurnstileToken(token, ip) {
   const data = await result.json();
   return data.success === true;
 }
+
+async function verifyRecaptchaToken(token, ip) {
+  if (!RECAPTCHA_SECRET_KEY) return true; // not configured (e.g. local dev) — skip
+  if (!token) return false;
+
+  const body = new URLSearchParams({ secret: RECAPTCHA_SECRET_KEY, response: token });
+  if (ip) body.append('remoteip', ip);
+
+  const result = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'content-type': 'application/x-www-form-urlencoded' },
+    body,
+  });
+  const data = await result.json();
+  return data.success === true;
+}
+
+// Paths that require a verified captcha token — public lead-gen forms with
+// no other bot defense besides the per-IP rate limit in proxy.js. Each path
+// names its own token field and verifier, since forms use different providers.
+const CAPTCHA_CONFIG = {
+  'contact/enquiry': { field: 'recaptcha_token', verify: verifyRecaptchaToken },
+  partners: { field: 'turnstile_token', verify: verifyTurnstileToken },
+};
 
 // Every backend path this proxy is allowed to forward to. Add new entries
 // here deliberately when a new frontend feature needs a new endpoint —
@@ -125,15 +146,16 @@ async function handleProxy(request, params) {
         || request.headers.get('x-real-ip')
         || undefined;
       const contentType = request.headers.get('content-type') || '';
+      const captcha = CAPTCHA_CONFIG[endpointPath];
 
       if (contentType.includes('multipart/form-data') || contentType.includes('application/x-www-form-urlencoded')) {
         // Read and re-create FormData so it works reliably in Next.js
         const incoming = await request.formData();
 
-        if (CAPTCHA_PATHS.has(endpointPath)) {
-          const token = incoming.get('turnstile_token');
-          incoming.delete('turnstile_token');
-          if (!(await verifyTurnstileToken(token, requestIp))) {
+        if (captcha) {
+          const token = incoming.get(captcha.field);
+          incoming.delete(captcha.field);
+          if (!(await captcha.verify(token, requestIp))) {
             return NextResponse.json({ status: false, message: 'Verification failed. Please try again.' }, { status: 400 });
           }
           const validationError = validatePayload(endpointPath, Object.fromEntries(incoming.entries()));
@@ -151,16 +173,16 @@ async function handleProxy(request, params) {
         // JSON or other body
         const text = await request.text();
 
-        if (CAPTCHA_PATHS.has(endpointPath)) {
+        if (captcha) {
           let payload;
           try {
             payload = JSON.parse(text);
           } catch {
             return NextResponse.json({ status: false, message: 'Invalid request body' }, { status: 400 });
           }
-          const token = payload.turnstile_token;
-          delete payload.turnstile_token;
-          if (!(await verifyTurnstileToken(token, requestIp))) {
+          const token = payload[captcha.field];
+          delete payload[captcha.field];
+          if (!(await captcha.verify(token, requestIp))) {
             return NextResponse.json({ status: false, message: 'Verification failed. Please try again.' }, { status: 400 });
           }
           const validationError = validatePayload(endpointPath, payload);

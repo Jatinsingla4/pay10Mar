@@ -77,8 +77,7 @@ const ContactClient = ({ pageData = null }) => {
   });
   const [formSubmitting, setFormSubmitting] = useState(false);
 
-  // Form state holding all possible fields across 4 forms
-  const [formData, setFormData] = useState({
+  const EMPTY_FORM_DATA = {
     name: "",
     email: "",
     mobile: "",
@@ -92,8 +91,11 @@ const ContactClient = ({ pageData = null }) => {
     emirate: "",
     company_website: "",
     partnership_model: "",
-  });
-  
+  };
+
+  // Form state holding all possible fields across 4 forms
+  const [formData, setFormData] = useState(EMPTY_FORM_DATA);
+
   const [formErrors, setFormErrors] = useState({});
   const [formSubmitStatus, setFormSubmitStatus] = useState(null);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
@@ -101,10 +103,10 @@ const ContactClient = ({ pageData = null }) => {
 
   const handleTabChange = (type) => {
     setActiveFormType(type);
+    setFormData(EMPTY_FORM_DATA);
     setFormErrors({});
     setFormSubmitStatus(null);
     setFormSubmitMessage("");
-    // We optionally keep formData intact or reset it. Keeping it prevents losing data on misclick.
   };
 
   // Form validation functions
@@ -114,11 +116,73 @@ const ContactClient = ({ pageData = null }) => {
     return "";
   };
 
-  const validateEmail = (email) => {
-    if (!email || email.trim() === "") return "Email is required";
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) return "Please enter a valid email address";
+  const validateCountry = (country) => {
+    if (!country || country.trim() === "") return "Country is required";
+    if (!/^[a-zA-Z\s'-]+$/.test(country)) return "Country should only contain letters";
     return "";
+  };
+
+  const validateEmail = (email) => {
+    const trimmed = (email || "").trim();
+    if (!trimmed) return "Email is required";
+    if (/\s/.test(trimmed)) return "Email must not contain spaces";
+    if (trimmed.includes("..")) return "Email must not contain consecutive dots";
+    const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(trimmed)) return "Please enter a valid email address";
+    return "";
+  };
+
+  // International phone number: optional leading +, 7-15 digits total (E.164
+  // range) — accepts any country's mobile/landline, not just UAE.
+  const validateMobile = (mobile) => {
+    const cleaned = (mobile || "").trim();
+    if (!cleaned) return "Mobile number is required";
+    if (!/^\+?\d{7,15}$/.test(cleaned)) {
+      return "Please enter a valid mobile number";
+    }
+    return "";
+  };
+
+  // Confirms the value is a real, well-formed URL (defaulting to https:// if
+  // no scheme given) with a domain that has a TLD.
+  const validateWebsite = (url) => {
+    const cleaned = (url || "").trim();
+    if (!cleaned) return "Website is required";
+    try {
+      const withScheme = /^https?:\/\//i.test(cleaned) ? cleaned : `https://${cleaned}`;
+      const { hostname } = new URL(withScheme);
+      if (!/\.[a-z]{2,}$/i.test(hostname)) return "Please enter a valid website URL";
+      return "";
+    } catch {
+      return "Please enter a valid website URL";
+    }
+  };
+
+  // The backend requires a non-empty `message` on every enquiry type, but only
+  // General Inquiry has a message textarea - the other three forms collect
+  // their own fields instead, so build a summary from those to send in its place.
+  const buildFallbackMessage = () => {
+    if (activeFormType === "SME Sales" || activeFormType === "Enterprise Sales") {
+      const parts = [`Position: ${formData.position.trim()}`, `Location: ${formData.location.trim()}`, `Industry: ${formData.industry.trim()}`];
+      if (activeFormType === "Enterprise Sales") parts.push(`Company Size: ${formData.company_size}`);
+      return `${activeFormType} inquiry - ${parts.join(", ")}`;
+    }
+    if (activeFormType === "Channel Partner") {
+      return `Channel Partner inquiry - Country: ${formData.country.trim()}, Emirate: ${formData.emirate.trim()}, Website: ${formData.company_website.trim()}, Partnership Model: ${formData.partnership_model}`;
+    }
+    return "";
+  };
+
+  // Channel Partner has no company-name field - the backend still requires
+  // `company` to be non-empty, so fall back to the website's own domain.
+  const getChannelPartnerCompany = () => {
+    const website = formData.company_website.trim();
+    try {
+      const withScheme = /^https?:\/\//i.test(website) ? website : `https://${website}`;
+      return new URL(withScheme).hostname.replace(/^www\./, "");
+    } catch {
+      return website;
+    }
   };
 
   const submitContactForm = async (mobileValue) => {
@@ -126,8 +190,8 @@ const ContactClient = ({ pageData = null }) => {
       name: formData.name.trim(),
       email: formData.email.trim(),
       phone: mobileValue.trim(),
-      company: activeFormType !== "Channel Partner" ? formData.company_name.trim() : "",
-      message: formData.message?.trim() || "",
+      company: activeFormType !== "Channel Partner" ? formData.company_name.trim() : getChannelPartnerCompany(),
+      message: formData.message?.trim() || buildFallbackMessage(),
       type: activeFormType.toLowerCase(),
       turnstile_token: turnstileToken,
     };
@@ -172,9 +236,8 @@ const ContactClient = ({ pageData = null }) => {
     const emailError = validateEmail(formData.email);
     if (emailError) errors.email = emailError;
 
-    if (!formData.mobile || formData.mobile.trim() === "") {
-      errors.mobile = "Mobile number is required";
-    }
+    const mobileError = validateMobile(formData.mobile);
+    if (mobileError) errors.mobile = mobileError;
 
     if (activeFormType !== "Channel Partner") {
       if (!formData.company_name || formData.company_name.trim() === "") {
@@ -199,9 +262,11 @@ const ContactClient = ({ pageData = null }) => {
     }
 
     if (activeFormType === "Channel Partner") {
-      if (!formData.country.trim()) errors.country = "Country is required";
+      const countryError = validateCountry(formData.country);
+      if (countryError) errors.country = countryError;
       if (!formData.emirate.trim()) errors.emirate = "Emirate/Locality is required";
-      if (!formData.company_website.trim()) errors.company_website = "Website is required";
+      const websiteError = validateWebsite(formData.company_website);
+      if (websiteError) errors.company_website = websiteError;
       if (!formData.partnership_model) errors.partnership_model = "Please select a partnership model";
     }
 
@@ -214,6 +279,9 @@ const ContactClient = ({ pageData = null }) => {
     if (name === "mobile") {
       value = value.replace(/[^\d+]/g, "");
       if (value.indexOf("+") > 0) value = value.replace(/\+/g, "");
+    }
+    if (name === "country") {
+      value = value.replace(/[^a-zA-Z\s'-]/g, "");
     }
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (formErrors[name]) setFormErrors((prev) => ({ ...prev, [name]: "" }));
@@ -237,6 +305,12 @@ const ContactClient = ({ pageData = null }) => {
       // We clear any existing global submit messages so they don't linger.
       setFormSubmitStatus(null);
       setFormSubmitMessage("");
+      return;
+    }
+
+    if (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && !turnstileToken) {
+      setFormSubmitStatus("error");
+      setFormSubmitMessage("Please complete the security check above before submitting.");
       return;
     }
 
@@ -441,6 +515,9 @@ const ContactClient = ({ pageData = null }) => {
                       className={`${Style.formInput} ${formErrors.name ? Style.formInputError : ""}`}
                       value={formData.name}
                       onChange={handleInputChange}
+                      required
+                      maxLength={100}
+                      aria-invalid={!!formErrors.name}
                     />
                     {formErrors.name && <span className={Style.formError}>{formErrors.name}</span>}
                   </div>
@@ -452,6 +529,9 @@ const ContactClient = ({ pageData = null }) => {
                       className={`${Style.formInput} ${formErrors.email ? Style.formInputError : ""}`}
                       value={formData.email}
                       onChange={handleInputChange}
+                      required
+                      maxLength={254}
+                      aria-invalid={!!formErrors.email}
                     />
                     {formErrors.email && <span className={Style.formError}>{formErrors.email}</span>}
                   </div>
@@ -470,6 +550,8 @@ const ContactClient = ({ pageData = null }) => {
                       onKeyDown={handleMobileKeyDown}
                       maxLength={15}
                       inputMode="numeric"
+                      required
+                      aria-invalid={!!formErrors.mobile}
                     />
                     {formErrors.mobile && <span className={Style.formError}>{formErrors.mobile}</span>}
                   </div>
@@ -483,6 +565,9 @@ const ContactClient = ({ pageData = null }) => {
                         className={`${Style.formInput} ${formErrors.company_name ? Style.formInputError : ""}`}
                         value={formData.company_name}
                         onChange={handleInputChange}
+                        required
+                        maxLength={150}
+                        aria-invalid={!!formErrors.company_name}
                       />
                       {formErrors.company_name && <span className={Style.formError}>{formErrors.company_name}</span>}
                     </div>
@@ -495,6 +580,9 @@ const ContactClient = ({ pageData = null }) => {
                         className={`${Style.formInput} ${formErrors.country ? Style.formInputError : ""}`}
                         value={formData.country}
                         onChange={handleInputChange}
+                        required
+                        maxLength={100}
+                        aria-invalid={!!formErrors.country}
                       />
                       {formErrors.country && <span className={Style.formError}>{formErrors.country}</span>}
                     </div>
@@ -514,6 +602,9 @@ const ContactClient = ({ pageData = null }) => {
                         className={`${Style.formInput} ${formErrors.position ? Style.formInputError : ""}`}
                         value={formData.position}
                         onChange={handleInputChange}
+                        required
+                        maxLength={100}
+                        aria-invalid={!!formErrors.position}
                       />
                       {formErrors.position && <span className={Style.formError}>{formErrors.position}</span>}
                     </div>
@@ -525,6 +616,9 @@ const ContactClient = ({ pageData = null }) => {
                         className={`${Style.formInput} ${formErrors.location ? Style.formInputError : ""}`}
                         value={formData.location}
                         onChange={handleInputChange}
+                        required
+                        maxLength={100}
+                        aria-invalid={!!formErrors.location}
                       />
                       {formErrors.location && <span className={Style.formError}>{formErrors.location}</span>}
                     </div>
@@ -541,6 +635,9 @@ const ContactClient = ({ pageData = null }) => {
                         className={`${Style.formInput} ${formErrors.industry ? Style.formInputError : ""}`}
                         value={formData.industry}
                         onChange={handleInputChange}
+                        required
+                        maxLength={100}
+                        aria-invalid={!!formErrors.industry}
                       />
                       {formErrors.industry && <span className={Style.formError}>{formErrors.industry}</span>}
                     </div>
@@ -577,6 +674,9 @@ const ContactClient = ({ pageData = null }) => {
                           className={`${Style.formInput} ${formErrors.emirate ? Style.formInputError : ""}`}
                           value={formData.emirate}
                           onChange={handleInputChange}
+                          required
+                          maxLength={100}
+                          aria-invalid={!!formErrors.emirate}
                         />
                         {formErrors.emirate && <span className={Style.formError}>{formErrors.emirate}</span>}
                       </div>
@@ -588,6 +688,9 @@ const ContactClient = ({ pageData = null }) => {
                           className={`${Style.formInput} ${formErrors.company_website ? Style.formInputError : ""}`}
                           value={formData.company_website}
                           onChange={handleInputChange}
+                          required
+                          maxLength={200}
+                          aria-invalid={!!formErrors.company_website}
                         />
                         {formErrors.company_website && <span className={Style.formError}>{formErrors.company_website}</span>}
                       </div>
@@ -622,6 +725,9 @@ const ContactClient = ({ pageData = null }) => {
                         className={`${Style.formTextarea} ${formErrors.message ? Style.formTextareaError : ""}`}
                         value={formData.message}
                         onChange={handleInputChange}
+                        required
+                        maxLength={2000}
+                        aria-invalid={!!formErrors.message}
                       ></textarea>
                       {formErrors.message && <span className={Style.formError}>{formErrors.message}</span>}
                     </div>

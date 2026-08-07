@@ -9,6 +9,7 @@
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+  border-radius: 2rem;
   position: relative;
   overflow: hidden;
 
@@ -19,6 +20,7 @@
     max-height: none;
     aspect-ratio: 4321 / 2359;
     background-position: center center;
+    border-radius: 16px;
   }
 
   @include mobile {
@@ -27,6 +29,7 @@
     aspect-ratio: 3001 / 5337;
     background-image: var(--bg-mobile, url("/images/contact_images/contact-banner-mobile.png"));
     background-position: center center;
+    border-radius: 0;
   }
 }
 

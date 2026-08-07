@@ -95,14 +95,14 @@
     color: var(--white);
     display: flex;
     align-items: center;
-    padding: 6px 12px;
-    border-radius: 6px;
+    padding: 10px 20px;
+    border-radius: 8px;
     text-decoration: none;
-    gap: 8px;
-    min-width: 130px;
+    gap: 10px;
+    min-width: 165px;
 
     .iconWrapper {
-      font-size: 20px;
+      font-size: 28px;
       display: flex;
     }
 
@@ -112,15 +112,15 @@
 
       .smallText {
         font-family: 'regular', sans-serif;
-        font-size: 8px;
+        font-size: 10px;
         line-height: 1;
-        margin-bottom: 2px;
+        margin-bottom: 3px;
         text-transform: uppercase;
       }
 
       .largeText {
         font-family: 'bold', sans-serif;
-        font-size: 14px;
+        font-size: 17px;
         line-height: 1;
       }
     }

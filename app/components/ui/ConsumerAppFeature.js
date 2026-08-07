@@ -43,7 +43,7 @@ export default function ConsumerAppFeature({
           )}
 
           <div className={styles.storeBadges}>
-            <a href="#" className={styles.badge} aria-label="Download on the App Store">
+            <a href="https://apps.apple.com/ae/app/pay10-uae/id6739810874" target="_blank" rel="noopener noreferrer" className={styles.badge} aria-label="Download on the App Store">
               <span className={styles.iconWrapper}>
                 <Icon icon="ic:baseline-apple" />
               </span>
@@ -52,8 +52,8 @@ export default function ConsumerAppFeature({
                 <span className={styles.largeText}>App Store</span>
               </div>
             </a>
-            
-            <a href="#" className={styles.badge} aria-label="Get it on Google Play">
+
+            <a href="https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en" target="_blank" rel="noopener noreferrer" className={styles.badge} aria-label="Get it on Google Play">
               <span className={styles.iconWrapper}>
                 <Icon icon="logos:google-play-icon" />
               </span>

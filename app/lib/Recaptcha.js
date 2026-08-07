@@ -21,8 +21,18 @@ export default function Recaptcha({ onVerify, onExpire }) {
   };
 
   useEffect(() => {
-    renderWidget();
+    if (!siteKey) return;
+    // The script may already be cached/preloaded by the time this mounts, so
+    // next/script's onReady can fire before or after this — poll instead of
+    // relying on it alone.
+    const interval = setInterval(() => {
+      if (window.grecaptcha?.render) {
+        clearInterval(interval);
+        renderWidget();
+      }
+    }, 200);
     return () => {
+      clearInterval(interval);
       if (widgetIdRef.current !== null && window.grecaptcha?.reset) {
         window.grecaptcha.reset(widgetIdRef.current);
       }

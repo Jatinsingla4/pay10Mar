@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import styles from "./ecosystem.module.scss";
-import Turnstile from "../lib/Turnstile";
+import Recaptcha from "../lib/Recaptcha";
 import { getCsrfToken } from "../lib/csrf";
 
 const API_URL = "/api/proxy/partners";
@@ -24,7 +24,7 @@ export default function PartnerForm() {
   const [status, setStatus] = useState("idle");
   const [successMsg, setSuccessMsg] = useState("");
   const [serverError, setServerError] = useState("");
-  const [turnstileToken, setTurnstileToken] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState("");
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -61,7 +61,7 @@ export default function PartnerForm() {
           phone: form.phone,
           monthly_transaction_volume: form.monthly_transaction_volume,
           integration_type: form.integration_type,
-          turnstile_token: turnstileToken,
+          recaptcha_token: recaptchaToken,
         }),
       });
 
@@ -227,7 +227,7 @@ export default function PartnerForm() {
         </div>
       )}
 
-      <Turnstile onVerify={setTurnstileToken} onExpire={() => setTurnstileToken("")} />
+      <Recaptcha onVerify={setRecaptchaToken} onExpire={() => setRecaptchaToken("")} />
 
       <button type="submit" className={styles.submit_btn} disabled={status === "loading"}>
         {status === "loading" ? (

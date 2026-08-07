@@ -2,7 +2,7 @@
 
 .where_we_score_new {
   width: 100%;
-  margin: 160px 0 0 0;
+  margin: 80px 0 0 0;
   padding: 4rem 2rem;
   background: var(--primary-gradient);
   border-radius: 1.5rem;
@@ -90,7 +90,7 @@
 // Media queries for responsiveness
 @media only screen and (max-width: 991px) {
   .where_we_score_new {
-    margin: 112px 0 0 0;
+    margin: 80px 0 0 0;
     .score_container {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;

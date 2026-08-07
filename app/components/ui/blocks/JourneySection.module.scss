@@ -3,12 +3,12 @@
 .wrapper {
   width: 100%;
   padding: 0px 56px;
-  margin: 80px 0;
+  margin: 0 0 80px;
   @include large {
     padding: 0 32px;
   }
   @include tab {
-    margin: 56px 0;
+    margin: 0 0 56px;
     padding: 0px 16px;
   }
 }

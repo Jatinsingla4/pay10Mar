@@ -2,7 +2,9 @@
 
 .about_banner {
     width: 100%;
-    height: 90vh;
+    aspect-ratio: 16 / 9;
+    min-height: 600px;
+    max-height: calc(100vh - 120px);
     background-image: var(--bg-desktop, url("/images/about_images/about-us-banner.jpg"));
     background-size: cover;
     background-position: center;
@@ -101,6 +103,8 @@
     // ratio (3001x5337) means cover never has to crop either axis, at any
     // viewport width.
     height: auto;
+    min-height: 0;
+    max-height: none;
     aspect-ratio: 3001 / 5337;
     border-radius: 0;
     background-image: var(--bg-mobile, url('/images/prod_imports/about-us-hero-mobile.png'));

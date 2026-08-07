@@ -114,8 +114,8 @@ async function handleProxy(request, params) {
       method: request.method,
       headers: {
         'X-Api-Key': API_KEY,
-        'Origin': API_BASE.replace('/api', ''),
-        'Referer': API_BASE.replace('/api', ''),
+        'Origin': process.env.SITE_ORIGIN,
+        'Referer': process.env.SITE_ORIGIN,
       },
       cache: 'no-store',
     };

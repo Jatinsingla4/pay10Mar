@@ -3,7 +3,7 @@ const API_KEY = process.env.BACKEND_AUTH_KEY;
 
 export const API_HEADERS = {
   'X-Api-Key': API_KEY,
-  'Origin': API_BASE.replace('/api', ''),
+  'Origin': process.env.SITE_ORIGIN,
 };
 
 export async function fetchPageData(slug, revalidate = 0) {

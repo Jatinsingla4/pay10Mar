@@ -97,7 +97,7 @@ const AboutClient = ({ apiData }) => {
             />
           )}
 
-          <div className={`${Style.wrapper} ${Style.wrapper_last}`}>
+          <div className={Style.wrapper}>
             {(dreamBigHeading || dreamBigDesc) && (
               <PowerToDreamSection
                 imgPrimary={dreamBigImgPrimary}

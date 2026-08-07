@@ -20,7 +20,7 @@
       height: 100%;
       display: flex;
       align-items: flex-start;
-      padding-top: 80px;
+      padding-top: 40px;
       justify-content: center;
       position: relative;
       z-index: 2;
@@ -63,7 +63,7 @@
   @media only screen and (max-width: 1200px) {
     .about_banner {
       .banner_svg {
-        padding-top: 70px;
+        padding-top: 40px;
       }
       .banner_content {
         transform: none;

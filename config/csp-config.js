@@ -13,6 +13,8 @@ function getCspSources() {
       "'self'",
       "'unsafe-inline'",
       'https://challenges.cloudflare.com',
+      'https://www.google.com',
+      'https://www.gstatic.com',
       ...(process.env.NODE_ENV === 'development' ? ["'unsafe-eval'"] : []),
       ...parseEnvSources(process.env.CSP_SCRIPT_SRC_EXTRA),
     ]),

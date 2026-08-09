@@ -59,6 +59,8 @@ export default async function CareersPage() {
         <div className={styles.jobs_box} data-animation="fade-up" data-anim-delay="300">
           <iframe
             src="https://pay10.webhr.co/hr/careers/"
+            title="Pay10 job openings"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
             style={{ marginTop: "0px", marginLeft: "0px", width: "100%", height: "600px" }}
             frameBorder="0"
             marginHeight="0"

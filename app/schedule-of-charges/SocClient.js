@@ -31,7 +31,7 @@ const SocClient = ({ pageData = null }) => {
   return (
     <main className={Style.mainPriv}>
       <section className={Style.content_section}>
-        <h1 className={Style.title} data-animation="fade-up">SCHEDULE OF CHARGES</h1>
+        <h1 className={Style.title} data-animation="fade-up">{pageData?.page_title || "Schedule of Charges"}</h1>
 
         <div className={Style.layout}>
           <aside className={Style.sidebar} data-animation="fade-up">

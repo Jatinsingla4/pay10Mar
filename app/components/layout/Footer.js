@@ -243,7 +243,7 @@ const Footer = ({ faqPageData = null }) => {
         <div className="footer__bottom-container">
           <div className="footer__address footer__address--en">
             <span>Copyright © 2026</span>
-            <span>Pay Ten Payment Services Provider LLC is licensed by the Central Bank of the UAE, U-Bora Office Tower, Office 1004,</span>
+            <span>Pay10 Payment Services Provider LLC is licensed by the Central Bank of the UAE, U-Bora Office Tower, Office 1004,</span>
             <span>Business Bay, Dubai, United Arab Emirates</span>
           </div>
         </div>

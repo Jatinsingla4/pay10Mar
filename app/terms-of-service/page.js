@@ -12,7 +12,7 @@ export const metadata = {
 export default async function TermsOfServicePage() {
   const pageData = await fetchPageData('terms-of-service');
   return (
-    <main style={{ backgroundColor: '#ffffff', paddingTop: '80px', paddingBottom: '80px' }}>
+    <main style={{ backgroundColor: '#ffffff' }}>
       <TermsClient pageData={pageData} />
     </main>
   );

@@ -45,7 +45,7 @@ export default function TermsClient({ pageData = null }) {
 
   return (
     <div className={styles.terms_container}>
-      <h1 className={styles.title} data-animation="fade-up">TERMS OF SERVICE</h1>
+      <h1 className={styles.title} data-animation="fade-up">{pageData?.page_title || "Terms of Service"}</h1>
 
 
       <div className={styles.layout}>
@@ -66,13 +66,13 @@ export default function TermsClient({ pageData = null }) {
         </aside>
 
         {/* Right Content Panel */}
-        <main className={styles.content_panel}>
+        <div className={styles.content_panel}>
           <div
             key={activeTabName}
             className={styles.legal_content}
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(activeTab?.content || '') }}
           />
-        </main>
+        </div>
       </div>
     </div>
   );

@@ -60,7 +60,7 @@ const BlogDetailClient = ({ initialData }) => {
   const relatedBlogs = initialData.related_blogs || [];
 
   return (
-    <main>
+    <main className={Style.blog_detail_main}>
       {/* Hero Banner */}
       {heroImage && (
         <div className={Style.blog_hero} data-animation="opacity-up">

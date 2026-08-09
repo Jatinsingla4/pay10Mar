@@ -30,7 +30,7 @@ export default function KfsClient({ pageData = null }) {
 
   return (
     <div className={styles.kfs_container}>
-      <h1 className={styles.title}>KEY FACTS STATEMENT</h1>
+      <h1 className={styles.title}>{pageData?.page_title || "Key Facts Statement"}</h1>
 
       <div className={styles.arabic_btn_row}>
         <a

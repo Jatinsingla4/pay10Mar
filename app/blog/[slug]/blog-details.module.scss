@@ -1,18 +1,26 @@
 @import '../../../styles/globals/mixin';
 
+._bom_workaround_keep_first {
+  display: none;
+}
+
+.blog_detail_main {
+  padding-top: 1px;
+}
+
 // ── Hero Banner ──────────────────────────────────────────────────────────────
 
 .blog_hero {
-  margin: 80px 56px 0;
+  margin: 40px 56px 0;
   border-radius: 24px;
   overflow: hidden;
 
   @include large {
-    margin: 64px 32px 0;
+    margin: 32px 32px 0;
   }
 
   @include tab {
-    margin: 56px 16px 0;
+    margin: 24px 16px 0;
   }
 }
 
@@ -22,7 +30,9 @@
 
   img {
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 9;
+    max-height: calc(100vh - 200px);
+    object-fit: cover;
     display: block;
   }
 }
@@ -463,8 +473,9 @@
   font-family: 'bold';
   color: #1a1a1a;
   line-height: 1.5;
+  transition: color 0.2s ease;
 
-  &:hover { color: var(--orange); }
+  &:hover { color: var(--red); }
 }
 
 .faq_icon {

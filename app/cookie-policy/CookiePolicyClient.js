@@ -10,7 +10,7 @@ const CookiePolicyClient = ({ pageData = null }) => {
   return (
     <main className={Style.mainPriv}>
       <section className={Style.content_section}>
-        <h1 className={Style.title} data-animation="fade-up">COOKIE POLICY</h1>
+        <h1 className={Style.title} data-animation="fade-up">{pageData?.page_title || "Cookie Policy"}</h1>
 
         <div className={Style.layout}>
           <aside className={Style.sidebar} data-animation="fade-up">

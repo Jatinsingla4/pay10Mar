@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getClientIp } from '../../../lib/getClientIp';
 
 const API_BASE = process.env.NEXT_PUBLIC_API;
 const API_KEY = process.env.BACKEND_AUTH_KEY;
@@ -121,9 +122,7 @@ async function handleProxy(request, params) {
     };
 
     if (request.method === 'POST') {
-      const requestIp = request.headers.get('x-forwarded-for')?.split(',')[0].trim()
-        || request.headers.get('x-real-ip')
-        || undefined;
+      const requestIp = getClientIp(request);
       const contentType = request.headers.get('content-type') || '';
 
       if (contentType.includes('multipart/form-data') || contentType.includes('application/x-www-form-urlencoded')) {

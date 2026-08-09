@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { getClientIp as sharedGetClientIp } from './app/lib/getClientIp';
 
 /** Apex hostname only — must match DNS for bare domain. */
 const APEX_HOST = 'pay10.ae';
@@ -67,11 +68,7 @@ function getClientIp(request) {
   const netlifyIp = request.headers.get('x-nf-client-connection-ip');
   if (netlifyIp) return netlifyIp.trim();
 
-  const forwardedFor = request.headers.get('x-forwarded-for');
-  if (forwardedFor) {
-    return forwardedFor.split(',')[0].trim();
-  }
-  return request.headers.get('x-real-ip') || 'unknown';
+  return sharedGetClientIp(request) || 'unknown';
 }
 
 export function proxy(request) {

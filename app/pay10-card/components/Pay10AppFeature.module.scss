@@ -11,11 +11,7 @@
   }
 
   @include tab {
-    padding: 60px 24px;
-  }
-
-  @include mobile {
-    padding: 60px 20px;
+    padding: 50px 16px 0;
   }
 }
 
@@ -26,14 +22,15 @@
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: flex-start;
-
+  
   @include large {
     gap: 40px;
   }
-
+  
   @include tab {
     grid-template-columns: 1fr;
     gap: 40px;
+    padding-bottom: 50px;
   }
 }
 

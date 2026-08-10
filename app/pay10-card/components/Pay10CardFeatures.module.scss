@@ -12,25 +12,25 @@
   }
 
   @include tab {
-    padding: 60px 24px;
+    padding: 50px 16px 0;
   }
 }
 
 .container {
-  max-width: 1920px;
-  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.3fr;
   gap: 60px;
   align-items: center;
-
+  padding: 0 56px;
+  
   @include large {
     gap: 40px;
   }
-
+  
   @include tab {
     grid-template-columns: 1fr;
     gap: 40px;
+    padding: 0;
   }
 }
 

@@ -36,25 +36,25 @@ const SendAbroadClient = ({ pageData = null }) => {
     <div className={Style.countries_box}>
       <h4 className={Style.countries_heading}>7 Countries Live</h4>
       <div className={Style.flag_row}>
-        <div className={Style.flag_box}>🇮🇳</div>
-        <div className={Style.flag_box}>🇵🇭</div>
-        <div className={Style.flag_box}>🇵🇰</div>
-        <div className={Style.flag_box}>🇧🇩</div>
-        <div className={Style.flag_box}>🇳🇵</div>
-        <div className={Style.flag_box}>🇱🇰</div>
-        <div className={Style.flag_box}>🇪🇬</div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:in" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:ph" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:pk" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:bd" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:np" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:lk" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:eg" /></div>
       </div>
 
       <h4 className={Style.countries_heading} style={{ marginTop: '24px' }}>Coming Soon - 8 More</h4>
       <div className={Style.flag_row}>
-        <div className={Style.flag_box}>🇯🇴</div>
-        <div className={Style.flag_box}>🇲🇦</div>
-        <div className={Style.flag_box}>🇰🇪</div>
-        <div className={Style.flag_box}>🇹🇿</div>
-        <div className={Style.flag_box}>🇬🇭</div>
-        <div className={Style.flag_box}>🇸🇾</div>
-        <div className={Style.flag_box}>🇪🇹</div>
-        <div className={Style.flag_box}>🇮🇩</div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:jo" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:ma" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:ke" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:tz" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:gh" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:sy" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:et" /></div>
+        <div className={Style.flag_box}><Icon icon="circle-flags:id" /></div>
       </div>
 
       {pageData?.sections?.[3]?.content && pageData.sections[3].content !== '<p><br></p>' ? (

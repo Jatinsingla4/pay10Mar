@@ -455,46 +455,67 @@
 }
 
 .faq_item {
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .faq_trigger {
   width: 100%;
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
   padding: 20px 0;
   background: transparent;
   border: none;
   outline: none;
   cursor: pointer;
   text-align: left;
-  font-size: 1.15rem;
-  font-family: 'bold';
-  color: #1a1a1a;
-  line-height: 1.5;
-  transition: color 0.2s ease;
-
-  &:hover { color: var(--red); }
 }
 
-.faq_icon {
+.faq_question {
+  font-size: 1.15rem;
+  font-family: 'semibold';
+  color: #1a1a1a;
+  line-height: 1.4;
+  transition: color 0.2s ease;
+}
+
+.faq_trigger:hover .faq_question {
+  color: var(--red);
+}
+
+.faq_icon_wrapper {
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  border: 1.5px solid #ccc;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
-  line-height: 1;
-  color: #555;
-  margin-top: 1px;
+  border-radius: 50%;
+  background-color: rgba(239, 26, 35, 0.05);
+  color: var(--red);
+  transition: transform 0.3s ease, background-color 0.3s ease;
 
-  .faq_active & {
-    border-color: var(--orange);
-    color: var(--orange);
+  svg {
+    width: 14px;
+    height: 14px;
+    stroke-width: 2.5;
+  }
+}
+
+.faq_active_trigger {
+  .faq_question {
+    color: var(--red);
+  }
+
+  .faq_icon_wrapper {
+    background-color: var(--red);
+    color: #fff;
+    transform: rotate(180deg);
   }
 }
 
@@ -502,25 +523,20 @@
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  padding: 0 0 0 40px;
-  transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.3s ease;
-
-  @include mobile { padding: 0 0 0 20px; }
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
 
   p {
     color: #555;
     font-size: 1rem;
     line-height: 1.75;
-    margin: 0 0 20px;
+    margin: 0;
+    padding: 4px 0 20px;
   }
 }
 
 .faq_body_open {
-  max-height: 400px;
+  max-height: 1000px;
   opacity: 1;
-  padding: 0 0 20px 40px;
-
-  @include mobile { padding: 0 0 16px 20px; }
 }
 
 // ── Related Blogs ─────────────────────────────────────────────────────────────

@@ -259,6 +259,14 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    border: 1px solid var(--red);
+    box-shadow: 0 10px 40px #0000000f;
+    background: var(--white);
+    transition: all ease 0.3s;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
 
     .step_number {
       font-size: 14px;

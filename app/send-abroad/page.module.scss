@@ -7,11 +7,10 @@
   padding: 60px 56px;
 
   @include tab {
-    padding: 40px 24px;
+    padding: 40px 16px;
   }
 
   @include mobile {
-    padding: 40px 20px 60px;
     align-items: flex-end;
   }
 }
@@ -94,7 +93,7 @@
   }
 
   @include tab {
-    padding: 60px 24px;
+    padding: 50px 16px 0;
   }
 }
 
@@ -169,7 +168,7 @@
   }
 
   @include tab {
-    padding: 60px 24px;
+    padding: 50px 16px 0;
   }
 }
 
@@ -178,6 +177,10 @@
   max-width: 800px;
   margin: 0 auto 60px;
 
+  @include tab {
+    margin: 0 auto;
+  }
+  
   h2 {
     font-size: 36px;
     font-family: 'bold', sans-serif;

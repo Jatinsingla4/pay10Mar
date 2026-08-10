@@ -7,11 +7,10 @@
   padding: 60px 56px;
 
   @include tab {
-    padding: 40px 24px;
+    padding: 40px 16px;
   }
 
   @include mobile {
-    padding: 40px 20px 60px;
     align-items: flex-end;
   }
 }

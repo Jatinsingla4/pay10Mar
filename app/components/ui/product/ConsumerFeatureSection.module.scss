@@ -6,8 +6,8 @@
   overflow: hidden;
   position: relative;
 
-  @include mobile {
-    padding: 60px 0;
+  @include tab {
+    padding: 50px 16px 0;
   }
 
   &.bg_white {
@@ -23,17 +23,18 @@
   }
 
   .container {
-    padding: 0 56px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 80px;
     align-items: center;
     position: relative;
     z-index: 1;
-
+    padding: 0 56px;
+    
     @include tab {
       grid-template-columns: 1fr;
       gap: 50px;
+      padding: 0;
     }
   }
 
@@ -74,7 +75,7 @@
       font-size: 18px;
       font-family: 'medium', sans-serif;
       line-height: 1.6;
-      margin-bottom: 28px;
+      // margin-bottom: 28px;
       color: var(--black);
     }
 

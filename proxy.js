@@ -55,12 +55,13 @@ function isRateLimited(ip) {
   return entry.count > RATE_LIMIT_MAX_REQUESTS;
 }
 
-function getClientIp(request) {
-  // Netlify's edge sets this itself from the real TCP connection — a client
-  // can't forge it the way it can prepend a fake hop to x-forwarded-for.
-  const netlifyIp = request.headers.get('x-nf-client-connection-ip');
-  if (netlifyIp) return netlifyIp.trim();
-
+// A single source of truth for the client address. This deliberately trusts no
+// vendor-specific header (an x-nf-client-connection-ip branch used to be checked
+// first here, from a Netlify deployment): this app is served by Apache, which
+// neither sets nor strips such headers, so any client could send one and pick its
+// own rate-limit bucket — bypassing the limit entirely and letting it fill the
+// store with unbounded unique keys. Only getClientIp's trusted-hop logic decides.
+function clientKey(request) {
   return sharedGetClientIp(request) || 'unknown';
 }
 
@@ -68,8 +69,7 @@ export function proxy(request) {
   const { pathname } = request.nextUrl;
 
   if (RATE_LIMITED_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
-    const ip = getClientIp(request);
-    if (isRateLimited(ip)) {
+    if (isRateLimited(clientKey(request))) {
       return NextResponse.json(
         { status: false, message: 'Too many requests. Please try again in a minute.' },
         { status: 429 }

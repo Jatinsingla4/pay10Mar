@@ -2,13 +2,13 @@
 
 .feature_grid_section {
   width: 100%;
-  padding: 80px 56px;
+  padding: 40px 56px;
   background-color: transparent;
   position: relative;
   z-index: 1;
 
   @include large {
-    padding: 60px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {

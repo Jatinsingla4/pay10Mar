@@ -83,7 +83,7 @@
   position: relative;
   z-index: 1;
   background-color: transparent;
-  padding: 80px 56px;
+  padding: 40px 56px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -160,11 +160,11 @@
   width: 100%;
   position: relative;
   z-index: 1;
-  padding: 80px 56px;
+  padding: 40px 56px;
   background-color: transparent;
 
   @include large {
-    padding: 80px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {
@@ -301,7 +301,7 @@
   width: 100%;
   position: relative;
   z-index: 1;
-  padding: 80px 24px;
+  padding: 40px 24px;
   background-color: var(--body-bg);
   display: flex;
   flex-direction: column;

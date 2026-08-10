@@ -4,6 +4,7 @@ import React from 'react';
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
@@ -113,11 +114,7 @@ const BillPaymentClient = ({ pageData = null }) => {
     <main>
       <section
         className={Style.bill_hero}
-        style={{
-          '--bg-desktop': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
-          '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : undefined),
-          '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : undefined,
-        }}
+        style={bannerBgStyle(pageData, { mobileFallback: '/images/prod_imports/bill-payment-hero-mobile.png' })}
       >
         <div className={Style.bill_hero_text}>
           <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />

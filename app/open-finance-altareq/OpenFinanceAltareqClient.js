@@ -6,6 +6,7 @@ import GetStarted from "@/app/components/ui/GetStarted";
 import { TextCenterAppCard } from "@/app/components/ui/TextCenterBlock";
 import Style from "./page.module.scss";
 import { sanitizeHtml, isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
@@ -128,10 +129,7 @@ const OpenFinanceAltareqClient = ({ pageData = null }) => {
     <main className={Style.mainWrapper}>
       <section 
         className={Style.altareq_hero}
-        style={{
-          '--desktop-bg': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
-          '--mobile-bg': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : undefined)
-        }}
+        style={bannerBgStyle(pageData)}
       >
         <div className={Style.altareq_hero_text}>
           <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />

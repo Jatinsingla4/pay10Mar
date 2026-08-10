@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Style from "./page.module.scss";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -96,17 +97,19 @@ const MerchantPortalClient = ({ pageData = null }) => {
 
   return (
     <main>
-      <section
-        className={Style.altareq_hero}
-        style={{
-          ...(pageData?.banner_image ? { '--bg-desktop': `url(${pageData.banner_image})` } : {}),
-          ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : (pageData?.banner_image ? { '--bg-mobile': `url(${pageData.banner_image})` } : {})),
-          ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : {}),
-        }}
-      >
-        <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />
-          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
+      <section className={Style.altareq_section}>
+        <div
+          className={Style.altareq_hero}
+          style={bannerBgStyle(pageData, { mobileFallback: '/images/prod_imports/merchant-portal-hero-mobile.png' })}
+        >
+          <div className={Style.altareq_hero_text}>
+            {!isEmptyHtml(pageData?.page_title) && (
+              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+            )}
+            {!isEmptyHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData.page_subtitle, pageData.page_description)) }} />
+            )}
+          </div>
         </div>
       </section>
       

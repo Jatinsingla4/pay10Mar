@@ -27,3 +27,39 @@
     @content;
   }
 }
+
+// Homepage hero shell — 16/9, 24px radius, no full-viewport mobile height.
+// Use the `background` shorthand (same as HeroHomeBanner) — `background-image: var(--x)`
+// alone often fails to paint CMS urls when the custom property is set via inline style.
+@mixin homepageHeroBanner($desktopFallback: null, $mobileFallback: null) {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 600px;
+  max-height: calc(100vh - 120px);
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  background-color: #1a1a1a;
+
+  @if $desktopFallback {
+    background: var(--bg-desktop, url(#{$desktopFallback})) no-repeat center center;
+  } @else {
+    background: var(--bg-desktop, none) no-repeat center center;
+  }
+  background-size: cover;
+  background-color: #1a1a1a;
+
+  @include tab {
+    border-radius: 16px;
+  }
+
+  @include mobile {
+    @if $mobileFallback {
+      background: var(--bg-mobile, url(#{$mobileFallback})) no-repeat center center;
+    } @else {
+      background: var(--bg-mobile, var(--bg-desktop, none)) no-repeat center center;
+    }
+    background-size: cover;
+    background-color: #1a1a1a;
+  }
+}

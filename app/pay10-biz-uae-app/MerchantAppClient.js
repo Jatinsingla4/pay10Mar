@@ -8,6 +8,7 @@ import MerchantTestimonialVideos from "../components/ui/MerchantTestimonialVideo
 import MerchantLogosCTA from "../components/ui/MerchantLogosCTA";
 import BizLeadForm from "./BizLeadForm";
 import { isEmptyHtml, sanitizeHtml } from "../lib/sanitizeHtml";
+import { bannerBgStyle } from "../lib/bannerBgStyle";
 import { useResponsive } from "../contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -133,10 +134,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
     <main>
       <section
         className={Style.biz_hero}
-        style={{
-          '--bg-desktop': pageData?.banner_image ? `url(${pageData.banner_image})` : 'none',
-          '--bg-mobile': pageData?.mobile_image ? `url(${pageData.mobile_image})` : undefined,
-        }}
+        style={bannerBgStyle(pageData)}
       >
         <div className={Style.biz_hero_text}>
           <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />

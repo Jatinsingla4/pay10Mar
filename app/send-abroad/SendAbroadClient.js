@@ -6,6 +6,7 @@ import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import InteractiveGlobe from "@/app/components/ui/3d/InteractiveGlobe";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -71,10 +72,7 @@ const SendAbroadClient = ({ pageData = null }) => {
     <main>
       <section 
         className={Style.send_hero}
-        style={{
-          '--desktop-bg': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
-          '--mobile-bg': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : undefined)
-        }}
+        style={bannerBgStyle(pageData, { mobileFallback: '/images/prod_imports/send-abroad-hero-mobile.png' })}
       >
         <div className={Style.send_hero_text}>
           {!isEmptyHtml(pageData?.page_title) && (

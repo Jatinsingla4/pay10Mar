@@ -172,9 +172,11 @@ async function handleProxy(request, params) {
       return json({ status: false, message: 'Forbidden' }, 403);
     }
 
-    const { searchParams } = new URL(request.url);
-    const queryString = searchParams.toString();
-    const targetUrl = queryString ? `${API_BASE}/${endpointPath}?${queryString}` : `${API_BASE}/${endpointPath}`;
+    // The caller's query string is deliberately dropped rather than appended. None
+    // of the three forms sends one, so forwarding it only handed callers a channel
+    // straight through to the backend that nothing here inspected — the opposite of
+    // what the path and field allowlists are for.
+    const targetUrl = `${API_BASE}/${endpointPath}`;
 
     const fetchOptions = {
       method: request.method,

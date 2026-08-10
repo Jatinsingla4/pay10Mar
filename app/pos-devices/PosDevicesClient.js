@@ -396,31 +396,33 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <MerchantLogosCTA showCta={false} images={merchantLogos} />
 
       <section className={styles.final_combo}>
-        <span className={styles.combo_ring} aria-hidden="true" />
-        <span className={styles.combo_ring_small} aria-hidden="true" />
+        <div className={styles.combo_card}>
+          <span className={styles.combo_ring} aria-hidden="true" />
+          <span className={styles.combo_ring_small} aria-hidden="true" />
 
-        <div className={styles.combo_cta}>
-          {!isEmptyHtml(pageData?.sections?.[5]?.title) && (
-            <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].title) }} />
-          )}
-          {!isEmptyHtml(pageData?.sections?.[5]?.subtitle) && (
-            <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].subtitle) }} />
-          )}
-          <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
-        </div>
+          <div className={styles.combo_cta}>
+            {!isEmptyHtml(pageData?.sections?.[5]?.title) && (
+              <h2 className={styles.combo_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].title) }} />
+            )}
+            {!isEmptyHtml(pageData?.sections?.[5]?.subtitle) && (
+              <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].subtitle) }} />
+            )}
+            <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
+          </div>
 
-        <div className={styles.combo_divider} aria-hidden="true" />
+          <div className={styles.combo_divider} aria-hidden="true" />
 
-        <div className={styles.combo_download}>
-          <h2 className={styles.combo_heading}>Merchant App</h2>
-          {isMobile ? (
-            <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
-              <Icon icon="mdi:download" width={18} />
-              <span>Download Now</span>
-            </a>
-          ) : (
-            <Image src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={styles.qr_image} width={140} height={140} />
-          )}
+          <div className={styles.combo_download}>
+            <h2 className={styles.combo_heading}>Merchant App</h2>
+            {isMobile ? (
+              <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
+                <Icon icon="mdi:download" width={18} />
+                <span>Download Now</span>
+              </a>
+            ) : (
+              <Image src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={styles.qr_image} width={140} height={140} />
+            )}
+          </div>
         </div>
       </section>
     </main>

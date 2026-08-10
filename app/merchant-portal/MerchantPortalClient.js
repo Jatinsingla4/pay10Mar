@@ -206,26 +206,28 @@ const MerchantPortalClient = ({ pageData = null }) => {
       </section>
 
       <section className={Style.final_combo}>
-        <span className={Style.combo_ring} aria-hidden="true" />
-        <span className={Style.combo_ring_small} aria-hidden="true" />
+        <div className={Style.combo_card}>
+          <span className={Style.combo_ring} aria-hidden="true" />
+          <span className={Style.combo_ring_small} aria-hidden="true" />
 
-        <div className={Style.combo_cta}>
-          <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.sections?.[5]?.subtitle, pageData?.sections?.[5]?.title)) }} />
-          <Link href="/contact-us?type=Enterprise+Sales" className={Style.combo_btn}>Enterprise Sales</Link>
-        </div>
+          <div className={Style.combo_cta}>
+            <h2 className={Style.combo_heading_pg} dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.sections?.[5]?.subtitle, pageData?.sections?.[5]?.title)) }} />
+            <Link href="/contact-us?type=Enterprise+Sales" className={Style.combo_btn}>Enterprise Sales</Link>
+          </div>
 
-        <div className={Style.combo_divider} aria-hidden="true" />
+          <div className={Style.combo_divider} aria-hidden="true" />
 
-        <div className={Style.combo_download}>
-          <h2 className={Style.combo_heading}>Merchant App</h2>
-          {isMobile ? (
-            <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.combo_btn}>
-              <Icon icon="mdi:download" width={18} />
-              <span>Download Now</span>
-            </a>
-          ) : (
-            <Image src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={Style.qr_image} width={140} height={140} />
-          )}
+          <div className={Style.combo_download}>
+            <h2 className={Style.combo_heading}>Merchant App</h2>
+            {isMobile ? (
+              <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.combo_btn}>
+                <Icon icon="mdi:download" width={18} />
+                <span>Download Now</span>
+              </a>
+            ) : (
+              <Image src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={Style.qr_image} width={140} height={140} />
+            )}
+          </div>
         </div>
       </section>
     </main>

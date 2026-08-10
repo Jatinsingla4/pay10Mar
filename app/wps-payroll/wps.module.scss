@@ -543,27 +543,34 @@
 }
 
 .final_combo {
+  padding: 0 56px 80px;
+  background: var(--body-bg);
+
+  @include large { padding: 0 32px 72px; }
+  @include tab { padding: 0 16px 50px; }
+  @include mobile { padding: 0 16px 40px; }
+}
+
+.combo_card {
   position: relative;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 48px;
-  margin: 0 56px 80px;
   padding: 72px 64px;
   border-radius: 32px;
   background: var(--primary-gradient);
   overflow: hidden;
 
-  @include large { margin: 0 32px 72px; padding: 64px 40px; }
+  @include large { padding: 64px 40px; }
 
   @include tab {
     grid-template-columns: 1fr;
-    margin: 0 16px 50px;
     padding: 56px 32px;
     gap: 40px;
   }
 
-  @include mobile { margin: 0 16px 40px; padding: 48px 20px; border-radius: 24px; }
+  @include mobile { padding: 48px 20px; border-radius: 24px; }
 }
 
 .combo_ring {

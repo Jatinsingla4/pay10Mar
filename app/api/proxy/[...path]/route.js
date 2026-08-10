@@ -28,7 +28,30 @@ const REQUIRED_FIELDS = {
   'contact/enquiry': ['name', 'email', 'phone'],
   partners: ['name', 'company_name', 'email', 'phone'],
 };
+
+// Which fields each endpoint is allowed to forward at all. Without this the
+// payload was passed to the backend wholesale, so anything extra a caller
+// attached rode along with it — a 5000-field body was accepted in testing. The
+// lists are the union of what the forms actually send: contact/enquiry is used by
+// both the contact form (whose optional fields vary by enquiry type) and the Biz
+// UAE App lead form; partners is the channel-partners form. An unlisted field is
+// rejected rather than dropped, so adding one to a form without updating this
+// fails visibly in testing instead of silently losing data in the CRM.
+const ALLOWED_FIELDS = {
+  'contact/enquiry': new Set([
+    'name', 'email', 'phone', 'company', 'message', 'type',
+    'position', 'location', 'industry', 'company_size',
+    'country', 'emirate', 'company_website', 'partnership_model',
+    'address', 'business_type',
+  ]),
+  partners: new Set([
+    'name', 'company_name', 'designation', 'email', 'phone',
+    'monthly_transaction_volume', 'integration_type',
+  ]),
+};
+
 const MAX_FIELD_LENGTH = 2000;
+const MAX_BODY_BYTES = 64 * 1024;
 
 function validatePayload(endpointPath, payload) {
   for (const field of REQUIRED_FIELDS[endpointPath] || []) {
@@ -39,7 +62,11 @@ function validatePayload(endpointPath, payload) {
   if (payload.email && !EMAIL_REGEX.test(payload.email)) {
     return 'Invalid email address';
   }
+  const allowed = ALLOWED_FIELDS[endpointPath];
   for (const [key, value] of Object.entries(payload)) {
+    if (allowed && !allowed.has(key)) {
+      return `Unexpected field: ${key}`;
+    }
     if (typeof value === 'string' && value.length > MAX_FIELD_LENGTH) {
       return `${key} is too long`;
     }
@@ -144,6 +171,16 @@ async function handleProxy(request, params) {
       },
       cache: 'no-store',
     };
+
+    // These are short text forms — the largest legitimate submission is a handful
+    // of fields capped at MAX_FIELD_LENGTH each, well under 30KB. Nothing bounded
+    // the body before this, so a 584KB payload was read into memory and parsed in
+    // full before the captcha check rejected it. Refuse oversized bodies up front.
+    // (Content-Length is absent on chunked requests; the edge should cap those.)
+    const declaredLength = Number(request.headers.get('content-length'));
+    if (declaredLength > MAX_BODY_BYTES) {
+      return json({ status: false, message: 'Request too large' }, 413);
+    }
 
     const requestIp = getClientIp(request);
     const contentType = request.headers.get('content-type') || '';

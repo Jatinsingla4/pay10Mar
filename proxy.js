@@ -11,7 +11,21 @@ const SKIP_HOSTS = new Set(['localhost', '127.0.0.1']);
 
 const CSRF_COOKIE = 'csrf_token';
 
+// Only the pages that actually contain a form ever read this token, and all three
+// are rendered dynamically (`Cache-Control: private, no-store`). Setting it on every
+// response instead put a Set-Cookie on pages that ship
+// `Cache-Control: s-maxage=300` for shared caches — behind a CDN that means either
+// those pages stop being cacheable at all, or one visitor's token gets cached and
+// handed to everyone. Adding a form to a page missing from this list fails loudly
+// (the submit 403s straight away) rather than silently weakening anything.
+const CSRF_COOKIE_PATHS = new Set([
+  '/contact-us',
+  '/channel-partners',
+  '/pay10-biz-uae-app',
+]);
+
 function ensureCsrfCookie(request, response) {
+  if (!CSRF_COOKIE_PATHS.has(request.nextUrl.pathname)) return;
   if (!request.cookies.get(CSRF_COOKIE)) {
     response.cookies.set(CSRF_COOKIE, crypto.randomUUID(), {
       sameSite: 'strict',

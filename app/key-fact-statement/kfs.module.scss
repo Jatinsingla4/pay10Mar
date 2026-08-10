@@ -221,6 +221,16 @@
     letter-spacing: 0.04em;
   }
 
+  a {
+    text-decoration: underline;
+    color: var(--red);
+    font-family: 'bold', sans-serif;
+
+    &:hover {
+      color: var(--yellow);
+    }
+  }
+
   ul, ol {
     padding-left: 24px;
     margin: 8px 0 16px;

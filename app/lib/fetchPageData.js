@@ -1,5 +1,10 @@
+import { secret } from './secrets';
+
 export const API_BASE = process.env.NEXT_PUBLIC_API;
-const API_KEY = process.env.BACKEND_AUTH_KEY;
+// Must go through secret(), not process.env: when a vault supplies the key as a
+// file the environment variable is absent, and reading it directly here sent
+// `X-Api-Key: undefined` to the CMS, which answered 401 for every page.
+const API_KEY = secret('BACKEND_AUTH_KEY');
 
 export const API_HEADERS = {
   'X-Api-Key': API_KEY,

@@ -11,11 +11,10 @@
   padding: 60px 56px;
 
   @include tab {
-    padding: 40px 24px;
+    padding: 50px 16px;
   }
 
   @include mobile {
-    padding: 40px 20px 60px;
     align-items: flex-end;
   }
 }
@@ -86,7 +85,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 56px 16px;
+    padding: 50px 16px;
     gap: 40px;
   }
 }
@@ -226,7 +225,7 @@
   }
 
   @include tab {
-    padding: 56px 16px;
+    padding: 50px 16px;
   }
 }
 
@@ -279,7 +278,7 @@
   }
 
   @include tab {
-    padding: 56px 16px;
+    padding: 50px 16px;
   }
 }
 
@@ -417,7 +416,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    margin: 0 24px 56px;
+    margin: 0 16px 50px;
     padding: 56px 32px;
     gap: 40px;
   }
@@ -527,7 +526,7 @@
   }
 
   @include tab {
-    padding: 56px 16px;
+    padding: 50px 16px;
   }
 }
 

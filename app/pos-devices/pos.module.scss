@@ -15,11 +15,11 @@
   padding: 60px 56px;
 
   @include tab {
-    padding: 40px 24px;
+    padding: 40px 16px;
   }
 
   @include mobile {
-    padding: 40px 20px 60px;
+    padding: 40px 16px 60px;
     align-items: flex-end;
   }
 }
@@ -94,6 +94,10 @@
 .compare_section {
   padding: 80px 24px;
   background: var(--body-bg);
+
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .container {
@@ -225,6 +229,10 @@
 .guarantee_section {
   padding: 80px 24px;
   background: var(--body-bg);
+
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .guarantee_container {
@@ -321,6 +329,10 @@
   padding: 80px 24px;
   background: var(--body-bg);
   color: var(--black);
+
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .flow_header {
@@ -450,7 +462,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 56px 24px;
+    padding: 50px 16px;
     gap: 40px;
   }
 }
@@ -557,7 +569,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    margin: 0 24px 56px;
+    margin: 0 16px 50px;
     padding: 56px 32px;
     gap: 40px;
   }

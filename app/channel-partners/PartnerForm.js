@@ -115,6 +115,7 @@ export default function PartnerForm() {
               value={form.name}
               onChange={handleChange}
               placeholder="John Smith"
+              maxLength={150}
               className={errors.name ? styles.input_error : ""}
             />
           </div>
@@ -129,6 +130,7 @@ export default function PartnerForm() {
               value={form.company_name}
               onChange={handleChange}
               placeholder="Acme Corp"
+              maxLength={200}
               className={errors.company_name ? styles.input_error : ""}
             />
           </div>
@@ -145,6 +147,7 @@ export default function PartnerForm() {
               value={form.designation}
               onChange={handleChange}
               placeholder="CEO / CTO / Director"
+              maxLength={150}
               className={errors.designation ? styles.input_error : ""}
             />
           </div>
@@ -159,6 +162,7 @@ export default function PartnerForm() {
               value={form.email}
               onChange={handleChange}
               placeholder="you@company.com"
+              maxLength={254}
               className={errors.email ? styles.input_error : ""}
             />
           </div>
@@ -176,7 +180,7 @@ export default function PartnerForm() {
               onChange={handleChange}
               onKeyDown={handlePhoneKeyDown}
               placeholder="+971501234567"
-              maxLength={15}
+              maxLength={16}
               className={errors.phone ? styles.input_error : ""}
             />
           </div>

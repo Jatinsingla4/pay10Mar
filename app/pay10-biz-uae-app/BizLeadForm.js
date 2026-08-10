@@ -119,6 +119,7 @@ const BizLeadForm = () => {
             placeholder="Name of the business*"
             value={form.business_name}
             onChange={handleChange}
+            maxLength={200}
             className={errors.business_name ? Style.biz_lead_input_error : ""}
           />
           {errors.business_name && <span className={Style.biz_lead_error}>{errors.business_name}</span>}
@@ -130,6 +131,7 @@ const BizLeadForm = () => {
             placeholder="Your name*"
             value={form.name}
             onChange={handleChange}
+            maxLength={150}
             className={errors.name ? Style.biz_lead_input_error : ""}
           />
           {errors.name && <span className={Style.biz_lead_error}>{errors.name}</span>}
@@ -145,7 +147,7 @@ const BizLeadForm = () => {
             value={form.phone}
             onChange={handleChange}
             onKeyDown={handlePhoneKeyDown}
-            maxLength={15}
+            maxLength={16}
             inputMode="numeric"
             className={errors.phone ? Style.biz_lead_input_error : ""}
           />
@@ -158,6 +160,7 @@ const BizLeadForm = () => {
             placeholder="Email ID*"
             value={form.email}
             onChange={handleChange}
+            maxLength={254}
             className={errors.email ? Style.biz_lead_input_error : ""}
           />
           {errors.email && <span className={Style.biz_lead_error}>{errors.email}</span>}
@@ -172,6 +175,7 @@ const BizLeadForm = () => {
             placeholder="Address of the business*"
             value={form.address}
             onChange={handleChange}
+            maxLength={300}
             className={errors.address ? Style.biz_lead_input_error : ""}
           />
           {errors.address && <span className={Style.biz_lead_error}>{errors.address}</span>}

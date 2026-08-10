@@ -555,7 +555,7 @@ const ContactClient = ({ pageData = null }) => {
                       value={formData.mobile}
                       onChange={handleInputChange}
                       onKeyDown={handleMobileKeyDown}
-                      maxLength={15}
+                      maxLength={16}
                       inputMode="numeric"
                       required
                       aria-invalid={!!formErrors.mobile}

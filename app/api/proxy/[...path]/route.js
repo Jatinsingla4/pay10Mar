@@ -29,28 +29,37 @@ const REQUIRED_FIELDS = {
   partners: ['name', 'company_name', 'email', 'phone'],
 };
 
-// Which fields each endpoint is allowed to forward at all. Without this the
-// payload was passed to the backend wholesale, so anything extra a caller
-// attached rode along with it — a 5000-field body was accepted in testing. The
-// lists are the union of what the forms actually send: contact/enquiry is used by
-// both the contact form (whose optional fields vary by enquiry type) and the Biz
-// UAE App lead form; partners is the channel-partners form. An unlisted field is
-// rejected rather than dropped, so adding one to a form without updating this
-// fails visibly in testing instead of silently losing data in the CRM.
+// Which fields each endpoint may forward, and how long each one may be. Both live
+// in one declaration so a field can't be allowed without also being bounded.
+//
+// Two things this replaces: the payload used to be forwarded to the backend
+// wholesale (a 5000-field body was accepted in testing), and every field shared a
+// single 2000-character ceiling — the largest field in the UI — which left the
+// server twenty times more permissive than the form for things like phone.
+//
+// Limits mirror the inputs' maxLength where the UI sets one, with headroom on top.
+// The Biz UAE App and channel-partners forms set no maxLength at all, so their
+// fields are bounded here by what the value realistically is; dropdown-backed
+// fields are sized against their longest option. Generous rather than exact,
+// because rejecting a real submission loses a lead.
+//
+// contact/enquiry serves both the contact form (optional fields vary by enquiry
+// type) and the Biz UAE App lead form; partners serves channel-partners.
 const ALLOWED_FIELDS = {
-  'contact/enquiry': new Set([
-    'name', 'email', 'phone', 'company', 'message', 'type',
-    'position', 'location', 'industry', 'company_size',
-    'country', 'emirate', 'company_website', 'partnership_model',
-    'address', 'business_type',
-  ]),
-  partners: new Set([
-    'name', 'company_name', 'designation', 'email', 'phone',
-    'monthly_transaction_volume', 'integration_type',
-  ]),
+  'contact/enquiry': {
+    name: 150, email: 254, phone: 32, company: 200, message: 2000, type: 50,
+    position: 150, location: 150, industry: 150, company_size: 50,
+    country: 100, emirate: 150, company_website: 250, partnership_model: 100,
+    address: 300, business_type: 50,
+  },
+  partners: {
+    name: 150, company_name: 200, designation: 150, email: 254, phone: 32,
+    monthly_transaction_volume: 50, integration_type: 50,
+  },
 };
 
-const MAX_FIELD_LENGTH = 2000;
+// Longest possible legitimate submission is the sum of one endpoint's limits,
+// about 4KB — this leaves generous room while still bounding the body.
 const MAX_BODY_BYTES = 64 * 1024;
 
 function validatePayload(endpointPath, payload) {
@@ -62,12 +71,17 @@ function validatePayload(endpointPath, payload) {
   if (payload.email && !EMAIL_REGEX.test(payload.email)) {
     return 'Invalid email address';
   }
-  const allowed = ALLOWED_FIELDS[endpointPath];
+  // Fail closed: a path added to ALLOWED_PATHS without limits here gets no field
+  // checks at all, which is the sort of silent gap this file has had before.
+  const limits = ALLOWED_FIELDS[endpointPath];
+  if (!limits) return 'Endpoint not configured';
+
   for (const [key, value] of Object.entries(payload)) {
-    if (allowed && !allowed.has(key)) {
+    const limit = limits[key];
+    if (limit === undefined) {
       return `Unexpected field: ${key}`;
     }
-    if (typeof value === 'string' && value.length > MAX_FIELD_LENGTH) {
+    if (typeof value === 'string' && value.length > limit) {
       return `${key} is too long`;
     }
   }

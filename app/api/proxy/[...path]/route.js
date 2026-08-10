@@ -1,10 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getClientIp } from '../../../lib/getClientIp';
+import { secret } from '../../../lib/secrets';
 
+// NEXT_PUBLIC_API is inlined into the build by Next.js and SITE_ORIGIN is just our
+// own public URL, so neither is a secret. The two that are go through secret(),
+// which lets a vault supply them as a file instead of an environment variable.
 const API_BASE = process.env.NEXT_PUBLIC_API;
-const API_KEY = process.env.BACKEND_AUTH_KEY;
-const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 const SITE_ORIGIN = process.env.SITE_ORIGIN;
+const API_KEY = secret('BACKEND_AUTH_KEY');
+const RECAPTCHA_SECRET_KEY = secret('RECAPTCHA_SECRET_KEY');
 
 
 const REQUIRE_FULL_CONFIG = process.env.NODE_ENV === 'production';

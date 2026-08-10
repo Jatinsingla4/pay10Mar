@@ -7,6 +7,7 @@ import styles from "./wps.module.scss";
 import { Icon } from "@iconify/react";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
@@ -154,10 +155,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
       <section className={styles.altareq_section}>
         <div
           className={styles.altareq_hero}
-          style={{
-            ...(pageData?.banner_image ? { '--bg-desktop': `url(${pageData.banner_image})` } : {}),
-            ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : {}),
-          }}
+          style={bannerBgStyle(pageData, { mobileFallback: '/images/prod_imports/payroll-hero-mobile.png' })}
         >
           <div className={styles.altareq_hero_content}>
             {!isEmptyHtml(pageData?.page_title) && (

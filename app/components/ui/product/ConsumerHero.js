@@ -21,15 +21,15 @@ const ConsumerHero = ({
   if (!title && !hasSubtitle && !hasDescription && !bgImage && cardsData.length === 0) return null;
 
   return (
-    <section 
-      className={Style.consumer_hero}
-      style={{
-        '--bg-desktop': bgImage ? `url(${bgImage})` : 'none',
-        '--bg-mobile': mobileBgImage ? `url(${mobileBgImage})` : (bgImage ? `url(${bgImage})` : 'none')
-      }}
-    >
+    <section className={Style.consumer_hero}>
       <div className={Style.hero_banner_wrapper}>
-        <div className={`${Style.hero_banner} ${!bgImage ? Style.fallback_gradient : ''}`}>
+        <div
+          className={`${Style.hero_banner} ${!bgImage ? Style.fallback_gradient : ''}`}
+          style={{
+            ...(bgImage ? { '--bg-desktop': `url(${bgImage})` } : {}),
+            ...((mobileBgImage || bgImage) ? { '--bg-mobile': `url(${mobileBgImage || bgImage})` } : {}),
+          }}
+        >
           <div className={Style.hero_banner_text}>
             {title && (
               <h1 className={Style.headline} data-animation="opacity-up" dangerouslySetInnerHTML={{ __html: sanitizeHtml(title) }}></h1>

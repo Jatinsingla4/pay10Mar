@@ -7,6 +7,7 @@ import Pay10CardFeatures from "./components/Pay10CardFeatures";
 import Pay10AppFeature from "./components/Pay10AppFeature";
 import Pay10WPSFeature from "./components/Pay10WPSFeature";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
@@ -24,10 +25,7 @@ const Pay10CardClient = ({ pageData = null }) => {
     <main>
       <section 
         className={Style.altareq_hero}
-        style={{
-          '--desktop-bg': pageData?.banner_image ? `url(${pageData.banner_image})` : undefined,
-          '--mobile-bg': pageData?.mobile_image ? `url(${pageData.mobile_image})` : (pageData?.banner_image ? `url(${pageData.banner_image})` : undefined)
-        }}
+        style={bannerBgStyle(pageData)}
       >
         <div className={Style.altareq_hero_text}>
           <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />

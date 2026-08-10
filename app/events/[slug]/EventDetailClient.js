@@ -125,7 +125,6 @@ const EventDetailClient = ({ initialData }) => {
       <Link
         href="/events"
         className={Style.backto_events}
-        data-animation="opacity-up"
       >
         <span>
           <InlineIcon

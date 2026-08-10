@@ -140,25 +140,39 @@ const BlogDetailClient = ({ initialData }) => {
             <div className={Style.faq_section}>
               <h2 className={Style.faq_heading}>Frequently Asked Questions</h2>
               <div className={Style.faq_list}>
-                {faqs.map((item, i) => (
-                  <div
-                    key={i}
-                    className={`${Style.faq_item} ${activeFaq === i ? Style.faq_active : ""}`}
-                  >
-                    <button
-                      className={Style.faq_trigger}
-                      onClick={() => toggleFaq(i)}
-                    >
-                      <span className={Style.faq_icon}>
-                        {activeFaq === i ? "−" : "+"}
-                      </span>
-                      {item.question}
-                    </button>
-                    <div className={`${Style.faq_body} ${activeFaq === i ? Style.faq_body_open : ""}`}>
-                      <p>{item.answer}</p>
+                {faqs.map((item, i) => {
+                  const isOpen = activeFaq === i;
+                  return (
+                    <div key={i} className={Style.faq_item}>
+                      <button
+                        className={`${Style.faq_trigger} ${isOpen ? Style.faq_active_trigger : ""}`}
+                        onClick={() => toggleFaq(i)}
+                        aria-expanded={isOpen}
+                      >
+                        <span className={Style.faq_question}>{item.question}</span>
+                        <span className={Style.faq_icon_wrapper} aria-hidden="true">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </span>
+                      </button>
+                      <div
+                        className={`${Style.faq_body} ${isOpen ? Style.faq_body_open : ""}`}
+                      >
+                        <p>{item.answer}</p>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}

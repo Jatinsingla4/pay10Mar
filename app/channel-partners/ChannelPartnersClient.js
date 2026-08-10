@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import styles from "./ecosystem.module.scss";
 import PartnerForm from "./PartnerForm";
 import { isEmptyHtml, sanitizeHtml } from "../lib/sanitizeHtml";
+import { bannerBgStyle } from "../lib/bannerBgStyle";
 
 // CMS rich-text saves plain-text bullets/descriptions with HTML entities
 // (e.g. "Scan &amp; Pay"). Tags get stripped via regex below, but entities
@@ -98,11 +99,7 @@ const ChannelPartnersClient = ({ pageData = null }) => {
       <section className={styles.altareq_section}>
         <div
           className={styles.altareq_hero}
-          style={{
-            ...(pageData?.banner_image ? { '--bg-desktop': `url(${pageData.banner_image})` } : {}),
-            ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : (pageData?.banner_image ? { '--bg-mobile': `url(${pageData.banner_image})` } : {})),
-            ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : {}),
-          }}
+          style={bannerBgStyle(pageData)}
         >
           <div className={styles.altareq_hero_text}>
             <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title || "") }} />

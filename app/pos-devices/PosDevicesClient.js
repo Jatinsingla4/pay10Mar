@@ -9,6 +9,7 @@ import MerchantLogosCTA from "@/app/components/ui/MerchantLogosCTA";
 import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
@@ -162,11 +163,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <section className={styles.altareq_section}>
         <div
           className={styles.altareq_hero}
-          style={{
-            ...(pageData?.banner_image ? { '--bg-desktop': `url(${pageData.banner_image})` } : {}),
-            ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : (pageData?.banner_image ? { '--bg-mobile': `url(${pageData.banner_image})` } : {})),
-            ...(pageData?.mobile_image ? { '--bg-mobile': `url(${pageData.mobile_image})` } : {}),
-          }}
+          style={bannerBgStyle(pageData)}
         >
           <div className={styles.altareq_hero_content}>
             {!isEmptyHtml(pageData?.page_title) && (

@@ -1,15 +1,9 @@
-import { secret } from './secrets';
+// Backend URL and auth come from backendApi.js so this file and the form proxy
+// can't drift apart again — they have twice.
+import { API_BASE, API_HEADERS } from './backendApi';
 
-export const API_BASE = process.env.NEXT_PUBLIC_API;
-// Must go through secret(), not process.env: when a vault supplies the key as a
-// file the environment variable is absent, and reading it directly here sent
-// `X-Api-Key: undefined` to the CMS, which answered 401 for every page.
-const API_KEY = secret('BACKEND_AUTH_KEY');
-
-export const API_HEADERS = {
-  'X-Api-Key': API_KEY,
-  'Origin': process.env.SITE_ORIGIN,
-};
+// Re-exported because several pages already import these from here.
+export { API_BASE, API_HEADERS };
 
 export async function fetchPageData(slug, revalidate = 0) {
   try {

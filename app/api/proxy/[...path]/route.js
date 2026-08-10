@@ -1,13 +1,11 @@
 import { NextResponse } from 'next/server';
 import { getClientIp } from '../../../lib/getClientIp';
 import { secret } from '../../../lib/secrets';
+// Backend URL, key and the origin it authorises us by all come from one module, so
+// this route and the CMS fetcher can't drift apart — they have twice before.
+import { API_BASE, API_KEY, SITE_ORIGIN, API_HEADERS } from '../../../lib/backendApi';
 
-// NEXT_PUBLIC_API is inlined into the build by Next.js and SITE_ORIGIN is just our
-// own public URL, so neither is a secret. The two that are go through secret(),
-// which lets a vault supply them as a file instead of an environment variable.
-const API_BASE = process.env.NEXT_PUBLIC_API;
-const SITE_ORIGIN = process.env.SITE_ORIGIN;
-const API_KEY = secret('BACKEND_AUTH_KEY');
+// Captcha verification is this route's own concern, so its secret stays here.
 const RECAPTCHA_SECRET_KEY = secret('RECAPTCHA_SECRET_KEY');
 
 
@@ -184,11 +182,7 @@ async function handleProxy(request, params) {
 
     const fetchOptions = {
       method: request.method,
-      headers: {
-        'X-Api-Key': API_KEY,
-        'Origin': SITE_ORIGIN,
-        'Referer': SITE_ORIGIN,
-      },
+      headers: { ...API_HEADERS },
       cache: 'no-store',
     };
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Icon } from "@iconify/react";
 import styles from "./ecosystem.module.scss";
-import Recaptcha from "../lib/Recaptcha";
+import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
 import { getCsrfToken } from "../lib/csrf";
 
 const API_URL = "/api/proxy/partners";
@@ -45,6 +45,13 @@ export default function PartnerForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
+      setServerError("Please complete the security check above before submitting.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("loading");
     setErrors({});
     setServerError("");
@@ -82,6 +89,10 @@ export default function PartnerForm() {
     } catch {
       setServerError("Network error. Please check your connection and try again.");
       setStatus("error");
+    } finally {
+      // Single-use token is spent — reset so a follow-up submit gets a fresh one.
+      setRecaptchaToken("");
+      resetRecaptcha();
     }
   };
 

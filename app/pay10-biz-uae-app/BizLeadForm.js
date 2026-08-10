@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Style from "./page.module.scss";
-import Recaptcha from "../lib/Recaptcha";
+import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
 import { getCsrfToken } from "../lib/csrf";
 
 const INITIAL = {
@@ -102,6 +102,10 @@ const BizLeadForm = () => {
     } catch {
       setStatus("error");
       setMessage("Network error. Please check your connection and try again.");
+    } finally {
+      // Single-use token is spent — reset so a follow-up submit gets a fresh one.
+      setRecaptchaToken("");
+      resetRecaptcha();
     }
   };
 

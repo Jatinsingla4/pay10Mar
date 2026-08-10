@@ -3,8 +3,18 @@
 import { useEffect, useRef } from "react";
 import Script from "next/script";
 
-// Google reCAPTCHA v2 (checkbox) widget. Renders nothing (and blocks nothing)
-// if the site key isn't configured, so local/dev environments without a key still work.
+// Google issues single-use tokens: once the server has verified one, replaying it
+// fails. Forms must therefore reset the widget after every submit attempt so the
+// next attempt carries a fresh token. Only one widget is rendered per page, so
+// tracking its id at module scope is enough for callers to reset it.
+let activeWidgetId = null;
+
+export function resetRecaptcha() {
+  if (activeWidgetId !== null && window.grecaptcha?.reset) {
+    window.grecaptcha.reset(activeWidgetId);
+  }
+}
+
 export default function Recaptcha({ onVerify, onExpire }) {
   const containerRef = useRef(null);
   const widgetIdRef = useRef(null);
@@ -18,13 +28,11 @@ export default function Recaptcha({ onVerify, onExpire }) {
       "expired-callback": () => onExpire?.(),
       "error-callback": () => onExpire?.(),
     });
+    activeWidgetId = widgetIdRef.current;
   };
 
   useEffect(() => {
     if (!siteKey) return;
-    // The script may already be cached/preloaded by the time this mounts, so
-    // next/script's onReady can fire before or after this — poll instead of
-    // relying on it alone.
     const interval = setInterval(() => {
       if (window.grecaptcha?.render) {
         clearInterval(interval);
@@ -36,7 +44,9 @@ export default function Recaptcha({ onVerify, onExpire }) {
       if (widgetIdRef.current !== null && window.grecaptcha?.reset) {
         window.grecaptcha.reset(widgetIdRef.current);
       }
+      if (activeWidgetId === widgetIdRef.current) activeWidgetId = null;
     };
+    // Mount-once: the widget is rendered a single time and reset imperatively.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

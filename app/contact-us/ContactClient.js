@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Style from "./contact.module.scss";
 import { Icon } from "@iconify/react";
 import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
-import Recaptcha from "../lib/Recaptcha";
+import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
 import { getCsrfToken } from "../lib/csrf";
 
 // Hardcoded Google Maps embed URL
@@ -319,11 +319,14 @@ const ContactClient = ({ pageData = null }) => {
     setFormSubmitMessage("");
 
     try {
-      let { response, result } = await submitContactForm(formData.mobile);
-
-      if (!result?.success && /^800\d{5}$/.test(formData.mobile.trim()) && (result?.errors?.phone || "").toLowerCase().includes("invalid")) {
-        ({ response, result } = await submitContactForm(`971${formData.mobile.trim()}`));
-      }
+      // UAE toll-free numbers (800xxxxx) are rejected by the backend unless they
+      // carry the country code. This used to be handled by retrying the submit,
+      // but every submit consumes the single-use reCAPTCHA token, so the retry
+      // could never pass verification — normalise up front and submit once.
+      const mobile = formData.mobile.trim();
+      const { response, result } = await submitContactForm(
+        /^800\d{5}$/.test(mobile) ? `971${mobile}` : mobile
+      );
 
       if (response.ok) {
         setFormSubmitStatus("success");
@@ -351,6 +354,10 @@ const ContactClient = ({ pageData = null }) => {
       setFormSubmitMessage("An error occurred. Please try again later.");
     } finally {
       setFormSubmitting(false);
+      // The token just submitted is spent either way — clear it and reset the
+      // widget so a follow-up submit isn't rejected for replaying it.
+      setRecaptchaToken("");
+      resetRecaptcha();
     }
   };
 

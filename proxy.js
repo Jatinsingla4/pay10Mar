@@ -8,11 +8,7 @@ const WWW_HOST = 'www.pay10.ae';
 
 const SKIP_HOSTS = new Set(['localhost', '127.0.0.1']);
 
-// --- CSRF (double-submit cookie) ---
-// No login/session exists on this site, so there's nothing to bind a
-// synchronizer token to. A double-submit cookie needs no server-side
-// storage: the client can only echo the token back in a header if it can
-// read our cookie, which a cross-origin page cannot do.
+
 const CSRF_COOKIE = 'csrf_token';
 
 function ensureCsrfCookie(request, response) {
@@ -25,14 +21,11 @@ function ensureCsrfCookie(request, response) {
   }
 }
 
-// --- Rate limiting for public, unauthenticated API routes ---
-// This app runs as a single long-lived `next start` process (confirmed —
-// not serverless/edge functions), so an in-memory store is correctly
-// shared across every request it handles.
+
 const RATE_LIMITED_PREFIXES = ['/api/proxy'];
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 10;
-const rateLimitStore = new Map(); // ip -> { count, windowStart }
+const rateLimitStore = new Map(); 
 let requestsSinceSweep = 0;
 
 function pruneExpiredEntries(now) {

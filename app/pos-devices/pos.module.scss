@@ -92,7 +92,7 @@
 }
 
 .compare_section {
-  padding: 40px 24px;
+  padding: 50px 24px;
   background: var(--body-bg);
 
   @include tab {
@@ -227,7 +227,7 @@
 }
 
 .guarantee_section {
-  padding: 40px 24px;
+  padding: 50px 24px;
   background: var(--body-bg);
 
   @include tab {
@@ -326,7 +326,7 @@
 }
 
 .ecosystem_flow_section {
-  padding: 40px 24px;
+  padding: 50px 24px;
   background: var(--body-bg);
   color: var(--black);
 
@@ -451,7 +451,7 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 60px;
-  padding: 40px 24px;
+  padding: 50px 24px;
   max-width: 100%;
   background: var(--body-bg);
   align-items: start;

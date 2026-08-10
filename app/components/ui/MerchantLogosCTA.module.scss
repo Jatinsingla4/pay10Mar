@@ -1,12 +1,12 @@
 @import "../../../styles/globals/mixin";
 
 .logosCtaSection {
-  padding: 0 56px 40px;
+  padding: 0 56px 50px;
   background-color: var(--body-bg);
   text-align: center;
 
   @include large {
-    padding: 0 32px 40px;
+    padding: 0 32px 50px;
   }
 
   @include tab {

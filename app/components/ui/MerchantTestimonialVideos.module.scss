@@ -1,11 +1,11 @@
 @import "../../../styles/globals/mixin";
 
 .videoSection {
-  padding: 0 56px 40px;
+  padding: 0 56px 50px;
   background-color: var(--body-bg);
 
   @include large {
-    padding: 0 32px 40px;
+    padding: 0 32px 50px;
   }
 
   @include tab {

@@ -188,7 +188,7 @@ const SendAbroadClient = ({ pageData = null }) => {
             }
             imageSrc={pageData?.sections?.[3]?.images?.[0] || "/images/prod_imports/send-where-bubble.png"}
             imageAlt={pageData?.sections?.[3]?.title || "Countries"}
-            isReversed={true}
+            isReversed={false}
             isGreyBg={false}
             isTransparent={true}
           />

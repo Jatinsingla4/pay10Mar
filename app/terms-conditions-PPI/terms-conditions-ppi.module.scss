@@ -51,7 +51,17 @@
     font-weight: 600;
     color: var(--black);
   }
- 
+
+  a {
+    text-decoration: underline;
+    color: var(--red);
+    font-family: 'bold', sans-serif;
+
+    &:hover {
+      color: var(--yellow);
+    }
+  }
+
   .underline {
   text-decoration: underline;
    }  

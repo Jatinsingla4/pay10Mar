@@ -230,8 +230,13 @@
   }
 
   a {
-    color: var(--orange);
+    color: var(--red);
     text-decoration: underline;
+    font-family: 'bold', sans-serif;
+
+    &:hover {
+      color: var(--yellow);
+    }
   }
 
   table {

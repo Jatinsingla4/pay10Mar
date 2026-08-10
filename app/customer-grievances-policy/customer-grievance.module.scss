@@ -77,8 +77,13 @@
     }
 
     a {
-      color: var(--yellow);
+      color: var(--red);
       text-decoration: underline;
+      font-family: 'bold', sans-serif;
+
+      &:hover {
+        color: var(--yellow);
+      }
     }
     table {
       margin: 24px 0;

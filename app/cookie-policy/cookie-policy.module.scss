@@ -1,0 +1,21 @@
+@import '../../styles/globals/mixin';
+
+// Cookie Policy reuses Privacy Policy's .sidebar/.content_panel classes
+// directly, so this file only adds the top spacing specific to this page
+// without touching Privacy Policy's own (unpadded) version of those classes.
+.sidebarPad {
+  padding-top: 93px !important;
+
+  @include tab {
+    padding-top: 0 !important;
+    display: none !important;
+  }
+}
+
+.contentPad {
+  padding-top: 93px !important;
+
+  @include tab {
+    padding-top: 0 !important;
+  }
+}

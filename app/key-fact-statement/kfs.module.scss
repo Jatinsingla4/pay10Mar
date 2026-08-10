@@ -57,7 +57,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  padding-top: 93px;
+  padding-top: 0;
   align-self: flex-start;
   position: sticky;
   top: 100px;
@@ -72,7 +72,7 @@
     flex: none;
     flex-direction: row;
     overflow-x: auto;
-    padding-top: 73px;
+    padding-top: 0;
     padding-bottom: 15px;
     gap: 12px;
     width: 100%;
@@ -163,20 +163,20 @@
 .content_panel {
   flex: 1;
   border-radius: 0;
-  padding: 93px 0 40px 44px;
+  padding: 4px 0 40px 44px;
   border-left: 3px solid var(--orange);
   min-height: 500px;
   color: #7A7A7A;
 
   @media (max-width: 1200px) {
-    padding: 93px 0 40px 28px;
+    padding: 4px 0 40px 28px;
   }
 
   @media (max-width: 991px) {
     padding: 24px 0 40px 0;
     border-left: none;
     border-top: 3px solid var(--orange);
-    padding-top: 73px;
+    padding-top: 32px;
   }
 
   @media (max-width: 768px) {

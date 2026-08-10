@@ -2,6 +2,7 @@
 
 import React from "react";
 import Style from "../privacy-policy/privacy-policy.module.scss";
+import socStyle from "./schedule-of-charges.module.scss";
 
 // CMS cards store each charge type's line items as plain text, one
 // "label: amount" pair per line — the CMS rich-text editor flattens real
@@ -34,11 +35,11 @@ const SocClient = ({ pageData = null }) => {
         <h1 className={Style.title} data-animation="fade-up">{pageData?.page_title || "Schedule of Charges"}</h1>
 
         <div className={Style.layout}>
-          <aside className={Style.sidebar} data-animation="fade-up">
+          <aside className={`${Style.sidebar} ${socStyle.sidebarPad}`} data-animation="fade-up">
             <button className={Style.tab_pill}>Schedule of Charges</button>
           </aside>
 
-          <div className={Style.content_panel}>
+          <div className={`${Style.content_panel} ${socStyle.contentPad}`}>
             <div className={Style.contentHtml}>
               <h2>Applicable Charges</h2>
               <div className={Style.tableWrapper}>

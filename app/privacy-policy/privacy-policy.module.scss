@@ -116,7 +116,6 @@
 
 .sidebar {
   flex: 0 0 240px;
-  padding-top: 93px;
   position: sticky;
   top: 100px;
   align-self: flex-start;
@@ -124,8 +123,8 @@
   @include tab {
     flex: unset;
     width: 100%;
-    padding-top: 73px;
     position: static;
+    display: none;
   }
 }
 
@@ -150,7 +149,6 @@
 .content_panel {
   flex: 1;
   min-width: 0;
-  padding-top: 93px;
   border-left: 3px solid var(--orange);
   padding-left: 44px;
 
@@ -162,7 +160,7 @@
     border-left: none;
     padding-left: 0;
     border-top: 3px solid var(--orange);
-    padding-top: 73px;
+    padding-top: 0;
   }
 }
 

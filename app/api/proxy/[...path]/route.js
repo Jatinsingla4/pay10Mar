@@ -6,20 +6,20 @@ const API_KEY = process.env.BACKEND_AUTH_KEY;
 const RECAPTCHA_SECRET_KEY = process.env.RECAPTCHA_SECRET_KEY;
 const SITE_ORIGIN = process.env.SITE_ORIGIN;
 
-// Both of these fail *silently* when unset, which is why they're checked up front
-// rather than left to whatever the runtime does with `undefined`:
-//   SITE_ORIGIN          — sent as the literal string "undefined", which the
-//                          backend's origin allowlist then rejects, breaking
-//                          every form with a generic 403.
-//   RECAPTCHA_SECRET_KEY — verifyRecaptchaToken has nothing to verify against and
-//                          would wave every request through, silently removing
-//                          bot protection with no error anywhere.
-// In a deployed build that's a deployment fault, so refuse to serve rather than
-// run half-protected. Local dev is allowed to run without them.
+
 const REQUIRE_FULL_CONFIG = process.env.NODE_ENV === 'production';
 const MISSING_CONFIG = Object.entries({ SITE_ORIGIN, RECAPTCHA_SECRET_KEY })
   .filter(([, value]) => !value)
   .map(([name]) => name);
+
+// Every reply from this route is specific to one request — a rejection, a
+// validation message, or one visitor's submission result. Next.js sends no
+// Cache-Control of its own on route handlers, so a CDN told to cache
+// aggressively could store a 403 or 429 and serve it to everyone. Say no-store
+// explicitly instead of relying on the edge being configured correctly.
+function json(body, status) {
+  return NextResponse.json(body, { status, headers: { 'cache-control': 'no-store' } });
+}
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -98,19 +98,19 @@ export async function POST(request, { params }) {
 async function handleProxy(request, params) {
   try {
     if (!API_BASE || !API_KEY) {
-      return NextResponse.json({ status: false, message: 'Server configuration error' }, { status: 500 });
+      return json({ status: false, message: 'Server configuration error' }, 500);
     }
 
     if (REQUIRE_FULL_CONFIG && MISSING_CONFIG.length) {
       console.error('Proxy refusing requests — missing required config:', MISSING_CONFIG.join(', '));
-      return NextResponse.json({ status: false, message: 'Server configuration error' }, { status: 500 });
+      return json({ status: false, message: 'Server configuration error' }, 500);
     }
 
     const resolvedParams = await params;
     const endpointPath = resolvedParams.path ? resolvedParams.path.join('/') : '';
 
     if (!ALLOWED_PATHS.has(endpointPath)) {
-      return NextResponse.json({ status: false, message: 'Not found' }, { status: 404 });
+      return json({ status: false, message: 'Not found' }, 404);
     }
 
     // CSRF guard: state-changing requests must come from our own site, not a
@@ -120,7 +120,7 @@ async function handleProxy(request, params) {
     const origin = request.headers.get('origin');
     const isAllowedOrigin = origin && (ALLOWED_ORIGINS.has(origin) || (process.env.NODE_ENV !== 'production' && origin.startsWith('http://localhost:')));
     if (!isAllowedOrigin) {
-      return NextResponse.json({ status: false, message: 'Forbidden' }, { status: 403 });
+      return json({ status: false, message: 'Forbidden' }, 403);
     }
 
     // Double-submit CSRF token: only a page that can read our own cookie
@@ -128,7 +128,7 @@ async function handleProxy(request, params) {
     const csrfCookie = request.cookies.get('csrf_token')?.value;
     const csrfHeader = request.headers.get('x-csrf-token');
     if (!csrfCookie || csrfCookie !== csrfHeader) {
-      return NextResponse.json({ status: false, message: 'Forbidden' }, { status: 403 });
+      return json({ status: false, message: 'Forbidden' }, 403);
     }
 
     const { searchParams } = new URL(request.url);
@@ -155,11 +155,11 @@ async function handleProxy(request, params) {
       const token = incoming.get('recaptcha_token');
       incoming.delete('recaptcha_token');
       if (!(await verifyRecaptchaToken(token, requestIp))) {
-        return NextResponse.json({ status: false, message: 'Verification failed. Please try again.' }, { status: 400 });
+        return json({ status: false, message: 'Verification failed. Please try again.' }, 400);
       }
       const validationError = validatePayload(endpointPath, Object.fromEntries(incoming.entries()));
       if (validationError) {
-        return NextResponse.json({ status: false, message: validationError }, { status: 400 });
+        return json({ status: false, message: validationError }, 400);
       }
 
       const outgoing = new FormData();
@@ -172,17 +172,17 @@ async function handleProxy(request, params) {
       try {
         payload = JSON.parse(await request.text());
       } catch {
-        return NextResponse.json({ status: false, message: 'Invalid request body' }, { status: 400 });
+        return json({ status: false, message: 'Invalid request body' }, 400);
       }
 
       const token = payload.recaptcha_token;
       delete payload.recaptcha_token;
       if (!(await verifyRecaptchaToken(token, requestIp))) {
-        return NextResponse.json({ status: false, message: 'Verification failed. Please try again.' }, { status: 400 });
+        return json({ status: false, message: 'Verification failed. Please try again.' }, 400);
       }
       const validationError = validatePayload(endpointPath, payload);
       if (validationError) {
-        return NextResponse.json({ status: false, message: validationError }, { status: 400 });
+        return json({ status: false, message: validationError }, 400);
       }
 
       fetchOptions.body = JSON.stringify(payload);
@@ -198,9 +198,9 @@ async function handleProxy(request, params) {
       console.error('Proxy non-JSON response:', response.status, text.slice(0, 300));
       data = { status: false, message: 'An error occurred. Please try again later.' };
     }
-    return NextResponse.json(data, { status: response.status });
+    return json(data, response.status);
   } catch (err) {
     console.error('Proxy error:', err);
-    return NextResponse.json({ status: false, message: 'An error occurred. Please try again later.' }, { status: 500 });
+    return json({ status: false, message: 'An error occurred. Please try again later.' }, 500);
   }
 }

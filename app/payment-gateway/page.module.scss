@@ -285,7 +285,7 @@
   justify-content: center;
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -340,7 +340,7 @@
   }
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -707,7 +707,7 @@
   padding: 40px 24px;
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -802,7 +802,7 @@
   background: var(--body-bg);
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 

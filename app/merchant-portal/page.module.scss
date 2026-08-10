@@ -85,7 +85,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 50px 16px;
+    padding: 25px 16px;
     gap: 40px;
   }
 }
@@ -225,7 +225,7 @@
   }
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -278,7 +278,7 @@
   }
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -526,7 +526,7 @@
   }
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 

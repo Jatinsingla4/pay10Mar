@@ -96,7 +96,7 @@
   background: var(--body-bg);
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -231,7 +231,7 @@
   background: var(--body-bg);
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -331,7 +331,7 @@
   color: var(--black);
 
   @include tab {
-    padding: 50px 16px;
+    padding: 25px 16px;
   }
 }
 
@@ -462,7 +462,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 50px 16px;
+    padding: 25px 16px;
     gap: 40px;
   }
 }

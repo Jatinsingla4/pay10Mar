@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Style from "./page.module.scss";
+import Recaptcha from "../lib/Recaptcha";
+import { getCsrfToken } from "../lib/csrf";
 
 const INITIAL = {
   business_name: "",
@@ -17,6 +19,7 @@ const BizLeadForm = () => {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
+  const [recaptchaToken, setRecaptchaToken] = useState("");
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -52,6 +55,12 @@ const BizLeadForm = () => {
     e.preventDefault();
     if (!validate()) return;
 
+    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
+      setStatus("error");
+      setMessage("Please complete the security check above before submitting.");
+      return;
+    }
+
     setStatus("loading");
     setMessage("");
 
@@ -62,7 +71,7 @@ const BizLeadForm = () => {
     try {
       const res = await fetch("/api/proxy/contact/enquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json", "X-CSRF-Token": getCsrfToken() },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -72,6 +81,7 @@ const BizLeadForm = () => {
           business_type: form.business_type,
           message: `Business type: ${form.business_type}. Address: ${form.address}`,
           type: enquiryType,
+          recaptcha_token: recaptchaToken,
         }),
       });
       const data = await res.json();
@@ -177,6 +187,8 @@ const BizLeadForm = () => {
           {errors.business_type && <span className={Style.biz_lead_error}>{errors.business_type}</span>}
         </div>
       </div>
+
+      <Recaptcha onVerify={setRecaptchaToken} onExpire={() => setRecaptchaToken("")} />
 
       <button type="submit" className={Style.biz_lead_submit} disabled={status === "loading"}>
         {status === "loading" ? "Submitting..." : "Submit"}

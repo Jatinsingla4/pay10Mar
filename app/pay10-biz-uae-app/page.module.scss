@@ -1,6 +1,5 @@
 @import "../../styles/globals/mixin";
 
-
 .biz_hero {
   @include homepageHeroBanner;
   display: flex;
@@ -8,11 +7,10 @@
   padding: 60px 56px;
 
   @include tab {
-    padding: 40px 24px;
+    padding: 40px 16px;
   }
 
   @include mobile {
-    padding: 40px 20px 60px;
     align-items: flex-end;
   }
 }
@@ -28,7 +26,7 @@
   h2 {
     margin: 0;
     font-size: 48px;
-    font-family: 'bold', sans-serif;
+    font-family: "bold", sans-serif;
     color: var(--white);
     line-height: 1.2;
   }
@@ -36,7 +34,7 @@
   p {
     margin: 0;
     font-size: 18px;
-    font-family: 'medium', sans-serif;
+    font-family: "medium", sans-serif;
     color: var(--white);
     line-height: 1.5;
   }
@@ -44,15 +42,24 @@
   @include tab {
     max-width: 55%;
 
-    h2 { font-size: 32px; }
-    p { font-size: 16px; }
+    h2 {
+      font-size: 32px;
+    }
+    p {
+      font-size: 16px;
+    }
   }
 
   @include mobile {
     max-width: 100%;
 
-    h2 { font-size: 22px; }
-    p { font-size: 13px; line-height: 1.4; }
+    h2 {
+      font-size: 22px;
+    }
+    p {
+      font-size: 13px;
+      line-height: 1.4;
+    }
   }
 }
 
@@ -60,9 +67,13 @@
   padding: 40px 56px;
   background: var(--body-bg);
 
-  @include large { padding: 40px 32px; }
+  @include large {
+    padding: 40px 32px;
+  }
 
-  @include tab { padding: 56px 16px; }
+  @include tab {
+    padding: 50px 16px 0;
+  }
 }
 
 .merchant_scale_header {
@@ -75,7 +86,7 @@
   h2 {
     margin: 0;
     font-size: 48px;
-    font-family: 'bold', sans-serif;
+    font-family: "bold", sans-serif;
     line-height: 1.1;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
@@ -90,18 +101,22 @@
   p {
     margin: 0;
     font-size: 16px;
-    font-family: 'medium', sans-serif;
+    font-family: "medium", sans-serif;
     color: var(--gray);
     line-height: 1.6;
     padding-top: 8px;
   }
 
-  @include large { gap: 32px; }
+  @include large {
+    gap: 32px;
+  }
 
   @include tab {
     grid-template-columns: 1fr;
     gap: 16px;
-    h2 { font-size: 32px; }
+    h2 {
+      font-size: 32px;
+    }
   }
 }
 
@@ -110,9 +125,13 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 
-  @include large { grid-template-columns: repeat(2, 1fr); }
+  @include large {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-  @include tab { grid-template-columns: 1fr; }
+  @include tab {
+    grid-template-columns: 1fr;
+  }
 }
 
 .merchant_scale_card {
@@ -126,15 +145,19 @@
 }
 
 .card_num {
-  font-size: 0.875rem;
-  font-family: 'medium', sans-serif;
-  color: var(--gray);
+  background: var(--primary-gradient);
+  -webkit-text-fill-color: #0000;
+  -webkit-background-clip: text;
+  background-clip: text;
+  align-self: flex-end;
+  font-family: medium, sans-serif;
+  font-size: 0.8125rem;
 }
 
 .merchant_scale_card h3 {
   margin: 0;
   font-size: 1.25rem;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   line-height: 1.3;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -145,14 +168,14 @@
 .card_sub {
   margin: 0;
   font-size: 0.9375rem;
-  font-family: 'medium', sans-serif;
+  font-family: "medium", sans-serif;
   color: var(--gray);
 }
 
 .card_desc {
   margin: 0;
   font-size: 16px;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--gray);
   line-height: 1.6;
   flex: 1;
@@ -173,7 +196,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 56px 16px;
+    padding: 50px 16px 0;
     gap: 40px;
   }
 }
@@ -188,30 +211,34 @@
   h2 {
     margin: 0;
     font-size: 48px;
-    font-family: 'bold', sans-serif;
+    font-family: "bold", sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 
-    @include tab { font-size: 32px; }
+    @include tab {
+      font-size: 32px;
+    }
   }
 
   > p {
     margin: 0;
     font-size: 16px;
-    font-family: 'regular', sans-serif;
+    font-family: "regular", sans-serif;
     color: var(--gray);
     line-height: 1.6;
   }
 
-  @include tab { position: static; }
+  @include tab {
+    position: static;
+  }
 }
 
 .benefits_eyebrow {
   font-size: 0.875rem;
-  font-family: 'medium', sans-serif;
+  font-family: "medium", sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -220,7 +247,7 @@
 
 .benefits_tagline {
   font-size: 0.9375rem;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -232,9 +259,13 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 
-  @include large { gap: 20px; }
+  @include large {
+    gap: 20px;
+  }
 
-  @include tab { grid-template-columns: 1fr; }
+  @include tab {
+    grid-template-columns: 1fr;
+  }
 }
 
 .benefit_card {
@@ -261,7 +292,7 @@
 
 .benefit_num {
   font-size: 0.8125rem;
-  font-family: 'medium', sans-serif;
+  font-family: "medium", sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -277,7 +308,7 @@
 .benefit_card h3 {
   margin: 0;
   font-size: 1.125rem;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   line-height: 1.3;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
@@ -288,14 +319,14 @@
 .benefit_sub {
   margin: 0;
   font-size: 0.9375rem;
-  font-family: 'medium', sans-serif;
+  font-family: "medium", sans-serif;
   color: var(--black);
 }
 
 .benefit_desc {
   margin: 0;
   font-size: 0.875rem;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--gray);
   line-height: 1.6;
   flex: 1;
@@ -308,9 +339,13 @@
   padding: 40px 56px;
   background: var(--body-bg);
 
-  @include large { padding: 40px 32px; }
+  @include large {
+    padding: 40px 32px;
+  }
 
-  @include tab { padding: 56px 16px; }
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .command_body {
@@ -319,7 +354,9 @@
   gap: 60px;
   align-items: start;
 
-  @include large { gap: 40px; }
+  @include large {
+    gap: 40px;
+  }
 
   @include tab {
     grid-template-columns: 1fr;
@@ -330,14 +367,16 @@
 .command_heading {
   margin: 0;
   font-size: 48px;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   line-height: 1.15;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 
-  @include tab { font-size: 32px; }
+  @include tab {
+    font-size: 32px;
+  }
 }
 
 .command_phones {
@@ -395,7 +434,7 @@
 .command_desc {
   margin: 0;
   font-size: 16px;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--gray);
   line-height: 1.6;
 }
@@ -404,7 +443,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border-top: 1px solid rgba(0,0,0,0.08);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
   padding-top: 24px;
 }
 
@@ -417,14 +456,14 @@
 .feature_title {
   margin: 0;
   font-size: 1rem;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   color: var(--black);
 }
 
 .feature_desc {
   margin: 0;
   font-size: 0.875rem;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--gray);
   line-height: 1.6;
 }
@@ -444,7 +483,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 56px 24px;
+    padding: 50px 16px 0;
   }
 }
 
@@ -456,20 +495,22 @@
   h2 {
     margin: 0;
     font-size: 48px;
-    font-family: 'bold', sans-serif;
+    font-family: "bold", sans-serif;
     line-height: 1.2;
     background: var(--primary-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 
-    @include tab { font-size: 32px; }
+    @include tab {
+      font-size: 32px;
+    }
   }
 }
 
 .support_num {
   font-size: 0.875rem;
-  font-family: 'medium', sans-serif;
+  font-family: "medium", sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -479,14 +520,14 @@
 .support_sub {
   margin: 0;
   font-size: 1.125rem;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   color: var(--black);
 }
 
 .support_desc {
   margin: 0;
   font-size: 16px;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--gray);
   line-height: 1.7;
 }
@@ -496,6 +537,10 @@
   align-items: center;
   justify-content: center;
   padding: 40px 0;
+
+  @include tab {
+    padding: 0;
+  }
 }
 
 .circle_outer {
@@ -557,7 +602,9 @@
   }
 }
 
-.floating_avatar_1, .floating_avatar_2, .floating_avatar_3 {
+.floating_avatar_1,
+.floating_avatar_2,
+.floating_avatar_3 {
   position: absolute;
   border-radius: 50%;
   object-fit: cover;
@@ -591,9 +638,15 @@
 }
 
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 .wrapper {
@@ -630,7 +683,6 @@
     opacity: 0.4;
     pointer-events: none;
   }
-
 }
 
 /** Decorative circles behind IntegrationTwoLayout rows (merchant app). */
@@ -666,13 +718,12 @@
     max-width: 700px;
     margin: 0 auto;
   }
-
 }
 
 .business_edge_section {
   width: 100%;
   display: grid;
-  grid-template-columns: .3fr .7fr;
+  grid-template-columns: 0.3fr 0.7fr;
   gap: 30px;
   align-items: center;
   justify-content: center;
@@ -684,7 +735,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @include tab{
+    @include tab {
       order: 2;
     }
     img {
@@ -696,7 +747,7 @@
 
   .features_content {
     width: 100%;
-    @include tab{
+    @include tab {
       order: 1;
     }
     .features_title {
@@ -719,7 +770,9 @@
         gap: 25px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
         .feature_icon {
           width: 36px;
           height: 36px;
@@ -743,7 +796,7 @@
   }
 
   @include large {
-    grid-template-columns: .4fr .6fr;
+    grid-template-columns: 0.4fr 0.6fr;
   }
 
   @include tab {
@@ -769,7 +822,7 @@
 
           p {
             font-size: 14px;
-            font-family: 'bold', sans-serif;
+            font-family: "bold", sans-serif;
           }
         }
       }
@@ -801,10 +854,13 @@
   padding: 40px 56px;
   background: var(--body-bg);
 
-  @include large { padding: 40px 32px; }
+  @include large {
+    padding: 40px 32px;
+  }
 
-  @include tab { padding: 60px 24px; }
-  @include mobile { padding: 48px 16px; }
+  @include tab {
+    padding: 0 16px 50px;
+  }
 }
 
 .steps_header {
@@ -815,27 +871,33 @@
   gap: 16px;
   margin-bottom: 64px;
 
-  @include tab { margin-bottom: 40px; }
+  @include tab {
+    margin-bottom: 40px;
+  }
 }
 
 .steps_heading {
   margin: 0;
   font-size: 48px;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   text-transform: uppercase;
 
-  @include tab { font-size: 32px; }
-  @include mobile { font-size: 26px; }
+  @include tab {
+    font-size: 32px;
+  }
+  @include mobile {
+    font-size: 26px;
+  }
 }
 
 .steps_sub {
   margin: 0;
   font-size: 1rem;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--black);
   line-height: 1.7;
   max-width: 640px;
@@ -846,17 +908,28 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 0;
 
-  @include large { grid-template-columns: repeat(4, 1fr); gap: 32px; }
+  @include large {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
 
-  @include tab { grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  @include mobile { grid-template-columns: 1fr; gap: 32px; }
+  @include tab {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 .step_item {
   padding-right: 24px;
   text-align: center;
 
-  @include tab { padding-right: 0; }
+  @include tab {
+    padding-right: 0;
+  }
 }
 
 .step_num_wrap {
@@ -867,15 +940,21 @@
 }
 
 .step_item:not(:last-child) .step_num_wrap::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: calc(50% + 28px);
   right: calc(-100% + 28px);
   height: 1px;
-  background: linear-gradient(to right, rgba(255,129,5,0.4), rgba(239,26,35,0.1));
+  background: linear-gradient(
+    to right,
+    rgba(255, 129, 5, 0.4),
+    rgba(239, 26, 35, 0.1)
+  );
 
-  @include tab { display: none; }
+  @include tab {
+    display: none;
+  }
 }
 
 .step_num {
@@ -884,7 +963,7 @@
   border-radius: 50%;
   background: var(--primary-gradient);
   color: var(--white);
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   font-size: 0.9rem;
   display: flex;
   align-items: center;
@@ -895,14 +974,14 @@
 .step_title {
   margin: 0 0 8px;
   font-size: 1rem;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   color: var(--black);
 }
 
 .step_desc {
   margin: 0;
   font-size: 0.875rem;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--gray);
   line-height: 1.6;
 }
@@ -916,23 +995,30 @@
   gap: 28px;
   background: var(--body-bg);
 
-  @include large { padding: 40px 32px; }
+  @include large {
+    padding: 40px 32px;
+  }
 
-  @include tab { padding: 48px 24px; }
-  @include mobile { padding: 40px 16px; margin: 0 16px; }
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .app_download_heading {
   margin: 0;
   font-size: 48px;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   background: var(--primary-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 
-  @include tab { font-size: 32px; }
-  @include mobile { font-size: 26px; }
+  @include tab {
+    font-size: 32px;
+  }
+  @include mobile {
+    font-size: 26px;
+  }
 }
 
 .qr_image {
@@ -951,13 +1037,18 @@
   border-radius: 100px;
   background: var(--primary-gradient);
   color: var(--white);
-  font-family: 'semibold', sans-serif;
+  font-family: "semibold", sans-serif;
   font-size: 16px;
   text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 
-  &:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); }
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+  }
 }
 
 .biz_final_cta {
@@ -969,27 +1060,34 @@
   gap: 24px;
   background: var(--body-bg);
 
-  @include large { padding: 40px 32px; }
+  @include large {
+    padding: 40px 32px;
+  }
 
-  @include tab { padding: 72px 24px; }
-  @include mobile { padding: 56px 16px; }
+  @include tab {
+    padding: 0 16px 50px;
+  }
 }
 
 .cta_heading {
   margin: 0;
   font-size: 48px;
-  font-family: 'bold', sans-serif;
+  font-family: "bold", sans-serif;
   color: var(--black);
   line-height: 1.2;
 
-  @include tab { font-size: 32px; }
-  @include mobile { font-size: 26px; }
+  @include tab {
+    font-size: 32px;
+  }
+  @include mobile {
+    font-size: 26px;
+  }
 }
 
 .cta_sub {
   margin: 0;
   font-size: 1rem;
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
   color: var(--gray);
   max-width: 560px;
   line-height: 1.7;
@@ -1010,7 +1108,9 @@
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 
-  @include mobile { grid-template-columns: 1fr; }
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
 }
 
 .biz_lead_group {
@@ -1026,7 +1126,7 @@
     border: 1px solid rgba(0, 0, 0, 0.12);
     background: var(--white);
     font-size: 0.9375rem;
-    font-family: 'regular', sans-serif;
+    font-family: "regular", sans-serif;
     color: var(--black);
     width: 100%;
 
@@ -1053,7 +1153,7 @@
 .biz_lead_error {
   font-size: 0.8125rem;
   color: var(--red);
-  font-family: 'regular', sans-serif;
+  font-family: "regular", sans-serif;
 }
 
 .biz_lead_submit {
@@ -1063,14 +1163,19 @@
   border-radius: 100px;
   background: var(--primary-gradient);
   color: var(--white);
-  font-family: 'semibold', sans-serif;
+  font-family: "semibold", sans-serif;
   font-size: 1rem;
   border: none;
   cursor: pointer;
   transition: opacity 0.2s;
 
-  &:hover { opacity: 0.88; }
-  &:disabled { opacity: 0.6; cursor: not-allowed; }
+  &:hover {
+    opacity: 0.88;
+  }
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
 }
 
 .biz_lead_success {
@@ -1080,7 +1185,7 @@
   background: rgba(34, 197, 94, 0.1);
   color: #15803d;
   font-size: 0.9375rem;
-  font-family: 'medium', sans-serif;
+  font-family: "medium", sans-serif;
 }
 
 .biz_lead_error_box {
@@ -1090,5 +1195,5 @@
   background: rgba(239, 68, 68, 0.1);
   color: var(--red);
   font-size: 0.9375rem;
-  font-family: 'medium', sans-serif;
+  font-family: "medium", sans-serif;
 }

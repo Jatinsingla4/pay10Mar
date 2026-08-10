@@ -15,11 +15,11 @@
   padding: 60px 56px;
 
   @include tab {
-    padding: 40px 24px;
+    padding: 40px 16px;
   }
 
   @include mobile {
-    padding: 40px 20px 60px;
+    padding: 40px 16px 60px;
     align-items: flex-end;
   }
 }
@@ -76,7 +76,7 @@
   }
 
   @include tab {
-    padding: 56px 24px;
+    padding: 50px 16px;
   }
 }
 
@@ -207,7 +207,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    padding: 56px 16px;
+    padding: 50px 16px;
     gap: 40px;
   }
 }
@@ -337,8 +337,8 @@
   padding: 40px 56px;
   background: var(--body-bg);
 
-  @include tab { padding: 56px 0; }
-  @include mobile { padding: 40px 0; }
+  @include tab { padding: 50px 0; }
+  @include mobile { padding: 50px 0; }
 }
 
 .apply_container {
@@ -355,10 +355,8 @@
   @include tab {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 0 24px;
+    padding: 0 16px;
   }
-
-  @include mobile { padding: 0 16px; }
 }
 
 .apply_left {

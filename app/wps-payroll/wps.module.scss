@@ -15,11 +15,11 @@
   padding: 60px 56px;
 
   @include tab {
-    padding: 40px 24px;
+    padding: 40px 16px;
   }
 
   @include mobile {
-    padding: 40px 20px 60px;
+    padding: 40px 16px 60px;
     align-items: flex-end;
   }
 }
@@ -75,6 +75,10 @@
 .who_is_for_section {
   padding: 40px 24px;
   background: var(--body-bg);
+
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .who_container {
@@ -178,7 +182,7 @@
   @include tab {
     grid-template-columns: 1fr;
     gap: 40px;
-    padding: 40px 24px;
+    padding: 50px 16px;
   }
 }
 
@@ -302,6 +306,10 @@
   padding: 40px 24px;
   background: var(--body-bg);
   border-top: 1px solid rgba(0,0,0,0.05);
+
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .steps_container {
@@ -413,6 +421,10 @@
 .comparison_section {
   padding: 40px 24px;
   background: var(--body-bg);
+
+  @include tab {
+    padding: 50px 16px;
+  }
 }
 
 .comparison_container {
@@ -534,7 +546,7 @@
 
   @include tab {
     grid-template-columns: 1fr;
-    margin: 0 24px 56px;
+    margin: 0 16px 50px;
     padding: 56px 32px;
     gap: 40px;
   }

@@ -301,7 +301,7 @@
   width: 100%;
   position: relative;
   z-index: 1;
-  padding: 40px 24px;
+  padding: 40px 56px;
   background-color: var(--body-bg);
   display: flex;
   flex-direction: column;
@@ -390,7 +390,7 @@
   }
 
   @include tab {
-    padding: 60px 24px;
+    padding: 50px 16px;
     gap: 24px;
 
     h3 {

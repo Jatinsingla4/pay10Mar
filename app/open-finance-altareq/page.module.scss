@@ -13,7 +13,7 @@
     padding: 0 32px;
   }
   @include tab {
-    margin: 56px 0;
+    margin: 50px 0;
     padding: 0px 16px;
   }
 }
@@ -259,11 +259,7 @@
   padding: 40px 56px 0;
 
   @include tab {
-    padding: 56px 16px 0;
-  }
-
-  @include mobile {
-    padding: 40px 16px 0;
+    padding: 50px 16px 0;
   }
 
   /* AlTareq logo: correct landscape aspect ratio (2084×819) */

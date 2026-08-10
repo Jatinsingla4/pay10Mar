@@ -279,10 +279,14 @@
 
 .centered_text_section {
   width: 100%;
-  padding: 40px 24px;
+  padding: 40px 56px;
   background-color: var(--body-bg);
   display: flex;
   justify-content: center;
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;
@@ -704,7 +708,11 @@
 .journey_list_section {
   width: 100%;
   background-color: var(--body-bg);
-  padding: 40px 24px;
+  padding: 40px 56px;
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;
@@ -798,8 +806,12 @@
 
 /* Benefits Section */
 .benefits_section {
-  padding: 40px 24px;
+  padding: 40px 56px;
   background: var(--body-bg);
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;

@@ -73,8 +73,12 @@
 }
 
 .who_is_for_section {
-  padding: 40px 24px;
+  padding: 40px 56px;
   background: var(--body-bg);
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;
@@ -303,9 +307,13 @@
 }
 
 .steps_section {
-  padding: 40px 24px;
+  padding: 40px 56px;
   background: var(--body-bg);
   border-top: 1px solid rgba(0,0,0,0.05);
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;
@@ -419,8 +427,12 @@
 }
 
 .comparison_section {
-  padding: 40px 24px;
+  padding: 40px 56px;
   background: var(--body-bg);
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;

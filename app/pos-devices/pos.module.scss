@@ -92,8 +92,12 @@
 }
 
 .compare_section {
-  padding: 40px 24px;
+  padding: 40px 56px;
   background: var(--body-bg);
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;
@@ -227,8 +231,12 @@
 }
 
 .guarantee_section {
-  padding: 40px 24px;
+  padding: 40px 56px;
   background: var(--body-bg);
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;
@@ -326,9 +334,13 @@
 }
 
 .ecosystem_flow_section {
-  padding: 40px 24px;
+  padding: 40px 56px;
   background: var(--body-bg);
   color: var(--black);
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 25px 16px;
@@ -451,13 +463,14 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 60px;
-  padding: 40px 24px;
+  padding: 40px 56px;
   max-width: 100%;
   background: var(--body-bg);
   align-items: start;
 
   @include large {
     gap: 40px;
+    padding: 40px 32px;
   }
 
   @include tab {

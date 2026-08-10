@@ -73,7 +73,7 @@
 }
 
 .who_is_for_section {
-  padding: 50px 24px;
+  padding: 40px 24px;
   background: var(--body-bg);
 
   @include tab {
@@ -171,12 +171,12 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 80px;
-  padding: 50px 56px;
+  padding: 40px 56px;
   background: var(--body-bg);
 
   @include large {
     gap: 40px;
-    padding: 50px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {
@@ -303,7 +303,7 @@
 }
 
 .steps_section {
-  padding: 50px 24px;
+  padding: 40px 24px;
   background: var(--body-bg);
   border-top: 1px solid rgba(0,0,0,0.05);
 
@@ -419,7 +419,7 @@
 }
 
 .comparison_section {
-  padding: 50px 24px;
+  padding: 40px 24px;
   background: var(--body-bg);
 
   @include tab {

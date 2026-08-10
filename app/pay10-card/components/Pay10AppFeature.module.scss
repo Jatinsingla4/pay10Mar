@@ -1,13 +1,13 @@
 @import "../../../styles/globals/mixin";
 
 .merchantFeatureSection {
-  padding: 50px 56px;
+  padding: 40px 56px;
   background-color: transparent;
   position: relative;
   z-index: 1;
 
   @include large {
-    padding: 50px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {

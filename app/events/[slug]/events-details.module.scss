@@ -1,45 +1,91 @@
 @import "../../../styles/globals/mixin";
 
-.mainEvnDe{
+.mainEvnDe {
   margin-bottom: 36px;
+  padding-top: 24px;
+
+  @include tab {
+    padding-top: 20px;
+  }
 }
 .wrapper {
   width: 100%;
   padding: 0px 56px;
-  margin: 80px 0;
+  // margin: 80px 0;
   margin-bottom: 0;
   @include large {
     padding: 0 32px;
   }
   @include tab {
-    margin: 56px 0;
+    // margin: 56px 0;
     margin-bottom: 0;
     padding: 0px 16px;
   }
 }
 
 .backto_events {
-    width: fit-content;
-    margin: 0 auto;
-    padding: 12px 0;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 12px;
+  padding-right: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 50px;
+  white-space: nowrap;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+
+  span:nth-child(1) {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.15rem;
-    color: var(--gray);
+    margin-top: 0;
+  }
 
-    span:nth-child(1){
-        margin-top: 0.2rem;
-    }
+  &:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 26, 35, 0.3);
+  }
+
+  @include tab {
+    padding: 10px;
+    padding-right: 20px;
+  }
+}
+
+.mainEvnDe > .backto_events {
+  margin: 0 0 0 56px;
+
+  @include large {
+    margin-left: 32px;
+  }
+
+  @include tab {
+    display: flex;
+    margin: 0 auto;
+  }
 }
 
 .events_details_banner_headings {
   width: 90%;
   margin: 0 auto;
-  padding-bottom: 24px;
+  padding-bottom: 80px;
   color: var(--black);
   text-align: center;
-
+  
+  @include tab {
+    padding: 30px 0;
+  }
+  
   h5 {
     font-size: 1.5rem;
   }
@@ -49,8 +95,12 @@
     font-family: "bold";
     line-height: 1.1;
 
-    @include tab { font-size: 40px; }
-    @include mobile { font-size: 2rem; }
+    @include tab {
+      font-size: 40px;
+    }
+    @include mobile {
+      font-size: 2rem;
+    }
   }
 
   img {
@@ -59,60 +109,65 @@
 }
 
 .events_details_banner_img {
+  width: 100%;
+  height: 425px;
+  border-radius: 0 92.316px 0 0;
+  overflow: hidden;
+  position: relative;
+
+  .bannerImage {
     width: 100%;
-    height: 425px;
-    border-radius: 0 92.316px 0 0;
-    overflow: hidden;
-    position: relative;
+    height: 100%;
+  }
 
-    .bannerImage {
-        width: 100%;
-        height: 100%;
-    }
-
-    @include tab {
-        height: 320px;
-    }
+  @include tab {
+    height: 320px;
+  }
 }
 
 .details_content_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  color: var(--black);
+  margin: 50px 0;
+
+  @include tab {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .thumbnailImage {
+    width: 160px;
+    height: 160px;
+    object-fit: contain;
+  }
+
+  .details_content_box {
     width: 100%;
     display: flex;
-    align-items: center;
-    gap: 48px;
-    color: var(--black);
+    flex-direction: column;
+    gap: 24px;
 
-    @include tab {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 24px;
+    h3 {
+      font-size: 32px;
+
+      @include tab {
+        font-size: 24px;
+      }
+      @include mobile {
+        font-size: 20px;
+      }
     }
 
-    .thumbnailImage {
-        width: 160px;
-        height: 160px;
-        object-fit: contain;
+    p {
+      font-size: 20px;
+      color: var(--gray);
+      font-family: "regular", sans-serif;
     }
-
-    .details_content_box {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-
-        h3 {
-            font-size: 32px;
-
-            @include tab { font-size: 24px; }
-            @include mobile { font-size: 20px; }
-        }
-
-        p {
-            font-size: 20px;
-            color: var(--gray);
-            font-family: 'regular', sans-serif;
-        }
-    }
+  }
 }
 
 .load_more_btn {
@@ -138,21 +193,21 @@
 }
 
 .events_bg_circle {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  z-index: -1;
+
+  .bgCircleImage {
     width: 100%;
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    z-index: -1;
+    margin-left: -20%;
+    object-fit: cover;
+  }
 
-    .bgCircleImage {
-        width: 100%;
-        margin-left: -20%;
-        object-fit: cover;
-    }
-
-    @include tab {
-        display: none;
-    }
+  @include tab {
+    display: none;
+  }
 }
 
 /* Payment Solutions section */
@@ -172,7 +227,7 @@
   text-align: center;
   padding-top: 80px;
   margin-bottom: 16px;
-  font-weight:400;
+  font-weight: 400;
   @include tab {
     font-size: 1.6rem;
     padding-top: 40px;
@@ -224,7 +279,9 @@
   border-radius: 24px;
   background: var(--white);
   box-shadow: 0 18px 44px rgba(0, 0, 0, 0.04);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   @include tab {
     padding: 32px 24px;
     gap: 20px;
@@ -281,7 +338,9 @@
   border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover:not(:disabled) {
     transform: translateY(-2px);
@@ -298,10 +357,16 @@
   color: var(--gray);
   font-family: "light";
 
-  @include tab { font-size: 17px; }
-  @include mobile { font-size: 15px; }
+  @include tab {
+    font-size: 17px;
+  }
+  @include mobile {
+    font-size: 15px;
+  }
 
-  p { margin: 0 0 16px; }
+  p {
+    margin: 0 0 16px;
+  }
 }
 
 .pictures_container {
@@ -311,9 +376,14 @@
 
   h2 {
     font-size: 32px;
+    margin-bottom: 30px;
 
-    @include tab { font-size: 24px; }
-    @include mobile { font-size: 20px; }
+    @include tab {
+      font-size: 24px;
+    }
+    @include mobile {
+      font-size: 20px;
+    }
   }
 
   .pictures {
@@ -323,16 +393,15 @@
       border-radius: 20px;
       width: 100%;
       margin-top: 12px;
-
     }
 
     @include tab {
-      .picture:nth-child(7){
+      .picture:nth-child(7) {
         height: auto;
       }
     }
 
-    @include lessTab{
+    @include lessTab {
       columns: 2;
     }
 

@@ -7,24 +7,35 @@
 }
 
 .bannerSection {
-  height: 785px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 600px;
+  max-height: calc(100vh - 120px);
   background-image: var(--bg-desktop, url("/images/news-banner-new.jpg"));
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center center;
   background-size: cover;
+  border-radius: 24px;
   position: relative;
   overflow: hidden;
 
-  @include tab { min-height: 500px; background-position: center center; }
-  // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
-  // header — without subtracting it, 100svh pushes content below the viewport.
-  @include mobile { height: calc(100svh - 73px); min-height: calc(100svh - 73px); background-image: var(--bg-mobile, url("/images/news-banner-mobile.png")); background-position: center center; }
+  @include tab {
+    border-radius: 16px;
+  }
+
+  @include mobile {
+    background-image: var(--bg-mobile, url("/images/news-banner-mobile.png"));
+  }
 }
 
 .bannerOverlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.05) 55%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.05) 55%
+  );
 }
 
 .bannerContent {
@@ -52,8 +63,12 @@
     color: var(--white);
     margin-bottom: 20px;
 
-    @include tab { font-size: 3rem; }
-    @include mobile { font-size: 2.5rem; }
+    @include tab {
+      font-size: 3rem;
+    }
+    @include mobile {
+      font-size: 2.5rem;
+    }
   }
 
   p {
@@ -135,7 +150,9 @@
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(230, 157, 157, 0.17);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   &:hover {
     transform: translateY(-4px);
@@ -189,7 +206,7 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    
+
     * {
       font-size: 15px;
       line-height: 1.5;
@@ -216,7 +233,9 @@
   font-family: "semibold", sans-serif;
   font-size: 0.9rem;
   width: fit-content;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 
   svg {
     font-size: 0.75rem;
@@ -255,7 +274,9 @@
   color: var(--white);
   font-size: 17px;
   text-decoration: none;
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 
   &:hover {
     opacity: 0.85;
@@ -278,15 +299,15 @@
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  border: 1px solid #FF6D00;
-  color: #FF6D00;
+  border: 1px solid #ff6d00;
+  color: #ff6d00;
   border-radius: 999px;
   text-decoration: none;
   font-size: 0.95rem;
   transition: all 0.2s ease;
 
   &:hover {
-    background: #FF6D00;
+    background: #ff6d00;
     color: var(--white);
   }
 }
@@ -330,10 +351,6 @@
 }
 
 @media (max-width: 991px) {
-  .bannerSection {
-    min-height: 360px;
-  }
-
   .bannerContent {
     h1 {
       font-size: 3rem;
@@ -356,14 +373,6 @@
 }
 
 @media (max-width: 600px) {
-  .bannerSection {
-    // 73px = main's mobile margin-top (globals.scss) offsetting the fixed
-    // header. This rule comes after @include mobile above and wins
-    // (same specificity, later in file) — must match its fix here too.
-    height: calc(100svh - 73px);
-    min-height: calc(100svh - 73px);
-  }
-
   .bannerContent {
     padding: 56px 14px;
 

@@ -24,6 +24,10 @@ function json(body, status) {
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Letters from any language plus spaces, apostrophes, hyphens and periods
+// (initials like "J.") — rejects digits and other punctuation. Client-side
+// checks mirror this, but the client can be bypassed, so it's enforced here too.
+const NAME_REGEX = /^[\p{L}\s'.-]+$/u;
 
 
 const REQUIRED_FIELDS = {
@@ -72,6 +76,9 @@ function validatePayload(endpointPath, payload) {
   }
   if (payload.email && !EMAIL_REGEX.test(payload.email)) {
     return 'Invalid email address';
+  }
+  if (payload.name && !NAME_REGEX.test(String(payload.name).trim())) {
+    return 'Name should only contain letters';
   }
   // Fail closed: a path added to ALLOWED_PATHS without limits here gets no field
   // checks at all, which is the sort of silent gap this file has had before.

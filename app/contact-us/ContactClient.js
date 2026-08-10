@@ -110,9 +110,12 @@ const ContactClient = ({ pageData = null }) => {
   };
 
   // Form validation functions
+  // Letters from any language plus spaces, apostrophes, hyphens and periods
+  // (initials like "J.") — rejects digits and other punctuation.
   const validateName = (name) => {
-    if (!name || name.trim() === "") return "Name is required";
-    if (/\d/.test(name)) return "Name should not contain numbers";
+    const trimmed = (name || "").trim();
+    if (!trimmed) return "Name is required";
+    if (!/^[\p{L}\s'.-]+$/u.test(trimmed)) return "Name should only contain letters";
     return "";
   };
 

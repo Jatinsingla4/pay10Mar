@@ -42,6 +42,7 @@ const BizLeadForm = () => {
     const errs = {};
     if (!form.business_name.trim()) errs.business_name = "Business name is required";
     if (!form.name.trim()) errs.name = "Your name is required";
+    else if (!/^[\p{L}\s'.-]+$/u.test(form.name.trim())) errs.name = "Name should only contain letters";
     if (!form.phone.trim()) errs.phone = "Phone number is required";
     if (!form.email.trim()) errs.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = "Enter a valid email address";

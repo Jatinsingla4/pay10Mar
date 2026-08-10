@@ -46,6 +46,14 @@ export default function PartnerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Letters from any language plus spaces, apostrophes, hyphens and periods
+    // (initials like "J.") — rejects digits and other punctuation. Emptiness
+    // is left to the server's required-field check, same as every other field here.
+    if (form.name.trim() && !/^[\p{L}\s'.-]+$/u.test(form.name.trim())) {
+      setErrors((prev) => ({ ...prev, name: "Name should only contain letters" }));
+      return;
+    }
+
     if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
       setServerError("Please complete the security check above before submitting.");
       setStatus("error");

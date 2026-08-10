@@ -75,13 +75,13 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 60px;
-  padding: 80px 56px;
+  padding: 40px 56px;
   align-items: start;
   background: var(--body-bg);
 
   @include large {
     gap: 40px;
-    padding: 80px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {
@@ -218,11 +218,11 @@
 }
 
 .api_integration {
-  padding: 80px 56px;
+  padding: 40px 56px;
   background-color: var(--body-bg);
 
   @include large {
-    padding: 80px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {
@@ -269,13 +269,13 @@
 }
 
 .enterprise_section {
-  padding: 80px 56px;
+  padding: 40px 56px;
   background-color: var(--body-bg);
   text-align: center;
   overflow: hidden;
 
   @include large {
-    padding: 80px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {
@@ -519,11 +519,11 @@
 }
 
 .reasons_section {
-  padding: 80px 56px;
+  padding: 40px 56px;
   background-color: var(--body-bg);
 
   @include large {
-    padding: 80px 32px;
+    padding: 40px 32px;
   }
 
   @include tab {

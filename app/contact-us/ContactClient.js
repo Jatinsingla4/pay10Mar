@@ -526,7 +526,7 @@ const ContactClient = ({ pageData = null }) => {
                 ))}
               </div>
 
-              <form className={Style.contactForm} onSubmit={handleSubmit}>
+              <form className={Style.contactForm} onSubmit={handleSubmit} noValidate>
 
                 {/* Row 1: Name & Email */}
                 <div className={Style.formRow}>

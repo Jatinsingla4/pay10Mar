@@ -136,12 +136,14 @@ const ContactClient = ({ pageData = null }) => {
     return "";
   };
 
-  // International phone number: optional leading +, 7-15 digits total (E.164
-  // range) — accepts any country's mobile/landline, not just UAE.
+  // International phone number: optional leading +, 8-15 digits total. 8 is
+  // the real-world floor for a mobile number including country code (a bare
+  // 7-digit number, the old minimum, is always a landline-style local number,
+  // never a mobile) — accepts any country's mobile/landline, not just UAE.
   const validateMobile = (mobile) => {
     const cleaned = (mobile || "").trim();
     if (!cleaned) return "Mobile number is required";
-    if (!/^\+?\d{7,15}$/.test(cleaned)) {
+    if (!/^\+?\d{8,15}$/.test(cleaned)) {
       return "Please enter a valid mobile number";
     }
     return "";
@@ -300,6 +302,14 @@ const ContactClient = ({ pageData = null }) => {
     if (allowed.includes(e.key)) return;
     if (e.key === "+" && e.target.selectionStart === 0 && !formData.mobile.startsWith("+")) return;
     if (!/^\d$/.test(e.key)) e.preventDefault();
+  };
+
+  // Blocks digits and other punctuation at the keystroke, not just on submit —
+  // same letters/spaces/apostrophe/hyphen/period set as validateName.
+  const handleNameKeyDown = (e) => {
+    const allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
+    if (allowed.includes(e.key) || e.ctrlKey || e.metaKey || e.key.length !== 1) return;
+    if (!/^[\p{L}\s'.-]$/u.test(e.key)) e.preventDefault();
   };
 
   const handleSubmit = async (e) => {
@@ -528,6 +538,7 @@ const ContactClient = ({ pageData = null }) => {
                       className={`${Style.formInput} ${formErrors.name ? Style.formInputError : ""}`}
                       value={formData.name}
                       onChange={handleInputChange}
+                      onKeyDown={handleNameKeyDown}
                       required
                       maxLength={100}
                       aria-invalid={!!formErrors.name}

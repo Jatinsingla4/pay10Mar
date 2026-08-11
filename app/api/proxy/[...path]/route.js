@@ -28,6 +28,10 @@ const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // (initials like "J.") — rejects digits and other punctuation. Client-side
 // checks mirror this, but the client can be bypassed, so it's enforced here too.
 const NAME_REGEX = /^[\p{L}\s'.-]+$/u;
+// Optional leading +, 8-15 digits: the real-world floor for a mobile number
+// including country code (a bare 7-digit number is always landline-style
+// local, never mobile) — accepts any country's number, not just UAE.
+const PHONE_REGEX = /^\+?\d{8,15}$/;
 
 
 const REQUIRED_FIELDS = {
@@ -79,6 +83,9 @@ function validatePayload(endpointPath, payload) {
   }
   if (payload.name && !NAME_REGEX.test(String(payload.name).trim())) {
     return 'Name should only contain letters';
+  }
+  if (payload.phone && !PHONE_REGEX.test(String(payload.phone).trim())) {
+    return 'Please enter a valid mobile number';
   }
   // Fail closed: a path added to ALLOWED_PATHS without limits here gets no field
   // checks at all, which is the sort of silent gap this file has had before.

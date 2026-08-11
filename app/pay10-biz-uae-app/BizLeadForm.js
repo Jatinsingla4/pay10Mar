@@ -39,12 +39,23 @@ const BizLeadForm = () => {
     if (!/^\d$/.test(e.key)) e.preventDefault();
   };
 
+  // Blocks digits and other punctuation at the keystroke, not just on submit —
+  // same letters/spaces/apostrophe/hyphen/period set as the submit-time check.
+  const handleNameKeyDown = (e) => {
+    const allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
+    if (allowed.includes(e.key) || e.ctrlKey || e.metaKey || e.key.length !== 1) return;
+    if (!/^[\p{L}\s'.-]$/u.test(e.key)) e.preventDefault();
+  };
+
   const validate = () => {
     const errs = {};
     if (!form.business_name.trim()) errs.business_name = "Business name is required";
     if (!form.name.trim()) errs.name = "Your name is required";
     else if (!/^[\p{L}\s'.-]+$/u.test(form.name.trim())) errs.name = "Name should only contain letters";
+    // 8-15 digits: the real-world floor for a mobile number including country
+    // code (a bare 7-digit number is always landline-style local, never mobile).
     if (!form.phone.trim()) errs.phone = "Phone number is required";
+    else if (!/^\+?\d{8,15}$/.test(form.phone.trim())) errs.phone = "Please enter a valid mobile number";
     if (!form.email.trim()) errs.email = "Email is required";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = "Enter a valid email address";
     if (!form.address.trim()) errs.address = "Business address is required";
@@ -133,6 +144,7 @@ const BizLeadForm = () => {
             placeholder="Your name*"
             value={form.name}
             onChange={handleChange}
+            onKeyDown={handleNameKeyDown}
             maxLength={150}
             className={errors.name ? Style.biz_lead_input_error : ""}
           />

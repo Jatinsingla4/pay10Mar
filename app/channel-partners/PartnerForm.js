@@ -44,6 +44,14 @@ export default function PartnerForm() {
     if (!/^\d$/.test(e.key)) e.preventDefault();
   };
 
+  // Blocks digits and other punctuation at the keystroke, not just on submit —
+  // same letters/spaces/apostrophe/hyphen/period set as the submit-time check.
+  const handleNameKeyDown = (e) => {
+    const allowed = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab", "Home", "End"];
+    if (allowed.includes(e.key) || e.ctrlKey || e.metaKey || e.key.length !== 1) return;
+    if (!/^[\p{L}\s'.-]$/u.test(e.key)) e.preventDefault();
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -52,6 +60,13 @@ export default function PartnerForm() {
     // is left to the server's required-field check, same as every other field here.
     if (form.name.trim() && !/^[\p{L}\s'.-]+$/u.test(form.name.trim())) {
       setErrors((prev) => ({ ...prev, name: "Name should only contain letters" }));
+      return;
+    }
+
+    // 8-15 digits: the real-world floor for a mobile number including country
+    // code (a bare 7-digit number is always landline-style local, never mobile).
+    if (form.phone.trim() && !/^\+?\d{8,15}$/.test(form.phone.trim())) {
+      setErrors((prev) => ({ ...prev, phone: "Please enter a valid mobile number" }));
       return;
     }
 
@@ -123,6 +138,7 @@ export default function PartnerForm() {
               name="name"
               value={form.name}
               onChange={handleChange}
+              onKeyDown={handleNameKeyDown}
               placeholder="John Smith"
               maxLength={150}
               className={errors.name ? styles.input_error : ""}

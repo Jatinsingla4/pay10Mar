@@ -100,6 +100,7 @@ const ContactClient = ({ pageData = null }) => {
   const [formSubmitStatus, setFormSubmitStatus] = useState(null);
   const [formSubmitMessage, setFormSubmitMessage] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [recaptchaError, setRecaptchaError] = useState("");
 
   const handleTabChange = (type) => {
     setActiveFormType(type);
@@ -312,10 +313,12 @@ const ContactClient = ({ pageData = null }) => {
     }
 
     if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
-      setFormSubmitStatus("error");
-      setFormSubmitMessage("Please complete the security check above before submitting.");
+      // A field-level error, shown right under the widget it's about,
+      // rather than folded into the general form-submit message.
+      setRecaptchaError("Please verify the captcha");
       return;
     }
+    setRecaptchaError("");
 
     setFormSubmitting(true);
     setFormSubmitStatus(null);
@@ -744,7 +747,11 @@ const ContactClient = ({ pageData = null }) => {
                   </div>
                 )}
 
-                <Recaptcha onVerify={setRecaptchaToken} onExpire={() => setRecaptchaToken("")} />
+                <Recaptcha
+                  onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
+                  onExpire={() => setRecaptchaToken("")}
+                />
+                {recaptchaError && <span className={Style.formError}>{recaptchaError}</span>}
 
                 <div style={{ textAlign: "center", marginTop: "16px" }}>
                   <button

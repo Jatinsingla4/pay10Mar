@@ -20,6 +20,7 @@ const BizLeadForm = () => {
   const [status, setStatus] = useState("idle");
   const [message, setMessage] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [recaptchaError, setRecaptchaError] = useState("");
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -57,10 +58,10 @@ const BizLeadForm = () => {
     if (!validate()) return;
 
     if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
-      setStatus("error");
-      setMessage("Please complete the security check above before submitting.");
+      setRecaptchaError("Please verify the captcha");
       return;
     }
+    setRecaptchaError("");
 
     setStatus("loading");
     setMessage("");
@@ -197,7 +198,11 @@ const BizLeadForm = () => {
         </div>
       </div>
 
-      <Recaptcha onVerify={setRecaptchaToken} onExpire={() => setRecaptchaToken("")} />
+      <Recaptcha
+        onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
+        onExpire={() => setRecaptchaToken("")}
+      />
+      {recaptchaError && <span className={Style.biz_lead_error}>{recaptchaError}</span>}
 
       <button type="submit" className={Style.biz_lead_submit} disabled={status === "loading"}>
         {status === "loading" ? "Submitting..." : "Submit"}

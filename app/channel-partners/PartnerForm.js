@@ -25,6 +25,7 @@ export default function PartnerForm() {
   const [successMsg, setSuccessMsg] = useState("");
   const [serverError, setServerError] = useState("");
   const [recaptchaToken, setRecaptchaToken] = useState("");
+  const [recaptchaError, setRecaptchaError] = useState("");
 
   const handleChange = (e) => {
     let { name, value } = e.target;
@@ -55,10 +56,10 @@ export default function PartnerForm() {
     }
 
     if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
-      setServerError("Please complete the security check above before submitting.");
-      setStatus("error");
+      setRecaptchaError("Please verify the captcha");
       return;
     }
+    setRecaptchaError("");
 
     setStatus("loading");
     setErrors({});
@@ -250,7 +251,16 @@ export default function PartnerForm() {
         </div>
       )}
 
-      <Recaptcha onVerify={setRecaptchaToken} onExpire={() => setRecaptchaToken("")} />
+      <Recaptcha
+        onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
+        onExpire={() => setRecaptchaToken("")}
+      />
+      {recaptchaError && (
+        <span className={styles.field_error}>
+          <Icon icon="mdi:alert-circle-outline" width={12} />
+          {recaptchaError}
+        </span>
+      )}
 
       <button type="submit" className={styles.submit_btn} disabled={status === "loading"}>
         {status === "loading" ? (

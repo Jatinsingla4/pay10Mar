@@ -267,16 +267,18 @@ export default function PartnerForm() {
         </div>
       )}
 
-      <Recaptcha
-        onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
-        onExpire={() => setRecaptchaToken("")}
-      />
-      {recaptchaError && (
-        <span className={styles.field_error}>
-          <Icon icon="mdi:alert-circle-outline" width={12} />
-          {recaptchaError}
-        </span>
-      )}
+      <div className={styles.form_group}>
+        <Recaptcha
+          onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
+          onExpire={() => setRecaptchaToken("")}
+        />
+        {recaptchaError && (
+          <span className={styles.field_error}>
+            <Icon icon="mdi:alert-circle-outline" width={12} />
+            {recaptchaError}
+          </span>
+        )}
+      </div>
 
       <button type="submit" className={styles.submit_btn} disabled={status === "loading"}>
         {status === "loading" ? (

@@ -758,11 +758,13 @@ const ContactClient = ({ pageData = null }) => {
                   </div>
                 )}
 
-                <Recaptcha
-                  onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
-                  onExpire={() => setRecaptchaToken("")}
-                />
-                {recaptchaError && <span className={Style.formError}>{recaptchaError}</span>}
+                <div className={Style.formGroup}>
+                  <Recaptcha
+                    onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
+                    onExpire={() => setRecaptchaToken("")}
+                  />
+                  {recaptchaError && <span className={Style.formError}>{recaptchaError}</span>}
+                </div>
 
                 <div style={{ textAlign: "center", marginTop: "16px" }}>
                   <button

@@ -210,11 +210,13 @@ const BizLeadForm = () => {
         </div>
       </div>
 
-      <Recaptcha
-        onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
-        onExpire={() => setRecaptchaToken("")}
-      />
-      {recaptchaError && <span className={Style.biz_lead_error}>{recaptchaError}</span>}
+      <div className={Style.biz_lead_group}>
+        <Recaptcha
+          onVerify={(token) => { setRecaptchaToken(token); setRecaptchaError(""); }}
+          onExpire={() => setRecaptchaToken("")}
+        />
+        {recaptchaError && <span className={Style.biz_lead_error}>{recaptchaError}</span>}
+      </div>
 
       <button type="submit" className={Style.biz_lead_submit} disabled={status === "loading"}>
         {status === "loading" ? "Submitting..." : "Submit"}

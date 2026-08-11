@@ -3,6 +3,10 @@
 // so a rename can't silently desync the two sides of the double-submit check.
 export const CSRF_COOKIE_NAME = 'csrf_token';
 
+// Same reasoning: every form (echoes it) and route.js (reads it) import this
+// instead of repeating the header name.
+export const CSRF_HEADER_NAME = 'X-CSRF-Token';
+
 // Reads the csrf_token cookie set by proxy.js middleware, for echoing back
 // as the X-CSRF-Token header on state-changing requests (double-submit pattern).
 export function getCsrfToken() {

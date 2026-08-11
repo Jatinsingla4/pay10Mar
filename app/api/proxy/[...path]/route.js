@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getClientIp } from '../../../lib/getClientIp';
 import { secret } from '../../../lib/secrets';
-import { CSRF_COOKIE_NAME } from '../../../lib/csrf';
+import { CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '../../../lib/csrf';
+import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_PATH, PARTNERS_PATH } from '../../../lib/proxyConstants';
 // Backend URL, key and the origin it authorises us by all come from one module, so
 // this route and the CMS fetcher can't drift apart — they have twice before.
 import { API_BASE, API_KEY, SITE_ORIGIN, API_HEADERS } from '../../../lib/backendApi';
@@ -43,8 +44,8 @@ const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
 
 
 const REQUIRED_FIELDS = {
-  'contact/enquiry': ['name', 'email', 'phone'],
-  partners: ['name', 'company_name', 'email', 'phone'],
+  [CONTACT_ENQUIRY_PATH]: ['name', 'email', 'phone'],
+  [PARTNERS_PATH]: ['name', 'company_name', 'email', 'phone'],
 };
 
 // Which fields each endpoint may forward, and how long each one may be. Both live
@@ -64,13 +65,13 @@ const REQUIRED_FIELDS = {
 // contact/enquiry serves both the contact form (optional fields vary by enquiry
 // type) and the Biz UAE App lead form; partners serves channel-partners.
 const ALLOWED_FIELDS = {
-  'contact/enquiry': {
+  [CONTACT_ENQUIRY_PATH]: {
     name: 150, email: 254, phone: 32, company: 200, message: 2000, type: 50,
     position: 150, location: 150, industry: 150, company_size: 50,
     country: 100, emirate: 150, company_website: 250, partnership_model: 100,
     address: 300, business_type: 50,
   },
-  partners: {
+  [PARTNERS_PATH]: {
     name: 150, company_name: 200, designation: 150, email: 254, phone: 32,
     monthly_transaction_volume: 50, integration_type: 50,
   },
@@ -144,8 +145,8 @@ async function verifyRecaptchaToken(token, ip) {
 // deliberately no per-path opt-out: an endpoint added here without also being
 // added to a separate captcha list used to lose *both* protections silently.
 const ALLOWED_PATHS = new Set([
-  'contact/enquiry',
-  'partners',
+  CONTACT_ENQUIRY_PATH,
+  PARTNERS_PATH,
 ]);
 
 const ALLOWED_ORIGINS = new Set([
@@ -194,7 +195,7 @@ async function handleProxy(request, params) {
     // Double-submit CSRF token: only a page that can read our own cookie
     // (i.e. our own origin) can produce a header value that matches it.
     const csrfCookie = request.cookies.get(CSRF_COOKIE_NAME)?.value;
-    const csrfHeader = request.headers.get('x-csrf-token');
+    const csrfHeader = request.headers.get(CSRF_HEADER_NAME);
     if (!csrfCookie || csrfCookie !== csrfHeader) {
       return json({ status: false, message: 'Forbidden' }, 403);
     }
@@ -228,8 +229,8 @@ async function handleProxy(request, params) {
       // Read and re-create FormData so it works reliably in Next.js
       const incoming = await request.formData();
 
-      const token = incoming.get('recaptcha_token');
-      incoming.delete('recaptcha_token');
+      const token = incoming.get(RECAPTCHA_TOKEN_FIELD);
+      incoming.delete(RECAPTCHA_TOKEN_FIELD);
       if (!(await verifyRecaptchaToken(token, requestIp))) {
         return json({ status: false, message: 'Verification failed. Please try again.' }, 400);
       }
@@ -251,8 +252,8 @@ async function handleProxy(request, params) {
         return json({ status: false, message: 'Invalid request body' }, 400);
       }
 
-      const token = payload.recaptcha_token;
-      delete payload.recaptcha_token;
+      const token = payload[RECAPTCHA_TOKEN_FIELD];
+      delete payload[RECAPTCHA_TOKEN_FIELD];
       if (!(await verifyRecaptchaToken(token, requestIp))) {
         return json({ status: false, message: 'Verification failed. Please try again.' }, 400);
       }

@@ -4,9 +4,10 @@ import { useState } from "react";
 import { Icon } from "@iconify/react";
 import styles from "./ecosystem.module.scss";
 import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
-import { getCsrfToken } from "../lib/csrf";
+import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
+import { RECAPTCHA_TOKEN_FIELD, PARTNERS_URL } from "../lib/proxyConstants";
 
-const API_URL = "/api/proxy/partners";
+const API_URL = PARTNERS_URL;
 
 // Matches any HTML tag opener, not a bare "<" — applied to every field
 // generically so a new field is covered by default, not opted in.
@@ -101,7 +102,7 @@ export default function PartnerForm() {
     try {
       const res = await fetch(API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "X-CSRF-Token": getCsrfToken() },
+        headers: { "Content-Type": "application/json", [CSRF_HEADER_NAME]: getCsrfToken() },
         body: JSON.stringify({
           name: form.name,
           company_name: form.company_name,
@@ -110,7 +111,7 @@ export default function PartnerForm() {
           phone: form.phone,
           monthly_transaction_volume: form.monthly_transaction_volume,
           integration_type: form.integration_type,
-          recaptcha_token: recaptchaToken,
+          [RECAPTCHA_TOKEN_FIELD]: recaptchaToken,
         }),
       });
 

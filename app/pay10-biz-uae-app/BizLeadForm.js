@@ -3,7 +3,8 @@
 import { useState } from "react";
 import Style from "./page.module.scss";
 import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
-import { getCsrfToken } from "../lib/csrf";
+import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
+import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_URL } from "../lib/proxyConstants";
 
 const INITIAL = {
   business_name: "",
@@ -98,9 +99,9 @@ const BizLeadForm = () => {
     const enquiryType = form.business_type === "Enterprise" ? "enterprise sales" : "sme sales";
 
     try {
-      const res = await fetch("/api/proxy/contact/enquiry", {
+      const res = await fetch(CONTACT_ENQUIRY_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", "X-CSRF-Token": getCsrfToken() },
+        headers: { "Content-Type": "application/json", [CSRF_HEADER_NAME]: getCsrfToken() },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -110,7 +111,7 @@ const BizLeadForm = () => {
           business_type: form.business_type,
           message: `Business type: ${form.business_type}. Address: ${form.address}`,
           type: enquiryType,
-          recaptcha_token: recaptchaToken,
+          [RECAPTCHA_TOKEN_FIELD]: recaptchaToken,
         }),
       });
       const data = await res.json();

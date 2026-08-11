@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getClientIp } from '../../../lib/getClientIp';
 import { secret } from '../../../lib/secrets';
+import { CSRF_COOKIE_NAME } from '../../../lib/csrf';
 // Backend URL, key and the origin it authorises us by all come from one module, so
 // this route and the CMS fetcher can't drift apart — they have twice before.
 import { API_BASE, API_KEY, SITE_ORIGIN, API_HEADERS } from '../../../lib/backendApi';
@@ -192,7 +193,7 @@ async function handleProxy(request, params) {
 
     // Double-submit CSRF token: only a page that can read our own cookie
     // (i.e. our own origin) can produce a header value that matches it.
-    const csrfCookie = request.cookies.get('csrf_token')?.value;
+    const csrfCookie = request.cookies.get(CSRF_COOKIE_NAME)?.value;
     const csrfHeader = request.headers.get('x-csrf-token');
     if (!csrfCookie || csrfCookie !== csrfHeader) {
       return json({ status: false, message: 'Forbidden' }, 403);

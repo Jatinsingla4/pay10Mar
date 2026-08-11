@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { getClientIp as sharedGetClientIp } from './app/lib/getClientIp';
+import { CSRF_COOKIE_NAME as CSRF_COOKIE } from './app/lib/csrf';
 
 /** Apex hostname only — must match DNS for bare domain. */
 const APEX_HOST = 'pay10.ae';
@@ -7,9 +8,6 @@ const WWW_HOST = 'www.pay10.ae';
 
 
 const SKIP_HOSTS = new Set(['localhost', '127.0.0.1']);
-
-
-const CSRF_COOKIE = 'csrf_token';
 
 // Only the pages that actually contain a form ever read this token, and all three
 // are rendered dynamically (`Cache-Control: private, no-store`). Setting it on every

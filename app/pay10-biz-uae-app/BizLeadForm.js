@@ -81,13 +81,14 @@ const BizLeadForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validate()) return;
 
-    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
-      setRecaptchaError("Please verify the captcha");
-      return;
-    }
-    setRecaptchaError("");
+    // Both checked before either short-circuits the submit, so a user who
+    // fixed every field but forgot the captcha (or vice versa) sees every
+    // problem at once instead of one at a time across repeated submits.
+    const fieldsValid = validate();
+    const captchaMissing = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken;
+    setRecaptchaError(captchaMissing ? "Please verify the captcha" : "");
+    if (!fieldsValid || captchaMissing) return;
 
     setStatus("loading");
     setMessage("");

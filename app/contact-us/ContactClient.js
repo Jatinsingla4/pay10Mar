@@ -332,21 +332,21 @@ const ContactClient = ({ pageData = null }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) {
-      // Just return, validateForm() already sets individual field errors.
+
+    // Both checked before either short-circuits the submit, so a user who
+    // fixed every field but forgot the captcha (or vice versa) sees every
+    // problem at once instead of one at a time across repeated submits.
+    const fieldsValid = validateForm();
+    const captchaMissing = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken;
+    setRecaptchaError(captchaMissing ? "Please verify the captcha" : "");
+
+    if (!fieldsValid || captchaMissing) {
+      // Just return, validateForm()/the line above already set the errors.
       // We clear any existing global submit messages so they don't linger.
       setFormSubmitStatus(null);
       setFormSubmitMessage("");
       return;
     }
-
-    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
-      // A field-level error, shown right under the widget it's about,
-      // rather than folded into the general form-submit message.
-      setRecaptchaError("Please verify the captcha");
-      return;
-    }
-    setRecaptchaError("");
 
     setFormSubmitting(true);
     setFormSubmitStatus(null);

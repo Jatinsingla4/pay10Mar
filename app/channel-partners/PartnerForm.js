@@ -65,37 +65,34 @@ export default function PartnerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const htmlErrors = {};
+    // All client-side checks (including the captcha) run before any of them
+    // short-circuits the submit, so a user who fixed every field but forgot
+    // the captcha (or vice versa) sees every problem at once instead of one
+    // at a time across repeated submits.
+    const clientErrors = {};
     for (const [key, value] of Object.entries(form)) {
       if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-        htmlErrors[key] = "HTML tags are not allowed";
+        clientErrors[key] = "HTML tags are not allowed";
       }
     }
-    if (Object.keys(htmlErrors).length > 0) {
-      setErrors((prev) => ({ ...prev, ...htmlErrors }));
-      return;
-    }
-
     // Letters from any language plus spaces, apostrophes, hyphens and periods
     // (initials like "J.") — rejects digits and other punctuation. Emptiness
     // is left to the server's required-field check, same as every other field here.
     if (form.name.trim() && !/^[\p{L}\s'.-]+$/u.test(form.name.trim())) {
-      setErrors((prev) => ({ ...prev, name: "Name should only contain letters" }));
-      return;
+      clientErrors.name = "Name should only contain letters";
     }
-
     // 8-15 digits: the real-world floor for a mobile number including country
     // code (a bare 7-digit number is always landline-style local, never mobile).
     if (form.phone.trim() && !/^\+?\d{8,15}$/.test(form.phone.trim())) {
-      setErrors((prev) => ({ ...prev, phone: "Please enter a valid mobile number" }));
-      return;
+      clientErrors.phone = "Please enter a valid mobile number";
     }
+    const captchaMissing = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken;
+    setRecaptchaError(captchaMissing ? "Please verify the captcha" : "");
 
-    if (process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken) {
-      setRecaptchaError("Please verify the captcha");
+    if (Object.keys(clientErrors).length > 0 || captchaMissing) {
+      setErrors((prev) => ({ ...prev, ...clientErrors }));
       return;
     }
-    setRecaptchaError("");
 
     setStatus("loading");
     setErrors({});

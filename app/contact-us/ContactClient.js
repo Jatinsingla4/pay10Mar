@@ -244,7 +244,7 @@ const ContactClient = ({ pageData = null }) => {
 
     for (const [key, value] of Object.entries(formData)) {
       if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-        errors[key] = "Must not contain HTML tags";
+        errors[key] = "HTML tags are not allowed";
       }
     }
 
@@ -302,7 +302,13 @@ const ContactClient = ({ pageData = null }) => {
       value = value.replace(/[^a-zA-Z\s'-]/g, "");
     }
     setFormData((prev) => ({ ...prev, [name]: value }));
-    if (formErrors[name]) setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    // Live, not just on submit — a pasted or typed tag should flag the field
+    // immediately rather than waiting for the user to hit submit to find out.
+    if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
+      setFormErrors((prev) => ({ ...prev, [name]: "HTML tags are not allowed" }));
+    } else if (formErrors[name]) {
+      setFormErrors((prev) => ({ ...prev, [name]: "" }));
+    }
     if (formSubmitStatus) {
       setFormSubmitStatus(null);
       setFormSubmitMessage("");

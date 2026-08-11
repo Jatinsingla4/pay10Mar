@@ -29,7 +29,13 @@ const BizLeadForm = () => {
       if (value.indexOf("+") > 0) value = value.replace(/\+/g, "");
     }
     setForm((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+    // Live, not just on submit — a pasted or typed tag should flag the field
+    // immediately rather than waiting for the user to hit submit to find out.
+    if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
+      setErrors((prev) => ({ ...prev, [name]: "HTML tags are not allowed" }));
+    } else if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handlePhoneKeyDown = (e) => {
@@ -55,7 +61,7 @@ const BizLeadForm = () => {
     const errs = {};
     for (const [key, value] of Object.entries(form)) {
       if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-        errs[key] = "Must not contain HTML tags";
+        errs[key] = "HTML tags are not allowed";
       }
     }
     if (!form.business_name.trim()) errs.business_name = "Business name is required";

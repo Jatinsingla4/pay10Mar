@@ -8,6 +8,10 @@ import { getCsrfToken } from "../lib/csrf";
 
 const API_URL = "/api/proxy/partners";
 
+// Matches any HTML tag opener, not a bare "<" — applied to every field
+// generically so a new field is covered by default, not opted in.
+const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
+
 const INITIAL = {
   name: "",
   company_name: "",
@@ -34,7 +38,13 @@ export default function PartnerForm() {
       if (value.indexOf("+") > 0) value = value.replace(/\+/g, "");
     }
     setForm((prev) => ({ ...prev, [name]: value }));
-    if (errors[name]) setErrors((prev) => ({ ...prev, [name]: "" }));
+    // Live, not just on submit — a pasted or typed tag should flag the field
+    // immediately rather than waiting for the user to hit submit to find out.
+    if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
+      setErrors((prev) => ({ ...prev, [name]: "HTML tags are not allowed" }));
+    } else if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handlePhoneKeyDown = (e) => {
@@ -55,13 +65,10 @@ export default function PartnerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Matches any HTML tag opener, not a bare "<" — applied to every field
-    // generically so a new field is covered by default, not opted in.
-    const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
     const htmlErrors = {};
     for (const [key, value] of Object.entries(form)) {
       if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-        htmlErrors[key] = "Must not contain HTML tags";
+        htmlErrors[key] = "HTML tags are not allowed";
       }
     }
     if (Object.keys(htmlErrors).length > 0) {

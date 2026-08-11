@@ -3,10 +3,6 @@
 import { useEffect, useRef } from "react";
 import Script from "next/script";
 
-// Google issues single-use tokens: once the server has verified one, replaying it
-// fails. Forms must therefore reset the widget after every submit attempt so the
-// next attempt carries a fresh token. Only one widget is rendered per page, so
-// tracking its id at module scope is enough for callers to reset it.
 let activeWidgetId = null;
 
 export function resetRecaptcha() {
@@ -46,8 +42,6 @@ export default function Recaptcha({ onVerify, onExpire }) {
       }
       if (activeWidgetId === widgetIdRef.current) activeWidgetId = null;
     };
-    // Mount-once: the widget is rendered a single time and reset imperatively.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!siteKey) return null;

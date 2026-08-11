@@ -144,7 +144,12 @@
     .timeline_wrapper {
       position: relative;
       display: flex;
-      gap: 1.5rem;
+      // Distance from the vertical line to the +/- icon. Change this (not
+      // .timeline_indicator's left) to move the icon relative to the line —
+      // the icon is absolutely positioned and the year text next to it is
+      // normal-flow, so shifting the icon via a positive `left` instead
+      // walks it rightward into the text.
+      gap: 2rem;
       align-items: flex-start;
       flex: 1;
       overflow: hidden;
@@ -185,7 +190,9 @@
       position: relative;
       cursor: pointer;
       transition: transform 0.3s ease, padding-left 0.3s ease;
-      padding-left: 1rem;
+      // Reserves room for the icon (1rem wide) plus a small gap before the
+      // year text, so text is never covered regardless of the wrapper gap.
+      padding-left: 1.5rem;
       user-select: none;
       flex-shrink: 0;
 
@@ -198,12 +205,12 @@
       // }
 
       &.active {
-        padding-left: 1.2rem;
+        padding-left: 1.7rem;
       }
 
       .timeline_indicator {
         position: absolute;
-        left: -1.5rem;
+        left: 0;
         top: 0.5rem;
         width: 1rem;
         height: 1rem;
@@ -638,6 +645,10 @@
       .timeline_item {
         padding-left: 0.75rem;
 
+        .timeline_indicator {
+          left: -0.75rem;
+        }
+
         .timeline_content {
           .timeline_year {
             font-size: 20px;
@@ -709,7 +720,13 @@
       }
 
       .timeline_wrapper {
-        gap: 0.75rem;
+        // Distance from the vertical line to the icon — increase this (not
+        // .timeline_indicator's left) to push the icon further from the
+        // line, since the icon and the year text next to it are separate
+        // siblings inside .timeline_item: the icon is absolutely positioned
+        // and the text is normal-flow, so shifting the icon via a positive
+        // `left` walks it rightward into the text instead of the line.
+        gap: 1.5rem;
       }
 
       .timeline_items {
@@ -717,10 +734,13 @@
       }
 
       .timeline_item {
-        padding-left: 0.5rem;
+        // Reserves room for the icon (1rem wide) plus a small gap before
+        // the year text, so text is never covered regardless of the
+        // wrapper gap above.
+        padding-left: 1.5rem;
 
         .timeline_indicator {
-          left: -1.25rem;
+          left: 0;
         }
 
         .timeline_content {

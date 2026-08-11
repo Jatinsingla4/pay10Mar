@@ -26,20 +26,8 @@ function json(body, status) {
 }
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-// Letters from any language plus spaces, apostrophes, hyphens and periods
-// (initials like "J.") — rejects digits and other punctuation. Client-side
-// checks mirror this, but the client can be bypassed, so it's enforced here too.
 const NAME_REGEX = /^[\p{L}\s'.-]+$/u;
-// Optional leading +, 8-15 digits: the real-world floor for a mobile number
-// including country code (a bare 7-digit number is always landline-style
-// local, never mobile) — accepts any country's number, not just UAE.
 const PHONE_REGEX = /^\+?\d{8,15}$/;
-// Matches any HTML tag opener ("<script", "</div", "<img src=x onerror=..."),
-// not a bare "<" — legitimate free text (message, address) can contain "<"
-// on its own, but never a tag. Checked on every field, not just name/email/
-// phone, since message/company/address/etc. have no other format check and
-// this proxy's response is the only thing standing between form input and
-// the backend that stores and (elsewhere) displays it.
 const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
 
 
@@ -48,22 +36,6 @@ const REQUIRED_FIELDS = {
   [PARTNERS_PATH]: ['name', 'company_name', 'email', 'phone'],
 };
 
-// Which fields each endpoint may forward, and how long each one may be. Both live
-// in one declaration so a field can't be allowed without also being bounded.
-//
-// Two things this replaces: the payload used to be forwarded to the backend
-// wholesale (a 5000-field body was accepted in testing), and every field shared a
-// single 2000-character ceiling — the largest field in the UI — which left the
-// server twenty times more permissive than the form for things like phone.
-//
-// Limits mirror the inputs' maxLength where the UI sets one, with headroom on top.
-// The Biz UAE App and channel-partners forms set no maxLength at all, so their
-// fields are bounded here by what the value realistically is; dropdown-backed
-// fields are sized against their longest option. Generous rather than exact,
-// because rejecting a real submission loses a lead.
-//
-// contact/enquiry serves both the contact form (optional fields vary by enquiry
-// type) and the Biz UAE App lead form; partners serves channel-partners.
 const ALLOWED_FIELDS = {
   [CONTACT_ENQUIRY_PATH]: {
     name: 150, email: 254, phone: 32, company: 200, message: 2000, type: 50,
@@ -77,8 +49,6 @@ const ALLOWED_FIELDS = {
   },
 };
 
-// Longest possible legitimate submission is the sum of one endpoint's limits,
-// about 4KB — this leaves generous room while still bounding the body.
 const MAX_BODY_BYTES = 64 * 1024;
 
 function validatePayload(endpointPath, payload) {

@@ -401,8 +401,11 @@
 
     span {
       font-size: 14px;
-      color: var(--gray);
       font-family: 'medium', sans-serif;
+      background: var(--primary-gradient);
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
     }
   }
 

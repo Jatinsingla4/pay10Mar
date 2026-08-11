@@ -47,8 +47,17 @@ const BizLeadForm = () => {
     if (!/^[\p{L}\s'.-]$/u.test(e.key)) e.preventDefault();
   };
 
+  // Matches any HTML tag opener, not a bare "<" — applied to every field
+  // generically so a new field is covered by default, not opted in.
+  const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
+
   const validate = () => {
     const errs = {};
+    for (const [key, value] of Object.entries(form)) {
+      if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
+        errs[key] = "Must not contain HTML tags";
+      }
+    }
     if (!form.business_name.trim()) errs.business_name = "Business name is required";
     if (!form.name.trim()) errs.name = "Your name is required";
     else if (!/^[\p{L}\s'.-]+$/u.test(form.name.trim())) errs.name = "Name should only contain letters";

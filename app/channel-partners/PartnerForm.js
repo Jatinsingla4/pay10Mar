@@ -55,6 +55,20 @@ export default function PartnerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Matches any HTML tag opener, not a bare "<" — applied to every field
+    // generically so a new field is covered by default, not opted in.
+    const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
+    const htmlErrors = {};
+    for (const [key, value] of Object.entries(form)) {
+      if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
+        htmlErrors[key] = "Must not contain HTML tags";
+      }
+    }
+    if (Object.keys(htmlErrors).length > 0) {
+      setErrors((prev) => ({ ...prev, ...htmlErrors }));
+      return;
+    }
+
     // Letters from any language plus spaces, apostrophes, hyphens and periods
     // (initials like "J.") — rejects digits and other punctuation. Emptiness
     // is left to the server's required-field check, same as every other field here.

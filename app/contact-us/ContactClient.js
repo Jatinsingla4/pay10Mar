@@ -233,8 +233,20 @@ const ContactClient = ({ pageData = null }) => {
     return { response, result };
   };
 
+  // Matches any HTML tag opener, not a bare "<" — free text like the message
+  // field can legitimately contain "<" on its own, just never a tag. Applied
+  // to every field generically (below) rather than the specific ones checked
+  // above it, since new fields must be covered by default, not opted in.
+  const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
+
   const validateForm = () => {
     const errors = {};
+
+    for (const [key, value] of Object.entries(formData)) {
+      if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
+        errors[key] = "Must not contain HTML tags";
+      }
+    }
 
     const nameError = validateName(formData.name);
     if (nameError) errors.name = nameError;

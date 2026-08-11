@@ -32,6 +32,13 @@ const NAME_REGEX = /^[\p{L}\s'.-]+$/u;
 // including country code (a bare 7-digit number is always landline-style
 // local, never mobile) — accepts any country's number, not just UAE.
 const PHONE_REGEX = /^\+?\d{8,15}$/;
+// Matches any HTML tag opener ("<script", "</div", "<img src=x onerror=..."),
+// not a bare "<" — legitimate free text (message, address) can contain "<"
+// on its own, but never a tag. Checked on every field, not just name/email/
+// phone, since message/company/address/etc. have no other format check and
+// this proxy's response is the only thing standing between form input and
+// the backend that stores and (elsewhere) displays it.
+const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
 
 
 const REQUIRED_FIELDS = {
@@ -99,6 +106,9 @@ function validatePayload(endpointPath, payload) {
     }
     if (typeof value === 'string' && value.length > limit) {
       return `${key} is too long`;
+    }
+    if (typeof value === 'string' && HTML_TAG_REGEX.test(value)) {
+      return `${key} must not contain HTML tags`;
     }
   }
   return null;

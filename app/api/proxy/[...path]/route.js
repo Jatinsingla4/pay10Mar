@@ -5,7 +5,7 @@ import { CSRF_COOKIE_NAME, CSRF_HEADER_NAME } from '../../../lib/csrf';
 import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_PATH, PARTNERS_PATH } from '../../../lib/proxyConstants';
 // Backend URL, key and the origin it authorises us by all come from one module, so
 // this route and the CMS fetcher can't drift apart — they have twice before.
-import { API_BASE, API_KEY, SITE_ORIGIN, API_HEADERS } from '../../../lib/backendApi';
+import { API_BASE, POST_API_KEY, SITE_ORIGIN, POST_API_HEADERS } from '../../../lib/backendApi';
 
 // Captcha verification is this route's own concern, so its secret stays here.
 const RECAPTCHA_SECRET_KEY = secret('RECAPTCHA_SECRET_KEY');
@@ -136,7 +136,7 @@ export async function POST(request, { params }) {
 
 async function handleProxy(request, params) {
   try {
-    if (!API_BASE || !API_KEY) {
+    if (!API_BASE || !POST_API_KEY) {
       return json({ status: false, message: 'Server configuration error' }, 500);
     }
 
@@ -178,7 +178,7 @@ async function handleProxy(request, params) {
 
     const fetchOptions = {
       method: request.method,
-      headers: { ...API_HEADERS },
+      headers: { ...POST_API_HEADERS },
       cache: 'no-store',
     };
 

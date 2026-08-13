@@ -30,6 +30,7 @@ function getCspSources() {
       'https://adminpayd.grapesmobile.com',
       'https://pay10.webhr.co',
       'https://bucket-7vbln7.s3.ap-south-1.amazonaws.com',
+      'https://grapesmdev.blr1.digitaloceanspaces.com',
       ...parseEnvSources(process.env.CSP_IMG_SRC_EXTRA),
     ]),
     fontSrc: uniqueSources(["'self'", 'data:']),
@@ -37,6 +38,7 @@ function getCspSources() {
       "'self'",
       'blob:',
       'https://bucket-7vbln7.s3.ap-south-1.amazonaws.com',
+      'https://grapesmdev.blr1.digitaloceanspaces.com',
       ...parseEnvSources(process.env.CSP_MEDIA_SRC_EXTRA),
     ]),
     connectSrc: uniqueSources([

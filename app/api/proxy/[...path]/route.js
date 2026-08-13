@@ -126,6 +126,7 @@ const ALLOWED_ORIGINS = new Set([
   'https://dpay10.grapesmobile.com',
   'https://www.pay10.ma',
   'https://pay10.ma',
+  'https://pay10mar.onrender.com',
 ]);
 
 // POST only. A GET export used to exist and was forwarded to the backend with our

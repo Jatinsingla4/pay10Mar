@@ -22,6 +22,7 @@ function getCspSources() {
       "'self'",
       'blob:',
       'data:',
+      'http://mar.grapesmobile.com',
       'https://www.google.com',
       'https://pcms.pay10.in',
       'https://gww.grapesmobile.com',

@@ -11,6 +11,10 @@ const nextConfig = {
     minimumCacheTTL: 60,
     remotePatterns: [
       {
+        protocol: 'http',
+        hostname: 'mar.grapesmobile.com',
+      },
+      {
         protocol: 'https',
         hostname: 'gww.grapesmobile.com',
       },

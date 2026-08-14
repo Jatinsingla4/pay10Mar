@@ -146,7 +146,7 @@ const BizLeadForm = () => {
           <input
             type="text"
             name="business_name"
-            placeholder="Name of the business*"
+            placeholder="Nom de l'entreprise*"
             value={form.business_name}
             onChange={handleChange}
             maxLength={200}
@@ -158,7 +158,7 @@ const BizLeadForm = () => {
           <input
             type="text"
             name="name"
-            placeholder="Your name*"
+            placeholder="Nom et prénom*"
             value={form.name}
             onChange={handleChange}
             onKeyDown={handleNameKeyDown}
@@ -174,7 +174,7 @@ const BizLeadForm = () => {
           <input
             type="tel"
             name="phone"
-            placeholder="Phone number*"
+            placeholder="Numéro de téléphone*"
             value={form.phone}
             onChange={handleChange}
             onKeyDown={handlePhoneKeyDown}
@@ -188,7 +188,7 @@ const BizLeadForm = () => {
           <input
             type="email"
             name="email"
-            placeholder="Email ID*"
+            placeholder="Adresse e-mail*"
             value={form.email}
             onChange={handleChange}
             maxLength={254}
@@ -203,7 +203,7 @@ const BizLeadForm = () => {
           <input
             type="text"
             name="address"
-            placeholder="Address of the business*"
+            placeholder="Adresse de l'entreprise*"
             value={form.address}
             onChange={handleChange}
             maxLength={300}
@@ -218,7 +218,7 @@ const BizLeadForm = () => {
             onChange={handleChange}
             className={errors.business_type ? Style.biz_lead_input_error : ""}
           >
-            <option value="">Business type*</option>
+            <option value="">Type d'activité*</option>
             <option value="Micro Merchant">Micro Merchant</option>
             <option value="SME">SME</option>
             <option value="Enterprise">Enterprise</option>
@@ -236,7 +236,7 @@ const BizLeadForm = () => {
       </div>
 
       <button type="submit" className={Style.biz_lead_submit} disabled={status === "loading"}>
-        {status === "loading" ? "Submitting..." : "Submit"}
+        {status === "loading" ? "Envoi en cours..." : "Envoyer"}
       </button>
 
       {status === "success" && <div className={Style.biz_lead_success}>{message}</div>}

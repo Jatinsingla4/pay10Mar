@@ -11,8 +11,6 @@ import CBUAELicenseFeatures from './components/ui/CBUAELicenseFeatures';
 import SuperAppSection from './components/ui/SuperAppSection';
 import ConsumerAppFeature from './components/ui/ConsumerAppFeature';
 import MerchantAppFeature from './components/ui/MerchantAppFeature';
-import HomeSecuritySection from './components/ui/HomeSecuritySection';
-import MerchantTestimonialVideos from './components/ui/MerchantTestimonialVideos';
 import MerchantLogosCTA from './components/ui/MerchantLogosCTA';
 import { sanitizeHtml } from './lib/sanitizeHtml';
 
@@ -70,7 +68,7 @@ export default function HomeClient({ pageData = null }) {
           eyebrow={pageData.page_title}
           subtitle={pageData.page_subtitle}
           description={pageData.page_description}
-          ctaLabel={pageData.banner_text}
+          ctaLabel={pageData.banner_text || 'Contactez-nous'}
           bgImage={pageData.banner_image}
           mobileBgImage={pageData.mobile_image}
           heroImage={null}
@@ -138,28 +136,13 @@ export default function HomeClient({ pageData = null }) {
         }
 
         if (titleLower.includes('security') || idx === 4) {
-          return (
-            <HomeSecuritySection
-              key={idx}
-              title={section.title}
-              subtitle={section.subtitle}
-              content={section.content}
-              images={section.images}
-            />
-          );
+          // ponytail: hidden for now, bring back later along with testimonials
+          return null;
         }
 
         if (titleLower.includes("don't take our word") || titleLower.includes('merchants themselves') || idx === 5) {
-          return (
-            <MerchantTestimonialVideos
-              key={idx}
-              title={section.title}
-              content={section.content}
-              cardsData={section.cards}
-              videos={section.videos || []}
-              sectionVideo={section.video}
-            />
-          );
+          // ponytail: no testimonials yet, keep the section hidden until content is ready
+          return null;
         }
 
         if (titleLower.includes('get started today') || titleLower.includes('logos') || idx === 6) {
@@ -167,7 +150,8 @@ export default function HomeClient({ pageData = null }) {
             <MerchantLogosCTA
               key={idx}
               title={section.title}
-              images={section.images}
+              images={[]}
+              ctaButtonText="Contactez-nous"
             />
           );
         }

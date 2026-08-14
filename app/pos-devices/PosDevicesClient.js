@@ -4,8 +4,6 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import MerchantTestimonialVideos from "@/app/components/ui/MerchantTestimonialVideos";
-import MerchantLogosCTA from "@/app/components/ui/MerchantLogosCTA";
 import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
@@ -168,6 +166,9 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
           <div className={styles.altareq_hero_content}>
             {!isEmptyHtml(pageData?.page_title) && (
               <h1 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+            )}
+            {!isEmptyHtml(pageData?.page_subtitle) && (
+              <p className={styles.altareq_hero_subtitle} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_subtitle) }} />
             )}
             {!isEmptyHtml(pageData?.page_description) && (
               <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_description) }} />
@@ -388,12 +389,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         </div>
       </section>
 
-      <MerchantTestimonialVideos
-        title={testimonialTitle || "Don't Take Our Word For It. Hear It From The Merchants Themselves."}
-        content={testimonialContent || "<p>From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.</p>"}
-        videos={testimonialVideos}
-      />
-      <MerchantLogosCTA showCta={false} images={merchantLogos} />
+      {/* ponytail: no testimonials/logos yet, hidden for now like on the homepage */}
 
       <section className={styles.final_combo}>
         <div className={styles.combo_card}>
@@ -407,13 +403,13 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
             {!isEmptyHtml(pageData?.sections?.[5]?.subtitle) && (
               <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].subtitle) }} />
             )}
-            <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Enterprise Sales</Link>
+            <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Contact Entreprises</Link>
           </div>
 
           <div className={styles.combo_divider} aria-hidden="true" />
 
           <div className={styles.combo_download}>
-            <h2 className={styles.combo_heading}>Merchant App</h2>
+            <h2 className={styles.combo_heading}>Application Commerçant</h2>
             {isMobile ? (
               <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
                 <Icon icon="mdi:download" width={18} />

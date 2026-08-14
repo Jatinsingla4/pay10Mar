@@ -530,6 +530,15 @@
   font-family: "regular", sans-serif;
   color: var(--gray);
   line-height: 1.7;
+
+  ul {
+    list-style: disc;
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 8px;
+  }
 }
 
 .support_visual {

@@ -4,8 +4,6 @@ import { useState, useEffect } from "react";
 import Style from "./page.module.scss";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
-import MerchantTestimonialVideos from "../components/ui/MerchantTestimonialVideos";
-import MerchantLogosCTA from "../components/ui/MerchantLogosCTA";
 import BizLeadForm from "./BizLeadForm";
 import { isEmptyHtml, sanitizeHtml } from "../lib/sanitizeHtml";
 import { bannerBgStyle } from "../lib/bannerBgStyle";
@@ -240,12 +238,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
         </div>
       </section>
 
-      <MerchantTestimonialVideos
-        title="Don't Take Our Word For It. Hear It From The Merchants Themselves."
-        content="<p>From small retailers to enterprise brands, businesses across the UAE are choosing Pay10 for faster settlements, lower costs, and support that actually shows up.</p>"
-        videos={testimonialVideos}
-      />
-      <MerchantLogosCTA showCta={false} images={merchantLogos} />
+      {/* ponytail: no testimonials/logos yet, hidden for now like on the homepage */}
 
       <section className={Style.biz_final_cta}>
         <h2 className={Style.cta_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.sections?.[5]?.title) }} />
@@ -260,7 +253,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
       </section>
 
       <section className={Style.biz_app_download}>
-        <h2 className={Style.app_download_heading}>Merchant App</h2>
+        <h2 className={Style.app_download_heading}>Application Commerçant</h2>
         {isMobile ? (
           <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.single_download_btn}>
             <Icon icon="mdi:download" width={20} />

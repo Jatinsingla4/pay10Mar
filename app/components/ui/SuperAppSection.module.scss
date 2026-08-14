@@ -152,6 +152,20 @@
   }
 }
 
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 20px;
+  font-family: 'medium', sans-serif;
+  font-size: 16px;
+  color: var(--primary, #e64c1e);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .imageCard {
   border-radius: 32px;
   overflow: hidden;

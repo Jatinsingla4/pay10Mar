@@ -44,6 +44,13 @@
     margin-bottom: 40px;
   }
 
+  .altareq_hero_subtitle {
+    font-size: 20px;
+    font-family: 'bold', sans-serif;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+
   @include tab {
     max-width: 55%;
 

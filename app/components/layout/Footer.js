@@ -112,7 +112,7 @@ const footerData = {
     },
   ],
   socialMedia: {
-    linkedin: 'https://ae.linkedin.com/company/pay10-uae',
+    linkedin: 'https://www.linkedin.com/company/pay10-maroc/',
     x: 'https://x.com/pay10UAE',
     instagram: 'https://www.instagram.com/pay10.uae/',
     facebook: 'https://www.facebook.com/people/Pay10-UAE/61570783563019/#',
@@ -243,8 +243,8 @@ const Footer = ({ faqPageData = null }) => {
         <div className="footer__bottom-container">
           <div className="footer__address footer__address--en">
             <span>Copyright © 2026</span>
-            <span>Pay10 Payment Services Provider LLC is licensed by the Central Bank of the UAE, U-Bora Office Tower, Office 1004,</span>
-            <span>Business Bay, Dubai, United Arab Emirates</span>
+            <span>Pay10 Maroc est un Établissement de Paiement agréé et réglementé par Bank Al-Maghrib, Casa Business Towers, Avenue Mainstreet, 1er Étage, Bureau N°31/32,</span>
+            <span>Casablanca Finance City, Casablanca, Maroc</span>
           </div>
         </div>
       </div>

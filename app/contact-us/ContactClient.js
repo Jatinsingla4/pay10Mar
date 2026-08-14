@@ -9,14 +9,14 @@ import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
 import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
 import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_URL } from "../lib/proxyConstants";
 
-// Hardcoded Google Maps embed URL
-const MAP_EMBED_URL = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.6651841438556!2d55.270962999999995!3d25.1807808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6978338fd387%3A0xb7eeb833237a2ede!2sUbora%20Office%20Tower!5e0!3m2!1sen!2sin!4v1778165481176!5m2!1sen!2sin";
+// Query-based embed — no place ID needed, Google resolves the address text directly.
+const MAP_EMBED_URL = "https://www.google.com/maps?q=" + encodeURIComponent("Casa Business Towers, Avenue Mainstreet, Casablanca Finance City, Casablanca, Maroc") + "&output=embed";
 
 // Static office data
 const STATIC_OFFICES = {
-  "dubai-uae": {
-    name: "Dubai, UAE",
-    address: "Ubora Office Tower, Business Bay, Dubai, UAE",
+  "casablanca-morocco": {
+    name: "Casablanca, Maroc",
+    address: "Casa Business Towers, Avenue Mainstreet, 1er Étage, Bureau N°31/32, Casablanca Finance City, Maroc",
     map: MAP_EMBED_URL,
   },
 };
@@ -69,6 +69,15 @@ const CustomSelect = ({ options, value, onChange, placeholder, name, error }) =>
 };
 
 const VALID_FORM_TYPES = ["General Inquiry", "SME Sales", "Enterprise Sales", "Channel Partner"];
+
+// Internal values stay in English (used throughout the submit/validation logic) —
+// only the displayed label is French.
+const FORM_TYPE_LABELS = {
+  "General Inquiry": "Demande Générale",
+  "SME Sales": "Ventes PME",
+  "Enterprise Sales": "Ventes Entreprises",
+  "Channel Partner": "Partenaire Commercial",
+};
 
 const ContactClient = ({ pageData = null }) => {
   const searchParams = useSearchParams();
@@ -398,19 +407,19 @@ const ContactClient = ({ pageData = null }) => {
 
   const getContactEmail = () => {
     switch (activeFormType) {
-      case "SME Sales": return "sales@pay10.ae";
-      case "Enterprise Sales": return "enterprisesales@pay10.ae";
-      case "Channel Partner": return "channelpartners@pay10.ae";
-      default: return "info@pay10.ae";
+      case "SME Sales": return "sales@pay10.ma";
+      case "Enterprise Sales": return "enterprisesales@pay10.ma";
+      case "Channel Partner": return "channelpartners@pay10.ma";
+      default: return "info@pay10.ma";
     }
   };
 
   const getButtonText = () => {
     switch (activeFormType) {
       case "SME Sales":
-      case "Enterprise Sales": return "Send Business Inquiry";
-      case "Channel Partner": return "Submit Request";
-      default: return "Send Inquiry";
+      case "Enterprise Sales": return "Envoyer la demande";
+      case "Channel Partner": return "Soumettre la demande";
+      default: return "Envoyer";
     }
   };
 
@@ -480,7 +489,7 @@ const ContactClient = ({ pageData = null }) => {
         {/* Map Section */}
         <section className={Style.mapSection} data-animation="opacity">
           <iframe
-            src={STATIC_OFFICES["dubai-uae"].map}
+            src={STATIC_OFFICES["casablanca-morocco"].map}
             width="100%"
             height="100%"
             style={{ border: 0, display: "block" }}
@@ -496,12 +505,12 @@ const ContactClient = ({ pageData = null }) => {
           <div className={Style.formInner}>
             {/* Left: Info */}
             <div className={Style.formLeft}>
-              <span className={Style.formLeftLabel} data-animation="opacity-up">SEND A MESSAGE</span>
+              <span className={Style.formLeftLabel} data-animation="opacity-up">ENVOYEZ-NOUS UN MESSAGE</span>
               <h2 className={Style.formLeftHeading} data-animation="opacity-up" data-anim-delay="100">
-                {activeFormType === "General Inquiry" ? "Reach Out To Our Team" : `Reach Out To ${activeFormType}`}
+                {activeFormType === "General Inquiry" ? "Contactez notre équipe" : `Contacter ${FORM_TYPE_LABELS[activeFormType]}`}
               </h2>
               <p className={Style.formLeftDesc} data-animation="opacity-up" data-anim-delay="200">
-                Whether you&apos;re a business looking to integrate payments or a customer needing support, we&apos;d love to hear from you.
+                Que vous soyez un particulier à la recherche d&apos;assistance ou une entreprise souhaitant découvrir nos solutions de paiement, nos équipes sont à votre disposition pour répondre à vos questions et vous accompagner.
               </p>
               <ul className={Style.formLeftInfo} data-animation="opacity-up" data-anim-delay="300">
                 {pageData?.address && (
@@ -519,11 +528,7 @@ const ContactClient = ({ pageData = null }) => {
                 {pageData?.phone && (
                   <li>
                     <Icon icon="prime:mobile" className={Style.formLeftInfoIcon} />
-                    <span>
-                      {["SME Sales", "Enterprise Sales", "Channel Partner"].includes(activeFormType)
-                        ? "800729110"
-                        : pageData.phone}
-                    </span>
+                    <span>{pageData.phone}</span>
                   </li>
                 )}
               </ul>
@@ -540,7 +545,7 @@ const ContactClient = ({ pageData = null }) => {
                     className={`${Style.categoryTab} ${activeFormType === type ? Style.categoryTabActive : ""}`}
                     onClick={() => handleTabChange(type)}
                   >
-                    {type}
+                    {FORM_TYPE_LABELS[type]}
                   </button>
                 ))}
               </div>
@@ -553,7 +558,7 @@ const ContactClient = ({ pageData = null }) => {
                     <input
                       type="text"
                       name="name"
-                      placeholder={activeFormType === "Channel Partner" ? "Name*" : "Full Name*"}
+                      placeholder={activeFormType === "Channel Partner" ? "Nom*" : "Nom complet*"}
                       className={`${Style.formInput} ${formErrors.name ? Style.formInputError : ""}`}
                       value={formData.name}
                       onChange={handleInputChange}
@@ -568,7 +573,7 @@ const ContactClient = ({ pageData = null }) => {
                     <input
                       type="email"
                       name="email"
-                      placeholder={activeFormType === "Channel Partner" ? "Work Email*" : "Email*"}
+                      placeholder={activeFormType === "Channel Partner" ? "Email professionnel*" : "Email*"}
                       className={`${Style.formInput} ${formErrors.email ? Style.formInputError : ""}`}
                       value={formData.email}
                       onChange={handleInputChange}
@@ -586,7 +591,7 @@ const ContactClient = ({ pageData = null }) => {
                     <input
                       type="tel"
                       name="mobile"
-                      placeholder="+971501234567"
+                      placeholder="+212600000000"
                       className={`${Style.formInput} ${formErrors.mobile ? Style.formInputError : ""}`}
                       value={formData.mobile}
                       onChange={handleInputChange}
@@ -604,7 +609,7 @@ const ContactClient = ({ pageData = null }) => {
                       <input
                         type="text"
                         name="company_name"
-                        placeholder="Company Name*"
+                        placeholder="Nom de la société*"
                         className={`${Style.formInput} ${formErrors.company_name ? Style.formInputError : ""}`}
                         value={formData.company_name}
                         onChange={handleInputChange}
@@ -619,7 +624,7 @@ const ContactClient = ({ pageData = null }) => {
                       <input
                         type="text"
                         name="country"
-                        placeholder="Country*"
+                        placeholder="Pays*"
                         className={`${Style.formInput} ${formErrors.country ? Style.formInputError : ""}`}
                         value={formData.country}
                         onChange={handleInputChange}
@@ -641,7 +646,7 @@ const ContactClient = ({ pageData = null }) => {
                       <input
                         type="text"
                         name="position"
-                        placeholder="Position (Title)*"
+                        placeholder="Poste (Fonction)*"
                         className={`${Style.formInput} ${formErrors.position ? Style.formInputError : ""}`}
                         value={formData.position}
                         onChange={handleInputChange}
@@ -655,7 +660,7 @@ const ContactClient = ({ pageData = null }) => {
                       <input
                         type="text"
                         name="location"
-                        placeholder="Location*"
+                        placeholder="Localisation*"
                         className={`${Style.formInput} ${formErrors.location ? Style.formInputError : ""}`}
                         value={formData.location}
                         onChange={handleInputChange}
@@ -674,7 +679,7 @@ const ContactClient = ({ pageData = null }) => {
                       <input
                         type="text"
                         name="industry"
-                        placeholder="Industry*"
+                        placeholder="Secteur d'activité*"
                         className={`${Style.formInput} ${formErrors.industry ? Style.formInputError : ""}`}
                         value={formData.industry}
                         onChange={handleInputChange}
@@ -690,13 +695,13 @@ const ContactClient = ({ pageData = null }) => {
                           name="company_size"
                           value={formData.company_size}
                           onChange={handleInputChange}
-                          placeholder="Company Size*"
+                          placeholder="Taille de l'entreprise*"
                           error={formErrors.company_size}
                           options={[
-                            { value: "0-50 Employees", label: "0-50 Employees" },
-                            { value: "100-500 Employees", label: "100-500 Employees" },
-                            { value: "500-5000 Employees", label: "500-5000 Employees" },
-                            { value: "5000 + Employees", label: "5000 + Employees" },
+                            { value: "0-50 Employees", label: "0-50 employés" },
+                            { value: "100-500 Employees", label: "100-500 employés" },
+                            { value: "500-5000 Employees", label: "500-5000 employés" },
+                            { value: "5000 + Employees", label: "5000+ employés" },
                           ]}
                         />
                         {formErrors.company_size && <span className={Style.formError}>{formErrors.company_size}</span>}
@@ -713,7 +718,7 @@ const ContactClient = ({ pageData = null }) => {
                         <input
                           type="text"
                           name="emirate"
-                          placeholder="Emirate / Locality*"
+                          placeholder="Région / Ville*"
                           className={`${Style.formInput} ${formErrors.emirate ? Style.formInputError : ""}`}
                           value={formData.emirate}
                           onChange={handleInputChange}
@@ -727,7 +732,7 @@ const ContactClient = ({ pageData = null }) => {
                         <input
                           type="url"
                           name="company_website"
-                          placeholder="Company Website*"
+                          placeholder="Site web de l'entreprise*"
                           className={`${Style.formInput} ${formErrors.company_website ? Style.formInputError : ""}`}
                           value={formData.company_website}
                           onChange={handleInputChange}
@@ -744,11 +749,11 @@ const ContactClient = ({ pageData = null }) => {
                           name="partnership_model"
                           value={formData.partnership_model}
                           onChange={handleInputChange}
-                          placeholder="Which partnership model you are Interested in?*"
+                          placeholder="Quel modèle de partenariat vous intéresse ?*"
                           error={formErrors.partnership_model}
                           options={[
-                            { value: "Referral", label: "Referral" },
-                            { value: "Building tech integration and solutions", label: "Building tech integration and solutions" },
+                            { value: "Referral", label: "Apport d'affaires" },
+                            { value: "Building tech integration and solutions", label: "Intégration technique et solutions" },
                           ]}
                         />
                         {formErrors.partnership_model && <span className={Style.formError}>{formErrors.partnership_model}</span>}
@@ -763,7 +768,7 @@ const ContactClient = ({ pageData = null }) => {
                     <div className={`${Style.formGroup} ${Style.formGroupFull}`}>
                       <textarea
                         name="message"
-                        placeholder="Inquiry Message*"
+                        placeholder="Message*"
                         rows="6"
                         className={`${Style.formTextarea} ${formErrors.message ? Style.formTextareaError : ""}`}
                         value={formData.message}
@@ -791,7 +796,7 @@ const ContactClient = ({ pageData = null }) => {
                     className={Style.formSubmitBtn}
                     disabled={formSubmitting}
                   >
-                    {formSubmitting ? "Sending..." : getButtonText()}
+                    {formSubmitting ? "Envoi en cours..." : getButtonText()}
                   </button>
                 </div>
 

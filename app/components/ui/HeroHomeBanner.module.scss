@@ -11,15 +11,15 @@
   background: var(--hero-bg-desktop) no-repeat center center;
   background-size: cover;
   color: var(--white);
-  padding: 64px 56px 0 56px;
+  padding: 36px 56px 0 56px;
 
   @include large {
-    padding: 48px 32px 0 32px;
+    padding: 28px 32px 0 32px;
   }
 
   @include tab {
     border-radius: 16px;
-    padding: 40px 16px 0px 16px;
+    padding: 24px 16px 0px 16px;
   }
 
   @include mobile {
@@ -36,13 +36,13 @@
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    gap: 32px;
+    gap: 14px;
 
     @include tab {
       display: flex;
       align-items: stretch;
       justify-content: flex-start;
-      gap: 20px;
+      gap: 12px;
       padding: 0 4px;
     }
   }
@@ -50,20 +50,20 @@
   .desktopInner {
     max-width: 1920px;
     display: grid;
-    gap: 20px;
+    gap: 12px;
 
     @include tab {
-      gap: 15px;
+      gap: 10px;
     }
   }
 
   .eyebrow {
     margin: 0;
-    font-size: 24px;
+    font-size: 20px;
     font-family: 'medium', sans-serif;
 
     @include tab {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     @include mobile {
@@ -73,34 +73,34 @@
 
   .titleWrapper {
     margin: 0;
-    
+
     h1, h2, h3, h4, h5, h6, p {
       margin: 0;
-      font-size: 64px;
+      font-size: 44px;
       font-family: 'bold', sans-serif;
       color: var(--white);
 
       @include tab {
-        font-size: 48px;
+        font-size: 36px;
       }
 
       @include mobile {
-        font-size: 32px;
+        font-size: 28px;
       }
     }
   }
 
   .body {
     margin: 0;
-    font-size: 24px;
+    font-size: 18px;
     font-family: 'regular', sans-serif;
 
     @include tab {
-      font-size: 20px;
+      font-size: 16px;
     }
 
     @include mobile {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
 
@@ -109,7 +109,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 20px 60px;
+    padding: 12px 40px;
     border-radius: 999px;
     border: 2px solid rgba(255, 255, 255, 0.9);
     color: var(--white);

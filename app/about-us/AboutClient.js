@@ -5,7 +5,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Style from "./about.module.scss";
 import JourneySection from "../components/ui/blocks/JourneySection";
-import PowerToDreamSection from "../components/ui/about/PowerToDreamSection";
 import AboutBanner from "../components/ui/about/AboutBanner";
 import AboutSecondSection from "../components/ui/about/AboutSecondSection";
 import WhereWeScoreSection from "../components/ui/about/WhereWeScoreSection";
@@ -16,13 +15,14 @@ const AboutClient = ({ apiData }) => {
   const sections = apiData?.sections || [];
 
   // --- 0. About Pay10 UAE ---
-  const aboutPay10SectionApi = sections.find(s => s.title === "About Pay10 UAE");
+  // Falls back to position when the title has been translated/renamed in the CMS.
+  const aboutPay10SectionApi = sections.find(s => s.title === "About Pay10 UAE") || sections[0];
   const aboutHeading = aboutPay10SectionApi?.title || "";
   const aboutContent = isEmptyHtml(aboutPay10SectionApi?.content) ? "" : aboutPay10SectionApi.content;
   const aboutImage = aboutPay10SectionApi?.images?.[0] || aboutPay10SectionApi?.image || null;
 
   // --- 1. Board Members ---
-  const boardSectionApi = sections.find(s => s.title === "Meet Our Board");
+  const boardSectionApi = sections.find(s => s.title === "Meet Our Board") || sections[1];
   const mergedMembersSection = {
     our_team_list: (boardSectionApi?.cards || []).map(card => ({
       Name: card.title,
@@ -36,7 +36,7 @@ const AboutClient = ({ apiData }) => {
   const mergedMembersHeading = boardSectionApi?.title || "Meet Our Board";
 
   // --- 2. Journey So Far ---
-  const journeySectionApi = sections.find(s => s.title === "Our Journey So Far");
+  const journeySectionApi = sections.find(s => s.title === "Our Journey So Far") || sections[2];
   const journeyData = (journeySectionApi?.cards || []).map(card => ({
     year: card.title,
     description: isEmptyHtml(card.content) ? "" : sanitizeHtml(card.content),
@@ -44,15 +44,10 @@ const AboutClient = ({ apiData }) => {
   }));
 
   // --- 3. Power To Dream Big ---
-  const dreamBigSectionApi = sections.find(s => s.title === "Giving You the Power to Dream Big");
-  const dreamBigHeading = dreamBigSectionApi?.title || "";
-  // PowerToDreamSection renders this as plain text (not dangerouslySetInnerHTML), so strip tags rather than sanitize them.
-  const dreamBigDesc = dreamBigSectionApi?.content ? dreamBigSectionApi.content.replace(/<[^>]*>?/gm, '').trim() : "";
-  const dreamBigImgPrimary = dreamBigSectionApi?.images?.[0] || dreamBigSectionApi?.image || null;
-  const dreamBigImgSecondary = dreamBigSectionApi?.images?.[1] || null;
+  // ponytail: removed from the CMS, section retired for now — sections[] indices below shifted down by one
 
   // --- 4. Where We Score High ---
-  const scoreSectionApi = sections.find(s => s.title === "Where We Score High");
+  const scoreSectionApi = sections.find(s => s.title === "Where We Score High") || sections[3];
   const scoreHeading = scoreSectionApi?.title || "";
   const scoreCards = scoreSectionApi?.cards || [];
 
@@ -98,15 +93,6 @@ const AboutClient = ({ apiData }) => {
           )}
 
           <div className={Style.wrapper}>
-            {(dreamBigHeading || dreamBigDesc) && (
-              <PowerToDreamSection
-                imgPrimary={dreamBigImgPrimary}
-                imgSecondary={dreamBigImgSecondary}
-                heading={dreamBigHeading}
-                description={dreamBigDesc}
-              />
-            )}
-
             {scoreCards.length > 0 && (
               <WhereWeScoreSection
                 section3Heading={scoreHeading}

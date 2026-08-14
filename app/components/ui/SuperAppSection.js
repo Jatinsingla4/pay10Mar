@@ -2,6 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./SuperAppSection.module.scss";
 import { sanitizeHtml } from "../../lib/sanitizeHtml";
 
@@ -46,6 +47,9 @@ export default function SuperAppSection({
               <div className={styles.textCard} data-animation="fade-up" style={{ transitionDelay: '0.1s' }}>
                 <h3>{consumerCard.title}</h3>
                 <p>{consumerCard.subtitle}</p>
+                <Link href="/pay10-uae-app" className={styles.cardCta}>
+                  Explorer la Solution Client
+                </Link>
               </div>
 
               <div className={`${styles.imageCard} ${styles.consumerImageCard}`} data-animation="fade-up" style={{ transitionDelay: '0.2s' }}>
@@ -64,6 +68,9 @@ export default function SuperAppSection({
               <div className={`${styles.textCard} ${styles.merchantTextCard}`} data-animation="fade-up" style={{ transitionDelay: '0.4s' }}>
                 <h3>{merchantCard.title}</h3>
                 <p>{merchantCard.subtitle}</p>
+                <Link href="/pay10-biz-uae-app" className={styles.cardCta}>
+                  Explorer la Solution Commerçant
+                </Link>
               </div>
             </>
           )}

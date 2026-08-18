@@ -33,7 +33,7 @@ const GetToKnow = () => {
   return (
     <section className={Style.wrapper}>
       <div style={{ width: '100%' }}>
-        <GlobalContactCTA title="Get Started Today" />
+        <GlobalContactCTA title="Commencez maintenant" />
       </div>
       <div className={Style.image_container} data-animation="opacity-up">
         {allImages.map((image, idx)=>

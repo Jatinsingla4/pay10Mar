@@ -40,26 +40,26 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
   // Consumer Feature Points
   const rawSubHeading = pageData?.sections?.[0]?.description || pageData?.sections?.[0]?.content || "";
   const parts = rawSubHeading.split('---');
-  const subHeadingText = parts[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "Every Pay10 device generates a unique Dynamic QR code per transaction — created fresh, linked to the exact amount, confirmed instantly. Not a static sticker. Not a shared code. A live, secure QR generated every single time a customer pays.";
+  const subHeadingText = parts[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "Chaque appareil Pay10 génère un code QR Dynamique unique par transaction — créé instantanément, lié au montant exact, confirmé en temps réel. Pas un autocollant statique. Pas un code partagé. Un QR sécurisé et en direct, généré à chaque paiement.";
   
   const tagsText = parts[1] || pageData?.sections?.[0]?.cards?.[0]?.tags;
   const consumerFeaturePoints = tagsText
     ? tagsText.split(',').map(t => t.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean)
     : [
-        "Dynamic QR generated per transaction - unique, amount-specific, instant",
-        "Customer scans with Pay10 UAE, payment confirmed in under 2 seconds",
-        "Audio and visual confirmation on device with no ambiguity and no errors",
-        "Static QR also supported for merchants who need both options",
-        "Sound box confirmation with an audible payment alert in any environment",
-        "UAE's first device family to bring DQR to in-store payments at scale"
+        "QR Dynamique généré à chaque transaction - unique, lié au montant, instantané",
+        "Le client scanne avec Pay10 Maroc, paiement confirmé en moins de 2 secondes",
+        "Confirmation audio et visuelle sur l'appareil, sans ambiguïté ni erreur",
+        "QR statique également pris en charge pour les commerçants qui ont besoin des deux options",
+        "Confirmation sonore avec alerte de paiement audible dans tout environnement",
+        "La première gamme d'appareils au Maroc à généraliser le QR Dynamique pour les paiements en magasin"
       ];
 
   // Compare Section
   const defaultDevices = [
     {
       name: 'P5',
-      tagline: 'Elegant Design Meets Advanced Payment Capability.',
-      bestFor: 'Retail counters, restaurants, salons, and lifestyle stores where design matters as much as function. Pay10\'s flagship tabletop terminal — built on RTOS for rock-solid stability.',
+      tagline: 'Un design élégant, une technologie de paiement avancée.',
+      bestFor: 'Comptoirs de vente, restaurants, salons et boutiques lifestyle où le design compte autant que la fonction. Le terminal de comptoir phare de Pay10 — construit sur RTOS pour une stabilité à toute épreuve.',
       design: 'Proprietary Pay10 premium minimalist, gold accent',
       display: { customer: '3.98" full-colour + 1" merchant', merchant: '1" monochrome LCD' },
       payment: { dqr: '✓ Unique QR per transaction', sqr: 'Supported', tap: 'DQR+Card variant only', dip: 'DQR+Card variant only' },
@@ -71,8 +71,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
     },
     {
       name: 'POS10',
-      tagline: 'Smart, Simple, and Secure QR Payments for Every Counter.',
-      bestFor: 'Small businesses, quick-service counters, and retail merchants who need a reliable, QR-focused countertop terminal — compact, affordable, and built to run all day.',
+      tagline: 'Des paiements QR intelligents, simples et sécurisés pour chaque comptoir.',
+      bestFor: 'Petites entreprises, comptoirs de restauration rapide et commerçants ayant besoin d\'un terminal de comptoir fiable et centré sur le QR — compact, abordable et conçu pour fonctionner toute la journée.',
       design: 'Compact countertop — small footprint, no gold accent',
       display: { customer: '3.98" full-colour customer', merchant: '1" monochrome LCD' },
       payment: { dqr: '✓ Unique QR per transaction', sqr: 'Supported', tap: 'N/A', dip: 'NA' },
@@ -84,8 +84,8 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
     },
     {
       name: 'P10',
-      tagline: 'Rugged Mobility for Payments on the Go. (Coming Soon)',
-      bestFor: 'Delivery fleets, logistics operators, in-flight transactions, and field sales agents who need a durable, Android-powered payment device that works wherever business happens.',
+      tagline: 'Mobilité robuste pour les paiements en déplacement. (Bientôt disponible)',
+      bestFor: 'Flottes de livraison, opérateurs logistiques, transactions en déplacement et agents commerciaux terrain ayant besoin d\'un appareil de paiement Android robuste, fonctionnant partout où l\'activité se déroule.',
       design: 'Rugged handheld — durable mobile form factor',
       display: { customer: 'Full colour high-visibility screen', merchant: 'N/A — single screen device' },
       payment: { dqr: '✓ Unique QR per transaction', sqr: 'NA', tap: 'DQR+Card variant only', dip: 'DQR+Card variant only' },
@@ -119,14 +119,14 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
     desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
     icon: c.icon
   })) || [
-    { title: '1 Dynamic QR on every device', desc: "UAE's first DQR device family — unique QR per transaction, every time." },
-    { title: '2 OTA updates', desc: 'Software pushed remotely — no engineer visit, no downtime, always current.' },
-    { title: '3 Remote configuration', desc: 'Manage all devices centrally from the Pay10 Biz portal — any location.' },
-    { title: '4 PCI-DSS certified', desc: 'Every device ships pre-certified — compliance built in, not bolted on.' },
-    { title: '5 Audio confirmation', desc: 'Loudspeaker alert on every payment — no ambiguity, no silent failures.' },
-    { title: '6 SIM pre-installed', desc: 'Ships ready to connect — dedicated 4G SIM pre-installed, no setup needed.' },
-    { title: '7 Delivered & installed', desc: 'Pay10 team delivers and sets up your device at your premises — you just start accepting.' },
-    { title: '8 Pay10 Biz App linked', desc: 'Every device links to the Pay10 Biz UAE — one tap to register, manage, and monitor.' }
+    { title: '1 QR Dynamique sur chaque appareil', desc: "La première gamme d'appareils QR Dynamique au Maroc — QR unique à chaque transaction." },
+    { title: '2 Mises à jour à distance', desc: 'Logiciel déployé à distance — aucune intervention technique, aucune interruption, toujours à jour.' },
+    { title: '3 Configuration à distance', desc: 'Gérez tous vos appareils depuis le portail Pay10 Biz — où que vous soyez.' },
+    { title: '4 Certifié PCI-DSS', desc: 'Chaque appareil est livré pré-certifié — la conformité est intégrée, pas ajoutée après coup.' },
+    { title: '5 Confirmation audio', desc: 'Alerte sonore à chaque paiement — aucune ambiguïté, aucun échec silencieux.' },
+    { title: '6 SIM préinstallée', desc: 'Prêt à l\'emploi — carte SIM 4G dédiée préinstallée, aucune configuration nécessaire.' },
+    { title: '7 Livré et installé', desc: 'L\'équipe Pay10 livre et installe votre appareil sur place — vous n\'avez plus qu\'à commencer à encaisser.' },
+    { title: '8 Lié à l\'app Pay10 Biz', desc: 'Chaque appareil se lie à Pay10 Biz Maroc — un seul geste pour enregistrer, gérer et suivre.' }
   ];
 
   // Flow Ecosystem
@@ -135,11 +135,11 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
     desc: c.subtitle,
     icon: c.icon
   })) || [
-    { title: 'DQR Device', desc: 'POS10 • P5 • P10' },
-    { title: 'Pay10 Biz App', desc: 'Manage • Monitor • Link' },
-    { title: 'Merchant Portal', desc: 'Transactions • VAT • Reports' },
-    { title: 'Instant Settlement', desc: 'T+0 • Same day • Always' },
-    { title: '24/7 Support', desc: 'Human • Multi-language' }
+    { title: 'Appareil QR Dynamique', desc: 'POS10 • P5 • P10' },
+    { title: 'App Pay10 Biz', desc: 'Gérer • Suivre • Lier' },
+    { title: 'Portail Commerçant', desc: 'Transactions • TVA • Rapports' },
+    { title: 'Règlement instantané', desc: 'T+0 • Le jour même • Toujours' },
+    { title: 'Support 24/7', desc: 'Humain • Multilingue' }
   ];
 
   // Getting Started Steps
@@ -149,10 +149,10 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
     desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
     icon: c.icon
   })) || [
-    { num: '1', title: 'Power on', desc: 'Charge fully. Hold Power button 3 seconds. Device boots and displays registration QR on customer screen.' },
-    { num: '2', title: 'Open Pay10 Biz UAE', desc: 'Login with your merchant credentials. Tap Manage Devices on the home screen.' },
-    { num: '3', title: 'Register the device', desc: 'Select your device from the list. Tap Register. Scan the QR on the device screen. Confirm. Status changes to Active.' },
-    { num: '4', title: 'Verify & start accepting', desc: 'Run a test transaction: AED amount, Dynamic QR generated, customer scans, audio + visual confirmation. You\'re live.' }
+    { num: '1', title: 'Allumage', desc: 'Chargez complètement. Maintenez le bouton d\'alimentation 3 secondes. L\'appareil démarre et affiche le QR d\'enregistrement sur l\'écran client.' },
+    { num: '2', title: 'Ouvrir Pay10 Biz Maroc', desc: 'Connectez-vous avec vos identifiants commerçant. Appuyez sur Gérer les appareils sur l\'écran d\'accueil.' },
+    { num: '3', title: 'Enregistrer l\'appareil', desc: 'Sélectionnez votre appareil dans la liste. Appuyez sur Enregistrer. Scannez le QR affiché sur l\'appareil. Confirmez. Le statut passe à Actif.' },
+    { num: '4', title: 'Vérifier et commencer à encaisser', desc: 'Effectuez une transaction test : montant en MAD, QR Dynamique généré, le client scanne, confirmation audio et visuelle. Vous êtes en ligne.' }
   ];
 
   return (
@@ -191,7 +191,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
           subheading={subHeadingText}
           points={consumerFeaturePoints}
           imageSrc={pageData?.sections?.[0]?.images?.[0] || "/images/prod_imports/consumer-app-phone.png"}
-          imageAlt="Dynamic QR Technology"
+          imageAlt="Technologie QR Dynamique"
           isReversed={false}
           isGreyBg={true}
         />
@@ -220,79 +220,79 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
                 <div className={styles.section_block}>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Best for</span>
+                    <span className={styles.lbl}>Idéal pour</span>
                     <span className={styles.val} dangerouslySetInnerHTML={{ __html: sanitizeHtml(device.bestFor) }} />
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Design</span>
+                    <span className={styles.lbl}>Conception</span>
                     <span className={styles.val}>{device.design}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Variants</span>
+                    <span className={styles.lbl}>Variantes</span>
                     <span className={styles.val} style={{whiteSpace: 'pre-line'}}>{device.variants}</span>
                   </div>
                 </div>
 
-                <div className={styles.section_title}>DISPLAY</div>
+                <div className={styles.section_title}>AFFICHAGE</div>
                 <div className={styles.section_block}>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Customer</span>
+                    <span className={styles.lbl}>Client</span>
                     <span className={styles.val}>{device.display.customer}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Merchant</span>
+                    <span className={styles.lbl}>Commerçant</span>
                     <span className={styles.val}>{device.display.merchant}</span>
                   </div>
                 </div>
 
-                <div className={styles.section_title}>PAYMENT METHODS</div>
+                <div className={styles.section_title}>MOYENS DE PAIEMENT</div>
                 <div className={styles.section_block}>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Dynamic QR</span>
+                    <span className={styles.lbl}>QR Dynamique</span>
                     <span className={styles.val}>{device.payment.dqr}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Static QR</span>
+                    <span className={styles.lbl}>QR Statique</span>
                     <span className={styles.val}>{device.payment.sqr}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>TAP (Contactless)</span>
+                    <span className={styles.lbl}>TAP (Sans contact)</span>
                     <span className={styles.val}>{device.payment.tap}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>DIP (Chip)</span>
+                    <span className={styles.lbl}>DIP (Puce)</span>
                     <span className={styles.val}>{device.payment.dip}</span>
                   </div>
                 </div>
 
-                <div className={styles.section_title}>HARDWARE & CONNECTIVITY</div>
+                <div className={styles.section_title}>MATÉRIEL & CONNECTIVITÉ</div>
                 <div className={styles.section_block}>
                   <div className={styles.feature_item}>
                     <span className={styles.lbl}>OS</span>
                     <span className={styles.val}>{device.hardware.os}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Keypad</span>
+                    <span className={styles.lbl}>Clavier</span>
                     <span className={styles.val}>{device.hardware.keypad}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Battery</span>
+                    <span className={styles.lbl}>Batterie</span>
                     <span className={styles.val}>{device.hardware.battery}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Connectivity</span>
+                    <span className={styles.lbl}>Connectivité</span>
                     <span className={styles.val}>{device.connectivity.sim}<br/>{device.connectivity.wifi !== 'NA' ? device.connectivity.wifi : ''}</span>
                   </div>
                 </div>
 
-                <div className={styles.section_title}>ALERTS & MANAGEMENT</div>
+                <div className={styles.section_title}>ALERTES & GESTION</div>
                 <div className={styles.section_block}>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Audio/Visual</span>
+                    <span className={styles.lbl}>Audio/Visuel</span>
                     <span className={styles.val}>{device.alerts.audio}<br/>{device.alerts.visual}</span>
                   </div>
                   <div className={styles.feature_item}>
-                    <span className={styles.lbl}>Compliance</span>
+                    <span className={styles.lbl}>Conformité</span>
                     <span className={styles.val}>{device.management.pci}<br/>{device.management.app}</span>
                   </div>
                 </div>
@@ -413,10 +413,10 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
             {isMobile ? (
               <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
                 <Icon icon="mdi:download" width={18} />
-                <span>Download Now</span>
+                <span>Télécharger</span>
               </a>
             ) : (
-              <Image src={merchantQr} alt="Scan to download the Pay10 Merchant App" className={styles.qr_image} width={140} height={140} />
+              <Image src={merchantQr} alt="Scannez pour télécharger l'application Pay10 Commerçant" className={styles.qr_image} width={140} height={140} />
             )}
           </div>
         </div>

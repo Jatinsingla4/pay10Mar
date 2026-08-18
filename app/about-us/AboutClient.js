@@ -35,6 +35,20 @@ const AboutClient = ({ apiData }) => {
   };
   const mergedMembersHeading = boardSectionApi?.title || "Meet Our Board";
 
+  // --- 1b. Team Members ---
+  // No index fallback - this section only renders once/if the CMS adds it.
+  const teamSectionApi = sections.find(s => s.title === "Meet Our Team");
+  const mergedTeamSection = {
+    our_team_list: (teamSectionApi?.cards || []).map(card => ({
+      Name: card.title,
+      "Designation ": card.subtitle || "",
+      Description: card.content ? card.content.replace(/<[^>]*>?/gm, '').trim() : "",
+      Image: card.icon,
+      _isLocal: false
+    }))
+  };
+  const mergedTeamHeading = teamSectionApi?.title || "Meet Our Team";
+
   // --- 2. Journey So Far ---
   const journeySectionApi = sections.find(s => s.title === "Our Journey So Far") || sections[2];
   const journeyData = (journeySectionApi?.cards || []).map(card => ({
@@ -79,6 +93,16 @@ const AboutClient = ({ apiData }) => {
               <AboutTeamMember
                 section5Heading={mergedMembersHeading}
                 section5={mergedMembersSection}
+                imageBase=""
+              />
+            </div>
+          )}
+
+          {mergedTeamSection.our_team_list.length > 0 && (
+            <div className={Style.wrapper2}>
+              <AboutTeamMember
+                section5Heading={mergedTeamHeading}
+                section5={mergedTeamSection}
                 imageBase=""
               />
             </div>

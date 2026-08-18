@@ -71,7 +71,7 @@ const footerData = {
         { label: 'Privacy Policy', href: '/privacy-policy' },
         { label: 'Cookie Policy', href: '/cookie-policy' },
         { label: 'Key Facts Statement', href: '/key-fact-statement' },
-        { label: 'Schedule of Charges', href: '/schedule-of-charges' },
+        // ponytail: Schedule of Charges hidden from nav per client request, page left intact
       ],
     },
     {

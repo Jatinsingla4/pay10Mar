@@ -1,6 +1,6 @@
  'use client';
 
-import { useLayoutEffect, useRef } from 'react';
+import { Fragment, useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { gsap } from 'gsap';
@@ -96,7 +96,7 @@ const defaultDecorations = [
 
 export default function HeroHomeBanner({
   eyebrow = 'Your Trusted Alternative Payment Method',
-  subtitle: subtitleProp = 'Licensed by Central Bank of the UAE\nInstant. Secure. Interoperable.',
+  subtitle: subtitleProp = 'Licensed by Central Bank of the UAE|Instant. Secure. Interoperable.',
   description: descriptionProp = '<h1>Why Pay, When You Can Pay10</h1>',
   ctaLabel = 'Get Started',
   ctaHref = '/contact-us',
@@ -111,7 +111,7 @@ export default function HeroHomeBanner({
   mobileBgImage,
 }) {
   const description = isEmptyHtml(descriptionProp) ? '<h1>Why Pay, When You Can Pay10</h1>' : descriptionProp;
-  const subtitle = isEmptyHtml(subtitleProp) ? 'Licensed by Central Bank of the UAE\nInstant. Secure. Interoperable.' : subtitleProp;
+  const subtitle = isEmptyHtml(subtitleProp) ? 'Licensed by Central Bank of the UAE|Instant. Secure. Interoperable.' : subtitleProp;
   const hasHeroImage = heroImage && heroImage.src;
   const rootRef = useRef(null);
 
@@ -229,8 +229,14 @@ export default function HeroHomeBanner({
         <div className={styles.desktopInner}>
           {eyebrow && <p className={styles.eyebrow} data-anim="eyebrow">{eyebrow}</p>}
           {subtitle && (
-            <p className={styles.body} data-anim="sub1" style={{ whiteSpace: 'pre-line' }}>
-              {subtitle}
+            <p className={styles.body} data-anim="sub1">
+              {/* CMS strips real newlines on save, so editors force a break with a literal "|" instead */}
+              {subtitle.split('|').map((line, i, arr) => (
+                <Fragment key={i}>
+                  {line.trim()}
+                  {i < arr.length - 1 && <br />}
+                </Fragment>
+              ))}
             </p>
           )}
           {description && (

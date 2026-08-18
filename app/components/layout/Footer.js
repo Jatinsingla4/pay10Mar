@@ -65,11 +65,11 @@ const footerData = {
     },
     {
       key: 'legal',
-      label: 'Legal',
+      label: 'Informations légales',
       items: [
-        { label: 'Terms of Services', href: '/terms-of-service' },
-        { label: 'Privacy Policy', href: '/privacy-policy' },
-        { label: 'Cookie Policy', href: '/cookie-policy' },
+        { label: "Conditions Générales d'Utilisation", href: '/terms-of-service' },
+        { label: 'Politique de confidentialité', href: '/privacy-policy' },
+        { label: 'Politique relative aux cookies', href: '/cookie-policy' },
         { label: 'Key Facts Statement', href: '/key-fact-statement' },
         // ponytail: Schedule of Charges hidden from nav per client request, page left intact
       ],
@@ -79,9 +79,9 @@ const footerData = {
       label: 'FAQ',
       href: '/faqs',
       items: [
-        { label: 'Pay10 UAE', href: '/faqs?category=Pay10+UAE' },
-        { label: 'Pay10 Biz UAE', href: '/faqs?category=Pay10+Biz+UAE' },
-        { label: 'Bill Payment', href: '/faqs?category=Bill+Payment' },
+        { label: 'Pay10', href: '/faqs?category=Pay10+UAE' },
+        { label: 'Pay10 Biz', href: '/faqs?category=Pay10+Biz+UAE' },
+        { label: 'Paiement de factures', href: '/faqs?category=Bill+Payment' },
         { label: 'Card Issuing', href: '/faqs?category=Card+Issuing' },
         { label: 'Send Abroad', href: '/faqs?category=Send+Abroad' },
         { label: 'WPS Employee', href: '/faqs?category=WPS+Employee' },
@@ -91,20 +91,20 @@ const footerData = {
     },
     {
       key: 'resources',
-      label: 'Resources',
+      label: 'Ressources',
       items: [
         {
-          label: 'Brand Guidelines',
+          label: 'Charte graphique',
           href: 'https://pay10.ae/wp-content/uploads/2026/05/Pay10-Ext-Brandguidelines-21-May-2026.pdf',
           external: true,
         },
         {
-          label: 'App & Web Button Guidelines',
+          label: 'Guide des boutons Web & Application',
           href: 'https://pay10.ae/wp-content/uploads/2026/06/Product-Approved_2June2026_Pay10-UAE_Button-Designs-April-20-RGB_Including-QR_07.pdf',
           external: true,
         },
         {
-          label: 'DQR Device User Manual',
+          label: "Guide d'utilisation des terminaux",
           href: '/docs/dqr-device-user-manual.pdf',
           external: true,
         },

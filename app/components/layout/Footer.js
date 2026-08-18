@@ -113,16 +113,14 @@ const footerData = {
   ],
   socialMedia: {
     linkedin: 'https://www.linkedin.com/company/pay10-maroc/',
-    x: 'https://x.com/pay10UAE',
-    instagram: 'https://www.instagram.com/pay10.uae/',
-    facebook: 'https://www.facebook.com/people/Pay10-UAE/61570783563019/#',
+    instagram: 'https://www.instagram.com/pay10maroc',
+    facebook: 'https://www.facebook.com/people/Pay10-Maroc/61592065059029/?sk=about',
     youtube: 'https://www.youtube.com/@Pay10UAE',
   },
 }
 
 const socialIcons = [
   { key: 'linkedin', icon: 'mdi:linkedin', label: 'LinkedIn' },
-  { key: 'x', icon: 'bi:twitter-x', label: 'X' },
   { key: 'instagram', icon: 'mdi:instagram', label: 'Instagram' },
   { key: 'facebook', icon: 'mdi:facebook', label: 'Facebook' },
   { key: 'youtube', icon: 'mdi:youtube', label: 'YouTube' },

@@ -2,13 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
-import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className, width) => {
@@ -26,9 +24,6 @@ const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay1
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonialTitle, testimonialContent, merchantLogos = [] }) => {
-  const { isMobile } = useResponsive();
-  const merchantQr = pageData?.sections?.[6]?.images?.[0] || "/images/prod_imports/biz-app-store-qr.png";
-
   const [merchantStoreUrl, setMerchantStoreUrl] = useState(MERCHANT_PLAY_URL);
 
   useEffect(() => {
@@ -410,14 +405,10 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
           <div className={styles.combo_download}>
             <h2 className={styles.combo_heading}>Application Commerçant</h2>
-            {isMobile ? (
-              <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
-                <Icon icon="mdi:download" width={18} />
-                <span>Télécharger</span>
-              </a>
-            ) : (
-              <Image src={merchantQr} alt="Scannez pour télécharger l'application Pay10 Commerçant" className={styles.qr_image} width={140} height={140} />
-            )}
+            <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
+              <Icon icon="mdi:download" width={18} />
+              <span>Télécharger</span>
+            </a>
           </div>
         </div>
       </section>

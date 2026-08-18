@@ -36,7 +36,7 @@ const AboutClient = ({ apiData }) => {
   const mergedMembersHeading = boardSectionApi?.title || "Meet Our Board";
 
   // --- 1b. Team Members ---
-  // No index fallback - this section only renders once/if the CMS adds it.
+  // No fallback - this section only renders once/if the CMS adds it.
   const teamSectionApi = sections.find(s => s.title === "Meet Our Team");
   const mergedTeamSection = {
     our_team_list: (teamSectionApi?.cards || []).map(card => ({

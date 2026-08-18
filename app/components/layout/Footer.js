@@ -32,33 +32,33 @@ const footerData = {
   columns: [
     {
       key: 'company',
-      label: 'Company',
+      label: 'Entreprise',
       items: [
-        { label: 'About Us', href: '/about-us' },
-        { label: 'Vision & Mission', href: '/vision-mission' },
-        { label: 'Careers', href: '/careers' },
-        { label: 'Contact Us', href: '/contact-us' },
+        { label: 'À propos de nous', href: '/about-us' },
+        { label: 'Vision et Mission', href: '/vision-mission' },
+        { label: 'Carrières', href: '/careers' },
+        { label: 'Contact', href: '/contact-us' },
       ],
     },
     {
       key: 'consumer',
-      label: 'Consumer Solutions',
+      label: 'Solutions Particuliers',
       items: [
-        { label: 'Pay10 UAE', href: '/pay10-uae-app' },
-        { label: 'Bill Payment', href: '/bill-payment' },
-        { label: 'Send Abroad', href: '/send-abroad' },
-        { label: 'Pay10 Card', href: '/pay10-card' },
-        { label: 'Open Finance Al Tareq', href: '/open-finance-altareq' },
+        { label: 'Pay10 Maroc', href: '/pay10-uae-app' },
+        { label: 'Paiement de factures', href: '/bill-payment' },
+        { label: "Transfert d'argent", href: '/send-abroad' },
+        { label: 'Alimentation du Wallet', href: '/pay10-card' },
+        { label: 'Virement bancaire', href: '/open-finance-altareq' },
       ],
     },
     {
       key: 'business',
-      label: 'Business Solutions',
+      label: 'Solutions Professionnels',
       items: [
-        { label: 'Pay10 Biz UAE', href: '/pay10-biz-uae-app' },
-        { label: 'Merchant Portal', href: '/merchant-portal' },
+        { label: 'Pay10 Biz Maroc', href: '/pay10-biz-uae-app' },
+        // ponytail: Merchant Portal hidden from nav per client request, page left intact
         { label: 'Payment Gateways', href: '/payment-gateway' },
-        { label: 'POS Devices', href: '/pos-devices' },
+        { label: 'Terminal POS', href: '/pos-devices' },
         { label: 'WPS & Payroll', href: '/wps-payroll' },
         { label: 'Channel Partners', href: '/channel-partners' },
       ],

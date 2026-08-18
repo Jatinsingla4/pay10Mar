@@ -5,9 +5,9 @@ import Style from './GlobalContactCTA.module.scss';
 import { sanitizeHtml } from '../../lib/sanitizeHtml';
 
 const GlobalContactCTA = ({ 
-  title = "For Any Inquiries",
-  subtitle = "Please feel free to contact us",
-  buttonText = "Contact Us",
+  title = "Pour toute demande",
+  subtitle = "Pour toute question ou demande d'information, n'hésitez pas à nous contacter.",
+  buttonText = "Contactez-nous",
   buttonHref = "/contact-us" 
 }) => {
   return (

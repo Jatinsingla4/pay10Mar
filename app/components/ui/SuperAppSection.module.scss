@@ -103,6 +103,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  align-items: start;
   gap: 24px;
 
   @include large {
@@ -174,10 +175,11 @@
   min-height: 320px;
 
   img {
-    width: auto;
-    height: 164%;
+    width: 260px;
+    max-width: 90%;
+    height: auto;
     position: absolute;
-    bottom: -235px;
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
     object-fit: contain;
@@ -187,20 +189,10 @@
 
   @include lessTab {
     min-height: 360px;
-
-    img {
-      height: 164%;
-      bottom: -235px;
-    }
   }
 
   @include mobile {
     min-height: 320px;
-
-    img {
-      height: 160%;
-      bottom: -215px;
-    }
   }
 }
 

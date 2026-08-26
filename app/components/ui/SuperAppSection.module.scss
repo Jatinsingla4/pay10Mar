@@ -174,10 +174,10 @@
   min-height: 320px;
 
   img {
-    width: auto;
-    height: 164%;
+    width: 148%;
+    height: auto;
     position: absolute;
-    bottom: -235px;
+    bottom: -20%;
     left: 50%;
     transform: translateX(-50%);
     object-fit: contain;
@@ -187,19 +187,14 @@
 
   @include lessTab {
     min-height: 360px;
-
-    img {
-      height: 164%;
-      bottom: -235px;
-    }
   }
 
   @include mobile {
     min-height: 320px;
 
     img {
-      height: 160%;
-      bottom: -215px;
+      width: 145%;
+      bottom: -18%;
     }
   }
 }

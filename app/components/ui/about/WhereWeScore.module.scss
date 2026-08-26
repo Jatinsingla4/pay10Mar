@@ -67,8 +67,9 @@
           width: 100px;
           height: 100px;
           object-fit: contain;
-          /* Filter to make icon look somewhat reddish-orange to match theme */
-          filter: brightness(0) invert(42%) sepia(87%) saturate(2250%) hue-rotate(346deg) brightness(98%) contrast(98%);
+          /* ponytail: no recolor filter - the CMS flattens uploads to fully opaque on
+             save, so a filter that depends on transparency (recoloring a transparent
+             black icon) can never work here. Upload icons already in their final color. */
         }
       }
 

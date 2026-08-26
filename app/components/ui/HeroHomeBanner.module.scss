@@ -11,15 +11,23 @@
   background: var(--hero-bg-desktop) no-repeat center top;
   background-size: cover;
   color: var(--white);
-  padding: 36px 56px 0 56px;
+  // Padding-top scales with viewport width (vw), same axis the banner's own
+  // height scales on (aspect-ratio locked) - so the text stack stays a
+  // constant fraction of the banner's height at every width, instead of
+  // stepping down only at breakpoints and overflowing into the photo's
+  // subjects in the gap between them. Horizontal padding stays breakpoint-based
+  // since it's not safety-critical.
+  padding: clamp(16px, 2.641vw, 36px) 56px 0 56px;
 
   @include large {
-    padding: 28px 32px 0 32px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 
   @include tab {
     border-radius: 16px;
-    padding: 24px 16px 0px 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
   @include mobile {
@@ -36,13 +44,13 @@
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    gap: 14px;
+    // ponytail: vw-scaled (not breakpoint-stepped) - see padding-top comment above
+    gap: clamp(8px, 1.027vw, 14px);
 
     @include tab {
       display: flex;
       align-items: stretch;
       justify-content: flex-start;
-      gap: 12px;
       padding: 0 4px;
     }
   }
@@ -50,25 +58,13 @@
   .desktopInner {
     max-width: 1920px;
     display: grid;
-    gap: 12px;
-
-    @include tab {
-      gap: 10px;
-    }
+    gap: clamp(6px, 0.880vw, 12px);
   }
 
   .eyebrow {
     margin: 0;
-    font-size: 20px;
+    font-size: clamp(14px, 1.467vw, 20px);
     font-family: 'medium', sans-serif;
-
-    @include tab {
-      font-size: 18px;
-    }
-
-    @include mobile {
-      font-size: 16px;
-    }
   }
 
   .titleWrapper {
@@ -76,32 +72,16 @@
 
     h1, h2, h3, h4, h5, h6, p {
       margin: 0;
-      font-size: 44px;
+      font-size: clamp(22px, 3.228vw, 44px);
       font-family: 'bold', sans-serif;
       color: var(--white);
-
-      @include tab {
-        font-size: 36px;
-      }
-
-      @include mobile {
-        font-size: 28px;
-      }
     }
   }
 
   .body {
     margin: 0;
-    font-size: 18px;
+    font-size: clamp(13px, 1.321vw, 18px);
     font-family: 'regular', sans-serif;
-
-    @include tab {
-      font-size: 16px;
-    }
-
-    @include mobile {
-      font-size: 14px;
-    }
   }
 
   .ctaDesktop {
@@ -109,27 +89,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 40px;
+    padding: clamp(8px, 0.880vw, 12px) clamp(20px, 2.935vw, 40px);
     border-radius: 999px;
     border: 2px solid rgba(255, 255, 255, 0.9);
     color: var(--white);
     text-decoration: none;
-    font-size: 18px;
+    font-size: clamp(13px, 1.321vw, 18px);
     font-family: 'medium', sans-serif;
     backdrop-filter: blur(10px);
     background: rgba(255, 255, 255, 0.08);
     transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
     will-change: transform, opacity;
-
-    @include tab {
-      font-size: 16px;
-      padding: 10px 32px;
-    }
-
-    @include mobile {
-      font-size: 14px;
-      padding: 10px 28px;
-    }
 
     &:hover {
       background: rgba(255, 255, 255, 0.14);

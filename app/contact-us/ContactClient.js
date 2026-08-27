@@ -10,7 +10,7 @@ import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
 import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_URL } from "../lib/proxyConstants";
 
 // Query-based embed — no place ID needed, Google resolves the address text directly.
-const MAP_EMBED_URL = "https://www.google.com/maps?q=" + encodeURIComponent("Casa Business Towers, Avenue Mainstreet, Casablanca Finance City, Casablanca, Maroc") + "&output=embed";
+const MAP_EMBED_URL = "https://www.google.com/maps?q=" + encodeURIComponent("Casa Business Towers, Avenue Mainstreet, Casablanca Finance City, Casablanca, Maroc") + "&hl=fr&output=embed";
 
 // Static office data
 const STATIC_OFFICES = {

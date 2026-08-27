@@ -10,7 +10,12 @@ import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
 import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_URL } from "../lib/proxyConstants";
 
 // Query-based embed — no place ID needed, Google resolves the address text directly.
-const MAP_EMBED_URL = "https://www.google.com/maps?q=" + encodeURIComponent("Casa Business Towers, Avenue Mainstreet, Casablanca Finance City, Casablanca, Maroc") + "&hl=fr&output=embed";
+// Deliberately omits the "Casa Business Towers" business name: including it
+// resolves to that Google Business Profile listing, whose address field is
+// stored in Chinese on Google's end (hl only translates the map's own UI,
+// not third-party listing data) - the plain street address avoids that
+// listing's info card entirely and just drops a pin.
+const MAP_EMBED_URL = "https://www.google.com/maps?q=" + encodeURIComponent("Avenue Mainstreet, Casablanca Finance City, Casablanca, Maroc") + "&hl=fr&output=embed";
 
 // Static office data
 const STATIC_OFFICES = {

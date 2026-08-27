@@ -70,7 +70,7 @@ const footerData = {
         { label: "Conditions Générales d'Utilisation", href: '/terms-of-service' },
         { label: 'Politique de confidentialité', href: '/privacy-policy' },
         { label: 'Politique relative aux cookies', href: '/cookie-policy' },
-        { label: 'Key Facts Statement', href: '/key-fact-statement' },
+        { label: 'Informations Clés', href: '/key-fact-statement' },
         // ponytail: Schedule of Charges hidden from nav per client request, page left intact
       ],
     },
@@ -82,11 +82,12 @@ const footerData = {
         { label: 'Pay10', href: '/faqs?category=Pay10+UAE' },
         { label: 'Pay10 Biz', href: '/faqs?category=Pay10+Biz+UAE' },
         { label: 'Paiement de factures', href: '/faqs?category=Bill+Payment' },
-        { label: 'Card Issuing', href: '/faqs?category=Card+Issuing' },
-        { label: 'Send Abroad', href: '/faqs?category=Send+Abroad' },
-        { label: 'WPS Employee', href: '/faqs?category=WPS+Employee' },
-        { label: 'Fraud', href: '/faqs?category=Fraud' },
-        { label: 'Al Tareq FAQ', href: '/faq-altareq' },
+        // ponytail: Card Issuing, Send Abroad, WPS Employee, Fraud, Al Tareq FAQ hidden from nav per client request, pages left intact
+        // { label: 'Card Issuing', href: '/faqs?category=Card+Issuing' },
+        // { label: 'Send Abroad', href: '/faqs?category=Send+Abroad' },
+        // { label: 'WPS Employee', href: '/faqs?category=WPS+Employee' },
+        // { label: 'Fraud', href: '/faqs?category=Fraud' },
+        // { label: 'Al Tareq FAQ', href: '/faq-altareq' },
       ],
     },
     {

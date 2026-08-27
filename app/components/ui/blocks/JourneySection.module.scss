@@ -288,37 +288,18 @@
 
           // Style for bullet lists
           ul {
-            list-style-type: disc;
-            list-style-position: outside;
-            margin: 0.75rem 0 0 1.1rem;
+            // list-style-type: disc;
+            margin: 0.75rem 0 0 0rem;
             padding: 0;
 
             li {
               margin-bottom: 0.5rem;
+              // padding-left: 0.5rem;
               line-height: 1.6;
 
               &:last-child {
                 margin-bottom: 0;
               }
-            }
-          }
-
-          // CMS content comes as separate <p> tags rather than a <ul>/<li> list,
-          // so each paragraph gets its own bullet the same way a list item would.
-          p {
-            position: relative;
-            margin: 0 0 0.5rem;
-            padding-left: 1.1rem;
-            line-height: 1.6;
-
-            &:last-child {
-              margin-bottom: 0;
-            }
-
-            &::before {
-              content: '•';
-              position: absolute;
-              left: 0;
             }
           }
         }
@@ -560,17 +541,9 @@
           line-height: 1.65;
 
           p {
-            position: relative;
             font-size: inherit;
             line-height: inherit;
             margin: 0 0 0.75rem;
-            padding-left: 1.1rem;
-
-            &::before {
-              content: '•';
-              position: absolute;
-              left: 0;
-            }
           }
 
           p:last-child {

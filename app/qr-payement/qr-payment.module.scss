@@ -12,6 +12,13 @@
 .icon_wrap_large {
   width: 56px !important;
   height: 56px !important;
+
+  // Uploaded icons are solid-white-background JPGs with sharp corners, sitting
+  // inside this box's rounded (8px) corners - rounding the icon itself too so
+  // there's no sharp-corner-on-round-box mismatch to read as a stray edge.
+  img {
+    border-radius: 6px;
+  }
 }
 
 // This page has one CTA heading + two buttons, not the two-column

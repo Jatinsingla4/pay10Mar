@@ -74,7 +74,8 @@ const QrPaymentClient = ({ pageData = null }) => {
     ? stepsSection.cards.map((c, i) => ({
         num: `${i + 1}`,
         title: c.title,
-        desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+        // CMS entry has the step text in `subtitle` rather than `content`/`description`.
+        desc: ((!isEmptyHtml(c.content) ? c.content : c.subtitle) || "").replace(/<[^>]*>?/gm, '').trim(),
         icon: c.icon,
       }))
     : DEFAULT_STEPS;

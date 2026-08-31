@@ -19,6 +19,14 @@ const renderIcon = (cmsIcon, className, width) => {
 };
 
 const QrPaymentClient = ({ pageData = null }) => {
+  // No CMS banner image on this page yet - inline style (highest specificity,
+  // overrides the shared stylesheet's background:var(--bg-desktop,none) rule
+  // regardless of source order) falls back to the brand gradient instead of
+  // the mixin's plain dark grey. Uploading a banner_image in the CMS
+  // overrides this automatically.
+  const heroBg = bannerBgStyle(pageData);
+  const heroStyle = Object.keys(heroBg).length ? heroBg : { background: 'var(--primary-gradient)' };
+
   const featureSection = pageData?.sections?.[0];
   const featureSubheading = isEmptyHtml(featureSection?.content)
     ? ""
@@ -44,7 +52,7 @@ const QrPaymentClient = ({ pageData = null }) => {
     <main className={styles.pos_page}>
       {/* Hero */}
       <section className={styles.altareq_section}>
-        <div className={styles.altareq_hero} style={bannerBgStyle(pageData)}>
+        <div className={styles.altareq_hero} style={heroStyle}>
           <div className={styles.altareq_hero_content}>
             {!isEmptyHtml(pageData?.page_title) && (
               <h1 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
@@ -70,7 +78,7 @@ const QrPaymentClient = ({ pageData = null }) => {
         }
         subheading={featureSubheading}
         points={featurePoints}
-        imageSrc={featureSection?.images?.[0]}
+        imageSrc={featureSection?.images?.[0] || "/images/home/consumer-qr.jpg"}
         imageAlt="Paiement par QR Code"
         isReversed={false}
         isGreyBg={true}
@@ -151,26 +159,22 @@ const QrPaymentClient = ({ pageData = null }) => {
 
       {/* Découvrez nos solutions */}
       <section className={styles.final_combo}>
-        <div className={styles.combo_card}>
+        <div className={styles.combo_card} style={{ gridTemplateColumns: '1fr' }}>
           <span className={styles.combo_ring} aria-hidden="true" />
           <span className={styles.combo_ring_small} aria-hidden="true" />
 
           <div className={styles.combo_cta}>
             <h2 className={styles.combo_heading}>Découvrez nos solutions</h2>
-            <Link href="/pay10-uae-app" className={styles.combo_btn}>
-              <Icon icon="mdi:cellphone" width={18} />
-              <span>Pay10</span>
-            </Link>
-          </div>
-
-          <div className={styles.combo_divider} aria-hidden="true" />
-
-          <div className={styles.combo_download}>
-            <h2 className={styles.combo_heading}>&nbsp;</h2>
-            <Link href="/pay10-biz-uae-app" className={styles.combo_btn}>
-              <Icon icon="mdi:store" width={18} />
-              <span>Pay10 Biz</span>
-            </Link>
+            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <Link href="/pay10-uae-app" className={styles.combo_btn}>
+                <Icon icon="mdi:cellphone" width={18} />
+                <span>Pay10</span>
+              </Link>
+              <Link href="/pay10-biz-uae-app" className={styles.combo_btn}>
+                <Icon icon="mdi:store" width={18} />
+                <span>Pay10 Biz</span>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -5,3 +5,17 @@
 .guarantee_grid_fluid {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
 }
+
+// This page has one CTA heading + two buttons, not the two-column
+// heading+button/divider/heading+button layout combo_card was built for
+// (POS Devices' "Contact Entreprises" vs "Application Commerçant").
+.combo_card_unified {
+  grid-template-columns: 1fr !important;
+}
+
+.combo_buttons_row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}

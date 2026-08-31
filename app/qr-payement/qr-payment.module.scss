@@ -6,6 +6,14 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
 }
 
+// Shared icon_wrap is 36x36 with an 18px icon - sized for POS Devices'
+// dense 8-column grid. This page's cards have much more room, so the
+// icon rendered tiny inside a lot of empty padding.
+.icon_wrap_large {
+  width: 56px !important;
+  height: 56px !important;
+}
+
 // This page has one CTA heading + two buttons, not the two-column
 // heading+button/divider/heading+button layout combo_card was built for
 // (POS Devices' "Contact Entreprises" vs "Application Commerçant").

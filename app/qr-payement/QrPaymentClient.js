@@ -97,8 +97,8 @@ const QrPaymentClient = ({ pageData = null }) => {
           <div className={`${styles.guarantee_grid} ${localStyles.guarantee_grid_fluid}`}>
             {advantages.map((item, idx) => (
               <div key={idx} className={styles.guarantee_card}>
-                <div className={styles.icon_wrap}>
-                  {renderIcon(item.icon, styles.card_icon, 18)}
+                <div className={`${styles.icon_wrap} ${localStyles.icon_wrap_large}`}>
+                  {renderIcon(item.icon, styles.card_icon, 32)}
                 </div>
                 <h4>{item.title}</h4>
               </div>
@@ -125,8 +125,8 @@ const QrPaymentClient = ({ pageData = null }) => {
           <div className={`${styles.guarantee_grid} ${localStyles.guarantee_grid_fluid}`}>
             {interopPoints.map((item, idx) => (
               <div key={idx} className={styles.guarantee_card}>
-                <div className={styles.icon_wrap}>
-                  {renderIcon(item.icon, styles.card_icon, 18)}
+                <div className={`${styles.icon_wrap} ${localStyles.icon_wrap_large}`}>
+                  {renderIcon(item.icon, styles.card_icon, 32)}
                 </div>
                 <h4>{item.title}</h4>
               </div>

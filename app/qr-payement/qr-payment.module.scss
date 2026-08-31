@@ -1,0 +1,7 @@
+// pos.module.scss's .guarantee_grid is fixed at repeat(8, 1fr) - sized for the
+// POS Devices page's 8 cards. This page has fewer cards, so they'd only fill
+// part of that row and leave the rest empty. Overriding just the column count
+// here rather than touching the shared stylesheet (which POS Devices still uses).
+.guarantee_grid_fluid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+}

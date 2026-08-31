@@ -8,6 +8,7 @@ import { Icon } from "@iconify/react";
 // intro, icon-card grid, numbered steps, combo CTA) fit this page too, and
 // CSS Modules namespace the class names so there's no collision between pages.
 import styles from "../pos-devices/pos.module.scss";
+import localStyles from "./qr-payment.module.scss";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
@@ -85,7 +86,7 @@ const QrPaymentClient = ({ pageData = null }) => {
             )}
           </div>
 
-          <div className={styles.guarantee_grid}>
+          <div className={`${styles.guarantee_grid} ${localStyles.guarantee_grid_fluid}`}>
             {advantages.map((item, idx) => (
               <div key={idx} className={styles.guarantee_card}>
                 <div className={styles.icon_wrap}>
@@ -113,7 +114,7 @@ const QrPaymentClient = ({ pageData = null }) => {
             )}
           </div>
 
-          <div className={styles.guarantee_grid}>
+          <div className={`${styles.guarantee_grid} ${localStyles.guarantee_grid_fluid}`}>
             {interopPoints.map((item, idx) => (
               <div key={idx} className={styles.guarantee_card}>
                 <div className={styles.icon_wrap}>

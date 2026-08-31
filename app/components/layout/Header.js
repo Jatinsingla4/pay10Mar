@@ -28,6 +28,11 @@ const navigationData = {
             icon: '/images/header/pay-10-app.svg',
           },
           {
+            label: 'Paiement QR',
+            href: '/qr-payement',
+            icon: '/images/header/payments.svg',
+          },
+          {
             label: 'Paiement de factures',
             href: '/bill-payment',
             icon: '/images/header/payments.svg',

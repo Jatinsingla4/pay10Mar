@@ -45,6 +45,7 @@ const footerData = {
       label: 'Solutions Particuliers',
       items: [
         { label: 'Pay10 Maroc', href: '/pay10-uae-app' },
+        { label: 'Paiement QR', href: '/qr-payement' },
         { label: 'Paiement de factures', href: '/bill-payment' },
         { label: "Transfert d'argent", href: '/send-abroad' },
         { label: 'Alimentation du Wallet', href: '/pay10-card' },

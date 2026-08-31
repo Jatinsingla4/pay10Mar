@@ -30,7 +30,15 @@
     position: relative;
     z-index: 1;
     padding: 0 56px;
-    
+
+    // No CMS image supplied - text takes the full row instead of leaving
+    // an empty, broken-image-shaped gap where the image column would be.
+    &.container_no_image {
+      grid-template-columns: 1fr;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
     @include tab {
       grid-template-columns: 1fr;
       gap: 50px;

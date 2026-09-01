@@ -54,6 +54,71 @@
   grid-template-columns: 1fr !important;
 }
 
+// Comment ça marche step cards: shared .step_icon has no background box at
+// all (just a raw 28px image), and .step_num is small plain text - both read
+// as an afterthought next to the card's large padding/text. Giving the icon
+// the same peach-box treatment as the Avantages cards, and the number a
+// proper circular gradient badge, plus the same polish (rounded corners,
+// accent bar, hover lift) as the benefit cards above for consistency.
+.step_card_polished {
+  border: none !important;
+  border-radius: 12px !important;
+  position: relative;
+  overflow: hidden;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.step_top_row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.step_icon_box {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 129, 5, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    border-radius: 6px;
+  }
+}
+
+.step_num_badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'bold', sans-serif;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
 .combo_btn_icon {
   object-fit: contain;
 }

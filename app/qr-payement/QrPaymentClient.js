@@ -145,10 +145,12 @@ const QrPaymentClient = ({ pageData = null }) => {
 
         <div className={styles.getting_started_grid}>
           {steps.map((item) => (
-            <div key={item.num} className={styles.step_card}>
-              <span className={styles.step_num}>{item.num}</span>
-              <div className={styles.step_icon}>
-                {renderIcon(item.icon, undefined, 28)}
+            <div key={item.num} className={`${styles.step_card} ${localStyles.step_card_polished}`}>
+              <div className={localStyles.step_top_row}>
+                <div className={localStyles.step_icon_box}>
+                  {renderIcon(item.icon, undefined, 32)}
+                </div>
+                <span className={localStyles.step_num_badge}>{item.num}</span>
               </div>
               <h3>{item.title}</h3>
               <p className={styles.step_desc}>{item.desc}</p>

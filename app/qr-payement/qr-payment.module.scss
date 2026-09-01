@@ -21,6 +21,32 @@
   }
 }
 
+// Polish for the Avantages/Interopérabilité benefit cards: a subtle hover
+// lift and a slim brand-gradient accent bar, since they were otherwise
+// plain flat boxes with a thin border.
+.guarantee_card_polished {
+  position: relative;
+  border-radius: 12px !important;
+  padding: 24px 20px !important;
+  overflow: hidden;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+}
+
 // This page has one CTA heading + two buttons, not the two-column
 // heading+button/divider/heading+button layout combo_card was built for
 // (POS Devices' "Contact Entreprises" vs "Application Commerçant").

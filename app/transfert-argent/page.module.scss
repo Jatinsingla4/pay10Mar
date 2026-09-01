@@ -242,15 +242,6 @@
         color: var(--black);
       }
 
-      .qr_image {
-        width: 140px;
-        height: 140px;
-        object-fit: contain;
-        border-radius: 12px;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-      }
-
       .single_download_btn {
         display: inline-flex;
         align-items: center;

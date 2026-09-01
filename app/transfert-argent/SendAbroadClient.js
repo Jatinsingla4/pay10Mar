@@ -6,7 +6,6 @@ import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
-import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
 const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en";
@@ -20,9 +19,6 @@ const renderIcon = (cmsIcon, className, width) => {
 };
 
 const SendAbroadClient = ({ pageData = null }) => {
-  const { isMobile } = useResponsive();
-  const consumerQr = pageData?.sections?.[2]?.images?.[0];
-
   const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
 
   useEffect(() => {
@@ -124,14 +120,10 @@ const SendAbroadClient = ({ pageData = null }) => {
 
           <div className={Style.apps_container} data-animation="opacity-up" data-anim-delay="100">
             <div className={Style.app_type}>
-              {isMobile ? (
-                <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.single_download_btn}>
-                  <Icon icon="mdi:download" width={20} />
-                  <span>Télécharger</span>
-                </a>
-              ) : (
-                <img src={consumerQr} alt="Scannez pour télécharger l'application Pay10" className={Style.qr_image} />
-              )}
+              <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.single_download_btn}>
+                <Icon icon="mdi:download" width={20} />
+                <span>Télécharger</span>
+              </a>
             </div>
           </div>
         </section>

@@ -1,7 +1,7 @@
 @import "../../styles/globals/mixin";
 
 .send_hero {
-  @include homepageHeroBanner($mobileFallback: '/images/prod_imports/send-abroad-hero-mobile.png');
+  @include homepageHeroBanner;
   display: flex;
   align-items: center;
   padding: 60px 56px;

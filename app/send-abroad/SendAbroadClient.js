@@ -21,7 +21,7 @@ const renderIcon = (cmsIcon, className, width) => {
 
 const SendAbroadClient = ({ pageData = null }) => {
   const { isMobile } = useResponsive();
-  const consumerQr = pageData?.sections?.[2]?.images?.[0] || "/images/send-abroad/consumer-app-qr.png";
+  const consumerQr = pageData?.sections?.[2]?.images?.[0];
 
   const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
 
@@ -51,7 +51,7 @@ const SendAbroadClient = ({ pageData = null }) => {
     <main>
       <section
         className={Style.send_hero}
-        style={bannerBgStyle(pageData, { mobileFallback: '/images/prod_imports/send-abroad-hero-mobile.png' })}
+        style={bannerBgStyle(pageData)}
       >
         <div className={Style.send_hero_text}>
           {!isEmptyHtml(pageData?.page_title) && (
@@ -71,8 +71,8 @@ const SendAbroadClient = ({ pageData = null }) => {
             heading={featureSection?.title}
             subheading={featureSection?.subtitle}
             points={featurePoints}
-            imageSrc={featureSection?.images?.[0] || "/images/prod_imports/send-instant-bubble.png"}
-            imageAlt={featureSection?.title || "Transfert d'argent instantané"}
+            imageSrc={featureSection?.images?.[0]}
+            imageAlt={featureSection?.title}
             isReversed={false}
             isGreyBg={false}
             isTransparent={true}
@@ -109,8 +109,8 @@ const SendAbroadClient = ({ pageData = null }) => {
           <ConsumerFeatureSection
             heading={inviteSection?.title}
             subheading={inviteSection?.subtitle}
-            imageSrc={inviteSection?.images?.[0] || "/images/prod_imports/send-where-bubble.png"}
-            imageAlt={inviteSection?.title || "Inviter un proche"}
+            imageSrc={inviteSection?.images?.[0]}
+            imageAlt={inviteSection?.title}
             isReversed={true}
             isGreyBg={false}
             isTransparent={true}

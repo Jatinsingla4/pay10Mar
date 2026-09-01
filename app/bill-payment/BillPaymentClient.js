@@ -1,7 +1,6 @@
 "use client";
 
 import React from 'react';
-import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
@@ -18,13 +17,6 @@ const extractPoints = (section) => {
   return liMatches.map(m => m[1].replace(/<[^>]*>?/gm, '').trim()).filter(Boolean);
 };
 
-const renderIcon = (cmsIcon, className, width) => {
-  if (typeof cmsIcon !== 'string' || !cmsIcon.trim()) return null;
-  return /^(https?:)?\//.test(cmsIcon)
-    ? <img src={cmsIcon} alt="" width={width} height={width} className={className} />
-    : <Icon icon={cmsIcon} width={width} className={className} />;
-};
-
 const BillPaymentClient = ({ pageData = null }) => {
   // --- 0. Paiement de factures (feature intro) ---
   const featureSection = pageData?.sections?.[0];
@@ -38,9 +30,7 @@ const BillPaymentClient = ({ pageData = null }) => {
 
   // --- 2. Services (Électricité / Eau / Télécommunications / Transport) ---
   const servicesSection = pageData?.sections?.[2];
-  const services = (servicesSection?.cards || []).length
-    ? servicesSection.cards.map(c => ({ title: c.title, icon: c.icon }))
-    : extractPoints(servicesSection).map(title => ({ title, icon: null }));
+  const servicePoints = extractPoints(servicesSection);
 
   return (
     <main>
@@ -79,23 +69,15 @@ const BillPaymentClient = ({ pageData = null }) => {
           isTransparent={true}
         />
 
-        <section className={Style.services_section}>
-          <div className={Style.services_header}>
-            {!isEmptyHtml(servicesSection?.title) && (
-              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(servicesSection.title) }} />
-            )}
-          </div>
-          <div className={Style.services_grid}>
-            {services.map((item, idx) => (
-              <div key={idx} className={Style.service_card}>
-                <div className={Style.service_icon_box}>
-                  {renderIcon(item.icon, undefined, 32)}
-                </div>
-                <h4>{item.title}</h4>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ConsumerFeatureSection
+          heading={servicesSection?.title}
+          points={servicePoints}
+          imageSrc={servicesSection?.images?.[0]}
+          imageAlt={servicesSection?.title}
+          isReversed={false}
+          isGreyBg={true}
+          isTransparent={true}
+        />
       </div>
     </main>
   );

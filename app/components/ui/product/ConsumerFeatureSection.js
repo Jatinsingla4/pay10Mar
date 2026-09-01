@@ -15,7 +15,7 @@ const ConsumerFeatureSection = ({
 }) => {
   return (
     <section className={`${Style.feature_section} ${isTransparent ? Style.bg_transparent : (isGreyBg ? Style.bg_grey : Style.bg_white)}`}>
-      <div className={`${Style.container} ${!imageSrc ? Style.container_no_image : ''}`}>
+      <div className={Style.container}>
         <div className={`${Style.text_col} ${isReversed ? Style.order_2 : Style.order_1}`}>
           <h2 data-animation="opacity-up">{heading}</h2>
           {subheading && (
@@ -51,15 +51,13 @@ const ConsumerFeatureSection = ({
           ) : null}
         </div>
 
-        {imageSrc && (
-          <div className={`${Style.image_col} ${isReversed ? Style.order_1 : Style.order_2}`} data-animation="opacity-up">
-            <div className={Style.image_container_with_ring}>
-              <div className={`${Style.image_wrapper} ${isGreyBg ? Style.bg_white : Style.bg_white}`}>
-                <img src={imageSrc} alt={imageAlt} className={Style.placeholder_img} />
-              </div>
+        <div className={`${Style.image_col} ${isReversed ? Style.order_1 : Style.order_2}`} data-animation="opacity-up">
+          <div className={Style.image_container_with_ring}>
+            <div className={`${Style.image_wrapper} ${isGreyBg ? Style.bg_white : Style.bg_white}`}>
+              <img src={imageSrc} alt={imageAlt} className={Style.placeholder_img} />
             </div>
           </div>
-        )}
+        </div>
       </div>
     </section>
   );

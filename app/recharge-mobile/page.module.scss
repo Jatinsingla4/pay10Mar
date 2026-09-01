@@ -1,0 +1,134 @@
+@import "../../styles/globals/mixin";
+
+.recharge_hero {
+  @include homepageHeroBanner;
+  display: flex;
+  align-items: center;
+  padding: 60px 56px;
+
+  @include tab {
+    padding: 40px 16px;
+  }
+
+  @include mobile {
+    align-items: flex-end;
+  }
+}
+
+.recharge_hero_text {
+  position: relative;
+  z-index: 2;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  h2 {
+    margin: 0;
+    font-size: 48px;
+    font-family: 'bold', sans-serif;
+    color: var(--white);
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  p {
+    margin: 0;
+    font-size: 18px;
+    font-family: 'medium', sans-serif;
+    color: var(--white);
+    line-height: 1.5;
+  }
+
+  .slogan {
+    font-size: 32px;
+    font-family: 'bold', sans-serif;
+    color: var(--white);
+    margin-top: 10px;
+    line-height: 1.2;
+  }
+
+  @include tab {
+    max-width: 55%;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @include mobile {
+    max-width: 100%;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .slogan {
+      display: none;
+    }
+  }
+}
+
+.bg_circle_wrapper {
+  width: 100%;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/body_bg_circle.png");
+    background-position: right 15%;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+}
+
+@media only screen and (max-width: 991px) {
+  .bg_circle_wrapper::before {
+    background-size: 80% auto;
+    background-position: right 50%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .bg_circle_wrapper::before {
+    background-size: 90% auto;
+    background-position: right 50%;
+  }
+}
+
+@media only screen and (max-width: 563px) {
+  .bg_circle_wrapper::before {
+    background-size: 120% auto;
+    background-position: right 50%;
+  }
+}
+
+
+@media only screen and (max-width: 991px) {
+  .recharge_hero_text h2 {
+    font-size: 32px !important;
+  }
+  .recharge_hero_text .slogan {
+    font-size: 26px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .recharge_hero_text h2 {
+    font-size: 26px !important;
+  }
+  .recharge_hero_text .slogan {
+    font-size: 26px !important;
+  }
+}

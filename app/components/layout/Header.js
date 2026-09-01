@@ -38,6 +38,11 @@ const navigationData = {
             icon: '/images/header/payments.svg',
           },
           {
+            label: 'Recharge mobile',
+            href: '/recharge-mobile',
+            icon: '/images/header/payments.svg',
+          },
+          {
             label: "Transfert d'argent",
             href: '/send-abroad',
             icon: '/images/header/collect-world.svg',

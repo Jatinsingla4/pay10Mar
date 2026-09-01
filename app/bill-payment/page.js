@@ -6,15 +6,15 @@ export async function generateMetadata() {
   const data = await fetchPageData('bill-payment');
   if (data?.seo) {
     return {
-      title: data.seo.title || "Bill Payment | Pay10 UAE",
-      description: data.seo.description || "Never miss a bill. Never switch apps again. All your UAE bills paid from one place.",
-      alternates: { canonical: "https://pay10.ae/bill-payment" },
+      title: data.seo.title || "Paiement de factures | Pay10",
+      description: data.seo.description || "Toutes vos factures, simplement depuis Pay10. Retrouvez vos services essentiels au même endroit et gardez le contrôle de vos paiements.",
+      alternates: { canonical: "https://pay10.ma/bill-payment" },
     };
   }
   return {
-    title: "Bill Payment | Pay10 UAE",
-    description: "Never miss a bill. Never switch apps again. All your UAE bills paid from one place.",
-    alternates: { canonical: "https://pay10.ae/bill-payment" },
+    title: "Paiement de factures | Pay10",
+    description: "Toutes vos factures, simplement depuis Pay10. Retrouvez vos services essentiels au même endroit et gardez le contrôle de vos paiements.",
+    alternates: { canonical: "https://pay10.ma/bill-payment" },
   };
 }
 

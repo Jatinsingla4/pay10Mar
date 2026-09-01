@@ -98,6 +98,18 @@
   }
 }
 
+// Comment ça marche's left column (getting_started_left) was just a
+// heading floating over empty space - adding the section's own image below
+// it fills that gap and reinforces the step-by-step scanning concept.
+.steps_image {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin-top: 8px;
+}
+
 .combo_btn_icon {
   object-fit: contain;
 }

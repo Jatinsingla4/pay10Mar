@@ -157,6 +157,9 @@ const QrPaymentClient = ({ pageData = null }) => {
           {!isEmptyHtml(stepsSection?.title) && (
             <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(stepsSection.title) }} />
           )}
+          {stepsSection?.images?.[0] && (
+            <img src={stepsSection.images[0]} alt="Comment ça marche" className={localStyles.steps_image} />
+          )}
         </div>
 
         <div className={styles.getting_started_grid}>

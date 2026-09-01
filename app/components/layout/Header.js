@@ -70,26 +70,27 @@ const navigationData = {
             icon: '/images/header/pay-10-biz.svg',
           },
           // ponytail: Merchant Portal hidden from nav per client request, page left intact
-          {
-            label: 'Payment Gateways',
-            href: '/payment-gateway',
-            icon: '/images/header/payment-gateway.svg',
-          },
+          // ponytail: Payment Gateways/WPS & Payroll/Channel Partners hidden - page content is still English/UAE, not yet translated
+          // {
+          //   label: 'Payment Gateways',
+          //   href: '/payment-gateway',
+          //   icon: '/images/header/payment-gateway.svg',
+          // },
           {
             label: 'Terminal POS',
             href: '/pos-devices',
             icon: '/images/header/payments.svg',
           },
-          {
-            label: 'WPS & Payroll',
-            href: '/wps-payroll',
-            icon: '/images/header/sf.svg',
-          },
-          {
-            label: 'Channel Partners',
-            href: '/channel-partners',
-            icon: '/images/header/collect-world.svg',
-          },
+          // {
+          //   label: 'WPS & Payroll',
+          //   href: '/wps-payroll',
+          //   icon: '/images/header/sf.svg',
+          // },
+          // {
+          //   label: 'Channel Partners',
+          //   href: '/channel-partners',
+          //   icon: '/images/header/collect-world.svg',
+          // },
         ],
       },
       // {
@@ -141,28 +142,29 @@ const navigationData = {
       hasDropdown: true,
       type: 'productsMega',
     },
-    {
-      label: 'Média',
-      href: '/media',
-      hasDropdown: true,
-      items: [
-        {
-          label: 'Blog',
-          href: '/blog',
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-        },
-        {
-          label: 'Actualités',
-          href: '/news-room',
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v8a2 2 0 01-2 2z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 20v-8h-6M7 8h1M7 12h6M7 16h6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
-        },
-        {
-          label: 'Events & Conferences',
-          href: '/events',
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="2" x2="16" y2="6" stroke="black" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="black" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="black" stroke-width="1.5" stroke-linecap="round"/></svg>`,
-        },
-      ],
-    },
+    // ponytail: Média dropdown hidden - Blog/Actualités/Events content is still English/UAE, not yet translated
+    // {
+    //   label: 'Média',
+    //   href: '/media',
+    //   hasDropdown: true,
+    //   items: [
+    //     {
+    //       label: 'Blog',
+    //       href: '/blog',
+    //       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    //     },
+    //     {
+    //       label: 'Actualités',
+    //       href: '/news-room',
+    //       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l6 6v8a2 2 0 01-2 2z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 20v-8h-6M7 8h1M7 12h6M7 16h6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`,
+    //     },
+    //     {
+    //       label: 'Events & Conferences',
+    //       href: '/events',
+    //       icon: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="2" x2="16" y2="6" stroke="black" stroke-width="1.5" stroke-linecap="round"/><line x1="8" y1="2" x2="8" y2="6" stroke="black" stroke-width="1.5" stroke-linecap="round"/><line x1="3" y1="10" x2="21" y2="10" stroke="black" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    //     },
+    //   ],
+    // },
   ],
   appStoreLinks: {
     appStore: '#', // Replace with actual App Store link

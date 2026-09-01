@@ -58,10 +58,11 @@ const footerData = {
       items: [
         { label: 'Pay10 Biz Maroc', href: '/pay10-biz-uae-app' },
         // ponytail: Merchant Portal hidden from nav per client request, page left intact
-        { label: 'Payment Gateways', href: '/payment-gateway' },
+        // ponytail: Payment Gateways/WPS & Payroll/Channel Partners hidden - page content is still English/UAE, not yet translated
+        // { label: 'Payment Gateways', href: '/payment-gateway' },
         { label: 'Terminal POS', href: '/pos-devices' },
-        { label: 'WPS & Payroll', href: '/wps-payroll' },
-        { label: 'Channel Partners', href: '/channel-partners' },
+        // { label: 'WPS & Payroll', href: '/wps-payroll' },
+        // { label: 'Channel Partners', href: '/channel-partners' },
       ],
     },
     {

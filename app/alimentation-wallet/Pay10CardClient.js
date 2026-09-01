@@ -1,11 +1,13 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
+
+const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
+const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en";
 
 const firstNonEmpty = (...vals) => vals.find(v => typeof v === 'string' && v.trim()) || "";
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -20,6 +22,14 @@ const extractPoints = (section) => {
 };
 
 const Pay10CardClient = ({ pageData = null }) => {
+  const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    if (isIOS) setConsumerStoreUrl(CONSUMER_APPLE_URL);
+  }, []);
+
   // --- 0. Alimentation via compte bancaire ---
   const bankSection = pageData?.sections?.[0];
   const bankSubheading = isEmptyHtml(bankSection?.content)
@@ -94,10 +104,10 @@ const Pay10CardClient = ({ pageData = null }) => {
           {!isEmptyHtml(ctaSection?.subtitle) && (
             <p className={Style.cta_tagline} dangerouslySetInnerHTML={{ __html: sanitizeHtml(ctaSection.subtitle) }} />
           )}
-          <Link href="/pay10-uae-app" className={Style.cta_btn}>
+          <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.cta_btn}>
             <img src="/images/prod_imports/Pay10-App-Icon.png" alt="" width={20} height={20} />
             <span>Découvrez les fonctionnalités Pay10</span>
-          </Link>
+          </a>
         </section>
       </div>
     </main>

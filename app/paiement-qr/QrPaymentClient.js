@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { Icon } from "@iconify/react";
 // Reuses the POS Devices page's stylesheet - same section patterns (feature
@@ -12,6 +11,11 @@ import localStyles from "./qr-payment.module.scss";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
+const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
+const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en";
+const MERCHANT_APPLE_URL = "https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134";
+const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay10.merchant.app";
+
 const renderIcon = (cmsIcon, className, width) => {
   if (typeof cmsIcon !== 'string' || !cmsIcon.trim()) return null;
   return /^(https?:)?\//.test(cmsIcon)
@@ -20,6 +24,18 @@ const renderIcon = (cmsIcon, className, width) => {
 };
 
 const QrPaymentClient = ({ pageData = null }) => {
+  const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
+  const [merchantStoreUrl, setMerchantStoreUrl] = useState(MERCHANT_PLAY_URL);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    if (isIOS) {
+      setConsumerStoreUrl(CONSUMER_APPLE_URL);
+      setMerchantStoreUrl(MERCHANT_APPLE_URL);
+    }
+  }, []);
+
   // No CMS banner image on this page yet - inline style (highest specificity,
   // overrides the shared stylesheet's background:var(--bg-desktop,none) rule
   // regardless of source order) falls back to the brand gradient instead of
@@ -165,17 +181,17 @@ const QrPaymentClient = ({ pageData = null }) => {
           <div className={styles.combo_cta}>
             <h2 className={styles.combo_heading}>Découvrez nos solutions</h2>
             <div className={localStyles.combo_buttons_row}>
-              <Link href="/pay10-uae-app" className={styles.combo_btn}>
+              <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
                 <img src="/images/prod_imports/Pay10-App-Icon.png" alt="" width={18} height={18} className={localStyles.combo_btn_icon} />
                 <span>Pay10</span>
-              </Link>
+              </a>
               {/* ponytail: no real Pay10 Biz app icon exists anywhere in this codebase -
                   generated a placeholder matching the real Pay10 icon's visual style
                   (same orange circle + "10" mark), swap for the real asset once it exists. */}
-              <Link href="/pay10-biz-uae-app" className={styles.combo_btn}>
+              <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
                 <img src="/images/qr-payment/pay10-biz-icon-placeholder.png" alt="" width={18} height={18} className={localStyles.combo_btn_icon} />
                 <span>Pay10 Biz</span>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

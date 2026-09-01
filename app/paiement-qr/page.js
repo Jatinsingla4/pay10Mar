@@ -3,14 +3,14 @@ import { fetchPageData, fetchPageMeta } from "../lib/fetchPageData";
 import QrPaymentClient from "./QrPaymentClient";
 
 export async function generateMetadata() {
-  return fetchPageMeta('qr-payement', {
+  return fetchPageMeta('paiement-qr', {
     title: "Paiement QR – Pay10",
     description: "Scannez. Payez. C'est réglé. Payez vos achats instantanément avec Pay10.",
-    alternates: { canonical: "https://pay10.ma/qr-payement" },
+    alternates: { canonical: "https://pay10.ma/paiement-qr" },
   });
 }
 
 export default async function page() {
-  const data = await fetchPageData('qr-payement');
+  const data = await fetchPageData('paiement-qr');
   return <QrPaymentClient pageData={data} />;
 }

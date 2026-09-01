@@ -45,11 +45,12 @@ const footerData = {
       label: 'Solutions Particuliers',
       items: [
         { label: 'Pay10 Maroc', href: '/pay10-uae-app' },
-        { label: 'Paiement QR', href: '/qr-payement' },
-        { label: 'Paiement de factures', href: '/bill-payment' },
-        { label: "Transfert d'argent", href: '/send-abroad' },
-        { label: 'Alimentation du Wallet', href: '/pay10-card' },
-        { label: 'Virement bancaire', href: '/open-finance-altareq' },
+        { label: 'Paiement QR', href: '/paiement-qr' },
+        { label: "Transfert d'argent", href: '/transfert-argent' },
+        { label: 'Paiement de factures', href: '/paiement-factures' },
+        { label: 'Recharge mobile', href: '/recharge-mobile' },
+        { label: 'Alimentation du Wallet', href: '/alimentation-wallet' },
+        { label: 'Virement bancaire', href: '/virement-bancaire' },
       ],
     },
     {

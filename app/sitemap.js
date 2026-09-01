@@ -12,7 +12,7 @@ export default async function sitemap() {
     '/vision-mission',
     '/pay10-uae-app',
     '/pay10-biz-uae-app',
-    '/open-finance-altareq',
+    '/virement-bancaire',
     '/payment-gateway',
     '/faqs',
     '/key-fact-statement',

@@ -29,12 +29,17 @@ const navigationData = {
           },
           {
             label: 'Paiement QR',
-            href: '/qr-payement',
+            href: '/paiement-qr',
             icon: '/images/header/payments.svg',
           },
           {
+            label: "Transfert d'argent",
+            href: '/transfert-argent',
+            icon: '/images/header/collect-world.svg',
+          },
+          {
             label: 'Paiement de factures',
-            href: '/bill-payment',
+            href: '/paiement-factures',
             icon: '/images/header/payments.svg',
           },
           {
@@ -43,18 +48,13 @@ const navigationData = {
             icon: '/images/header/payments.svg',
           },
           {
-            label: "Transfert d'argent",
-            href: '/send-abroad',
-            icon: '/images/header/collect-world.svg',
-          },
-          {
             label: 'Alimentation du Wallet',
-            href: '/pay10-card',
+            href: '/alimentation-wallet',
             icon: '/images/header/prepaid.svg',
           },
           {
             label: 'Virement bancaire',
-            href: '/open-finance-altareq',
+            href: '/virement-bancaire',
             icon: '/images/header/sf.svg',
           },
         ],

@@ -6,13 +6,15 @@ export async function generateMetadata() {
   const data = await fetchPageData('pay10-card');
   if (data?.seo) {
     return {
-      title: data.seo.title || "Pay10 Card | Pay10 UAE",
-      description: data.seo.description || "The first local Debit Card accredited by the Central Bank of the UAE - instant, secure, and seamless.",
+      title: data.seo.title || "Alimentation du Wallet | Pay10",
+      description: data.seo.description || "Alimentez votre Wallet numérique. Ajoutez de l'argent à votre portefeuille numérique Pay10 directement depuis votre compte bancaire.",
+      alternates: { canonical: "https://pay10.ma/pay10-card" },
     };
   }
   return {
-    title: "Pay10 Card | Pay10 UAE",
-    description: "The first local Debit Card accredited by the Central Bank of the UAE - instant, secure, and seamless.",
+    title: "Alimentation du Wallet | Pay10",
+    description: "Alimentez votre Wallet numérique. Ajoutez de l'argent à votre portefeuille numérique Pay10 directement depuis votre compte bancaire.",
+    alternates: { canonical: "https://pay10.ma/pay10-card" },
   };
 }
 

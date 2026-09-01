@@ -1,106 +1,104 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import Pay10CardFeatures from "./components/Pay10CardFeatures";
-import Pay10AppFeature from "./components/Pay10AppFeature";
-import Pay10WPSFeature from "./components/Pay10WPSFeature";
 import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
+const firstNonEmpty = (...vals) => vals.find(v => typeof v === 'string' && v.trim()) || "";
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
+// CMS editors paste bullet lists as a single <ul><li> rich-text block rather
+// than filling individual card fields - read points from either shape.
+const extractPoints = (section) => {
+  const cardPoints = (section?.cards || []).map(c => c.title).filter(Boolean);
+  if (cardPoints.length) return cardPoints;
+  const liMatches = Array.from((section?.content || '').matchAll(/<li[^>]*>(.*?)<\/li>/gs));
+  return liMatches.map(m => m[1].replace(/<[^>]*>?/gm, '').trim()).filter(Boolean);
+};
+
 const Pay10CardClient = ({ pageData = null }) => {
-  const cardFeature = {
-    heading: pageData?.sections?.[0]?.title,
-    subheading: pageData?.sections?.[0]?.subtitle,
-    points: pageData?.sections?.[0]?.cards?.map(c => c.title) || [],
-    imageSrc: pageData?.sections?.[0]?.images?.[0] || "/images/prod_imports/pay10-card-aluminium.png",
-    imageAlt: pageData?.sections?.[0]?.title,
-    isReversed: false,
-  };
+  // --- 0. Alimentation via compte bancaire ---
+  const bankSection = pageData?.sections?.[0];
+  const bankSubheading = isEmptyHtml(bankSection?.content)
+    ? ""
+    : bankSection.content.replace(/<[^>]*>?/gm, '').trim();
+
+  // --- 1. Avantages ---
+  const advantagesSection = pageData?.sections?.[1];
+  const advantagePoints = extractPoints(advantagesSection);
+
+  // --- 2. Utilisez votre solde Pay10 (use cases) ---
+  const useCasesSection = pageData?.sections?.[2];
+  const useCasePoints = extractPoints(useCasesSection);
+
+  // --- 3. CTA final ---
+  const ctaSection = pageData?.sections?.[3];
 
   return (
     <main>
-      <section 
+      <section
         className={Style.altareq_hero}
         style={bannerBgStyle(pageData)}
       >
         <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />
-          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
+          {!isEmptyHtml(pageData?.page_title) && (
+            <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+          )}
+          {!isEmptyHtml(pageData?.page_subtitle || pageData?.page_description) && (
+            <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
+          )}
+          {!isEmptyHtml(pageData?.banner_text) && (
+            <p className={Style.slogan} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.banner_text) }} />
+          )}
         </div>
       </section>
 
       <div className={Style.bg_circle_wrapper}>
-
-        <div className={Style.grey_subtitle_wrap}>
         <ConsumerFeatureSection
-          heading={cardFeature.heading}
-          subheading={cardFeature.subheading}
-          points={cardFeature.points}
-          extraContent={
-            <>
-              {!isEmptyHtml(pageData?.sections?.[0]?.content) && (
-                <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[0].content) }} />
-              )}
-            </>
-          }
-          imageSrc={cardFeature.imageSrc}
-          imageAlt={cardFeature.imageAlt}
-          isReversed={cardFeature.isReversed}
-          isGreyBg={false}
+          heading={firstNonEmpty(bankSection?.subtitle, bankSection?.title)}
+          subheading={bankSubheading}
+          imageSrc={bankSection?.images?.[0]}
+          imageAlt={firstNonEmpty(bankSection?.subtitle, bankSection?.title)}
+          isReversed={false}
+          isGreyBg={true}
           isTransparent={true}
         />
-        </div>
 
-        <Pay10CardFeatures data={pageData?.sections?.[1]} />
+        <ConsumerFeatureSection
+          heading={advantagesSection?.title}
+          points={advantagePoints}
+          imageSrc={advantagesSection?.images?.[0]}
+          imageAlt={advantagesSection?.title}
+          isReversed={true}
+          isGreyBg={true}
+          isTransparent={true}
+        />
 
-        {/* ── Dual Debit Card Section ── */}
-        <section className={Style.dual_card_section}>
-          <div className={Style.dual_card_header} data-animation="opacity-up">
-            <h2>{pageData?.sections?.[2]?.title}</h2>
-            <p>{pageData?.sections?.[2]?.subtitle}</p>
-          </div>
+        <ConsumerFeatureSection
+          heading={firstNonEmpty(useCasesSection?.subtitle, useCasesSection?.title)}
+          points={useCasePoints}
+          imageSrc={useCasesSection?.images?.[0]}
+          imageAlt={firstNonEmpty(useCasesSection?.subtitle, useCasesSection?.title)}
+          isReversed={false}
+          isGreyBg={true}
+          isTransparent={true}
+        />
 
-          <div className={Style.dual_card_grid}>
-            {/* Consumer Debit Card — grey card image */}
-            <div className={Style.card_wrapper} data-animation="opacity-up" data-anim-delay="100">
-              <div className={Style.debit_card}>
-                <img
-                  src={pageData?.sections?.[2]?.cards?.[0]?.icon}
-                  alt={pageData?.sections?.[2]?.cards?.[0]?.title}
-                  className={Style.debit_card_img}
-                />
-              </div>
-              <div className={Style.card_info}>
-                <h3>{pageData?.sections?.[2]?.cards?.[0]?.title}</h3>
-                <p>{firstNonEmptyHtml(pageData?.sections?.[2]?.cards?.[0]?.subtitle, pageData?.sections?.[2]?.cards?.[0]?.description)}</p>
-              </div>
-            </div>
-
-            {/* WPS Debit Card — orange card image */}
-            <div className={Style.card_wrapper} data-animation="opacity-up" data-anim-delay="200">
-              <div className={Style.debit_card}>
-                <img
-                  src={pageData?.sections?.[2]?.cards?.[1]?.icon}
-                  alt={pageData?.sections?.[2]?.cards?.[1]?.title}
-                  className={Style.debit_card_img}
-                />
-              </div>
-              <div className={Style.card_info}>
-                <h3>{pageData?.sections?.[2]?.cards?.[1]?.title}</h3>
-                <p>{firstNonEmptyHtml(pageData?.sections?.[2]?.cards?.[1]?.subtitle, pageData?.sections?.[2]?.cards?.[1]?.description)}</p>
-              </div>
-            </div>
-          </div>
+        <section className={Style.final_cta}>
+          {!isEmptyHtml(ctaSection?.title) && (
+            <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(ctaSection.title) }} />
+          )}
+          {!isEmptyHtml(ctaSection?.subtitle) && (
+            <p className={Style.cta_tagline} dangerouslySetInnerHTML={{ __html: sanitizeHtml(ctaSection.subtitle) }} />
+          )}
+          <Link href="/pay10-uae-app" className={Style.cta_btn}>
+            <img src="/images/prod_imports/Pay10-App-Icon.png" alt="" width={20} height={20} />
+            <span>Découvrez les fonctionnalités Pay10</span>
+          </Link>
         </section>
-
-        <Pay10AppFeature data={pageData?.sections?.[3]} />
-
-        {pageData?.sections?.[4] && <Pay10WPSFeature data={pageData.sections[4]} />}
-
       </div>
     </main>
   );

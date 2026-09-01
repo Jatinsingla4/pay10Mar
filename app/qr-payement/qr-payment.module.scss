@@ -54,6 +54,10 @@
   grid-template-columns: 1fr !important;
 }
 
+.combo_btn_icon {
+  object-fit: contain;
+}
+
 .combo_buttons_row {
   display: flex;
   gap: 16px;

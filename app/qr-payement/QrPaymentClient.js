@@ -168,11 +168,14 @@ const QrPaymentClient = ({ pageData = null }) => {
             <h2 className={styles.combo_heading}>Découvrez nos solutions</h2>
             <div className={localStyles.combo_buttons_row}>
               <Link href="/pay10-uae-app" className={styles.combo_btn}>
-                <Icon icon="mdi:cellphone" width={18} />
+                <img src="/images/prod_imports/Pay10-App-Icon.png" alt="" width={18} height={18} className={localStyles.combo_btn_icon} />
                 <span>Pay10</span>
               </Link>
+              {/* ponytail: no real Pay10 Biz app icon exists anywhere in this codebase -
+                  generated a placeholder matching the real Pay10 icon's visual style
+                  (same orange circle + "10" mark), swap for the real asset once it exists. */}
               <Link href="/pay10-biz-uae-app" className={styles.combo_btn}>
-                <Icon icon="mdi:store" width={18} />
+                <img src="/images/qr-payment/pay10-biz-icon-placeholder.png" alt="" width={18} height={18} className={localStyles.combo_btn_icon} />
                 <span>Pay10 Biz</span>
               </Link>
             </div>

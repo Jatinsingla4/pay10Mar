@@ -12,6 +12,7 @@ const ConsumerFeatureSection = ({
   isGreyBg = false,
   extraContent,
   isTransparent = false,
+  imageFit = "contain",
 }) => {
   return (
     <section className={`${Style.feature_section} ${isTransparent ? Style.bg_transparent : (isGreyBg ? Style.bg_grey : Style.bg_white)}`}>
@@ -54,7 +55,7 @@ const ConsumerFeatureSection = ({
         <div className={`${Style.image_col} ${isReversed ? Style.order_1 : Style.order_2}`} data-animation="opacity-up">
           <div className={Style.image_container_with_ring}>
             <div className={`${Style.image_wrapper} ${isGreyBg ? Style.bg_white : Style.bg_white}`}>
-              <img src={imageSrc} alt={imageAlt} className={Style.placeholder_img} />
+              <img src={imageSrc} alt={imageAlt} className={Style.placeholder_img} style={{ objectFit: imageFit }} />
             </div>
           </div>
         </div>

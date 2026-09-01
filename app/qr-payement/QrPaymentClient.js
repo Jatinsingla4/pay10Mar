@@ -79,7 +79,7 @@ const QrPaymentClient = ({ pageData = null }) => {
         }
         subheading={featureSubheading}
         points={featurePoints}
-        imageSrc={featureSection?.images?.[0]}
+        imageSrc={featureSection?.images?.[0] || "/images/qr-payment/qr-feature-placeholder.jpg"}
         imageAlt="Paiement par QR Code"
         isReversed={false}
         isGreyBg={true}

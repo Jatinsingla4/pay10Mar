@@ -55,11 +55,10 @@
 }
 
 // Comment ça marche step cards: shared .step_icon has no background box at
-// all (just a raw 28px image), and .step_num is small plain text - both read
-// as an afterthought next to the card's large padding/text. Giving the icon
-// the same peach-box treatment as the Avantages cards, and the number a
-// proper circular gradient badge, plus the same polish (rounded corners,
-// accent bar, hover lift) as the benefit cards above for consistency.
+// all (just a raw 28px image), reading as an afterthought next to the
+// card's large padding/text. Giving the icon the same peach-box treatment
+// as the Avantages cards, plus the same polish (rounded corners, accent
+// bar, hover lift) as the benefit cards above for consistency.
 .step_card_polished {
   border: none !important;
   border-radius: 12px !important;
@@ -84,13 +83,6 @@
   }
 }
 
-.step_top_row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 4px;
-}
-
 .step_icon_box {
   width: 56px;
   height: 56px;
@@ -99,24 +91,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 4px;
 
   img {
     border-radius: 6px;
   }
-}
-
-.step_num_badge {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--primary-gradient);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'bold', sans-serif;
-  font-size: 15px;
-  flex-shrink: 0;
 }
 
 .combo_btn_icon {

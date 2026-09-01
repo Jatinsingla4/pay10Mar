@@ -78,84 +78,6 @@
   }
 }
 
-.stats_strip {
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  background-color: transparent;
-  padding: 40px 56px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @include large {
-    padding: 60px 32px;
-  }
-
-  @include tab {
-    padding: 50px 16px 0;
-  }
-}
-
-.stats_grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 30px;
-  width: 100%;
-  max-width: 1920px;
-
-  @include large {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @include tab {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  @include mobile {
-    grid-template-columns: 1fr;
-  }
-}
-
-.stat_card {
-  background-color: var(--white);
-  border: none;
-  border-radius: 24px;
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 12px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-  }
-
-  h3 {
-    margin: 0;
-    font-size: 42px;
-    font-family: 'bold', sans-serif;
-    background: var(--primary-gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  p {
-    margin: 0;
-    font-size: 16px;
-    font-family: 'medium', sans-serif;
-    color: var(--black);
-    line-height: 1.5;
-  }
-}
-
 .steps_section {
   width: 100%;
   position: relative;
@@ -209,91 +131,73 @@
   }
 }
 
-.steps_container {
+// Content is a domestic phone-number transfer, not international remittance -
+// dropped the 3D globe + 2-column split layout that was built around it in
+// favor of a plain 3-card row (this page's own distinct step treatment,
+// separate from the icon-grid pattern used on the QR Payment page).
+.steps_row {
   max-width: 1920px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 
-  @include large {
+  @include tab {
     grid-template-columns: 1fr;
   }
 }
 
-.steps_left {
-  background: transparent;
+.step_icon_box {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 129, 5, 0.1);
+  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 500px;
-  position: relative;
 
-  .video_placeholder {
-    font-family: 'bold', sans-serif;
-    color: var(--black);
-    font-size: 24px;
-    text-align: center;
-  }
-
-  // Globe's camera FOV is tuned for a wide (landscape-ish) container. A narrow
-  // mobile width with the same 500px min-height makes the box too tall/narrow,
-  // clipping the sphere's left/right edges. Forcing a square box keeps the
-  // aspect ratio safe regardless of screen width.
-  @include tab {
-    min-height: unset;
-    aspect-ratio: 1 / 1;
+  img {
+    border-radius: 8px;
   }
 }
 
-.steps_right {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+.step_card {
+  border-radius: 32px;
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--red);
+  box-shadow: 0 10px 40px #0000000f;
+  background: var(--white);
+  transition: all ease 0.3s;
 
-  @include mobile {
-    grid-template-columns: 1fr;
+  &:hover {
+    transform: translateY(-3px);
   }
 
-  .step_card {
-    background: transparent;
-    border-radius: 32px;
-    padding: 40px 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    border: 1px solid var(--red);
-    box-shadow: 0 10px 40px #0000000f;
-    background: var(--white);
-    transition: all ease 0.3s;
+  .step_number {
+    font-size: 14px;
+    font-family: 'bold', sans-serif;
+    color: var(--red);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
 
-    &:hover {
-      transform: translateY(-3px);
-    }
+  h3 {
+    font-size: 24px;
+    font-family: 'bold', sans-serif;
+    color: var(--black);
+    line-height: 1.3;
+    margin: 0;
+  }
 
-    .step_number {
-      font-size: 14px;
-      font-family: 'bold', sans-serif;
-      color: var(--red);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
-
-    h3 {
-      font-size: 24px;
-      font-family: 'bold', sans-serif;
-      color: var(--black);
-      line-height: 1.3;
-      margin: 0;
-    }
-
-    p {
-      font-size: 16px;
-      font-family: 'medium', sans-serif;
-      color: var(--gray);
-      line-height: 1.5;
-      margin: 0;
-    }
+  p {
+    font-size: 16px;
+    font-family: 'medium', sans-serif;
+    color: var(--gray);
+    line-height: 1.5;
+    margin: 0;
   }
 }
 
@@ -454,47 +358,6 @@
   }
 }
 
-.countries_box {
-  margin-top: 32px;
-}
-
-.countries_heading {
-  font-size: 16px;
-  font-family: 'semibold', sans-serif;
-  color: var(--black);
-  margin-bottom: 16px;
-}
-
-.flag_row {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.flag_box {
-  background-color: transparent;
-  padding: 0;
-  font-size: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  box-shadow: none;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-  }
-}
-
-.countries_para {
-  margin-top: 32px;
-  font-size: 15px;
-  font-family: 'regular', sans-serif;
-  line-height: 1.6;
-  color: var(--gray);
-}
 
 .grey_subtitle_wrap {
   [class*="subtitle"] {

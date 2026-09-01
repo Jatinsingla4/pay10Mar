@@ -6,15 +6,15 @@ export async function generateMetadata() {
   const data = await fetchPageData('send-abroad');
   if (data?.seo) {
     return {
-      title: data.seo.title || "Send Abroad | Pay10 UAE",
-      description: data.seo.description || "Your family shouldn't wait for their money. With Pay10 UAE Send Abroad, your transfer reaches your loved ones the same day - instantly.",
-      alternates: { canonical: "https://pay10.ae/send-abroad" },
+      title: data.seo.title || "Transfert d'argent | Pay10",
+      description: data.seo.description || "Envoyez de l'argent. Simplement. Instantanément. Avec Pay10, envoyez et recevez de l'argent en quelques clics.",
+      alternates: { canonical: "https://pay10.ma/send-abroad" },
     };
   }
   return {
-    title: "Send Abroad | Pay10 UAE",
-    description: "Your family shouldn't wait for their money. With Pay10 UAE Send Abroad, your transfer reaches your loved ones the same day - instantly.",
-    alternates: { canonical: "https://pay10.ae/send-abroad" },
+    title: "Transfert d'argent | Pay10",
+    description: "Envoyez de l'argent. Simplement. Instantanément. Avec Pay10, envoyez et recevez de l'argent en quelques clics.",
+    alternates: { canonical: "https://pay10.ma/send-abroad" },
   };
 }
 

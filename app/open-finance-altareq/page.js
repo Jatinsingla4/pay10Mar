@@ -4,9 +4,9 @@ import OpenFinanceAltareqClient from "./OpenFinanceAltareqClient";
 
 export async function generateMetadata() {
   return fetchPageMeta('open-finance-altareq', {
-    title: "Open Finance Al Tareeq \u2013 Pay 10",
-    description: "Connect to the Open Finance Al Tareeq platform by Pay10 for secure financial data sharing and interoperability in the UAE.",
-    alternates: { canonical: "https://pay10.ae/open-finance-altareq" },
+    title: "Virement bancaire | Pay10",
+    description: "Transf\u00e9rez votre argent vers votre compte bancaire. Simplement. Transf\u00e9rez rapidement et facilement des fonds depuis votre portefeuille num\u00e9rique Pay10 vers un compte bancaire.",
+    alternates: { canonical: "https://pay10.ma/open-finance-altareq" },
   });
 }
 

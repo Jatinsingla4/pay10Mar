@@ -1,158 +1,111 @@
 "use client";
 
-import SimpleLayout from "@/app/components/ui/product/pacb-india/SimpleLayout";
-import TwoColLayout from "@/app/components/ui/product/pacb-india/TwoColLayout";
-import GetStarted from "@/app/components/ui/GetStarted";
-import { TextCenterAppCard } from "@/app/components/ui/TextCenterBlock";
+import React from "react";
+import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
-import { sanitizeHtml, isEmptyHtml } from "@/app/lib/sanitizeHtml";
+import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
+import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
+const firstNonEmpty = (...vals) => vals.find(v => typeof v === 'string' && v.trim()) || "";
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
-/** Plain-text CMS descriptions (e.g. with \\r\\n) vs HTML snippets for dangerouslySetInnerHTML. */
-function normalizeCmsDescriptionHtml(description) {
-  if (description == null) return "";
-  const s = String(description).trim();
-  if (!s) return "";
-  if (/<\s*[a-z]/i.test(s)) return sanitizeHtml(s);
-  const blocks = s.split(/\r?\n\r?\n/).map((b) => b.trim()).filter(Boolean);
-  const esc = (t) =>
-    t
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  if (!blocks.length) return "";
-  return blocks
-    .map((block) => `<p>${esc(block).replace(/\r?\n/g, "<br />")}</p>`)
-    .join("");
-}
-
-/** Intro band below hero (fallback when CMS has no section2.list[0]). */
-const ALTAREQ_CONNECTED_INTRO = {
-  Title: "The future of finance is connected",
-  Image: "/images/prod_imports/altareq-logo.png",
-  Description: `
-<p>AlTareq is now live in your Pay10 UAE, giving you seamless, secure access to your bank account, add money, and pay directly from your bank account.</p>
-<p>AlTareq is the UAE's national Open Finance gateway launched by the Central Bank of the UAE to securely connect licensed financial institutions, and third-party providers.</p>
-`.trim(),
+const renderIcon = (cmsIcon, className, width) => {
+  if (typeof cmsIcon !== 'string' || !cmsIcon.trim()) return null;
+  return /^(https?:)?\//.test(cmsIcon)
+    ? <img src={cmsIcon} alt="" width={width} height={width} className={className} />
+    : <Icon icon={cmsIcon} width={width} className={className} />;
 };
 
-/** Matches design: English link + Arabic FAQ line accent (see .altareqArabicFaqLink). */
-const ALTAREQ_LINK_STYLE = `color:var(--red);font-family:'semibold',sans-serif;text-decoration:none;`;
-
-const OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS = [
-  {
-    Title: "",
-    Image: "/images/temp/a1.png",
-    Description: `
-<p>Pay10 enabled AlTareq, to safely and securely make payments from your bank account for purchases, top-ups, or sending money to contacts giving you frictionless access to a world of services and insights.</p>
-<p>AlTareq and Pay10 bring innovative ways to access and use financial services in the UAE:</p>
-<ul>
-<li>Connect your bank accounts with your Pay10 Wallet.</li>
-<li>Make payments faster than ever before.</li>
-<li>Experience real-time, secure connections with Pay10 for streamlined and personalized services.</li>
-<li>Track and monitor all linked accounts and transactions conveniently within your Pay10 Wallet.</li>
-</ul>
-`.trim(),
-  },
-  {
-    Title: "Real-time visibility",
-    Image: "/images/temp/a2.png",
-    Description:
-      "<p>Track and monitor your purchases, top ups and money movements in real-time from your Pay10 Wallet.</p>",
-  },
-  {
-    Title: "A New Era in Payments by AlTareq",
-    Image: "/images/temp/a3.png",
-    Description: `
-<p>Enjoy paying with your bank account at online checkout on your own rules and terms.</p>
-<p>No more entering card details or credentials. Securely authorize each transaction through your banking app with AlTareq and Pay10.</p>
-`.trim(),
-  },
-  {
-    Title: "You're in control, always",
-    Image: "/images/temp/a4.png",
-    Description: `
-<p>Set your payment limits, frequency, and the duration of your account permission with full transparency.<br />Your account. Your control. Manage all your accounts in one app, download Pay10 now.</p>
-`.trim(),
-  },
-  {
-    Title: "Secure by design",
-    Image: "/images/temp/a5.png",
-    Description:
-      "<p>Regulated by the Central Bank of the UAE, your data and financial services are protected with world-class encryption.</p>",
-  },
-
-  {
-    Title: "Start accepting account-to-account payments for your business.",
-    Image: "/images/temp/a6.png",
-    Description: `
-<p>AlTareq and Pay10's Merchant Payment Acceptance Solution enables you to offer a new real-time payment method in the UAE.</p>
-<p>Your customers can pay instantly and securely using their bank accounts powered by AlTareq.</p>
-<p>For More Information: <a href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-English.pdf" target="_blank" style="${ALTAREQ_LINK_STYLE}">Nebras Open Finance FAQ</a></p>
-<p dir="rtl" lang="ar" class="altareqArabicFaqNote">
-  <span class="altareqArabicFaqGray">للمزيد من المعلومات</span><br />
-  <a class="altareqArabicFaqLink" href="https://pay10.ae/wp-content/uploads/2026/04/Nebras-Open-Finance-FAQs-Arabic.pdf" target="_blank" style="${ALTAREQ_LINK_STYLE}">الأسئلة الشائعة حول التمويل المفتوح من نبراس</a>
-</p>
-`.trim(),
-  },
-];
-
-// Always use the local transparent AlTareq logo
-const connectedIntroItem = {
-  ...ALTAREQ_CONNECTED_INTRO,
-  Image: "/images/prod_imports/altareq-logo.png",
+// CMS editors paste bullet lists as a single <ul><li> rich-text block rather
+// than filling individual card fields - read points from either shape.
+const extractPoints = (section) => {
+  const cardPoints = (section?.cards || []).map(c => c.title).filter(Boolean);
+  if (cardPoints.length) return cardPoints;
+  const liMatches = Array.from((section?.content || '').matchAll(/<li[^>]*>(.*?)<\/li>/gs));
+  return liMatches.map(m => m[1].replace(/<[^>]*>?/gm, '').trim()).filter(Boolean);
 };
 
 const OpenFinanceAltareqClient = ({ pageData = null }) => {
-  // Override ALTAREQ_CONNECTED_INTRO if CMS data exists
-  const cmsIntroItem = pageData?.sections?.[0] ? {
-    Title: pageData.sections[0].title,
-    Image: pageData.sections[0].images?.[0] || "/images/prod_imports/altareq-logo.png",
-    Description: firstNonEmptyHtml(pageData.sections[0].content, pageData.sections[0].subtitle, ""),
-  } : null;
+  // --- 0. Virement bancaire (feature intro) ---
+  const featureSection = pageData?.sections?.[0];
+  const featureSubheading = isEmptyHtml(featureSection?.content)
+    ? ""
+    : featureSection.content.replace(/<[^>]*>?/gm, '').trim();
 
-  const connectedIntroItemToUse = cmsIntroItem || connectedIntroItem;
+  // --- 1. Comment ça marche (4 steps) ---
+  const stepsSection = pageData?.sections?.[1];
+  const steps = (stepsSection?.cards || []).map((c, i) => ({
+    num: `${i + 1}`,
+    title: c.title,
+    desc: ((!isEmptyHtml(c.content) ? c.content : c.subtitle) || "").replace(/<[^>]*>?/gm, '').trim(),
+    icon: c.icon,
+  }));
 
-  // Build Simple Rows from sections[1] onwards
-  const cmsSimpleRows = pageData?.sections?.length > 1 
-    ? pageData.sections.slice(1).map(sec => ({
-        Title: sec.title || "",
-        Image: sec.images?.[0] || "",
-        Description: firstNonEmptyHtml(sec.content, sec.subtitle, ""),
-      }))
-    : OPEN_FINANCE_ALTAREQ_SIMPLE_ROWS;
+  // --- 2. Avantages ---
+  const advantagesSection = pageData?.sections?.[2];
+  const advantagePoints = extractPoints(advantagesSection);
 
   return (
     <main className={Style.mainWrapper}>
-      <section 
+      <section
         className={Style.altareq_hero}
         style={bannerBgStyle(pageData)}
       >
         <div className={Style.altareq_hero_text}>
-          <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData?.page_title) }} />
-          <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
+          {!isEmptyHtml(pageData?.page_title) && (
+            <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.page_title) }} />
+          )}
+          {!isEmptyHtml(pageData?.page_subtitle || pageData?.page_description) && (
+            <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(firstNonEmptyHtml(pageData?.page_subtitle, pageData?.page_description)) }} />
+          )}
         </div>
       </section>
 
-      <section className={Style.connected_finance_intro}>
-        <TwoColLayout item={connectedIntroItemToUse} imageBase="" reverse unoptimized />
-      </section>
+      <div className={Style.bg_circle_wrapper}>
+        <ConsumerFeatureSection
+          heading={firstNonEmpty(featureSection?.subtitle, featureSection?.title)}
+          subheading={featureSubheading}
+          imageSrc={featureSection?.images?.[0]}
+          imageAlt={firstNonEmpty(featureSection?.subtitle, featureSection?.title)}
+          isReversed={false}
+          isGreyBg={true}
+          isTransparent={true}
+        />
 
-      <div className={Style.section_spacing}>
-        <SimpleLayout
-          items={cmsSimpleRows}
-          imageBase=""
-          startWithImageLeft={true}
-          useBackgroundCircle={true}
+        <section className={Style.steps_section}>
+          <div className={Style.steps_header} data-animation="opacity-up">
+            {!isEmptyHtml(stepsSection?.title) && (
+              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(stepsSection.title) }} />
+            )}
+            {!isEmptyHtml(stepsSection?.subtitle) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(stepsSection.subtitle) }} />
+            )}
+          </div>
+          <div className={Style.steps_row}>
+            {steps.map((item) => (
+              <div className={Style.step_card} data-animation="opacity-up" key={item.num}>
+                <div className={Style.step_icon_box}>
+                  {renderIcon(item.icon, undefined, 32)}
+                </div>
+                <span className={Style.step_number}>Étape {item.num}</span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <ConsumerFeatureSection
+          heading={advantagesSection?.title}
+          points={advantagePoints}
+          imageSrc={advantagesSection?.images?.[0]}
+          imageAlt={advantagesSection?.title}
+          isReversed={true}
+          isGreyBg={true}
+          isTransparent={true}
         />
       </div>
-
-      <TextCenterAppCard />
-
-      <GetStarted />
     </main>
   );
 };

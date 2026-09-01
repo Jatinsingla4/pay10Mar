@@ -4,189 +4,6 @@
   background-color: var(--body-bg);
 }
 
-
-.wrapper {
-  width: 100%;
-  padding: 0px 56px;
-  margin: 80px 0;
-  @include large {
-    padding: 0 32px;
-  }
-  @include tab {
-    margin: 50px 0;
-    padding: 0px 16px;
-  }
-}
-
-.bg_circle {
-  width: 100%;
-  // height: 100%;
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image: url("/images/about_images/about_section_second_bg.png");
-    background-position: top left;
-    background-position-x: -20rem;
-    background-repeat: no-repeat;
-    opacity: 0.4;
-    pointer-events: none;
-  }
-
-}
-
-.business_edge_section {
-  width: 100%;
-  display: grid;
-  grid-template-columns: .3fr .7fr;
-  gap: 30px;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  .left_image {
-    width: 100%;
-    height: 100%;
-    max-height: 614px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include tab{
-      order: 2;
-    }
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-  }
-
-  .section_spacing {
-    padding-top: 0;
-  }
-
-  .features_content {
-    width: 100%;
-    @include tab{
-      order: 1;
-    }
-    .features_title {
-      color: var(--black);
-      font-size: 48px;
-      margin-bottom: 24px;
-      line-height: 1.1;
-    }
-    .features_grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      .feature_card {
-        background: #fff;
-        border-radius: 16px;
-        padding: 32px 32px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 25px;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        .feature_icon {
-          width: 36px;
-          height: 36px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-          }
-        }
-        p {
-          color: var(--black);
-          font-size: 24px;
-          text-align: left;
-          margin: 0;
-        }
-      }
-    }
-  }
-
-  @include large {
-    grid-template-columns: .4fr .6fr;
-
-    .features_content {
-      .features_grid {
-        gap: 20px;
-      }
-    }
-  }
-
-  @include tab {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-
-    .features_content {
-      .features_title {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-      }
-
-      .features_grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.25rem;
-        .feature_card {
-          padding: 1.5rem 1rem;
-
-          .feature_icon {
-            width: 56px;
-            height: 56px;
-          }
-
-          p {
-            font-size: 14px;
-            font-family: 'bold', sans-serif;
-          }
-        }
-      }
-    }
-  }
-
-  @media only screen and (max-width: 767px) {
-    gap: 1.5rem;
-
-    .features_content {
-      .features_title {
-        font-size: 1.75rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .features_grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-
-        .feature_card {
-          padding: 1.25rem 1rem;
-        }
-      }
-    }
-  }
-}
-
-.heroShell {
-  width: 100%;
-  padding: 40px 56px 0;
-
-  @include tab {
-    padding: 24px 16px 0;
-  }
-}
-
 .altareq_hero {
   @include homepageHeroBanner;
   display: flex;
@@ -208,31 +25,27 @@
   max-width: 560px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 
   h2 {
     margin: 0;
-    font-size: 38px;
+    font-size: clamp(28px, 4vw, 42px);
     font-family: 'bold', sans-serif;
     color: var(--white);
-    display: inline-block;
     line-height: 1.2;
+    word-break: break-word;
   }
 
   p {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 18px;
     font-family: 'medium', sans-serif;
-    color: #ffffff;
+    color: var(--white);
     line-height: 1.5;
   }
 
   @include tab {
     max-width: 55%;
-
-    h2 {
-      font-size: 26px;
-    }
 
     p {
       font-size: 15px;
@@ -247,64 +60,166 @@
     }
 
     p {
-      font-size: 14px;
+      font-size: 13px;
+      line-height: 1.4;
     }
   }
 }
 
-/** Second section: “future of finance” + Al Tareq logo (hardcoded until CMS). */
-.connected_finance_intro {
+.bg_circle_wrapper {
   width: 100%;
+  position: relative;
   background-color: var(--body-bg);
-  padding: 40px 56px 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: url("/images/body_bg_circle.png");
+    background-position: right 15%;
+    background-repeat: no-repeat;
+    background-size: 90% auto;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .bg_circle_wrapper::before {
+    background-size: 80% auto;
+    background-position: right 50%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .bg_circle_wrapper::before {
+    background-size: 90% auto;
+    background-position: right 50%;
+  }
+}
+
+@media only screen and (max-width: 563px) {
+  .bg_circle_wrapper::before {
+    background-size: 120% auto;
+    background-position: right 50%;
+  }
+}
+
+.steps_section {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 40px 56px;
+
+  @include large {
+    padding: 40px 32px;
+  }
 
   @include tab {
     padding: 50px 16px 0;
   }
-
-  /* AlTareq logo: correct landscape aspect ratio (2084×819) */
-  :global(img) {
-    aspect-ratio: 2084 / 819 !important;
-    max-width: min(100%, 600px);
-    height: auto !important;
-    margin-inline: auto;
-    display: block;
-  }
 }
 
-.section_spacing {
-  @include tab {
-    > section {
-      padding-top: 0;
+.steps_header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+
+  h2 {
+    font-size: 32px;
+    font-family: 'bold', sans-serif;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-bottom: 12px;
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  p {
+    font-size: 18px;
+    font-family: 'medium', sans-serif;
+    color: var(--black);
+    line-height: 1.6;
+    margin: 0;
+
+    @include mobile {
+      font-size: 16px;
     }
   }
 }
-.wrapper {
-  :global(.altareqArabicFaqNote) {
-    direction: rtl;
-    text-align: right;
-    margin-top: 16px;
-    margin-bottom: 0;
-    font-family: 'regular', sans-serif;
-    font-size: 20px;
-    line-height: 1.55;
+
+.steps_row {
+  max-width: 1920px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @include large {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  :global(.altareqArabicFaqGray) {
-    display: inline-block;
-    color: var(--gray);
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step_icon_box {
+  width: 56px;
+  height: 56px;
+  background: rgba(255, 129, 5, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    border-radius: 8px;
+  }
+}
+
+.step_card {
+  border-radius: 32px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 1px solid var(--red);
+  box-shadow: 0 10px 40px #0000000f;
+  background: var(--white);
+  transition: all ease 0.3s;
+
+  &:hover {
+    transform: translateY(-3px);
   }
 
-  :global(.altareqArabicFaqLink) {
-    display: inline-block;
-    margin-top: 4px;
+  .step_number {
+    font-size: 14px;
+    font-family: 'bold', sans-serif;
     color: var(--red);
-    font-family: 'semibold', sans-serif;
-    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
 
-    &:hover {
-      text-decoration: underline;
-    }
+  h3 {
+    font-size: 22px;
+    font-family: 'bold', sans-serif;
+    color: var(--black);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  p {
+    font-size: 16px;
+    font-family: 'medium', sans-serif;
+    color: var(--gray);
+    line-height: 1.5;
+    margin: 0;
   }
 }
-

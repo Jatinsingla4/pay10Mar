@@ -221,6 +221,10 @@
     letter-spacing: 0.04em;
   }
 
+  strong, b {
+    color: #1a1a1a;
+  }
+
   a {
     text-decoration: underline;
     color: var(--red);

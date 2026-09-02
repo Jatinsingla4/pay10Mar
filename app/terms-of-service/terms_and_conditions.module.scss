@@ -223,10 +223,14 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'medium', sans-serif;
     font-weight: 500;
-    color: #7A7A7A;
+    color: #1a1a1a;
     margin-top: 30px;
     margin-bottom: 15px;
     line-height: 1.2;
+  }
+
+  strong, b {
+    color: #1a1a1a;
   }
 
   h1 { font-size: 2.25rem; }

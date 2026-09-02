@@ -45,7 +45,7 @@ export default function TermsClient({ pageData = null }) {
 
   return (
     <div className={styles.terms_container}>
-      <h1 className={styles.title} data-animation="fade-up">{pageData?.page_title || "Terms of Service"}</h1>
+      <h1 className={styles.title} data-animation="fade-up">{pageData?.page_title || "Conditions générales"}</h1>
 
 
       <div className={styles.layout}>

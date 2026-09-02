@@ -30,7 +30,7 @@ export default function KfsClient({ pageData = null }) {
 
   return (
     <div className={styles.kfs_container}>
-      <h1 className={styles.title}>{pageData?.page_title || "Key Facts Statement"}</h1>
+      <h1 className={styles.title}>{pageData?.page_title || "Informations Clés"}</h1>
 
       <div className={styles.arabic_btn_row}>
         <a
@@ -60,9 +60,7 @@ export default function KfsClient({ pageData = null }) {
 
         {/* Right Content Panel */}
         <div className={styles.content_panel}>
-          <h2 className={styles.tab_heading}>{activeTab?.sectionTitle || activeTab?.tabName}</h2>
-          
-          <div 
+          <div
             className={styles.table_content}
             dangerouslySetInnerHTML={{ __html: sanitizeHtml(processedContent) }}
           />

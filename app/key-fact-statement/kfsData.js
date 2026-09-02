@@ -3,8 +3,8 @@
 // the CMS only has one section (index 0), so that tab had no content.
 const kfsData = [
   {
-    tabName: "KFS Pay10 UAE App",
-    sectionTitle: "KFS Pay10 UAE App",
+    tabName: "KFS Pay10 Maroc",
+    sectionTitle: "KFS Pay10 Maroc",
   },
 ];
 

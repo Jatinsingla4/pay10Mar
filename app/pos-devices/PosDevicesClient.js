@@ -226,6 +226,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
       <section className={styles.compare_section}>
         <div className={styles.container}>
+        <div className={styles.compare_layout}>
           <div className={styles.compare_header}>
             {!isEmptyHtml(pageData?.sections?.[1]?.title) && (
               <h2 className={styles.gradient_heading} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[1].title) }} />
@@ -234,7 +235,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
               <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[1].subtitle) }} />
             )}
           </div>
-          
+
           <div className={styles.compare_grid}>
             {devices.map((device, idx) => {
               const isOpen = !!expandedDevices[idx];
@@ -346,6 +347,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
               );
             })}
           </div>
+        </div>
         </div>
       </section>
 

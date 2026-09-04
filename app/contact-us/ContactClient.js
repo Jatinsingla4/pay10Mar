@@ -9,13 +9,13 @@ import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
 import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
 import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_URL } from "../lib/proxyConstants";
 
-// Coordinate-based embed (Casablanca Finance City, per Wikipedia: 33.5569,-7.6606).
-// A plain lat/lng query drops a pin with no info card at all - a text query
-// (even without a business name) still resolves to Google's nearest matching
-// Place and pops up that Place's own card ("Casablanca Finance City", a
-// public station listing unrelated to our office). The real address is
-// shown as our own caption above the map instead (see mapCaption below).
-const MAP_EMBED_URL = "https://www.google.com/maps?q=33.5569,-7.6606&z=16&hl=fr&output=embed";
+// Query-based embed — no place ID needed, Google resolves the address text directly.
+// Deliberately omits the "Casa Business Towers" business name: including it
+// resolves to that Google Business Profile listing, whose address field is
+// stored in Chinese on Google's end (hl only translates the map's own UI,
+// not third-party listing data) - the plain street address avoids that
+// listing's info card entirely and just drops a pin.
+const MAP_EMBED_URL = "https://www.google.com/maps?q=" + encodeURIComponent("Avenue Mainstreet, Casablanca Finance City, Casablanca, Maroc") + "&hl=fr&output=embed";
 
 // Static office data
 const STATIC_OFFICES = {
@@ -493,10 +493,6 @@ const ContactClient = ({ pageData = null }) => {
 
         {/* Map Section */}
         <section className={Style.mapSection} data-animation="opacity">
-          <div className={Style.mapCaption}>
-            <Icon icon="weui:location-outlined" className={Style.mapCaptionIcon} />
-            <span>{pageData?.address || STATIC_OFFICES["casablanca-morocco"].address}</span>
-          </div>
           <iframe
             src={STATIC_OFFICES["casablanca-morocco"].map}
             width="100%"

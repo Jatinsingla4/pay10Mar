@@ -94,45 +94,29 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       alerts: { audio: '✓ Built-in loudspeaker', visual: '✓ On-screen confirmation' },
       management: { ota: '✓ Remote software push', config: 'Via Pay10 Biz portal', pci: 'Level 1 certified', app: 'Register and manage via app' }
     },
-    // ponytail: P3 and P8 are placeholders (no real specs supplied yet) -
-    // filled in with plausible values matching the existing 3 devices' shape
-    // so the 5-device grid works today; swap for real data once available.
-    {
-      name: 'P3',
-      tagline: 'Le plus petit appareil Pay10. Idéal pour les micro-commerçants.',
-      bestFor: 'Vendeurs ambulants, marchés, kiosques et micro-commerçants ayant besoin d\'un moyen d\'encaissement ultra-compact, sans comptoir ni prise électrique fixe.',
-      design: 'Mini soundbox portable — clip ceinture, sans écran',
-      display: { customer: 'N/A — confirmation vocale uniquement', merchant: 'N/A — LED de statut' },
-      payment: { dqr: '✓ Unique QR per transaction', sqr: 'Supported', tap: 'NA', dip: 'NA' },
-      variants: 'P3 DQR',
-      hardware: { os: 'RTOS — built for payment stability', keypad: 'N/A — bouton unique', battery: '1200 mAh — usage journée légère', charging: 'USB Type-C' },
-      connectivity: { sim: '✓ Micro SIM — pre-installed', wifi: 'NA', gps: 'NA' },
-      alerts: { audio: '✓ Confirmation vocale multilingue', visual: '✓ LED de statut' },
-      management: { ota: '✓ Remote software push', config: 'Via Pay10 Biz portal', pci: 'Level 1 certified', app: 'Register and manage via app' }
-    },
-    {
-      name: 'P8',
-      tagline: 'Un poste d\'encaissement complet pour les commerces à fort volume.',
-      bestFor: 'Supermarchés, grandes surfaces et commerces à fort trafic ayant besoin d\'un poste d\'encaissement tout-en-un avec impression de ticket.',
-      design: 'Tablette Android comptoir — grand écran, socle fixe',
-      display: { customer: '10.1" full-colour tactile', merchant: '10.1" full-colour tactile' },
-      payment: { dqr: '✓ Unique QR per transaction', sqr: 'Supported', tap: '✓ Supported', dip: '✓ Supported' },
-      variants: 'P8 DQR+Card\nP8 DQR+Card+Printer',
-      hardware: { os: 'Android — familiar, flexible, app-ready', keypad: 'Clavier virtuel tactile', battery: 'Secteur — usage comptoir fixe', charging: 'USB-C + secteur' },
-      connectivity: { sim: '✓ Micro SIM — pre-installed', wifi: '✓ Built-in Wi-Fi', gps: 'NA' },
-      alerts: { audio: '✓ Haut-parleur intégré', visual: '✓ Confirmation à l\'écran' },
-      management: { ota: '✓ Remote software push', config: 'Via Pay10 Biz portal', pci: 'Level 1 certified', app: 'Register and manage via app' }
-    }
   ];
 
-  const devices = pageData?.sections?.[1]?.cards?.length > 0 
-    ? pageData.sections[1].cards.map((c, i) => {
-        // Fallback to default structure for deep nested fields if CMS doesn't provide them
-        const def = defaultDevices[i] || defaultDevices[0];
+  const EMPTY_SPECS = {
+    design: '', bestFor: '', variants: '',
+    display: { customer: '', merchant: '' },
+    payment: { dqr: '', sqr: '', tap: '', dip: '' },
+    hardware: { os: '', keypad: '', battery: '', charging: '' },
+    connectivity: { sim: '', wifi: '', gps: '' },
+    alerts: { audio: '', visual: '' },
+    management: { ota: '', config: '', pci: '', app: '' },
+  };
+
+  const devices = pageData?.sections?.[1]?.cards?.length > 0
+    ? pageData.sections[1].cards.map((c) => {
+        // Fallback to default structure for deep nested fields only when this
+        // CMS card is actually one of the 3 known devices (matched by name) -
+        // a new/empty CMS card must not silently inherit another device's
+        // specs just because of its position in the list.
+        const def = defaultDevices.find((d) => d.name === c.title) || EMPTY_SPECS;
         return {
           ...def,
-          name: c.title || def.name,
-          tagline: c.subtitle || def.tagline,
+          name: c.title || '',
+          tagline: c.subtitle || '',
           // Device cards have no dedicated "images" field in the CMS — the
           // "icon" slot doubles as the product-photo upload here.
           image: c.icon || c.images?.[0],

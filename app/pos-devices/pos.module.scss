@@ -140,16 +140,13 @@
 
 .compare_grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 24px;
-
-  @include large {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  align-items: start;
 
   @include tab {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 20px;
   }
 }
 
@@ -157,18 +154,33 @@
   background: var(--white);
   border: 1px solid var(--events-box-bg);
   border-radius: 16px;
-  padding: 32px 24px;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 200ms ease;
+
+  &.device_card_open {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
 }
 
-.card_header {
+// Compact, click-to-expand summary — collapsed by default so all 5 devices
+// fit as scannable cards (number + photo + name + one-line tagline) instead
+// of the previous always-expanded wall of specs.
+.device_card_summary {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px;
   text-align: center;
-  margin-bottom: 32px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: inherit;
+  color: inherit;
 
   h3 {
-    font-size: 32px;
+    font-size: 28px;
     font-family: 'bold', sans-serif;
     margin-bottom: 8px;
     background: var(--primary-gradient);
@@ -181,18 +193,54 @@
   .tagline {
     font-size: 14px;
     color: var(--black);
-    min-height: 48px;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
     font-family: 'regular', sans-serif;
   }
 }
 
+.device_card_top {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 8px;
+}
+
+.device_num {
+  font-size: 13px;
+  font-family: 'bold', sans-serif;
+  color: var(--orange);
+}
+
+.device_card_cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-family: 'semibold', sans-serif;
+  color: var(--red);
+
+  .device_card_arrow {
+    transition: transform 200ms ease;
+  }
+}
+
+.device_card_open .device_card_arrow {
+  transform: rotate(90deg);
+}
+
+.device_card_details {
+  padding: 0 24px 28px;
+  border-top: 1px solid var(--events-box-bg);
+  padding-top: 20px;
+}
+
 .device_image_wrap {
-  height: 180px;
+  height: 140px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 
   .device_image {
     max-height: 100%;

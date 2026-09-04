@@ -159,22 +159,29 @@
   }
 }
 
+// Flexbox instead of grid: with 5 cards at 3-per-row, a grid's last
+// (incomplete) row stays left-aligned with an empty trailing track - flex
+// wrap + justify-content:center centers that row's cards instead, and still
+// re-centers cleanly once a 6th device fills the row.
 .compare_grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
-  // Default (stretch) so every card in a row matches the tallest one's
-  // height - align-items:start here was letting each card size to its own
-  // content, which is what caused the uneven card heights.
+  align-items: stretch;
 
   @include tab {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     gap: 20px;
   }
 }
 
 .device_card {
-  height: 100%;
+  // Caps at 3 per row (matching the old grid's column count) while staying
+  // flexible below that - flex-basis 220px is the floor from the old
+  // minmax(220px, 1fr).
+  flex: 1 1 220px;
+  max-width: calc((100% - 48px) / 3);
   background: var(--white);
   border: 1px solid var(--events-box-bg);
   border-radius: 16px;
@@ -184,6 +191,10 @@
 
   &.device_card_open {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  @include tab {
+    max-width: 100%;
   }
 }
 

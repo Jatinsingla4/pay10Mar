@@ -25,10 +25,10 @@ const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[v
 
 const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonialTitle, testimonialContent, merchantLogos = [] }) => {
   const [merchantStoreUrl, setMerchantStoreUrl] = useState(MERCHANT_PLAY_URL);
-  // Device cards are collapsed by default (compact grid) - clicking one
-  // expands its technical spec sheet in place. Independent per card.
-  const [expandedDevices, setExpandedDevices] = useState({});
-  const toggleDevice = (idx) => setExpandedDevices((prev) => ({ ...prev, [idx]: !prev[idx] }));
+  // Device cards are compact by default - clicking one opens its full spec
+  // sheet in a modal (an in-card accordion made the grid row hugely uneven
+  // whenever one card's specs were much longer than its neighbours').
+  const [activeDeviceIdx, setActiveDeviceIdx] = useState(null);
 
   useEffect(() => {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
@@ -237,119 +237,145 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
           </div>
 
           <div className={styles.compare_grid}>
-            {devices.map((device, idx) => {
-              const isOpen = !!expandedDevices[idx];
-              return (
-                <div key={idx} className={`${styles.device_card} ${isOpen ? styles.device_card_open : ''}`}>
-                  <button
-                    type="button"
-                    className={styles.device_card_summary}
-                    onClick={() => toggleDevice(idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <div className={styles.device_card_top}>
-                      <span className={styles.device_num}>{String(idx + 1).padStart(2, '0')}</span>
-                      <div className={styles.device_image_wrap}>
-                        <img src={device.image} alt={device.name} className={styles.device_image} />
-                      </div>
+            {devices.map((device, idx) => (
+              <div key={idx} className={styles.device_card}>
+                <button
+                  type="button"
+                  className={styles.device_card_summary}
+                  onClick={() => setActiveDeviceIdx(idx)}
+                >
+                  <div className={styles.device_card_top}>
+                    <span className={styles.device_num}>{String(idx + 1).padStart(2, '0')}</span>
+                    <div className={styles.device_image_wrap}>
+                      {device.image && <img src={device.image} alt={device.name} className={styles.device_image} />}
                     </div>
-                    <h3>{device.name}</h3>
-                    <p className={styles.tagline}>{device.tagline}</p>
-                    <span className={styles.device_card_cta}>
-                      <span>{isOpen ? 'Masquer les détails' : 'Voir les détails'}</span>
-                      <Icon icon="fa6-solid:arrow-right" className={styles.device_card_arrow} />
-                    </span>
-                  </button>
-
-                  {isOpen && (
-                    <div className={styles.device_card_details}>
-                      <div className={styles.section_block}>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Idéal pour</span>
-                          <span className={styles.val} dangerouslySetInnerHTML={{ __html: sanitizeHtml(device.bestFor) }} />
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Conception</span>
-                          <span className={styles.val}>{device.design}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Variantes</span>
-                          <span className={styles.val} style={{whiteSpace: 'pre-line'}}>{device.variants}</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.section_title}>AFFICHAGE</div>
-                      <div className={styles.section_block}>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Client</span>
-                          <span className={styles.val}>{device.display.customer}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Commerçant</span>
-                          <span className={styles.val}>{device.display.merchant}</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.section_title}>MOYENS DE PAIEMENT</div>
-                      <div className={styles.section_block}>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>QR Dynamique</span>
-                          <span className={styles.val}>{device.payment.dqr}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>QR Statique</span>
-                          <span className={styles.val}>{device.payment.sqr}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>TAP (Sans contact)</span>
-                          <span className={styles.val}>{device.payment.tap}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>DIP (Puce)</span>
-                          <span className={styles.val}>{device.payment.dip}</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.section_title}>MATÉRIEL & CONNECTIVITÉ</div>
-                      <div className={styles.section_block}>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>OS</span>
-                          <span className={styles.val}>{device.hardware.os}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Clavier</span>
-                          <span className={styles.val}>{device.hardware.keypad}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Batterie</span>
-                          <span className={styles.val}>{device.hardware.battery}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Connectivité</span>
-                          <span className={styles.val}>{device.connectivity.sim}<br/>{device.connectivity.wifi !== 'NA' ? device.connectivity.wifi : ''}</span>
-                        </div>
-                      </div>
-
-                      <div className={styles.section_title}>ALERTES & GESTION</div>
-                      <div className={styles.section_block}>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Audio/Visuel</span>
-                          <span className={styles.val}>{device.alerts.audio}<br/>{device.alerts.visual}</span>
-                        </div>
-                        <div className={styles.feature_item}>
-                          <span className={styles.lbl}>Conformité</span>
-                          <span className={styles.val}>{device.management.pci}<br/>{device.management.app}</span>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                  </div>
+                  <h3>{device.name}</h3>
+                  <p className={styles.tagline}>{device.tagline}</p>
+                  <span className={styles.device_card_cta}>
+                    <span>Voir les détails</span>
+                    <Icon icon="fa6-solid:arrow-right" className={styles.device_card_arrow} />
+                  </span>
+                </button>
+              </div>
+            ))}
           </div>
         </div>
         </div>
       </section>
+
+      {/* Device spec modal - keeps the compact grid a uniform height
+          regardless of how long any one device's spec sheet is. */}
+      {activeDeviceIdx !== null && devices[activeDeviceIdx] && (
+        <div className={styles.device_modal_overlay} onClick={() => setActiveDeviceIdx(null)}>
+          <div className={styles.device_modal} onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className={styles.device_modal_close}
+              onClick={() => setActiveDeviceIdx(null)}
+              aria-label="Fermer"
+            >
+              <Icon icon="mdi:close" />
+            </button>
+
+            {(() => {
+              const device = devices[activeDeviceIdx];
+              return (
+                <>
+                  <div className={styles.device_modal_header}>
+                    <div className={styles.device_image_wrap}>
+                      {device.image && <img src={device.image} alt={device.name} className={styles.device_image} />}
+                    </div>
+                    <h3>{device.name}</h3>
+                    <p className={styles.tagline}>{device.tagline}</p>
+                  </div>
+
+                  <div className={styles.device_card_details}>
+                    <div className={styles.section_block}>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Idéal pour</span>
+                        <span className={styles.val} dangerouslySetInnerHTML={{ __html: sanitizeHtml(device.bestFor) }} />
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Conception</span>
+                        <span className={styles.val}>{device.design}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Variantes</span>
+                        <span className={styles.val} style={{whiteSpace: 'pre-line'}}>{device.variants}</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.section_title}>AFFICHAGE</div>
+                    <div className={styles.section_block}>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Client</span>
+                        <span className={styles.val}>{device.display.customer}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Commerçant</span>
+                        <span className={styles.val}>{device.display.merchant}</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.section_title}>MOYENS DE PAIEMENT</div>
+                    <div className={styles.section_block}>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>QR Dynamique</span>
+                        <span className={styles.val}>{device.payment.dqr}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>QR Statique</span>
+                        <span className={styles.val}>{device.payment.sqr}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>TAP (Sans contact)</span>
+                        <span className={styles.val}>{device.payment.tap}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>DIP (Puce)</span>
+                        <span className={styles.val}>{device.payment.dip}</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.section_title}>MATÉRIEL & CONNECTIVITÉ</div>
+                    <div className={styles.section_block}>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>OS</span>
+                        <span className={styles.val}>{device.hardware.os}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Clavier</span>
+                        <span className={styles.val}>{device.hardware.keypad}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Batterie</span>
+                        <span className={styles.val}>{device.hardware.battery}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Connectivité</span>
+                        <span className={styles.val}>{device.connectivity.sim}<br/>{device.connectivity.wifi !== 'NA' ? device.connectivity.wifi : ''}</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.section_title}>ALERTES & GESTION</div>
+                    <div className={styles.section_block}>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Audio/Visuel</span>
+                        <span className={styles.val}>{device.alerts.audio}<br/>{device.alerts.visual}</span>
+                      </div>
+                      <div className={styles.feature_item}>
+                        <span className={styles.lbl}>Conformité</span>
+                        <span className={styles.val}>{device.management.pci}<br/>{device.management.app}</span>
+                      </div>
+                    </div>
+                  </div>
+                </>
+              );
+            })()}
+          </div>
+        </div>
+      )}
 
       <section className={styles.guarantee_section}>
         <div className={styles.guarantee_container}>

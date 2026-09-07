@@ -4,7 +4,7 @@ import React from "react";
 import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const firstNonEmpty = (...vals) => vals.find(v => typeof v === 'string' && v.trim()) || "";
@@ -23,7 +23,7 @@ const extractPoints = (section) => {
   const cardPoints = (section?.cards || []).map(c => c.title).filter(Boolean);
   if (cardPoints.length) return cardPoints;
   const liMatches = Array.from((section?.content || '').matchAll(/<li[^>]*>(.*?)<\/li>/gs));
-  return liMatches.map(m => m[1].replace(/<[^>]*>?/gm, '').trim()).filter(Boolean);
+  return liMatches.map(m => stripTags(m[1])).filter(Boolean);
 };
 
 const OpenFinanceAltareqClient = ({ pageData = null }) => {
@@ -31,14 +31,14 @@ const OpenFinanceAltareqClient = ({ pageData = null }) => {
   const featureSection = pageData?.sections?.[0];
   const featureSubheading = isEmptyHtml(featureSection?.content)
     ? ""
-    : featureSection.content.replace(/<[^>]*>?/gm, '').trim();
+    : stripTags(featureSection.content);
 
   // --- 1. Comment ça marche (4 steps) ---
   const stepsSection = pageData?.sections?.[1];
   const steps = (stepsSection?.cards || []).map((c, i) => ({
     num: `${i + 1}`,
     title: c.title,
-    desc: ((!isEmptyHtml(c.content) ? c.content : c.subtitle) || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags((!isEmptyHtml(c.content) ? c.content : c.subtitle) || ""),
     icon: c.icon,
   }));
 

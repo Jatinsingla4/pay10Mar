@@ -4,22 +4,8 @@ import React from "react";
 import { Icon } from '@iconify/react';
 import styles from "./ecosystem.module.scss";
 import PartnerForm from "./PartnerForm";
-import { isEmptyHtml, sanitizeHtml } from "../lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "../lib/sanitizeHtml";
 import { bannerBgStyle } from "../lib/bannerBgStyle";
-
-// CMS rich-text saves plain-text bullets/descriptions with HTML entities
-// (e.g. "Scan &amp; Pay"). Tags get stripped via regex below, but entities
-// only decode automatically inside dangerouslySetInnerHTML — everywhere
-// else they must be decoded manually or they render literally.
-const decodeEntities = (str) =>
-  str
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&middot;/g, '·')
-    .replace(/&amp;/g, '&');
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name
 // depending on how the editor filled it in — mirrors the same detection
@@ -49,9 +35,9 @@ const ChannelPartnersClient = ({ pageData = null }) => {
     const card = getCardDetails(c, {});
     return {
       title: card.title,
-      desc: decodeEntities((card.description || "").replace(/<[^>]*>?/gm, '').trim()),
+      desc: stripTags(card.description || ""),
       icon: c.icon,
-      bullets: card.tags ? card.tags.split(',').map(t => decodeEntities(t.trim().replace(/<[^>]*>?/gm, ''))).filter(Boolean) : []
+      bullets: card.tags ? card.tags.split(',').map(t => stripTags(t.trim())).filter(Boolean) : []
     };
   });
 
@@ -59,7 +45,7 @@ const ChannelPartnersClient = ({ pageData = null }) => {
   const integrations = (pageData?.sections?.[1]?.cards || []).map((c, i) => ({
     num: `0${i + 1}`,
     title: c.title,
-    desc: decodeEntities((c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim()),
+    desc: stripTags(c.description || c.content || ""),
     icon: c.icon
   }));
 
@@ -81,7 +67,7 @@ const ChannelPartnersClient = ({ pageData = null }) => {
       num: `0${i + 1}`,
       title: card.title,
       sub: c.subtitle,
-      bullets: card.tags ? card.tags.split(',').map(t => decodeEntities(t.trim().replace(/<[^>]*>?/gm, ''))).filter(Boolean) : [],
+      bullets: card.tags ? card.tags.split(',').map(t => stripTags(t.trim())).filter(Boolean) : [],
       icon: c.icon
     };
   });
@@ -89,9 +75,9 @@ const ChannelPartnersClient = ({ pageData = null }) => {
   // Section 5: Form section description + bullets — same "description --- tag1, tag2"
   // CMS convention as the card fields above, applied directly to the section object.
   const formSection = getCardDetails(pageData?.sections?.[4], {});
-  const formDesc = decodeEntities((formSection.description || "").replace(/<[^>]*>?/gm, '').trim());
+  const formDesc = stripTags(formSection.description || "");
   const formBullets = formSection.tags
-    ? formSection.tags.split(',').map(t => decodeEntities(t.trim().replace(/<[^>]*>?/gm, ''))).filter(Boolean)
+    ? formSection.tags.split(',').map(t => stripTags(t.trim())).filter(Boolean)
     : [];
 
   return (

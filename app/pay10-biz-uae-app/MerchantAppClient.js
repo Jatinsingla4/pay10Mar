@@ -5,7 +5,7 @@ import Style from "./page.module.scss";
 import Image from "next/image";
 import { Icon } from "@iconify/react";
 import BizLeadForm from "./BizLeadForm";
-import { isEmptyHtml, sanitizeHtml } from "../lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "../lib/sanitizeHtml";
 import { bannerBgStyle } from "../lib/bannerBgStyle";
 import { useResponsive } from "../contexts/ResponsiveContext";
 
@@ -26,7 +26,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
     if (isIOS) setMerchantStoreUrl(MERCHANT_APPLE_URL);
   }, []);
   const scaleCards = pageData?.sections?.[0]?.cards?.map((c, i) => {
-    const cleanDesc = (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim();
+    const cleanDesc = stripTags(c.description || c.content || "");
     return {
       num: `0${i + 1}`,
       title: c.title,
@@ -73,7 +73,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
     icon: renderIcon(c.icon, benefitIcons[i % benefitIcons.length]),
     title: c.title,
     sub: c.subtitle,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags(c.description || c.content || ""),
   })) || [
     {
       num: '01',
@@ -108,7 +108,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
   const commandCards = pageData?.sections?.[3]?.cards?.map((c, i) => ({
     num: `0${i + 1}`,
     title: c.title,
-    desc: c.subtitle || (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: c.subtitle || stripTags(c.description || c.content || ""),
   })) || [
     { num: '01', title: 'Transaction data live', desc: 'See every transaction in real time, every amount, every method, every status, cashier. Full history, always accessible.' },
     { num: '02', title: 'Balance visibility', desc: 'See your settled and unsettled balance at a glance. Know your cash flow position before you need it.' },
@@ -119,7 +119,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
   const stepsCards = pageData?.sections?.[4]?.cards?.map((c, i) => ({
     num: `0${i + 1}`,
     title: c.title,
-    desc: c.subtitle || (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: c.subtitle || stripTags(c.description || c.content || ""),
   })) || [
     { num: '01', title: 'Contact our team', desc: 'SME or Enterprise, email the right team and we respond fast.' },
     { num: '02', title: 'Business registration', desc: 'Our team onboards your business onto the Pay10 platform.' },

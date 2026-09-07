@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import Style from "./page.module.scss";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
@@ -70,9 +70,9 @@ const PaymentGatewayClient = ({ pageData = null }) => {
     {
       title: pageData.sections[1].cards[0].title,
       badge: pageData.sections[1].cards[0].subtitle,
-      desc: (pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
+      desc: stripTags((pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[0]) || "",
       icon: pageData.sections[1].cards[0].icon,
-      steps: ((pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[1] || pageData.sections[1].cards[0].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
+      steps: ((pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[1] || pageData.sections[1].cards[0].tags || "").split(',').map(s => stripTags(s.trim())).filter(Boolean),
       footer: firstNonEmptyHtml((pageData.sections[1].cards[0].description || pageData.sections[1].cards[0].content || "").split('---')[2]?.trim(), pageData.sections[1].cards[0].content, ""),
       img: pageData.sections[1].cards[0].images?.[0] || pageData.sections[1].images?.[0] || '/images/prod_imports/pg-pay-qr.png',
       mobileImg: pageData.sections[1].cards[0].images?.[1] || pageData.sections[1].images?.[2] || pageData.sections[1].images?.[0] || '/images/prod_imports/pg-pay-qr.png'
@@ -80,9 +80,9 @@ const PaymentGatewayClient = ({ pageData = null }) => {
     {
       title: pageData.sections[1].cards[1].title,
       badge: pageData.sections[1].cards[1].subtitle,
-      desc: (pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "",
+      desc: stripTags((pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[0]) || "",
       icon: pageData.sections[1].cards[1].icon,
-      steps: ((pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[1] || pageData.sections[1].cards[1].tags || "").split(',').map(s => s.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean),
+      steps: ((pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[1] || pageData.sections[1].cards[1].tags || "").split(',').map(s => stripTags(s.trim())).filter(Boolean),
       footer: firstNonEmptyHtml((pageData.sections[1].cards[1].description || pageData.sections[1].cards[1].content || "").split('---')[2]?.trim(), pageData.sections[1].cards[1].content, ""),
       img: pageData.sections[1].cards[1].images?.[0] || pageData.sections[1].images?.[1] || '/images/prod_imports/pg-pay-desktop.png',
       mobileImg: pageData.sections[1].cards[1].images?.[1] || pageData.sections[1].images?.[3] || pageData.sections[1].images?.[1] || '/images/prod_imports/pg-pay-desktop.png'
@@ -92,7 +92,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
   // Sections 4 & 5: Journey Lists
   const dqrSteps = pageData?.sections?.[3]?.cards?.map(c => ({
     title: c.title,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags(c.description || c.content || ""),
     tag: c.subtitle || null
   })) || [
       { title: 'Button appears at checkout', desc: '"Pay with Pay10" button sits alongside your existing payment options: card, COD, or other APMs.', tag: null },
@@ -103,7 +103,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
 
   const tppSteps = pageData?.sections?.[4]?.cards?.map(c => ({
     title: c.title,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags(c.description || c.content || ""),
     tag: c.subtitle || null
   })) || [
       { title: 'Button appears at checkout', desc: '"Pay by Bank" button sits at the checkout: clear, trusted, no card details needed.', tag: null },
@@ -125,7 +125,7 @@ const PaymentGatewayClient = ({ pageData = null }) => {
     num: `0${i + 1}`,
     icon: c.icon,
     title: c.title,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim()
+    desc: stripTags(c.description || c.content || "")
   })) || [
       { num: '01', icon: benefitIcons[0], title: 'Lowest MDR', desc: 'The lowest transaction fees on the UAE market. Keep more of every sale.' },
       { num: '02', icon: benefitIcons[1], title: 'Same-day settlement', desc: 'T+0. Your working capital is available the day you earn it. Always.' },

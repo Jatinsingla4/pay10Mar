@@ -3,7 +3,7 @@
 import React from "react";
 import { Icon } from "@iconify/react";
 import Style from "./ConsumerHero.module.scss";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 
 const ConsumerHero = ({ 
   title = "", 
@@ -77,7 +77,7 @@ const ConsumerHero = ({
                     )}
                   </div>
                   <h3 className={Style.feature_title}>{item.title}</h3>
-                  <p className={Style.feature_desc}>{item.subtitle || item.content?.replace(/<[^>]*>?/gm, '')}</p>
+                  <p className={Style.feature_desc}>{item.subtitle || stripTags(item.content)}</p>
                 </div>
               ))}
             </div>

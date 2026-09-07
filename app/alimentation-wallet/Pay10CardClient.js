@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
@@ -18,7 +18,7 @@ const extractPoints = (section) => {
   const cardPoints = (section?.cards || []).map(c => c.title).filter(Boolean);
   if (cardPoints.length) return cardPoints;
   const liMatches = Array.from((section?.content || '').matchAll(/<li[^>]*>(.*?)<\/li>/gs));
-  return liMatches.map(m => m[1].replace(/<[^>]*>?/gm, '').trim()).filter(Boolean);
+  return liMatches.map(m => stripTags(m[1])).filter(Boolean);
 };
 
 const Pay10CardClient = ({ pageData = null }) => {
@@ -34,7 +34,7 @@ const Pay10CardClient = ({ pageData = null }) => {
   const bankSection = pageData?.sections?.[0];
   const bankSubheading = isEmptyHtml(bankSection?.content)
     ? ""
-    : bankSection.content.replace(/<[^>]*>?/gm, '').trim();
+    : stripTags(bankSection.content);
 
   // --- 1. Avantages ---
   const advantagesSection = pageData?.sections?.[1];

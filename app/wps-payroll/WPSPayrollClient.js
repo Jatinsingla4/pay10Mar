@@ -6,7 +6,7 @@ import Image from 'next/image';
 import styles from "./wps.module.scss";
 import { Icon } from "@iconify/react";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
@@ -36,16 +36,16 @@ const WPSPayrollClient = ({ pageData = null }) => {
   // ConsumerFeatureSection 1
   const rawSubHeading1 = pageData?.sections?.[0]?.description || pageData?.sections?.[0]?.content || "";
   const parts1 = rawSubHeading1.split('---');
-  const subHeadingText1 = parts1[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "The Wage Protection System (WPS) is a UAE government mandate managed by the Central Bank of the UAE (CBUAE). It requires every employer in the UAE: across all industries, for all workers, blue collar and white collar: to process salaries digitally through a CBUAE-licensed provider. The system verifies that every employee is paid what their labour contract says, and that they are paid on time. Non-compliance carries significant penalties. Pay10 is a fully licensed WPS provider: meaning every salary processed through Pay10 satisfies this mandate completely.";
+  const subHeadingText1 = stripTags(parts1[0]) || "The Wage Protection System (WPS) is a UAE government mandate managed by the Central Bank of the UAE (CBUAE). It requires every employer in the UAE: across all industries, for all workers, blue collar and white collar: to process salaries digitally through a CBUAE-licensed provider. The system verifies that every employee is paid what their labour contract says, and that they are paid on time. Non-compliance carries significant penalties. Pay10 is a fully licensed WPS provider: meaning every salary processed through Pay10 satisfies this mandate completely.";
   const tagsText1 = parts1[1] || pageData?.sections?.[0]?.cards?.[0]?.tags;
-  const points1 = tagsText1 ? tagsText1.split(',').map(t => t.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean) : [];
+  const points1 = tagsText1 ? tagsText1.split(',').map(t => stripTags(t.trim())).filter(Boolean) : [];
 
   // ConsumerFeatureSection 2
   const rawSubHeading2 = pageData?.sections?.[6]?.description || pageData?.sections?.[6]?.content || "";
   const parts2 = rawSubHeading2.split('---');
-  const subHeadingText2 = parts2[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "Our end-to-end WPS solution is built to make switching effortless.";
+  const subHeadingText2 = stripTags(parts2[0]) || "Our end-to-end WPS solution is built to make switching effortless.";
   const tagsText2 = parts2[1] || pageData?.sections?.[6]?.cards?.[0]?.tags;
-  const points2 = tagsText2 ? tagsText2.split(',').map(t => t.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean) : [
+  const points2 = tagsText2 ? tagsText2.split(',').map(t => stripTags(t.trim())).filter(Boolean) : [
     "Smooth migration for existing payroll cards: no disruption to employees",
     "Seamless salary disbursement from day one",
     "Full regulatory compliance with the new CBUAE WPS framework",
@@ -87,7 +87,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
   const benefits = pageData?.sections?.[2]?.cards?.map((c, i) => ({
     num: `0${i + 1}`,
     title: c.title,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags(c.description || c.content || ""),
     icon: benefitIcons[i % benefitIcons.length]
   })) || [
     { num: '01', icon: benefitIcons[0], title: 'Fully CBUAE licensed', desc: 'CBUAE-licensed WPS provider enabling secure, compliant, and fully digital salary processing: aligned with the new WPS framework.' },
@@ -101,7 +101,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
   // stay a fixed cycling set matched by position to whatever labels come in).
   const pillIcons = ['mdi:shield-check-outline', 'mdi:credit-card-outline', 'mdi:cellphone', 'mdi:headset'];
   const rawPillText = pageData?.sections?.[2]?.content || pageData?.sections?.[2]?.description || "";
-  const pillLabels = rawPillText.replace(/<[^>]*>?/gm, '').split(',').map(t => t.trim()).filter(Boolean);
+  const pillLabels = stripTags(rawPillText).split(',').map(t => t.trim()).filter(Boolean);
 
   // Banked vs Unbanked (Section 3)
   const bankedCard = getCardDetails(pageData?.sections?.[3]?.cards?.[0], {
@@ -119,7 +119,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
   const steps = pageData?.sections?.[4]?.cards?.map((c, i) => ({
     num: `0${i + 1}`,
     title: c.title,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags(c.description || c.content || ""),
     icon: c.icon
   })) || [
     { num: '01', title: 'Registration', desc: 'Employers submit onboarding documents and employee data to Pay10.' },
@@ -141,7 +141,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
   };
   const comparisonRows = (pageData?.sections?.[5]?.cards || []).map((c) => {
     const raw = c.description || c.content || "";
-    const parts = raw.replace(/<[^>]*>?/gm, '').split('---');
+    const parts = stripTags(raw).split('---');
     return {
       feature: c.title,
       trad: parseComparisonStatus((parts[0] || "").trim()),
@@ -191,7 +191,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
               <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(employersCard.description || employersCard.content) }} />
               <ul className={styles.feature_list}>
                 {(employersCard.tags || "").split(',').map((t, idx) => (
-                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
+                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {stripTags(t.trim())}</li>
                 ))}
               </ul>
             </div>
@@ -202,7 +202,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
               <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(employeesCard.description || employeesCard.content) }} />
               <ul className={styles.feature_list}>
                 {(employeesCard.tags || "").split(',').map((t, idx) => (
-                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
+                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {stripTags(t.trim())}</li>
                 ))}
               </ul>
             </div>
@@ -248,7 +248,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
               <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(bankedCard.description || bankedCard.content) }} />
               <ul className={styles.feature_list}>
                 {(bankedCard.tags || "").split(',').map((t, idx) => (
-                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
+                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {stripTags(t.trim())}</li>
                 ))}
               </ul>
             </div>
@@ -259,7 +259,7 @@ const WPSPayrollClient = ({ pageData = null }) => {
               <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(unbankedCard.description || unbankedCard.content) }} />
               <ul className={styles.feature_list}>
                 {(unbankedCard.tags || "").split(',').map((t, idx) => (
-                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {t.trim().replace(/<[^>]*>?/gm, '')}</li>
+                  <li key={idx}><Icon icon="mdi:check" className={styles.list_icon} /> {stripTags(t.trim())}</li>
                 ))}
               </ul>
             </div>

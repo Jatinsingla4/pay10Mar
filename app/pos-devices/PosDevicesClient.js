@@ -5,7 +5,7 @@ import Link from "next/link";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
@@ -39,11 +39,11 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
   // Consumer Feature Points
   const rawSubHeading = pageData?.sections?.[0]?.description || pageData?.sections?.[0]?.content || "";
   const parts = rawSubHeading.split('---');
-  const subHeadingText = parts[0]?.replace(/<[^>]*>?/gm, '')?.trim() || "Chaque appareil Pay10 génère un code QR Dynamique unique par transaction — créé instantanément, lié au montant exact, confirmé en temps réel. Pas un autocollant statique. Pas un code partagé. Un QR sécurisé et en direct, généré à chaque paiement.";
-  
+  const subHeadingText = stripTags(parts[0]) || "Chaque appareil Pay10 génère un code QR Dynamique unique par transaction — créé instantanément, lié au montant exact, confirmé en temps réel. Pas un autocollant statique. Pas un code partagé. Un QR sécurisé et en direct, généré à chaque paiement.";
+
   const tagsText = parts[1] || pageData?.sections?.[0]?.cards?.[0]?.tags;
   const consumerFeaturePoints = tagsText
-    ? tagsText.split(',').map(t => t.trim().replace(/<[^>]*>?/gm, '')).filter(Boolean)
+    ? tagsText.split(',').map(t => stripTags(t.trim())).filter(Boolean)
     : [
         "QR Dynamique généré à chaque transaction - unique, lié au montant, instantané",
         "Le client scanne avec Pay10 Maroc, paiement confirmé en moins de 2 secondes",
@@ -128,7 +128,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
   // Guarantee Section
   const guarantees = pageData?.sections?.[2]?.cards?.map((c) => ({
     title: c.title,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags(c.description || c.content || ""),
     icon: c.icon
   })) || [
     { title: '1 QR Dynamique sur chaque appareil', desc: "La première gamme d'appareils QR Dynamique au Maroc — QR unique à chaque transaction." },
@@ -158,7 +158,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
   const steps = pageData?.sections?.[4]?.cards?.map((c, i) => ({
     num: `${i + 1}`,
     title: c.title,
-    desc: (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags(c.description || c.content || ""),
     icon: c.icon
   })) || [
     { num: '1', title: 'Allumage', desc: 'Chargez complètement. Maintenez le bouton d\'alimentation 3 secondes. L\'appareil démarre et affiche le QR d\'enregistrement sur l\'écran client.' },
@@ -431,7 +431,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
             <p className={styles.getting_started_desc} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[4].description || pageData.sections[4].content) }} />
           )}
         </div>
-        
+
         <div className={styles.getting_started_grid}>
           {steps.map((item) => (
             <div key={item.num} className={styles.step_card}>

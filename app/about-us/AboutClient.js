@@ -9,7 +9,7 @@ import AboutBanner from "../components/ui/about/AboutBanner";
 import AboutSecondSection from "../components/ui/about/AboutSecondSection";
 import WhereWeScoreSection from "../components/ui/about/WhereWeScoreSection";
 import AboutTeamMember from "../components/ui/about/AboutTeamMember";
-import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
+import { sanitizeHtml, isEmptyHtml, stripTags } from "../lib/sanitizeHtml";
 
 const AboutClient = ({ apiData }) => {
   const sections = apiData?.sections || [];
@@ -28,7 +28,7 @@ const AboutClient = ({ apiData }) => {
       Name: card.title,
       "Designation ": card.subtitle || "",
       // AboutTeamMember renders this as plain text (not dangerouslySetInnerHTML), so strip tags rather than sanitize them.
-      Description: card.content ? card.content.replace(/<[^>]*>?/gm, '').trim() : "",
+      Description: card.content ? stripTags(card.content) : "",
       Image: card.icon, // null if no image
       _isLocal: false
     }))
@@ -41,7 +41,7 @@ const AboutClient = ({ apiData }) => {
     our_team_list: (teamSectionApi?.cards || []).map(card => ({
       Name: card.title,
       "Designation ": card.subtitle || "",
-      Description: card.content ? card.content.replace(/<[^>]*>?/gm, '').trim() : "",
+      Description: card.content ? stripTags(card.content) : "",
       Image: card.icon,
       _isLocal: false
     }))

@@ -32,3 +32,28 @@ export function isEmptyHtml(html) {
   if (!html) return true;
   return html.replace(/<[^>]*>/g, '').replace(/&nbsp;/gi, '').trim() === '';
 }
+
+const NAMED_ENTITIES = { amp: '&', lt: '<', gt: '>', quot: '"', apos: "'", nbsp: ' ' };
+
+/**
+ * Strips HTML tags AND decodes entities (&amp; -> &, etc), for CMS content
+ * headed to a plain-text prop rather than dangerouslySetInnerHTML. A bare
+ * tag-strip regex leaves entities encoded — they're only resolved when HTML
+ * is actually parsed — so "Électricité &amp; Eau" renders literally with the
+ * "&amp;" still showing. Isomorphic: no DOM dependency, safe during SSR.
+ */
+export function stripTags(html) {
+  if (!html) return '';
+  return html
+    .replace(/<[^>]*>/g, '')
+    .replace(/&(#x?[0-9a-fA-F]+|[a-zA-Z]+);/g, (match, entity) => {
+      if (entity[0] === '#') {
+        const code = entity[1] === 'x' || entity[1] === 'X'
+          ? parseInt(entity.slice(2), 16)
+          : parseInt(entity.slice(1), 10);
+        return Number.isNaN(code) ? match : String.fromCodePoint(code);
+      }
+      return NAMED_ENTITIES[entity.toLowerCase()] ?? match;
+    })
+    .trim();
+}

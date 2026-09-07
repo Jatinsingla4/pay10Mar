@@ -4,6 +4,7 @@ import ConsumerHero from "@/app/components/ui/product/ConsumerHero";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import ConsumerSecuritySection from "./ConsumerSecuritySection";
 import Style from "./page.module.scss";
+import { stripTags } from "@/app/lib/sanitizeHtml";
 
 // These sections must render right after the hero, ahead of everything else —
 // CMS only allows appending new sections at the end, so we reorder by title here.
@@ -56,7 +57,7 @@ const CustomerAppClient = ({ pageData = null }) => {
             const liMatches = section.content
               ? Array.from(section.content.matchAll(/<li[^>]*>(.*?)<\/li>/g))
               : [];
-            const pointsFromContent = liMatches.map((m) => m[1].replace(/<[^>]*>?/gm, '').trim());
+            const pointsFromContent = liMatches.map((m) => stripTags(m[1]));
             const points = pointsFromContent.length > 0
               ? pointsFromContent
               : (section.cards?.map(card => card.title) || []);

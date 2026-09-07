@@ -3,7 +3,7 @@
 import React from 'react';
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -14,7 +14,7 @@ const extractPoints = (section) => {
   const cardPoints = (section?.cards || []).map(c => c.title).filter(Boolean);
   if (cardPoints.length) return cardPoints;
   const liMatches = Array.from((section?.content || '').matchAll(/<li[^>]*>(.*?)<\/li>/gs));
-  return liMatches.map(m => m[1].replace(/<[^>]*>?/gm, '').trim()).filter(Boolean);
+  return liMatches.map(m => stripTags(m[1])).filter(Boolean);
 };
 
 const BillPaymentClient = ({ pageData = null }) => {
@@ -22,7 +22,7 @@ const BillPaymentClient = ({ pageData = null }) => {
   const featureSection = pageData?.sections?.[0];
   const featureSubheading = isEmptyHtml(featureSection?.content)
     ? ""
-    : featureSection.content.replace(/<[^>]*>?/gm, '').trim();
+    : stripTags(featureSection.content);
 
   // --- 1. Avantages ---
   const advantagesSection = pageData?.sections?.[1];

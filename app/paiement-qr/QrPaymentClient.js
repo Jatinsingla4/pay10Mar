@@ -8,7 +8,7 @@ import { Icon } from "@iconify/react";
 // CSS Modules namespace the class names so there's no collision between pages.
 import styles from "../pos-devices/pos.module.scss";
 import localStyles from "./qr-payment.module.scss";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
@@ -47,7 +47,7 @@ const QrPaymentClient = ({ pageData = null }) => {
   const featureSection = pageData?.sections?.[0];
   const featureSubheading = isEmptyHtml(featureSection?.content)
     ? ""
-    : featureSection.content.replace(/<[^>]*>?/gm, '').trim();
+    : stripTags(featureSection.content);
   const featurePoints = (featureSection?.cards || []).map(c => c.title).filter(Boolean);
 
   const advantagesSection = pageData?.sections?.[1];
@@ -61,7 +61,7 @@ const QrPaymentClient = ({ pageData = null }) => {
     num: `${i + 1}`,
     title: c.title,
     // CMS entry has the step text in `subtitle` rather than `content`/`description`.
-    desc: ((!isEmptyHtml(c.content) ? c.content : c.subtitle) || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags((!isEmptyHtml(c.content) ? c.content : c.subtitle) || ""),
     icon: c.icon,
   }));
 

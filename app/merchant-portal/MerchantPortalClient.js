@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Style from "./page.module.scss";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
@@ -39,7 +39,7 @@ const MerchantPortalClient = ({ pageData = null }) => {
     num: `0${i + 1}`,
     icon: c.icon,
     title: c.title,
-    desc: c.subtitle || (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: c.subtitle || stripTags(c.description || c.content || ""),
   })) || [
     { num: '01', title: 'REST API integration', desc: 'Clean, documented REST API endpoints connecting your Pay10 portal to your ERP, accounting, or finance platform in real time.' },
     { num: '02', title: 'Automated reconciliation', desc: 'Transaction data, settlement records, and VAT figures flow automatically eliminating manual data entry and reconciliation errors.' },
@@ -52,7 +52,7 @@ const MerchantPortalClient = ({ pageData = null }) => {
     num: `${i + 1}`,
     icon: c.icon,
     title: c.title,
-    desc: c.subtitle || (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: c.subtitle || stripTags(c.description || c.content || ""),
   })) || [
     { num: '1', title: 'Custom ERP integration', desc: 'SAP, Oracle, Microsoft Dynamics, custom-built systems. Pay10\'s team builds the integration around your stack, not the other way around.' },
     { num: '2', title: 'Multi-location hierarchy', desc: 'Set up merchant hierarchies for head office, regional manager, and branch with role-based access and consolidated reporting at every level.' },
@@ -64,7 +64,7 @@ const MerchantPortalClient = ({ pageData = null }) => {
 
   // Section 4: Portal Features
   const portalCards = pageData?.sections?.[3]?.cards?.map((c, i) => {
-    const cleanDesc = (c.description || c.content || "").replace(/<[^>]*>?/gm, '');
+    const cleanDesc = stripTags(c.description || c.content || "");
     const parts = cleanDesc.split('---');
     return {
       num: `${i + 1}`,
@@ -85,7 +85,7 @@ const MerchantPortalClient = ({ pageData = null }) => {
   const reasonsCards = pageData?.sections?.[4]?.cards?.map((c, i) => ({
     num: `${i + 1}`,
     title: c.title,
-    desc: c.subtitle || (c.description || c.content || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: c.subtitle || stripTags(c.description || c.content || ""),
     icon: c.icon
   })) || [
     { num: '1', title: 'Lowest MDR', desc: 'The lowest transaction fees on the UAE market. Keep more of every sale.' },

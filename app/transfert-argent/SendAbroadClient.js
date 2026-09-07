@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
-import { isEmptyHtml, sanitizeHtml } from "@/app/lib/sanitizeHtml";
+import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
@@ -36,7 +36,7 @@ const SendAbroadClient = ({ pageData = null }) => {
   const steps = (stepsSection?.cards || []).map((c, i) => ({
     num: `${i + 1}`,
     title: c.title,
-    desc: ((!isEmptyHtml(c.content) ? c.content : c.subtitle) || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: stripTags((!isEmptyHtml(c.content) ? c.content : c.subtitle) || ""),
     icon: c.icon,
   }));
 

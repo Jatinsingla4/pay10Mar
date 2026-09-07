@@ -3,8 +3,8 @@ import EventsClient from "./EventsClient";
 import { API_BASE, API_HEADERS, fetchPageData } from "../lib/fetchPageData";
 
 export const metadata = {
-  title: "Events | Pay10",
-  description: "Discover the events and conferences where Pay10 connects, innovates, and leads the future of digital payments.",
+  title: "Events & Conferences | Pay10",
+  description: "Découvrez les événements et conférences où Pay10 se connecte, innove et façonne l'avenir des paiements numériques.",
 };
 
 async function getEvents() {

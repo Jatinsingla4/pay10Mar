@@ -2,9 +2,9 @@ import NewsRoomClient from "./NewsRoomClient";
 import { API_BASE, API_HEADERS, fetchPageData } from "../lib/fetchPageData";
 
 export const metadata = {
-  title: "News Room | Pay10",
+  title: "Actualités | Pay10",
   description:
-    "Explore Pay10 press releases, strategic announcements, and media updates from the Pay10 ecosystem.",
+    "Restez informé des dernières actualités, des annonces stratégiques et des informations médiatiques provenant directement de l'écosystème Pay10.",
 };
 
 async function getNews() {

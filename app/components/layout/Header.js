@@ -599,8 +599,8 @@ const Header = () => {
     const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream
     const isAndroid = /Android/.test(ua)
 
-    if (isIOS) setAppStoreUrl('https://apps.apple.com/ae/app/pay10-uae/id6549699203')
-    else if (isAndroid) setAppStoreUrl('https://play.google.com/store/apps/details?id=ae.pay10.app')
+    if (isIOS) setAppStoreUrl('https://apps.apple.com/app/6779525972')
+    else if (isAndroid) setAppStoreUrl('https://play.google.com/store/apps/details?id=app.payten.wallet.ma')
   }, [])
 
   // Render app store buttons (desktop only)

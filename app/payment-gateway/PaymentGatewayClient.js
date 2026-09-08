@@ -20,8 +20,8 @@ const renderIcon = (cmsIcon, className, width) => {
     : <Icon icon={cmsIcon} width={width} className={className} />;
 };
 
-const MERCHANT_APPLE_URL = "https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134";
-const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay10.merchant.app";
+const MERCHANT_APPLE_URL = "https://apps.apple.com/app/6782026274";
+const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=app.payten.bizz.ma";
 
 const PaymentGatewayClient = ({ pageData = null }) => {
   const { isMobile } = useResponsive();

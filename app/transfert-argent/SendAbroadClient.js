@@ -7,8 +7,8 @@ import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureS
 import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
-const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
-const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en";
+const CONSUMER_APPLE_URL = "https://apps.apple.com/app/6779525972";
+const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=app.payten.wallet.ma";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className, width) => {

@@ -11,10 +11,10 @@ import localStyles from "./qr-payment.module.scss";
 import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
-const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
-const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en";
-const MERCHANT_APPLE_URL = "https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134";
-const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay10.merchant.app";
+const CONSUMER_APPLE_URL = "https://apps.apple.com/app/6779525972";
+const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=app.payten.wallet.ma";
+const MERCHANT_APPLE_URL = "https://apps.apple.com/app/6782026274";
+const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=app.payten.bizz.ma";
 
 const renderIcon = (cmsIcon, className, width) => {
   if (typeof cmsIcon !== 'string' || !cmsIcon.trim()) return null;

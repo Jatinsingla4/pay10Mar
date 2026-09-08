@@ -11,8 +11,8 @@ import { useResponsive } from "../contexts/ResponsiveContext";
 
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
-const MERCHANT_APPLE_URL = "https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134";
-const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.pay10.merchant.app";
+const MERCHANT_APPLE_URL = "https://apps.apple.com/app/6782026274";
+const MERCHANT_PLAY_URL = "https://play.google.com/store/apps/details?id=app.payten.bizz.ma";
 
 const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLogos = [] }) => {
   const { isMobile } = useResponsive();

@@ -7,15 +7,15 @@ const gridBoxes = [
     heading: 'Merchant App',
     img1: '/images/foo-app1.svg',
     img2: '/images/foo-app2.svg',
-    appleHref: 'https://apps.apple.com/ae/app/pay10-biz-uae/id6741104134',
-    playHref: 'https://play.google.com/store/apps/details?id=ae.pay10.merchant.app',
+    appleHref: 'https://apps.apple.com/app/6782026274',
+    playHref: 'https://play.google.com/store/apps/details?id=app.payten.bizz.ma',
   },
   {
     heading: 'Consumer App',
     img1: '/images/foo-app1.svg',
     img2: '/images/foo-app2.svg',
-    appleHref: 'https://apps.apple.com/ae/app/pay10-uae/id6739810874',
-    playHref: 'https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en',
+    appleHref: 'https://apps.apple.com/app/6779525972',
+    playHref: 'https://play.google.com/store/apps/details?id=app.payten.wallet.ma',
   },
 ];
 
@@ -75,8 +75,8 @@ export default function TextCenterBlock({
 /** One gradient pill: title + App Store / Google Play (e.g. consumer app CTA). */
 export function TextCenterAppCard({
   title = 'Consumer App',
-  appleHref = 'https://apps.apple.com/ae/app/pay10-uae/id6739810874',
-  playHref = 'https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en',
+  appleHref = 'https://apps.apple.com/app/6779525972',
+  playHref = 'https://play.google.com/store/apps/details?id=app.payten.wallet.ma',
   appStoreImgSrc = '/images/foo-app1.svg',
   googlePlayImgSrc = '/images/foo-app2.svg',
 }) {

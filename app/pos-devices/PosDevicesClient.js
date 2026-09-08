@@ -53,76 +53,25 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         "La première gamme d'appareils au Maroc à généraliser le QR Dynamique pour les paiements en magasin"
       ];
 
-  // Compare Section
+  // Compare Section — Description = short "best for" blurb, Content = full
+  // specs table authored as an actual HTML table in the CMS rich-text editor
+  // and rendered as-is (see .specs_table in pos.module.scss).
   const defaultDevices = [
-    {
-      name: 'P5',
-      tagline: 'Un design élégant, une technologie de paiement avancée.',
-      bestFor: 'Comptoirs de vente, restaurants, salons et boutiques lifestyle où le design compte autant que la fonction. Le terminal de comptoir phare de Pay10 — construit sur RTOS pour une stabilité à toute épreuve.',
-      design: 'Proprietary Pay10 premium minimalist, gold accent',
-      display: { customer: '3.98" full-colour + 1" merchant', merchant: '1" monochrome LCD' },
-      payment: { dqr: '✓ Unique QR per transaction', sqr: 'Supported', tap: 'DQR+Card variant only', dip: 'DQR+Card variant only' },
-      variants: 'P5 DQR\nP5 DQR+Card',
-      hardware: { os: 'RTOS — built for payment stability', keypad: 'Tilted keypad for fast, accessible input', battery: '2600 mAh Li-ion extended uptime', charging: 'USB Type-C' },
-      connectivity: { sim: '✓ Micro SIM — pre-installed', wifi: 'NA', gps: 'NA' },
-      alerts: { audio: '✓ Loudspeaker sound box', visual: '✓ On-screen confirmation' },
-      management: { ota: '✓ Remote software push', config: 'Via Pay10 Biz portal', pci: 'Level 1 certified', app: 'Register and manage via app' }
-    },
-    {
-      name: 'POS10',
-      tagline: 'Des paiements QR intelligents, simples et sécurisés pour chaque comptoir.',
-      bestFor: 'Petites entreprises, comptoirs de restauration rapide et commerçants ayant besoin d\'un terminal de comptoir fiable et centré sur le QR — compact, abordable et conçu pour fonctionner toute la journée.',
-      design: 'Compact countertop — small footprint, no gold accent',
-      display: { customer: '3.98" full-colour customer', merchant: '1" monochrome LCD' },
-      payment: { dqr: '✓ Unique QR per transaction', sqr: 'Supported', tap: 'N/A', dip: 'NA' },
-      variants: 'POS10 DQR',
-      hardware: { os: 'RTOS — built for payment stability', keypad: 'Standard tactile keypad', battery: '2600 mAh — all-day performance', charging: 'USB Type-C' },
-      connectivity: { sim: '✓ Micro SIM — pre-installed', wifi: 'NA', gps: 'GPS / GNSS' },
-      alerts: { audio: '✓ Loudspeaker sound box', visual: '✓ RGB LED strip + on-screen' },
-      management: { ota: '✓ Remote software push', config: 'Via Pay10 Biz portal', pci: 'Level 1 certified', app: 'Register and manage via app' }
-    },
-    {
-      name: 'P10',
-      tagline: 'Mobilité robuste pour les paiements en déplacement. (Bientôt disponible)',
-      bestFor: 'Flottes de livraison, opérateurs logistiques, transactions en déplacement et agents commerciaux terrain ayant besoin d\'un appareil de paiement Android robuste, fonctionnant partout où l\'activité se déroule.',
-      design: 'Rugged handheld — durable mobile form factor',
-      display: { customer: 'Full colour high-visibility screen', merchant: 'N/A — single screen device' },
-      payment: { dqr: '✓ Unique QR per transaction', sqr: 'NA', tap: 'DQR+Card variant only', dip: 'DQR+Card variant only' },
-      variants: 'P10 DQR\nP10 DQR+Card',
-      hardware: { os: 'Android — familiar, flexible, app-ready', keypad: 'Integrated — fast delivery payment entry', battery: 'High-capacity Li-ion — extended mobile use', charging: 'USB Type-C' },
-      connectivity: { sim: '✓ Micro SIM — pre-installed', wifi: '✓ Built-in Wi-Fi', gps: 'NA' },
-      alerts: { audio: '✓ Built-in loudspeaker', visual: '✓ On-screen confirmation' },
-      management: { ota: '✓ Remote software push', config: 'Via Pay10 Biz portal', pci: 'Level 1 certified', app: 'Register and manage via app' }
-    },
+    { name: 'P5', tagline: 'Un design élégant, une technologie de paiement avancée.', bestFor: 'Comptoirs de vente, restaurants, salons et boutiques lifestyle où le design compte autant que la fonction.', specsHtml: '' },
+    { name: 'POS10', tagline: 'Des paiements QR intelligents, simples et sécurisés pour chaque comptoir.', bestFor: 'Petites entreprises, comptoirs de restauration rapide et commerçants ayant besoin d\'un terminal de comptoir fiable et centré sur le QR.', specsHtml: '' },
+    { name: 'P10', tagline: 'Mobilité robuste pour les paiements en déplacement. (Bientôt disponible)', bestFor: 'Flottes de livraison, opérateurs logistiques et agents commerciaux terrain ayant besoin d\'un appareil de paiement Android robuste.', specsHtml: '' },
   ];
 
-  const EMPTY_SPECS = {
-    design: '', bestFor: '', variants: '',
-    display: { customer: '', merchant: '' },
-    payment: { dqr: '', sqr: '', tap: '', dip: '' },
-    hardware: { os: '', keypad: '', battery: '', charging: '' },
-    connectivity: { sim: '', wifi: '', gps: '' },
-    alerts: { audio: '', visual: '' },
-    management: { ota: '', config: '', pci: '', app: '' },
-  };
-
   const devices = pageData?.sections?.[1]?.cards?.length > 0
-    ? pageData.sections[1].cards.map((c) => {
-        // Fallback to default structure for deep nested fields only when this
-        // CMS card is actually one of the 3 known devices (matched by name) -
-        // a new/empty CMS card must not silently inherit another device's
-        // specs just because of its position in the list.
-        const def = defaultDevices.find((d) => d.name === c.title) || EMPTY_SPECS;
-        return {
-          ...def,
-          name: c.title || '',
-          tagline: c.subtitle || '',
-          // Device cards have no dedicated "images" field in the CMS — the
-          // "icon" slot doubles as the product-photo upload here.
-          image: c.icon || c.images?.[0],
-          bestFor: c.description || c.content || def.bestFor
-        };
-      })
+    ? pageData.sections[1].cards.map((c) => ({
+        name: c.title || '',
+        tagline: c.subtitle || '',
+        // Device cards have no dedicated "images" field in the CMS — the
+        // "icon" slot doubles as the product-photo upload here.
+        image: c.icon || c.images?.[0],
+        bestFor: c.description || '',
+        specsHtml: c.content || '',
+      }))
     : defaultDevices;
 
   // Guarantee Section
@@ -275,84 +224,21 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
                   </div>
 
                   <div className={styles.device_card_details}>
-                    <div className={styles.section_block}>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Idéal pour</span>
-                        <span className={styles.val} dangerouslySetInnerHTML={{ __html: sanitizeHtml(device.bestFor) }} />
+                    {!isEmptyHtml(device.bestFor) && (
+                      <div className={styles.section_block}>
+                        <div className={styles.feature_item}>
+                          <span className={styles.lbl}>Idéal pour</span>
+                          <span className={styles.val} dangerouslySetInnerHTML={{ __html: sanitizeHtml(device.bestFor) }} />
+                        </div>
                       </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Conception</span>
-                        <span className={styles.val}>{device.design}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Variantes</span>
-                        <span className={styles.val} style={{whiteSpace: 'pre-line'}}>{device.variants}</span>
-                      </div>
-                    </div>
+                    )}
 
-                    <div className={styles.section_title}>AFFICHAGE</div>
-                    <div className={styles.section_block}>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Client</span>
-                        <span className={styles.val}>{device.display.customer}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Commerçant</span>
-                        <span className={styles.val}>{device.display.merchant}</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.section_title}>MOYENS DE PAIEMENT</div>
-                    <div className={styles.section_block}>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>QR Dynamique</span>
-                        <span className={styles.val}>{device.payment.dqr}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>QR Statique</span>
-                        <span className={styles.val}>{device.payment.sqr}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>TAP (Sans contact)</span>
-                        <span className={styles.val}>{device.payment.tap}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>DIP (Puce)</span>
-                        <span className={styles.val}>{device.payment.dip}</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.section_title}>MATÉRIEL & CONNECTIVITÉ</div>
-                    <div className={styles.section_block}>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>OS</span>
-                        <span className={styles.val}>{device.hardware.os}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Clavier</span>
-                        <span className={styles.val}>{device.hardware.keypad}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Batterie</span>
-                        <span className={styles.val}>{device.hardware.battery}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Connectivité</span>
-                        <span className={styles.val}>{device.connectivity.sim}<br/>{device.connectivity.wifi !== 'NA' ? device.connectivity.wifi : ''}</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.section_title}>ALERTES & GESTION</div>
-                    <div className={styles.section_block}>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Audio/Visuel</span>
-                        <span className={styles.val}>{device.alerts.audio}<br/>{device.alerts.visual}</span>
-                      </div>
-                      <div className={styles.feature_item}>
-                        <span className={styles.lbl}>Conformité</span>
-                        <span className={styles.val}>{device.management.pci}<br/>{device.management.app}</span>
-                      </div>
-                    </div>
+                    {!isEmptyHtml(device.specsHtml) && (
+                      <>
+                        <div className={styles.section_title}>CARACTÉRISTIQUES TECHNIQUES</div>
+                        <div className={styles.specs_table} dangerouslySetInnerHTML={{ __html: sanitizeHtml(device.specsHtml) }} />
+                      </>
+                    )}
                   </div>
                 </>
               );

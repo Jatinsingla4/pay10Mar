@@ -400,6 +400,61 @@
   }
 }
 
+.specs_table {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--events-box-bg);
+    font-size: 14px;
+    color: var(--gray);
+    font-family: 'regular', sans-serif;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  td:first-child, th:first-child {
+    font-family: 'semibold', sans-serif;
+    color: var(--black);
+    width: 45%;
+    padding-right: 12px;
+  }
+
+  // Fallback layout when specs are authored as a bullet list or as one plain
+  // paragraph per line ("Label: value") instead of a real <table> - some CMS
+  // rich-text editors flatten pasted <table> markup, or emit a <p> per line
+  // rather than a real <ul>. Both need an explicit color: the CMS's rich-text
+  // global style otherwise renders body text white (meant for dark banners).
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li, p {
+    padding: 10px 0;
+    margin: 0;
+    border-bottom: 1px solid var(--events-box-bg);
+    font-size: 14px;
+    color: var(--gray) !important;
+    font-family: 'regular', sans-serif;
+    line-height: 1.5;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    strong, b {
+      font-family: 'semibold', sans-serif;
+      color: var(--black);
+      margin-right: 6px;
+    }
+  }
+}
+
 .guarantee_section {
   padding: 40px 56px;
   background: var(--body-bg);

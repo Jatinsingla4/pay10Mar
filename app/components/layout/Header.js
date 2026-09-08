@@ -48,13 +48,13 @@ const navigationData = {
             icon: '/images/header/payments.svg',
           },
           {
-            label: 'Alimentation du Wallet',
+            label: 'Alimentation du Wallet - Retrait',
             href: '/alimentation-wallet',
             icon: '/images/header/prepaid.svg',
           },
           {
-            label: 'Virement bancaire',
-            href: '/virement-bancaire',
+            label: "Transfert d'argent International",
+            href: '/transfer-dargent-international',
             icon: '/images/header/sf.svg',
           },
         ],

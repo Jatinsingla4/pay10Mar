@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
@@ -8,6 +9,14 @@ import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
 
 const CONSUMER_APPLE_URL = "https://apps.apple.com/ae/app/pay10-uae/id6739810874";
 const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=ae.payten.wallet.app&hl=en";
+
+// CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
+const renderIcon = (cmsIcon, className, width) => {
+  if (typeof cmsIcon !== 'string' || !cmsIcon.trim()) return null;
+  return /^(https?:)?\//.test(cmsIcon)
+    ? <img src={cmsIcon} alt="" width={width} height={width} className={className} />
+    : <Icon icon={cmsIcon} width={width} className={className} />;
+};
 
 const firstNonEmpty = (...vals) => vals.find(v => typeof v === 'string' && v.trim()) || "";
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
@@ -42,10 +51,18 @@ const Pay10CardClient = ({ pageData = null }) => {
 
   // --- 2. Utilisez votre solde Pay10 (use cases) ---
   const useCasesSection = pageData?.sections?.[2];
-  const useCasePoints = extractPoints(useCasesSection);
 
-  // --- 3. CTA final ---
-  const ctaSection = pageData?.sections?.[3];
+  // --- 3. Comment ça marche (steps) ---
+  const stepsSection = pageData?.sections?.[3];
+  const steps = (stepsSection?.cards || []).map((c, i) => ({
+    num: `${i + 1}`,
+    title: c.title,
+    desc: ((!isEmptyHtml(c.content) ? c.content : c.subtitle) || "").replace(/<[^>]*>?/gm, '').trim(),
+    icon: c.icon,
+  }));
+
+  // --- 4. CTA final ---
+  const ctaSection = pageData?.sections?.[4];
 
   return (
     <main>
@@ -88,14 +105,38 @@ const Pay10CardClient = ({ pageData = null }) => {
         />
 
         <ConsumerFeatureSection
-          heading={firstNonEmpty(useCasesSection?.subtitle, useCasesSection?.title)}
-          points={useCasePoints}
+          heading={useCasesSection?.title}
+          subheading={useCasesSection?.subtitle}
+          extraContent={useCasesSection?.content}
           imageSrc={useCasesSection?.images?.[0]}
-          imageAlt={firstNonEmpty(useCasesSection?.subtitle, useCasesSection?.title)}
+          imageAlt={useCasesSection?.title}
           isReversed={false}
           isGreyBg={true}
           isTransparent={true}
         />
+
+        <section className={Style.steps_section}>
+          <div className={Style.steps_header} data-animation="opacity-up">
+            {!isEmptyHtml(stepsSection?.title) && (
+              <h2 dangerouslySetInnerHTML={{ __html: sanitizeHtml(stepsSection.title) }} />
+            )}
+            {!isEmptyHtml(stepsSection?.subtitle) && (
+              <p dangerouslySetInnerHTML={{ __html: sanitizeHtml(stepsSection.subtitle) }} />
+            )}
+          </div>
+          <div className={Style.steps_row}>
+            {steps.map((item) => (
+              <div className={Style.step_card} data-animation="opacity-up" key={item.num}>
+                <div className={Style.step_icon_box}>
+                  {renderIcon(item.icon, undefined, 32)}
+                </div>
+                <span className={Style.step_number}>Étape {item.num}</span>
+                <h3>{item.title}</h3>
+                <p>{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className={Style.final_cta}>
           {!isEmptyHtml(ctaSection?.title) && (

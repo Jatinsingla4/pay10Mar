@@ -49,8 +49,8 @@ const footerData = {
         { label: "Transfert d'argent", href: '/transfert-argent' },
         { label: 'Paiement de factures', href: '/paiement-factures' },
         { label: 'Recharge mobile', href: '/recharge-mobile' },
-        { label: 'Alimentation du Wallet', href: '/alimentation-wallet' },
-        { label: 'Virement bancaire', href: '/virement-bancaire' },
+        { label: 'Alimentation du Wallet - Retrait', href: '/alimentation-wallet' },
+        { label: "Transfert d'argent International", href: '/transfer-dargent-international' },
       ],
     },
     {

@@ -30,8 +30,10 @@ const QrPaymentClient = ({ pageData = null }) => {
 
   useEffect(() => {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const iOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-    if (iOS) {
+    // Apple ecosystem = iPhone/iPad/iPod, plus Mac (desktop Safari/Chrome on
+    // macOS) - only Windows/Android/etc fall through to the Play Store link.
+    const isApple = /iPad|iPhone|iPod|Macintosh/.test(ua);
+    if (isApple) {
       setConsumerStoreUrl(CONSUMER_APPLE_URL);
       setMerchantStoreUrl(MERCHANT_APPLE_URL);
       setIsIOS(true);

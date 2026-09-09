@@ -32,15 +32,6 @@ export default function KfsClient({ pageData = null }) {
     <div className={styles.kfs_container}>
       <h1 className={styles.title}>{pageData?.page_title || "Informations Clés"}</h1>
 
-      <div className={styles.arabic_btn_row}>
-        <a
-          href="/key-fact-statement/#"
-          className={styles.arabic_btn}
-        >
-          عربي
-        </a>
-      </div>
-
       <div className={styles.layout}>
         {/* Left Sidebar on Desktop / Scrollable Pills Row on Mobile */}
         <aside className={styles.sidebar}>

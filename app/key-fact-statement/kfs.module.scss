@@ -26,7 +26,9 @@
   font-family: 'bold', sans-serif;
   font-size: 3.5rem;
   color: var(--black);
-  margin-bottom: 8px;
+  // Was 8px - the arabic-toggle button row that sat below used to supply
+  // the real visual gap before it was removed as leftover/non-functional.
+  margin-bottom: 32px;
   line-height: 1.2;
 
   @media (max-width: 768px) {
@@ -128,35 +130,6 @@
     &:hover {
       opacity: 0.85;
     }
-  }
-}
-
-.arabic_btn_row {
-  display: flex;
-  justify-content: flex-end;
-  max-width: 1920px;
-  margin: 0 auto 24px;
-}
-
-.arabic_btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--button-gradient);
-  color: var(--white);
-  text-decoration: none;
-  font-family: 'bold', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  padding: 10px 22px;
-  border-radius: 50px;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
-  align-self: flex-start;
-
-  &:hover {
-    opacity: 0.88;
   }
 }
 

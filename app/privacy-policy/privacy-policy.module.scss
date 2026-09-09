@@ -38,7 +38,9 @@
   font-family: 'bold', sans-serif;
   font-size: 3.5rem;
   color: var(--black);
-  margin-bottom: 8px;
+  // Was 8px - the arabic-toggle button row that sat below used to supply
+  // the real visual gap before it was removed as leftover/non-functional.
+  margin-bottom: 32px;
   line-height: 1.2;
 
   @include tab {

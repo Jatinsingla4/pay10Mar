@@ -37,7 +37,8 @@
   font-family: 'bold', sans-serif;
   font-size: 3.5rem;
   color: var(--black);
-  margin-bottom: 8px;
+  // Matches privacy-policy/key-fact-statement's title-to-content gap.
+  margin-bottom: 32px;
   line-height: 1.2;
 
   @include tab {
@@ -87,7 +88,6 @@
   position: sticky;
   top: 100px;
   align-self: flex-start;
-  padding-top: 93px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
   scrollbar-width: none;
@@ -102,7 +102,6 @@
     flex-direction: row;
     overflow-x: auto;
     overflow-y: visible;
-    padding-top: 73px;
     padding-bottom: 15px;
     gap: 12px;
     width: 100%;
@@ -162,7 +161,6 @@
 .content_panel {
   flex: 1;
   min-width: 0;
-  padding-top: 93px;
   padding-left: 44px;
   border-left: 3px solid var(--orange);
   min-height: 500px;
@@ -174,14 +172,9 @@
 
   @include tab {
     padding-left: 0;
-    padding-top: 73px;
     border-left: none;
     border-top: 3px solid var(--orange);
     min-height: unset;
-  }
-
-  @include lessTab {
-    padding-top: 24px;
   }
 }
 

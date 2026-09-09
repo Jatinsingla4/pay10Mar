@@ -3,7 +3,7 @@
 // Abroad/WPS Service removed - the CMS only has one section (index 0), so
 // those tabs had no content.
 const tosData = [
-  { tabName: "Client général" },
+  { tabName: "CGU" },
 ];
 
 export default tosData;

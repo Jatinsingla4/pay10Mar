@@ -223,12 +223,25 @@
     margin: 0;
   }
 
-  p {
+  .step_desc {
     font-size: 16px;
     font-family: 'medium', sans-serif;
     color: var(--gray);
     line-height: 1.5;
-    margin: 0;
+
+    p {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      list-style: disc;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
   }
 }
 

@@ -18,7 +18,6 @@ const renderIcon = (cmsIcon, className, width) => {
     : <Icon icon={cmsIcon} width={width} className={className} />;
 };
 
-const firstNonEmpty = (...vals) => vals.find(v => typeof v === 'string' && v.trim()) || "";
 const firstNonEmptyHtml = (...vals) => vals.find(v => !isEmptyHtml(v)) ?? vals[vals.length - 1];
 
 // CMS editors paste bullet lists as a single <ul><li> rich-text block rather
@@ -41,28 +40,29 @@ const Pay10CardClient = ({ pageData = null }) => {
 
   // --- 0. Alimentation via compte bancaire ---
   const bankSection = pageData?.sections?.[0];
-  const bankSubheading = isEmptyHtml(bankSection?.content)
-    ? ""
-    : stripTags(bankSection.content);
 
   // --- 1. Avantages ---
   const advantagesSection = pageData?.sections?.[1];
   const advantagePoints = extractPoints(advantagesSection);
 
-  // --- 2. Utilisez votre solde Pay10 (use cases) ---
+  // --- 2. Retirez votre argent (use cases) ---
   const useCasesSection = pageData?.sections?.[2];
 
-  // --- 3. Comment ça marche (steps) ---
-  const stepsSection = pageData?.sections?.[3];
+  // --- 3. Avantages (retrait) ---
+  const retraitAdvantagesSection = pageData?.sections?.[3];
+  const retraitAdvantagePoints = extractPoints(retraitAdvantagesSection);
+
+  // --- 4. Comment ça marche (steps) ---
+  const stepsSection = pageData?.sections?.[4];
   const steps = (stepsSection?.cards || []).map((c, i) => ({
     num: `${i + 1}`,
     title: c.title,
-    desc: ((!isEmptyHtml(c.content) ? c.content : c.subtitle) || "").replace(/<[^>]*>?/gm, '').trim(),
+    desc: !isEmptyHtml(c.content) ? c.content : (c.subtitle || ""),
     icon: c.icon,
   }));
 
-  // --- 4. CTA final ---
-  const ctaSection = pageData?.sections?.[4];
+  // --- 5. CTA final ---
+  const ctaSection = pageData?.sections?.[5];
 
   return (
     <main>
@@ -85,10 +85,10 @@ const Pay10CardClient = ({ pageData = null }) => {
 
       <div className={Style.bg_circle_wrapper}>
         <ConsumerFeatureSection
-          heading={firstNonEmpty(bankSection?.subtitle, bankSection?.title)}
-          subheading={bankSubheading}
+          heading={bankSection?.title}
+          subheading={bankSection?.subtitle}
           imageSrc={bankSection?.images?.[0]}
-          imageAlt={firstNonEmpty(bankSection?.subtitle, bankSection?.title)}
+          imageAlt={bankSection?.title}
           isReversed={false}
           isGreyBg={true}
           isTransparent={true}
@@ -115,6 +115,16 @@ const Pay10CardClient = ({ pageData = null }) => {
           isTransparent={true}
         />
 
+        <ConsumerFeatureSection
+          heading={retraitAdvantagesSection?.title}
+          points={retraitAdvantagePoints}
+          imageSrc={retraitAdvantagesSection?.images?.[0]}
+          imageAlt={retraitAdvantagesSection?.title}
+          isReversed={true}
+          isGreyBg={true}
+          isTransparent={true}
+        />
+
         <section className={Style.steps_section}>
           <div className={Style.steps_header} data-animation="opacity-up">
             {!isEmptyHtml(stepsSection?.title) && (
@@ -132,7 +142,7 @@ const Pay10CardClient = ({ pageData = null }) => {
                 </div>
                 <span className={Style.step_number}>Étape {item.num}</span>
                 <h3>{item.title}</h3>
-                <p>{item.desc}</p>
+                <div className={Style.step_desc} dangerouslySetInnerHTML={{ __html: sanitizeHtml(item.desc) }} />
               </div>
             ))}
           </div>

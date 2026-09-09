@@ -11,6 +11,25 @@ const mergeWithCms = (pageData) => kfsData.map((tab, i) => ({
   content: pageData?.sections?.[i]?.content || '',
 }));
 
+// The CMS rich-text editor strips pasted <table> markup down to plain text,
+// so the Annexe comparison rows are entered as "Label — Client : x |
+// Commerçant : y" paragraphs instead. Turn those into a real <table> here.
+const ANNEXE_ROW_RE = /<p>\s*([^—<]+?)\s*—\s*Client\s*:\s*([^|<]+?)\s*\|\s*Commerçant\s*:\s*([^<]+?)\s*<\/p>/g;
+
+const buildAnnexeTable = (html) => {
+  const rows = [...html.matchAll(ANNEXE_ROW_RE)];
+  if (!rows.length) return html;
+  const tableHtml = '<table><tr><th>Élément</th><th>Client</th><th>Commerçant</th></tr>'
+    + rows.map(([, label, client, merchant]) => `<tr><td>${label.trim()}</td><td>${client.trim()}</td><td>${merchant.trim()}</td></tr>`).join('')
+    + '</table>';
+  let inserted = false;
+  return html.replace(ANNEXE_ROW_RE, () => {
+    if (inserted) return '';
+    inserted = true;
+    return tableHtml;
+  });
+};
+
 export default function KfsClient({ pageData = null }) {
   const [tabs] = useState(() => mergeWithCms(pageData));
   const [activeTabName, setActiveTabName] = useState(tabs[0]?.tabName || '');
@@ -23,7 +42,7 @@ export default function KfsClient({ pageData = null }) {
 
   // Wrap table in a responsive div container for horizontal scrolling on mobile
   const processedContent = activeTab?.content
-    ? activeTab.content
+    ? buildAnnexeTable(activeTab.content)
         .replace(/<table/g, `<div class="${styles.table_responsive_wrapper}"><table`)
         .replace(/<\/table>/g, '</table></div>')
     : '';

@@ -26,13 +26,15 @@ const renderIcon = (cmsIcon, className, width) => {
 const QrPaymentClient = ({ pageData = null }) => {
   const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
   const [merchantStoreUrl, setMerchantStoreUrl] = useState(MERCHANT_PLAY_URL);
+  const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-    if (isIOS) {
+    const iOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    if (iOS) {
       setConsumerStoreUrl(CONSUMER_APPLE_URL);
       setMerchantStoreUrl(MERCHANT_APPLE_URL);
+      setIsIOS(true);
     }
   }, []);
 
@@ -186,14 +188,11 @@ const QrPaymentClient = ({ pageData = null }) => {
             <h2 className={styles.combo_heading}>Découvrez nos solutions</h2>
             <div className={localStyles.combo_buttons_row}>
               <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
-                <img src="/images/prod_imports/Pay10-App-Icon.png" alt="" width={18} height={18} className={localStyles.combo_btn_icon} />
+                <Icon icon={isIOS ? "ic:baseline-apple" : "logos:google-play-icon"} width={18} className={localStyles.combo_btn_icon} />
                 <span>Pay10</span>
               </a>
-              {/* ponytail: no real Pay10 Biz app icon exists anywhere in this codebase -
-                  generated a placeholder matching the real Pay10 icon's visual style
-                  (same orange circle + "10" mark), swap for the real asset once it exists. */}
               <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
-                <img src="/images/qr-payment/pay10-biz-icon-placeholder.png" alt="" width={18} height={18} className={localStyles.combo_btn_icon} />
+                <Icon icon={isIOS ? "ic:baseline-apple" : "logos:google-play-icon"} width={18} className={localStyles.combo_btn_icon} />
                 <span>Pay10 Biz</span>
               </a>
             </div>

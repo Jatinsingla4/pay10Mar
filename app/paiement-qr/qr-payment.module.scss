@@ -119,4 +119,12 @@
   gap: 16px;
   flex-wrap: wrap;
   justify-content: center;
+
+  // Equal-width pair instead of each pill hugging its own (differently
+  // long) label - "Pay10" vs "Pay10 Biz" otherwise look mismatched side by
+  // side.
+  a {
+    min-width: 180px;
+    justify-content: center;
+  }
 }

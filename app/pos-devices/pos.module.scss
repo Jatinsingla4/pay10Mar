@@ -27,7 +27,10 @@
 .altareq_hero_content {
   position: relative;
   z-index: 2;
-  max-width: 600px;
+  // A flat 600px is safe on wide screens but crosses into the banner photo's
+  // white side (or zoom, which shrinks the effective viewport the same way)
+  // on narrower ones — scale with the box instead of a fixed pixel value.
+  max-width: min(600px, 44%);
   color: var(--white);
 
   h1 {

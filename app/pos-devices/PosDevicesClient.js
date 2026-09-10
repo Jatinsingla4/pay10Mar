@@ -197,6 +197,14 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
         </div>
       </section>
 
+      <section className={styles.choose_terminal_cta}>
+        <h2 className={styles.gradient_heading}>Choisissez votre terminal</h2>
+        <p>Parlez-nous de votre activité, nous vous aidons à choisir le terminal Pay10 adapté.</p>
+        <Link href="/contact-us?type=SME+Sales" className={styles.choose_terminal_btn}>
+          Contacter les ventes
+        </Link>
+      </section>
+
       {/* Device spec modal - keeps the compact grid a uniform height
           regardless of how long any one device's spec sheet is. */}
       {activeDeviceIdx !== null && devices[activeDeviceIdx] && (

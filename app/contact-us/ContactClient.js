@@ -106,6 +106,7 @@ const ContactClient = ({ pageData = null }) => {
     emirate: "",
     company_website: "",
     partnership_model: "",
+    device: "",
   };
 
   // Form state holding all possible fields across 4 forms
@@ -186,6 +187,7 @@ const ContactClient = ({ pageData = null }) => {
     if (activeFormType === "SME Sales" || activeFormType === "Enterprise Sales") {
       const parts = [`Position: ${formData.position.trim()}`, `Location: ${formData.location.trim()}`, `Industry: ${formData.industry.trim()}`];
       if (activeFormType === "Enterprise Sales") parts.push(`Company Size: ${formData.company_size}`);
+      if (activeFormType === "SME Sales" && formData.device) parts.push(`Terminal souhaité: ${formData.device}`);
       return `${activeFormType} inquiry - ${parts.join(", ")}`;
     }
     if (activeFormType === "Channel Partner") {
@@ -710,6 +712,23 @@ const ContactClient = ({ pageData = null }) => {
                           ]}
                         />
                         {formErrors.company_size && <span className={Style.formError}>{formErrors.company_size}</span>}
+                      </div>
+                    )}
+                    {activeFormType === "SME Sales" && (
+                      <div className={Style.formGroup}>
+                        <CustomSelect
+                          name="device"
+                          value={formData.device}
+                          onChange={handleInputChange}
+                          placeholder="Terminal souhaité (optionnel)"
+                          options={[
+                            { value: "P5", label: "P5" },
+                            { value: "POS10", label: "POS10" },
+                            { value: "P10", label: "P10" },
+                            { value: "P15", label: "P15" },
+                            { value: "P12", label: "P12" },
+                          ]}
+                        />
                       </div>
                     )}
                   </div>

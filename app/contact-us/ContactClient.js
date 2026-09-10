@@ -19,6 +19,16 @@ import CustomSelectBase from "../components/ui/CustomSelect";
 // listing's info card entirely and just drops a pin.
 const MAP_EMBED_URL = "https://www.google.com/maps?q=" + encodeURIComponent("Avenue Mainstreet, Casablanca Finance City, Casablanca, Maroc") + "&hl=fr&output=embed";
 
+// Info card content is a mailto link plus, for support lines, a bare
+// extension number with nothing marking it as a phone number - pull that
+// line out so it can be rendered with a phone icon instead of plain text.
+const PHONE_LINE_REGEX = /<p>\s*(\+?[\d\s]{3,})\s*<\/p>/;
+const splitCardPhone = (html) => {
+  const match = PHONE_LINE_REGEX.exec(html || "");
+  if (!match) return { restHtml: html, phone: null };
+  return { restHtml: html.replace(match[0], ""), phone: match[1].trim() };
+};
+
 // Static office data
 const STATIC_OFFICES = {
   "casablanca-morocco": {
@@ -374,8 +384,8 @@ const ContactClient = ({ pageData = null }) => {
               pageData.contact_cards.map((card, idx) => {
                 const getCardIcon = (title) => {
                   const t = (title || "").toLowerCase();
-                  if (t.includes("customer")) return "mdi:headphones";
-                  if (t.includes("merchant support")) return "mdi:storefront";
+                  if (t.includes("customer") || t.includes("support client")) return "mdi:headphones";
+                  if (t.includes("merchant support") || t.includes("support commerçant")) return "mdi:storefront";
                   if (t.includes("sme")) return "mdi:briefcase";
                   if (t.includes("enterprise")) return "mdi:office-building";
                   if (t.includes("channel")) return "mdi:handshake";
@@ -383,6 +393,8 @@ const ContactClient = ({ pageData = null }) => {
                   if (t.includes("marketing") || t.includes("event")) return "mdi:bullhorn";
                   return "mdi:information-variant";
                 };
+
+                const { restHtml, phone } = splitCardPhone(card.content);
 
                 return (
                   <div
@@ -399,7 +411,13 @@ const ContactClient = ({ pageData = null }) => {
                       )}
                     </div>
                     {card.title && <h3>{card.title}</h3>}
-                    {!isEmptyHtml(card.content) && <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(card.content) }} />}
+                    {!isEmptyHtml(restHtml) && <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(restHtml) }} />}
+                    {phone && (
+                      <div className={Style.infoCardPhone}>
+                        <Icon icon="mdi:phone" />
+                        <span>{phone}</span>
+                      </div>
+                    )}
                   </div>
                 );
               })

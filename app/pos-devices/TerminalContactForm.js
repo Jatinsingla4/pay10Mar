@@ -231,7 +231,7 @@ const TerminalContactForm = () => {
 
       <div style={{ textAlign: "center", marginTop: "16px" }}>
         <button type="submit" className={Style.formSubmitBtn} disabled={formSubmitting}>
-          {formSubmitting ? "Envoi en cours..." : "Contacter les ventes"}
+          {formSubmitting ? "Envoi en cours..." : "Envoyer"}
         </button>
       </div>
 

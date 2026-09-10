@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Style from "../contact-us/contact.module.scss";
+import posStyles from "./pos.module.scss";
 import CustomSelect from "../components/ui/CustomSelect";
 import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
 import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
@@ -141,7 +142,7 @@ const TerminalContactForm = () => {
             type="text"
             name="name"
             placeholder="Nom complet*"
-            className={`${Style.formInput} ${formErrors.name ? Style.formInputError : ""}`}
+            className={`${Style.formInput} ${posStyles.white_field} ${formErrors.name ? Style.formInputError : ""}`}
             value={formData.name}
             onChange={handleInputChange}
             required
@@ -154,7 +155,7 @@ const TerminalContactForm = () => {
             type="email"
             name="email"
             placeholder="Email*"
-            className={`${Style.formInput} ${formErrors.email ? Style.formInputError : ""}`}
+            className={`${Style.formInput} ${posStyles.white_field} ${formErrors.email ? Style.formInputError : ""}`}
             value={formData.email}
             onChange={handleInputChange}
             required
@@ -170,7 +171,7 @@ const TerminalContactForm = () => {
             type="tel"
             name="mobile"
             placeholder="Mobile*"
-            className={`${Style.formInput} ${formErrors.mobile ? Style.formInputError : ""}`}
+            className={`${Style.formInput} ${posStyles.white_field} ${formErrors.mobile ? Style.formInputError : ""}`}
             value={formData.mobile}
             onChange={handleInputChange}
             required
@@ -183,7 +184,7 @@ const TerminalContactForm = () => {
             type="text"
             name="company_name"
             placeholder="Entreprise*"
-            className={`${Style.formInput} ${formErrors.company_name ? Style.formInputError : ""}`}
+            className={`${Style.formInput} ${posStyles.white_field} ${formErrors.company_name ? Style.formInputError : ""}`}
             value={formData.company_name}
             onChange={handleInputChange}
             required
@@ -203,6 +204,7 @@ const TerminalContactForm = () => {
             error={formErrors.device}
             options={DEVICE_OPTIONS}
             styles={Style}
+            className={posStyles.white_field}
           />
           {formErrors.device && <span className={Style.formError}>{formErrors.device}</span>}
         </div>
@@ -211,7 +213,7 @@ const TerminalContactForm = () => {
             type="text"
             name="message"
             placeholder="Message (optionnel)"
-            className={Style.formInput}
+            className={`${Style.formInput} ${posStyles.white_field}`}
             value={formData.message}
             onChange={handleInputChange}
             maxLength={500}

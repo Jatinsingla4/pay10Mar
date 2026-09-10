@@ -7,7 +7,7 @@ import { Icon } from "@iconify/react";
 // own CSS module — every form already defines formInput/customSelect* classes
 // for its own input styling, so this reuses whichever module the caller passes
 // instead of forcing a single shared stylesheet.
-const CustomSelect = ({ options, value, onChange, placeholder, name, error, styles }) => {
+const CustomSelect = ({ options, value, onChange, placeholder, name, error, styles, className = "" }) => {
   const [isOpen, setIsOpen] = useState(false);
   const wrapperRef = useRef(null);
 
@@ -29,7 +29,7 @@ const CustomSelect = ({ options, value, onChange, placeholder, name, error, styl
   return (
     <div className={styles.customSelectWrapper} ref={wrapperRef}>
       <div
-        className={`${styles.formInput} ${styles.customSelectTrigger} ${error ? styles.formInputError : ""}`}
+        className={`${styles.formInput} ${styles.customSelectTrigger} ${error ? styles.formInputError : ""} ${className}`}
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className={value ? styles.customSelectValue : styles.customSelectPlaceholder}>

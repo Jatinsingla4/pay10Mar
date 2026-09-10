@@ -110,11 +110,12 @@
     gap: 3rem;
     align-items: stretch;
     width: 100%;
-    // Fixed (not %) height: gives both columns a stable anchor so the
-    // active timeline item's variable description length can't resize
-    // this row - it only expands/collapses inside timeline_wrapper's
-    // own overflow:hidden.
-    height: calc(100vh - 250px);
+    // Was a fixed height with timeline_wrapper's overflow:hidden clipping
+    // whatever didn't fit - fine for short text, but a long expanded card
+    // now hides later years entirely instead of the section just growing.
+    // min-height keeps the same tall default look while letting real
+    // content push the row (and the rest of the page) taller as needed.
+    min-height: calc(100vh - 250px);
 
     @include large {
       gap: 2rem;
@@ -152,7 +153,22 @@
       gap: 2rem;
       align-items: flex-start;
       flex: 1;
-      overflow: hidden;
+      // Was overflow:hidden - fine while every card's text was short, but a
+      // long expanded card (e.g. one with several bullet points) now pushes
+      // later years past the fixed-height panel, hiding them entirely.
+      // Scroll the timeline instead of clipping it.
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 0.5rem;
+
+      &::-webkit-scrollbar {
+        width: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--border-clr);
+        border-radius: 2px;
+      }
     }
 
     .timeline_line {
@@ -320,8 +336,14 @@
         }
 
         .timeline_description {
-          max-height: 500px; // Increased to accommodate lists
-          opacity: 1;
+          // CSS transitions can't animate to `auto`, so this has to be a
+          // fixed value bigger than any real card can get rather than the
+          // true content height - 500px was too tight for a multi-paragraph
+          // card with a bullet list and clipped it mid-sentence. !important
+          // because another equal-specificity rule elsewhere in this file
+          // was otherwise winning the cascade for max-height/opacity.
+          max-height: 2000px !important;
+          opacity: 1 !important;
           margin-bottom: 0;
           padding-top: 0.25rem;
           transform: translateY(0);

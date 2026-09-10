@@ -356,7 +356,7 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
             {!isEmptyHtml(pageData?.sections?.[5]?.subtitle) && (
               <p className={styles.combo_sub} dangerouslySetInnerHTML={{ __html: sanitizeHtml(pageData.sections[5].subtitle) }} />
             )}
-            <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Contact Entreprises</Link>
+            <Link href="/contact-us?type=Enterprise+Sales" className={styles.combo_btn}>Contact</Link>
           </div>
 
           <div className={styles.combo_divider} aria-hidden="true" />

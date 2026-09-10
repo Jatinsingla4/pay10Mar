@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Style from "./contact.module.scss";
 import { Icon } from "@iconify/react";
@@ -8,6 +8,8 @@ import { sanitizeHtml, isEmptyHtml } from "../lib/sanitizeHtml";
 import Recaptcha, { resetRecaptcha } from "../lib/Recaptcha";
 import { getCsrfToken, CSRF_HEADER_NAME } from "../lib/csrf";
 import { RECAPTCHA_TOKEN_FIELD, CONTACT_ENQUIRY_URL } from "../lib/proxyConstants";
+import { validateName, validateEmail, validateMobile, HTML_TAG_REGEX } from "../lib/formValidators";
+import CustomSelectBase from "../components/ui/CustomSelect";
 
 // Query-based embed — no place ID needed, Google resolves the address text directly.
 // Deliberately omits the "Casa Business Towers" business name: including it
@@ -26,52 +28,7 @@ const STATIC_OFFICES = {
   },
 };
 
-const CustomSelect = ({ options, value, onChange, placeholder, name, error }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const wrapperRef = useRef(null);
-
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleSelect = (optionValue) => {
-    onChange({ target: { name, value: optionValue } });
-    setIsOpen(false);
-  };
-
-  return (
-    <div className={Style.customSelectWrapper} ref={wrapperRef}>
-      <div 
-        className={`${Style.formInput} ${Style.customSelectTrigger} ${error ? Style.formInputError : ""}`}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <span className={value ? Style.customSelectValue : Style.customSelectPlaceholder}>
-          {value ? options.find(o => o.value === value)?.label || value : placeholder}
-        </span>
-        <Icon icon="mdi:chevron-down" className={`${Style.customSelectIcon} ${isOpen ? Style.customSelectIconOpen : ""}`} />
-      </div>
-      {isOpen && (
-        <ul className={Style.customSelectMenu}>
-          {options.map((option, idx) => (
-            <li 
-              key={idx} 
-              className={`${Style.customSelectOption} ${value === option.value ? Style.customSelectOptionActive : ""}`}
-              onClick={() => handleSelect(option.value)}
-            >
-              {option.label}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+const CustomSelect = (props) => <CustomSelectBase {...props} styles={Style} />;
 
 const VALID_FORM_TYPES = ["General Inquiry", "SME Sales", "Enterprise Sales", "Channel Partner"];
 
@@ -126,42 +83,9 @@ const ContactClient = ({ pageData = null }) => {
     setFormSubmitMessage("");
   };
 
-  // Form validation functions
-  // Letters from any language plus spaces, apostrophes, hyphens and periods
-  // (initials like "J.") — rejects digits and other punctuation.
-  const validateName = (name) => {
-    const trimmed = (name || "").trim();
-    if (!trimmed) return "Name is required";
-    if (!/^[\p{L}\s'.-]+$/u.test(trimmed)) return "Name should only contain letters";
-    return "";
-  };
-
   const validateCountry = (country) => {
     if (!country || country.trim() === "") return "Country is required";
     if (!/^[a-zA-Z\s'-]+$/.test(country)) return "Country should only contain letters";
-    return "";
-  };
-
-  const validateEmail = (email) => {
-    const trimmed = (email || "").trim();
-    if (!trimmed) return "Email is required";
-    if (/\s/.test(trimmed)) return "Email must not contain spaces";
-    if (trimmed.includes("..")) return "Email must not contain consecutive dots";
-    const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if (!emailRegex.test(trimmed)) return "Please enter a valid email address";
-    return "";
-  };
-
-  // International phone number: optional leading +, 8-15 digits total. 8 is
-  // the real-world floor for a mobile number including country code (a bare
-  // 7-digit number, the old minimum, is always a landline-style local number,
-  // never a mobile) — accepts any country's mobile/landline, not just UAE.
-  const validateMobile = (mobile) => {
-    const cleaned = (mobile || "").trim();
-    if (!cleaned) return "Mobile number is required";
-    if (!/^\+?\d{8,15}$/.test(cleaned)) {
-      return "Please enter a valid mobile number";
-    }
     return "";
   };
 
@@ -249,12 +173,6 @@ const ContactClient = ({ pageData = null }) => {
 
     return { response, result };
   };
-
-  // Matches any HTML tag opener, not a bare "<" — free text like the message
-  // field can legitimately contain "<" on its own, just never a tag. Applied
-  // to every field generically (below) rather than the specific ones checked
-  // above it, since new fields must be covered by default, not opted in.
-  const HTML_TAG_REGEX = /<\/?[a-zA-Z!][^>]*>/;
 
   const validateForm = () => {
     const errors = {};
@@ -382,11 +300,7 @@ const ContactClient = ({ pageData = null }) => {
       if (response.ok) {
         setFormSubmitStatus("success");
         setFormSubmitMessage(result?.message || "Thank you! We'll be in touch soon.");
-        setFormData({
-          name: "", email: "", mobile: "", company_name: "", message: "",
-          position: "", location: "", industry: "", company_size: "",
-          country: "", emirate: "", company_website: "", partnership_model: "",
-        });
+        setFormData(EMPTY_FORM_DATA);
         setFormErrors({});
       } else {
         setFormSubmitStatus("error");

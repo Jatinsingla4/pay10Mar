@@ -7,6 +7,7 @@ import { Icon } from "@iconify/react";
 import styles from "./pos.module.scss";
 import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
+import TerminalContactForm from "./TerminalContactForm";
 
 // CMS "icon" field can be an uploaded image (URL/path) or an iconify name.
 const renderIcon = (cmsIcon, className, width) => {
@@ -200,9 +201,9 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
       <section className={styles.choose_terminal_cta}>
         <h2 className={styles.gradient_heading}>Choisissez votre terminal</h2>
         <p>Parlez-nous de votre activité, nous vous aidons à choisir le terminal Pay10 adapté.</p>
-        <Link href="/contact-us?type=SME+Sales" className={styles.choose_terminal_btn}>
-          Contacter les ventes
-        </Link>
+        <div className={styles.choose_terminal_form}>
+          <TerminalContactForm />
+        </div>
       </section>
 
       {/* Device spec modal - keeps the compact grid a uniform height

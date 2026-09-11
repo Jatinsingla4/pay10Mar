@@ -13,19 +13,15 @@ const FALLBACK_IMAGE = "/images/news_images/news_banner_img.png";
 
 function formatDisplayDate(dateInput) {
   const parsed = new Date(dateInput);
-  if (Number.isNaN(parsed.getTime())) return "DATE TBA";
+  if (Number.isNaN(parsed.getTime())) return "Date à venir";
 
   const day = parsed.getDate();
-  const month = parsed.toLocaleString("en-US", { month: "long" }).toUpperCase();
+  // French ordinals only mark the 1st ("1er") - every other day is plain.
+  const dayText = day === 1 ? "1er" : `${day}`;
+  const month = parsed.toLocaleString("fr-FR", { month: "long" });
   const year = parsed.getFullYear();
 
-  const suffix =
-    day % 10 === 1 && day % 100 !== 11 ? "ST"
-    : day % 10 === 2 && day % 100 !== 12 ? "ND"
-    : day % 10 === 3 && day % 100 !== 13 ? "RD"
-    : "TH";
-
-  return `${day}${suffix} ${month}, ${year}`;
+  return `${dayText} ${month} ${year}`;
 }
 
 export default function NewsRoomClient({ initialNews = [], pageData = null }) {
@@ -108,12 +104,12 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
                         href={`/news-room/${item.slug}`}
                         className={styles.readMoreBtn}
                       >
-                        <span>Read More</span>
+                        <span>Lire</span>
                         <Icon icon="fa6-solid:angle-right" />
                       </Link>
                     )}
                     <div className={styles.shareRow}>
-                      <span>Share:</span>
+                      <span>Partager:</span>
                       <a
                         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(item.slug ? `https://www.pay10.ae/news-room/${item.slug}` : 'https://www.pay10.ae/news-room')}`}
                         target="_blank"

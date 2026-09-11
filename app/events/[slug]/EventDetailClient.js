@@ -30,8 +30,7 @@ const EventDetailClient = ({ initialData }) => {
 
     const startDay = start.getDate();
     const endDay = end.getDate();
-    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const month = monthNames[start.getMonth()];
+    const month = start.toLocaleString("fr-FR", { month: "long" });
     const year = start.getFullYear();
 
     if (startDay === endDay) {

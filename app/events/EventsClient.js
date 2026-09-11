@@ -7,12 +7,14 @@ import { Icon } from "@iconify/react";
 import { sanitizeHtml } from "../lib/sanitizeHtml";
 
 function formatEventDate(start) {
-  if (!start) return "Date TBA";
+  if (!start) return "Date à venir";
   const startDate = new Date(start);
   const startDay = startDate.getDate();
-  const startMonth = startDate.toLocaleString("en-US", { month: "long" });
+  // French ordinals only mark the 1st ("1er") - every other day is plain.
+  const startDayText = startDay === 1 ? "1er" : `${startDay}`;
+  const startMonth = startDate.toLocaleString("fr-FR", { month: "long" });
   const startYear = startDate.getFullYear();
-  return `${startDay} ${startMonth} ${startYear}`;
+  return `${startDayText} ${startMonth} ${startYear}`;
 }
 
 export default function EventsClient({ initialEvents = [], pageData = null }) {
@@ -81,7 +83,7 @@ export default function EventsClient({ initialEvents = [], pageData = null }) {
                     </div>
                     {event.subtitle && <p>{event.subtitle}</p>}
                     <div className={Style.events_box_cta}>
-                      <span>Learn More</span>
+                      <span>Lire</span>
                       <Icon icon="fa6-solid:angle-right" />
                     </div>
                   </div>

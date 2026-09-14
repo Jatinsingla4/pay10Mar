@@ -189,13 +189,11 @@ const QrPaymentClient = ({ pageData = null }) => {
           <div className={styles.combo_cta}>
             <h2 className={styles.combo_heading}>Découvrez nos solutions</h2>
             <div className={localStyles.combo_buttons_row}>
-              <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
-                <Icon icon={isIOS ? "ic:baseline-apple" : "logos:google-play-icon"} width={18} className={localStyles.combo_btn_icon} />
-                <span>Pay10</span>
+              <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.store_badge_link}>
+                <img src={isIOS ? "/images/common/app-store.svg" : "/images/common/google-play.svg"} alt="Pay10" className={styles.store_badge} />
               </a>
-              <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
-                <Icon icon={isIOS ? "ic:baseline-apple" : "logos:google-play-icon"} width={18} className={localStyles.combo_btn_icon} />
-                <span>Pay10 Biz</span>
+              <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.store_badge_link}>
+                <img src={isIOS ? "/images/common/app-store.svg" : "/images/common/google-play.svg"} alt="Pay10 Biz" className={styles.store_badge} />
               </a>
             </div>
           </div>

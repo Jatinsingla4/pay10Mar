@@ -363,9 +363,12 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
 
           <div className={styles.combo_download}>
             <h2 className={styles.combo_heading}>Application Commerçant</h2>
-            <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.combo_btn}>
-              <Icon icon="mdi:download" width={18} />
-              <span>Télécharger</span>
+            <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={styles.store_badge_link}>
+              <img
+                src={merchantStoreUrl === MERCHANT_APPLE_URL ? "/images/common/app-store.svg" : "/images/common/google-play.svg"}
+                alt="Télécharger l'application Commerçant"
+                className={styles.store_badge}
+              />
             </a>
           </div>
         </div>

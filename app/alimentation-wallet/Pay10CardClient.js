@@ -2,12 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
-import Image from "next/image";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
 import { isEmptyHtml, sanitizeHtml, stripTags } from "@/app/lib/sanitizeHtml";
 import { bannerBgStyle } from "@/app/lib/bannerBgStyle";
-import { useResponsive } from "@/app/contexts/ResponsiveContext";
 
 const CONSUMER_APPLE_URL = "https://apps.apple.com/app/6779525972";
 const CONSUMER_PLAY_URL = "https://play.google.com/store/apps/details?id=app.payten.wallet.ma";
@@ -32,9 +30,7 @@ const extractPoints = (section) => {
 };
 
 const Pay10CardClient = ({ pageData = null }) => {
-  const { isMobile } = useResponsive();
   const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
-  const consumerQr = pageData?.sections?.[2]?.images?.[1] || "/images/send-abroad/consumer-app-qr.png";
 
   useEffect(() => {
     const ua = navigator.userAgent || navigator.vendor || window.opera;
@@ -118,21 +114,6 @@ const Pay10CardClient = ({ pageData = null }) => {
           isGreyBg={true}
           isTransparent={true}
         />
-
-        <section className={Style.app_download}>
-          <h2 className={Style.app_download_heading}>Application Client</h2>
-          {isMobile ? (
-            <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.store_badge_link}>
-              <img
-                src={consumerStoreUrl === CONSUMER_APPLE_URL ? "/images/common/app-store.svg" : "/images/common/google-play.svg"}
-                alt="Télécharger l'application Pay10"
-                className={Style.store_badge}
-              />
-            </a>
-          ) : (
-            <Image src={consumerQr} alt="Scan to download the Pay10 App" className={Style.qr_image} width={140} height={140} />
-          )}
-        </section>
 
         <ConsumerFeatureSection
           heading={retraitAdvantagesSection?.title}

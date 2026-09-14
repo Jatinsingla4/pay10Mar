@@ -68,15 +68,15 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
               type="search"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              placeholder="Search press releases, news, and announcements..."
-              aria-label="Search press releases"
+              placeholder="Rechercher des communiqués de presse, actualités et annonces..."
+              aria-label="Rechercher des communiqués de presse"
             />
           </label>
         </div>
 
         <div className={styles.cardsGrid}>
           {items.length === 0 ? (
-            <div className={styles.emptyState}>No press releases found.</div>
+            <div className={styles.emptyState}>Aucun communiqué de presse trouvé.</div>
           ) : (
             items.map((item) => (
               <div
@@ -87,7 +87,7 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
                 <div className={styles.cardMedia}>
                   <img
                     src={item.image || FALLBACK_IMAGE}
-                    alt={item.title || "News Article"}
+                    alt={item.title || "Actualité Pay10"}
                     className={styles.cardImage}
                   />
                 </div>

@@ -7,19 +7,16 @@ import { sanitizeHtml } from "../../lib/sanitizeHtml";
 
 function formatDisplayDate(dateInput) {
   const parsed = new Date(dateInput);
-  if (Number.isNaN(parsed.getTime())) return "DATE TBA";
+  if (Number.isNaN(parsed.getTime())) return "DATE À CONFIRMER";
 
   const day = parsed.getDate();
-  const month = parsed.toLocaleString("en-US", { month: "long" }).toUpperCase();
+  const month = parsed.toLocaleString("fr-FR", { month: "long" }).toUpperCase();
   const year = parsed.getFullYear();
 
-  const suffix =
-    day % 10 === 1 && day % 100 !== 11 ? "ST"
-    : day % 10 === 2 && day % 100 !== 12 ? "ND"
-    : day % 10 === 3 && day % 100 !== 13 ? "RD"
-    : "TH";
+  // French only marks an ordinal on the 1st ("1er") - every other day is bare.
+  const dayLabel = day === 1 ? "1ER" : `${day}`;
 
-  return `${day}${suffix} ${month}, ${year}`;
+  return `${dayLabel} ${month}, ${year}`;
 }
 
 const stripHtml = (html) => {
@@ -32,10 +29,10 @@ const NewsDetailClient = ({ initialData, otherNews = [] }) => {
     return (
       <main className={Style.newsDetailMain}>
         <div className={Style.notFound}>
-          <p>News article not found.</p>
+          <p>Article introuvable.</p>
           <Link href="/news-room" className={Style.backBtn}>
             <Icon icon="fa6-solid:angle-left" />
-            <span>Back to News Room</span>
+            <span>Retour aux actualités</span>
           </Link>
         </div>
       </main>
@@ -49,10 +46,10 @@ const NewsDetailClient = ({ initialData, otherNews = [] }) => {
       <div className={Style.hero}>
         <Link href="/news-room" className={Style.backBtn} data-animation="opacity-up">
           <Icon icon="fa6-solid:angle-left" />
-          <span>Back to News Room</span>
+          <span>Retour aux actualités</span>
         </Link>
 
-        <span className={Style.pill} data-animation="opacity-up">PRESS RELEASE</span>
+        <span className={Style.pill} data-animation="opacity-up">COMMUNIQUÉ DE PRESSE</span>
 
         <h1 className={Style.title} data-animation="opacity-up">{title}</h1>
         <p className={Style.date} data-animation="opacity-up">{formatDisplayDate(posted_date)}</p>
@@ -62,7 +59,7 @@ const NewsDetailClient = ({ initialData, otherNews = [] }) => {
         <div className={Style.articleCard} data-animation="opacity-up">
           {image && (
             <div className={Style.detailMedia}>
-              <img src={image} alt={title || "News Article"} className={Style.detailImage} />
+              <img src={image} alt={title || "Actualité Pay10"} className={Style.detailImage} />
             </div>
           )}
 
@@ -74,7 +71,7 @@ const NewsDetailClient = ({ initialData, otherNews = [] }) => {
           <div className={Style.articleFooter}>
             <Link href="/news-room" className={Style.footerBackBtn}>
               <Icon icon="fa6-solid:angle-left" />
-              <span>All Pay10 News</span>
+              <span>Toutes les actualités Pay10</span>
             </Link>
           </div>
         </div>
@@ -82,8 +79,8 @@ const NewsDetailClient = ({ initialData, otherNews = [] }) => {
 
       <div className={Style.relatedSection}>
         <div className={Style.relatedWrapper}>
-          <p className={Style.keepReading} data-animation="opacity-up">KEEP READING</p>
-          <h2 className={Style.relatedHeading} data-animation="opacity-up">More Press Releases</h2>
+          <p className={Style.keepReading} data-animation="opacity-up">À LIRE AUSSI</p>
+          <h2 className={Style.relatedHeading} data-animation="opacity-up">Plus de communiqués de presse</h2>
 
           {otherNews.length > 0 && (
             <div className={Style.relatedGrid}>
@@ -93,7 +90,7 @@ const NewsDetailClient = ({ initialData, otherNews = [] }) => {
                   <h3>{item.title}</h3>
                   <p className={Style.relatedExcerpt}>{stripHtml(item.content)}</p>
                   <Link href={`/news-room/${item.slug}`} className={Style.readMoreBtn}>
-                    <span>Read More</span>
+                    <span>Lire la suite</span>
                     <Icon icon="fa6-solid:angle-right" />
                   </Link>
                 </div>

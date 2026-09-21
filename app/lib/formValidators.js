@@ -5,18 +5,18 @@
 // (initials like "J.") — rejects digits and other punctuation.
 export const validateName = (name) => {
   const trimmed = (name || "").trim();
-  if (!trimmed) return "Name is required";
-  if (!/^[\p{L}\s'.-]+$/u.test(trimmed)) return "Name should only contain letters";
+  if (!trimmed) return "Le nom est requis";
+  if (!/^[\p{L}\s'.-]+$/u.test(trimmed)) return "Le nom ne doit contenir que des lettres";
   return "";
 };
 
 export const validateEmail = (email) => {
   const trimmed = (email || "").trim();
-  if (!trimmed) return "Email is required";
-  if (/\s/.test(trimmed)) return "Email must not contain spaces";
-  if (trimmed.includes("..")) return "Email must not contain consecutive dots";
+  if (!trimmed) return "L'email est requis";
+  if (/\s/.test(trimmed)) return "L'email ne doit pas contenir d'espaces";
+  if (trimmed.includes("..")) return "L'email ne doit pas contenir de points consécutifs";
   const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  if (!emailRegex.test(trimmed)) return "Please enter a valid email address";
+  if (!emailRegex.test(trimmed)) return "Veuillez saisir une adresse email valide";
   return "";
 };
 
@@ -26,9 +26,9 @@ export const validateEmail = (email) => {
 // never a mobile) — accepts any country's mobile/landline, not just UAE.
 export const validateMobile = (mobile) => {
   const cleaned = (mobile || "").trim();
-  if (!cleaned) return "Mobile number is required";
+  if (!cleaned) return "Le numéro de mobile est requis";
   if (!/^\+?\d{8,15}$/.test(cleaned)) {
-    return "Please enter a valid mobile number";
+    return "Veuillez saisir un numéro de mobile valide";
   }
   return "";
 };

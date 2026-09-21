@@ -54,33 +54,33 @@ const MAX_BODY_BYTES = 64 * 1024;
 function validatePayload(endpointPath, payload) {
   for (const field of REQUIRED_FIELDS[endpointPath] || []) {
     if (!payload[field] || String(payload[field]).trim() === '') {
-      return `${field} is required`;
+      return `Le champ ${field} est requis`;
     }
   }
   if (payload.email && !EMAIL_REGEX.test(payload.email)) {
-    return 'Invalid email address';
+    return 'Adresse email invalide';
   }
   if (payload.name && !NAME_REGEX.test(String(payload.name).trim())) {
-    return 'Name should only contain letters';
+    return 'Le nom ne doit contenir que des lettres';
   }
   if (payload.phone && !PHONE_REGEX.test(String(payload.phone).trim())) {
-    return 'Please enter a valid mobile number';
+    return 'Veuillez saisir un numéro de mobile valide';
   }
   // Fail closed: a path added to ALLOWED_PATHS without limits here gets no field
   // checks at all, which is the sort of silent gap this file has had before.
   const limits = ALLOWED_FIELDS[endpointPath];
-  if (!limits) return 'Endpoint not configured';
+  if (!limits) return 'Endpoint non configuré';
 
   for (const [key, value] of Object.entries(payload)) {
     const limit = limits[key];
     if (limit === undefined) {
-      return `Unexpected field: ${key}`;
+      return `Champ inattendu : ${key}`;
     }
     if (typeof value === 'string' && value.length > limit) {
-      return `${key} is too long`;
+      return `${key} est trop long`;
     }
     if (typeof value === 'string' && HTML_TAG_REGEX.test(value)) {
-      return `${key} must not contain HTML tags`;
+      return `${key} ne doit pas contenir de balises HTML`;
     }
   }
   return null;
@@ -140,19 +140,19 @@ export async function POST(request, { params }) {
 async function handleProxy(request, params) {
   try {
     if (!API_BASE || !POST_API_KEY) {
-      return json({ status: false, message: 'Server configuration error' }, 500);
+      return json({ status: false, message: 'Erreur de configuration du serveur' }, 500);
     }
 
     if (REQUIRE_FULL_CONFIG && MISSING_CONFIG.length) {
       console.error('Proxy refusing requests — missing required config:', MISSING_CONFIG.join(', '));
-      return json({ status: false, message: 'Server configuration error' }, 500);
+      return json({ status: false, message: 'Erreur de configuration du serveur' }, 500);
     }
 
     const resolvedParams = await params;
     const endpointPath = resolvedParams.path ? resolvedParams.path.join('/') : '';
 
     if (!ALLOWED_PATHS.has(endpointPath)) {
-      return json({ status: false, message: 'Not found' }, 404);
+      return json({ status: false, message: 'Introuvable' }, 404);
     }
 
     // CSRF guard: state-changing requests must come from our own site, not a
@@ -162,7 +162,7 @@ async function handleProxy(request, params) {
     const origin = request.headers.get('origin');
     const isAllowedOrigin = origin && (ALLOWED_ORIGINS.has(origin) || (process.env.NODE_ENV !== 'production' && origin.startsWith('http://localhost:')));
     if (!isAllowedOrigin) {
-      return json({ status: false, message: 'Forbidden' }, 403);
+      return json({ status: false, message: 'Accès refusé' }, 403);
     }
 
     // Double-submit CSRF token: only a page that can read our own cookie
@@ -170,7 +170,7 @@ async function handleProxy(request, params) {
     const csrfCookie = request.cookies.get(CSRF_COOKIE_NAME)?.value;
     const csrfHeader = request.headers.get(CSRF_HEADER_NAME);
     if (!csrfCookie || csrfCookie !== csrfHeader) {
-      return json({ status: false, message: 'Forbidden' }, 403);
+      return json({ status: false, message: 'Accès refusé' }, 403);
     }
 
     // The caller's query string is deliberately dropped rather than appended. None
@@ -192,7 +192,7 @@ async function handleProxy(request, params) {
     // (Content-Length is absent on chunked requests; the edge should cap those.)
     const declaredLength = Number(request.headers.get('content-length'));
     if (declaredLength > MAX_BODY_BYTES) {
-      return json({ status: false, message: 'Request too large' }, 413);
+      return json({ status: false, message: 'Requête trop volumineuse' }, 413);
     }
 
     const requestIp = getClientIp(request);
@@ -205,7 +205,7 @@ async function handleProxy(request, params) {
       const token = incoming.get(RECAPTCHA_TOKEN_FIELD);
       incoming.delete(RECAPTCHA_TOKEN_FIELD);
       if (!(await verifyRecaptchaToken(token, requestIp))) {
-        return json({ status: false, message: 'Verification failed. Please try again.' }, 400);
+        return json({ status: false, message: 'Échec de la vérification. Veuillez réessayer.' }, 400);
       }
       const validationError = validatePayload(endpointPath, Object.fromEntries(incoming.entries()));
       if (validationError) {
@@ -222,13 +222,13 @@ async function handleProxy(request, params) {
       try {
         payload = JSON.parse(await request.text());
       } catch {
-        return json({ status: false, message: 'Invalid request body' }, 400);
+        return json({ status: false, message: 'Corps de requête invalide' }, 400);
       }
 
       const token = payload[RECAPTCHA_TOKEN_FIELD];
       delete payload[RECAPTCHA_TOKEN_FIELD];
       if (!(await verifyRecaptchaToken(token, requestIp))) {
-        return json({ status: false, message: 'Verification failed. Please try again.' }, 400);
+        return json({ status: false, message: 'Échec de la vérification. Veuillez réessayer.' }, 400);
       }
       const validationError = validatePayload(endpointPath, payload);
       if (validationError) {
@@ -246,11 +246,11 @@ async function handleProxy(request, params) {
       data = JSON.parse(text);
     } catch {
       console.error('Proxy non-JSON response:', response.status, text.slice(0, 300));
-      data = { status: false, message: 'An error occurred. Please try again later.' };
+      data = { status: false, message: 'Une erreur est survenue. Veuillez réessayer plus tard.' };
     }
     return json(data, response.status);
   } catch (err) {
     console.error('Proxy error:', err);
-    return json({ status: false, message: 'An error occurred. Please try again later.' }, 500);
+    return json({ status: false, message: 'Une erreur est survenue. Veuillez réessayer plus tard.' }, 500);
   }
 }

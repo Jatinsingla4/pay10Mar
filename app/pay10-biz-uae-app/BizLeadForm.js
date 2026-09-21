@@ -33,7 +33,7 @@ const BizLeadForm = () => {
     // Live, not just on submit — a pasted or typed tag should flag the field
     // immediately rather than waiting for the user to hit submit to find out.
     if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-      setErrors((prev) => ({ ...prev, [name]: "HTML tags are not allowed" }));
+      setErrors((prev) => ({ ...prev, [name]: "Les balises HTML ne sont pas autorisées" }));
     } else if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -62,20 +62,20 @@ const BizLeadForm = () => {
     const errs = {};
     for (const [key, value] of Object.entries(form)) {
       if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-        errs[key] = "HTML tags are not allowed";
+        errs[key] = "Les balises HTML ne sont pas autorisées";
       }
     }
-    if (!form.business_name.trim()) errs.business_name = "Business name is required";
-    if (!form.name.trim()) errs.name = "Your name is required";
-    else if (!/^[\p{L}\s'.-]+$/u.test(form.name.trim())) errs.name = "Name should only contain letters";
+    if (!form.business_name.trim()) errs.business_name = "Le nom de l'entreprise est requis";
+    if (!form.name.trim()) errs.name = "Votre nom est requis";
+    else if (!/^[\p{L}\s'.-]+$/u.test(form.name.trim())) errs.name = "Le nom ne doit contenir que des lettres";
     // 8-15 digits: the real-world floor for a mobile number including country
     // code (a bare 7-digit number is always landline-style local, never mobile).
-    if (!form.phone.trim()) errs.phone = "Phone number is required";
-    else if (!/^\+?\d{8,15}$/.test(form.phone.trim())) errs.phone = "Please enter a valid mobile number";
-    if (!form.email.trim()) errs.email = "Email is required";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = "Enter a valid email address";
-    if (!form.address.trim()) errs.address = "Business address is required";
-    if (!form.business_type) errs.business_type = "Select a business type";
+    if (!form.phone.trim()) errs.phone = "Le numéro de téléphone est requis";
+    else if (!/^\+?\d{8,15}$/.test(form.phone.trim())) errs.phone = "Veuillez saisir un numéro de mobile valide";
+    if (!form.email.trim()) errs.email = "L'email est requis";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = "Veuillez saisir une adresse email valide";
+    if (!form.address.trim()) errs.address = "L'adresse de l'entreprise est requise";
+    if (!form.business_type) errs.business_type = "Veuillez sélectionner un type d'entreprise";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -88,7 +88,7 @@ const BizLeadForm = () => {
     // problem at once instead of one at a time across repeated submits.
     const fieldsValid = validate();
     const captchaMissing = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken;
-    setRecaptchaError(captchaMissing ? "Please verify the captcha" : "");
+    setRecaptchaError(captchaMissing ? "Veuillez valider le captcha" : "");
     if (!fieldsValid || captchaMissing) return;
 
     setStatus("loading");

@@ -41,7 +41,7 @@ const TerminalContactForm = () => {
     }
     setFormData((prev) => ({ ...prev, [name]: value }));
     if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-      setFormErrors((prev) => ({ ...prev, [name]: "HTML tags are not allowed" }));
+      setFormErrors((prev) => ({ ...prev, [name]: "Les balises HTML ne sont pas autorisées" }));
     } else if (formErrors[name]) {
       setFormErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -54,7 +54,7 @@ const TerminalContactForm = () => {
   const validateForm = () => {
     const errors = {};
     for (const [key, value] of Object.entries(formData)) {
-      if (typeof value === "string" && HTML_TAG_REGEX.test(value)) errors[key] = "HTML tags are not allowed";
+      if (typeof value === "string" && HTML_TAG_REGEX.test(value)) errors[key] = "Les balises HTML ne sont pas autorisées";
     }
     const nameError = validateName(formData.name);
     if (nameError) errors.name = nameError;
@@ -62,8 +62,8 @@ const TerminalContactForm = () => {
     if (emailError) errors.email = emailError;
     const mobileError = validateMobile(formData.mobile);
     if (mobileError) errors.mobile = mobileError;
-    if (!formData.company_name.trim()) errors.company_name = "Company name is required";
-    if (!formData.device) errors.device = "Please select a terminal";
+    if (!formData.company_name.trim()) errors.company_name = "Le nom de l'entreprise est requis";
+    if (!formData.device) errors.device = "Veuillez sélectionner un terminal";
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -73,7 +73,7 @@ const TerminalContactForm = () => {
 
     const fieldsValid = validateForm();
     const captchaMissing = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken;
-    setRecaptchaError(captchaMissing ? "Please verify the captcha" : "");
+    setRecaptchaError(captchaMissing ? "Veuillez valider le captcha" : "");
     if (!fieldsValid || captchaMissing) {
       setFormSubmitStatus(null);
       setFormSubmitMessage("");

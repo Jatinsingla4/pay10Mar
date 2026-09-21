@@ -94,8 +94,8 @@ const ContactClient = ({ pageData = null }) => {
   };
 
   const validateCountry = (country) => {
-    if (!country || country.trim() === "") return "Country is required";
-    if (!/^[a-zA-Z\s'-]+$/.test(country)) return "Country should only contain letters";
+    if (!country || country.trim() === "") return "Le pays est requis";
+    if (!/^[a-zA-Z\s'-]+$/.test(country)) return "Le pays ne doit contenir que des lettres";
     return "";
   };
 
@@ -103,14 +103,14 @@ const ContactClient = ({ pageData = null }) => {
   // no scheme given) with a domain that has a TLD.
   const validateWebsite = (url) => {
     const cleaned = (url || "").trim();
-    if (!cleaned) return "Website is required";
+    if (!cleaned) return "Le site web est requis";
     try {
       const withScheme = /^https?:\/\//i.test(cleaned) ? cleaned : `https://${cleaned}`;
       const { hostname } = new URL(withScheme);
-      if (!/\.[a-z]{2,}$/i.test(hostname)) return "Please enter a valid website URL";
+      if (!/\.[a-z]{2,}$/i.test(hostname)) return "Veuillez saisir une URL de site web valide";
       return "";
     } catch {
-      return "Please enter a valid website URL";
+      return "Veuillez saisir une URL de site web valide";
     }
   };
 
@@ -189,7 +189,7 @@ const ContactClient = ({ pageData = null }) => {
 
     for (const [key, value] of Object.entries(formData)) {
       if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-        errors[key] = "HTML tags are not allowed";
+        errors[key] = "Les balises HTML ne sont pas autorisées";
       }
     }
 
@@ -204,33 +204,33 @@ const ContactClient = ({ pageData = null }) => {
 
     if (activeFormType !== "Channel Partner") {
       if (!formData.company_name || formData.company_name.trim() === "") {
-        errors.company_name = "Company name is required";
+        errors.company_name = "Le nom de l'entreprise est requis";
       }
     }
 
     if (activeFormType === "General Inquiry") {
       if (!formData.message || formData.message.trim() === "") {
-        errors.message = "Message is required";
+        errors.message = "Le message est requis";
       }
     }
 
     if (activeFormType === "SME Sales" || activeFormType === "Enterprise Sales") {
-      if (!formData.position.trim()) errors.position = "Position is required";
-      if (!formData.location.trim()) errors.location = "Location is required";
-      if (!formData.industry.trim()) errors.industry = "Industry is required";
+      if (!formData.position.trim()) errors.position = "Le poste est requis";
+      if (!formData.location.trim()) errors.location = "La localisation est requise";
+      if (!formData.industry.trim()) errors.industry = "Le secteur d'activité est requis";
     }
 
     if (activeFormType === "Enterprise Sales") {
-      if (!formData.company_size) errors.company_size = "Please select company size";
+      if (!formData.company_size) errors.company_size = "Veuillez sélectionner la taille de l'entreprise";
     }
 
     if (activeFormType === "Channel Partner") {
       const countryError = validateCountry(formData.country);
       if (countryError) errors.country = countryError;
-      if (!formData.emirate.trim()) errors.emirate = "Emirate/Locality is required";
+      if (!formData.emirate.trim()) errors.emirate = "La région/localité est requise";
       const websiteError = validateWebsite(formData.company_website);
       if (websiteError) errors.company_website = websiteError;
-      if (!formData.partnership_model) errors.partnership_model = "Please select a partnership model";
+      if (!formData.partnership_model) errors.partnership_model = "Veuillez sélectionner un modèle de partenariat";
     }
 
     setFormErrors(errors);
@@ -250,7 +250,7 @@ const ContactClient = ({ pageData = null }) => {
     // Live, not just on submit — a pasted or typed tag should flag the field
     // immediately rather than waiting for the user to hit submit to find out.
     if (typeof value === "string" && HTML_TAG_REGEX.test(value)) {
-      setFormErrors((prev) => ({ ...prev, [name]: "HTML tags are not allowed" }));
+      setFormErrors((prev) => ({ ...prev, [name]: "Les balises HTML ne sont pas autorisées" }));
     } else if (formErrors[name]) {
       setFormErrors((prev) => ({ ...prev, [name]: "" }));
     }
@@ -283,7 +283,7 @@ const ContactClient = ({ pageData = null }) => {
     // problem at once instead of one at a time across repeated submits.
     const fieldsValid = validateForm();
     const captchaMissing = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && !recaptchaToken;
-    setRecaptchaError(captchaMissing ? "Please verify the captcha" : "");
+    setRecaptchaError(captchaMissing ? "Veuillez valider le captcha" : "");
 
     if (!fieldsValid || captchaMissing) {
       // Just return, validateForm()/the line above already set the errors.

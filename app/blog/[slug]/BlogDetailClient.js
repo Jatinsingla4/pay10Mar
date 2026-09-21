@@ -92,7 +92,7 @@ const BlogDetailClient = ({ initialData }) => {
           )}
           <div className={Style.sidebar_cta}>
             <p>Ready to scale your global payments with Pay10?</p>
-            <Link href="/contact">Get Started</Link>
+            <Link href="/contact-us">Get Started</Link>
           </div>
         </aside>
 
@@ -130,7 +130,7 @@ const BlogDetailClient = ({ initialData }) => {
           <div className={Style.stop_losing}>
             <h2>Ready to transform your payments?</h2>
             <p>
-              <Link href="/contact">Get Started with Pay10</Link>.{" "}
+              <Link href="/contact-us">Get Started with Pay10</Link>.{" "}
               <Link href="/payment-gateway">Explore the Pay10 Payment Gateway</Link>.
             </p>
           </div>

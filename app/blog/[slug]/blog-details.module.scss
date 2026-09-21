@@ -242,6 +242,15 @@
     margin: 0 0 16px;
   }
 
+  p {
+    color: #333;
+    font-size: 0.975rem;
+    line-height: 1.65;
+    margin-bottom: 16px;
+
+    &:last-child { margin-bottom: 0; }
+  }
+
   ul {
     list-style: none;
     padding: 0;

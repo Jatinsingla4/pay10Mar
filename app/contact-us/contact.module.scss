@@ -359,20 +359,11 @@
 
 .formCategoryTabs {
   display: flex;
-  flex-wrap: nowrap;
+  // Wraps onto a second row instead of scrolling sideways, so every tab
+  // stays visible at once rather than needing a scroll to discover them.
+  flex-wrap: wrap;
   gap: 12px;
   margin-bottom: 32px;
-  // Scrolls within its own row instead of letting 4 nowrap tabs force the
-  // whole form card to overflow horizontally - happens at any width where
-  // the column is too narrow for them, not just phone-sized viewports.
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 4px;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .categoryTab {

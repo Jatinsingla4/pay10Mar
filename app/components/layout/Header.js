@@ -52,11 +52,12 @@ const navigationData = {
             href: '/alimentation-wallet',
             icon: '/images/header/prepaid.svg',
           },
-          {
-            label: "Transfert d'argent International",
-            href: '/transfer-dargent-international',
-            icon: '/images/header/sf.svg',
-          },
+          // ponytail: Transfert d'argent International hidden from nav per client request, page left intact
+          // {
+          //   label: "Transfert d'argent International",
+          //   href: '/transfer-dargent-international',
+          //   icon: '/images/header/sf.svg',
+          // },
         ],
       },
       {

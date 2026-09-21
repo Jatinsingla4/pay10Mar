@@ -50,7 +50,8 @@ const footerData = {
         { label: 'Paiement de factures', href: '/paiement-factures' },
         { label: 'Recharge mobile', href: '/recharge-mobile' },
         { label: 'Alimentation du Wallet - Retrait', href: '/alimentation-wallet' },
-        { label: "Transfert d'argent International", href: '/transfer-dargent-international' },
+        // ponytail: Transfert d'argent International hidden from nav per client request, page left intact
+        // { label: "Transfert d'argent International", href: '/transfer-dargent-international' },
       ],
     },
     {

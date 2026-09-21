@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
@@ -30,6 +30,18 @@ const extractPoints = (section) => {
 };
 
 const Pay10CardClient = ({ pageData = null }) => {
+  const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
+  const [isIOS, setIsIOS] = useState(false);
+
+  useEffect(() => {
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+    const isApple = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    if (isApple) {
+      setConsumerStoreUrl(CONSUMER_APPLE_URL);
+      setIsIOS(true);
+    }
+  }, []);
+
   // --- 0. Alimentation via compte bancaire ---
   const bankSection = pageData?.sections?.[0];
 
@@ -147,14 +159,13 @@ const Pay10CardClient = ({ pageData = null }) => {
           {!isEmptyHtml(ctaSection?.subtitle) && (
             <p className={Style.cta_tagline} dangerouslySetInnerHTML={{ __html: sanitizeHtml(ctaSection.subtitle) }} />
           )}
-          <div className={Style.cta_store_badges}>
-            <a href={CONSUMER_PLAY_URL} target="_blank" rel="noopener noreferrer" className={Style.store_badge_link}>
-              <img src="/images/common/google-play.svg" alt="Disponible sur Google Play" className={Style.store_badge} />
-            </a>
-            <a href={CONSUMER_APPLE_URL} target="_blank" rel="noopener noreferrer" className={Style.store_badge_link}>
-              <img src="/images/common/app-store.svg" alt="Télécharger sur l'App Store" className={Style.store_badge} />
-            </a>
-          </div>
+          <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.store_badge_link}>
+            <img
+              src={isIOS ? "/images/common/app-store.svg" : "/images/common/google-play.svg"}
+              alt="Télécharger l'application Pay10"
+              className={Style.store_badge}
+            />
+          </a>
         </section>
       </div>
     </main>

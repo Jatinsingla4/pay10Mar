@@ -43,7 +43,13 @@ const PosDevicesClient = ({ pageData = null, testimonialVideos = [], testimonial
   const subHeadingText = stripTags(parts[0]) || "Chaque appareil Pay10 génère un code QR Dynamique unique par transaction — créé instantanément, lié au montant exact, confirmé en temps réel. Pas un autocollant statique. Pas un code partagé. Un QR sécurisé et en direct, généré à chaque paiement.";
 
   const tagsText = parts[1] || pageData?.sections?.[0]?.cards?.[0]?.tags;
-  const consumerFeaturePoints = tagsText
+  // CMS editors can type bullets as a rich-text <ul><li> list instead of a
+  // comma-separated string - commas inside a single bullet (e.g. "unique,
+  // lié au montant, instantané") would otherwise get split into fragments.
+  const liMatches = tagsText ? Array.from(tagsText.matchAll(/<li[^>]*>(.*?)<\/li>/gs)) : [];
+  const consumerFeaturePoints = liMatches.length > 0
+    ? liMatches.map(m => stripTags(m[1])).filter(Boolean)
+    : tagsText
     ? tagsText.split(',').map(t => stripTags(t.trim())).filter(Boolean)
     : [
         "QR Dynamique généré à chaque transaction - unique, lié au montant, instantané",

@@ -254,6 +254,7 @@ const MerchantAppClient = ({ pageData = null, testimonialVideos = [], merchantLo
 
       <section className={Style.biz_app_download}>
         <h2 className={Style.app_download_heading}>Application Commerçant</h2>
+        <p className={Style.app_download_text}>Scannez et téléchargez</p>
         {isMobile ? (
           <a href={merchantStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.single_download_btn}>
             <Icon icon="mdi:download" width={20} />

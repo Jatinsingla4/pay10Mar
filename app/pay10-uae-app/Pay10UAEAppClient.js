@@ -96,6 +96,7 @@ const CustomerAppClient = ({ pageData = null }) => {
                 {isTransactionsSection && (
                   <section className={Style.app_download}>
                     <h2 className={Style.app_download_heading}>Application Client</h2>
+                    <p className={Style.app_download_text}>Scannez et téléchargez</p>
                     {isMobile ? (
                       <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.store_badge_link}>
                         <img

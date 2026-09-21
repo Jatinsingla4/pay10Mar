@@ -345,6 +345,7 @@
 
 .formRight {
   flex: 1;
+  min-width: 0; // flex items don't shrink below content's natural width by default - this lets it actually fill the space .formLeft's fixed 40% leaves instead of overflowing
   background: var(--white);
   border: 1px solid #efefef;
   border-radius: 20px;

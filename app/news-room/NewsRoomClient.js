@@ -115,7 +115,7 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.shareBtn}
-                        aria-label="Share on LinkedIn"
+                        aria-label="Partager sur LinkedIn"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <Icon icon="mdi:linkedin" />
@@ -125,7 +125,7 @@ export default function NewsRoomClient({ initialNews = [], pageData = null }) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className={styles.shareBtn}
-                        aria-label="Share on X"
+                        aria-label="Partager sur X"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <Icon icon="ri:twitter-x-fill" />

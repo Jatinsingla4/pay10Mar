@@ -47,7 +47,7 @@ const EventDetailClient = ({ initialData }) => {
     return (
       <main>
         <div className={Style.wrapper} style={{ textAlign: "center", padding: "80px 56px" }}>
-          <p>Event not found</p>
+          <p>Événement non trouvé</p>
           <Link href="/events" className={Style.backto_events}>
             <span>
               <InlineIcon
@@ -56,7 +56,7 @@ const EventDetailClient = ({ initialData }) => {
                 height="20"
               />
             </span>
-            <span>Back To Events</span>
+            <span>Retour aux événements</span>
           </Link>
         </div>
       </main>
@@ -132,7 +132,7 @@ const EventDetailClient = ({ initialData }) => {
             height="20"
           />
         </span>
-        <span>Back To Events</span>
+        <span>Retour aux événements</span>
       </Link>
 
       <div className={Style.wrapper}>
@@ -189,7 +189,7 @@ const EventDetailClient = ({ initialData }) => {
       {images.length > 0 && (
         <section className={Style.wrapper}>
           <div className={Style.pictures_container}>
-            <h2 data-animation="opacity-up">Event Gallery</h2>
+            <h2 data-animation="opacity-up">Galerie de l'événement</h2>
             <div className={Style.pictures}>
               {displayedImages.map((img, idx) => {
                 const imageSrc = resolveImageSrc(img);
@@ -213,7 +213,7 @@ const EventDetailClient = ({ initialData }) => {
               data-animation="scale-up"
             >
               <button className={Style.load_more_btn} onClick={handleLoadMoreImages}>
-                Load More
+                Voir plus
               </button>
             </div>
           )}

@@ -46,7 +46,7 @@ export default function EventsClient({ initialEvents = [], pageData = null }) {
         <div className={Style.all_events_container}>
           {initialEvents.length === 0 ? (
             <div style={{ textAlign: "center", padding: "2rem", width: "100%" }}>
-              No events found.
+              Aucun événement trouvé.
             </div>
           ) : (
             initialEvents.map((event, idx) => {
@@ -64,7 +64,7 @@ export default function EventsClient({ initialEvents = [], pageData = null }) {
                     {event.thumbnail && (
                       <img
                         src={event.thumbnail}
-                        alt={event.title || "Event Image"}
+                        alt={event.title || "Image de l'événement"}
                         style={{ width: "100%", height: "100%", objectFit: "cover" }}
                       />
                     )}
@@ -76,7 +76,7 @@ export default function EventsClient({ initialEvents = [], pageData = null }) {
                         <span
                           className={`${Style.event_tag} ${Style[`event_tag_${status}`]}`}
                         >
-                          {status === "upcoming" ? "Upcoming" : "Past"}
+                          {status === "upcoming" ? "À venir" : "Passé"}
                         </span>
                       </div>
                       <h3>{event.title}</h3>
@@ -95,7 +95,7 @@ export default function EventsClient({ initialEvents = [], pageData = null }) {
 
         {initialEvents.length >= 15 && (
           <div style={{ textAlign: "center", width: "100%" }} data-animation="scale-up">
-            <button className={Style.load_more_btn}>Load More</button>
+            <button className={Style.load_more_btn}>Voir plus</button>
           </div>
         )}
       </section>

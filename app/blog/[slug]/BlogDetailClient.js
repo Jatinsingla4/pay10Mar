@@ -10,7 +10,7 @@ const formatDate = (dateStr) => {
   if (!dateStr) return "";
   const date = new Date(dateStr);
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
+  return date.toLocaleDateString('fr-FR', options);
 };
 
 const resolveImageSrc = (path) => {
@@ -37,9 +37,9 @@ const BlogDetailClient = ({ initialData }) => {
     return (
       <main>
         <div style={{ textAlign: "center", padding: "100px 20px" }}>
-          <p>Blog not found</p>
+          <p>Article non trouvé</p>
           <Link href="/blog" className={Style.sidebar_cta} style={{ display: 'inline-block', marginTop: '20px' }}>
-            Back To Blogs
+            Retour aux articles
           </Link>
         </div>
       </main>
@@ -80,7 +80,7 @@ const BlogDetailClient = ({ initialData }) => {
         <aside className={Style.sidebar} data-animation="opacity-up" data-anim-delay="200">
           {sections.length > 0 && (
             <>
-              <p className={Style.toc_heading}>Table of contents</p>
+              <p className={Style.toc_heading}>Sommaire</p>
               <ul className={Style.toc_list}>
                 {sections.map((sec, i) => (
                   <li key={i}>
@@ -91,8 +91,8 @@ const BlogDetailClient = ({ initialData }) => {
             </>
           )}
           <div className={Style.sidebar_cta}>
-            <p>Ready to scale your global payments with Pay10?</p>
-            <Link href="/contact-us">Get Started</Link>
+            <p>Prêt à faire évoluer vos paiements mondiaux avec Pay10 ?</p>
+            <Link href="/contact-us">Commencer</Link>
           </div>
         </aside>
 
@@ -111,7 +111,7 @@ const BlogDetailClient = ({ initialData }) => {
           {/* Summary Box */}
           {!isEmptyHtml(summaryHtml) && (
             <div className={Style.summary_box} data-animation="opacity-up" data-anim-delay="150">
-              <h3>Summary</h3>
+              <h3>Résumé</h3>
               <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(summaryHtml) }} />
             </div>
           )}
@@ -128,17 +128,17 @@ const BlogDetailClient = ({ initialData }) => {
 
           {/* Stop Losing Revenue CTA */}
           <div className={Style.stop_losing}>
-            <h2>Ready to transform your payments?</h2>
+            <h2>Prêt à transformer vos paiements ?</h2>
             <p>
-              <Link href="/contact-us">Get Started with Pay10</Link>.{" "}
-              <Link href="/payment-gateway">Explore the Pay10 Payment Gateway</Link>.
+              <Link href="/contact-us">Commencer avec Pay10</Link>.{" "}
+              <Link href="/payment-gateway">Découvrez la passerelle de paiement Pay10</Link>.
             </p>
           </div>
 
           {/* FAQ Accordion */}
           {faqs.length > 0 && (
             <div className={Style.faq_section}>
-              <h2 className={Style.faq_heading}>Frequently Asked Questions</h2>
+              <h2 className={Style.faq_heading}>Questions fréquentes</h2>
               <div className={Style.faq_list}>
                 {faqs.map((item, i) => {
                   const isOpen = activeFaq === i;
@@ -183,7 +183,7 @@ const BlogDetailClient = ({ initialData }) => {
       {relatedBlogs.length > 0 && (
         <div className={Style.related_section}>
           <div className={Style.related_inner}>
-            <h2 className={Style.related_heading} data-animation="opacity-up">Related blogs</h2>
+            <h2 className={Style.related_heading} data-animation="opacity-up">Articles similaires</h2>
             <div className={Style.related_grid}>
               {relatedBlogs.map((related, idx) => (
                 <Link

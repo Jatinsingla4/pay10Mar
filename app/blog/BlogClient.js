@@ -11,7 +11,7 @@ const formatDate = (dateStr) => {
   if (!dateStr) return "";
   const date = new Date(dateStr);
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
+  return date.toLocaleDateString('fr-FR', options);
 };
 
 // Simple strip HTML function for summary
@@ -25,7 +25,7 @@ export default function BlogClient({ initialBlogs = [] }) {
     return (
       <main className={Style.blogListing}>
         <div style={{ textAlign: "center", padding: "80px 20px" }}>
-          <h2>No blogs found</h2>
+          <h2>Aucun article trouvé</h2>
         </div>
       </main>
     );
@@ -40,10 +40,10 @@ export default function BlogClient({ initialBlogs = [] }) {
         <div className={Style.wrapper}>
           <div className={Style.blog_content}>
             <div className={Style.blog_banner_headings}>
-              <h5 data-animation="opacity-up">Pay10 Blog</h5>
+              <h5 data-animation="opacity-up">Blog Pay10</h5>
               <h2 data-animation="opacity-up">
-                Get the latest tips and guides on how to stay ahead in the world
-                of digital payments
+                Retrouvez les derniers conseils et guides pour rester à la pointe
+                des paiements digitaux
               </h2>
             </div>
 
@@ -74,13 +74,13 @@ export default function BlogClient({ initialBlogs = [] }) {
                     <Icon icon="carbon:arrow-right" width={20} height={20} />
                   </Link>
                   <div className={Style.shareRow}>
-                    <span>Share:</span>
+                    <span>Partager :</span>
                     <a
                       href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.pay10.ae/blog/${featuredPost.slug}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={Style.shareBtn}
-                      aria-label="Share on LinkedIn"
+                      aria-label="Partager sur LinkedIn"
                     >
                       <Icon icon="mdi:linkedin" />
                     </a>
@@ -89,7 +89,7 @@ export default function BlogClient({ initialBlogs = [] }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={Style.shareBtn}
-                      aria-label="Share on X"
+                      aria-label="Partager sur X"
                     >
                       <Icon icon="ri:twitter-x-fill" />
                     </a>
@@ -122,23 +122,23 @@ export default function BlogClient({ initialBlogs = [] }) {
                   )}
                 </div>
                 <p className={Style.blog_smalltxt}>
-                  {post.category || "General"} &nbsp;|&nbsp; {formatDate(post.published_date)}
+                  {post.category || "Général"} &nbsp;|&nbsp; {formatDate(post.published_date)}
                 </p>
                 <h3 className={Style.blog_heading}>{post.title}</h3>
                 <p className={Style.blog_desc}>{post.subtitle || stripHtml(post.summary)}</p>
                 <div className={Style.cardFooter}>
                   <Link href={`/blog/${post.slug}`} className={Style.readMoreLink}>
-                    <span>Read More</span>
+                    <span>Lire plus</span>
                     <Icon icon="fa6-solid:angle-right" />
                   </Link>
                   <div className={Style.shareRow}>
-                    <span>Share:</span>
+                    <span>Partager :</span>
                     <a
                       href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://www.pay10.ae/blog/${post.slug}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className={Style.shareBtn}
-                      aria-label="Share on LinkedIn"
+                      aria-label="Partager sur LinkedIn"
                     >
                       <Icon icon="mdi:linkedin" />
                     </a>
@@ -147,7 +147,7 @@ export default function BlogClient({ initialBlogs = [] }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       className={Style.shareBtn}
-                      aria-label="Share on X"
+                      aria-label="Partager sur X"
                     >
                       <Icon icon="ri:twitter-x-fill" />
                     </a>

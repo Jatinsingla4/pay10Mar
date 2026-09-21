@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Icon } from "@iconify/react";
 import Style from "./page.module.scss";
 import ConsumerFeatureSection from "@/app/components/ui/product/ConsumerFeatureSection";
@@ -30,14 +30,6 @@ const extractPoints = (section) => {
 };
 
 const Pay10CardClient = ({ pageData = null }) => {
-  const [consumerStoreUrl, setConsumerStoreUrl] = useState(CONSUMER_PLAY_URL);
-
-  useEffect(() => {
-    const ua = navigator.userAgent || navigator.vendor || window.opera;
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
-    if (isIOS) setConsumerStoreUrl(CONSUMER_APPLE_URL);
-  }, []);
-
   // --- 0. Alimentation via compte bancaire ---
   const bankSection = pageData?.sections?.[0];
 
@@ -155,10 +147,14 @@ const Pay10CardClient = ({ pageData = null }) => {
           {!isEmptyHtml(ctaSection?.subtitle) && (
             <p className={Style.cta_tagline} dangerouslySetInnerHTML={{ __html: sanitizeHtml(ctaSection.subtitle) }} />
           )}
-          <a href={consumerStoreUrl} target="_blank" rel="noopener noreferrer" className={Style.cta_btn}>
-            <img src="/images/prod_imports/Pay10-App-Icon.png" alt="" width={20} height={20} />
-            <span>Découvrez les fonctionnalités Pay10</span>
-          </a>
+          <div className={Style.cta_store_badges}>
+            <a href={CONSUMER_PLAY_URL} target="_blank" rel="noopener noreferrer" className={Style.store_badge_link}>
+              <img src="/images/common/google-play.svg" alt="Disponible sur Google Play" className={Style.store_badge} />
+            </a>
+            <a href={CONSUMER_APPLE_URL} target="_blank" rel="noopener noreferrer" className={Style.store_badge_link}>
+              <img src="/images/common/app-store.svg" alt="Télécharger sur l'App Store" className={Style.store_badge} />
+            </a>
+          </div>
         </section>
       </div>
     </main>

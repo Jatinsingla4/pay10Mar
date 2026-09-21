@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Script from "next/script";
+import Style from "./Recaptcha.module.scss";
 
 let activeWidgetId = null;
 
@@ -53,7 +54,7 @@ export default function Recaptcha({ onVerify, onExpire }) {
         strategy="afterInteractive"
         onReady={renderWidget}
       />
-      <div ref={containerRef} />
+      <div ref={containerRef} className={Style.recaptchaWrapper} />
     </>
   );
 }

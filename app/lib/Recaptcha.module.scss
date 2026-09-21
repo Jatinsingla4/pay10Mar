@@ -1,0 +1,18 @@
+@import "../../styles/globals/mixin";
+
+// Google's checkbox widget has a fixed 304px intrinsic width it enforces
+// itself (cross-origin iframe, can't be resized via width/max-width) - on
+// narrow phones the form card's padded content area is narrower than that,
+// so the widget pokes out past the card edge. Scaling it down is the only
+// way to make it fit; transform doesn't reflow layout, but it does shrink
+// what actually paints/overflows, which is what matters here.
+.recaptchaWrapper {
+  @media only screen and (max-width: 360px) {
+    transform: scale(0.87);
+    transform-origin: 0 0;
+    // Reserve the scaled-down footprint instead of the original 78px tall /
+    // 304px wide box, so nothing below it gets an unexplained gap.
+    width: 264px;
+    height: 68px;
+  }
+}

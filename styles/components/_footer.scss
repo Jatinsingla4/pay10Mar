@@ -15,8 +15,11 @@
     max-width: 1920px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 200px 1fr 200px;
-    gap: 3rem;
+    // Logo (~120px) and social icons (~176px) were sitting in fixed 200px
+    // columns, wasting ~100px of width that the 6-column nav badly needed.
+    // auto sizes them to their actual content instead.
+    grid-template-columns: auto 1fr auto;
+    gap: 2rem;
     align-items: start;
 
     @include tab {
@@ -72,9 +75,13 @@
       gap: 0.75rem;
       // Grid items default to a content-based min-width (their longest
       // unbreakable word) regardless of the track's own minmax(0, 1fr) -
-      // without this, a long heading overflows into the next column
-      // instead of wrapping once the 6-column row gets tight.
+      // without this, the item itself won't shrink below that word's width.
       min-width: 0;
+      // min-width alone only lets the BOX shrink - it doesn't make a single
+      // long word (e.g. "Professionnels") break mid-word. Without this, that
+      // word still overflows past the (now-narrow) box into the next column.
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
 
     &-heading {
@@ -83,7 +90,7 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.25rem;
       text-decoration: none;
     }
 

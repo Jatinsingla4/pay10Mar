@@ -73,10 +73,12 @@
     }
 
     &-heading {
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 500;
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       color: var(--white);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       text-decoration: none;
     }
 
@@ -135,7 +137,7 @@
       padding-left: 0;
 
       @media (min-width: 992px) {
-        gap: 0.75rem;
+        gap: 0.625rem;
       }
 
       @include tab {
@@ -144,14 +146,15 @@
     }
 
     &-sublink {
-      color: rgba(255, 255, 255, 0.9);
+      color: rgba(255, 255, 255, 0.72);
       text-decoration: none;
-      font-family: 'bold', sans-serif;
-      font-size: 0.9375rem;
+      font-family: 'regular', sans-serif;
+      font-size: 0.875rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0.5rem 0;
+      transition: color 0.2s var(--ease-out-cubic);
 
       @media (min-width: 992px) {
         padding: 0;
@@ -159,6 +162,10 @@
 
       @include tab {
         border-bottom: 1px solid var(--white);
+      }
+
+      &:hover {
+        color: var(--white);
       }
 
       &--accordion {

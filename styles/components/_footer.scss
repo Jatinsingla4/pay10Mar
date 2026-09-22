@@ -70,6 +70,11 @@
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
+      // Grid items default to a content-based min-width (their longest
+      // unbreakable word) regardless of the track's own minmax(0, 1fr) -
+      // without this, a long heading overflows into the next column
+      // instead of wrapping once the 6-column row gets tight.
+      min-width: 0;
     }
 
     &-heading {

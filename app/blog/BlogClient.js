@@ -63,7 +63,10 @@ export default function BlogClient({ initialBlogs = [] }) {
                 className={Style.blog_banner_right_content}
                 data-animation="opacity-up"
               >
-                <h6>{featuredPost.author || "Pay10"} &nbsp;|&nbsp; {formatDate(featuredPost.published_date)}</h6>
+                <h6>
+                  {featuredPost.author || "Pay10"}
+                  {formatDate(featuredPost.published_date) && <>&nbsp;|&nbsp; {formatDate(featuredPost.published_date)}</>}
+                </h6>
                 <h3>{featuredPost.title}</h3>
                 <p>{featuredPost.subtitle || stripHtml(featuredPost.summary)}</p>
                 <div className={Style.featuredBottom}>
@@ -122,7 +125,8 @@ export default function BlogClient({ initialBlogs = [] }) {
                   )}
                 </div>
                 <p className={Style.blog_smalltxt}>
-                  {post.category || "Général"} &nbsp;|&nbsp; {formatDate(post.published_date)}
+                  {post.category || "Général"}
+                  {formatDate(post.published_date) && <>&nbsp;|&nbsp; {formatDate(post.published_date)}</>}
                 </p>
                 <h3 className={Style.blog_heading}>{post.title}</h3>
                 <p className={Style.blog_desc}>{post.subtitle || stripHtml(post.summary)}</p>
